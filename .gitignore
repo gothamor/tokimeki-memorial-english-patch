@@ -1,0 +1,14 @@
+# Game images and extracted game data - never commit
+*.bin
+*.cue
+*.iso
+*.img
+*.chd
+*[English]/
+/extracted/
+
+# Isolated emulator copy, screenshots, RAM dumps (tools/emu)
+/.emu/
+
+__pycache__/
+*.pyc
