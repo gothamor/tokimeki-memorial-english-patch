@@ -129,11 +129,68 @@ both in `OPTION.EXN` (title Options page) and in `SLPM_86.053` (in-game
 settings). Translate each copy that a screen uses, and check which screen
 you're looking at.
 
-**Not yet possible:** dialogue in `SERIFU/`, `EVENT/`, `BUNKA/` and the
-prologue script needs the bytecode format (see the open questions in
-game-internals §8). Only UI strings from the EXE/overlays with a numeric
-budget are safe today. Pair encoding halves the bytes English needs, which
-makes many more UI strings fit in place than full-width did.
+Strings with capacity `-` are usually dialogue: use the `dialogue` format
+below, not `strings`.
+
+## Dialogue (`dialogue`)
+
+Dialogue strings are repacked instead of fitted one by one: the space of every
+translated string in a block is pooled, the English is packed into it, and
+every pointer to a moved string is rewritten (game-internals §6e). Example:
+[translation/prologue.json](../translation/prologue.json).
+
+```json
+{
+  "dialogue": [{
+    "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+    "base": "0x80132000",
+    "lines": [
+      {"offset": "0x1b1d0",
+       "original": "俺の名前は{P}。\nここ、私立きらめき高校の\n新入生だ。",
+       "text": "My name's {P}.\nI'm a freshman at\nKirameki High."}
+    ]
+  }]
+}
+```
+
+- `base`: the file's load address (its pointers are absolute). Overlays are
+  0x80132000; SERIFU bases are listed in game-internals §6e.
+- `\n` is a line break; `{P}`, `{G}`, ... insert names; `{q}` separates choice
+  options (game-internals §6e has the full list).
+- A line with `"text": ""` is left alone, so a file can be translated a bit at
+  a time.
+- Start from a dump: `python tools/dump_dialogue.py extracted/CDROM/SERIFU/EVENT_KI.BIN -o extracted/dumps/EVENT_KI.json`
+  (it finds the base). **Keep dumps out of the repo** (they're the Japanese
+  script; AGENTS.md rule 9). Only commit lines you've translated.
+
+**Rules the patcher enforces:**
+- **Same number of display lines and choices as the Japanese, with the same
+  name codes on each line.** Scene code can wait for a specific line to start
+  typing (Rei's introduction plays his animation on its 4th line). With
+  fewer lines the game waits forever. Reflow the English to the original's
+  line count.
+- **At most 28 letters per line** (`max_cells`, default 28). A name code
+  counts as its longest name (`script.TOKEN_CELLS`, e.g. `{P}` = 12).
+- **The English must fit in the space of the strings it replaces.** It's
+  about 1 byte per letter, the same as the Japanese bytes for a typical
+  translation, so write tightly. The log line `dialogue: N string(s),
+  X of Y bytes used` shows the margin.
+
+**Style notes (from the prologue):**
+- The box shows 3 lines at a time; 4–5 line strings scroll, which is fine.
+- The game draws the speaker label and the opening bracket (`「`, `『`, or `（`
+  for thoughts). Thought lines end with `)` and have no opening `(`.
+- A text run with an odd number of letters before a name code wastes a cell,
+  showing as a double space (`"My name is {P}"` → "is  Name"). Prefer an even
+  run (`"My name's {P}"`).
+- Every distinct letter pair uses one font glyph from a pool of 993, shared
+  with the UI. The prologue alone took ~250. Until the renderer composes
+  pairs on the fly (game-internals §8, question 7), only a few scenes fit.
+  Watch the number of `glyph` lines in the patch log.
+
+Only UI strings with a numeric budget go through `strings`. Pair encoding
+halves the bytes English needs, which makes many more UI strings fit in place
+than full-width did.
 
 ## Graphics (`images`)
 

@@ -18,6 +18,15 @@ A translation file can contain:
       {"file", "offset", "original", "replacement", "comment"}
       `original` and `replacement` are hex strings of equal length; the
       patcher refuses to run unless the file holds exactly `original`.
+
+  "dialogue": blocks of script strings that are repacked, not fitted in place
+      {"file", "base", "max_cells"?, "lines": [{"offset", "original", "text"}]}
+      `base` is the RAM address the file is loaded to (its string pointers
+      are absolute). The space of every translated string is pooled, the
+      English is packed into it, and every pointer is updated (script.py).
+      The English must keep the original's line breaks, choices and name
+      codes (scene scripts time events to display lines). A line with an
+      empty "text" is left untouched.
 """
 
 from __future__ import annotations
@@ -28,7 +37,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List
 
-from . import font, png, text
+from . import font, png, script, text
 from .cd import Track
 from .iso9660 import Entry, list_files
 
@@ -71,6 +80,22 @@ class BytePatch:
 
 
 @dataclass
+class DialogueLine:
+    offset: int
+    original: str
+    text: str
+
+
+@dataclass
+class DialogueBlock:
+    file: str
+    base: int
+    lines: List[DialogueLine]
+    source: str
+    max_cells: int = script.MAX_CELLS
+
+
+@dataclass
 class FileEdit:
     entry: Entry
     original: bytes
@@ -79,8 +104,8 @@ class FileEdit:
 
 
 def load_translations(paths: List[Path]):
-    """Return (strings, images, byte_patches) from the given JSON files."""
-    strings, images, byte_patches = [], [], []
+    """Return (strings, images, byte_patches, dialogue) from the given JSON files."""
+    strings, images, byte_patches, dialogue = [], [], [], []
     for path in paths:
         path = Path(path)
         doc = json.loads(path.read_text(encoding="utf-8"))
@@ -121,7 +146,16 @@ def load_translations(paths: List[Path]):
                 comment=item.get("comment", ""),
                 source=path.name,
             ))
-    return strings, images, byte_patches
+        for item in doc.get("dialogue", []):
+            dialogue.append(DialogueBlock(
+                file=item["file"].upper().lstrip("/"),
+                base=int(item["base"], 0),
+                lines=[DialogueLine(int(line["offset"], 0), line["original"], line["text"])
+                       for line in item["lines"]],
+                source=path.name,
+                max_cells=item.get("max_cells", script.MAX_CELLS),
+            ))
+    return strings, images, byte_patches, dialogue
 
 
 def check_disc(files: Dict[str, Entry], track: Track) -> None:
@@ -179,6 +213,101 @@ def apply_string(patch: StringPatch, edit: FileEdit, pairs: font.PairEncoder) ->
                         "check it fits on screen")
 
 
+def apply_dialogue(block: DialogueBlock, edit: FileEdit, pairs: font.PairEncoder) -> None:
+    """Repack a block's translated strings into the space they occupied.
+
+    Each string's slot is its bytes + NUL + zero padding to the next 4-byte
+    boundary (as for in-place strings). All slots are pooled, the English is
+    packed into the pool, and every pointer to a moved string is rewritten.
+    Strings referenced from code, or by no pointer we can find, must fit in
+    their own slot.
+    """
+    data, orig = edit.data, edit.original
+    jobs, slots = [], {}
+    for line in sorted((x for x in block.lines if x.text), key=lambda x: x.offset):
+        where = f"{block.source}: {block.file} @ {line.offset:#x}"
+        raw = script.encode_original(line.original)
+        end = line.offset + len(raw)
+        if bytes(data[line.offset:end]) != raw or data[end:end + 1] != b"\0":
+            found = script.decode(script.read_string(orig, line.offset))
+            raise ValueError(f"{where}: expected {line.original!r}, found {found!r}")
+        capacity = len(raw) + 1
+        while (line.offset + capacity) % 4 and data[line.offset + capacity] == 0:
+            capacity += 1
+        new, widths = script.encode_english(line.text, pairs)
+        if script.structure(line.text) != script.structure(line.original):
+            raise ValueError(f"{where}: the English must have the same line breaks, choices "
+                             f"and name codes as the original ({script.structure(line.original)}), "
+                             f"has {script.structure(line.text)}: {line.text!r}")
+        for n, cells in enumerate(widths):
+            if cells > block.max_cells:
+                raise ValueError(f"{where}: display line {n + 1} is {cells} cells wide "
+                                 f"(max {block.max_cells}; a letter is 1 cell, a name "
+                                 f"code counts as its longest name): {line.text!r}")
+        pointers = script.find_pointers(orig, block.base, line.offset)
+        movable = bool(pointers) and not script.code_references(orig, block.base, line.offset)
+        jobs.append((line, new, pointers, movable, where))
+        slots[line.offset] = line.offset + capacity
+
+    # Merge adjacent slots into spans and clear them.
+    spans: List[List[int]] = []
+    for start, stop in sorted(slots.items()):
+        if spans and spans[-1][1] == start:
+            spans[-1][1] = stop
+        else:
+            spans.append([start, stop])
+    for start, stop in spans:
+        for pos, target in script.pointers_into(orig, block.base, start, stop):
+            if target not in slots:
+                raise ValueError(f"{block.source}: {block.file}: word at {pos:#x} points into "
+                                 f"translated text at {target:#x}, not at a string start")
+        data[start:stop] = bytes(stop - start)
+
+    free = [list(span) for span in spans]
+
+    def take(start: int, size: int) -> None:
+        for span in free:
+            if span[0] <= start and start + size <= span[1]:
+                free.remove(span)
+                free.extend(x for x in ([span[0], start], [start + size, span[1]]) if x[1] > x[0])
+                free.sort()
+                return
+        raise AssertionError(f"{start:#x} isn't free")
+
+    # Strings that can't move keep their own slot; the rest are packed in
+    # order, each into the first free gap that holds it.
+    placed = {}
+    for line, new, pointers, movable, where in jobs:
+        if not movable:
+            capacity = slots[line.offset] - line.offset
+            if len(new) + 1 > capacity:
+                reason = "is referenced from code" if pointers else "has no pointer to it"
+                raise ValueError(f"{where}: the string {reason}, so it can't move, and the "
+                                 f"English needs {len(new) + 1} bytes but only {capacity} "
+                                 f"are available")
+            take(line.offset, len(new) + 1)
+            placed[line.offset] = line.offset
+    total = sum(stop - start for start, stop in spans)
+    needed = sum(len(job[1]) + 1 for job in jobs)
+    for line, new, pointers, movable, where in jobs:
+        if movable:
+            span = next((x for x in free if x[1] - x[0] >= len(new) + 1), None)
+            if span is None:
+                raise ValueError(f"{block.source}: {block.file}: the English doesn't fit in the "
+                                 f"space of the original strings ({needed} bytes needed, "
+                                 f"{total} available)")
+            placed[line.offset] = span[0]
+            take(span[0], len(new) + 1)
+
+    for line, new, pointers, movable, where in jobs:
+        at = placed[line.offset]
+        data[at:at + len(new)] = new
+        for p in pointers:
+            data[p:p + 4] = (block.base + at).to_bytes(4, "little")
+        edit.log.append(f"{line.offset:#07x} -> {at:#07x}: {line.text!r}")
+    edit.log.append(f"dialogue: {len(jobs)} string(s), {needed} of {total} bytes used")
+
+
 def _rect_offsets(patch: ImagePatch, rect: List[int]):
     rx, ry, rw, rh = rect
     for row in range(ry, ry + rh):
@@ -220,7 +349,8 @@ def apply_bytes(patch: BytePatch, edit: FileEdit) -> None:
 
 
 def plan(track: Track, strings: List[StringPatch], images: List[ImagePatch],
-         free_codes: List[int], byte_patches: List[BytePatch] = ()) -> List[FileEdit]:
+         free_codes: List[int], byte_patches: List[BytePatch] = (),
+         dialogue: List[DialogueBlock] = ()) -> List[FileEdit]:
     """Validate and apply every patch in memory, against the unmodified disc.
 
     `free_codes` are the font glyphs available for English letter pairs
@@ -247,6 +377,8 @@ def plan(track: Track, strings: List[StringPatch], images: List[ImagePatch],
         apply_image(i, edit_for(i.file, i.source))
     for b in byte_patches:
         apply_bytes(b, edit_for(b.file, b.source))
+    for d in dialogue:
+        apply_dialogue(d, edit_for(d.file, d.source), pairs)
 
     if pairs.assigned:
         exe = edit_for(font.EXE, "font")

@@ -1,0 +1,226 @@
+{
+  "description": "Prologue: the entrance-ceremony scene after name entry (NAME_ENT.EXN, pointer table at 0x1B958). Dialogue strings are repacked into the space of the originals and their pointers rewritten.",
+  "dialogue": [
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "base": "0x80132000",
+      "lines": [
+        {
+          "offset": "0x1b1d0",
+          "original": "俺の名前は{P}。\nここ、私立きらめき高校の\n新入生だ。",
+          "text": "My name's {P}.\nI'm a freshman at\nKirameki High."
+        },
+        {
+          "offset": "0x1b204",
+          "original": "無理だと思っていた\n第一志望だったが、\n運良く合格することができた。",
+          "text": "I never thought I'd get\ninto my first choice,\nbut I got lucky!"
+        },
+        {
+          "offset": "0x1b248",
+          "original": "最高の気分だぜ。\n密かに想っている、\n藤崎詩織と同じ学校に\n入学できたんだから。",
+          "text": "I feel great!\nI got into the same\nschool as Shiori Fujisaki,\nmy secret crush."
+        },
+        {
+          "offset": "0x1b298",
+          "original": "実は…。\n彼女とは小学校からの\n幼なじみで、\n家も隣りどうしなんだけれど…。",
+          "text": "Truth is...\nShiori's my childhood\nfriend. She even lives\nnext door, but..."
+        },
+        {
+          "offset": "0x1b2e4",
+          "original": "俺と比べて、月とスッポン。\nだから、いまだに友達以上の\n関係には…。",
+          "text": "She's way out of my league.\nSo we're still just\nfriends..."
+        },
+        {
+          "offset": "0x1b328",
+          "original": "よう。\n何しけた面してんだよ。",
+          "text": "Hey.\nWhat's with the long face?"
+        },
+        {
+          "offset": "0x1b348",
+          "original": "あ、あぁ…。\n別に…。\n（なれなれしい奴だなぁ…。）",
+          "text": "Uh, oh...\nNothing...\n(Kind of a pushy guy...)"
+        },
+        {
+          "offset": "0x1b37c",
+          "original": "俺、早乙女好雄。\nこれからよろしくな。\nお前は何ていうんだ？",
+          "text": "I'm Yoshio Saotome.\nNice to meet you.\nWhat's your name?"
+        },
+        {
+          "offset": "0x1b3b8",
+          "original": "俺は、{P}。\nこっちこそよろしくな。",
+          "text": "I'm {P}.\nNice to meet you too."
+        },
+        {
+          "offset": "0x1b3dc",
+          "original": "あっ、来たわよ。",
+          "text": "Oh, here he comes!"
+        },
+        {
+          "offset": "0x1b3f0",
+          "original": "素敵〜。",
+          "text": "So dreamy!"
+        },
+        {
+          "offset": "0x1b3fc",
+          "original": "何だ？\n急に女子が騒ぎだしたぞ。",
+          "text": "Huh? Why are the girls\nall excited?"
+        },
+        {
+          "offset": "0x1b41c",
+          "original": "やあ、諸君。\n待たせたね。",
+          "text": "Greetings, all.\nSorry to keep you waiting."
+        },
+        {
+          "offset": "0x1b438",
+          "original": "この僕の事を知らない者は\nいないと思うが…。\n僕が理事長の孫の\n伊集院レイだ。",
+          "text": "Surely you all know who\nI am, but...\nthe chairman's grandson,\nRei Ijuin."
+        },
+        {
+          "offset": "0x1b484",
+          "original": "同じクラスの男性諸君には\n悪いが…。\nま、仲良くやって\nいこうじゃないか。",
+          "text": "My condolences to the\nother boys in this class...\nWell, let's try to\nget along."
+        },
+        {
+          "offset": "0x1b4cc",
+          "original": "伊集院って、\nあの金持ちのか…。\n嫌なクラスに\nなっちまったなぁ。",
+          "text": "Ijuin... you mean\nthat rich kid?\nMan, we got stuck in\na lousy class."
+        },
+        {
+          "offset": "0x1b50c",
+          "original": "そ、そうだな…。",
+          "text": "Y-yeah..."
+        },
+        {
+          "offset": "0x1b520",
+          "original": "あっ、次は詩織の、\n自己紹介みたいだ。）",
+          "text": "Oh, Shiori's turn to\nintroduce herself.)"
+        },
+        {
+          "offset": "0x1b548",
+          "original": "みなさんはじめまして。\n名前は藤崎詩織です。",
+          "text": "Nice to meet you all.\nI'm Shiori Fujisaki."
+        },
+        {
+          "offset": "0x1b574",
+          "original": "趣味は音楽鑑賞で、\nクラシックとかを\n良く聴きます。\nみなさんこれから、\nよろしくお願いします。",
+          "text": "My hobby is listening\nto music, mostly\nclassical.\nI hope we'll all\nget along!"
+        },
+        {
+          "offset": "0x1b5d4",
+          "original": "か、かわいいー。\n藤崎詩織ちゃんか…。\nこのクラスでよかったぜ。",
+          "text": "S-so cute!\nShiori Fujisaki, huh...\nThis class isn't so bad."
+        },
+        {
+          "offset": "0x1b614",
+          "original": "さっきは、嫌だって\n言ってたくせに…。）",
+          "text": "You said you hated this\nclass a minute ago...)"
+        },
+        {
+          "offset": "0x1b63c",
+          "original": "あっ、今、お前の事見たぜ。\nあの娘知ってるのか？",
+          "text": "Hey, she just looked at you!\nDo you know her?"
+        },
+        {
+          "offset": "0x1b66c",
+          "original": "知ってるも何も、\n俺の幼なじみだよ。",
+          "text": "Know her? She's my\nchildhood friend."
+        },
+        {
+          "offset": "0x1b690",
+          "original": "へぇ、そうなのか…。\nじゃあ、彼女の誕生日は？",
+          "text": "Huh, really...\nSo, when's her birthday?"
+        },
+        {
+          "offset": "0x1b6c0",
+          "original": "血液型は？",
+          "text": "Blood type?"
+        },
+        {
+          "offset": "0x1b6cc",
+          "original": "趣味は？",
+          "text": "Hobbies?"
+        },
+        {
+          "offset": "0x1b6d8",
+          "original": "音楽鑑賞って、\n言ってたじゃないか。",
+          "text": "She just said music,\ndidn't she?"
+        },
+        {
+          "offset": "0x1b6fc",
+          "original": "あっ、そうか。\nスリーサイズは？",
+          "text": "Oh, right.\nHer measurements?"
+        },
+        {
+          "offset": "0x1b71c",
+          "original": "そんなの知るかよ。",
+          "text": "How should I know?"
+        },
+        {
+          "offset": "0x1b730",
+          "original": "よし、\nチェックだ。\nチェック。",
+          "text": "Alright,\nnoted.\nNoted."
+        },
+        {
+          "offset": "0x1b750",
+          "original": "お、お前…。\nそのメモ帳、女の子の事\nばっかりじゃないか…。",
+          "text": "H-hey...\nThat notebook of yours\nis all about girls..."
+        },
+        {
+          "offset": "0x1b78c",
+          "original": "ま、女の子の事で、\n知りたいことがあったら、\n俺に連絡しな。\n力になるぜ。",
+          "text": "If you ever want to know\nanything about girls,\njust ask me.\nI'll help you out."
+        },
+        {
+          "offset": "0x1b7d4",
+          "original": "そ、そうか…。\nありがとう。",
+          "text": "O-oh, okay...\nThanks."
+        },
+        {
+          "offset": "0x1b7f0",
+          "original": "それよりも。\nお前、この高校の\n伝説知ってるか？",
+          "text": "Anyway...\nhave you heard about\nthis school's legend?"
+        },
+        {
+          "offset": "0x1b820",
+          "original": "伝説？\n何それ？",
+          "text": "Legend?\nWhat legend?"
+        },
+        {
+          "offset": "0x1b830",
+          "original": "ほら、そこの窓から、\nでっかい木が見えるだろ。",
+          "text": "See that big tree out\nthe window?"
+        },
+        {
+          "offset": "0x1b860",
+          "original": "ん？\nあぁ。",
+          "text": "Hm?\nYeah."
+        },
+        {
+          "offset": "0x1b86c",
+          "original": "あの木の下で、\n女の子に告白されると、\n永遠に幸せな関係に\nなれるんだってよ。",
+          "text": "They say if a girl\nconfesses to you under\nthat tree, you'll be\nhappy together forever."
+        },
+        {
+          "offset": "0x1b8b8",
+          "original": "へぇ、そんな伝説が\nあるのか…。",
+          "text": "Wow, there's a legend\nlike that?"
+        },
+        {
+          "offset": "0x1b8d8",
+          "original": "誰が言ったかしらねぇが、\nうらやましい話だな。",
+          "text": "Who knows who started it,\nbut I'm jealous."
+        },
+        {
+          "offset": "0x1b908",
+          "original": "伝説か…。\nそうだな、俺なら…",
+          "text": "A legend, huh...\nIf it were me..."
+        },
+        {
+          "offset": "0x1b928",
+          "original": "こうして、不安と期待の\n高校生活が始まった…。",
+          "text": "And so began high school,\nfull of hope and worry..."
+        }
+      ]
+    }
+  ]
+}

@@ -158,11 +158,13 @@ the game.)
   reached through pointer tables (e.g. `NAME_ENT.EXN` 0x1AD28).
   An in-place replacement may use the original's bytes + NUL + padding to the
   next 4-byte boundary.
-- **In script/dialogue files** (`SERIFU/*.BIN`, `BUNKA/*.BIN`, `SPEAKTST/*.BIN`,
-  `EVENT/*.BIN`, and the prologue section of `NAME_ENT.EXN` from ~0x1B1D0):
-  strings are packed at odd offsets, mixed with script bytecode, and often not
-  NUL-terminated. **The bytecode format isn't reverse-engineered yet.** Don't
-  patch these until it is; `find_text.py` marks them with capacity `-`.
+- **In dialogue** (`SERIFU/*.BIN`, the prologue in `NAME_ENT.EXN` 0x1B1D0–, and
+  probably `BUNKA/`, `SPEAKTST/`, `EVENT/`): NUL-terminated strings with
+  1-byte ASCII control codes mixed in (`0x20` = line break, `P` = player's
+  name, ...), reached through tables of absolute RAM pointers. There is no
+  separate bytecode for the text itself. `find_text.py` shows these as capacity
+  `-` because the control bytes break its runs; use `tools/dump_dialogue.py`.
+  Full details in §6e.
 - **Where things are:**
 
 | Location | Content |
@@ -259,6 +261,124 @@ Then **name entry**:
   cheat-name list (0x19590–).
 - This screen sets glyph advance 16 at init; it's patched to 14. The typed
   name characters still line up with their underscores (checked).
+
+### 6e. Dialogue
+
+Found by dumping the prologue strings, disassembling the EXE code that compares
+bytes against them, and stepping through the prologue in the emulator
+(testing.md, "Reaching the prologue"). Everything here was checked on screen
+with English text unless marked otherwise.
+
+**String format.** NUL-terminated. A byte that is one of the control codes
+below takes 1 byte; anything else is a 2-byte Shift-JIS character (the
+renderer doesn't check lead-byte ranges, it just skips 2). The patcher writes
+these as `\n` and `{X}` in translation files (`tokipatch/script.py`).
+
+| Byte | Meaning |
+|---|---|
+| `0x20` | end of display line |
+| `q` (0x71) | end of a choice option (also ends the line) |
+| `P` | player's full name, family + given with no space (on screen: "My name's みみ.") |
+| `G` | the girl's name (RAM 0x800CA190) |
+| `p`, `m` | RAM 0x800CA16C / 0x800CA174 (likely family / given name; unverified) |
+| `F` | `sprintf("%s%s", p-buffer, 0x800CA174)` (unverified) |
+| `Y` | the fixed string 好雄 (Yoshio) at 0x800B2240 |
+| `S`, `O`, `W`, `A`, `M` | RAM 0x800CA23C / 0x800CA248 / 0x800CA250 / 0x800CA25C / 0x800CA280 (place, item, ...? unverified) |
+
+Names are inserted as full-width Shift-JIS, 14 px per character.
+
+**Renderer:** `0x80081190` (EXE), called with (x, y, attr, string, ...). It
+copies the string to a 512-byte stack buffer, splits it at `0x20`/`q`, copies
+each line into a 64-byte buffer (`strncpy`, so a line must stay under 64 bytes
+after name expansion), expands the name codes, and draws each line with
+`add_text` (§6a) at 16 px line spacing. So dialogue uses the same font, glyph
+cache and 14 px advance as the UI, and **letter-pair English works unchanged**.
+- The speaker label (好雄, 伊集院, 女子Ａ, the player's given name) and an
+  opening bracket are drawn by the game before the first line: `「` for other
+  characters, `『` for the player, `（` for the player's thoughts. Thought
+  strings therefore end with `）` but never start with `（`; in English, end
+  them with `)` only. Where the labels come from isn't known yet (still
+  Japanese).
+- Lines that start with `（` are outdented by 14 px.
+- A first pass (0x800812D4) sets `*(u32*)0x80122D1C = 0` unless every
+  character is one of `…‥「。、`. Purpose unknown (silent lines?). English
+  never matches, like normal Japanese text. Keep pure-punctuation lines in
+  Japanese punctuation to be safe.
+- String helpers it uses are BIOS A-functions (`0x800AE0F0` strcpy,
+  `0x800AE090` strncpy, `0x800AE0E0` strlen), all byte-wise, so **strings need
+  no alignment**.
+
+**Text box:** shows **3 lines**. Strings with 4 or 5 lines (both occur) scroll
+up one line at a time as the typewriter reaches them. Width: measured ≈29
+letters after the speaker label, so the patcher limits a line to **28 cells**
+(1 per letter, 2 per full-width character; `script.MAX_CELLS`).
+"Hey, she just looked at you!" (28) reaches the right edge.
+
+**Typewriter** (EXE, used by the prologue; probably by all dialogue):
+`0x800B3F60` text-list entry count, `0x3F62` total glyphs, `0x3F64` first
+dialogue entry, `0x3F66` speed, `0x3F68` glyphs revealed. `0x8004EC24` reveals
+one glyph every speed+1 frames and returns 1 when all are shown;
+`0x8004ECF0` returns the text-list entry (display line) currently being typed.
+
+**Scene scripts time events to display lines.** The prologue is hand-written
+code in `NAME_ENT.EXN`: step machines indexed by `0x800E738D`, each step
+calling *start line* `0x80144B44` (line index in `*(u8*)0x8014D180`) and
+*run line* `0x80144C8C` every frame. Rei's step (0x80148380) waits until
+`0x8004ECF0() == 0x800E71E1 + 3`, i.e. until his **4th** display line starts,
+then plays his entrance. With a 3-line translation it waited forever (a clean
+hang with no error, the box just stays up). **Rule: a translation must keep
+the original's number of display lines and choices.** The patcher enforces it
+(`script.structure`).
+
+**Voiced lines advance by themselves** (`0x80144E34`–): once the XA clip
+reaches its end sector and the text is fully typed, a counter at
+`0x800E7384` runs to 61 frames (~1 s) and the scene moves on. Pressing ○
+also advances. Per prologue line `i`: speaker/voice byte at
+`NAME_ENT.EXN` 0x1BA04+i (low nibble 0xF = no voice), XA position at
+0x1BA30+8i, a second table at 0x1BB88+8i.
+
+**Pointers and relocation.** Every dialogue string found so far is reached
+only through 32-bit pointers in its own file, as absolute RAM addresses
+(file offset + load address). So strings can be repacked freely inside the
+space of the strings they replace, if every pointer is updated
+(`patcher.apply_dialogue`). The patcher refuses strings that code builds
+addresses for (`lui`/`addiu`), and pointers into the middle of a string.
+
+| File | Load address (from its pointers) |
+|---|---|
+| `EXEDIR/NAME_ENT.EXN` prologue | 0x80132000 (overlay); 43 strings 0x1B1D0–0x1B957, table 0x1B958 |
+| `SERIFU/DATE_*`, `EVENT_*` | 0x80198000 |
+| `SERIFU/SERIFU, G_APPEAR, G_INVITE, GASSHUKU, GEKO, GROUP_D, HAGEMASI, NYUBU, OMIMAI, SHOGATU, SHUGAKU, VALEN, WHITE, XMAS` | 0x80197000 |
+| `SERIFU/G_BIRTH, KARADATA, P_BIRTH, ZAKOSEN` | 0x801B0000 |
+| `SERIFU/GASSH_FU` | 0x801BE000 |
+| `SERIFU/EPILOG` | 0x80180000 |
+| `SERIFU/ENDING` | 0x801F0000 |
+| `BUNKA/*` (46 files) | 0x801E8000 |
+| `SPEAKTST/TEST_*` (12 files) | 0x80180000 |
+
+(The table is from a scan for the base that makes the most pointers land on
+string starts. Only the prologue has been verified in the game.) Sizes:
+`SERIFU/` ~9,000 strings / ~330 KB, `BUNKA/` ~9,100 / ~330 KB, `SPEAKTST/`
+~16,400 / ~630 KB of Japanese. `EVENT/` has no dialogue strings.
+A few strings (mostly `SPEAKTST`) also contain bytes such as `<`, `>`, `-`,
+`n` that the renderer doesn't treat as control codes; `script.decode`
+rejects them, so `dump_dialogue.py` leaves them out. Find out what reads them
+before translating those files.
+
+**Budgets: the two limits for translating the whole script.**
+1. **Space.** English pair text costs 1 byte per letter, Japanese 2 bytes per
+   character, and English needs ~2× the characters, so a translation uses
+   about as many bytes as the original. The prologue fits (1912 of 1928
+   bytes) only after tightening the English. The zero tail of `NAME_ENT.EXN`
+   (0x1BCD0–) is **not** free: code references reach 0x253A4 (BSS). Other
+   files may have slack; check each.
+2. **Pair glyphs.** Each distinct two-letter pair needs one of the 993 free
+   kanji glyphs. The UI plus the prologue use 383. On an English prose sample,
+   distinct pairs pass ~1,000 after only ~80,000 letters, so **the full script
+   can't be done with pre-drawn pairs.** Planned fix: have the renderer
+   compose pair glyphs on the fly from a small narrow font (e.g. codes with
+   both bytes ≥ 0xA0 → two letters), which needs no glyph pool and keeps
+   1 byte per letter (open question 7).
 
 ### 6a. Text renderer (all in `SLPM_86.053`, shared by every screen seen so far)
 
@@ -364,13 +484,13 @@ purpose is unknown.
 
 ## 8. Open questions / next research targets
 
-1. **Script bytecode** in `SERIFU`/`EVENT`/prologue: control codes, line breaks,
-   name insertion, how string lengths are encoded. Needed before any dialogue
-   can be translated.
+1. **Dialogue beyond the prologue** (§6e): confirm the SERIFU load addresses
+   in the game, find which scene code drives each file (and any line-timed
+   events like Rei's), and where the speaker labels and the remaining name
+   codes (`S O W A M p m F`) come from. Check `BUNKA/`, `SPEAKTST/`, `EVENT/`.
 2. **Text renderer leftovers:** the sprite drawer that places cached glyphs (for
-   a true variable-width font later); whether dialogue goes through the same
-   `add_text`/`layout_string` path (likely, unverified); line-wrapping and
-   box-width rules for dialogue.
+   a true variable-width font later). Dialogue does go through
+   `add_text`/`layout_string` (§6e).
 3. **Pointer tables:** systematically map them in the EXE and overlays, so strings
    can be relocated into free space instead of only fitting in place.
 4. **Data-file LBA tables:** how non-overlay files (e.g. `TITLE.NBN`, `SERIFU/*`) are
@@ -378,3 +498,10 @@ purpose is unknown.
 5. Where `EVENT.EXN`, `GYOZI.EXN` and `O.BIN` are loaded from.
 6. Which title-menu graphics remain: the logo (ときめきメモリアル) is Japanese art
    in the same file and hasn't been touched.
+7. **On-the-fly pair glyphs** (§6e, budgets): a hook in `layout_string`
+   (0x8004F268) / `render_glyph` (0x8004F364) that draws two narrow letters
+   into the 12×12 glyph buffer for a reserved code range, instead of reading
+   the font. Needs free RAM for the hook and a ~100-character 5×12 font;
+   the 993 free glyph slots (17 KB, not contiguous) are a candidate once
+   they're no longer used for pre-drawn pairs. This is the blocker for
+   translating more than a few scenes.

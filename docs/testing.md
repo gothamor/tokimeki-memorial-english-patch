@@ -75,12 +75,28 @@ focus and no other window ever receives input.
 - **Always compare with the unpatched game** at the same point before blaming
   the patch.
 
-### Known harness problems (unresolved)
-- **Loading a state with `F1` didn't restore the title.** `F2` wrote
-  `savestates/SLPM-86053_1.sav`, but after `F1` the screen was black and then
-  the attract movie, as if the load hadn't happened. Not investigated. Until
-  it is, don't assume save states work; check with a screenshot right after
-  loading.
+### Save states
+- **`F2` saves** to `savestates/SLPM-86053_1.sav`. **`F1` (hotkey load) doesn't
+  work** through the driver (black screen, then the attract movie). Not
+  investigated.
+- **Loading at launch works:** pass `-statefile` on the command line.
+  ```powershell
+  Start-Process .emu\duckstation\duckstation-qt-x64-ReleaseLTCG.exe -ArgumentList '-batch','-statefile','"<abs path>\SLPM-86053_1.sav"','"<abs path>\game.cue"'
+  ```
+  Wait ~8 s before driving it.
+- A state holds RAM, so files already loaded (e.g. the `NAME_ENT.EXN`
+  overlay, the EXE's font) are whatever build made the state. To test new
+  text without replaying, **poke it in** with `tools/emu/poke_file.py`:
+  ```bash
+  python tools/emu/poke_file.py .emu/b2/NAME_ENT.EXN 0x80132000 0x1B1D0 0x1BA04   # prologue strings + pointer table
+  python tools/emu/poke_file.py .emu/b2/SLPM_86.053 0x80040800 0x76550 0x855A4    # the font (new pair glyphs)
+  ```
+  (read the patched files out of a build with `Track.read_file`). Poking the
+  *original* bytes instead gives an exact unpatched comparison at the same
+  point; that's how the Rei hang was pinned on the translation.
+  Always finish with one real boot of the build.
+- The patcher can't overwrite a build the emulator has open. Build into a
+  second folder (`-o .emu/build2`).
 
 ### New-game flow (album screen → name entry)
 On a blank test card (`rm -rf .emu/duckstation/memcards/*` first):
@@ -102,6 +118,28 @@ whose name was never finished goes straight back to name entry. From name
 entry: `Down:180,Left:130,C` opens the 記号 page. Then `Right:1450,Right:110`
 puts the hand on the ▼ scroll arrow; each `C` scrolls one row-block.
 
+### Reaching the prologue (dialogue)
+From name entry (hand on the かな page), type one kana in each name field and
+accept the default birthdays. This worked from boot, as one `drive.ps1` call:
+
+```
+$name = "Up:540,wait:200,Right:230,wait:300,C,wait:600,Down:540,wait:200,Left:230,wait:300,C,wait:1500"
+wait:22000,Return,until:title:60000,C,wait:16000,C,wait:2500,C,wait:9000,  # title → album 1 → name entry
+Right:130,wait:300,C,wait:800,Down:540,wait:200,Left:230,wait:300,C,wait:1500,  # family name, 終了
+$name,$name,wait:500,                                                       # given name, nickname
+C,wait:1500,C,wait:1500,C,wait:3500,                                        # birthday/blood: 終了 ×3
+Right:640,wait:300,C,wait:8000,                                             # "Is this OK?" → はい (save a state here: F2)
+Left:700,wait:300,C,wait:1500,C,wait:1500,C,wait:3500,                      # Shiori's birthday: 終了 ×3
+Right:670,wait:300,C,wait:12000                                             # はい → prologue starts
+```
+Then `C,wait:4500,shot:...` per line. Text types out letter by letter and
+voiced lines also advance by themselves, so a shot can catch a line
+half-typed or skip one; that's normal. To review many lines, crop the text
+box (screenshot y 700–1000) from each shot into one contact sheet.
+
+**Keep your hands off the emulator during a scripted run.** Input from the
+user mid-run (they were also playing) made one comparison misleading.
+
 ### Controls: ○ confirms, × goes back
 This is a Japanese game: **○ (Circle, key `C`) confirms and × (Cross, key `X`)
 cancels/goes back.** Use `C` to select menu items and advance text. Early test
@@ -116,6 +154,13 @@ selected something as unverified.
   `0x800B6D40` stuck on the patched file.
 - **Garbage or missing glyphs:** wrong encoding, or a character the font
   doesn't have.
+- **A dialogue line that never advances** (text fully shown, ○ does nothing,
+  no CD error): the scene is waiting for a display line that doesn't exist,
+  because the translation has fewer lines than the Japanese (game-internals
+  §6e). The patcher now rejects this. To diagnose another case, set GDB
+  breakpoints on the scene's *run line* routine to see whether it's still
+  called, and compare `0x8004ECF0`'s result with what the scene step waits
+  for.
 
 ## Debugging with the GDB stub
 

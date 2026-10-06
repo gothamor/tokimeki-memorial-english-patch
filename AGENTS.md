@@ -58,7 +58,12 @@ These are hard-won. Every one of them has broken the game, or would.
    screenshots (`.gitignore` covers `extracted/` and `.emu/`). Don't copy long
    stretches of the Japanese script (or the song lyrics stored in
    `NAME_ENT.EXN`) into docs or code. Short identifiers and the strings being
-   patched are fine.
+   patched are fine. `tools/dump_dialogue.py` output is a copy of the script:
+   keep it in `extracted/`, and commit only lines you've translated.
+10. **Dialogue keeps the original's line structure.** Same number of display
+    lines, same choices, same name codes per line. Scene code waits for
+    specific lines (game-internals §6e); with fewer lines the game hangs on that
+    line. `script.structure` enforces this. Don't loosen it.
 
 ## Checklist for any change that affects the output
 
@@ -87,11 +92,11 @@ These are hard-won. Every one of them has broken the game, or would.
 | `translation/options.json` (Options page: 8 items, Menu Mode sub-screen choices + descriptions, Extras items) | Verified in DuckStation: item list, and all four Menu Mode choices with their descriptions. Extras items can't be seen until unlocked. Text Speed / Icon Mode / Cursor Speed / Voice Mode choices are **graphics** and still Japanese (game-internals §6c). Mouse is unreachable without a mouse. Not yet checked: that no still-Japanese screen uses a redrawn glyph. |
 | `translation/album.json` (album screen message box, 88 strings) | Verified in DuckStation: no-save prompt with Yes/No icons aligned, "Which album", system-file explanation, "Make a system file?", "Album and system file are being made". Other prompts (copy/erase/restart, memory-card errors) are not seen yet. |
 | `translation/common.json` (shared Yes/No ○/× button lines) | Verified on the "Make a system file?" prompt; icons line up. |
-| `translation/name_entry.json` (name/nickname/birthday questions) | "What's your family name?" verified, evenly spaced. Name and nickname prompts and the birthday/blood-type questions not seen yet. |
+| `translation/name_entry.json` (name/nickname/birthday questions) | All 7 verified in DuckStation: family name, "Your name?", "And your nickname?", "Birthday and blood type?", "Shiori's birthday & blood type?", and both "Is this OK?". |
+| `translation/prologue.json` (43 dialogue lines: entrance-ceremony scene after name entry) | Verified in DuckStation: real boot from title through Rei's introduction; the rest of the scene with the same bytes poked into a save state, through to the first in-game screen. Box width, scrolling of 4–5 line strings, `{P}` name insertion and thought lines all checked. Speaker labels (好雄, 伊集院, ...) are still Japanese (not in this file). |
 | `translation/code.json` (glyph advance 16 → 14 on name entry) | Verified: banner evenly spaced, typed name characters still align with their underscores, kana grid still tidy. |
 | `translation/extra/album_panel_exe.json` (21 panel-style labels in `SLPM_86.053`) | Doesn't affect the album screen (its panel is graphics). Probably the in-game save/load screen; unverified. |
 | `translation/extra/system_settings.json` (114 strings: in-game system settings screen in `SLPM_86.053`) | Builds; **not verified on screen** (needs an in-progress game). Not applied by default. Verify, then move to `translation/`. |
-| `translation/extra/name_entry.json` (name-entry prompts) | Builds, and its file now passes the in-game checksum (the overlay loads). The prompts haven't been seen on screen yet. Not applied by default. |
 
 Update this table when you verify something.
 

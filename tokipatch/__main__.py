@@ -63,13 +63,14 @@ def main(argv=None) -> int:
 
     translations = args.translation or sorted(TRANSLATION_DIR.glob("*.json"))
     try:
-        strings, images, byte_patches = patcher.load_translations(translations)
-        print(f"Loaded {len(strings)} string(s), {len(images)} image(s) and "
-              f"{len(byte_patches)} byte patch(es) from {len(translations)} translation file(s).")
+        strings, images, byte_patches, dialogue = patcher.load_translations(translations)
+        print(f"Loaded {len(strings)} string(s), "
+              f"{sum(len(d.lines) for d in dialogue)} dialogue line(s), {len(images)} image(s) "
+              f"and {len(byte_patches)} byte patch(es) from {len(translations)} translation file(s).")
         data_src = next(f for f in to_copy if f.name == data_name)
         with Track(data_src) as track:
             edits = patcher.plan(track, strings, images, font.load_free_codes(FREE_GLYPHS),
-                                 byte_patches)
+                                 byte_patches, dialogue)
     except (ValueError, OSError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1

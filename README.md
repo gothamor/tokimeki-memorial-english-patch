@@ -32,15 +32,15 @@ existing output folder.
   ([album.json](translation/album.json), [common.json](translation/common.json),
   [name_entry.json](translation/name_entry.json)). The buttons, panel labels
   and the kana grid are still Japanese.
+- **Prologue dialogue:** the 43-line entrance-ceremony scene after name entry
+  ([prologue.json](translation/prologue.json)), the first dialogue in the
+  translation. The speaker labels are still Japanese.
 - **Spacing fix:** English letter pairs are drawn evenly at the game's 14 px
   glyph advance, and the name-entry screen is patched from 16 px to 14 px
   ([code.json](translation/code.json)).
 - *Not applied by default:* the in-game system settings screen
   ([translation/extra/system_settings.json](translation/extra/system_settings.json)),
   pending an on-screen check.
-- *Not applied by default:* the name-entry questions
-  ([translation/extra/name_entry.json](translation/extra/name_entry.json)).
-  Add them with `-t translation/title_menu.json -t translation/extra/name_entry.json`.
 
 ## Documentation
 
@@ -55,8 +55,8 @@ existing output folder.
 
 | Path | Purpose |
 |---|---|
-| `tokipatch/` | The patcher (stdlib only): sector I/O + EDC/ECC (`cd.py`), ISO 9660 (`iso9660.py`), game font + letter-pair encoder (`font.py`, `pairfont.py`), full-width encoder (`text.py`), indexed PNG (`png.py`), patch engine + checksum fix (`patcher.py`) |
-| `translation/*.json` | The translation: `strings` and `images` entries |
+| `tokipatch/` | The patcher (stdlib only): sector I/O + EDC/ECC (`cd.py`), ISO 9660 (`iso9660.py`), game font + letter-pair encoder (`font.py`, `pairfont.py`), full-width encoder (`text.py`), dialogue codec + pointer relocation (`script.py`), indexed PNG (`png.py`), patch engine + checksum fix (`patcher.py`) |
+| `translation/*.json` | The translation: `strings`, `dialogue` and `images` entries |
 | `translation/graphics/` | Replacement graphics (indexed PNGs using the game's palettes) |
 | `translation/font/free_glyphs.txt` | Font glyphs the game never uses, available for English letter pairs |
 | `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation |
@@ -65,8 +65,9 @@ existing output folder.
 ## Key findings in brief
 
 - Text is uncompressed Shift-JIS. UI strings live in `SLPM_86.053` and the
-  `CDROM/EXEDIR/*.EXN` overlays, and dialogue lives in script files whose
-  bytecode isn't decoded yet.
+  `CDROM/EXEDIR/*.EXN` overlays. Dialogue (`SERIFU/`, the prologue) is
+  NUL-terminated strings with 1-byte name/line-break codes, reached through
+  absolute pointers, so the patcher repacks it and rewrites the pointers.
 - **Most files end with a 16-bit checksum.** The game re-verifies it after
   loading and silently retries forever on a mismatch. That was the white-screen
   hang. The patcher now recomputes it for every file it changes.
@@ -88,8 +89,10 @@ existing output folder.
   *Forever with You*.
 
 ## Roadmap
-1. Decode the dialogue script bytecode (`SERIFU`, `EVENT`, prologue).
-2. Map pointer tables, so strings can be relocated rather than only fit in place.
+1. Compose letter-pair glyphs on the fly in the renderer. The pool of 993
+   pre-drawn pair glyphs runs out after a few scenes (game-internals §8, q. 7).
+2. Translate `SERIFU/` dialogue file by file, verifying each scene, and find
+   where speaker labels come from.
 3. Find the LBA tables for data files, then support relocating or growing files.
 4. Text renderer: half-width or variable-width font for readable English.
 5. Remaining graphics (logo, menus, MDEC stills).
