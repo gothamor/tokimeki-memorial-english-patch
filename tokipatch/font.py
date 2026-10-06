@@ -5,22 +5,21 @@ Facts (docs/game-internals.md, "Font"):
   - Codes map to glyphs via a range table at RAM 0x800B402C: (first code,
     first glyph index) u16 pairs. Codes below 0x8140 are rejected, which is
     why plain ASCII doesn't display.
-  - The renderer reads 2 bytes per character and draws glyphs 12 px apart.
+  - The renderer reads 2 bytes per character and draws glyphs 14 px apart.
 
-English is encoded as letter pairs: each distinct pair of characters gets a
-free kanji code (translation/font/free_glyphs.txt) whose glyph is redrawn
-with those two letters (tokipatch/pairfont.py). 1 byte per letter, ~6 px
-per letter on screen, no change to game code.
+English is encoded as letter pairs, 1 byte per letter: ASCII with the top
+bit set, so each 2-byte code holds two letters (0xA0A0-0xFEFE). The renderer
+hook (tokipatch/renderer.py) composes the glyph for such a code on the fly
+from a narrow 5x12 font (tokipatch/pairfont.py). Every pair is available, so
+there's no glyph pool to run out of.
 """
 
 from __future__ import annotations
 
 import struct
 import zlib
-from pathlib import Path
-from typing import Dict, List
 
-from . import pairfont
+from . import pairfont, renderer
 
 EXE = "SLPM_86.053"
 EXE_RAM_BASE = 0x80040800            # RAM address = file offset + this
@@ -30,10 +29,6 @@ GLYPH_COUNT = 3418
 RANGE_TABLE_ADDR, RANGE_TABLE_END = 0x800B402C, 0x800B40E4
 RANGE_TABLE_CRC32 = 0x3CC19FF3       # guards against a different executable
 BLANK_CODE = 0x8140                  # ideographic space: an existing blank glyph
-
-
-def load_free_codes(path: Path) -> List[int]:
-    return [int(line, 16) for line in Path(path).read_text().split() if line]
 
 
 def _ranges(exe: bytes):
@@ -62,15 +57,10 @@ def glyph_offset(exe: bytes, code: int) -> int:
 
 
 class PairEncoder:
-    """Encodes English text as letter-pair codes, allocating glyphs as needed.
+    """Encodes English text as letter-pair codes for the renderer hook."""
 
-    Allocation is deterministic: pairs get free codes in the order they're
-    first seen, so the same translation files always give the same output.
-    """
-
-    def __init__(self, free_codes: List[int]):
-        self.free = list(free_codes)
-        self.assigned: Dict[str, int] = {}
+    def __init__(self):
+        self.used = False   # whether any text needs the renderer hook
 
     def encode(self, text: str) -> bytes:
         for ch in text:
@@ -85,19 +75,8 @@ class PairEncoder:
 
     def code_for(self, pair: str) -> int:
         if pair == "  ":
+            # The font's own blank. Icons the game draws over blank cells
+            # (the ○/× on Yes/No lines) were lined up with this glyph.
             return BLANK_CODE
-        if pair not in self.assigned:
-            if not self.free:
-                raise ValueError("out of free glyphs for English letter pairs "
-                                 "(see tools/find_free_glyphs.py)")
-            self.assigned[pair] = self.free.pop(0)
-        return self.assigned[pair]
-
-    def write_glyphs(self, exe: bytearray) -> List[str]:
-        """Draw every allocated pair into the font. Returns log lines."""
-        log = []
-        for pair, code in self.assigned.items():
-            off = glyph_offset(exe, code)
-            exe[off:off + GLYPH_BYTES] = pairfont.render_pair(pair)
-            log.append(f"glyph {code:04X} <- {pair!r}")
-        return log
+        self.used = True
+        return renderer.encode_char(pair[0]) << 8 | renderer.encode_char(pair[1])

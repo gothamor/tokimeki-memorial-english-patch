@@ -3,8 +3,9 @@
 Usage:  python tools/find_free_glyphs.py EXTRACTED_DIR
 
 Writes translation/font/free_glyphs.txt: one Shift-JIS code per line (hex).
-The patcher redraws these glyphs as English letter pairs (see
-docs/game-internals.md, "Font", and docs/translation-guide.md).
+The patcher used to redraw these glyphs as pre-drawn English letter pairs.
+It now composes pairs in a renderer hook (docs/game-internals.md §6f) and
+doesn't use this list; it's kept as research data (spare font slots).
 
 A kanji counts as USED if it appears in either:
   - a run of 2+ Shift-JIS characters where >= 30% are kana/punctuation
@@ -13,9 +14,7 @@ A kanji counts as USED if it appears in either:
   - a short (<= 6 chars) NUL-bounded string in a text-bearing directory
     (catches kanji-only names and labels).
 Everything else in the font's kanji range is free. Re-run after big
-discoveries about where text lives, and keep the order stable: codes are
-handed out in file order, so reordering changes which glyph each pair uses
-(harmless, but noisy in diffs).
+discoveries about where text lives.
 """
 
 from __future__ import annotations

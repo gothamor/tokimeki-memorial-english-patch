@@ -372,13 +372,10 @@ before translating those files.
    bytes) only after tightening the English. The zero tail of `NAME_ENT.EXN`
    (0x1BCD0–) is **not** free: code references reach 0x253A4 (BSS). Other
    files may have slack; check each.
-2. **Pair glyphs.** Each distinct two-letter pair needs one of the 993 free
-   kanji glyphs. The UI plus the prologue use 383. On an English prose sample,
-   distinct pairs pass ~1,000 after only ~80,000 letters, so **the full script
-   can't be done with pre-drawn pairs.** Planned fix: have the renderer
-   compose pair glyphs on the fly from a small narrow font (e.g. codes with
-   both bytes ≥ 0xA0 → two letters), which needs no glyph pool and keeps
-   1 byte per letter (open question 7).
+2. **Pair glyphs: solved.** Pre-drawn pair glyphs needed one free kanji per
+   distinct pair (the UI plus the prologue used 383 of 993; prose passes
+   ~1,000 distinct pairs after ~80,000 letters). The renderer now composes
+   every pair on the fly (§6f), so vocabulary no longer costs anything.
 
 ### 6a. Text renderer (all in `SLPM_86.053`, shared by every screen seen so far)
 
@@ -389,7 +386,7 @@ screen opens, not every frame.
 | Address | Role |
 |---|---|
 | `0x8004E788` | `add_text(a0 = x, a1 = y, a2 = colour/attr byte, a3 = string, [sp+0x38] = extra byte)`. Appends an 8-byte entry to the text list at `0x800B3DC0` (x s16, y s16, attr u8, glyph count u8, extra u8, 1). Entry count is at `0x800B3F60` (max 52 = 0x34). Called e.g. from `OPTION.EXN` at `0x80132CF0`. |
-| `0x8004F268` | `layout_string(string)`. Reads **2 bytes per character, always**, combining them into a 16-bit code; stops at a NUL in either byte. Codes `< 0x8140` go to an error routine (`0x800AE0B0`) and the rest of the string is dropped. Other codes go through the range table to a glyph index. Returns the number of glyphs used. |
+| `0x8004F268` | `layout_string(string)`. Reads **2 bytes per character, always**, combining them into a 16-bit code; stops at a NUL in either byte. Codes `< 0x8140` go to an error routine (`0x800AE0B0`) and the rest of the string is dropped. Other codes go through the range table to a glyph index. Returns the number of glyphs used. **Patched:** codes ≥ 0xA000 are English letter pairs, composed by the renderer hook (§6f). |
 | `0x8004F364` | `render_glyph(index)`. Decodes the glyph (`0x8004F4F0`) into 16×12 4bpp and uploads it to a VRAM glyph-cache slot: x = 0x320 + (slot & 7)·4, y = 0x100 + (slot & 0x78)·2, 4×12 halfwords (`0x8004435C` = LoadImage). The slot counter is at `0x800B3F62`. |
 | `0x8004F4F0` | Expands one 18-byte 1bpp glyph into nibbles. |
 
@@ -428,14 +425,98 @@ purpose is unknown.
 - **ASCII is not supported:** plain ASCII bytes produce codes < 0x8140 and draw
   nothing (tested: the Options item rendered blank). Full-width Ａ–Ｚ works but
   takes 2 bytes and 12 px per letter.
-- **English solution in use: letter-pair glyphs.** Glyphs of kanji that never
-  appear in the game's text are redrawn to hold two narrow letters each, so
-  English costs 1 byte and 6 px per letter with no code changes
-  (`tokipatch/font.py`, `tokipatch/pairfont.py`). There are 993 such glyphs
-  (`tools/find_free_glyphs.py` → `translation/font/free_glyphs.txt`; the
-  heuristic is described in that tool). If a "free" kanji turns out to be
-  used, it will show up as two Latin letters inside Japanese text. Report it
-  and remove it from the list.
+- **English solution in use: letter pairs composed by a renderer hook** (§6f).
+  English costs 1 byte and 7 px per letter, any pair of letters is available,
+  and the font itself is left untouched.
+- **Unused kanji.** `tools/find_free_glyphs.py` → `translation/font/free_glyphs.txt`
+  lists 993 level-1 kanji that never appear in the game's text (the heuristic
+  is described in that tool). Earlier builds redrew them as pre-drawn letter
+  pairs; that pool ran out after a few scenes, which is why the hook replaced
+  it. The list isn't used by the patcher any more. It's kept as spare font
+  slots (18 bytes each, in runs of at most 11) for future renderer work.
+
+### 6f. Renderer hook: letter pairs composed on the fly (`tokipatch/renderer.py`)
+
+**Why one hook is enough.** A scan of the EXE and every overlay for calls and
+address constants found exactly one path into the font: `add_text`
+(`jal` at 0x8004E82C) → `layout_string` → `render_glyph` (`jal` at
+0x8004F32C) → glyph expander (`jal` at 0x8004F390), which is the only code
+that builds the font address (0x8004F4FC) or the range table address
+(0x8004F2CC, 0x8004F304). Dialogue goes through the same path (§6e).
+
+**Encoding.** English is ASCII with the top bit set (0x20–0x7E → 0xA0–0xFE),
+1 byte per letter, read by `layout_string` two at a time as a code
+0xA0A0–0xFEFE. These codes are free:
+- No game text uses a lead byte ≥ 0xA0. The font ends at 0x9872 and the
+  original lookup draws nothing for higher codes (the range loop at
+  0x8004F30C falls off the end of the table without calling `render_glyph`).
+- The dialogue renderer (0x80081190) only compares bytes against its ASCII
+  control codes (0x20, `q`, `P`, ...) and specific `0x81xx` punctuation;
+  every other lead byte is a 2-byte character. Bytes ≥ 0x80 never match.
+- `"  "` (two spaces) is still written as 0x8140, the font's own blank, so the
+  icon cells on Yes/No lines are unchanged (translation-guide, patterns).
+
+**The hook.** In `layout_string`, 0x8004F2CC/0x8004F2D0 (`lui t1,0x800b;
+lhu t1,0x402c(t1)`, the start of the range lookup) become
+`j 0x8004443C; andi t0,v1,0xffff` (t0 = the code, as the game computes it at
+0x8004F2D4). The hook:
+1. Code < 0xA000: runs the two replaced instructions and jumps back to
+   0x8004F2D8, so Japanese takes exactly the original path.
+2. Otherwise: builds the 18-byte glyph from two 5×12 letters (letter 1 in
+   columns 0–4, letter 2 in columns 7–11, the same layout the pre-drawn pairs
+   had, so text looks identical), stores it in a scratch glyph, calls
+   `render_glyph(index)` with an index that points at the scratch glyph, and
+   continues at the loop top 0x8004F294 with `v0 = s1`, exactly like the
+   game's own glyph path. It only uses t/a registers; s0/s1/ra are untouched.
+
+The scratch glyph lies *before* the font, so its index is negative
+(0xFFFF9A36 = −26058): the expander computes `FONT + index·18` in 32-bit
+arithmetic, which wraps to the scratch address 0x8004451C. The scratch only
+has to live until the expander has run (it copies the glyph into the 4bpp
+upload buffer at 0x801255F0 straight away), so one buffer serves every glyph.
+
+**Where it lives.** Two functions in the EXE that nothing calls:
+
+| Address | Size | Was | Now holds |
+|---|---|---|---|
+| `0x8004443C` | 708 | a leaf-ish routine reading 0x800B3D10– (GPU state?) | hook code (216 bytes), scratch glyph at 0x8004451C |
+| `0x8004B778` | 948 | a leaf routine masking bytes at stride 0x40 | 5×12 font: 96 characters (ASCII 0x20–0x7F) × 8 bytes = 768 bytes |
+
+Font entry format: two little-endian words, rows 0–5 then rows 6–11, row `r`
+at bits `5r…5r+4`, bit 4 = leftmost pixel (`renderer.narrow_font()`).
+
+**How "unused" was established** (redo this before using any other region):
+- *Static:* no `jal`/`j` to either address in the EXE or any `EXEDIR/*.EXN`;
+  no 32-bit word equal to either address in **any file on the disc**; no
+  `lui`+`addiu/ori/load` pair building either address, even with the low half
+  up to 200 instructions after the `lui`.
+- *Runtime:* `tools/emu/watch_exec.py` with execution breakpoints on both
+  entry points (and 0x80044700) for 15 minutes of the **unpatched** game:
+  boot, title, Options page and sub-screens, album load, name entry, the whole
+  prologue, several weeks of the main loop, and a SERIFU dialogue event
+  (meeting 如月). 0 hits.
+- *Patched:* the patched game ran from boot to the first in-game screen.
+  A call into either region would now run hook code or font data and crash.
+
+Other unreferenced functions in the game's own code (static scan only, not
+checked at runtime): 0x80049140 (616 bytes, non-leaf), 0x80054C74 (504),
+0x8008EFE4 (368), 0x8008D8A0 (364), 0x8005A410 (336), 0x8008F934 (280),
+0x80058DA0 (272). The scan treats each `jr ra` + delay slot as a function end
+and each `jal` target as a start; 0x8009xxxx and above looks like PsyQ
+library code and was left alone.
+
+**Checks.** `renderer.install` refuses to patch unless the hook site holds
+the original two instructions and both regions match their original CRC32
+(0x95CF8D48, 0xC57F80EA). `tokipatch/mips.py` is a small assembler for the
+hook source; capstone disassembles its output back to the same instructions.
+`tools/check_renderer.py` runs the hook in a minimal MIPS interpreter (load
+delay slots modelled): it produces byte-identical glyphs to
+`pairfont.render_pair` for all 6,084 supported pairs and leaves Japanese
+codes on the original path. Run it after changing the hook or the font.
+
+**Verified on screen:** title Options page and Menu Mode descriptions, album
+prompts with the ○/× icons, all name-entry questions, the whole prologue
+(including Rei's line-timed entrance), then the first in-game screen.
 
 ## 7. Graphics
 
@@ -498,10 +579,7 @@ purpose is unknown.
 5. Where `EVENT.EXN`, `GYOZI.EXN` and `O.BIN` are loaded from.
 6. Which title-menu graphics remain: the logo (ときめきメモリアル) is Japanese art
    in the same file and hasn't been touched.
-7. **On-the-fly pair glyphs** (§6e, budgets): a hook in `layout_string`
-   (0x8004F268) / `render_glyph` (0x8004F364) that draws two narrow letters
-   into the 12×12 glyph buffer for a reserved code range, instead of reading
-   the font. Needs free RAM for the hook and a ~100-character 5×12 font;
-   the 993 free glyph slots (17 KB, not contiguous) are a candidate once
-   they're no longer used for pre-drawn pairs. This is the blocker for
-   translating more than a few scenes.
+7. **More room for code.** The renderer hook (§6f) uses two unused EXE
+   functions. Anything bigger (a variable-width font, relocation helpers)
+   needs more: the dead-code scan in §6f lists further candidates, each to be
+   checked the same way before use.

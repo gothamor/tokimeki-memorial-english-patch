@@ -35,6 +35,9 @@ existing output folder.
 - **Prologue dialogue:** the 43-line entrance-ceremony scene after name entry
   ([prologue.json](translation/prologue.json)), the first dialogue in the
   translation. The speaker labels are still Japanese.
+- **Renderer hook:** the game's text renderer draws English two letters per
+  character cell, composed on the fly from a narrow font, so any amount of
+  English text fits the font ([tokipatch/renderer.py](tokipatch/renderer.py)).
 - **Spacing fix:** English letter pairs are drawn evenly at the game's 14 px
   glyph advance, and the name-entry screen is patched from 16 px to 14 px
   ([code.json](translation/code.json)).
@@ -55,10 +58,10 @@ existing output folder.
 
 | Path | Purpose |
 |---|---|
-| `tokipatch/` | The patcher (stdlib only): sector I/O + EDC/ECC (`cd.py`), ISO 9660 (`iso9660.py`), game font + letter-pair encoder (`font.py`, `pairfont.py`), full-width encoder (`text.py`), dialogue codec + pointer relocation (`script.py`), indexed PNG (`png.py`), patch engine + checksum fix (`patcher.py`) |
+| `tokipatch/` | The patcher (stdlib only): sector I/O + EDC/ECC (`cd.py`), ISO 9660 (`iso9660.py`), game font + letter-pair encoder (`font.py`, `pairfont.py`), renderer hook + MIPS assembler (`renderer.py`, `mips.py`), full-width encoder (`text.py`), dialogue codec + pointer relocation (`script.py`), indexed PNG (`png.py`), patch engine + checksum fix (`patcher.py`) |
 | `translation/*.json` | The translation: `strings`, `dialogue` and `images` entries |
 | `translation/graphics/` | Replacement graphics (indexed PNGs using the game's palettes) |
-| `translation/font/free_glyphs.txt` | Font glyphs the game never uses, available for English letter pairs |
+| `translation/font/free_glyphs.txt` | Font glyphs the game never uses (research data; no longer used by the patcher) |
 | `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation |
 | `tools/emu/` | Emulator test harness: isolated DuckStation, input driver with screen detection, GDB client, file-load tracer, read-watchpoint logger |
 
@@ -73,9 +76,9 @@ existing output folder.
   hang. The patcher now recomputes it for every file it changes.
 - Overlays are loaded by hard-coded LBA, so files can't move or grow yet.
 - **The game can't draw ASCII.** Its own 12×12 font (in `SLPM_86.053`) only
-  covers 2-byte Shift-JIS codes. English is drawn with *letter-pair glyphs*:
-  kanji the game never uses are redrawn with two narrow letters each, giving
-  1 byte and 6 px per letter with no code changes.
+  covers 2-byte Shift-JIS codes. English is drawn as *letter pairs*: a hook in
+  the renderer turns each 2-byte code in a range Japanese never uses into a
+  glyph holding two narrow letters, giving 1 byte and 7 px per letter.
 - Menu graphics are raw 8bpp bitmaps with separate CLUTs (e.g. `FUKUTEST/TITLE.NBN`).
 
 ## Prior work
@@ -89,11 +92,12 @@ existing output folder.
   *Forever with You*.
 
 ## Roadmap
-1. Compose letter-pair glyphs on the fly in the renderer. The pool of 993
-   pre-drawn pair glyphs runs out after a few scenes (game-internals §8, q. 7).
+1. ~~Compose letter-pair glyphs on the fly in the renderer.~~ Done
+   (game-internals §6f).
 2. Translate `SERIFU/` dialogue file by file, verifying each scene, and find
    where speaker labels come from.
 3. Find the LBA tables for data files, then support relocating or growing files.
-4. Text renderer: half-width or variable-width font for readable English.
+4. Text renderer: variable-width English. The renderer hook (game-internals §6f)
+   is the place for it; it needs more code space.
 5. Remaining graphics (logo, menus, MDEC stills).
 6. Distribution: PyInstaller builds per OS, or ship xdelta/PPF patches.

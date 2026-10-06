@@ -5,8 +5,9 @@ A translation file can contain:
   "strings": in-place text replacements
       {"file", "offset", "original", "text", "encoding"?}
       `encoding` is "pairs" (default: English letter pairs, 1 byte per letter,
-      drawn with redrawn font glyphs; see font.py) or "fullwidth" (each letter
-      as a full-width Shift-JIS character, 2 bytes and 12 px per letter).
+      composed on the fly by the renderer hook; see font.py, renderer.py) or
+      "fullwidth" (each letter as a full-width Shift-JIS character, 2 bytes
+      and 12 px per letter).
 
   "images":  pixels copied from an 8-bit indexed PNG into an 8bpp bitmap
       {"file", "png", "pixels", "stride", "x", "y", "rects", "original_crc32"}
@@ -37,7 +38,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List
 
-from . import font, png, script, text
+from . import font, png, renderer, script, text
 from .cd import Track
 from .iso9660 import Entry, list_files
 
@@ -349,13 +350,9 @@ def apply_bytes(patch: BytePatch, edit: FileEdit) -> None:
 
 
 def plan(track: Track, strings: List[StringPatch], images: List[ImagePatch],
-         free_codes: List[int], byte_patches: List[BytePatch] = (),
+         byte_patches: List[BytePatch] = (),
          dialogue: List[DialogueBlock] = ()) -> List[FileEdit]:
-    """Validate and apply every patch in memory, against the unmodified disc.
-
-    `free_codes` are the font glyphs available for English letter pairs
-    (translation/font/free_glyphs.txt).
-    """
+    """Validate and apply every patch in memory, against the unmodified disc."""
     files = list_files(track)
     check_disc(files, track)
 
@@ -370,7 +367,7 @@ def plan(track: Track, strings: List[StringPatch], images: List[ImagePatch],
             edits[path] = FileEdit(entry, data, bytearray(data))
         return edits[path]
 
-    pairs = font.PairEncoder(free_codes)
+    pairs = font.PairEncoder()
     for s in strings:
         apply_string(s, edit_for(s.file, s.source), pairs)
     for i in images:
@@ -380,9 +377,9 @@ def plan(track: Track, strings: List[StringPatch], images: List[ImagePatch],
     for d in dialogue:
         apply_dialogue(d, edit_for(d.file, d.source), pairs)
 
-    if pairs.assigned:
-        exe = edit_for(font.EXE, "font")
-        exe.log.extend(pairs.write_glyphs(exe.data))
+    if pairs.used:
+        exe = edit_for(font.EXE, "renderer")
+        exe.log.extend(renderer.install(exe.data))
 
     for path, edit in edits.items():
         if has_checksum(edit.original):

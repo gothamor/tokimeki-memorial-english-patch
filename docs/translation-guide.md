@@ -42,19 +42,19 @@ One JSON file per screen or feature. It can have a `strings` list, an
 ### Encodings
 
 **`pairs` (default, use this).** The game can't draw ASCII (game-internals
-§6b), so English is written as *letter pairs*. Each distinct two-letter
-chunk ("Te", "xt", " S", …) gets an unused kanji code, and the patcher redraws
-that kanji's font glyph with the two letters. On screen that's 6 px per
-letter; on disc it's 1 byte per letter (odd lengths are padded with a space).
+§6b), so English is written as *letter pairs*: each 2-byte character code
+holds two letters (ASCII with the top bit set), and a hook in the game's text
+renderer draws the pair from a narrow font as it lays the text out
+(game-internals §6f). On screen that's 7 px per letter; on disc it's 1 byte
+per letter (odd lengths are padded with a space).
 - Supported characters: `A–Z a–z 0–9`, space, and `. , ! ? ' " - : ; ( ) / & + %`.
   Anything else is rejected with an error. To add a character, draw it in
-  `tokipatch/pairfont.py` (5 px wide, same metrics as the rest).
-- The glyph pool is `translation/font/free_glyphs.txt` (993 glyphs). Each
-  *distinct* pair uses one glyph, shared by every string in the game, so the
-  pool is consumed by vocabulary, not by text length. The patch log lists
-  the glyph used for each pair. If the pool ever runs out, the patcher says so.
-- The glyphs live in the shared font in `SLPM_86.053`, so pair-encoded text
-  works on any screen that draws through the game's text renderer. Graphics
+  `tokipatch/pairfont.py` (5 px wide, same metrics as the rest); the hook's
+  font table covers all of ASCII 0x20–0x7F, so no code change is needed.
+- Every pair is available, so there's no glyph budget: vocabulary costs
+  nothing, only bytes do.
+- The hook is in the EXE's shared renderer, so pair-encoded text works on any
+  screen that draws through it (every text screen seen so far). Graphics
   baked into images (like the title menu) still need image patches.
 
 **`fullwidth`.** Each letter becomes a full-width Shift-JIS character
@@ -183,10 +183,6 @@ every pointer to a moved string is rewritten (game-internals §6e). Example:
 - A text run with an odd number of letters before a name code wastes a cell,
   showing as a double space (`"My name is {P}"` → "is  Name"). Prefer an even
   run (`"My name's {P}"`).
-- Every distinct letter pair uses one font glyph from a pool of 993, shared
-  with the UI. The prologue alone took ~250. Until the renderer composes
-  pairs on the fly (game-internals §8, question 7), only a few scenes fit.
-  Watch the number of `glyph` lines in the patch log.
 
 Only UI strings with a numeric budget go through `strings`. Pair encoding
 halves the bytes English needs, which makes many more UI strings fit in place

@@ -89,8 +89,15 @@ focus and no other window ever receives input.
   text without replaying, **poke it in** with `tools/emu/poke_file.py`:
   ```bash
   python tools/emu/poke_file.py .emu/b2/NAME_ENT.EXN 0x80132000 0x1B1D0 0x1BA04   # prologue strings + pointer table
-  python tools/emu/poke_file.py .emu/b2/SLPM_86.053 0x80040800 0x76550 0x855A4    # the font (new pair glyphs)
+  python tools/emu/poke_file.py .emu/b2/SLPM_86.053 0x80040800 0x3C3C 0x3F00    # renderer hook code + scratch
+  python tools/emu/poke_file.py .emu/b2/SLPM_86.053 0x80040800 0xAF78 0xB32C    # hook's 5x12 font
+  python tools/emu/poke_file.py .emu/b2/SLPM_86.053 0x80040800 0xEACC 0xEAD4    # jump into the hook
   ```
+  A state made with a build that already has the renderer hook only needs
+  the text poked; the hook code doesn't change with the translation. Poking
+  the hook itself into a state from an older build is **untested** (the
+  emulator's recompiler may keep stale code), so prefer a state from a hook
+  build. If you do poke it, write the jump last, as above.
   (read the patched files out of a build with `Track.read_file`). Poking the
   *original* bytes instead gives an exact unpatched comparison at the same
   point; that's how the Rei hang was pinned on the translation.
@@ -208,6 +215,25 @@ parallel. Tips:
   byte of a freshly loaded overlay.
 - This is how the text renderer was found: the first hit was `add_text`
   (`0x8004E788`), the second `layout_string` (`0x8004F268`).
+
+### Does this code ever run? (execution breakpoints)
+
+```bash
+python tools/emu/watch_exec.py 900 0x8004443C 0x8004B778
+```
+
+This sets execution breakpoints and logs every hit (pc, ra, a0, a1) while
+the game keeps running. Drive the game in parallel. It's how the two EXE
+functions the renderer hook reuses were shown to be unused (game-internals
+§6f): run it on the **unpatched** game and play through as much as you can.
+- The emulator runs noticeably slower while breakpoints are armed (a page
+  fade took ~10 s instead of ~4 s), so give `drive.ps1` steps longer waits.
+- The Options page and the in-game command grid use the free-moving hand
+  (Mouse-like menu mode), so a short `Down` doesn't step one item. `X` on the
+  Options page jumps the hand to オプション終了; `C` there returns to the title.
+- Pressing `C` repeatedly on the first in-game screen picks the first command
+  (study) each week and advances the calendar. It reached a SERIFU event
+  (meeting 如月) after ~30 presses, a handy way to exercise dialogue files.
 
 ### Disassembly
 

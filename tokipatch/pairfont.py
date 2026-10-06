@@ -3,8 +3,10 @@
 The game's font is 12x12, 1 bit per pixel, and the renderer can only draw
 2-byte Shift-JIS codes, one glyph per code, placed every N px where N is the
 global glyph advance at 0x800B3F6A (14 by default, 16 on some screens; see
-docs/game-internals.md, "Font"). To fit English, each glyph is redrawn to
-hold TWO narrow letters: letter 1 in columns 0-4, letter 2 in columns 7-11.
+docs/game-internals.md, "Font"). To fit English, each glyph holds TWO
+narrow letters: letter 1 in columns 0-4, letter 2 in columns 7-11. The
+renderer hook (renderer.py) composes these glyphs on the fly from the
+letters below; render_pair() gives the same glyph in Python, for checks.
 With the default 14 px advance the gap inside a glyph (cols 5-6) equals the
 gap between glyphs (14 - 12 = 2 px), so letters are evenly 7 px apart. Screens
 that use a 16 px advance get patched to 14 (translation/code.json).
@@ -112,6 +114,11 @@ def _letter_grid(ch: str) -> List[List[bool]]:
         for x, px in enumerate(row):
             grid[top + i][x] = px == "#"
     return grid
+
+
+def letter_rows(ch: str) -> List[int]:
+    """A letter as 12 rows of 5 bits (bit 4 = leftmost pixel)."""
+    return [sum(0x10 >> x for x, on in enumerate(row) if on) for row in _letter_grid(ch)]
 
 
 def render_pair(pair: str) -> bytes:

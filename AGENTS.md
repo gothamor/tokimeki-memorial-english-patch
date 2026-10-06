@@ -47,13 +47,17 @@ These are hard-won. Every one of them has broken the game, or would.
    pixels they replace. Keep these checks.
 7. **The renderer can't draw ASCII.** Codes below 0x8140 are dropped, and
    level-2 kanji (≥ 0x9873) aren't in the font. English goes through the
-   `pairs` encoding (default; `tokipatch/font.py`), which redraws unused kanji
-   glyphs as two-letter glyphs, or `fullwidth` as a fallback. Never write raw
-   ASCII bytes into game text.
-8. **Only redraw font glyphs from `translation/font/free_glyphs.txt`.** Every
-   other glyph is (or may be) used by Japanese text that isn't translated
-   yet. If a "free" glyph shows up inside Japanese text on screen, remove it
-   from the list (and note it in docs). Don't hand-pick glyphs.
+   `pairs` encoding (default; `tokipatch/font.py`): ASCII with the top bit
+   set, drawn two letters at a time by the renderer hook
+   (`tokipatch/renderer.py`, game-internals §6f), or `fullwidth` as a
+   fallback. Never write raw ASCII bytes into game text, and don't use codes
+   0xA0A0–0xFEFE for anything else.
+8. **New code goes only where nothing runs.** The renderer hook lives in two
+   EXE functions shown to be unused statically *and* with execution
+   breakpoints over a long play session (game-internals §6f). Any new code or
+   data region needs the same evidence, documented, and a CRC check of the
+   original bytes before writing. Don't redraw font glyphs: Japanese text
+   that isn't translated yet still uses them.
 9. **Don't commit game data.** No disc images, extracted files, RAM dumps or
    screenshots (`.gitignore` covers `extracted/` and `.emu/`). Don't copy long
    stretches of the Japanese script (or the song lyrics stored in
@@ -89,11 +93,12 @@ These are hard-won. Every one of them has broken the game, or would.
 | Patch | Status |
 |---|---|
 | `translation/title_menu.json` (GAME START / OPTIONS) | Verified in DuckStation: both items render in English in both the unselected and highlighted states (screenshots of GAME START highlighted and of OPTIONS highlighted). The user has played the patched build past the menu and confirmed that selecting OPTIONS opens the Options page. |
-| `translation/options.json` (Options page: 8 items, Menu Mode sub-screen choices + descriptions, Extras items) | Verified in DuckStation: item list, and all four Menu Mode choices with their descriptions. Extras items can't be seen until unlocked. Text Speed / Icon Mode / Cursor Speed / Voice Mode choices are **graphics** and still Japanese (game-internals §6c). Mouse is unreachable without a mouse. Not yet checked: that no still-Japanese screen uses a redrawn glyph. |
+| `translation/options.json` (Options page: 8 items, Menu Mode sub-screen choices + descriptions, Extras items) | Verified in DuckStation: item list, and all four Menu Mode choices with their descriptions. Extras items can't be seen until unlocked. Text Speed / Icon Mode / Cursor Speed / Voice Mode choices are **graphics** and still Japanese (game-internals §6c). Mouse is unreachable without a mouse. |
 | `translation/album.json` (album screen message box, 88 strings) | Verified in DuckStation: no-save prompt with Yes/No icons aligned, "Which album", system-file explanation, "Make a system file?", "Album and system file are being made". Other prompts (copy/erase/restart, memory-card errors) are not seen yet. |
 | `translation/common.json` (shared Yes/No ○/× button lines) | Verified on the "Make a system file?" prompt; icons line up. |
 | `translation/name_entry.json` (name/nickname/birthday questions) | All 7 verified in DuckStation: family name, "Your name?", "And your nickname?", "Birthday and blood type?", "Shiori's birthday & blood type?", and both "Is this OK?". |
 | `translation/prologue.json` (43 dialogue lines: entrance-ceremony scene after name entry) | Verified in DuckStation: real boot from title through Rei's introduction; the rest of the scene with the same bytes poked into a save state, through to the first in-game screen. Box width, scrolling of 4–5 line strings, `{P}` name insertion and thought lines all checked. Speaker labels (好雄, 伊集院, ...) are still Japanese (not in this file). |
+| Renderer hook (`tokipatch/renderer.py`, installed whenever English `pairs` text is used) | Verified in DuckStation: Options page and Menu Mode descriptions, album prompts (○/× icons aligned), all name-entry questions, the whole prologue, then the first in-game screen, where untranslated Japanese still renders correctly. The two reused EXE functions had 0 hits from execution breakpoints over 15 min of the unpatched game (boot to in-game weeks and a SERIFU event). |
 | `translation/code.json` (glyph advance 16 → 14 on name entry) | Verified: banner evenly spaced, typed name characters still align with their underscores, kana grid still tidy. |
 | `translation/extra/album_panel_exe.json` (21 panel-style labels in `SLPM_86.053`) | Doesn't affect the album screen (its panel is graphics). Probably the in-game save/load screen; unverified. |
 | `translation/extra/system_settings.json` (114 strings: in-game system settings screen in `SLPM_86.053`) | Builds; **not verified on screen** (needs an in-progress game). Not applied by default. Verify, then move to `translation/`. |

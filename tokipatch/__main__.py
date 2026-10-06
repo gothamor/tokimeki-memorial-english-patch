@@ -9,11 +9,10 @@ import sys
 from pathlib import Path
 from typing import List, Optional, Tuple
 
-from . import font, patcher
+from . import patcher
 from .cd import Track
 
 TRANSLATION_DIR = Path(__file__).resolve().parent.parent / "translation"
-FREE_GLYPHS = TRANSLATION_DIR / "font" / "free_glyphs.txt"
 
 
 def parse_cue(cue: Path) -> Tuple[List[str], Optional[str]]:
@@ -69,8 +68,7 @@ def main(argv=None) -> int:
               f"and {len(byte_patches)} byte patch(es) from {len(translations)} translation file(s).")
         data_src = next(f for f in to_copy if f.name == data_name)
         with Track(data_src) as track:
-            edits = patcher.plan(track, strings, images, font.load_free_codes(FREE_GLYPHS),
-                                 byte_patches, dialogue)
+            edits = patcher.plan(track, strings, images, byte_patches, dialogue)
     except (ValueError, OSError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
