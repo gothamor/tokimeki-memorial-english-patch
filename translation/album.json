@@ -1,0 +1,533 @@
+{
+  "description": "Album (save slot) screen after GAME START, run by CDROM/EXEDIR/NAME_ENT.EXN: message-box prompts (0x197B4-0x1A14B). Lines starting with a full-width space keep a blank glyph ('  ') where an icon or number is drawn; '番アルバム' strings follow an album number drawn by the game, hence ': Album'. The Yes/No line keeps 'Yes...'/'No...' ending right before the cells where the circle/cross icons are drawn (cells 5 and 11). The buttons, slot numbers and info-panel labels are graphics.",
+  "strings": [
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x197B4",
+      "original": "　メモリーカードを",
+      "text": "  Checking the"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x197C8",
+      "original": "　チェックしています",
+      "text": "  memory card..."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19824",
+      "original": "　メモリーカードが",
+      "text": "  No memory card"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19838",
+      "original": "　ありません。",
+      "text": "  inserted."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19848",
+      "original": "新たにゲームを始めますか？",
+      "text": "Start a new game?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19864",
+      "original": "メモリーカードを",
+      "text": "Insert a memory"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19878",
+      "original": "差し込み口１",
+      "text": "card, slot 1"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19888",
+      "original": "　　　　　　にセットして、",
+      "text": "            then press"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x198A4",
+      "original": "　ボタンを押してください。",
+      "text": "  to continue."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x198CC",
+      "original": "システムファイルは",
+      "text": "The system file"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x198E0",
+      "original": "壊れています。",
+      "text": "is corrupted."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x198F0",
+      "original": "システムファイルを",
+      "text": "Recreate the"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19904",
+      "original": "作り直しますか？",
+      "text": "system file?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1994C",
+      "original": "番アルバムのデータは",
+      "text": ": this album's data"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19964",
+      "original": "壊れています。",
+      "text": "is corrupted."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19974",
+      "original": "番アルバムを",
+      "text": ": Album"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19984",
+      "original": "ロードしています。",
+      "text": "Loading..."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x199B4",
+      "original": "このゲームのデータがありません",
+      "text": "No save data for this game."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x199D4",
+      "original": "新たにアルバムを作成し、",
+      "text": "Create a new album"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x199F0",
+      "original": "ゲームをプレイしますか？",
+      "text": "and start playing?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19A0C",
+      "original": "　　はい…　　いいえ…　",
+      "text": "    Yes...       No...  "
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19A28",
+      "original": "　アルバムを作成せずに、",
+      "text": "  Starting without"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19A44",
+      "original": "ゲームをスタートします。",
+      "text": "making an album."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19A60",
+      "original": "　何番目のアルバムを、",
+      "text": "  Which album do you"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19A78",
+      "original": "作成しますか？",
+      "text": "want to make?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19A88",
+      "original": "カーソルで選んで下さい。",
+      "text": "Choose with the cursor."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19AA4",
+      "original": "　システムファイルを作成すると",
+      "text": "  Making a system file lets"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19AC4",
+      "original": "サブゲームのデータなどの",
+      "text": "you save sub-game data"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19AE0",
+      "original": "セーブができるようになります。",
+      "text": "and other extras."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19B00",
+      "original": "システムファイルを作成しますか",
+      "text": "Make a system file?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19B20",
+      "original": "番アルバムを作成しています。",
+      "text": ": Creating album..."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19B40",
+      "original": "番アルバム　と、",
+      "text": ": Album and"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19B54",
+      "original": "システムファイルを",
+      "text": "the system file"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19B68",
+      "original": "作成しています。",
+      "text": "are being made."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19B8C",
+      "original": "　クリア人数はそのままで、",
+      "text": "  Keeping the clear count,"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19BA8",
+      "original": "プロローグからゲームを",
+      "text": "the game restarts from"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19BC0",
+      "original": "スタートします。",
+      "text": "the prologue."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19BD4",
+      "original": "　何番目のアルバムを、",
+      "text": "  Which album do you"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19BEC",
+      "original": "やりなおしますか？",
+      "text": "want to restart?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19C00",
+      "original": "番アルバムを",
+      "text": ": Album"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19C10",
+      "original": "やりなおします。",
+      "text": "will restart."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19C64",
+      "original": "番アルバム　を、",
+      "text": ": Album"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19C78",
+      "original": "作成しています。",
+      "text": "being created."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19C8C",
+      "original": "番アルバム　を、",
+      "text": ": Album"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19CA0",
+      "original": "作成しています。",
+      "text": "being created."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19CB4",
+      "original": "　何番目のアルバムを、",
+      "text": "  Which album do you"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19CCC",
+      "original": "コピーしますか？",
+      "text": "want to copy?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19CE0",
+      "original": "カーソルで選んで下さい。",
+      "text": "Choose with the cursor."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19D10",
+      "original": "番アルバムを",
+      "text": ": Album"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19D20",
+      "original": "どのアルバムにコピーしますか？",
+      "text": "Copy it to which album?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19D40",
+      "original": "カーソルで選んで下さい。",
+      "text": "Choose with the cursor."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19D5C",
+      "original": "番アルバムに",
+      "text": ": Album"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19D6C",
+      "original": "上書きしてもいいですか？",
+      "text": "OK to overwrite it?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19D88",
+      "original": "番アルバムに",
+      "text": ": Album"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19D98",
+      "original": "コピーします。",
+      "text": "Copying to it."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19DB8",
+      "original": "番アルバムに",
+      "text": ": Album"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19DC8",
+      "original": "コピーします。",
+      "text": "Copying to it."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19DE8",
+      "original": "　何番目のアルバムを、",
+      "text": "  Which album do you"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19E00",
+      "original": "消去しますか？",
+      "text": "want to erase?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19E10",
+      "original": "カーソルで選んで下さい。",
+      "text": "Choose with the cursor."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19E2C",
+      "original": "番アルバムを",
+      "text": ": Album"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19E3C",
+      "original": "本当に消去していいですか？",
+      "text": "Really delete it?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19EB0",
+      "original": "ファイルが作成できません",
+      "text": "Can't create the file."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19ECC",
+      "original": "別のメモリーカードを差し込み口",
+      "text": "Insert another memory card"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19EEC",
+      "original": "１にセットするか、他のゲームの",
+      "text": "in slot 1, or delete other"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19F0C",
+      "original": "データを消去してください。",
+      "text": "games' save data."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19F28",
+      "original": "システムファイルを作り直して",
+      "text": "OK to recreate the"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19F48",
+      "original": "いいですか？",
+      "text": "system file?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19F58",
+      "original": "約１分ほど時間がかかりますが、",
+      "text": "This takes about a minute."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19F78",
+      "original": "途中でメモリーカードを",
+      "text": "Do not remove the card"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19F90",
+      "original": "抜かないで下さい。",
+      "text": "while it works."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19FA4",
+      "original": "準備が出来たら、",
+      "text": "When ready,"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19FB8",
+      "original": "何かボタンを押してください。",
+      "text": "press any button."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19FD8",
+      "original": "しばらくお待ち下さい。",
+      "text": "Please wait a moment."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19FF0",
+      "original": "システムファイルを作成して",
+      "text": "OK to create the"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1A00C",
+      "original": "いいですか？",
+      "text": "system file?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1A01C",
+      "original": "約１分ほど時間がかかりますが、",
+      "text": "This takes about a minute."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1A03C",
+      "original": "途中でメモリーカードを",
+      "text": "Do not remove the card"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1A054",
+      "original": "抜かないで下さい。",
+      "text": "while it works."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1A068",
+      "original": "準備が出来たら、",
+      "text": "When ready,"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1A07C",
+      "original": "何かボタンを押してください。",
+      "text": "press any button."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1A09C",
+      "original": "しばらくお待ち下さい。",
+      "text": "Please wait a moment."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1A0B4",
+      "original": "未初期化のメモリーカードです。",
+      "text": "This memory card is not"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1A0D4",
+      "original": "初期化していいですか？",
+      "text": "formatted. Format it?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1A0EC",
+      "original": "別のメモリーカードを",
+      "text": "Or insert another"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1A104",
+      "original": "差し込み口１",
+      "text": "card, slot 1"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1A114",
+      "original": "　　　　　　にセットして、",
+      "text": "            then press"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1A130",
+      "original": "　ボタンを押してください。",
+      "text": "  to continue."
+    }
+  ]
+}

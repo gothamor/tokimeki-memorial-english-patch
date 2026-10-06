@@ -1,0 +1,689 @@
+{
+  "description": "Settings strings in SLPM_86.053 (0x6FA08-0x70290), used by the in-game system settings screen (NOT by the title Options sub-screens, whose choices are graphics in FUKUTEST/OPTION.NBN). Multi-piece messages (e.g. 'Menu mode set ' + 'to Mouse-like' + '') are written to read correctly whether the pieces share a line or not. Not yet verified on screen, so kept in translation/extra/.",
+  "strings": [
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FA08",
+      "original": "システム設定画面",
+      "text": "System Settings"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FA1C",
+      "original": "システム設定を変更します",
+      "text": "Change system settings."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FA38",
+      "original": "文字表示速度",
+      "text": "Text Speed"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FA48",
+      "original": "アイコンモード",
+      "text": "Icon Mode"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FA58",
+      "original": "マウス設定",
+      "text": "Mouse"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FA64",
+      "original": "メニューモード",
+      "text": "Menu Mode"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FA74",
+      "original": "カーソル速度",
+      "text": "Cursor Speed"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FA84",
+      "original": "音声モード",
+      "text": "Voice Mode"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FA90",
+      "original": "マスコット",
+      "text": "Mascot"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FA9C",
+      "original": "設定終了",
+      "text": "Exit"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FAA8",
+      "original": "文字速度",
+      "text": "Text Spd"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FAB4",
+      "original": "遅い",
+      "text": "Slow"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FABC",
+      "original": "普通",
+      "text": "Normal"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FAC4",
+      "original": "速い",
+      "text": "Fast"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FACC",
+      "original": "文字出力のスピードを変更します",
+      "text": "Change the text display speed."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FAEC",
+      "original": "文字出力のスピードを遅くしました",
+      "text": "Text speed set to Slow."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FB10",
+      "original": "文字出力のスピードを普通にしました",
+      "text": "Text speed set to Normal."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FB34",
+      "original": "文字出力のスピードを速くしました",
+      "text": "Text speed set to Fast."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FB58",
+      "original": "アイコンモード",
+      "text": "Icon Mode"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FB68",
+      "original": "ＴＹＰＥ‐Ａ",
+      "text": "Type A"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FB78",
+      "original": "ＴＹＰＥ‐Ｂ",
+      "text": "Type B"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FB88",
+      "original": "フリー",
+      "text": "Free"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FB90",
+      "original": "アイコンの位置の設定をします",
+      "text": "Set the icon positions."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FBB0",
+      "original": "アイコンモードを",
+      "text": "Icon mode set "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FBC4",
+      "original": "ＴＹＰＥ‐Ａにしました",
+      "text": "to Type A."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FBDC",
+      "original": "アイコンモードを",
+      "text": "Icon mode set "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FBF0",
+      "original": "ＴＹＰＥ‐Ｂにしました",
+      "text": "to Type B."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FC08",
+      "original": "アイコンモードを",
+      "text": "Icon mode set "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FC1C",
+      "original": "フリーにしました",
+      "text": "to Free."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FC30",
+      "original": "マウス設定",
+      "text": "Mouse"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FC3C",
+      "original": "決定ボタン",
+      "text": "Confirm"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FC48",
+      "original": "クリックモード",
+      "text": "Click Mode"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FC58",
+      "original": "クリックスピード",
+      "text": "Click Speed"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FC6C",
+      "original": "マウス使用時の各種設定を選択します",
+      "text": "Choose settings for using a mouse."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FC90",
+      "original": "決定ボタン設定",
+      "text": "Confirm Button"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FCA0",
+      "original": "右ボタンで決定",
+      "text": "Right confirms"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FCB0",
+      "original": "左ボタンで決定",
+      "text": "Left confirms"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FCC0",
+      "original": "決定ボタンを選択します",
+      "text": "Choose confirm button."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FCD8",
+      "original": "右ボタンで決定にしました",
+      "text": "Right button confirms."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FCF4",
+      "original": "左ボタンで決定にしました",
+      "text": "Left button confirms."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FD10",
+      "original": "クリックモード設定",
+      "text": "Click Mode"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FD24",
+      "original": "シングルクリック",
+      "text": "Single Click"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FD38",
+      "original": "ダブルクリック",
+      "text": "Double Click"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FD48",
+      "original": "クリックモードを設定します",
+      "text": "Set the click mode."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FD64",
+      "original": "シングルクリックにしました",
+      "text": "Set to single click."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FD80",
+      "original": "ダブルクリックにしました",
+      "text": "Set to double click."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FD9C",
+      "original": "クリックスピード設定",
+      "text": "Click Speed"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FDB4",
+      "original": "初期状態",
+      "text": "Default"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FDC0",
+      "original": "変更",
+      "text": "Edit"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FDC8",
+      "original": "クリックスピードを設定します",
+      "text": "Set the click speed."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FDE8",
+      "original": "変更する場合、変更にカーソルを",
+      "text": "To change it, move the cursor"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FE08",
+      "original": "合わせて、ダブルクリックして下さい",
+      "text": "to Edit and double-click."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FE2C",
+      "original": "クリックスピードを初期状態にしました",
+      "text": "Click speed reset to default."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FE54",
+      "original": "クリックスピードを変更しました",
+      "text": "Click speed changed."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FE74",
+      "original": "メニューモード設定",
+      "text": "Menu Mode"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FE88",
+      "original": "１：マウスライク",
+      "text": "1: Mouse-like"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FE9C",
+      "original": "２：メニューＡ",
+      "text": "2: Menu A"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FEAC",
+      "original": "３：メニューＢ",
+      "text": "3: Menu B"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FEBC",
+      "original": "４：１＋２",
+      "text": "4: 1 + 2"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FEC8",
+      "original": "コントローラでの、メニュー間の",
+      "text": "Sets how the cursor moves"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FEE8",
+      "original": "（２択・３択・アイコンなど）",
+      "text": "between menu items (choices,"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FF08",
+      "original": "カーソルの動かし方を設定します",
+      "text": "icons, etc.) with the pad."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FF28",
+      "original": "メニュー設定を",
+      "text": "Menu mode set "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FF38",
+      "original": "マウスライク",
+      "text": "to Mouse-like"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FF48",
+      "original": "にしました",
+      "text": ""
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FF54",
+      "original": "メニュー設定を",
+      "text": "Menu mode set "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FF64",
+      "original": "メニューＡ",
+      "text": "to Menu A"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FF70",
+      "original": "にしました",
+      "text": ""
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FF7C",
+      "original": "メニュー設定を",
+      "text": "Menu mode set "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FF8C",
+      "original": "メニューＢ",
+      "text": "to Menu B"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FF98",
+      "original": "にしました",
+      "text": ""
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FFA4",
+      "original": "メニュー設定を",
+      "text": "Menu mode set "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FFB4",
+      "original": "マウスライク＋メニューＡ",
+      "text": "to Mouse-like + Menu A"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FFD0",
+      "original": "にしました",
+      "text": ""
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FFDC",
+      "original": "カーソル速度",
+      "text": "Cursor Speed"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FFEC",
+      "original": "超遅い",
+      "text": "V.Slow"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FFF4",
+      "original": "遅い",
+      "text": "Slow"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6FFFC",
+      "original": "普通",
+      "text": "Normal"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70004",
+      "original": "速い",
+      "text": "Fast"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x7000C",
+      "original": "超速い",
+      "text": "V.Fast"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70014",
+      "original": "遅い",
+      "text": "Slow"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x7001C",
+      "original": "少し遅い",
+      "text": "A bit slow"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70028",
+      "original": "普通",
+      "text": "Normal"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70030",
+      "original": "少し速い",
+      "text": "A bit fast"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x7003C",
+      "original": "速い",
+      "text": "Fast"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70044",
+      "original": "カーソルの移動速度を設定します",
+      "text": "Set the cursor movement speed."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70064",
+      "original": "カーソルの移動速度を",
+      "text": "Cursor speed set "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x7007C",
+      "original": "超遅くしました",
+      "text": "to very slow."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x7008C",
+      "original": "遅くしました",
+      "text": "to slow."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x7009C",
+      "original": "カーソルの移動速度を",
+      "text": "Cursor speed set "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x700B4",
+      "original": "ちょろっと遅くしました",
+      "text": "to slightly slow."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x700CC",
+      "original": "少し遅くしました",
+      "text": "to a bit slow."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x700E0",
+      "original": "カーソルの移動速度を",
+      "text": "Cursor speed set "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x700F8",
+      "original": "ふつうにしました",
+      "text": "to normal."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x7010C",
+      "original": "カーソルの移動速度を",
+      "text": "Cursor speed set "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70124",
+      "original": "ちょろっと速くしました",
+      "text": "to slightly fast."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x7013C",
+      "original": "少し速くしました",
+      "text": "to a bit fast."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70150",
+      "original": "カーソルの移動速度を",
+      "text": "Cursor speed set "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70168",
+      "original": "超速くしました",
+      "text": "to very fast."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70178",
+      "original": "速くしました",
+      "text": "to fast."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70188",
+      "original": "音声モード",
+      "text": "Voice Mode"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70194",
+      "original": "常にＯＮ",
+      "text": "Always ON"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x701A0",
+      "original": "常にＯＦＦ",
+      "text": "Always OFF"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x701AC",
+      "original": "×ボタンでカット",
+      "text": "Skip with X"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x701C0",
+      "original": "音声のモードを設定します",
+      "text": "Set the voice mode."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x701DC",
+      "original": "音声モードを",
+      "text": "Voice mode "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x701EC",
+      "original": "常にＯＮにしました",
+      "text": "set to always ON."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70200",
+      "original": "音声モードを",
+      "text": "Voice mode "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70210",
+      "original": "常にＯＦＦにしました",
+      "text": "set to always OFF."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70228",
+      "original": "音声モードを",
+      "text": "Voice mode "
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70238",
+      "original": "×ボタンでカットにしました",
+      "text": "set to skip with X."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70254",
+      "original": "マスコット",
+      "text": "Mascot"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70260",
+      "original": "表示しない",
+      "text": "Don't show"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x7026C",
+      "original": "マスコットを選びます",
+      "text": "Choose a mascot."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "description": "Strings in SLPM_86.053 shared by many screens. 0x73470/0x73488: generic Yes/No prompt lines; the circle/cross icon is drawn on character cell 6, just before 'button', so the 10-cell layout is kept.",
+  "strings": [
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x73470",
+      "original": "　はい……　　ボタン",
+      "text": "  Yes.....    button"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x73488",
+      "original": "　いいえ…　　ボタン",
+      "text": "  No......    button"
+    }
+  ]
+}

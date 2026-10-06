@@ -84,7 +84,13 @@ These are hard-won. Every one of them has broken the game, or would.
 | Patch | Status |
 |---|---|
 | `translation/title_menu.json` (GAME START / OPTIONS) | Verified in DuckStation: both items render in English in both the unselected and highlighted states (screenshots of GAME START highlighted and of OPTIONS highlighted). The user has played the patched build past the menu and confirmed that selecting OPTIONS opens the Options page. |
-| `translation/options.json` (Options page: 文字表示速度 → Text Speed) | Verified in DuckStation: renders as "Text Speed" in the pair font inside the highlight bar, other items unaffected. First use of `pairs` encoding. Not yet checked: the in-game system settings screen (separate copy of the string in `SLPM_86.053`, still Japanese), and that no still-Japanese screen uses the 5 glyphs redrawn (88A7, 88A8, 88AA, 88AE, 88B1). |
+| `translation/options.json` (Options page: 8 items, Menu Mode sub-screen choices + descriptions, Extras items) | Verified in DuckStation: item list, and all four Menu Mode choices with their descriptions. Extras items can't be seen until unlocked. Text Speed / Icon Mode / Cursor Speed / Voice Mode choices are **graphics** and still Japanese (game-internals §6c). Mouse is unreachable without a mouse. Not yet checked: that no still-Japanese screen uses a redrawn glyph. |
+| `translation/album.json` (album screen message box, 88 strings) | Verified in DuckStation: no-save prompt with Yes/No icons aligned, "Which album", system-file explanation, "Make a system file?", "Album and system file are being made". Other prompts (copy/erase/restart, memory-card errors) are not seen yet. |
+| `translation/common.json` (shared Yes/No ○/× button lines) | Verified on the "Make a system file?" prompt; icons line up. |
+| `translation/name_entry.json` (name/nickname/birthday questions) | "What's your family name?" verified, evenly spaced. Name and nickname prompts and the birthday/blood-type questions not seen yet. |
+| `translation/code.json` (glyph advance 16 → 14 on name entry) | Verified: banner evenly spaced, typed name characters still align with their underscores, kana grid still tidy. |
+| `translation/extra/album_panel_exe.json` (21 panel-style labels in `SLPM_86.053`) | Doesn't affect the album screen (its panel is graphics). Probably the in-game save/load screen; unverified. |
+| `translation/extra/system_settings.json` (114 strings: in-game system settings screen in `SLPM_86.053`) | Builds; **not verified on screen** (needs an in-progress game). Not applied by default. Verify, then move to `translation/`. |
 | `translation/extra/name_entry.json` (name-entry prompts) | Builds, and its file now passes the in-game checksum (the overlay loads). The prompts haven't been seen on screen yet. Not applied by default. |
 
 Update this table when you verify something.
@@ -92,7 +98,10 @@ Update this table when you verify something.
 ## Working in this environment (Windows dev box)
 
 - Use `tools/emu/` for testing, never the user's own DuckStation install or
-  settings. Never send keystrokes to whatever window has focus; the driver
+  settings. **The harness must never write outside the repo** (memory cards,
+  save states, screenshots). Settings inherited from the user can carry
+  absolute paths to their real folders; `setup_duckstation.py` overrides the
+  memory card folder, and any new path-like setting must be overridden too. Never send keystrokes to whatever window has focus; the driver
   posts messages straight to the isolated emulator's window.
 - **Controls are Japanese-style: ○ (Circle) confirms, × (Cross) goes back.**
   In the harness that's `C` to confirm, `X` to go back.

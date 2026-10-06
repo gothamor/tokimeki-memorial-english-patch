@@ -4,8 +4,11 @@
 *.iso
 *.img
 *.chd
-*[English]/
+/Tokimeki Memorial*/
 /extracted/
+# Note: brackets are glob character classes in gitignore, so the patcher's
+# "... [English]" output folder must be written with escaped brackets.
+*\[English\]/
 
 # Isolated emulator copy, screenshots, RAM dumps (tools/emu)
 /.emu/

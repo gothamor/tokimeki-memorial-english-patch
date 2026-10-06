@@ -1,0 +1,131 @@
+{
+  "description": "Album info-panel style labels in SLPM_86.053 (0x70790-0x70853, two copies: 名前…, あだ名…, 所属部‥, クリア人数‥, 年/月/日, 未使用, データ異常). NOT used by the album screen after GAME START (its panel is graphics); probably the in-game save/load screen. Unverified, so kept in extra/.",
+  "strings": [
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70790",
+      "original": "番アルバム",
+      "text": ": Album"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x7079C",
+      "original": "システム",
+      "text": "System"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x707A8",
+      "original": "未使用",
+      "text": "Empty"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x707B0",
+      "original": "データ異常",
+      "text": "Bad data"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x707BC",
+      "original": "年",
+      "text": "/"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x707C0",
+      "original": "月",
+      "text": "/"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x707C4",
+      "original": "日",
+      "text": ""
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x707C8",
+      "original": "名前…",
+      "text": "Name"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x707D0",
+      "original": "あだ名…",
+      "text": "Nickname"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x707DC",
+      "original": "所属部‥",
+      "text": "Club"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x707E8",
+      "original": "クリア人数‥",
+      "text": "Cleared"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x707F8",
+      "original": "未使用",
+      "text": "Empty"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70800",
+      "original": "データ異常",
+      "text": "Bad data"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x7080C",
+      "original": "番アルバム",
+      "text": ": Album"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70818",
+      "original": "年",
+      "text": "/"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x7081C",
+      "original": "月",
+      "text": "/"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70820",
+      "original": "日",
+      "text": ""
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70824",
+      "original": "名前…",
+      "text": "Name"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x7082C",
+      "original": "あだ名…",
+      "text": "Nickname"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70838",
+      "original": "所属部‥",
+      "text": "Club"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70844",
+      "original": "クリア人数‥",
+      "text": "Cleared"
+    }
+  ]
+}

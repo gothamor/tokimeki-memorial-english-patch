@@ -21,9 +21,23 @@ existing output folder.
 
 - **Title menu:** ゲームスタート / オプション → **GAME START / OPTIONS**, both
   highlighted and unselected ([translation/title_menu.json](translation/title_menu.json)).
-- **Options page:** 文字表示速度 → **Text Speed**
-  ([translation/options.json](translation/options.json)). This is the first real text
-  translation, using the letter-pair font described below.
+- **Options page:** the item list (Text Speed, Icon Mode, Mouse, Menu Mode,
+  Cursor Speed, Voice Mode, Extras, Exit Options) and the Menu Mode sub-screen
+  (choices + descriptions) ([translation/options.json](translation/options.json)),
+  drawn with the letter-pair font described below. The choices on the Text
+  Speed, Icon Mode, Cursor Speed and Voice Mode sub-screens are pre-drawn
+  graphics and still Japanese.
+- **New game:** the album (save slot) screen's message box, the shared
+  Yes/No button prompts, and the name-entry questions
+  ([album.json](translation/album.json), [common.json](translation/common.json),
+  [name_entry.json](translation/name_entry.json)). The buttons, panel labels
+  and the kana grid are still Japanese.
+- **Spacing fix:** English letter pairs are drawn evenly at the game's 14 px
+  glyph advance, and the name-entry screen is patched from 16 px to 14 px
+  ([code.json](translation/code.json)).
+- *Not applied by default:* the in-game system settings screen
+  ([translation/extra/system_settings.json](translation/extra/system_settings.json)),
+  pending an on-screen check.
 - *Not applied by default:* the name-entry questions
   ([translation/extra/name_entry.json](translation/extra/name_entry.json)).
   Add them with `-t translation/title_menu.json -t translation/extra/name_entry.json`.

@@ -1,0 +1,12 @@
+{
+  "description": "Small code patches. The global glyph advance (byte at RAM 0x800B3F6A, set by 0x8004E750 with 14 or 16) must be 14 for evenly spaced letter-pair English; screens that set 16 are changed to 14 here. See docs/game-internals.md 6a.",
+  "bytes": [
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1B8",
+      "original": "10000424",
+      "replacement": "0e000424",
+      "comment": "NAME_ENT init: set_glyph_advance(16) -> 14 (delay slot of jal 0x8004E750 at 0x801321B4)"
+    }
+  ]
+}

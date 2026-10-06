@@ -1,0 +1,269 @@
+"""Applies translation files (JSON) to the data track.
+
+A translation file can contain:
+
+  "strings": in-place text replacements
+      {"file", "offset", "original", "text", "encoding"?}
+      `encoding` is "pairs" (default: English letter pairs, 1 byte per letter,
+      drawn with redrawn font glyphs; see font.py) or "fullwidth" (each letter
+      as a full-width Shift-JIS character, 2 bytes and 12 px per letter).
+
+  "images":  pixels copied from an 8-bit indexed PNG into an 8bpp bitmap
+      {"file", "png", "pixels", "stride", "x", "y", "rects", "original_crc32"}
+      `pixels` is the file offset of the bitmap, `stride` its width in bytes,
+      (x, y) where the PNG's top-left lands, and `rects` the [x, y, w, h] areas
+      of the PNG to copy (everything else is left alone).
+
+  "bytes":   raw byte replacements, for code/data hacks
+      {"file", "offset", "original", "replacement", "comment"}
+      `original` and `replacement` are hex strings of equal length; the
+      patcher refuses to run unless the file holds exactly `original`.
+"""
+
+from __future__ import annotations
+
+import json
+import zlib
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Dict, List
+
+from . import font, png, text
+from .cd import Track
+from .iso9660 import Entry, list_files
+
+EXPECTED_BOOT = b"cdrom:SLPM_86.053"
+CHECKSUM_MARKER = b"\x12\x10"
+ENCODINGS = ("pairs", "fullwidth")
+
+
+@dataclass
+class StringPatch:
+    file: str
+    offset: int
+    original: str
+    text: str
+    source: str  # translation file it came from, for error messages
+    encoding: str = "pairs"
+
+
+@dataclass
+class ImagePatch:
+    file: str
+    png: Path
+    pixels: int
+    stride: int
+    x: int
+    y: int
+    rects: List[List[int]]
+    original_crc32: int
+    source: str
+
+
+@dataclass
+class BytePatch:
+    file: str
+    offset: int
+    original: bytes
+    replacement: bytes
+    comment: str
+    source: str
+
+
+@dataclass
+class FileEdit:
+    entry: Entry
+    original: bytes
+    data: bytearray
+    log: List[str] = field(default_factory=list)
+
+
+def load_translations(paths: List[Path]):
+    """Return (strings, images, byte_patches) from the given JSON files."""
+    strings, images, byte_patches = [], [], []
+    for path in paths:
+        path = Path(path)
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        for item in doc.get("strings", []):
+            encoding = item.get("encoding", "pairs")
+            if encoding not in ENCODINGS:
+                raise ValueError(f"{path.name}: unknown encoding {encoding!r} (use {ENCODINGS})")
+            strings.append(StringPatch(
+                file=item["file"].upper().lstrip("/"),
+                offset=int(item["offset"], 0),
+                original=item["original"],
+                text=item["text"],
+                source=path.name,
+                encoding=encoding,
+            ))
+        for item in doc.get("images", []):
+            images.append(ImagePatch(
+                file=item["file"].upper().lstrip("/"),
+                png=path.parent / item["png"],
+                pixels=int(item["pixels"], 0),
+                stride=item["stride"],
+                x=item["x"],
+                y=item["y"],
+                rects=item["rects"],
+                original_crc32=int(item["original_crc32"], 0),
+                source=path.name,
+            ))
+        for item in doc.get("bytes", []):
+            original = bytes.fromhex(item["original"])
+            replacement = bytes.fromhex(item["replacement"])
+            if len(original) != len(replacement):
+                raise ValueError(f"{path.name}: bytes patch at {item['offset']} changes length")
+            byte_patches.append(BytePatch(
+                file=item["file"].upper().lstrip("/"),
+                offset=int(item["offset"], 0),
+                original=original,
+                replacement=replacement,
+                comment=item.get("comment", ""),
+                source=path.name,
+            ))
+    return strings, images, byte_patches
+
+
+def check_disc(files: Dict[str, Entry], track: Track) -> None:
+    cnf = files.get("SYSTEM.CNF")
+    if cnf is None or EXPECTED_BOOT not in track.read_file(cnf.lba, cnf.size):
+        raise ValueError("This doesn't look like Tokimeki Memorial: Forever with You "
+                         "(PlayStation the Best, SLPM-86053).")
+
+
+def has_checksum(data: bytes) -> bool:
+    """Most data files end with a big-endian 16-bit byte sum + 12 10.
+
+    The game verifies it after every load and silently retries forever on a
+    mismatch (which shows up as a hang on a white or black screen).
+    """
+    return (len(data) >= 4 and data[-2:] == CHECKSUM_MARKER
+            and sum(data[:-4]) & 0xFFFF == int.from_bytes(data[-4:-2], "big"))
+
+
+def fix_checksum(data: bytearray) -> None:
+    data[-4:-2] = (sum(data[:-4]) & 0xFFFF).to_bytes(2, "big")
+
+
+def apply_string(patch: StringPatch, edit: FileEdit, pairs: font.PairEncoder) -> None:
+    where = f"{patch.source}: {patch.file} @ {patch.offset:#x}"
+    data = edit.data
+    original = patch.original.encode("shift_jis")
+    end = patch.offset + len(original)
+    if bytes(data[patch.offset:end]) != original or data[end:end + 1] != b"\0":
+        found = bytes(data[patch.offset:end]).decode("shift_jis", "replace")
+        raise ValueError(f"{where}: expected {patch.original!r}, found {found!r}")
+
+    # The string owns its terminator plus any zero padding up to the next
+    # 4-byte boundary (the compiler aligns string literals to 4 bytes).
+    capacity = len(original) + 1
+    while (patch.offset + capacity) % 4 and data[patch.offset + capacity] == 0:
+        capacity += 1
+
+    if patch.encoding == "pairs":
+        new = pairs.encode(patch.text)
+        max_letters = (capacity - 1) // 2 * 2
+    else:
+        new = text.encode(patch.text)
+        max_letters = (capacity - 1) // 2
+    if len(new) + 1 > capacity:
+        raise ValueError(f"{where}: {patch.text!r} needs {len(new) + 1} bytes "
+                         f"but only {capacity} are available "
+                         f"(max {max_letters} characters with {patch.encoding} encoding)")
+    data[patch.offset:patch.offset + capacity] = new.ljust(capacity, b"\0")
+    edit.log.append(f"{patch.offset:#07x}: {patch.original}  ->  {patch.text}")
+    # Japanese is 12 px per 2 bytes and pair/full-width English is 12 px per 2
+    # bytes too, so anything longer than the original bytes draws wider.
+    if len(new) > len(original):
+        edit.log.append(f"    note: {len(new) * 6} px wide vs {len(original) * 6} px originally; "
+                        "check it fits on screen")
+
+
+def _rect_offsets(patch: ImagePatch, rect: List[int]):
+    rx, ry, rw, rh = rect
+    for row in range(ry, ry + rh):
+        yield row, patch.pixels + (patch.y + row) * patch.stride + patch.x + rx
+
+
+def apply_image(patch: ImagePatch, edit: FileEdit) -> None:
+    where = f"{patch.source}: {patch.file} <- {patch.png.name}"
+    width, height, pixels = png.read_indexed(patch.png)
+    data = edit.data
+
+    crc = 0
+    for rect in patch.rects:
+        rx, ry, rw, rh = rect
+        if rx + rw > width or ry + rh > height or patch.x + rx + rw > patch.stride:
+            raise ValueError(f"{where}: rect {rect} is out of bounds")
+        for _, off in _rect_offsets(patch, rect):
+            crc = zlib.crc32(data[off:off + rw], crc)
+    if crc != patch.original_crc32:
+        raise ValueError(f"{where}: target pixels don't match the expected original "
+                         f"(crc32 {crc:#010x}, expected {patch.original_crc32:#010x})")
+
+    for rect in patch.rects:
+        rx, _, rw, _ = rect
+        for row, off in _rect_offsets(patch, rect):
+            data[off:off + rw] = pixels[row * width + rx:row * width + rx + rw]
+    edit.log.append(f"{patch.pixels:#07x}: image {patch.png.name}")
+
+
+def apply_bytes(patch: BytePatch, edit: FileEdit) -> None:
+    where = f"{patch.source}: {patch.file} @ {patch.offset:#x}"
+    end = patch.offset + len(patch.original)
+    found = bytes(edit.data[patch.offset:end])
+    if found != patch.original:
+        raise ValueError(f"{where}: expected bytes {patch.original.hex()}, found {found.hex()}")
+    edit.data[patch.offset:end] = patch.replacement
+    edit.log.append(f"{patch.offset:#07x}: bytes {patch.original.hex()} -> {patch.replacement.hex()}"
+                    + (f"  ({patch.comment})" if patch.comment else ""))
+
+
+def plan(track: Track, strings: List[StringPatch], images: List[ImagePatch],
+         free_codes: List[int], byte_patches: List[BytePatch] = ()) -> List[FileEdit]:
+    """Validate and apply every patch in memory, against the unmodified disc.
+
+    `free_codes` are the font glyphs available for English letter pairs
+    (translation/font/free_glyphs.txt).
+    """
+    files = list_files(track)
+    check_disc(files, track)
+
+    edits: Dict[str, FileEdit] = {}
+
+    def edit_for(path: str, source: str) -> FileEdit:
+        if path not in edits:
+            entry = files.get(path)
+            if entry is None or entry.is_dir:
+                raise ValueError(f"{source}: no file {path!r} on the disc")
+            data = track.read_file(entry.lba, entry.size)
+            edits[path] = FileEdit(entry, data, bytearray(data))
+        return edits[path]
+
+    pairs = font.PairEncoder(free_codes)
+    for s in strings:
+        apply_string(s, edit_for(s.file, s.source), pairs)
+    for i in images:
+        apply_image(i, edit_for(i.file, i.source))
+    for b in byte_patches:
+        apply_bytes(b, edit_for(b.file, b.source))
+
+    if pairs.assigned:
+        exe = edit_for(font.EXE, "font")
+        exe.log.extend(pairs.write_glyphs(exe.data))
+
+    for path, edit in edits.items():
+        if has_checksum(edit.original):
+            if edit.data[-4:] != edit.original[-4:]:
+                raise ValueError(f"{path}: a patch overwrote the file's checksum trailer")
+            fix_checksum(edit.data)
+            edit.log.append("checksum updated")
+    return list(edits.values())
+
+
+def apply(track: Track, edits: List[FileEdit], log=print) -> None:
+    for edit in edits:
+        sectors = track.write_file(edit.entry.lba, edit.original, bytes(edit.data))
+        log(f"  {edit.entry.path} ({sectors} sector(s))")
+        for line in edit.log:
+            log(f"    {line}")

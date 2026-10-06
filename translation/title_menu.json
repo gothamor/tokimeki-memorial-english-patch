@@ -1,0 +1,25 @@
+{
+  "description": "Title screen menu: ゲームスタート -> GAME START, オプション -> OPTIONS (selected and unselected states). Regenerate the PNGs with tools/make_title_menu.py.",
+  "images": [
+    {
+      "file": "CDROM/FUKUTEST/TITLE.NBN",
+      "png": "graphics/title_menu.png",
+      "pixels": "0x60000",
+      "stride": 128,
+      "x": 0,
+      "y": 68,
+      "rects": [[0, 0, 128, 32], [0, 32, 48, 16]],
+      "original_crc32": "0xe7038d68"
+    },
+    {
+      "file": "CDROM/FUKUTEST/TITLE.NBN",
+      "png": "graphics/title_menu_options_selected.png",
+      "pixels": "0x5C000",
+      "stride": 128,
+      "x": 48,
+      "y": 52,
+      "rects": [[0, 0, 80, 16]],
+      "original_crc32": "0x6b133984"
+    }
+  ]
+}

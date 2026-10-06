@@ -1,0 +1,161 @@
+{
+  "description": "Options page (title screen > OPTIONS) and its sub-screens: CDROM/EXEDIR/OPTION.EXN. The item list is at 0xA880; Menu Mode descriptions at 0xA8F0; Extras items at 0xAA6C (only visible once unlocked); Menu Mode choices at 0xB30C. Other sub-screen text (speeds, icon types, voice) comes from SLPM_86.053, see system_settings.json. The debug menu strings at 0xAC10+ are left alone.",
+  "strings": [
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA880",
+      "original": "文字表示速度",
+      "text": "Text Speed"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA890",
+      "original": "アイコンモード",
+      "text": "Icon Mode"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA8A0",
+      "original": "マウス設定",
+      "text": "Mouse"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA8AC",
+      "original": "メニューモード",
+      "text": "Menu Mode"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA8BC",
+      "original": "カーソル速度",
+      "text": "Cursor Speed"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA8CC",
+      "original": "音声モード",
+      "text": "Voice Mode"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA8D8",
+      "original": "おまけ",
+      "text": "Extras"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA8E0",
+      "original": "オプション終了",
+      "text": "Exit Options"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA8F0",
+      "original": "　カーソルが、方向キーの上下左右に",
+      "text": "The cursor moves up, down, left"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA914",
+      "original": "反応して動きます。",
+      "text": "and right with the"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA928",
+      "original": "（マウスと同等です）",
+      "text": "D-pad, like a mouse."
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA940",
+      "original": "　メニュー選択時に、方向キーを押すと",
+      "text": "When choosing from a menu, the D-pad"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA968",
+      "original": "メニューアイテムの順番通りにカーソル",
+      "text": "moves the cursor through the items"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA990",
+      "original": "が移動します",
+      "text": "in order."
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA9A0",
+      "original": "　メニュー選択時に、方向キーを押すと",
+      "text": "When choosing from a menu, the D-pad"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA9C8",
+      "original": "その方向のメニューアイテムにカーソル",
+      "text": "moves the cursor to the item in that"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xA9F0",
+      "original": "が移動します",
+      "text": "direction."
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xAA00",
+      "original": "　通常は、マウスライクと同じ動作を",
+      "text": "Normally works like Mouse-like."
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xAA24",
+      "original": "します。Ｌ１ボタンを押している間は、",
+      "text": "While holding L1, it works the"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xAA4C",
+      "original": "メニューＡと同じ動作をします",
+      "text": "same as Menu A."
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xAA6C",
+      "original": "フリートーク",
+      "text": "Free Talk"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xAA7C",
+      "original": "エンディング",
+      "text": "Ending"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xB30C",
+      "original": "マウスライク",
+      "text": "Mouse-like"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xB31C",
+      "original": "メニューＡ",
+      "text": "Menu A"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xB328",
+      "original": "メニューＢ",
+      "text": "Menu B"
+    },
+    {
+      "file": "CDROM/EXEDIR/OPTION.EXN",
+      "offset": "0xB334",
+      "original": "マウスライク＋メニューＡ",
+      "text": "Mouse-like + Menu A"
+    }
+  ]
+}

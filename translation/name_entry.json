@@ -1,0 +1,47 @@
+{
+  "description": "Character creation (CDROM/EXEDIR/NAME_ENT.EXN): name/nickname questions and the birthday/blood-type prompts. The '名前:'/'あだ名:' labels, side buttons and kana grid labels are graphics; the kana grid itself (0x19150-) is the set of characters the player types with and is left alone for now. Default names (藤崎/詩織) and the cheat-name list (0x19590-) are data and must not be translated blindly.",
+  "strings": [
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1ACE4",
+      "original": "あなたの名字を教えてくれる？",
+      "text": "What's your family name?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1AD04",
+      "original": "名前は？",
+      "text": "Your name?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1AD10",
+      "original": "それじゃ、あだ名は？",
+      "text": "And your nickname?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x194C0",
+      "original": "誕生日と血液型も教えてね？",
+      "text": "Birthday and blood type?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19510",
+      "original": "これでいい？",
+      "text": "Is this OK?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19534",
+      "original": "藤崎詩織の誕生日と血液型は覚えてる？",
+      "text": "Shiori's birthday & blood type?"
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x1955C",
+      "original": "これでいい？",
+      "text": "Is this OK?"
+    }
+  ]
+}
