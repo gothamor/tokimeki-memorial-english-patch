@@ -45,11 +45,16 @@ These are hard-won. Every one of them has broken the game, or would.
 6. **Every patch must prove it's patching the right thing.** String patches carry
    the exact Japanese `original`. Image patches carry `original_crc32` of the
    pixels they replace. Keep these checks.
-7. **The game font is full-width only (as far as we know).** `text.encode` turns
-   ASCII into full-width JIS X 0208. Don't emit half-width ASCII or cp932
-   extension characters unless the renderer has been changed to support them
-   and that change is documented and tested.
-8. **Don't commit game data.** No disc images, extracted files, RAM dumps or
+7. **The renderer can't draw ASCII.** Codes below 0x8140 are dropped, and
+   level-2 kanji (≥ 0x9873) aren't in the font. English goes through the
+   `pairs` encoding (default; `tokipatch/font.py`), which redraws unused kanji
+   glyphs as two-letter glyphs, or `fullwidth` as a fallback. Never write raw
+   ASCII bytes into game text.
+8. **Only redraw font glyphs from `translation/font/free_glyphs.txt`.** Every
+   other glyph is (or may be) used by Japanese text that isn't translated
+   yet. If a "free" glyph shows up inside Japanese text on screen, remove it
+   from the list (and note it in docs). Don't hand-pick glyphs.
+9. **Don't commit game data.** No disc images, extracted files, RAM dumps or
    screenshots (`.gitignore` covers `extracted/` and `.emu/`). Don't copy long
    stretches of the Japanese script (or the song lyrics stored in
    `NAME_ENT.EXN`) into docs or code. Short identifiers and the strings being
@@ -66,6 +71,9 @@ These are hard-won. Every one of them has broken the game, or would.
       static check and still hung.
 - [ ] Compared against the **unpatched** game at the same point, so you know a
       problem is caused by the patch and not by the emulator or BIOS setup.
+- [ ] For graphics: checked **every state** on screen (each menu item
+      highlighted and unselected). Highlighted versions are often separate art
+      elsewhere in the file.
 - [ ] Played a little past the changed screen, so the next file load is
       exercised too.
 - [ ] New findings written into `docs/`. New translation entries follow
@@ -75,7 +83,8 @@ These are hard-won. Every one of them has broken the game, or would.
 
 | Patch | Status |
 |---|---|
-| `translation/title_menu.json` (GAME START / OPTIONS) | Verified in DuckStation: renders correctly, selecting GAME START proceeds into the opening. The highlighted OPTIONS state and the Options screen itself are **not yet verified**. |
+| `translation/title_menu.json` (GAME START / OPTIONS) | Verified in DuckStation: both items render in English in both the unselected and highlighted states (screenshots of GAME START highlighted and of OPTIONS highlighted). The user has played the patched build past the menu and confirmed that selecting OPTIONS opens the Options page. |
+| `translation/options.json` (Options page: 文字表示速度 → Text Speed) | Verified in DuckStation: renders as "Text Speed" in the pair font inside the highlight bar, other items unaffected. First use of `pairs` encoding. Not yet checked: the in-game system settings screen (separate copy of the string in `SLPM_86.053`, still Japanese), and that no still-Japanese screen uses the 5 glyphs redrawn (88A7, 88A8, 88AA, 88AE, 88B1). |
 | `translation/extra/name_entry.json` (name-entry prompts) | Builds, and its file now passes the in-game checksum (the overlay loads). The prompts haven't been seen on screen yet. Not applied by default. |
 
 Update this table when you verify something.
@@ -85,6 +94,8 @@ Update this table when you verify something.
 - Use `tools/emu/` for testing, never the user's own DuckStation install or
   settings. Never send keystrokes to whatever window has focus; the driver
   posts messages straight to the isolated emulator's window.
+- **Controls are Japanese-style: ○ (Circle) confirms, × (Cross) goes back.**
+  In the harness that's `C` to confirm, `X` to go back.
 - Run `tools/emu/drive.ps1` with **Windows PowerShell 5.1** (`powershell.exe`),
   not pwsh 7. Its `Add-Type` code relies on assemblies that pwsh 7 doesn't load
   by default.

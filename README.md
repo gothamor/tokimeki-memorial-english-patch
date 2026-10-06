@@ -19,8 +19,11 @@ existing output folder.
 
 ## What's translated so far
 
-- **Title menu:** ゲームスタート / オプション → **GAME START / OPTIONS**
-  ([translation/title_menu.json](translation/title_menu.json)).
+- **Title menu:** ゲームスタート / オプション → **GAME START / OPTIONS**, both
+  highlighted and unselected ([translation/title_menu.json](translation/title_menu.json)).
+- **Options page:** 文字表示速度 → **Text Speed**
+  ([translation/options.json](translation/options.json)). This is the first real text
+  translation, using the letter-pair font described below.
 - *Not applied by default:* the name-entry questions
   ([translation/extra/name_entry.json](translation/extra/name_entry.json)).
   Add them with `-t translation/title_menu.json -t translation/extra/name_entry.json`.
@@ -38,11 +41,12 @@ existing output folder.
 
 | Path | Purpose |
 |---|---|
-| `tokipatch/` | The patcher (stdlib only): sector I/O + EDC/ECC (`cd.py`), ISO 9660 (`iso9660.py`), text encoder (`text.py`), indexed PNG (`png.py`), patch engine + checksum fix (`patcher.py`) |
+| `tokipatch/` | The patcher (stdlib only): sector I/O + EDC/ECC (`cd.py`), ISO 9660 (`iso9660.py`), game font + letter-pair encoder (`font.py`, `pairfont.py`), full-width encoder (`text.py`), indexed PNG (`png.py`), patch engine + checksum fix (`patcher.py`) |
 | `translation/*.json` | The translation: `strings` and `images` entries |
 | `translation/graphics/` | Replacement graphics (indexed PNGs using the game's palettes) |
-| `tools/` | Developer tools: disc extraction, text search, MIPS disassembly, graphics generation |
-| `tools/emu/` | Emulator test harness (isolated DuckStation, input driver, GDB client, load tracer) |
+| `translation/font/free_glyphs.txt` | Font glyphs the game never uses, available for English letter pairs |
+| `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation |
+| `tools/emu/` | Emulator test harness: isolated DuckStation, input driver with screen detection, GDB client, file-load tracer, read-watchpoint logger |
 
 ## Key findings in brief
 
@@ -53,6 +57,10 @@ existing output folder.
   loading and silently retries forever on a mismatch. That was the white-screen
   hang. The patcher now recomputes it for every file it changes.
 - Overlays are loaded by hard-coded LBA, so files can't move or grow yet.
+- **The game can't draw ASCII.** Its own 12×12 font (in `SLPM_86.053`) only
+  covers 2-byte Shift-JIS codes. English is drawn with *letter-pair glyphs*:
+  kanji the game never uses are redrawn with two narrow letters each, giving
+  1 byte and 6 px per letter with no code changes.
 - Menu graphics are raw 8bpp bitmaps with separate CLUTs (e.g. `FUKUTEST/TITLE.NBN`).
 
 ## Prior work
