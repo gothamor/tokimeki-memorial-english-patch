@@ -1,0 +1,36 @@
+{
+  "description": "Shiori's special events in SERIFU/EVENT_FU.BIN (load address 0x80198000, game-internals 6e/6j). Pilot: scene 2, the early-morning walk to school (event-table entry 7, master list 0x6F4). Box order: 0x62C (player thought), 0x2AA8 + 0x64C (Shiori; the two strings share one 3-line box), 0x668 (player), 0x6A8 (player thought). 178 of 188 pooled bytes used. Trigger: needs Shiori affection >= 61 and a second score >= 50, then about a 1% roll, once per game, so testing forces it with tools/emu/force_event.py (docs/testing.md, 'Forcing a girl event'). Other EVENT_FU scenes are not translated yet.",
+  "dialogue": [
+    {
+      "file": "CDROM/SERIFU/EVENT_FU.BIN",
+      "base": "0x80198000",
+      "lines": [
+        {
+          "offset": "0x62c",
+          "original": "たまには\n早起きもいいなぁ。",
+          "text": "Up early for once.\nIt's nice.)"
+        },
+        {
+          "offset": "0x2aa8",
+          "original": "あっ、{P}",
+          "text": "Oh, {P}!"
+        },
+        {
+          "offset": "0x64c",
+          "original": "おはよう。\n早いね、今日は。",
+          "text": "Morning!\nYou're up early."
+        },
+        {
+          "offset": "0x668",
+          "original": "おはよう、詩織。\nたまには、\n早起きの日もあるよ。",
+          "text": "Morning, Shiori.\nEven I'm up early\nsometimes."
+        },
+        {
+          "offset": "0x6a8",
+          "original": "今日は楽しく登校できた。\n早起きは三文の得とは、\nよく言ったもんだぜ。",
+          "text": "Fun walk to school today.\nEarly bird gets the worm.\nHow true.)"
+        }
+      ]
+    }
+  ]
+}

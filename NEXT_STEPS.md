@@ -263,10 +263,18 @@ event"). The unpatched scene was replayed twice from
 the week continues. `EVENT_FU.BIN` → `0x80198000` is confirmed at runtime.
 Reference screenshots are `.emu/shots/f_*.png` (not committed).
 
-Next action: Step 4, translate the five strings into
-`translation/extra/shiori_events.json` (188-byte pool for all five strings), then Step 5/6: build
-with all default JSONs plus the draft, boot it, load the 95/4/23 card save,
-force the scene and compare with the unpatched shots.
+**Step 4 done (2026-10-07):** `translation/extra/shiori_events.json`
+translates all five strings, 178 of 188 pooled bytes, all lines within 28
+cells; the shared Shiori box stays 3 lines ("Oh, {P}!" / "Morning!" /
+"You're up early."). An in-memory plan of the 15 default files plus the
+draft succeeds (EVENT_FU.BIN size unchanged, checksum updated). Not built or
+seen on screen yet.
+
+Next action: Step 5/6. Build with all default JSONs plus the draft into a
+fresh `.emu/` folder, check sectors/EDC/ECC, boot it, load the 95/4/23 card
+save, force the scene (testing.md recipe) and compare with the unpatched
+shots `.emu/shots/f_*.png`. Check the `{P}` line width and the speaker label
+"Shiori" at the box edge.
 
 ## Before you start
 
