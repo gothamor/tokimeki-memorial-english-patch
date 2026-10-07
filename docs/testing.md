@@ -507,6 +507,90 @@ whether it was seen) and variant 5's natural selection by standing. After
 promotion the normal build `.emu/default_dates/` is byte-identical to the
 candidate.
 
+**Batch 1 (shared sections 22, 23, 24, 26).** Candidate in
+`.emu/review_dates/` (all default files plus the draft): only six DATE_FU
+sectors in LBA 44329–44351 differ from the default build. Three forced
+museum dates with `-Break` rules (sheets `b1a`, `b1b`, `b1c`): meeting
+arrival 0 / mood 2 (parts 4–5), arrival 2 / mood 0 (part 9 with its
+thought), the run-away (parts 12–13, the date ends and the week goes on);
+small talk parts 0 and 4; ending parts 15 (anthology thanks, last line
+caught while typing) and 9 (the `‥‥‥‥。` line with an English thought on
+its second line); going home bands 0 (`{P}` inserted) and 3. All English,
+within the box, no stalls, the week continues. The other parts were checked
+only statically (structure, width, packing). After promotion the normal
+build is byte-identical to the candidate.
+
+**Batch 2 (section 7, neighborhood park; section 25, hobby notes).** Only
+DATE_FU sectors differ from the default build. One forced place-0 date
+(`date_run.ps1 -Place 0` with `--at 0x80132570 --reg v0=0 --mem8
+0x8015B654=1` for a fixed 3-box meeting and `--at 0x8013A8B0 --reg v0=3`
+for park part 4), then `date_choices.ps1 -Options 2` (sheets `b2a`, `b2`,
+`b2_nar`, `b2e`): meeting part 6, her part-4 remark, the narration, the
+action choice, both options each followed by the centered pause and a note
+(part 0 "listening to music", part 1 "watching sports"), ending part 6 and
+going home band 1–2; the week continues. Parts 0 and 2 and the other notes
+were checked only statically. Normal build byte-identical to the candidate.
+
+**Batch 3 (section 21, Kirameki Park; section 14, Shopping).** Only DATE_FU
+sectors differ. In April a Kirameki Park date plays Shiori's spring park
+event (EVENT_FU scene 4) right after the walk starts, in place of the
+version's remark and choice; setting its one-shot flag in the meeting rule
+(`--mem8 0x800E67EF=1`) skips it. Seen (sheets `b3k`, `b3kc`, `b3s`): the
+pond version (`-Version 1`) going in, remark, all three options and
+replies; a Shopping date choosing clothes, then "can I go look?", the
+pause, the waiting choice (three options listed, one taken) and its reply,
+ending and going home. Not seen: Kirameki Park versions 0 and 2 on this
+build, Shopping's other first choices and its carrying, cute-item, necklace
+and junk-shop branches (static checks only). Normal build byte-identical to
+the candidate.
+
+**Batch 4 (sections 1, 6, 10, 12, 13, 15, 16, 19: the two-version
+places).** Only DATE_FU sectors differ. With the on-time meeting rule:
+Bowling version 0 and Beach version 1 driven through to the end (one option
+each; sheets `b4bo`, `b4be`), and Karaoke version 1 with all three
+requests and replies (`b4kc`). Pool, Botanical Garden, Skating Rink, Ski
+Resort and Library, and the other version of each place, were checked only
+statically. Normal build byte-identical to the candidate.
+
+**Batch 5 (sections 3 Zoo, 18 Aquarium, 11 Planetarium, 5 Arcade, 17
+Stadium).** Only DATE_FU sectors differ. Forced with the on-time meeting
+rule and driven through one option each: Zoo version 2 (koala), Aquarium
+1 (sharks), Planetarium 1 (which picked the Cygnus choice, part 12),
+Stadium 3 (wrestling), Arcade versions 0 and 1 (sheets `b5zs`, `b5ap`,
+`b5arc`, `b5ar1`). On the Arcade, `date_choices.ps1` was started too early
+(on the remark), so its two runs saw the version-0 choice list in two
+shuffles and two different replies. The Arcade's version picks the part
+directly (version 0 → part 2, 1 → part 4); the video/medal action choice
+(part 1) did not come up in either and is checked only statically, like
+the other versions of every place in this batch. Normal build
+byte-identical to the candidate.
+
+**Batch 6 (sections 2 Concert Hall, 8 Cinema, 4 Shrine).** Only DATE_FU
+sectors differ. Forced with the on-time meeting rule (sheets `b6cc`,
+`b6coe`, `b6shc`): the Cinema up to its `07` announcement (full-width 「
+and indent kept, renders in place); the Concert Hall's seat exchange,
+choice and the part-3 reply, then the ending; the Shrine's remark and
+yukata action choice with both options (praise → compliment and thanks;
+say nothing → both skipped, straight to the goldfish offer). The goldfish
+minigame then needs real input (its instruction banner is a graphic) and
+was not played, so the reactions after the minigames (parts 7–11), the
+shooting gallery and the fireworks choice, and the Cinema's choice and
+replies, were checked only statically. The film and concert description
+thoughts shown in these dates come from another file and are still
+Japanese. Normal build byte-identical to the candidate.
+
+**Batch 7 (section 20 Theme Park, section 9 parade).** Only DATE_FU sectors
+differ. A forced Theme Park date (on-time meeting rule) went to "where to
+next?", the Ghost House and the ending (sheets `b7a`); then a state saved
+on that choice (`.emu/savestates_backup/b7w_choice.sav`) was replayed for
+each ride (`b7w`): Ferris wheel, Ghost House and roller coaster, each with
+its going-in line, remark, choice list and the reply to the first-listed
+option. The hero show (parts 1–8), the later ride rounds (parts 25–56),
+the Virtual Ship and the parade did not come up and were checked only
+statically. Careful: pressing on past the end of a date runs the next
+week's commands (here a library event) in RAM; nothing was saved. The
+normal build (all of DATE_FU) is byte-identical to the candidate.
+
 ### Disassembly
 
 ```bash

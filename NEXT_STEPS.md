@@ -1,7 +1,7 @@
 # Next steps — translate Shiori's regular dates (`SERIFU/DATE_FU.BIN`)
 
-The only active task. Keep this file's status current as batches land;
-put technical findings in `docs/`, not here. Earlier plans (main loop,
+Finished 2026-10-08 (see Status); kept as the record of how it was done.
+Technical findings are in `docs/`, not here. Earlier plans (main loop,
 EVENT_FU, settings) are finished or parked; see git history
 (`b167460` and before) if you need them.
 
@@ -9,8 +9,9 @@ EVENT_FU, settings) are finished or parked; see git history
 
 Translate every string of `DATE_FU.BIN` into
 `translation/shiori_dates.json`: **476 strings in 27 sections**, ~26,700
-pooled bytes. Done so far: section 0, the Art Museum (30 strings, verified,
-in normal builds). Remaining: **446 strings in 26 sections.**
+pooled bytes. **Finished 2026-10-08:** all 27 sections are translated
+(471 strings; the five pure-punctuation pause lines stay Japanese) and in normal builds;
+each batch had its spot check (see the Status table and testing.md).
 
 Everything needed is mapped (game-internals §6k): which section belongs to
 which place, how each picks its part, choices and replies, the `{n}` empty
@@ -53,7 +54,7 @@ committed dumps).
 |---|---|---:|---:|---|
 | 1 | 23 meeting, 22 ending, 26 going home, 24 seasonal small talk | 85 | 3,048 | Shown in every date, so every later test exercises them. Many repeats (61 unique). Short strings: space is easy. Force with `-Break` rules (testing.md). |
 | 2 | 7 neighborhood park (place 0), 25 hobby notes | 25 | 1,348 | Park = `force_date.py 0 0 ...`; first unlabelled narration (`07`), action choice (`08`), notes (`04`). Keep the "・・・" pause lines in Japanese punctuation. |
-| 3 | 21 Kirameki Park, 14 Shopping | 48 | 2,880 | Common early dates. Shopping is choice-driven (no versions): walk it with `date_choices.ps1`. Park in April also triggers EVENT_FU's spring scene (already English). |
+| 3 | 21 Kirameki Park, 14 Shopping | 48 | 2,880 | Common early dates. In April set `0x800E67EF`=1 to skip the spring event. Shopping is choice-driven (no versions): walk it with `date_choices.ps1`. Park in April also triggers EVENT_FU's spring scene (already English). |
 | 4 | 1 Bowling, 6 Karaoke, 10 Pool, 12 Beach, 13 Botanical, 15 Skating, 16 Ski, 19 Library | 78 | 4,620 | Eight small 2-version places, same shape as the museum. Spot-check 2–3 of them on screen, the rest statically. |
 | 5 | 3 Zoo, 18 Aquarium, 11 Planetarium, 5 Arcade, 17 Stadium | 82 | 5,252 | 3–4 version places; Arcade starts with an `08` choice and has no parts-per-version byte. |
 | 6 | 2 Concert Hall, 8 Cinema, 4 Shrine | 37 | 2,084 | Choice-driven; Cinema has an announcement line (`07`) with its own 「 and indentation; Shrine has the `{n}` yukata pair (keep `{n}{n}` at the option ends). |
@@ -122,8 +123,13 @@ or the review gets awkward.
 | Batch | State |
 |---|---|
 | Museum (section 0) | Done, verified in depth, in normal builds |
-| 1 shared sections | Next |
-| 2–7 | Not started |
+| 1 shared sections (22, 23, 24, 26) | Done, spot-checked, in normal builds |
+| 2 neighborhood park + hobby notes (7, 25) | Done, spot-checked, in normal builds |
+| 3 Kirameki Park + Shopping (21, 14) | Done, spot-checked, in normal builds |
+| 4 eight small 2-version places | Done, spot-checked, in normal builds |
+| 5 Zoo, Aquarium, Planetarium, Arcade, Stadium | Done, spot-checked, in normal builds |
+| 6 Concert Hall, Cinema, Shrine | Done, spot-checked, in normal builds |
+| 7 Theme Park + parade | Done, spot-checked (parade not reached), in normal builds |
 
 ## Done when
 

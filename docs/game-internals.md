@@ -1004,8 +1004,9 @@ cases falling through to a shared default weren't separated).
 
 Found 2026-10-07 by static disassembly of `DATE.EXN` and the EXE, then forced
 museum dates in DuckStation (unpatched and English; testing.md "Testing date
-conversations"). The museum section (section 0) is translated in
-`translation/shiori_dates.json`; the rest of the file is not.
+conversations"). All 27 sections are translated in
+`translation/shiori_dates.json` (2026-10-08; 471 of 476 strings, the five
+pure-punctuation pause lines stay Japanese).
 
 **Section table.** `DATE.EXN` holds three parallel 27-entry tables at
 `0x8015BDC0` (masters), `0x8015BE2C` (byte lists) and `0x8015BE98` (third
@@ -1023,7 +1024,7 @@ each storing one setup function. Place ids are the 1-based outing ids (§6j):
 
 | Section | File range | Strings | Place / use | Setup |
 |---:|---|---:|---|---|
-| 0 | `0x0`–`0x6A8` | 30 | 7 Art Museum (**translated**) | `0x80134C64` |
+| 0 | `0x0`–`0x6A8` | 30 | 7 Art Museum | `0x80134C64` |
 | 1 | `0xB48`–`0xD50` | 10 | 10 Bowling Alley | `0x80135620` |
 | 2 | `0xF44`–`0x1168` | 8 | 15 Concert Hall | `0x80136340` |
 | 3 | `0x1330`–`0x166C` | 15 | 4 Zoo | `0x801344C8` |
@@ -1071,6 +1072,25 @@ section tables (`0x80141004` for Shiori), step 7 `TAKU3.BIN` (LBA 44969) to
 `0x801A4000` (the impression tables at `0x801A427C`/`0x801A4D2C` are in
 it). The parade setup `0x8013BBF0` sits at steps 61, 72 and 74 of the Theme
 Park list, so **section 9 is a Theme Park sub-scene** (not forced yet).
+
+**Kirameki Park in spring.** On 4/30 a Kirameki Park date reaches date step
+13 right after the "let's go" exchange and plays EVENT_FU scene 4 instead
+of the version's remark and choice. Setting its one-shot flag
+`*(u8*)0x800E67EF` = 1 before then lets the section-21 part play (seen with
+the pond version). **Shopping (section 14)** with the clothes option ran:
+part 0 → reply → part 4 ("can I go look?") → pause (part 5) → part 6
+(sorry + waiting choice) → reply → ending; which of the later parts
+(carrying, cute item, necklace, junk shop) follow other first choices
+wasn't traced.
+
+**Arcade and Theme Park, seen 2026-10-08.** The Arcade's version byte picks
+its part directly (version 0 → part 2, the "I don't come here much" choice;
+1 → part 4, which games); the video/medal action choice (part 1) did not
+come up with either. A forced Theme Park date on 4/30 went straight to
+"where to next?" (part 9: roller coaster / Ghost House / Ferris wheel), one
+ride with its remark, choice and reply, then the ending; the hero show
+(parts 1–8) and the parade (section 9) did not come up, and their
+conditions weren't traced.
 
 **Neighborhood park (section 7, place 0).** Seen on screen: Shiori's
 remark, an unlabelled narration line (`07`), a two-option action choice
