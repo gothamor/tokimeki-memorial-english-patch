@@ -1,0 +1,377 @@
+{
+  "description": "Main game loop screen (stat panel, calendar, the player's thought prompt on weekday/holiday command screens, phone and meeting prompts, club commands) and the in-game Save/Load (memory card) screen. Graphics are in FUKUTEST/MAINROM.NBN (regenerate with tools/make_main_screen.py); text is in SLPM_86.053. See docs/game-internals.md §6g.",
+  "images": [
+    {
+      "file": "CDROM/FUKUTEST/MAINROM.NBN",
+      "png": "graphics/main_stat_labels.png",
+      "bpp": 4,
+      "pixels": "0x12000",
+      "stride": 64,
+      "x": 96,
+      "y": 0,
+      "rects": [
+        [
+          0,
+          0,
+          32,
+          120
+        ]
+      ],
+      "original_crc32": "0xf334ee36"
+    },
+    {
+      "file": "CDROM/FUKUTEST/MAINROM.NBN",
+      "png": "graphics/main_calendar.png",
+      "bpp": 4,
+      "pixels": "0x8000",
+      "stride": 64,
+      "x": 0,
+      "y": 0,
+      "rects": [
+        [
+          112,
+          0,
+          16,
+          16
+        ],
+        [
+          0,
+          16,
+          112,
+          16
+        ]
+      ],
+      "original_crc32": "0xdf07fc2c"
+    }
+  ],
+  "bytes": [
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x87228",
+      "original": "0e00",
+      "replacement": "2c00",
+      "comment": "calendar frame 0x3C part 4 (month suffix): cell 14 (月, shared with Monday) -> cell 44 ('/')"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x87236",
+      "original": "2a00",
+      "replacement": "2c00",
+      "comment": "calendar frame 0x3C part 5 (day suffix): cell 42 (日, shared with Sunday) -> cell 44 ('/')"
+    }
+  ],
+  "strings": [
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f76c",
+      "original": "カレンダー",
+      "text": "Calendar"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f778",
+      "original": "今月／来月の予定と実績",
+      "text": "Plans: this/next month"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f790",
+      "original": "データが壊れています",
+      "text": "The data is corrupted."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f7a8",
+      "original": "メモリーカードを認識できません",
+      "text": "No memory card found."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f7c8",
+      "original": "メモリーカードに空きがありません",
+      "text": "The memory card is full."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f7ec",
+      "original": "メモリーカード",
+      "text": "Memory Card"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f7fc",
+      "original": "セーブ",
+      "text": "Save"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f804",
+      "original": "ロード",
+      "text": "Load"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f80c",
+      "original": "セーブまたはロードを選んでください",
+      "text": "Choose Save or Load."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f830",
+      "original": "セーブまたはロードを選んでください",
+      "text": "Choose Save or Load."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f854",
+      "original": "未初期化のメモリーカードです。",
+      "text": "Memory card not formatted."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f874",
+      "original": "初期化していいですか？",
+      "text": "OK to format it?"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f88c",
+      "original": "別のメモリーカードを",
+      "text": "Insert another card"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f8a4",
+      "original": "差し込み口１",
+      "text": "in slot 1"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f8b4",
+      "original": "　　　　　　にセットして、",
+      "text": "          and"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f8ec",
+      "original": "データセーブ",
+      "text": "Save Data"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f8fc",
+      "original": "セーブするファイルを選んで下さい",
+      "text": "Choose a file to save to."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f920",
+      "original": "上書きしてもいいですか？",
+      "text": "OK to overwrite?"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f93c",
+      "original": "データセーブ中です",
+      "text": "Saving..."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f950",
+      "original": "アイコンの点滅が終わるまで",
+      "text": "Don't turn the power off"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f96c",
+      "original": "電源を切らないで下さい",
+      "text": "until the icon stops."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f984",
+      "original": "データロード",
+      "text": "Load Data"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f994",
+      "original": "ロードするファイルを選んで下さい",
+      "text": "Choose a file to load."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f9b8",
+      "original": "データロード中です",
+      "text": "Loading..."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f9cc",
+      "original": "しばらくお待ち下さい",
+      "text": "Please wait."
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x6f9e4",
+      "original": "このデータの続きをプレイしますか？",
+      "text": "Continue from this save?"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70f20",
+      "original": "取り消し",
+      "text": "Cancel"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70f2c",
+      "original": "クラブ活動をする",
+      "text": "Do club activities"
+    },
+    {
+      "file": "SLPM_86.053",
+      "offset": "0x70f40",
+      "original": "クラブをやめる",
+      "text": "Quit the club"
+    }
+  ],
+  "dialogue": [
+    {
+      "file": "SLPM_86.053",
+      "base": "0x80040800",
+      "lines": [
+        {
+          "offset": "0x6f624",
+          "original": "明日からテストだ）",
+          "text": "Exams tomorrow!)"
+        },
+        {
+          "offset": "0x6f638",
+          "original": "明日から、念願の\n全国高校野球大会だ）",
+          "text": "Tomorrow at last:\nKoshien begins!)"
+        },
+        {
+          "offset": "0x6f660",
+          "original": "明日から夏合宿だ）",
+          "text": "Summer camp next!)"
+        },
+        {
+          "offset": "0x6f674",
+          "original": "文化祭に向けて部活をせねば）",
+          "text": "Club work for the festival!)"
+        },
+        {
+          "offset": "0x6f694",
+          "original": "文化祭に向けて部活をせねば\nでも病気で身体が動かない）",
+          "text": "Need club work for the fest,\nbut I'm too sick to move)"
+        },
+        {
+          "offset": "0x6f6cc",
+          "original": "明日から修学旅行だ）",
+          "text": "School trip tomorrow!)"
+        },
+        {
+          "offset": "0x6f6e4",
+          "original": "一週間強制補習を\nしなければならない）",
+          "text": "A week of forced\nmake-up classes...)"
+        },
+        {
+          "offset": "0x6f70c",
+          "original": "病気で身体が動かない）",
+          "text": "Too sick to move...)"
+        },
+        {
+          "offset": "0x6f724",
+          "original": "明日から何をしようかな？）",
+          "text": "What'll I do this week?)"
+        },
+        {
+          "offset": "0x6f740",
+          "original": "明日からテストだ）",
+          "text": "Exams tomorrow!)"
+        },
+        {
+          "offset": "0x6f754",
+          "original": "明日から修学旅行だ）",
+          "text": "School trip tomorrow!)"
+        },
+        {
+          "offset": "0x6f8d0",
+          "original": "○ボタンを押してください。",
+          "text": "press the ○ button."
+        },
+        {
+          "offset": "0x70da4",
+          "original": "一週間強制補習を\nしなければならない）",
+          "text": "A week of forced\nmake-up classes...)"
+        },
+        {
+          "offset": "0x70dcc",
+          "original": "病気で身体が動かない）",
+          "text": "Too sick to move...)"
+        },
+        {
+          "offset": "0x70de4",
+          "original": "今日は、",
+          "text": "Date with "
+        },
+        {
+          "offset": "0x70df0",
+          "original": "とデートだ）",
+          "text": " today!)"
+        },
+        {
+          "offset": "0x70e04",
+          "original": "今日は、部活の練習試合だ）",
+          "text": "Club practice match today)"
+        },
+        {
+          "offset": "0x70e20",
+          "original": "今日は、部活の練習試合だ）",
+          "text": "Club practice match today)"
+        },
+        {
+          "offset": "0x70e40",
+          "original": "今日は、部活の練習日だ）",
+          "text": "Club practice today)"
+        },
+        {
+          "offset": "0x70e5c",
+          "original": "今日は、部活の練習日だ）",
+          "text": "Club practice today)"
+        },
+        {
+          "offset": "0x70e78",
+          "original": "今日は何をしようかな？）",
+          "text": "What should I do today?)"
+        },
+        {
+          "offset": "0x70e94",
+          "original": "どこで、\n待ち合わせだったかな？）",
+          "text": "Where did we\nsay we'd meet?)"
+        },
+        {
+          "offset": "0x70ecc",
+          "original": "それじゃ、\n",
+          "text": "Well then,\n"
+        },
+        {
+          "offset": "0x70ed8",
+          "original": "で、\n",
+          "text": " it is\n"
+        },
+        {
+          "offset": "0x70ee0",
+          "original": "を待つか。）",
+          "text": " will come.)"
+        },
+        {
+          "offset": "0x70ef8",
+          "original": "誰に電話かけようかな？）",
+          "text": "Who should I call?)"
+        }
+      ]
+    }
+  ]
+}

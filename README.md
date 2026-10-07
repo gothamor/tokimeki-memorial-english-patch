@@ -35,6 +35,11 @@ existing output folder.
 - **Prologue dialogue:** the 43-line entrance-ceremony scene after name entry
   ([prologue.json](translation/prologue.json)), the first dialogue in the
   translation. The speaker labels are still Japanese.
+- **Main game loop:** the weekly command screen's stat panel (Health, Art,
+  Looks, Lit., Sport, Guts, Sci., Trivia, Stress), the calendar
+  (`95 / 4 / 23 (Su)`), the player's thought prompts, and the in-game
+  Save/Load messages ([main_screen.json](translation/main_screen.json)).
+  The command icons are pictures; what they open is still Japanese.
 - **Renderer hook:** the game's text renderer draws English two letters per
   character cell, composed on the fly from a narrow font, so any amount of
   English text fits the font ([tokipatch/renderer.py](tokipatch/renderer.py)).
@@ -62,7 +67,7 @@ existing output folder.
 | `translation/*.json` | The translation: `strings`, `dialogue` and `images` entries |
 | `translation/graphics/` | Replacement graphics (indexed PNGs using the game's palettes) |
 | `translation/font/free_glyphs.txt` | Font glyphs the game never uses (research data; no longer used by the patcher) |
-| `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation |
+| `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation (`make_title_menu.py`, `make_main_screen.py`), renderer check |
 | `tools/emu/` | Emulator test harness: isolated DuckStation, input driver with screen detection, GDB client, file-load tracer, read-watchpoint logger |
 
 ## Key findings in brief

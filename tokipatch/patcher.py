@@ -9,11 +9,13 @@ A translation file can contain:
       "fullwidth" (each letter as a full-width Shift-JIS character, 2 bytes
       and 12 px per letter).
 
-  "images":  pixels copied from an 8-bit indexed PNG into an 8bpp bitmap
-      {"file", "png", "pixels", "stride", "x", "y", "rects", "original_crc32"}
+  "images":  pixels copied from an 8-bit indexed PNG into a 4/8bpp bitmap
+      {"file", "png", "pixels", "stride", "x", "y", "rects", "original_crc32", "bpp"?}
       `pixels` is the file offset of the bitmap, `stride` its width in bytes,
       (x, y) where the PNG's top-left lands, and `rects` the [x, y, w, h] areas
-      of the PNG to copy (everything else is left alone).
+      of the PNG to copy (everything else is left alone). `bpp` is 8 (default)
+      or 4 (two pixels per byte, low nibble first). `original_crc32` is the
+      CRC32 of the replaced pixel values, one byte per pixel, row by row.
 
   "bytes":   raw byte replacements, for code/data hacks
       {"file", "offset", "original", "replacement", "comment"}
@@ -68,6 +70,7 @@ class ImagePatch:
     rects: List[List[int]]
     original_crc32: int
     source: str
+    bpp: int = 8
 
 
 @dataclass
@@ -133,7 +136,10 @@ def load_translations(paths: List[Path]):
                 rects=item["rects"],
                 original_crc32=int(item["original_crc32"], 0),
                 source=path.name,
+                bpp=item.get("bpp", 8),
             ))
+            if images[-1].bpp not in (4, 8):
+                raise ValueError(f"{path.name}: images support bpp 4 or 8, not {images[-1].bpp}")
         for item in doc.get("bytes", []):
             original = bytes.fromhex(item["original"])
             replacement = bytes.fromhex(item["replacement"])
@@ -309,32 +315,46 @@ def apply_dialogue(block: DialogueBlock, edit: FileEdit, pairs: font.PairEncoder
     edit.log.append(f"dialogue: {len(jobs)} string(s), {needed} of {total} bytes used")
 
 
-def _rect_offsets(patch: ImagePatch, rect: List[int]):
+def _rect_pixels(patch: ImagePatch, rect: List[int]):
+    """Yield (png row, png column, bitmap byte offset, nibble shift or None)."""
     rx, ry, rw, rh = rect
     for row in range(ry, ry + rh):
-        yield row, patch.pixels + (patch.y + row) * patch.stride + patch.x + rx
+        for col in range(rx, rx + rw):
+            x, y = patch.x + col, patch.y + row
+            if patch.bpp == 8:
+                yield row, col, patch.pixels + y * patch.stride + x, None
+            else:
+                yield row, col, patch.pixels + y * patch.stride + x // 2, 4 * (x & 1)
 
 
 def apply_image(patch: ImagePatch, edit: FileEdit) -> None:
     where = f"{patch.source}: {patch.file} <- {patch.png.name}"
     width, height, pixels = png.read_indexed(patch.png)
     data = edit.data
+    row_pixels = patch.stride * 8 // patch.bpp
 
-    crc = 0
+    original = bytearray()
     for rect in patch.rects:
         rx, ry, rw, rh = rect
-        if rx + rw > width or ry + rh > height or patch.x + rx + rw > patch.stride:
+        if rx + rw > width or ry + rh > height or patch.x + rx + rw > row_pixels:
             raise ValueError(f"{where}: rect {rect} is out of bounds")
-        for _, off in _rect_offsets(patch, rect):
-            crc = zlib.crc32(data[off:off + rw], crc)
+        for _, _, off, shift in _rect_pixels(patch, rect):
+            original.append(data[off] if shift is None else (data[off] >> shift) & 15)
+    crc = zlib.crc32(original)
     if crc != patch.original_crc32:
         raise ValueError(f"{where}: target pixels don't match the expected original "
                          f"(crc32 {crc:#010x}, expected {patch.original_crc32:#010x})")
 
     for rect in patch.rects:
-        rx, _, rw, _ = rect
-        for row, off in _rect_offsets(patch, rect):
-            data[off:off + rw] = pixels[row * width + rx:row * width + rx + rw]
+        for row, col, off, shift in _rect_pixels(patch, rect):
+            value = pixels[row * width + col]
+            if shift is None:
+                data[off] = value
+            elif value > 15:
+                raise ValueError(f"{where}: pixel ({col}, {row}) is index {value}; "
+                                 "a 4bpp image only has indices 0-15")
+            else:
+                data[off] = (data[off] & ~(15 << shift)) | (value << shift)
     edit.log.append(f"{patch.pixels:#07x}: image {patch.png.name}")
 
 

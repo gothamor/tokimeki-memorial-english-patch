@@ -147,6 +147,27 @@ box (screenshot y 700–1000) from each shot into one contact sheet.
 **Keep your hands off the emulator during a scripted run.** Input from the
 user mid-run (they were also playing) made one comparison misleading.
 
+### The main game loop (weekly command screen)
+- **Making an in-game save:** saving is only possible on the **Sunday-night
+  planning screen** ((明日から何をしようかな？) with the night view). The
+  memory-card icon at the bottom right of the command grid is then lit
+  instead of grey; select it → セーブ → slot → ○ to overwrite. (Told by the
+  user; done once.) After that, a boot with that card goes title → GAME START
+  → `C,wait:3000,C` straight to the main screen, about a minute.
+- `.emu/memcard_backup/mainloop_*.mcd` is a card with such a save (album 1,
+  95/4/23). Copy it over the card in `.emu/duckstation/memcards/` to use it;
+  back up whatever is there first.
+- From the planning screen, `C` on the first icon (study) runs a week and
+  lands on the next Sunday, either the holiday screen (今日は…) or, after a
+  day off, the planning screen again.
+- **The command grid's hand is hard to drive.** Short holds (< 250 ms) are
+  often ignored, and a held direction sometimes jumps diagonally to another
+  icon. Take a screenshot after every move. Reaching a specific icon
+  reliably is still unsolved (game-internals §8, question 8).
+- **Graphics live in VRAM from boot.** `MAINROM.NBN` is uploaded once at boot,
+  so a save state shows the art of the build that made it. Test graphics
+  changes with a real boot and the save card.
+
 ### Controls: ○ confirms, × goes back
 This is a Japanese game: **○ (Circle, key `C`) confirms and × (Cross, key `X`)
 cancels/goes back.** Use `C` to select menu items and advance text. Early test
@@ -222,8 +243,11 @@ parallel. Tips:
 python tools/emu/watch_exec.py 900 0x8004443C 0x8004B778
 ```
 
-This sets execution breakpoints and logs every hit (pc, ra, a0, a1) while
-the game keeps running. Drive the game in parallel. It's how the two EXE
+This sets execution breakpoints and logs every hit (pc, ra, a0–a3) while
+the game keeps running. `--stack N` also prints N stack words (arguments 5+),
+`--max N` stops after N hits. `watch_exec.py 80 0x8004435c --stack 6 --max 120`
+during a boot logs every VRAM upload (x, y, w, h, source address): that's how
+`MAINROM.NBN`'s chunk layout was found. Drive the game in parallel. It's how the two EXE
 functions the renderer hook reuses were shown to be unused (game-internals
 §6f): run it on the **unpatched** game and play through as much as you can.
 - The emulator runs noticeably slower while breakpoints are armed (a page

@@ -208,11 +208,14 @@ than full-width did.
 - `rects`: `[x, y, w, h]` areas *of the PNG* that are written. Everything else
   in the PNG is ignored, so it can contain the surrounding original art for
   context.
-- `original_crc32`: CRC32 of the original bytes under all `rects`, row by row,
-  rect by rect. The patcher refuses to run on a mismatch.
+- `original_crc32`: CRC32 of the original pixel values under all `rects`
+  (one byte per pixel), row by row, rect by rect. The patcher refuses to run
+  on a mismatch.
+- `bpp` (optional): 8 (default) or 4. For 4bpp, `stride` is still bytes per
+  row, `x`/`y` are pixels, and two pixels share a byte (low nibble = left
+  pixel). The PNG may only use indices 0–15.
 - `png`: path relative to the JSON file. It must be an **8-bit indexed PNG**
-  whose pixel values are the game's palette indices. Only 8bpp targets are
-  supported for now.
+  whose pixel values are the game's palette indices.
 
 **Editing PNGs:** use an editor that keeps palette indices (Aseprite, GIMP in
 Indexed mode with the embedded palette, Pro Motion). RGB PNGs are rejected.
@@ -225,6 +228,16 @@ from a built-in pixel font, using the original outline and gradient indices,
 and prints each `original_crc32`. Follow that pattern for new menus: export
 the original region with the right CLUT, draw, record the CRC of the replaced
 cells.
+
+**Sprite cells shared by two meanings.** UI sprites are built from frame
+definitions that point at cells of a sheet (game-internals §7, "Sprite
+frames"). One cell can serve two purposes: on the main screen 月 is both the
+month suffix and Monday, and 日 both the day suffix and Sunday. Don't redraw
+such a cell for one meaning. Redraw a cell only one frame uses, and repoint
+the other frame's part with a `bytes` patch on its `cell` field. Example:
+`tools/make_main_screen.py` turns 年 into "/" and `main_screen.json` points
+the 月/日 suffix parts at it, so the weekday cells can become Mo…Su. Search
+the frame table for every use of a cell before changing it.
 
 **Every state of a graphic is separate art.** Menus usually have a highlighted
 and an unselected version, and they may live in different places in the file.

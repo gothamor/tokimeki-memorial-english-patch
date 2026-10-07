@@ -518,17 +518,115 @@ codes on the original path. Run it after changing the hook or the font.
 prompts with the ○/× icons, all name-entry questions, the whole prologue
 (including Rei's line-timed entrance), then the first in-game screen.
 
+### 6g. Main game loop screen (`translation/main_screen.json`)
+
+The weekly command screen: stat panel, vertical calendar, command icons and
+the player's thought line in the message box.
+
+- **What's text:** only the speaker name and the thought line (the live
+  `add_text` list had 3 entries: a hidden 8-glyph one, the name, the
+  13-glyph line). The stat labels, numbers, calendar and icons are sprites
+  (§7, "Sprite frames" and `MAINROM.NBN`). A read watchpoint on the 体調
+  string at `SLPM_86.053` 0x72AD0 never fired while the panel redrew, so the
+  stat-name strings there are used elsewhere (not translated yet).
+- **Thought lines** are EXE strings reached from code (`lui`/`addiu`), so each
+  must fit its own slot. They contain `0x20` line breaks and go through the
+  dialogue renderer. The game draws `（`, so they end with `）` and the English
+  ends with `)`:
+  - **Weekday screen** (Sunday night, "plans for the week"):
+    `SLPM_86.053` 0x6F624–0x6F754 (明日から何をしようかな？） and the variants
+    for exams, the baseball tournament, summer camp, the school festival,
+    the school trip, make-up classes, illness).
+  - **Holiday screen** (Sundays and holidays during the day): 0x70DA4–0x70EF8
+    (今日は何をしようかな？）, date day, club practice, meeting place, phone).
+    Some lines are built from pieces with a name in between, e.g.
+    今日は、 + girl + とデートだ）, and それじゃ、⏎ + place + で、⏎ + girl +
+    を待つか。）. The English keeps each piece's line breaks and reads with
+    the inserted word at the same spot ("Well then," / "<place> it is" /
+    "<girl> will come.)").
+  - 0x6F610 平日コマンド画面 / 0x70D90 休日コマンド画面 look like debug labels
+    and aren't translated.
+- **In-game Save/Load (memory card icon, Sunday night only):** 0x6F76C–0x6F9E4.
+  The slot panel's labels (名前…, あだ名…, 所属部‥, クリア人数‥) are
+  `translation/extra/album_panel_exe.json` (seen on this screen in Japanese;
+  the English isn't checked yet).
+- **Date in RAM:** 0x800E62BE year (95), 0x800E62BF month, 0x800E62C0 day,
+  0x800E62C1 weekday (0 = Monday … 6 = Sunday). Found by diffing RAM dumps
+  of two Sundays. The calendar code at 0x80064CA0– sets the weekday sprite's
+  frame to `0x52 + weekday`, and its colour byte to 0x43 (Saturday) or 0x44
+  (Sunday or a holiday from the table at 0x800E62C4 + day).
+
 ## 7. Graphics
 
 ### General
 - Most graphics are **raw pixel data with separate palettes**, not TIM files.
-- Uploads to VRAM come in 64×128-halfword blocks (16 KiB). 64 halfwords is
-  128 px at 8bpp or 256 px at 4bpp. Palettes are uploaded as 256×1 (256-colour
-  CLUTs).
+- Uploads go through `0x8004435C(x, y, w, h, [sp+0x10] = source)` (x and w
+  in halfwords). `TITLE.NBN` comes in 64×128-halfword blocks (16 KiB: 128 px
+  at 8bpp, 256 px at 4bpp); `MAINROM.NBN` in **32×128-halfword chunks**
+  (8 KiB, 64-byte rows). Palettes are uploaded as 256×1 (256-colour CLUTs).
+  Log the uploads to learn a file's layout (testing.md, "Does this code ever
+  run?", `--stack 6`).
+- **Get the row width right before reading anything into the art.** Rendering
+  64-byte rows as 128-byte rows interleaves two rows: every glyph looks half
+  height and the sheet looks like two copies side by side.
 - To tell 8bpp from 4bpp: render a region as 4bpp. If shapes show vertical
   1-pixel striping, it's really 8bpp.
 - `BS/*.BS` and `*.STR` are MDEC-compressed stills and movies (different tooling,
   not yet handled).
+
+### Sprite frames (`SLPM_86.053`)
+
+Most UI sprites (the main-screen stat panel, calendar, ...) aren't drawn
+from coordinates in code. Sprite objects (e.g. at 0x8011F2xx) hold a **frame
+number**, and the renderer (`0x80047804`–) looks the frame up in a pointer
+table at **`0x800C975C`** (190 entries, static data in the EXE, file offset
+= address − 0x80040800). Found with a read watchpoint on an object's frame
+field while the screen was showing.
+
+Frame data: `s16 part count, x offset, y offset, 0`, then one 14-byte part
+each: `s16 x, y, cell, attr, 0, w, h`. `cell` counts 8×8 tiles in a 128 px
+wide strip: tile `c` is at x = (c % 16)·8, y = (c / 16)·8. For the main-screen
+sheet the strip is `MAINROM.NBN` chunk 4 (rows 0–127) followed by chunk 9
+(rows 128–255). `attr` selects texture page/CLUT (0x3100 for the calendar
+characters and labels, 0x3080/0x308D/0x30Fx for frame art); not decoded
+further.
+
+Changing a part's `cell` is a 2-byte patch (`translation/main_screen.json`),
+which is how cells shared by two meanings get separated.
+
+| Frame | What |
+|---|---|
+| `0x3C` | vertical calendar: parts 3/4/5 = 年/月/日 suffixes (cells 44/14/42), part 6 = the `( )` around the weekday (cell 98), plus borders |
+| `0x3D` | stat panel: parts 25/26/27 = the three 32×40 label columns (cells 268/348/428), parts 14–24 the dashes (cell 100) and borders |
+| `0x44`–`0x4D` | digits 0–9 (8×16) |
+| `0x52`–`0x58` | weekday Monday…Sunday (cells 14, 32, 34, 36, 38, 40, 42). Monday **shares** the 月 cell and Sunday the 日 cell with the calendar suffixes |
+
+### `FUKUTEST/MAINROM.NBN` (108,544 bytes, no checksum trailer)
+
+Main-screen and command-screen art: command icons, stat panel, calendar
+characters, girl-info labels, town-news banners. Loaded at boot to
+0x80180000 (53 sectors, before the title) and uploaded once, so a change
+needs a reboot to show (a save state keeps the old VRAM). 4bpp, 13 chunks of
+8 KiB = 128×128 px, **64 bytes per row**. Uploads (file offset → VRAM
+halfword x, y): 0x00000 → (0x380,0x180), 0x04000 → (0x380,0x100),
+0x06000 → (0x2C0,0x100), 0x08000 → (0x300,0x180), 0x0A000 → (0x3C0,0x180),
+0x0C000 → (0x3E0,0x180), 0x0E000 → (0x340,0x100), 0x10000 → (0x2C0,0x180),
+0x12000 → (0x340,0x180), 0x16000 → (0x3C0,0x100), 0x18000 → (0x300,0x100).
+
+- **Chunk 4 (0x8000):** row 0: digits 0–9 (8 px each), ● × ▲ ?, 月 (x112);
+  row 16: 火 水 木 金 土 日 年 (16 px cells, x 0–96); row 48: the `( )`
+  weekday bracket cell (x16) and the stat dash (x32). Glyph fill index 9,
+  drop shadow index 10 at (+1,+1).
+- **Chunk 9 (0x12000):** x 96–127, rows 0–119: the stat labels, one 40-row
+  block per panel column (体調 芸術 容姿 / 文系 運動 根性 / 理系 雑学 ストレス),
+  a label every 14 rows. The dash sprite starts ~27 px into the label, so
+  that's the usable width. x < 96: panel frame art.
+- Chunk 0 is the command icons, chunk 1 girl-info labels (星座, B.W.H, 電話,
+  血液型), chunks 2 and 7 town-news banners, chunk 11 date-spot art. Not
+  translated yet.
+
+`CALROM.NBN` (loaded at 0x801A0000 on the main screen) holds the Calendar
+command's month pages, which are already in English (MON TUE …).
 
 ### `FUKUTEST/TITLE.NBN` (438,272 bytes, checksum trailer)
 - Holds the title logo, copyright line, the GAME START/OPTIONS menu cells,
@@ -583,3 +681,10 @@ prompts with the ○/× icons, all name-entry questions, the whole prologue
    functions. Anything bigger (a variable-width font, relocation helpers)
    needs more: the dead-code scan in §6f lists further candidates, each to be
    checked the same way before use.
+8. **The rest of the main loop** (§6g): what each command icon opens (study
+   choices, outing places at 0x72B40–, club commands, phone list, the
+   stat-result messages after a week), where the stat-name strings at
+   0x72AD0 are used, and the `MAINROM.NBN` art not translated yet (girl-info
+   labels, town-news banners, date-spot art). The command grid's hand
+   doesn't respond predictably to the test driver's key holds (testing.md),
+   so reaching each command needs a better input method first.
