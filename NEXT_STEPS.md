@@ -302,20 +302,29 @@ work in English (the reply picker copies the string, options are shown
 shuffled in `『』`). Patcher: `share_identical` and a longest-first packing
 fallback (both tested; existing builds byte-identical). Section 0 (Art
 Museum, 30 strings) is translated, verified on screen and promoted in
-`translation/shiori_dates.json`. Remaining DATE_FU work, in order:
-1. Sections 23 (meeting, 35) and 22 (ending, 36) and 26 (going home, 4):
-   seen in every date, so test them alongside any place. Their variants
-   (late/on time, her verdict) need standing/affection pokes.
+`translation/shiori_dates.json`.
+
+**DATE_FU preparation done (2026-10-07).** `force_date.py --version N`
+forces any of the 15 versioned places (checked on places 7, 1, 13);
+`tools/date_sections.py` prints the per-section checklist and addresses;
+`tools/dialogue_budget.py` shows per-string space; the test scripts live in
+`tools/emu/` (`launch_state.ps1`, `date_run.ps1`, `date_choices.ps1`,
+`break_set.py`, `contact_sheet.py`). The part selection of the meeting,
+small talk, ending and going-home sections is decoded and was forced on
+screen (game-internals §6k; recipes in testing.md "Testing date
+conversations"). Remaining DATE_FU work, in order:
+1. Translate sections 23 (meeting, 35), 22 (ending, 36), 26 (going home, 4)
+   and 24 (small talk, 10): forceable now, seen in every date.
 2. `SERIFU/SERIFU.BIN` impression thoughts (`0x94C`–, base `0x80197000`):
    shared by every girl's dates; small. A separate feature JSON.
-3. The other 19 places, a few per batch. Each place's setup is in the §6k
-   table; force with `force_date.py 0 PLACE 4 30` plus `--set-at SETUP_PC
-   0x800CA2FC N` once that place's variant logic is read (the museum's is at
-   `0x80134F74`; other places have their own selection code before their
-   own `multu` by 3).
-4. Section 4 (shrine festival) needs `script.decode` support for the `n`
-   empty-option byte first (two strings); sections 7, 9, 24, 25 need their
-   triggers traced.
+3. The other 19 places, a few per batch (`date_sections.py` gives each
+   one's version count and forcing). The five choice-driven places
+   (Shopping, Theme Park, Cinema, Concert Hall, Shrine) need their branch
+   trees walked with `date_choices.ps1` instead of `--version`.
+4. Still open: `script.decode` support for the `n` empty-option byte (two
+   section 4 strings; check them in the unpatched festival first); the
+   triggers of sections 7 (hobby talk, which also gates section 25's notes)
+   and 9 (parade); what picks the museum's variant-5 line; DATE2.EXN's role.
 Space: replies must each fit a gap near their own size (translation-guide,
 "The pool is in pieces").
 

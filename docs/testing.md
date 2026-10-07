@@ -448,6 +448,46 @@ Recipe used for the museum pilot:
 `watch_reads.py` on DATE_FU's master entries is swamped by an unrelated
 reader (`pc 0x80082B3C`) before the file loads; prefer static tracing.
 
+**Tools (2026-10-07).** All run from the repo root with `powershell.exe`
+(5.1) and the isolated emulator; they change RAM only.
+- `tools/emu/launch_state.ps1 -State X.sav [-Build review_dates|orig]`:
+  restart the emulator (visible) from a state.
+- `tools/emu/date_run.ps1 -Place P [-Version N] [-Presses K] [-Prefix name]
+  [-Break "rules"]`: launch the Sunday state, force a 4/30 date at place P
+  (and version N), drive into it and screenshot K boxes; contact sheet in
+  `.emu/shots/<prefix>_sheet.png`, forcer log in `.emu/date_run.log` (the
+  forcer runs detached so late rules still fire).
+- `tools/emu/date_choices.ps1 -Prefix name [-Pre keys]`: from just before a
+  choice, save a state there and try every option (sheet
+  `<prefix>_choices.png`, state `.emu/savestates_backup/<prefix>_choice.sav`).
+- `tools/emu/break_set.py --at PC [--times N] [--reg R=V] [--mem8 A=V]
+  [--mem16 A=V] [--sp16 OFF=V] [--pc NEWPC] ...`: breakpoint rules, also
+  accepted by `force_date.py` after `--`. Rules used (game-internals §6k):
+  meeting `--at 0x80132570 --reg v0=RANK --mem8 0x8015B654=ARRIVAL`
+  (RANK 0/2/3 → mood 0/1/2), run-away meeting `--at 0x80132570 --mem16
+  0x800E6396=10`, small talk `--at 0x8013B0D4 --mem16 0x8015BF0C=N --pc
+  0x8013B0E4`, ending `--at 0x8013B6F8 --times 0 --sp16 0x3a=N` (the value
+  is recomputed every frame, so rewrite it at every hit), going home
+  `--at 0x8013B810 --mem16 0x8015BF14=BAND`.
+- `tools/emu/contact_sheet.py OUT NAME...`: stack screenshots' text boxes.
+- `tools/date_sections.py`: the section/place checklist and forcing
+  addresses; `tools/dialogue_budget.py FILE.json [--all] [--range A B]`:
+  per-string space (own slot, gap, English) and a dry-run pack.
+
+Example, every shared selector in one unpatched-section date (checked on
+screen: meeting part 4–5, small talk part 0, ending part 9, going home
+band 1):
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools\emu\date_run.ps1 -Place 7 -Version 0 -Presses 20 -Prefix sh2 -Break "--at 0x80132570 --reg v0=3 --mem8 0x8015B654=0 --at 0x8013B0D4 --mem16 0x8015BF0C=0 --pc 0x8013B0E4 --at 0x8013B6F8 --times 0 --sp16 0x3a=9 --at 0x8013B810 --mem16 0x8015BF14=1"
+```
+
+`--version` was also checked on Kirameki Park (version 2: the cherry-blossom
+lines; afterwards Shiori's spring park event from EVENT_FU starts by itself
+on 4/30) and the Stadium (version 3: wrestling). A forcer left waiting on a
+rule keeps the GDB connection; `launch_state.ps1` restarting the emulator
+ends it.
+
 **Museum pilot results.** Unpatched reference `mu_*` (exhibition 0, the top
 option chosen). Candidate `.emu/review_dates/` (16 default files plus the
 draft): only DATE_FU's first and last sectors (LBA 44329, 44351) differ from

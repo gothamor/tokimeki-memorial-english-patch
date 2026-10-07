@@ -211,7 +211,16 @@ every pointer to a moved string is rewritten (game-internals §6e). Example:
   exact layout). If it still fails with plenty of bytes free, the longest
   strings are too long for any gap: keep each long reply near its own
   original size. (The museum pilot failed at 1322 of 1624 bytes until two
-  122/124-byte replies were cut below the largest gap.)
+  122/124-byte replies were cut below the largest gap.) Check while
+  translating with `python tools/dialogue_budget.py FILE.json`: it lists
+  each string's own slot, its gap and the English bytes, flags strings that
+  can't fit (`OVER-GAP`) or must borrow (`over-slot`), and runs the real
+  packing. On a dump, `--all --range START END` shows a section's budgets
+  before anything is written. In `DATE_FU.BIN` 57 strings over 100 bytes
+  sit alone in their gap, so those replies get roughly their own size.
+- **Plan a `DATE_FU` batch with `python tools/date_sections.py`**: section
+  ranges, parts, choices/replies and how to force each version (§6k of
+  game-internals; testing.md "Testing date conversations").
 
 **`"share_identical": true`** (per `dialogue` block): strings whose English
 encodes to the same bytes are stored once and all their pointers point at

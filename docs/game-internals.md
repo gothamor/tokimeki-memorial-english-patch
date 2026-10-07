@@ -1051,10 +1051,55 @@ each storing one setup function. Place ids are the 1-based outing ids (§6j):
 | 25 | `0x461C`–`0x4900` | 13 | "found out that her hobby is ..." notes (code `04`) | `0x8013B884` |
 | 26 | `0x5CCC`–`0x5D3C` | 4 | "let's go home, {P}" | `0x8013B7B0` |
 
-(Setup addresses for 22–26 and 7 are the functions around the table loads;
-only the place switch and section 0 are confirmed by running them.) A
-date runs 23 → the place's section → 22 → 26, with an impression thought
-after each choice (below).
+(Setup addresses for 7, 9 and 25 are the functions around the table loads.
+The place switch, sections 0, 21 and 17, and the part selection of 22, 23,
+24 and 26 below were confirmed by forcing them.) A date runs 23 → 24 (on
+certain days) → the place's section → 22 → 26, with an impression thought
+after each choice (below). `tools/date_sections.py` prints this table with
+part/choice counts and each place's forcing address.
+
+**Versions of a place.** Fifteen places pick a version byte `0x800CA2FC` in
+their setup and the parts-per-version byte `0x8015B658`; `0x801324DC` then
+adds version × parts-per-version to the part index `*(s16*)0x800CA148`. The
+first read of `0x800CA2FC` in each setup is where `force_date.py --version N`
+writes it (`date_sections.py` lists the addresses; checked for places 7, 1
+and 13). Shopping, Theme Park, Cinema, Concert Hall and Shrine have no
+version byte: they branch on choices.
+
+**Shared sections: which part plays** (found statically, then forced on
+screen with `tools/emu/break_set.py` rules; mood = `(r ≥ 2) + (r ≥ 3)` and
+band = `(r ≥ 2) + (r ≥ 3) + (r ≥ 4)` for `r = 0x80051A68(girl) & 0x7F`,
+lower is better):
+- **23 meeting.** At date start `0x801447C4` sets the arrival byte
+  `*(u8*)0x8015B654` = 1 (both on time), or 0 (she's late) when
+  `*(u32*)0x800E7378 & 3 == 0` and the girl isn't 2; the flow at
+  `0x8013F214` sets 2 (the player is late) when the meeting place doesn't
+  match (`0x800E69A4`/`69A5`; not traced further). `0x80132564` computes the
+  part into `*(s16*)0x8015BF04`: arrival 0 → 2·mood (player waits) then +1
+  (her apology); arrival 1 → 6 + mood; arrival 2 → 9 + mood. If the s16 at
+  `0x800E6396` (probably the player's Looks) is below 30 (35 for girl 7),
+  `0x8013F544` uses part 12 (silence) then 13 (she runs off, the player goes
+  home) and the date ends. Forced: arrival 2 / mood 1 → part 10, arrival 0 /
+  mood 2 → parts 4–5, `0x800E6396` = 10 → parts 12–13.
+- **24 small talk.** `0x8013AF1C`, at the date's first step, by calendar
+  day only: part 0 on 3/21 (3/20 in 96), part 1 on 7/23 (95), 7/28 (96) or
+  7/27 (97), part 2 or 3 at random on 9/23 (9/22 in 96), part 4 on 12/23;
+  other days have none (`0x8013B0D4`). Forced part 0 by jumping from
+  `0x8013B0D4` to `0x8013B0E4` with `0x8015BF0C` = 0.
+- **22 ending.** `0x8013B488`: part = 3·band + the date's result (s16 at
+  `0x800CA234 + 2·*(u32*)0x80122CDC`, 0–2, from the choices) via
+  `0x800CA158`; special cases set 10 (`0x800E69DC` ≠ 0), 11 (a repeat of the
+  last place), 18/19 (girl 6). The value lives at `sp+0x3A` and is
+  recomputed every frame up to `0x8013B6F8`. Parts 12–17 (thanks for the
+  anthology the player gave her) come from `0x80140C84`: 12 + mood + 3 if
+  year ≥ 96. Forced part 9 (rewriting `sp+0x3A` at every hit).
+- **26 going home.** `0x8013B7B0`: part = band (0–3) in `0x8015BF14`.
+  Forced band 3 and band 1.
+- **25 hobby notes.** Shown after section 7's choice: part = the choice
+  (`*(u32*)0x80122CDC` → `0x8015BF1C`), line = `rand % count` in
+  `0x8015BF20` (`0x8013AA4C`–); part 4 (she likes a boy) needs the best
+  rank and bit 5 of the girl's byte at `+0x1C8`. Not forced: section 7's
+  trigger is unknown.
 
 **Code bytes** (per string, as in EVENT_FU): `00` player (『), `01` Shiori
 (「), `02` Shiori's reply to the last choice, `03` player choice (a spoken
