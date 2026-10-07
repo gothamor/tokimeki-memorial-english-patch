@@ -215,6 +215,33 @@ class RepackAfterPointerTable(unittest.TestCase):
                                    Edit(data), font.PairEncoder())
 
 
+class EmptyOptionMarker(unittest.TestCase):
+    """'n' runs ending an option (DATE_* yukata lines) decode as {n}."""
+
+    def test_round_trip(self):
+        for raw in (b"\x82\xa0\x20\x82\xa2nn", b"\x82\xa0\x82\xa2qnn"):
+            text = script.decode(raw)
+            self.assertIn("{n}{n}", text)
+            self.assertEqual(script.encode_original(text), raw)
+
+    def test_only_at_the_end_of_an_option(self):
+        for raw in (b"\x82\xa0n\x82\xa0", b"nn\x82\xa0", b"\x82\xa0nnq\x82\xa0n\x82\xa0"):
+            with self.assertRaises(ValueError):
+                script.decode(raw)
+
+    def test_structure_keeps_the_run_at_the_end(self):
+        original = "あいう\nえお{n}{n}"
+        self.assertEqual(script.structure("Hi\nthere.{n}{n}"), script.structure(original))
+        self.assertNotEqual(script.structure("Hi\n{n}{n}there."), script.structure(original))
+        self.assertNotEqual(script.structure("Hi\nthere.{n}"), script.structure(original))
+        self.assertEqual(script.structure("Thanks.{q}{n}{n}"), script.structure("あ{q}{n}{n}"))
+
+    def test_english_keeps_the_bytes(self):
+        new, widths = script.encode_english("Thanks.{q}{n}{n}", font.PairEncoder())
+        self.assertTrue(new.endswith(b"qnn"))
+        self.assertEqual(widths[-1], 0)
+
+
 class PackFallback(unittest.TestCase):
     """Gaps split by pointer lists: first fit can strand a long string."""
 

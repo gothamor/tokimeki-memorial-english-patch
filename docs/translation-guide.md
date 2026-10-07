@@ -237,6 +237,11 @@ order. Give every **option** an even number of letters, or the pair padding
 shows as a space before the game's `』` ("lovely? 』"). Replies don't need
 that.
 
+**Empty options (`{n}`).** In the `DATE_*` yukata exchange a line ends in
+`{n}{n}` and a reply's second option is just `{n}{n}`: the game skips an
+option starting with `n`. Keep each `{n}` run exactly where it is (the
+patcher's structure check enforces it); write the English before it.
+
 **Style notes (from the prologue):**
 - The box shows 3 lines at a time; 4–5 line strings scroll, which is fine.
 - The game draws the speaker label and the opening bracket (`「`, `『`, or `（`

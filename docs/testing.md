@@ -468,7 +468,9 @@ reader (`pc 0x80082B3C`) before the file loads; prefer static tracing.
   0x800E6396=10`, small talk `--at 0x8013B0D4 --mem16 0x8015BF0C=N --pc
   0x8013B0E4`, ending `--at 0x8013B6F8 --times 0 --sp16 0x3a=N` (the value
   is recomputed every frame, so rewrite it at every hit), going home
-  `--at 0x8013B810 --mem16 0x8015BF14=BAND`.
+  `--at 0x8013B810 --mem16 0x8015BF14=BAND`, park (place 0) talk
+  `--at 0x8013A8B0 --reg v0=RANK`, museum "seen before" line
+  `--at 0x801392F0 --reg v0=RANK` (with `--version 5`).
 - `tools/emu/contact_sheet.py OUT NAME...`: stack screenshots' text boxes.
 - `tools/date_sections.py`: the section/place checklist and forcing
   addresses; `tools/dialogue_budget.py FILE.json [--all] [--range A B]`:
@@ -484,7 +486,10 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools\emu\date_run.ps1 -
 
 `--version` was also checked on Kirameki Park (version 2: the cherry-blossom
 lines; afterwards Shiori's spring park event from EVENT_FU starts by itself
-on 4/30) and the Stadium (version 3: wrestling). A forcer left waiting on a
+on 4/30) and the Stadium (version 3: wrestling). Also seen: a place-0
+(neighborhood park) date with its hobby choice and note, the Shrine's yukata
+choice with both options (the `{n}` empty option), and museum version 5
+with `v0 = 0` at `0x801392F0` (line `0x660`). A forcer left waiting on a
 rule keeps the GDB connection; `launch_state.ps1` restarting the emulator
 ends it.
 

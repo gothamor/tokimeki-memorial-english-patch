@@ -7,6 +7,10 @@ Facts (docs/game-internals.md, "Dialogue"):
   - 0x20 ends a display line, 'q' (0x71) ends a choice option. Letters
     m M A W O F Y S P p G insert a name or word kept in RAM (the player's
     name, the girl's name, ...), always as full-width Shift-JIS.
+  - 'n' (0x6E) marks an empty option: the option picker (EXE 0x80081024)
+    skips an option that starts with it. It occurs only as a run ending an
+    option ("...nn" or "qnn" in the DATE_* yukata lines, game-internals 6k),
+    and is only accepted there.
   - Strings are reached through tables of absolute RAM pointers, stored in the
     same file (base = the file's load address). So a translated string can
     be moved anywhere inside the space freed by the strings being replaced,
@@ -28,6 +32,8 @@ LINE_BREAK = 0x20
 CHOICE = ord("q")
 # Every byte the renderer treats as a 1-byte control code (0x80081430...).
 CONTROL = frozenset(b" qmMAWOFYSPpG")
+# Empty-option marker; not a renderer code (see the module docstring).
+SKIP = ord("n")
 
 # Widest display line, in 7 px cells (one cell per English letter, two per
 # full-width character). The dialogue box fits about 29 letters after the
@@ -39,7 +45,7 @@ MAX_CELLS = 28
 # deliberately generous estimates where the real maximum isn't known yet.
 TOKEN_CELLS: Dict[str, int] = {
     "P": 12, "p": 6, "m": 6, "F": 12, "G": 18, "Y": 6, "S": 18,
-    "O": 18, "W": 18, "A": 18, "M": 18,
+    "O": 18, "W": 18, "A": 18, "M": 18, "n": 0,
 }
 
 _TOKEN = re.compile(r"\{([A-Za-z])\}|\n")
@@ -60,12 +66,22 @@ def decode(raw: bytes) -> str:
         elif b in CONTROL:
             out.append("{%s}" % chr(b))
             i += 1
+        elif b == SKIP and _ends_option(raw, i):
+            out.append("{n}")
+            i += 1
         elif _is_lead(b) and i + 1 < len(raw):
             out.append(raw[i:i + 2].decode("shift_jis"))
             i += 2
         else:
             raise ValueError(f"byte {b:#04x} at +{i} isn't dialogue text")
     return "".join(out)
+
+
+def _ends_option(raw: bytes, i: int) -> bool:
+    """Whether raw[i:] up to the next 'q' (or the end) is all 'n' bytes."""
+    end = raw.find(b"q", i)
+    run = raw[i:end if end >= 0 else len(raw)]
+    return len(run) > 0 and set(run) == {SKIP}
 
 
 def read_string(data: bytes, offset: int) -> bytes:
@@ -91,7 +107,7 @@ def _split(text: str):
             yield "", bytes([LINE_BREAK])
         else:
             code = ord(m.group(1))
-            if code not in CONTROL or code == LINE_BREAK:
+            if (code not in CONTROL and code != SKIP) or code == LINE_BREAK:
                 raise ValueError(f"{text!r}: unknown control code {m.group(0)}")
             yield "", bytes([code])
         pos = m.end()
@@ -143,7 +159,15 @@ def structure(text: str) -> str:
     for line in text.split("\n"):
         parts = []
         for option in line.split("{q}"):
-            parts.append("".join(sorted(re.findall(r"\{[A-Za-z]\}", option))))
+            # Empty-option markers ({n}) must stay a run at the option's end.
+            body = option
+            while body.endswith("{n}"):
+                body = body[:-3]
+            codes = sorted(re.findall(r"\{[A-Za-z]\}", body))
+            if "{n}" in codes:
+                codes.append("<n not at the end>")
+            tail = (len(option) - len(body)) // 3
+            parts.append("".join(codes) + (f"$n{tail}" if tail else ""))
         lines.append("|".join(parts))
     return "/".join(lines)
 

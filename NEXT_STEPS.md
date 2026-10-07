@@ -321,10 +321,12 @@ conversations"). Remaining DATE_FU work, in order:
    one's version count and forcing). The five choice-driven places
    (Shopping, Theme Park, Cinema, Concert Hall, Shrine) need their branch
    trees walked with `date_choices.ps1` instead of `--version`.
-4. Still open: `script.decode` support for the `n` empty-option byte (two
-   section 4 strings; check them in the unpatched festival first); the
-   triggers of sections 7 (hobby talk, which also gates section 25's notes)
-   and 9 (parade); what picks the museum's variant-5 line; DATE2.EXN's role.
+4. Resolved (2026-10-07, game-internals §6k): section 7 is place 0, the
+   neighborhood park (force with `force_date.py 0 0 4 30`); section 9 is a
+   Theme Park sub-scene; `{n}` (empty option) is supported and seen on
+   screen; the museum's variant-5 line is 16 + mood; DATE2.EXN handles group
+   dates and birthdays, not DATE_FU. Still open: reaching the Theme Park
+   parade quickly, and the other places' own flows.
 Space: replies must each fit a gap near their own size (translation-guide,
 "The pool is in pieces").
 

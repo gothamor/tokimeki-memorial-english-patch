@@ -1030,9 +1030,9 @@ each storing one setup function. Place ids are the 1-based outing ids (§6j):
 | 4 | `0x2414`–`0x26AC` | 17 | 18 Shrine (festival, yukata) | `0x80136A74` |
 | 5 | `0x2A78`–`0x2E44` | 15 | 9 Arcade | `0x801353F8` |
 | 6 | `0x3B10`–`0x3D38` | 10 | 11 Karaoke | `0x80135804` |
-| 7 | `0x3F40`–`0x4178` | 12 | talk and ask about her hobbies (place not traced; probably 0, neighborhood park) | `0x80133DE8` |
+| 7 | `0x3F40`–`0x4178` | 12 | 0 Neighborhood park: talk, ask about her hobbies or favorite places | `0x80133DE8` |
 | 8 | `0x4B0C`–`0x4D68` | 8 | 14 Cinema | `0x80135E7C` |
-| 9 | `0x4F40`–`0x5020` | 6 | parade invitation (consumer `0x8013BBF0`, not traced) | |
+| 9 | `0x4F40`–`0x5020` | 6 | parade invitation, inside the Theme Park date's flow | `0x8013BBF0` |
 | 10 | `0x5130`–`0x5324` | 10 | 16 Pool | `0x801366A4` |
 | 11 | `0x5514`–`0x5984` | 16 | 6 Planetarium | `0x801349A0` |
 | 12 | `0x5E08`–`0x5FB4` | 8 | 17 Beach | `0x80136870` |
@@ -1051,12 +1051,34 @@ each storing one setup function. Place ids are the 1-based outing ids (§6j):
 | 25 | `0x461C`–`0x4900` | 13 | "found out that her hobby is ..." notes (code `04`) | `0x8013B884` |
 | 26 | `0x5CCC`–`0x5D3C` | 4 | "let's go home, {P}" | `0x8013B7B0` |
 
-(Setup addresses for 7, 9 and 25 are the functions around the table loads.
-The place switch, sections 0, 21 and 17, and the part selection of 22, 23,
-24 and 26 below were confirmed by forcing them.) A date runs 23 → 24 (on
+(The place switch, sections 0, 4, 7, 21 and 17, and the part selection of
+22, 23, 24 and 26 below were confirmed by forcing them; 9 and 25 statically.) A date runs 23 → 24 (on
 certain days) → the place's section → 22 → 26, with an impression thought
 after each choice (below). `tools/date_sections.py` prints this table with
 part/choice counts and each place's forcing address.
+
+**The date's step machine.** DATE.EXN runs a date as a list of step
+functions indexed by the step byte `0x800E738A` (`0x8004284C` advances it;
+`0x8007C784` waits for a CD read, then advances). The runner `0x801449D4`
+copies the list for the place — jump table `0x8015B0B0` on the place byte
+`0x800CA2F8` (0–20) picks one of 21 lists; place 0's is at `0x8015BF50`,
+the Theme Park's (104 steps) at `0x8015C738` — and replaces the placeholder
+entry `0x80133DE8` with the place's setup for places 1–20. Place 0 keeps it,
+so **section 7 is the neighborhood-park date**. The first steps load the
+files: step 3 `SERIFU.BIN` (LBA 44870) to `0x80197000`, step 5 the girl's
+`DATE_xx.BIN` (`DATE_FU` LBA 44329, 23 sectors) to `0x80198000` and fills the
+section tables (`0x80141004` for Shiori), step 7 `TAKU3.BIN` (LBA 44969) to
+`0x801A4000` (the impression tables at `0x801A427C`/`0x801A4D2C` are in
+it). The parade setup `0x8013BBF0` sits at steps 61, 72 and 74 of the Theme
+Park list, so **section 9 is a Theme Park sub-scene** (not forced yet).
+
+**Neighborhood park (section 7, place 0).** Seen on screen: Shiori's
+remark, an unlabelled narration line (`07`), a two-option action choice
+(`08`: ask about her hobbies / find out places she likes), a centered
+"・・・" pause (`07`), then the hobby note (`04`) as a thought with brackets
+drawn by the game, then the ending. The part is 2·mood, set by
+`0x8013A898` (a step of the park list): force with
+`--at 0x8013A8B0 --reg v0=RANK`.
 
 **Versions of a place.** Fifteen places pick a version byte `0x800CA2FC` in
 their setup and the parts-per-version byte `0x8015B658`; `0x801324DC` then
@@ -1098,16 +1120,21 @@ lower is better):
 - **25 hobby notes.** Shown after section 7's choice: part = the choice
   (`*(u32*)0x80122CDC` → `0x8015BF1C`), line = `rand % count` in
   `0x8015BF20` (`0x8013AA4C`–); part 4 (she likes a boy) needs the best
-  rank and bit 5 of the girl's byte at `+0x1C8`. Not forced: section 7's
-  trigger is unknown.
+  rank and bit 5 of the girl's byte at `+0x1C8`. Seen after a park date
+  (place 0) choosing "ask about her hobbies": a part-0 note.
 
 **Code bytes** (per string, as in EVENT_FU): `00` player (『), `01` Shiori
 (「), `02` Shiori's reply to the last choice, `03` player choice (a spoken
 line), `04` narration, `06` thought, `07` sound or narration line, `08`
-action choice (e.g. "praise her yukata / don't"). Two strings in section 4
-(`0x2450`, `0x2478`) contain `n` bytes: an option starting with `n` is
-skipped (no line for that choice). `script.decode` rejects them, so the
-dumper leaves them out; they need decoder support before section 4.
+action choice (e.g. "praise her yukata / don't"). **`n` marks an empty
+option**: in section 4 the player's compliment `0x2450` ends in `nn` and
+Shiori's reply `0x2478` is "thanks{q}nn". Seen on screen at the Shrine:
+choosing to praise shows the compliment (no trace of `nn`) and her thanks;
+choosing not to skips both lines. The picker skips an option that starts
+with `n` (`0x80081024`); the renderer drops `nn` as an invalid code. Every
+girl's DATE file (and its SPEAKTST copy) has the same pair; no other script
+uses `n`. `script.py` decodes it as `{n}` only as a run ending an option,
+and the structure check keeps it there.
 
 **Speaking a part: EXE `0x8007EF48(string, code, option, ...)`.** It
 `strcpy`s the string to a stack buffer (`sp+0x7C`) and switches on the code
@@ -1137,10 +1164,10 @@ months 3–5 → 3, year 95 months 9–11 → 4, otherwise 0 or 1 by bit 0 of
 `0x800E645B + 0x38·girl`; 2–4 become 5 if that girl's per-exhibition seen
 byte (`0x800E645C/D/E + 0x38·girl`) is set. `0x801324DC` adds
 variant × parts-per-variant (byte `0x8015B658`, 3 here) to the part index
-`*(s16*)0x800CA148`. Variant 5's line follows her standing: affection 48 →
-`0x6A8`, affection 200 → `0x688` (`0x660` presumably needs the best
-standing; the selecting code isn't found; forcing `0x80051A68`'s result at
-`0x80132570` did not change it). The talk runner is EXE `0x80082764`. The
+`*(s16*)0x800CA148`. Variant 5's line is part 16 + mood, added at `0x801392F0` (rank call just
+before): affection 48 → `0x6A8`, 200 → `0x688`; forcing `v0 = 0` at
+`0x801392F0` showed `0x660`. (`0x80132570` is the meeting's mood, not
+this.) The talk runner is EXE `0x80082764`. The
 tables `*(0x8015B520)` = `0x801A427C` and `*(0x8015B524)` = `0x801A4D2C`
 (15 bytes per girl, loaded from another file) give each choice's
 impression level, copied to `0x800CA21C`–`0x800CA230`.
@@ -1284,9 +1311,10 @@ command's month pages, which are already in English (MON TUE …).
    labels, town-news banners, date-spot art). The command grid's hand
    doesn't respond predictably to the test driver's key holds (testing.md),
    so reaching each command needs a better input method first.
-9. **Regular dates** (§6k): what picks variant 5's line in each place
-   (her standing, but the code isn't found); how the `n` empty-option bytes
-   in `DATE_FU.BIN` section 4 behave on screen; the consumers of sections 7
-   and 9; DATE2.EXN's role (its 30-word table at `0x8013A384` doesn't match
-   `DATE_FU.BIN`'s sections). The impression thoughts in `SERIFU.BIN` are
-   shown in every date.
+9. **Regular dates** (§6k): the other places' flows (step lists) and how to
+   reach the Theme Park parade (section 9) without walking every ride.
+   Resolved 2026-10-07: section 7 is place 0, the `n` marker, the museum's
+   variant-5 selector, and DATE2.EXN, which loads `GROUP_D.BIN` (group
+   dates; its table at `0x8013A384` holds `GROUP_D` offsets at base
+   `0x80197000`), `G_BIRTH`/`P_BIRTH`/`KARADATA.BIN` to `0x801B0000` and
+   `TARA_OBJ` files, and never reads `DATE_FU.BIN`.

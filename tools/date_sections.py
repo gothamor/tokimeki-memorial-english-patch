@@ -31,12 +31,16 @@ TABLE = 0x8015BDC0          # 27 masters, then 27 byte lists, then 27 thirds
 SECTIONS = 27
 PLACE_JUMPS = 0x8015B060    # place - 1 -> case storing the setup function
 PLACES = 20
+# The date's step list; its placeholder entry (step 9) is the place-0 setup:
+# the runner (0x801449D4) replaces it with the place's setup for places 1-20.
+STEP_LIST = 0x8015BF50
+PLACE0_STEP = 9
 VERSION_LO = 0xA2FC         # *(u8*)0x800CA2FC, the section's version
 PARTS_PER_VERSION_LO = 0xB658   # *(u8*)0x8015B658
 CODES = {0x00: "player", 0x01: "girl", 0x02: "reply", 0x03: "choice", 0x04: "narration",
          0x06: "thought", 0x07: "sound/narration", 0x08: "action choice"}
 # Sections not reached through the place switch (game-internals §6k).
-SHARED = {7: "talk, ask about hobbies", 9: "parade invitation", 22: "end of the date",
+SHARED = {9: "Theme Park parade (sub-scene)", 22: "end of the date",
           23: "meeting", 24: "seasonal small talk", 25: "hobby notes", 26: "going home"}
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -59,11 +63,14 @@ def scan_places(exn: bytes) -> dict:
         return struct.unpack_from("<I", exn, addr - EXN_BASE)[0]
 
     places = {}
-    for i in range(PLACES):
-        # Each case is `lui t, hi; addiu t, t, lo; b ...; sw t, (v0)`.
-        case = xw(PLACE_JUMPS + 4 * i)
-        hi, lo = xw(case) & 0xFFFF, xw(case + 4) & 0xFFFF
-        setup = ((hi << 16) + struct.unpack("<h", struct.pack("<H", lo))[0]) & 0xFFFFFFFF
+    for i in range(-1, PLACES):
+        if i < 0:
+            setup = xw(STEP_LIST + 4 * PLACE0_STEP)
+        else:
+            # Each case is `lui t, hi; addiu t, t, lo; b ...; sw t, (v0)`.
+            case = xw(PLACE_JUMPS + 4 * i)
+            hi, lo = xw(case) & 0xFFFF, xw(case + 4) & 0xFFFF
+            setup = ((hi << 16) + struct.unpack("<h", struct.pack("<H", lo))[0]) & 0xFFFFFFFF
         info = {"place": i + 1, "setup": setup, "ppv": [], "load": None}
         addr = setup
         while xw(addr) != 0x03E00008:                       # up to `jr ra`
@@ -103,9 +110,9 @@ def main() -> None:
     in_file = lambda w: FILE_BASE <= w < FILE_BASE + len(data)
 
     by_slot = {info["slot"]: info for info in scan_places(exn).values()}
-    names = place_names()
+    names = ["Neighborhood park"] + place_names()
     for info in by_slot.values():
-        info["name"] = names[info["place"] - 1]
+        info["name"] = names[info["place"]]
 
     total = 0
     for s in range(SECTIONS):
@@ -144,8 +151,7 @@ def main() -> None:
         if args.strings:
             for p, part in enumerate(parts):
                 print(f"    part {p:2}: " + "  ".join(f"{o:#06x}:{CODES.get(c, hex(c))}" for o, c in part))
-    print(f"{total} strings in {SECTIONS} sections (the dumper's count leaves out "
-          "strings script.decode rejects, e.g. the two with `n` bytes in section 4)")
+    print(f"{total} strings in {SECTIONS} sections")
 
 
 if __name__ == "__main__":
