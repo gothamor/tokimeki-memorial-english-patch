@@ -416,6 +416,52 @@ EXE and text. Boot the patched CUE, load the 95/4/23 card save
 drive sequence. The forcer only writes RAM; nothing is saved unless you save
 in the game, and a forced run must not be saved over the test card.
 
+### Testing date conversations (`DATE_FU.BIN`, 2026-10-07)
+
+**A save state reopens the disc it was made with**, whatever CUE is passed
+on the command line. A state made from `.emu/review_dates/` always reads
+`.emu/review_dates/`, so rebuild candidates **into that same folder** (with
+the emulator closed) and keep reusing the state. Building to a second folder
+and passing its CUE silently tests the old text. The EXE in the state must
+come from a build with the renderer hook; DATE files are read from disc when
+the date starts, so they always come from the state's disc.
+
+Recipe used for the museum pilot:
+1. Boot the candidate from `.emu/review_dates/`, load the 95/4/23 card save
+   (`wait:22000,Return,until:title:60000,C,wait:16000,C,wait:3000,C,wait:20000`),
+   then `F2` on the Sunday screen. Backed up as
+   `.emu/savestates_backup/dates_sunday_0423_candidate.sav`.
+2. Per run: launch that state (`-batch -statefile`), wait ~9 s, start
+   `python tools/emu/force_date.py 0 7 4 30 --set-at 0x80134F74 0x800CA2FC N`
+   (museum, exhibition N = 0–5; game-internals §6k), then drive
+   `C,wait:12000,C,wait:12000,C,wait:7000` and `C,wait:3200` per box. The
+   meeting before the place is random (4–8 boxes), so screenshot each box.
+3. On the choice screen press `F2` and copy the state; relaunch it and press
+   `C`, `Down,C` or `Down,Down,C` to see each reply. The options' screen
+   order is shuffled per date but fixed in the state; the reply follows the
+   option, not its position.
+4. Variant 5's other lines: raising Shiori's affection in RAM (s16 at
+   `0x800E6442`, 48 → 200) on the Sunday state gave `0x688`; `0x660` was
+   shown by writing master entry 16's value over entry 18
+   (`0x80198718` ← `*(u32*)0x80198710`) once DATE_FU was loaded.
+
+`watch_reads.py` on DATE_FU's master entries is swamped by an unrelated
+reader (`pc 0x80082B3C`) before the file loads; prefer static tracing.
+
+**Museum pilot results.** Unpatched reference `mu_*` (exhibition 0, the top
+option chosen). Candidate `.emu/review_dates/` (16 default files plus the
+draft): only DATE_FU's first and last sectors (LBA 44329, 44351) differ from
+the default build; checksum and EDC/ECC valid; 30/30 pointers resolve; file
+bytes change only in `0x0`–`0x6CD` and the trailer. On screen (`m0_*`–`m5_*`,
+`v1_*`, `h5_*`, `p5_*`): all five exhibitions' going-in, remark, choice list
+and all three replies each, English, within the box; variant 5's three
+lines (two of them caught while typing); dates end normally and the week
+continues. Fixed on the way: odd-length options showed a space before `』`.
+Not tested: the natural trigger of each exhibition (by year/month and
+whether it was seen) and variant 5's natural selection by standing. After
+promotion the normal build `.emu/default_dates/` is byte-identical to the
+candidate.
+
 ### Disassembly
 
 ```bash

@@ -215,5 +215,94 @@ class RepackAfterPointerTable(unittest.TestCase):
                                    Edit(data), font.PairEncoder())
 
 
+class PackFallback(unittest.TestCase):
+    """Gaps split by pointer lists: first fit can strand a long string."""
+
+    def setUp(self):
+        s = Script()
+        s.text("a", "あいうえおかきくけこさ")   # 22 bytes + NUL: a 24-byte gap
+        s.pointer("a")
+        s.pointer("b")
+        s.text("b", "あいうえお")               # 10 bytes + NUL: a 12-byte gap
+        self.s, self.data = s, s.build()
+
+    def test_longest_first_when_first_fit_fails(self):
+        a, b = self.s.labels["a"], self.s.labels["b"]
+        long_line = "Hello there, everyone!"   # 22 letters: 23 bytes, only fits gap a
+        edit = Edit(self.data)
+        patcher.apply_dialogue(block([(a, "あいうえおかきくけこさ", "Hi"),
+                                      (b, "あいうえお", long_line)]),
+                               edit, font.PairEncoder())
+        out = bytes(edit.data)
+        ptr = lambda pos: struct.unpack_from("<I", out, pos)[0] - BASE
+        self.assertEqual(ptr(24), b)     # "Hi" moved into b's small gap
+        self.assertEqual(ptr(28), a)     # the long line took a's big gap
+        self.assertEqual(script.read_string(out, a),
+                         script.encode_english(long_line, font.PairEncoder())[0])
+
+    def test_first_fit_layout_kept_when_it_works(self):
+        a, b = self.s.labels["a"], self.s.labels["b"]
+        edit = Edit(self.data)
+        patcher.apply_dialogue(block([(a, "あいうえおかきくけこさ", "Hi"),
+                                      (b, "あいうえお", "Bye")]),
+                               edit, font.PairEncoder())
+        out = bytes(edit.data)
+        # Both go into the first gap in file order, as before the fallback.
+        self.assertEqual(struct.unpack_from("<I", out, 24)[0] - BASE, a)
+        self.assertEqual(struct.unpack_from("<I", out, 28)[0] - BASE, a + 3)
+
+
+class ShareIdentical(unittest.TestCase):
+    """Repeated lines (DATE_FU.BIN has 31 copies of one) can share one copy."""
+
+    def setUp(self):
+        s = Script()
+        for label in ("a", "b", "c"):
+            s.text(label, "あいうえお")
+        for label in ("a", "b", "c"):
+            s.pointer(label)
+        self.s, self.data = s, s.build()
+        self.table = s.labels["c"] + 12
+
+    def lines(self, third="Hello there"):
+        return [(self.s.labels["a"], "あいうえお", "Hello there"),
+                (self.s.labels["b"], "あいうえお", "Hello there"),
+                (self.s.labels["c"], "あいうえお", third)]
+
+    def targets(self, out):
+        return [struct.unpack_from("<I", out, self.table + 4 * i)[0] - BASE for i in range(3)]
+
+    def test_too_big_without_sharing(self):
+        line = "Hello there, how are"     # 20 bytes + NUL > one 12-byte slot each
+        with self.assertRaisesRegex(ValueError, "doesn't fit"):
+            patcher.apply_dialogue(block([(o, j, line) for o, j, _ in self.lines()]),
+                                   Edit(self.data), font.PairEncoder())
+
+    def test_identical_strings_share_one_copy(self):
+        line = "Hello there, how are"
+        b = block([(o, j, line) for o, j, _ in self.lines()])
+        b.share_identical = True
+        edit = Edit(self.data)
+        patcher.apply_dialogue(b, edit, font.PairEncoder())
+        out = bytes(edit.data)
+        targets = self.targets(out)
+        self.assertEqual(len(set(targets)), 1)
+        self.assertEqual(script.read_string(out, targets[0]),
+                         script.encode_english(line, font.PairEncoder())[0])
+        self.assertIn("2 sharing an identical copy", edit.log[-1])
+
+    def test_different_strings_still_get_their_own_copy(self):
+        b = block(self.lines("Bye now"))
+        b.share_identical = True
+        edit = Edit(self.data)
+        patcher.apply_dialogue(b, edit, font.PairEncoder())
+        out = bytes(edit.data)
+        a, b2, c = self.targets(out)
+        self.assertEqual(a, b2)
+        self.assertNotEqual(a, c)
+        self.assertEqual(script.read_string(out, c),
+                         script.encode_english("Bye now", font.PairEncoder())[0])
+
+
 if __name__ == "__main__":
     unittest.main()

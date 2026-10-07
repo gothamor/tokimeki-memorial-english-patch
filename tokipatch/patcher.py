@@ -23,13 +23,17 @@ A translation file can contain:
       patcher refuses to run unless the file holds exactly `original`.
 
   "dialogue": blocks of script strings that are repacked, not fitted in place
-      {"file", "base", "max_cells"?, "lines": [{"offset", "original", "text"}]}
+      {"file", "base", "max_cells"?, "share_identical"?,
+       "lines": [{"offset", "original", "text"}]}
       `base` is the RAM address the file is loaded to (its string pointers
       are absolute). The space of every translated string is pooled, the
       English is packed into it, and every pointer is updated (script.py).
       The English must keep the original's line breaks, choices and name
       codes (scene scripts time events to display lines). A line with an
-      empty "text" is left untouched.
+      empty "text" is left untouched. With "share_identical": true, movable
+      strings whose English encodes to the same bytes are stored once and
+      all their pointers point at that copy (safe because the game copies a
+      string before cutting it up; game-internals §6k).
 """
 
 from __future__ import annotations
@@ -97,6 +101,7 @@ class DialogueBlock:
     lines: List[DialogueLine]
     source: str
     max_cells: int = script.MAX_CELLS
+    share_identical: bool = False
 
 
 @dataclass
@@ -161,6 +166,7 @@ def load_translations(paths: List[Path]):
                        for line in item["lines"]],
                 source=path.name,
                 max_cells=item.get("max_cells", script.MAX_CELLS),
+                share_identical=bool(item.get("share_identical", False)),
             ))
     return strings, images, byte_patches, dialogue
 
@@ -276,9 +282,7 @@ def apply_dialogue(block: DialogueBlock, edit: FileEdit, pairs: font.PairEncoder
                                  f"translated text at {target:#x}, not at a string start")
         data[start:stop] = bytes(stop - start)
 
-    free = [list(span) for span in spans]
-
-    def take(start: int, size: int) -> None:
+    def take(free: List[List[int]], start: int, size: int) -> None:
         for span in free:
             if span[0] <= start and start + size <= span[1]:
                 free.remove(span)
@@ -287,9 +291,9 @@ def apply_dialogue(block: DialogueBlock, edit: FileEdit, pairs: font.PairEncoder
                 return
         raise AssertionError(f"{start:#x} isn't free")
 
-    # Strings that can't move keep their own slot; the rest are packed in
-    # order, each into the first free gap that holds it.
-    placed = {}
+    # Strings that can't move keep their own slot.
+    fixed = [list(span) for span in spans]
+    pinned = {}
     for line, new, pointers, movable, where in jobs:
         if not movable:
             capacity = slots[line.offset] - line.offset
@@ -298,19 +302,46 @@ def apply_dialogue(block: DialogueBlock, edit: FileEdit, pairs: font.PairEncoder
                 raise ValueError(f"{where}: the string {reason}, so it can't move, and the "
                                  f"English needs {len(new) + 1} bytes but only {capacity} "
                                  f"are available")
-            take(line.offset, len(new) + 1)
-            placed[line.offset] = line.offset
+            take(fixed, line.offset, len(new) + 1)
+            pinned[line.offset] = line.offset
     total = sum(stop - start for start, stop in spans)
-    needed = sum(len(job[1]) + 1 for job in jobs)
-    for line, new, pointers, movable, where in jobs:
-        if movable:
-            span = next((x for x in free if x[1] - x[0] >= len(new) + 1), None)
-            if span is None:
-                raise ValueError(f"{block.source}: {block.file}: the English doesn't fit in the "
-                                 f"space of the original strings ({needed} bytes needed, "
-                                 f"{total} available)")
-            placed[line.offset] = span[0]
-            take(span[0], len(new) + 1)
+    if block.share_identical:
+        unique = {job[1] for job in jobs if job[3]}
+        needed = (sum(len(new) + 1 for new in unique)
+                  + sum(len(job[1]) + 1 for job in jobs if not job[3]))
+    else:
+        needed = sum(len(job[1]) + 1 for job in jobs)
+
+    def pack(order, best_fit: bool):
+        """Place the movable strings; None if one doesn't fit anywhere."""
+        free = [list(span) for span in fixed]
+        placed, shared = dict(pinned), {}       # shared: English bytes -> its copy
+        for line, new, pointers, movable, where in order:
+            if not movable:
+                continue
+            if block.share_identical and new in shared:
+                placed[line.offset] = shared[new]
+                continue
+            fits = [x for x in free if x[1] - x[0] >= len(new) + 1]
+            if not fits:
+                return None
+            span = min(fits, key=lambda x: (x[1] - x[0], x[0])) if best_fit else fits[0]
+            placed[line.offset] = shared[new] = span[0]
+            take(free, span[0], len(new) + 1)
+        return placed
+
+    # First fit in file order. The pool is often split into small gaps
+    # between pointer lists (DATE_FU.BIN), where that can strand a long
+    # string; then place the longest strings first, each in the tightest gap.
+    # The fallback only runs when first fit fails, so blocks that already fit
+    # keep their exact layout.
+    placed = pack(jobs, best_fit=False)
+    if placed is None:
+        placed = pack(sorted(jobs, key=lambda job: (-len(job[1]), job[0].offset)), best_fit=True)
+    if placed is None:
+        raise ValueError(f"{block.source}: {block.file}: the English doesn't fit in the "
+                         f"space of the original strings ({needed} bytes needed, "
+                         f"{total} available)")
 
     for line, new, pointers, movable, where in jobs:
         at = placed[line.offset]
@@ -318,7 +349,9 @@ def apply_dialogue(block: DialogueBlock, edit: FileEdit, pairs: font.PairEncoder
         for p in pointers:
             data[p:p + 4] = (block.base + at).to_bytes(4, "little")
         edit.log.append(f"{line.offset:#07x} -> {at:#07x}: {line.text!r}")
-    edit.log.append(f"dialogue: {len(jobs)} string(s), {needed} of {total} bytes used")
+    copies = len(set(placed.values()))
+    note = f", {len(jobs) - copies} sharing an identical copy" if copies < len(jobs) else ""
+    edit.log.append(f"dialogue: {len(jobs)} string(s){note}, {needed} of {total} bytes used")
 
 
 def _rect_pixels(patch: ImagePatch, rect: List[int]):

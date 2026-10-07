@@ -40,8 +40,11 @@ existing output folder.
   umbrella in the rain, the shared-birthday phone call, the four date events
   (neighborhood park, Kirameki Park, Ferris wheel, pool) and the walk home
   after the Christmas party ([shiori_events.json](translation/shiori_events.json)).
-  They're rare in normal play. Her regular date conversations (`DATE_FU`)
-  and walk-home talks are still Japanese.
+  They're rare in normal play.
+- **Shiori's regular dates (started):** the Art Museum date's conversations,
+  choices and replies ([shiori_dates.json](translation/shiori_dates.json)).
+  The meeting, the end of the date, the other 19 places and her walk-home
+  talks are still Japanese.
 - **Main game loop:** the weekly command screen's stat panel (Health, Art,
   Looks, Lit., Sport, Guts, Sci., Trivia, Stress), the calendar
   (`95 / 4 / 23 (Su)`), the player's thought prompts, and the in-game

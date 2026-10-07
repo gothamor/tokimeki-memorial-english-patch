@@ -373,7 +373,7 @@ addresses for (`lui`/`addiu`), and pointers into the middle of a string.
 | File | Load address (from its pointers) |
 |---|---|
 | `EXEDIR/NAME_ENT.EXN` prologue | 0x80132000 (overlay); 43 strings 0x1B1D0–0x1B957, table 0x1B958 |
-| `SERIFU/DATE_*`, `EVENT_*` | 0x80198000 |
+| `SERIFU/DATE_*`, `EVENT_*` | 0x80198000 (`DATE_FU` and `EVENT_FU` confirmed at runtime; §6j, §6k) |
 | `SERIFU/SERIFU, G_APPEAR, G_INVITE, GASSHUKU, GEKO, GROUP_D, HAGEMASI, NYUBU, OMIMAI, SHOGATU, SHUGAKU, VALEN, WHITE, XMAS` | 0x80197000 |
 | `SERIFU/G_BIRTH, KARADATA, P_BIRTH, ZAKOSEN` | 0x801B0000 |
 | `SERIFU/GASSH_FU` | 0x801B4400 (not on the 0x800 grid; see below) |
@@ -1000,6 +1000,111 @@ call moves to Shiori's room.
 `0x4C` of that index (mapped by following each case to its LBA constant;
 cases falling through to a shared default weren't separated).
 
+### 6k. Regular dates (`SERIFU/DATE_FU.BIN`) and choices
+
+Found 2026-10-07 by static disassembly of `DATE.EXN` and the EXE, then forced
+museum dates in DuckStation (unpatched and English; testing.md "Testing date
+conversations"). The museum section (section 0) is translated in
+`translation/shiori_dates.json`; the rest of the file is not.
+
+**Section table.** `DATE.EXN` holds three parallel 27-entry tables at
+`0x8015BDC0` (masters), `0x8015BE2C` (byte lists) and `0x8015BE98` (third
+pointers), statically holding Shiori's `DATE_FU.BIN` offsets (code from
+`0x80141050` on rewrites them for other girls, like GEKO's event table).
+Each section has the EVENT_FU layout (§6j): master → one string list per
+part, a parallel `FF`-terminated code byte per string. **All 474 strings are
+reached from these 27 sections, each exactly once, and each string has
+exactly one pointer.** A section's setup copies its entry to
+`0x800CA160/164/168`.
+
+**Places.** The date setup switches on the place `*(u8*)0x800CA2F8` − 1
+through the jump table at `0x8015B060` (20 cases, `0x80144A70`–`0x80144BA0`),
+each storing one setup function. Place ids are the 1-based outing ids (§6j):
+
+| Section | File range | Strings | Place / use | Setup |
+|---:|---|---:|---|---|
+| 0 | `0x0`–`0x6A8` | 30 | 7 Art Museum (**translated**) | `0x80134C64` |
+| 1 | `0xB48`–`0xD50` | 10 | 10 Bowling Alley | `0x80135620` |
+| 2 | `0xF44`–`0x1168` | 8 | 15 Concert Hall | `0x80136340` |
+| 3 | `0x1330`–`0x166C` | 15 | 4 Zoo | `0x801344C8` |
+| 4 | `0x2414`–`0x26AC` | 17 | 18 Shrine (festival, yukata) | `0x80136A74` |
+| 5 | `0x2A78`–`0x2E44` | 15 | 9 Arcade | `0x801353F8` |
+| 6 | `0x3B10`–`0x3D38` | 10 | 11 Karaoke | `0x80135804` |
+| 7 | `0x3F40`–`0x4178` | 12 | talk and ask about her hobbies (place not traced; probably 0, neighborhood park) | `0x80133DE8` |
+| 8 | `0x4B0C`–`0x4D68` | 8 | 14 Cinema | `0x80135E7C` |
+| 9 | `0x4F40`–`0x5020` | 6 | parade invitation (consumer `0x8013BBF0`, not traced) | |
+| 10 | `0x5130`–`0x5324` | 10 | 16 Pool | `0x801366A4` |
+| 11 | `0x5514`–`0x5984` | 16 | 6 Planetarium | `0x801349A0` |
+| 12 | `0x5E08`–`0x5FB4` | 8 | 17 Beach | `0x80136870` |
+| 13 | `0x6170`–`0x6354` | 10 | 5 Botanical Garden | `0x801347B8` |
+| 14 | `0x6534`–`0x6C9C` | 30 | 2 Shopping | `0x80135B4C` |
+| 15 | `0x71A0`–`0x73BC` | 10 | 19 Skating Rink | `0x80136B70` |
+| 16 | `0x7594`–`0x7764` | 10 | 20 Ski Resort | `0x80136D3C` |
+| 17 | `0x7958`–`0x7E60` | 21 | 13 Stadium | `0x80135C14` |
+| 18 | `0x81F0`–`0x84F0` | 15 | 3 Aquarium | `0x8013426C` |
+| 19 | `0x8774`–`0x8964` | 10 | 8 Library | `0x8013518C` |
+| 20 | `0x8B4C`–`0xA25C` | 85 | 12 Theme Park | `0x80135A34` |
+| 21 | `0xAF94`–`0xB348` | 18 | 1 Kirameki Park (walk) | `0x80133EA0` |
+| 22 | `0x18F4`–`0x1EDC` | 36 | end of every date (her verdict, the player's answer) | `0x8013B488`, `0x80140CE0` |
+| 23 | `0x3104`–`0x3630` | 35 | meeting at the place (waiting, her being late) | `0x8013AE5C` |
+| 24 | `0x4368`–`0x449C` | 10 | seasonal small talk | `0x8013AF1C` |
+| 25 | `0x461C`–`0x4900` | 13 | "found out that her hobby is ..." notes (code `04`) | `0x8013B884` |
+| 26 | `0x5CCC`–`0x5D3C` | 4 | "let's go home, {P}" | `0x8013B7B0` |
+
+(Setup addresses for 22–26 and 7 are the functions around the table loads;
+only the place switch and section 0 are confirmed by running them.) A
+date runs 23 → the place's section → 22 → 26, with an impression thought
+after each choice (below).
+
+**Code bytes** (per string, as in EVENT_FU): `00` player (『), `01` Shiori
+(「), `02` Shiori's reply to the last choice, `03` player choice (a spoken
+line), `04` narration, `06` thought, `07` sound or narration line, `08`
+action choice (e.g. "praise her yukata / don't"). Two strings in section 4
+(`0x2450`, `0x2478`) contain `n` bytes: an option starting with `n` is
+skipped (no line for that choice). `script.decode` rejects them, so the
+dumper leaves them out; they need decoder support before section 4.
+
+**Speaking a part: EXE `0x8007EF48(string, code, option, ...)`.** It
+`strcpy`s the string to a stack buffer (`sp+0x7C`) and switches on the code
+through `0x800B22A8` (20 cases). For a reply (`02`) the loop at
+`0x80080F48`–`0x80081020` walks the copy, stepping 1 byte over control codes
+(space, `m M A W O F Y p G P S`) and 2 bytes over anything else, and cuts it
+at the option-th `q` (or NUL); an option whose first byte is `n` is skipped
+(`0x80081024`). The chosen option is then drawn with the label and bracket
+by the dialogue renderer `0x80081190`. **The script string itself is never
+written**, so several pointers may share one copy of identical text
+(`share_identical`, translation-guide). Pair-encoded English is 2 bytes per
+pair, both ≥ `0xA0`, so the walk stays in step.
+
+**Choices on screen.** A `03` string's options are shown in a full-width box
+without a label, each wrapped in `『』` drawn by the game, **in a shuffled
+order** (seen 3-1-2, 1-2-3, ...). The reply is the option *chosen*, not its
+position. Option widths: Japanese uses up to 17 characters; the box is about
+33 letters wide, so the 28-cell dialogue limit is safe. An option with an
+odd letter count shows its pair padding as a space before `』`, so keep
+options even.
+
+**Museum (section 0) flow.** 19 parts: five exhibitions × (`01 00` going in,
+`01 03` remark + choice, `02` reply), then variant 5 (part 15 going in, then
+one of parts 16–18). Setup `0x80134C64` sets the exhibition byte
+`0x800CA2FC`: year 97 (`0x800E62BE == 0x61`) months 9–11 → 2, year 97
+months 3–5 → 3, year 95 months 9–11 → 4, otherwise 0 or 1 by bit 0 of
+`0x800E645B + 0x38·girl`; 2–4 become 5 if that girl's per-exhibition seen
+byte (`0x800E645C/D/E + 0x38·girl`) is set. `0x801324DC` adds
+variant × parts-per-variant (byte `0x8015B658`, 3 here) to the part index
+`*(s16*)0x800CA148`. Variant 5's line follows her standing: affection 48 →
+`0x6A8`, affection 200 → `0x688` (`0x660` presumably needs the best
+standing; the selecting code isn't found; forcing `0x80051A68`'s result at
+`0x80132570` did not change it). The talk runner is EXE `0x80082764`. The
+tables `*(0x8015B520)` = `0x801A427C` and `*(0x8015B524)` = `0x801A4D2C`
+(15 bytes per girl, loaded from another file) give each choice's
+impression level, copied to `0x800CA21C`–`0x800CA230`.
+
+**Impression thoughts** after each choice (the player's thought, in levels
+from a great impression to a bad one, plus a neutral one) are not in `DATE_FU`:
+they are the shared `SERIFU/SERIFU.BIN` (`0x94C`–, base `0x80197000`), with
+copies in `SPEAKTST/TEST_OT.BIN`. Untranslated.
+
 ## 7. Graphics
 
 ### General
@@ -1134,3 +1239,9 @@ command's month pages, which are already in English (MON TUE …).
    labels, town-news banners, date-spot art). The command grid's hand
    doesn't respond predictably to the test driver's key holds (testing.md),
    so reaching each command needs a better input method first.
+9. **Regular dates** (§6k): what picks variant 5's line in each place
+   (her standing, but the code isn't found); how the `n` empty-option bytes
+   in `DATE_FU.BIN` section 4 behave on screen; the consumers of sections 7
+   and 9; DATE2.EXN's role (its 30-word table at `0x8013A384` doesn't match
+   `DATE_FU.BIN`'s sections). The impression thoughts in `SERIFU.BIN` are
+   shown in every date.

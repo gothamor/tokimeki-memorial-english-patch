@@ -204,6 +204,29 @@ every pointer to a moved string is rewritten (game-internals §6e). Example:
   about 1 byte per letter, the same as the Japanese bytes for a typical
   translation, so write tightly. The log line `dialogue: N string(s),
   X of Y bytes used` shows the margin.
+- **The pool is in pieces.** Script files interleave strings with pointer
+  lists, so the free space is many small gaps, and a string must fit one gap.
+  The patcher packs in file order first; if that strands a string it retries
+  longest-first, each in the tightest gap (blocks that already fit keep their
+  exact layout). If it still fails with plenty of bytes free, the longest
+  strings are too long for any gap: keep each long reply near its own
+  original size. (The museum pilot failed at 1322 of 1624 bytes until two
+  122/124-byte replies were cut below the largest gap.)
+
+**`"share_identical": true`** (per `dialogue` block): strings whose English
+encodes to the same bytes are stored once and all their pointers point at
+that copy. `DATE_FU.BIN` repeats "shall we go inside?" 31 times; sharing
+saves about a fifth of its pool. Safe because the game copies a string
+before cutting it up (game-internals §6k). Translate repeated lines
+identically so they can share.
+
+**Choices (`{q}`).** A string with `{q}` is either a set of options
+(code `03`/`08`: the game lists them, in shuffled order, each in `『』`) or
+a reply with one option per choice (code `02`: the game shows only the one
+matching the chosen option, game-internals §6k). Keep the option count and
+order. Give every **option** an even number of letters, or the pair padding
+shows as a space before the game's `』` ("lovely? 』"). Replies don't need
+that.
 
 **Style notes (from the prologue):**
 - The box shows 3 lines at a time; 4–5 line strings scroll, which is fine.

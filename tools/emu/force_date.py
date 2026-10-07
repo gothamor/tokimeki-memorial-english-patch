@@ -3,6 +3,7 @@
 Usage:
   python tools/emu/force_date.py GIRL PLACE MONTH DAY
   python tools/emu/force_date.py 0 PLACE MONTH DAY --scene N [--any-step] [--timeout S]
+  python tools/emu/force_date.py GIRL PLACE MONTH DAY --set-at PC ADDR VALUE [--timeout S]
 
 Writes appointment slot 0 (0x800E67CC, game-internals §6j): active, GIRL,
 PLACE (1-based outing id; 0 is also accepted by the game), MONTH/DAY. Run it
@@ -14,6 +15,10 @@ chooser (0x8013272C, just after its prologue) and, at the date step the
 scene normally needs, clears the scene's one-shot flag and jumps to the call
 that picks it. That skips the season and affection checks, which can't be
 met early in the game. --any-step jumps at the first chooser call instead.
+
+--set-at PC ADDR VALUE breaks once at PC while DATE.EXN is loaded and writes
+the byte VALUE to ADDR, e.g. the museum date's exhibition: --set-at
+0x80134F74 0x800CA2FC N (N = 0-5, DATE_FU section 0; game-internals §6k).
 
 This changes game state: use it only on the harness's test cards, and do the
 same forcing on the unpatched game for the comparison run.
@@ -49,7 +54,11 @@ SCENES = {
 
 def main() -> None:
     args = sys.argv[1:]
-    scene, any_step, timeout = None, False, 600.0
+    scene, any_step, timeout, set_at = None, False, 600.0, None
+    if "--set-at" in args:
+        i = args.index("--set-at")
+        set_at = tuple(int(a, 0) for a in args[i + 1:i + 4])
+        del args[i:i + 4]
     if "--any-step" in args:
         any_step = True
         args.remove("--any-step")
@@ -72,6 +81,9 @@ def main() -> None:
     word = 1 << 29 | girl << 25 | day << 16 | month << 12 | place
     g.cmd(f"M{SLOT0:x},4:" + struct.pack("<I", word).hex())
     print(f"appointment slot 0 = {word:#010x} (girl {girl}, place {place}, {month}/{day})", flush=True)
+    if set_at is not None:
+        set_byte(g, *set_at, timeout)
+        return
     if scene is None:
         g.detach()
         return
@@ -100,6 +112,28 @@ def main() -> None:
             return
     finally:
         g.clear_break(CHOOSER)
+        g.detach()
+
+
+def set_byte(g: Gdb, pc: int, addr: int, value: int, timeout: float) -> None:
+    g.break_at(pc)
+    t0 = time.time()
+    try:
+        while (left := timeout - (time.time() - t0)) > 0:
+            try:
+                g.cont(timeout=left)
+            except socket.timeout:
+                g.interrupt()
+                print("timed out without writing", flush=True)
+                return
+            if struct.unpack("<I", g.mem(LOADED_LBA, 4))[0] != DATE_EXN_LBA:
+                continue
+            old = g.mem(addr, 1)[0]
+            g.cmd(f"M{addr:x},1:{value:02x}")
+            print(f"at {pc:#x}: {addr:#x} {old} -> {value}", flush=True)
+            return
+    finally:
+        g.clear_break(pc)
         g.detach()
 
 

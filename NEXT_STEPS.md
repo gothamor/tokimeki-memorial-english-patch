@@ -294,6 +294,31 @@ file. Remaining work by how it can be tested:
   verified; `translation/shiori_events.json` now covers all 157 strings
   (5158 of 5244 pooled bytes). **EVENT_FU.BIN is complete.**
 
+**DATE_FU.BIN: mapped, museum pilot done (2026-10-07).** Static map in
+game-internals §6k: 27 sections (20 outing places plus meeting, ending,
+going home, small talk, hobby notes, a hobby-probing talk and a parade
+invitation) cover all 474 strings, one pointer each. Choices and replies
+work in English (the reply picker copies the string, options are shown
+shuffled in `『』`). Patcher: `share_identical` and a longest-first packing
+fallback (both tested; existing builds byte-identical). Section 0 (Art
+Museum, 30 strings) is translated, verified on screen and promoted in
+`translation/shiori_dates.json`. Remaining DATE_FU work, in order:
+1. Sections 23 (meeting, 35) and 22 (ending, 36) and 26 (going home, 4):
+   seen in every date, so test them alongside any place. Their variants
+   (late/on time, her verdict) need standing/affection pokes.
+2. `SERIFU/SERIFU.BIN` impression thoughts (`0x94C`–, base `0x80197000`):
+   shared by every girl's dates; small. A separate feature JSON.
+3. The other 19 places, a few per batch. Each place's setup is in the §6k
+   table; force with `force_date.py 0 PLACE 4 30` plus `--set-at SETUP_PC
+   0x800CA2FC N` once that place's variant logic is read (the museum's is at
+   `0x80134F74`; other places have their own selection code before their
+   own `multu` by 3).
+4. Section 4 (shrine festival) needs `script.decode` support for the `n`
+   empty-option byte first (two strings); sections 7, 9, 24, 25 need their
+   triggers traced.
+Space: replies must each fit a gap near their own size (translation-guide,
+"The pool is in pieces").
+
 Found on the way, for later:
 - The meeting-place thought shows 近所の公園 for place 0 (neighborhood
   park): that name is a separate untranslated string, not in the outing

@@ -1,0 +1,40 @@
+{
+  "description": "Shiori's regular date conversations in SERIFU/DATE_FU.BIN (load address 0x80198000; section/place map in game-internals 6k). Translated so far: section 0, the Art Museum date (place 7; 0x0-0x6A8, 30 strings): five exhibitions (variant byte 0x800CA2FC = 0-4; each: going in, Shiori's remark, a three-way player choice, Shiori's reply picked by the chosen option) and variant 5, 'we saw this before', whose three lines (0x660/0x688/0x6A8) are picked by her standing. Speaker codes: 00 player, 01 Shiori, 03 player choice (the game shows the options in shuffled order and draws the brackets, so each option has an even letter count), 02 Shiori's reply (one {q} option per choice). Identical lines share one copy (share_identical); 1272 of 1624 pooled bytes. Verified in DuckStation with forced museum dates (force_date.py --set-at, docs/testing.md): all five exhibitions with every choice and reply, and variant 5's three lines (0x688 by raising her affection, 0x660 by redirecting the part pointer). The meeting, ending, going-home and impression lines around it are other sections/files and still Japanese.",
+  "dialogue": [{
+    "file": "CDROM/SERIFU/DATE_FU.BIN",
+    "base": "0x80198000",
+    "share_identical": true,
+    "lines": [
+      {"offset": "0x0", "original": "それじゃ、\nそろそろ、\n中に入りましょう。", "text": "Well then,\nshall we\ngo inside?"},
+      {"offset": "0x2c", "original": "そうだね。\n中に入ろうか。", "text": "Sure.\nLet's go in."},
+      {"offset": "0x50", "original": "素敵な絵が\nたくさんあるね。", "text": "There are so many\nlovely paintings."},
+      {"offset": "0x6c", "original": "この絵、奇麗だと思わない？{q}あの人、奇麗だな…。{q}この絵の人、詩織に似てない？", "text": "Isn't this one lovely?{q}That lady is pretty...{q}Doesn't she look like you?"},
+      {"offset": "0xc4", "original": "素敵ね。\n見とれちゃうわね。{q}まったく、美人だと\nすぐ目がいくんだから。{q}そうかな？\nあまり実感わかないわ。", "text": "So lovely.\nI could stare all day.{q}Honestly, you always\nlook at pretty girls.{q}You think so?\nI don't see it."},
+      {"offset": "0x130", "original": "それじゃ、\nそろそろ、\n中に入りましょう。", "text": "Well then,\nshall we\ngo inside?"},
+      {"offset": "0x15c", "original": "そうだね。\n中に入ろうか。", "text": "Sure.\nLet's go in."},
+      {"offset": "0x180", "original": "素晴らしい絵ね。\nどうしたら\n描けるのかな？", "text": "What wonderful art.\nHow do you think\nthey paint like this?"},
+      {"offset": "0x1ac", "original": "練習あるのみだよ。{q}誰にでも描けるんじゃない？{q}才能が豊かな人なんだよ。", "text": "Just lots of practice.{q}Anyone could paint that.{q}They're really talented."},
+      {"offset": "0x1fc", "original": "そうよね。\n諦めたら\n何もできないもんね。{q}そんなわけないじゃない。{q}やっぱり、才能かなぁ。\n私には無理そうね。", "text": "Right.\nIf you give up,\nyou get nowhere.{q}No, that's not true.{q}So it's talent?\nI could never do it."},
+      {"offset": "0x26c", "original": "それじゃ、\nそろそろ、\n中に入りましょう。", "text": "Well then,\nshall we\ngo inside?"},
+      {"offset": "0x298", "original": "そうだね。\n中に入ろうか。", "text": "Sure.\nLet's go in."},
+      {"offset": "0x2bc", "original": "私こういう絵は、\nちょっと…。", "text": "This kind of art\nisn't really for me..."},
+      {"offset": "0x2dc", "original": "そ、そうだよね。ごめんね。{q}これぞ芸術だよ。{q}こういう絵、嫌いなんだね…。", "text": "R-right. Sorry about that.{q}But this is great art!{q}So you don't like these..."},
+      {"offset": "0x330", "original": "べ、別にいいの…。\nたまには、こういうのも\n良いと思うし…。{q}芸術だとは思うけど、\n私の好みとは\n合わないかな…。{q}ごめんね。\n私のセンスとは\nちょっと合わなくて。", "text": "N-no, it's fine...\nIt's nice to see this\nkind of thing sometimes.{q}I know it's art, but\nit's just not\nmy taste...{q}Sorry.\nIt just doesn't\nquite suit me."},
+      {"offset": "0x3d4", "original": "それじゃ、\nそろそろ、\n中に入りましょう。", "text": "Well then,\nshall we\ngo inside?"},
+      {"offset": "0x400", "original": "そうだね。\n中に入ろうか。", "text": "Sure.\nLet's go in."},
+      {"offset": "0x424", "original": "このブロンズ像、\n素晴らしい躍動感だと\n思わない？", "text": "Doesn't this bronze\nstatue look so\nfull of life?"},
+      {"offset": "0x458", "original": "うん、素晴らしい作品だね。{q}これレプリカなのに？{q}俺は、隣のやつがいいな。", "text": "Yes, it's a great piece.{q}But it's only a replica?{q}I like the one next to it."},
+      {"offset": "0x4ac", "original": "やっぱり\nそう思うでしょう。\n良かった。{q}そんなの\n関係無いと思うな。{q}隣のもわりといいね。", "text": "I knew you'd\nthink so too.\nI'm glad.{q}I don't think\nthat matters.{q}That one's nice too."},
+      {"offset": "0x508", "original": "それじゃ、\nそろそろ、\n中に入りましょう。", "text": "Well then,\nshall we\ngo inside?"},
+      {"offset": "0x534", "original": "そうだね。\n中に入ろうか。", "text": "Sure.\nLet's go in."},
+      {"offset": "0x558", "original": "私この人の絵、\n大好きなんだ。", "text": "I really love\nthis artist's work."},
+      {"offset": "0x578", "original": "俺もファンなんだよ。{q}こんな絵がいいの？{q}上手だよね。", "text": "I'm a fan too.{q}You like this stuff?{q}They're really good."},
+      {"offset": "0x5b8", "original": "そうなんだ。\n見に来れてよかったね。{q}私は\n好きなんだけどな…。{q}有名な画家だからね。", "text": "Really?\nThen I'm glad we came.{q}Well,\nI like it...{q}They're famous, after all."},
+      {"offset": "0x610", "original": "それじゃ、\nそろそろ、\n中に入りましょう。", "text": "Well then,\nshall we\ngo inside?"},
+      {"offset": "0x63c", "original": "そうだね。\n中に入ろうか。", "text": "Sure.\nLet's go in."},
+      {"offset": "0x660", "original": "これ、この前、\n見たと思うけど…。", "text": "Didn't we see\nthis last time...?"},
+      {"offset": "0x688", "original": "これ、この前\n見たのだよ。", "text": "This is the one\nwe saw last time."},
+      {"offset": "0x6a8", "original": "これ、この前\n見たと思うんだけど…。", "text": "I think we saw\nthis one before..."}
+    ]
+  }]
+}
