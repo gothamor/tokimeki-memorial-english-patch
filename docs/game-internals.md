@@ -372,64 +372,97 @@ addresses for (`lui`/`addiu`), and pointers into the middle of a string.
 | `SERIFU/DATE_*`, `EVENT_*` | 0x80198000 |
 | `SERIFU/SERIFU, G_APPEAR, G_INVITE, GASSHUKU, GEKO, GROUP_D, HAGEMASI, NYUBU, OMIMAI, SHOGATU, SHUGAKU, VALEN, WHITE, XMAS` | 0x80197000 |
 | `SERIFU/G_BIRTH, KARADATA, P_BIRTH, ZAKOSEN` | 0x801B0000 |
-| `SERIFU/GASSH_FU` | 0x801BE000 |
+| `SERIFU/GASSH_FU` | 0x801B4400 (not on the 0x800 grid; see below) |
 | `SERIFU/EPILOG` | 0x80180000 |
 | `SERIFU/ENDING` | 0x801F0000 |
 | `BUNKA/*` (46 files) | 0x801E8000 |
 | `SPEAKTST/TEST_*` (12 files) | 0x80180000 |
 
 (The table is from a scan for the base that makes the most pointers land on
-string starts. Only the prologue has been verified in the game.) Sizes:
-`SERIFU/` ~9,000 strings / ~330 KB, `BUNKA/` ~9,100 / ~330 KB, `SPEAKTST/`
-~16,400 / ~630 KB of Japanese. `EVENT/` has no dialogue strings.
+string starts. Only the prologue has been verified in the game.) Sizes, from
+`tools/dump_dialogue.py` after the 2026-10-07 extraction fix below (Japanese
+bytes, excluding NULs): `SERIFU/` 16,727 strings / ~652 KB, `BUNKA/` 12,898 /
+~454 KB, `SPEAKTST/` 16,340 / ~629 KB. The earlier figures (~9,000 / ~9,100
+strings) missed every string that follows a pointer table. `EVENT/` has no
+dialogue strings.
 A few strings (mostly `SPEAKTST`) also contain bytes such as `<`, `>`, `-`,
 `n` that the renderer doesn't treat as control codes; `script.decode`
 rejects them, so `dump_dialogue.py` leaves them out. Find out what reads them
 before translating those files.
 
-**Character-pack planning inventory (2026-10-07).** Running the existing
-`tools/dump_dialogue.py` helper `targets(data, base)` on the extracted files
-found 186 decodable pointer-target entries in `SERIFU/DATE_FU.BIN` (47,104
-file bytes), 119 in `SERIFU/EVENT_FU.BIN` (12,288 bytes), both using the
-inferred base `0x80198000`; `SPEAKTST/TEST_FU.BIN` yielded 2,473 entries
-(186,368 bytes) at inferred base `0x80180000`. Directory enumeration found
-11 `SERIFU/DATE_*` files. These are decoded-entry counts, including choices
-and player replies, not display-line counts, scene counts or available
-repack bytes. These counts are now known to omit valid strings as explained
-below. The user has selected Shiori for the first pack, and inspection finds
-Shiori-specific content in the FU scripts, but per-scene consumers and runtime
-load addresses still need tracing. The staged plan is in `NEXT_STEPS.md`;
-this inventory does not establish full-file or full-route coverage.
+**Strings directly after pointer tables (extraction fix, 2026-10-07).** Script
+files interleave short pointer lists with the strings they list, so many
+strings start right after an aligned pointer word, not after a NUL. In
+`SERIFU/EVENT_FU.BIN` the word at `0x648` points at `0x62C` and is
+immediately followed by the string at `0x64C`; `0x69C`–`0x6A7` holds three
+pointers followed by the string at `0x6A8`. Some words point at other lists
+rather than at strings (`0x6F4` → the list at `0x648`, `0x6F8` → the list at
+`0x69C`), so scene mapping has to decode a nested table structure; that
+structure isn't understood yet.
 
-**Early Shiori pilot candidates and extraction caveat (2026-10-07, static
-inspection only).** `SERIFU/EVENT_FU.BIN` contains a short early-morning
-school-walk exchange: file offsets `0x62C`, `0x64C`, `0x668`, `0x6A8`
-(inferred RAM `0x8019862C`, `0x8019864C`, `0x80198668`, `0x801986A8`).
-The entries cover getting up early, a greeting, the player addressing Shiori,
-and a thought after walking to school; they have 2/2/3/3 display lines with
-no choices. References to those strings occur at file `0x648`, `0x6A0`,
-`0x6A4`, `0x6F0`, respectively. This is a compact candidate, **not a verified
-first-week event**: calendar/year, affection and random-selection conditions
-have not been decoded, and no emulator test was performed in this review.
+The old dumper accepted a pointer target only if the byte before it was NUL,
+which dropped all of these. `dump_dialogue.starts_string()` now also accepts
+an aligned target preceded by a word that points into the same file. That is
+a safe boundary: such a word's third byte is below 0x20 for every base in the
+table above (0x13–0x1F), which is neither a Shift-JIS byte nor a control
+code, so no decodable string can run through it. Effect: `DATE_FU` 186 → 474 strings,
+`EVENT_FU` 119 → 157, `GEKO` 615 → 1,011, `TEST_FU` 2,473 → 2,474. All the
+pilot offsets below are now dumped. Synthetic regression tests are in
+`tests/test_dialogue_extraction.py`.
 
-The current `tools/dump_dialogue.py:string_at()` requires `data[off-1] == 0`.
-That rejects legitimate starts directly after a pointer table: in this scene
-`0x62C`, `0x64C` and `0x6A8` are preceded by `0x80` and omitted; only `0x668`
-is included. Another concrete case is `EVENT_FU.BIN` string `0x6C`, referenced
-by the 32-bit word at `0x1E0`; its preceding byte is likewise `0x80`. Direct
-`script.read_string()`/`decode()` of these pointer targets succeeds. Thus
-"dumped every entry" does not mean "translated every line" with this helper.
-A diagnostic skipping only the preceding-NUL test found 38 additional
-decodable pointer targets in EVENT_FU and 288 in DATE_FU. Those extra candidates
-still need a boundary/interior-pointer audit; they are not validated totals.
-Fix extraction with regression cases before bulk translation, without relaxing
-the patcher's guards against interior references or invalid relocation.
+Method: for every aligned word, take the target `word − base`; if it decodes
+as dialogue, classify the byte before it. Across all SERIFU, SPEAKTST and
+BUNKA files, 10,658 targets with a non-NUL preceding byte follow an in-file
+pointer word. Apart from `GASSH_FU` (wrong base, next paragraph), **no
+Japanese-text target is rejected as an interior pointer**. The dumper still
+reports left-out targets on stderr (`--rejected` lists them): 691, all
+"no Japanese text". The sampled ones are 4-byte binary records
+(`code, 0, 0, n`, e.g. `DATE_FU.BIN` `0x548C`, `0x6E38`, `0x6FA0`) whose first
+byte happens to be a name-code letter (`A`, `P`, `p`); they are data, not lines.
+The patcher's guard against pointers into the middle of translated text is
+unchanged and tested.
+
+**`GASSH_FU.BIN` loads at `0x801B4400`**, not `0x801BE000`. Its first pointer
+list (file `0x4C`) holds `0x801B4400` and `0x801B441C`, matching the strings at
+file offsets 0 and `0x1C`. At that base it has 1,207 strings and no rejected
+Japanese targets; at the old base, 183 strings and 969 Japanese targets
+that land mid-string. The old search only tried 0x800-aligned bases; `guess_base()` now
+also votes on candidates from pointer value minus string start. Every other
+SERIFU, SPEAKTST and BUNKA file keeps the base it had before. Static only;
+the load address hasn't been traced in the game.
+
+**Character-pack planning inventory (2026-10-07).** With the fixed dumper,
+`SERIFU/DATE_FU.BIN` (47,104 file bytes) has 474 pointer-target strings
+(25,417 Japanese bytes), `SERIFU/EVENT_FU.BIN` (12,288 bytes) has 157
+(4,831 bytes), both at inferred base `0x80198000`; `SPEAKTST/TEST_FU.BIN`
+(186,368 bytes) has 2,474 (94,496 bytes) at `0x80180000`. There are 11
+`SERIFU/DATE_*` files. These are string counts, including choices and player
+replies, not display-line or scene counts. Japanese bytes approximate the
+repack pool only for the strings actually translated (each slot also gets its
+NUL and alignment padding). The user has selected Shiori for the first pack;
+per-scene consumers and runtime load addresses still need tracing. The staged
+plan is in `NEXT_STEPS.md`; this inventory doesn't establish full-file or
+full-route coverage.
+
+**Early Shiori pilot candidates (2026-10-07, static inspection only).**
+`SERIFU/EVENT_FU.BIN` contains a short early-morning school-walk exchange:
+file offsets `0x62C`, `0x64C`, `0x668`, `0x6A8` (inferred RAM `0x8019862C`,
+`0x8019864C`, `0x80198668`, `0x801986A8`). The entries cover getting up early,
+a greeting, the player addressing Shiori, and a thought after walking to
+school; they have 2/2/3/3 display lines with no choices or name codes.
+Each has exactly one pointer, at file `0x648`, `0x6A0`, `0x6A4`, `0x6F0`
+respectively, and no code references. A dry run of `patcher.apply_dialogue`
+with placeholder English on the extracted file accepted all four, rewrote
+only those pointers, and reported a **180-byte pool** for the scene. This is a
+compact candidate, **not a verified first-week event**: calendar/year,
+affection and random-selection conditions haven't been decoded, and it hasn't
+been seen in the emulator.
 
 A fallback is the shared `SERIFU/GEKO.BIN` Shiori walk-home dialogue (inferred
 base `0x80197000`): candidate clusters start at file `0x1A24` (her invitation),
 `0x1B50` (accepting a player invitation), `0x1C54` (declining it). The last
-contains the two-choice prompt at `0x1C9C` and response at `0x1CD0`; some of
-these strings also follow pointer tables and are omitted by the dumper.
+contains the two-choice prompt at `0x1C9C` and response at `0x1CD0`. Some of
+these strings follow pointer tables; the fixed dumper now includes all five.
 Ownership is supported by explicit Shiori references in the exchange, not
 just a filename. Actual early-game availability, relationship thresholds,
 scene boundaries and shared consumers remain unverified. These candidates

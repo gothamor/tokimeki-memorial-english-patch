@@ -184,6 +184,13 @@ every pointer to a moved string is rewritten (game-internals §6e). Example:
 - Start from a dump: `python tools/dump_dialogue.py extracted/CDROM/SERIFU/EVENT_KI.BIN -o extracted/dumps/EVENT_KI.json`
   (it finds the base). **Keep dumps out of the repo** (they're the Japanese
   script; AGENTS.md rule 9). Only commit lines you've translated.
+- The dumper prints how many pointer targets decode as text but were left
+  out; `--rejected` lists them. "No Japanese text" entries seen so far are
+  binary records. A Japanese target reported as "not at a string start"
+  means a pointer into the middle of a string or a wrong base: work out which
+  before translating that file (game-internals §6e). Dumps made before
+  2026-10-07 missed every string that follows a pointer table; regenerate them.
+- After changing the dumper or `script.py`, run `python -m unittest discover tests`.
 
 **Rules the patcher enforces:**
 - **Same number of display lines and choices as the Japanese, with the same

@@ -71,6 +71,7 @@ These are hard-won. Every one of them has broken the game, or would.
 
 ## Checklist for any change that affects the output
 
+- [ ] `python -m unittest discover tests` passes.
 - [ ] `python -m tokipatch <cue> -o <scratch dir> --force` succeeds, and every
       touched file reports `checksum updated` (if it has a trailer).
 - [ ] Only the expected sectors changed. Diff against the original track or

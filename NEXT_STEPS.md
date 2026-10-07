@@ -25,18 +25,19 @@ bounded dialogue/events pack, **not a claim that the entire character route
 is translated**. Shared scenes and the larger conversation pool are a later
 milestone. Existing settings, names and accepted club cosmetics stay unchanged.
 
-Read-only inventory, 2026-10-07 (method/caveats in game-internals §6e):
+Inventory with the fixed dumper, 2026-10-07 (method in game-internals §6e):
 
-| Candidate source file | Current dumper output (incomplete) | Inferred RAM base |
-|---|---:|---|
-| `CDROM/SERIFU/DATE_FU.BIN` | 186 | `0x80198000` |
-| `CDROM/SERIFU/EVENT_FU.BIN` | 119 | `0x80198000` |
-| `CDROM/SPEAKTST/TEST_FU.BIN` | 2,473 | `0x80180000` |
+| Candidate source file | Strings (old dumper) | Japanese bytes | Inferred RAM base |
+|---|---:|---:|---|
+| `CDROM/SERIFU/DATE_FU.BIN` | 474 (186) | 25,417 | `0x80198000` |
+| `CDROM/SERIFU/EVENT_FU.BIN` | 157 (119) | 4,831 | `0x80198000` |
+| `CDROM/SPEAKTST/TEST_FU.BIN` | 2,474 (2,473) | 94,496 | `0x80180000` |
+| `CDROM/SERIFU/GASSH_FU.BIN` | 1,207 (186, wrong base) | 45,166 | `0x801B4400` |
 
-The earlier first-two-file estimate of 305 entries is **not a complete scope
-count**. Inspection now proves the dumper omits valid strings immediately
-following pointer tables, as well as potentially unsupported controls. Audit
-and correct extraction before estimating total work. See game-internals §6e.
+These are string counts, not scenes or display lines. They now include the
+strings that follow pointer tables, which the old dumper dropped. Strings
+with unknown control bytes (`<`, `>`, `-`, `n`, mostly `SPEAKTST`) are still
+left out by `script.decode` and need their consumer identified first.
 
 ### Early pilot candidates (static inspection; not yet played/traced)
 
@@ -71,8 +72,8 @@ translated and is not new Shiori-pilot coverage.
 If the fallback is selected, a small Shiori-only `GEKO.BIN` scene becomes the
 pilot exception to the initial DATE/EVENT file scope (feature JSON such as
 `shiori_school.json`). The broader first release still targets the FU date
-and special-event files. No translation, dumper fix or emulator run has been
-performed as part of this planning/research update.
+and special-event files. The dumper fix is done (Step 2); no translation or
+emulator run has been performed yet.
 
 ### Step 1 — lock Shiori's release boundary (target confirmed)
 
@@ -93,14 +94,16 @@ the earliest practical replay point.
   `extracted/dumps/`. Do not commit untranslated dumps or copied script text.
   Start from the inferred bases above, then confirm actual CD loads and RAM
   destinations with `tools/emu/trace_reads.py` at representative scenes.
-- First address the now-proven dumper omission: `string_at()` rejects a
-  target unless its preceding byte is NUL, but strings can legitimately follow
-  a pointer table ending in `0x80`. Three of the four preferred-pilot strings
-  are omitted. Add focused extraction regression tests and a boundary-aware
-  correction during implementation. Use synthetic test fixtures, not committed
-  game data, and include interior/invalid-pointer rejection cases; do not
-  simply accept every interior pointer or weaken patcher relocation checks.
-  Re-inventory the scoped files.
+- **Done (2026-10-07): dumper omission fixed.** `dump_dialogue.starts_string()`
+  also accepts a target right after an in-file pointer word; `guess_base()`
+  finds bases off the 0x800 grid (GASSH_FU is `0x801B4400`, not `0x801BE000`);
+  left-out targets are reported (`--rejected`). Synthetic regression tests in
+  `tests/test_dialogue_extraction.py` cover interior/foreign/undecodable
+  rejection and that the patcher still refuses interior pointers. All four
+  pilot strings are now dumped; a dry run of `apply_dialogue` on the real
+  file accepted them (one pointer each, no code references, 180-byte pool).
+  The re-inventory is in the table above. Local dumps of DATE_FU, EVENT_FU
+  and GASSH_FU are in `extracted/dumps/` (not committed).
 - Build a scene inventory keyed by disc file, original string offset and
   pointer/scene index. Record speaker, player replies, choices and outcomes,
   variants and the conditions needed to reach them. Inspect the scene tables
@@ -249,10 +252,10 @@ Distinguish such content gaps from translated branches awaiting visual tests.
   prerequisites documented. "All character dialogue" requires a cross-file
   audit, not simply reaching the end of two JSON files.
 
-First action when implementation is requested: audit the missing pilot
-strings and map/replay an early Shiori school conversation (Steps 2–3).
-Shiori is already selected. This planning change does not start
-bulk translation, emulator automation or new patcher code.
+Next action: map the pilot scene (Step 2's remaining bullets: confirm the
+EVENT_FU load address with `trace_reads.py`, decode the nested pointer lists
+around `0x648`–`0x6FC` and the event's trigger conditions) and find a replay
+point for it (Step 3). Shiori is already selected.
 
 ## Before you start
 
@@ -468,11 +471,12 @@ The bulk of the game, by dialogue folder:
 
 | Folder | Strings | Bytes (Japanese) |
 |---|---|---|
-| `SERIFU/` | 9,530 | 358 KB |
-| `BUNKA/` | 9,083 | 331 KB |
-| `SPEAKTST/` | 16,145 | 627 KB |
+| `SERIFU/` | 16,727 | 652 KB |
+| `BUNKA/` | 12,898 | 454 KB |
+| `SPEAKTST/` | 16,340 | 629 KB |
 
-Strings are found by a scan, so the counts are approximate. Load addresses
+Counts from `dump_dialogue.py` after the 2026-10-07 fix (pointer targets
+only; strings with unknown control bytes are excluded). Load addresses
 for each file are in game-internals §6e; only the prologue is verified in
 the game.
 
