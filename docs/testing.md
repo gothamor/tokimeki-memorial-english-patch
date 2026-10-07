@@ -351,6 +351,24 @@ After promotion, the normal build (no `-t`, `.emu/default_shiori/`) is
 byte-identical to the tested candidate. Not tested: the natural trigger
 (needs mid-game affection), other names in `{P}`.
 
+**Rain and phone call (2026-10-07).** Same recipe with `force_event.py 0 1
+--clear-flag 0x800E67EC` (rain) and `force_event.py 0 8` (phone call; no
+flag needed). Forcers can be chained in one week:
+`force 0 1 && force 0 8 && force 0 2 --clear-flag 0x800E67ED` puts the three
+scenes on Tuesday, Wednesday and Thursday. Unpatched references:
+`.emu/shots/r_*.png` (rain), `h_*.png` (phone). Candidate
+`.emu/review_shiori2/` (15 defaults minus the promoted `shiori_events.json`,
+plus the revised draft): only EVENT_FU's sectors 44581, 44585, 44586 differ
+from the default build, EDC/ECC and headers valid, checksum valid, all 68
+strings' pointers resolve, and no byte outside the string slots and their
+pointers changed. First on-screen pass showed "happy. )": two thought lines
+ended in an odd-length run, padded with a space before the game's bracket;
+fixed to even lengths, rebuilt, retested. Every box of the three scenes was
+then seen (`ex_*`, plus `fz_*`/`fw_*` for two boxes whose screenshots had
+caught them mid-typing). Screenshots need at least ~1.5 s between them;
+0.7 s makes `drive.ps1` fail. Promoted; the normal build
+`.emu/default_shiori2/` is byte-identical to the candidate.
+
 **For a patched build** the save state can't be used: it holds the original
 EXE and text. Boot the patched CUE, load the 95/4/23 card save
 (title → GAME START → `C,wait:3000,C`), then run the forcer and the same

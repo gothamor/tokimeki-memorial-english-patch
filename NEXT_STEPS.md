@@ -280,9 +280,10 @@ Details in testing.md, "Forcing a girl event".
 **EVENT_FU mapping done (2026-10-07, static; game-internals §6j table).**
 All 157 strings belong to the eight entries 6–13; nothing else uses the
 file. Remaining work by how it can be tested:
-- GEKO scenes 1 (rain, 21 strings) and 8 (Shiori's phone call, 42): run
-  from the day queue like the walk, so `force_event.py 0 1` / `0 8` should
-  work (not tried yet; clear flags `0x800E67EC` / `0x800E67F2` if needed).
+- **Done (2026-10-07):** GEKO scenes 1 (rain, 21 strings) and 8 (phone
+  call, 42) translated, tested by forcing (`force_event.py 0 1` with flag
+  `0x800E67EC` cleared, `0 8` with no flag) and promoted with the walk in
+  `translation/shiori_events.json` (68 strings, 2162 of 2216 pooled bytes).
 - DATE scenes 3–6 (19 + 18 + 15 + 16 strings): chosen inside a date with
   Shiori by place, season and date step. Forcing needs either a real date
   with her (she refuses at low affection) or writing the date state; not

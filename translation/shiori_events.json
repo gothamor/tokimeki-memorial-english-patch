@@ -1,19 +1,119 @@
 {
-  "description": "Shiori's special events in SERIFU/EVENT_FU.BIN (load address 0x80198000, game-internals 6e/6j). Translated: scene 2, the early-morning walk to school (event-table entry 7, master list 0x6F4). Box order: 0x62C (player thought), 0x2AA8 + 0x64C (Shiori; the two strings share one 3-line box), 0x668 (player), 0x6A8 (player thought). The game draws both brackets around these thoughts, so they don't end with ')'. 174 of 188 pooled bytes used. Trigger: needs Shiori affection >= 61 and a second score >= 50, then about a 1% roll, once per game. Verified on screen by forcing it with tools/emu/force_event.py (docs/testing.md, 'Forcing a girl event'); the natural trigger path has not been played. Other EVENT_FU scenes are not translated yet.",
+  "description": "Shiori's special events in SERIFU/EVENT_FU.BIN (load address 0x80198000; scene map in game-internals 6j). Translated: entry 7 / GEKO scene 2, the early-morning walk to school (5 strings; tested and promoted earlier); entry 6 / GEKO scene 1, sudden rain on the way home, sharing an umbrella (21 strings, 0x0-0x360); entry 13 / GEKO scene 8, Shiori phones on your shared birthday and you celebrate in her room (42 strings, 0x203C-0x2560, 0x2AE8, 0x2AF0). Speaker codes: 00 player, 01 Shiori, 06 thought (the game draws both brackets, so no ')'), 0C+0D one shared Shiori box, 07/10 sound lines drawn without a label. 2162 of 2216 pooled bytes used. All three are rare in play; they were verified on screen by forcing them with tools/emu/force_event.py 0 <scene> (docs/testing.md); their natural triggers have not been played. Not translated yet: the four date events (entries 8-11) and the New Year walk (entry 12).",
   "dialogue": [
     {
       "file": "CDROM/SERIFU/EVENT_FU.BIN",
       "base": "0x80198000",
       "lines": [
         {
+          "offset": "0x0",
+          "original": "急に雨が降ってきたな。\n傘を持ってきてよかった。\nあっ、詩織がいるぞ。",
+          "text": "Rain, all of a sudden.\nGlad I brought my umbrella.\nHey, there's Shiori."
+        },
+        {
+          "offset": "0x48",
+          "original": "おーい詩織。\nどうしたの？",
+          "text": "Hey, Shiori!\nWhat's wrong?"
+        },
+        {
+          "offset": "0x6c",
+          "original": "急に雨が降ってきちゃって\n天気予報では降らないって\n言ってたのに…。",
+          "text": "The rain came out of\nnowhere. The forecast said\nit wouldn't rain..."
+        },
+        {
+          "offset": "0xb0",
+          "original": "傘、持ってこなかったの？",
+          "text": "Didn't bring an umbrella?"
+        },
+        {
+          "offset": "0xcc",
+          "original": "うん…。",
+          "text": "No..."
+        },
+        {
+          "offset": "0xd8",
+          "original": "よかったら、\n一緒に入っていかない？",
+          "text": "If you like,\nwant to share mine?"
+        },
+        {
+          "offset": "0xfc",
+          "original": "えっ、\n傘持ってきてるの？",
+          "text": "Huh?\nYou brought an umbrella?"
+        },
+        {
+          "offset": "0x118",
+          "original": "当然。\n日頃の行いがいいからね。",
+          "text": "Of course.\nI always behave myself."
+        },
+        {
+          "offset": "0x138",
+          "original": "きっとそれで\n雨が降ったのね。\nうふふふふふ。",
+          "text": "So that's why\nit's raining.\nTee-hee-hee."
+        },
+        {
+          "offset": "0x168",
+          "original": "別に、一緒に帰らなくても\nいいんだけどなぁ…。",
+          "text": "Well, we don't have to\nwalk home together..."
+        },
+        {
+          "offset": "0x198",
+          "original": "あっ、冗談よ。\n一緒に…、\n帰りたいな。",
+          "text": "Oh, I'm kidding.\nI'd like to...\nwalk home with you."
+        },
+        {
+          "offset": "0x1c0",
+          "original": "そう？\nそれじゃあ、\n行こうか。",
+          "text": "Yeah?\nWell then,\nlet's go."
+        },
+        {
+          "offset": "0x208",
+          "original": "やっぱり、\nちょっと恥ずかしいね。",
+          "text": "Still,\nit's a little embarrassing."
+        },
+        {
+          "offset": "0x22c",
+          "original": "詩織と相合い傘で\n帰れるなんて、\n嬉しいなぁ。",
+          "text": "Walking home under one\numbrella with Shiori...\nI'm so glad."
+        },
+        {
+          "offset": "0x25c",
+          "original": "恋人同士に\n見られちゃうかな…？",
+          "text": "Will people think\nwe're a couple...?"
+        },
+        {
+          "offset": "0x27c",
+          "original": "詩織と俺じゃ、\n月とスッポンだから、\nきっと見られないよ。",
+          "text": "Me next to you, Shiori?\nWe're total opposites.\nNobody would think that."
+        },
+        {
+          "offset": "0x2b8",
+          "original": "そ、そんなことないと\n思うけど…。",
+          "text": "I-I don't think\nthat's true..."
+        },
+        {
+          "offset": "0x2dc",
+          "original": "そ、そう？\nだったら\n嬉しいんだけど…。",
+          "text": "R-really?\nThen I'd be\nreally happy..."
+        },
+        {
+          "offset": "0x304",
+          "original": "ねぇ、ちょっと公園に、\nよって行かない？",
+          "text": "Hey, want to stop by\nthe park for a bit?"
+        },
+        {
+          "offset": "0x32c",
+          "original": "あ、あぁ、いいよ。",
+          "text": "S-sure, okay."
+        },
+        {
+          "offset": "0x360",
+          "original": "ちょっとでも、\n長くいられて、\n嬉しいな…。",
+          "text": "Even a little longer\ntogether...\nThat makes me happy."
+        },
+        {
           "offset": "0x62c",
           "original": "たまには\n早起きもいいなぁ。",
           "text": "Up early for once.\nIt's nice."
-        },
-        {
-          "offset": "0x2aa8",
-          "original": "あっ、{P}",
-          "text": "Oh, {P}!"
         },
         {
           "offset": "0x64c",
@@ -29,6 +129,221 @@
           "offset": "0x6a8",
           "original": "今日は楽しく登校できた。\n早起きは三文の得とは、\nよく言ったもんだぜ。",
           "text": "Fun walk to school today.\nEarly bird gets the worm.\nSo true."
+        },
+        {
+          "offset": "0x203c",
+          "original": "ぷるるるるる",
+          "text": "Brrring!"
+        },
+        {
+          "offset": "0x204c",
+          "original": "ぷるるるるる",
+          "text": "Brrring!"
+        },
+        {
+          "offset": "0x205c",
+          "original": "ぷるるるるる",
+          "text": "Brrring!"
+        },
+        {
+          "offset": "0x206c",
+          "original": "あれ、電話だ。誰だろう？",
+          "text": "Huh, the phone. Who is it?"
+        },
+        {
+          "offset": "0x2088",
+          "original": "はい、{p}ですけど。",
+          "text": "Hi, this is {p}."
+        },
+        {
+          "offset": "0x209c",
+          "original": "あっ、私、\n藤崎と\n申しますが…。",
+          "text": "Oh, um, this is\nFujisaki\nspeaking..."
+        },
+        {
+          "offset": "0x20c0",
+          "original": "あ、{G}？どうかしたの？",
+          "text": "Oh, {G}? Hi."
+        },
+        {
+          "offset": "0x20d8",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}."
+        },
+        {
+          "offset": "0x20e4",
+          "original": "ねぇ、今、空いているかな？",
+          "text": "Hey, are you free now?"
+        },
+        {
+          "offset": "0x2100",
+          "original": "え？…空いているけど。",
+          "text": "Huh? ...Yeah, I'm free."
+        },
+        {
+          "offset": "0x2118",
+          "original": "本当？それじゃあ、\n一緒に誕生日の\nお祝いしない？",
+          "text": "Really? Then...\nwant to celebrate our\nbirthday together?"
+        },
+        {
+          "offset": "0x214c",
+          "original": "うん、いいよ。",
+          "text": "Sure, okay."
+        },
+        {
+          "offset": "0x215c",
+          "original": "良かった…。\nケーキを用意してあるの。\n私の部屋に…\n来ない。",
+          "text": "Great...\nI've got a cake ready.\nWon't you come...\nto my room?"
+        },
+        {
+          "offset": "0x2198",
+          "original": "わかった。",
+          "text": "Got it."
+        },
+        {
+          "offset": "0x21e0",
+          "original": "詩織ー、入るぞー。",
+          "text": "Shiori, I'm coming in!"
+        },
+        {
+          "offset": "0x21f4",
+          "original": "うん、いいわよ。",
+          "text": "Okay, come in."
+        },
+        {
+          "offset": "0x2210",
+          "original": "お誕生日おめでとう、\n{P}。",
+          "text": "Happy birthday,\n{P}."
+        },
+        {
+          "offset": "0x222c",
+          "original": "あ、ああ…おめでとう、詩織。\n（詩織の部屋に入るのなんて、\n何年ぶりだろう？）",
+          "text": "Uh, happy birthday, Shiori.\n(How many years since I've\nbeen in Shiori's room?)"
+        },
+        {
+          "offset": "0x227c",
+          "original": "どうしたの？",
+          "text": "What's wrong?"
+        },
+        {
+          "offset": "0x228c",
+          "original": "い、いや…。\nあっ、詩織。これ、\nプレゼント。",
+          "text": "N-nothing...\nOh, Shiori. Here,\na present."
+        },
+        {
+          "offset": "0x22bc",
+          "original": "これは、あたしから。",
+          "text": "And this is from me."
+        },
+        {
+          "offset": "0x22d4",
+          "original": "ありがとう。大事にするよ。",
+          "text": "Thanks. I'll treasure it."
+        },
+        {
+          "offset": "0x22f0",
+          "original": "前は、よくこうやって、\n一緒にお祝いしたのにね。",
+          "text": "We used to celebrate\ntogether like this a lot."
+        },
+        {
+          "offset": "0x2320",
+          "original": "誕生日も一緒だから、\nまるで双子みたいにして…。",
+          "text": "Same birthday and all...\nlike we were twins."
+        },
+        {
+          "offset": "0x2350",
+          "original": "うん、そうだね。",
+          "text": "Yeah, that's right."
+        },
+        {
+          "offset": "0x2364",
+          "original": "あっ、そうだ。",
+          "text": "Oh, I know!"
+        },
+        {
+          "offset": "0x239c",
+          "original": "ねぇ、これ…。\n何だかわかる？",
+          "text": "Hey, this...\nDo you know what it is?"
+        },
+        {
+          "offset": "0x23bc",
+          "original": "なんだろう、\nオモチャの指輪だよな…。",
+          "text": "What is it?\nA toy ring...?"
+        },
+        {
+          "offset": "0x23e4",
+          "original": "あなたのプレゼントよ、\n十年前の。",
+          "text": "It's your present,\nfrom ten years ago."
+        },
+        {
+          "offset": "0x2408",
+          "original": "十年前？",
+          "text": "Ten years ago?"
+        },
+        {
+          "offset": "0x2414",
+          "original": "もう、小さくて入らなく\nなっちゃったけどね。",
+          "text": "It's too small for me\nnow, though."
+        },
+        {
+          "offset": "0x2440",
+          "original": "…宝物なの。",
+          "text": "...It's my treasure."
+        },
+        {
+          "offset": "0x2450",
+          "original": "そ、そう…。",
+          "text": "R-really..."
+        },
+        {
+          "offset": "0x2460",
+          "original": "あのとき、\nなんて言ったか覚えてる？",
+          "text": "Do you remember\nwhat you said then?"
+        },
+        {
+          "offset": "0x2484",
+          "original": "えっ？\n俺、何かいったの？",
+          "text": "Huh?\nDid I say something?"
+        },
+        {
+          "offset": "0x24c4",
+          "original": "…もう忘れちゃったのかしら\nあの時の気持ちまで…。",
+          "text": "...Have you forgotten\neven how you felt then..."
+        },
+        {
+          "offset": "0x2500",
+          "original": "ううん、なんでもないの。",
+          "text": "No, it's nothing."
+        },
+        {
+          "offset": "0x2520",
+          "original": "今日はありがとう…。\nすごく素敵な誕生日だった。",
+          "text": "Thanks for today...\nIt was a wonderful birthday."
+        },
+        {
+          "offset": "0x2550",
+          "original": "じゃあ、また。",
+          "text": "See you, then."
+        },
+        {
+          "offset": "0x2560",
+          "original": "うん、おやすみなさい。",
+          "text": "Okay. Good night."
+        },
+        {
+          "offset": "0x2aa8",
+          "original": "あっ、{P}",
+          "text": "Oh, {P}!"
+        },
+        {
+          "offset": "0x2ae8",
+          "original": "カチャ",
+          "text": "Click"
+        },
+        {
+          "offset": "0x2af0",
+          "original": "え…？",
+          "text": "Huh...?"
         }
       ]
     }

@@ -954,6 +954,15 @@ in blocks of 7 per girl; Shiori's are indices 0–6 (`0x800E67EC`–`F2`).
 read at `0x80135BC8` takes index 8 of its own scene tables, and the third
 word only coincides with the event table.
 
+**On screen (2026-10-07, forced, unpatched and English).** Sound lines
+(codes `07`, `10`) are drawn at the box's left edge in light blue with no
+label or bracket. Strings with 4 lines scroll and the label scrolls away
+with the first line; a `0C` + `0D` pair longer than 3 lines scrolls the same
+way. In the English build `{G}` showed "Shiori" in the player's line, so it
+expands from the translated name table; `{p}` showed the test save's ま and
+Shiori's `{P}` showed ま君. The rain scene starts in the classroom, the phone
+call moves to Shiori's room.
+
 **Overlay selection.** The loader switch (§3) is indexed by
 `*(u8*)0x800E738E − 0x11` through the jump table at `0x800B19E8`
 (0x81 entries). GEKO.EXN is loaded for values `0x45`, `0x46`, `0x48`, `0x49`,
