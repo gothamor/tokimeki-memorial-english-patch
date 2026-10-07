@@ -246,6 +246,12 @@ def apply_dialogue(block: DialogueBlock, edit: FileEdit, pairs: font.PairEncoder
             raise ValueError(f"{where}: the English must have the same line breaks, choices "
                              f"and name codes as the original ({script.structure(line.original)}), "
                              f"has {script.structure(line.text)}: {line.text!r}")
+        # Thought lines: the game draws "（" itself, and in some scripts "）" too
+        # (EVENT_FU.BIN's thoughts don't contain it). Only close with ")" where
+        # the Japanese does, or the bracket is drawn twice.
+        if line.original.rstrip("\n").endswith("）") != line.text.rstrip("\n ").endswith(")"):
+            raise ValueError(f"{where}: the English must end with ')' exactly when the original "
+                             f"ends with '）' (the game draws the other brackets): {line.text!r}")
         for n, cells in enumerate(widths):
             if cells > block.max_cells:
                 raise ValueError(f"{where}: display line {n + 1} is {cells} cells wide "

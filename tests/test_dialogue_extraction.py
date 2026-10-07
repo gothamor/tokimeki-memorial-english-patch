@@ -189,6 +189,20 @@ class RepackAfterPointerTable(unittest.TestCase):
         # byte-identical: nothing was packed over it.
         self.assertEqual(out[table:table + 8], self.data[table:table + 8])
 
+    def test_closing_bracket_must_match_original(self):
+        # The game draws a thought's "）" itself unless the string contains it.
+        first = self.s.labels["first"]
+        with self.assertRaisesRegex(ValueError, "end with '\\)'"):
+            patcher.apply_dialogue(block([(first, "あいう", "Hi.)")]),
+                                   Edit(self.data), font.PairEncoder())
+        s = Script()
+        s.text("thought", "あいう）")
+        s.pointer("thought")
+        data = s.build()
+        with self.assertRaisesRegex(ValueError, "end with '\\)'"):
+            patcher.apply_dialogue(block([(0, "あいう）", "Hi.")]), Edit(data), font.PairEncoder())
+        patcher.apply_dialogue(block([(0, "あいう）", "Hi.)")]), Edit(data), font.PairEncoder())
+
     def test_interior_pointer_still_refused(self):
         s = Script()
         s.text("first", "あいう")

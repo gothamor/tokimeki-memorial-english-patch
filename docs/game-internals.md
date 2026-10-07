@@ -297,8 +297,12 @@ after name expansion), expands the name codes, and draws each line with
 cache and 14 px advance as the UI, and **letter-pair English works unchanged**.
 - The speaker label and an opening bracket are drawn by the game before the
   first line: `「` for other characters, `『` for the player, `（` for the
-  player's thoughts. Thought strings therefore end with `）` but never start
-  with `（`; in English, end them with `)` only.
+  player's thoughts. In the prologue, thought strings end with `）` but never
+  start with `（`; in English, end them with `)` only. In `EVENT_FU.BIN`
+  the game draws **both** brackets: its thought strings contain neither, and
+  an English `)` showed up doubled on screen (§6j). The patcher therefore
+  requires the English to end with `)` exactly when the original ends with
+  `）`.
 - **Speaker-label source:** EXE function `0x80051438` constructs the normal
   character label. Character 0 copies Shiori from `0x800AFB7C`; the other
   character IDs select a pointer from the 16-entry table at `0x800B35F4`.
@@ -911,8 +915,9 @@ runtime. What the screen showed, in order:
    byte list gives these two strings `0C` and `0D`.
 3. `0x668`: the player speaking (`『`, code `00`), 3 lines.
 4. `0x6A8`: the player's thought (code `06`), 3 lines.
-With this test save `{P}` displayed as ま君; which name field Shiori's lines
-use isn't established. A translation of `0x2AA8` + `0x64C` must still fit
+With this test save `{P}` displayed as ま君 in both the unpatched and the
+English build; whether the 君 comes from a name field or the code isn't
+established. A translation of `0x2AA8` + `0x64C` must still fit
 the 3-line box together, since they share it.
 
 **Overlay selection.** The loader switch (§3) is indexed by

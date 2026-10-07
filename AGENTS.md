@@ -122,6 +122,8 @@ against the tested candidate when promotion should not change game bytes.
 | `translation/album_panel_exe.json` (21 panel-style labels in `SLPM_86.053`) | Included in normal builds after user verification in `.emu/review_settings/`: populated Load slots 1 and 2, number/colon headings, dates 95/4/9 and 95/4/16, Name/Nickname/Club/Cleared labels and values, clubs None/Soccer. Screenshots show readable separators and no apparent overlap. Save-mode copy, empty/error/System entries and longest club values remain unverified. |
 | `translation/system_settings.json` (114 strings: in-game system settings screen in `SLPM_86.053`) | Included in normal builds after the user visually verified the settings screen and all submenus as translated. Screenshots specifically show the main title/list/help (Icon Mode highlighted) and Text Speed submenu with Slow/Normal/Fast and its help; Normal fits. Individual confirmations, alternate Cursor Speed label-set coverage and hardware/unlock-dependent paths were not separately reported. |
 
+| `translation/shiori_events.json` (Shiori's early-morning walk, `EVENT_FU.BIN` scene 2: 5 strings) | Verified in DuckStation on a real boot with the 95/4/23 card save, the event **forced** with `tools/emu/force_event.py` (it naturally needs mid-game affection): all four boxes, Shiori's shared 3-line box, single closing brackets on thoughts, return to the day screen; compared with the unpatched game forced the same way. The natural trigger path and `{P}` with other names are not tested. Other Shiori events are untranslated. |
+
 Update this table when you verify something.
 
 ## Working in this environment (Windows dev box)

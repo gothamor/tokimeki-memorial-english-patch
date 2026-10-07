@@ -337,6 +337,20 @@ first line appears about 10 s after `C`; each later `C` advances one box
 command screen. Done twice on the unpatched game, once with
 `trace_reads.py` chained after the forcer (`EVENT_FU.BIN` → `0x80198000`).
 
+**English test (2026-10-07).** Candidate `.emu/review_shiori/` (15 default
+files plus the draft; log `.emu/review_shiori.log`): only LBAs 44581 and
+44586 (EVENT_FU's first and last sectors) differ from the default build,
+with valid EDC/ECC and headers; the file keeps its size and checksum; all
+five pointers resolve to their English. Real boot, card save loaded, walk
+forced on 95/4/25, every box screenshotted (`.emu/shots/q_*.png`) and
+compared with the unpatched run (`f_*.png`). The first attempt showed the
+thought lines' `)` doubled, because these strings don't contain `）`; fixed,
+rebuilt, retested: all four boxes correct, Shiori's label and her 3-line box
+fit, and the game returns to the day command screen as in the unpatched run.
+After promotion, the normal build (no `-t`, `.emu/default_shiori/`) is
+byte-identical to the tested candidate. Not tested: the natural trigger
+(needs mid-game affection), other names in `{P}`.
+
 **For a patched build** the save state can't be used: it holds the original
 EXE and text. Boot the patched CUE, load the 95/4/23 card save
 (title → GAME START → `C,wait:3000,C`), then run the forcer and the same

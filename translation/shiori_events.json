@@ -1,5 +1,5 @@
 {
-  "description": "Shiori's special events in SERIFU/EVENT_FU.BIN (load address 0x80198000, game-internals 6e/6j). Pilot: scene 2, the early-morning walk to school (event-table entry 7, master list 0x6F4). Box order: 0x62C (player thought), 0x2AA8 + 0x64C (Shiori; the two strings share one 3-line box), 0x668 (player), 0x6A8 (player thought). 178 of 188 pooled bytes used. Trigger: needs Shiori affection >= 61 and a second score >= 50, then about a 1% roll, once per game, so testing forces it with tools/emu/force_event.py (docs/testing.md, 'Forcing a girl event'). Other EVENT_FU scenes are not translated yet.",
+  "description": "Shiori's special events in SERIFU/EVENT_FU.BIN (load address 0x80198000, game-internals 6e/6j). Translated: scene 2, the early-morning walk to school (event-table entry 7, master list 0x6F4). Box order: 0x62C (player thought), 0x2AA8 + 0x64C (Shiori; the two strings share one 3-line box), 0x668 (player), 0x6A8 (player thought). The game draws both brackets around these thoughts, so they don't end with ')'. 174 of 188 pooled bytes used. Trigger: needs Shiori affection >= 61 and a second score >= 50, then about a 1% roll, once per game. Verified on screen by forcing it with tools/emu/force_event.py (docs/testing.md, 'Forcing a girl event'); the natural trigger path has not been played. Other EVENT_FU scenes are not translated yet.",
   "dialogue": [
     {
       "file": "CDROM/SERIFU/EVENT_FU.BIN",
@@ -8,7 +8,7 @@
         {
           "offset": "0x62c",
           "original": "たまには\n早起きもいいなぁ。",
-          "text": "Up early for once.\nIt's nice.)"
+          "text": "Up early for once.\nIt's nice."
         },
         {
           "offset": "0x2aa8",
@@ -28,7 +28,7 @@
         {
           "offset": "0x6a8",
           "original": "今日は楽しく登校できた。\n早起きは三文の得とは、\nよく言ったもんだぜ。",
-          "text": "Fun walk to school today.\nEarly bird gets the worm.\nHow true.)"
+          "text": "Fun walk to school today.\nEarly bird gets the worm.\nSo true."
         }
       ]
     }

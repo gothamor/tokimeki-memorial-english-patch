@@ -270,11 +270,21 @@ cells; the shared Shiori box stays 3 lines ("Oh, {P}!" / "Morning!" /
 draft succeeds (EVENT_FU.BIN size unchanged, checksum updated). Not built or
 seen on screen yet.
 
-Next action: Step 5/6. Build with all default JSONs plus the draft into a
-fresh `.emu/` folder, check sectors/EDC/ECC, boot it, load the 95/4/23 card
-save, force the scene (testing.md recipe) and compare with the unpatched
-shots `.emu/shots/f_*.png`. Check the `{P}` line width and the speaker label
-"Shiori" at the box edge.
+**Steps 5 and 6 done (2026-10-07):** candidate `.emu/review_shiori/` passed
+the static checks and the forced on-screen test after one fix (thoughts in
+EVENT_FU must not end with `)`; the patcher now enforces matching the
+original's `）`). Promoted to `translation/shiori_events.json`; the normal
+build `.emu/default_shiori/` is byte-identical to the tested candidate.
+Details in testing.md, "Forcing a girl event".
+
+Next: Step 8 order is cheaper than Step 7 here. The remaining seven EVENT_FU
+scenes (table entries 6 and 8–13; 157 strings in the file) can be mapped
+the same way: master list → strings, then the trigger. GEKO dispatches only
+Shiori scene ids 1, 2 and 8 (§6j), so the other entries are presumably run by
+DATE, GYOZI, SHOUGATU or SHUGAKU, which carry the same table; find each
+one's scene id and overlay before forcing it (`force_event.py` only covers
+type-`0x45` day events). Then
+`DATE_FU.BIN` (474 strings) needs its own date-flow mapping first.
 
 ## Before you start
 

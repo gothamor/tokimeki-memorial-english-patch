@@ -208,7 +208,11 @@ every pointer to a moved string is rewritten (game-internals §6e). Example:
 **Style notes (from the prologue):**
 - The box shows 3 lines at a time; 4–5 line strings scroll, which is fine.
 - The game draws the speaker label and the opening bracket (`「`, `『`, or `（`
-  for thoughts). Thought lines end with `)` and have no opening `(`.
+  for thoughts). Never write an opening `(`. End a line with `)` **only if
+  the Japanese ends with `）`**: prologue thoughts do, but `EVENT_FU.BIN`'s
+  don't, because the game draws both brackets there. The patcher enforces
+  this. Keep the run before the game's bracket an even number of letters,
+  or the pair padding shows as a space before it ("So true." not "How true.").
 - A text run with an odd number of letters before a name code wastes a cell,
   showing as a double space (`"My name is {P}"` → "is  Name"). Prefer an even
   run (`"My name's {P}"`).

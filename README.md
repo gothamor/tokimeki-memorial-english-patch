@@ -36,6 +36,10 @@ existing output folder.
   ([prologue.json](translation/prologue.json)), the first dialogue in the
   translation. Character-name tables and speaker labels are translated by
   [character_names.json](translation/character_names.json).
+- **Shiori's first special event:** the early-morning walk to school
+  ([shiori_events.json](translation/shiori_events.json)). It's rare in normal
+  play (it needs good standing with Shiori); the other special events and
+  dates are still Japanese.
 - **Main game loop:** the weekly command screen's stat panel (Health, Art,
   Looks, Lit., Sport, Guts, Sci., Trivia, Stress), the calendar
   (`95 / 4 / 23 (Su)`), the player's thought prompts, and the in-game
