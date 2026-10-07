@@ -3,11 +3,16 @@
 A translation file can contain:
 
   "strings": in-place text replacements
-      {"file", "offset", "original", "text", "encoding"?}
+      {"file", "offset", "original", "text", "encoding"?, "slot"?}
       `encoding` is "pairs" (default: English letter pairs, 1 byte per letter,
       composed on the fly by the renderer hook; see font.py, renderer.py) or
       "fullwidth" (each letter as a full-width Shift-JIS character, 2 bytes
       and 12 px per letter).
+      `slot` (optional) is the size of a fixed-size record the string starts
+      (e.g. 33 for the DATE.EXN place-name table, game-internals 6l). Only
+      for tables whose record size is proven from the code that reads them.
+      Every byte from the original's end to the slot's end must be NUL; the
+      English (plus its NUL) may then use the whole slot.
 
   "images":  pixels copied from an 8-bit indexed PNG into a 4/8bpp bitmap
       {"file", "png", "pixels", "stride", "x", "y", "rects", "original_crc32", "bpp"?}
@@ -42,7 +47,7 @@ import json
 import zlib
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from . import font, png, renderer, script, text
 from .cd import Track
@@ -61,6 +66,7 @@ class StringPatch:
     text: str
     source: str  # translation file it came from, for error messages
     encoding: str = "pairs"
+    slot: Optional[int] = None
 
 
 @dataclass
@@ -129,7 +135,11 @@ def load_translations(paths: List[Path]):
                 text=item["text"],
                 source=path.name,
                 encoding=encoding,
+                slot=item.get("slot"),
             ))
+            slot = strings[-1].slot
+            if slot is not None and (not isinstance(slot, int) or slot < 2):
+                raise ValueError(f"{path.name}: {item['offset']}: slot must be an integer >= 2")
         for item in doc.get("images", []):
             images.append(ImagePatch(
                 file=item["file"].upper().lstrip("/"),
@@ -201,11 +211,22 @@ def apply_string(patch: StringPatch, edit: FileEdit, pairs: font.PairEncoder) ->
         found = bytes(data[patch.offset:end]).decode("shift_jis", "replace")
         raise ValueError(f"{where}: expected {patch.original!r}, found {found!r}")
 
-    # The string owns its terminator plus any zero padding up to the next
-    # 4-byte boundary (the compiler aligns string literals to 4 bytes).
-    capacity = len(original) + 1
-    while (patch.offset + capacity) % 4 and data[patch.offset + capacity] == 0:
-        capacity += 1
+    if patch.slot is not None:
+        # A fixed-size record: the string may fill it, but only if everything
+        # after the original up to the record's end is NUL (nothing else is
+        # stored there).
+        if len(original) + 1 > patch.slot:
+            raise ValueError(f"{where}: the original doesn't fit a {patch.slot}-byte slot")
+        if patch.offset + patch.slot > len(data) or any(data[end:patch.offset + patch.slot]):
+            raise ValueError(f"{where}: bytes after the original aren't all NUL up to "
+                             f"the {patch.slot}-byte slot's end")
+        capacity = patch.slot
+    else:
+        # The string owns its terminator plus any zero padding up to the next
+        # 4-byte boundary (the compiler aligns string literals to 4 bytes).
+        capacity = len(original) + 1
+        while (patch.offset + capacity) % 4 and data[patch.offset + capacity] == 0:
+            capacity += 1
 
     if patch.encoding == "pairs":
         new = pairs.encode(patch.text)

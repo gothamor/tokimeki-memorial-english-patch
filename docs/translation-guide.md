@@ -77,6 +77,21 @@ With `pairs` that's `budget - 1` letters (rounded down to even); with
 `fullwidth`, `(budget - 1) // 2` letters. Too-long text is rejected with the
 limit in the error. Shorten the English; don't touch the rule.
 
+**Fixed-size records (`slot`).** Some tables store each string in a
+fixed-size record, read with a fixed stride, e.g. the 33-byte place names in
+`DATE.EXN` (game-internals §6l). There a string may use its whole record:
+
+```json
+{"file": "CDROM/EXEDIR/DATE.EXN", "offset": "0x29C0D", "original": "海",
+ "text": "the beach", "slot": 33}
+```
+
+The patcher checks that every byte from the original's end to the record's
+end is NUL, and allows English up to `slot - 1` bytes. Only use it where
+the record size is proven from the code that reads the table (a copy loop,
+a stride multiply) and documented in game-internals. A wrong slot size
+usually runs into the next record and is refused.
+
 Screen width matters too: menus are sized for the Japanese. With `pairs`,
 English that uses **no more letters than the original had bytes** is never
 wider than the Japanese was. The patch log prints a `note:` for any string
@@ -334,3 +349,9 @@ by 5-bit colour values.
 Run the checklist in [../AGENTS.md](../AGENTS.md#checklist-for-any-change-that-affects-the-output).
 At minimum, build to a scratch folder, boot it, look at the changed screen, and
 continue past it.
+
+After adding or promoting translations, refresh the progress bar at the top
+of the README with `python tools/progress.py --update-readme` (needs
+`extracted/`; `--by-file` lists every file's share). It counts Japanese
+characters in NUL-terminated strings with kana, skipping the `SPEAKTST/`
+voice-test copies, so kanji-only labels and pre-drawn graphics aren't in it.

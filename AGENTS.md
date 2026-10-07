@@ -41,7 +41,10 @@ These are hard-won. Every one of them has broken the game, or would.
    test it before relying on it.
 5. **In-place strings must fit.** A replacement may use the original's bytes,
    its NUL terminator, and NUL padding up to the next 4-byte boundary. Nothing
-   more. `apply_string` enforces this. Don't loosen it.
+   more. `apply_string` enforces this. Don't loosen it. The one exception is
+   a string in a fixed-size record whose size is proven from the reading
+   code and documented (`"slot"`, translation-guide): it may fill its
+   record, and the patcher checks the record's tail is all NUL.
 6. **Every patch must prove it's patching the right thing.** String patches carry
    the exact Japanese `original`. Image patches carry `original_crc32` of the
    pixels they replace. Keep these checks.

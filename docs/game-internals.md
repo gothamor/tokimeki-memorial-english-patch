@@ -1193,9 +1193,84 @@ tables `*(0x8015B520)` = `0x801A427C` and `*(0x8015B524)` = `0x801A4D2C`
 impression level, copied to `0x800CA21C`–`0x800CA230`.
 
 **Impression thoughts** after each choice (the player's thought, in levels
-from a great impression to a bad one, plus a neutral one) are not in `DATE_FU`:
-they are the shared `SERIFU/SERIFU.BIN` (`0x94C`–, base `0x80197000`), with
-copies in `SPEAKTST/TEST_OT.BIN`. Untranslated.
+from a great impression to a bad one) are not in `DATE_FU`: they are in the
+shared `SERIFU/SERIFU.BIN` (§6l), with copies in `SPEAKTST/TEST_OT.BIN`.
+
+### 6l. Shared date lines (`SERIFU/SERIFU.BIN`)
+
+Found 2026-10-08 by dumping the file and statically tracing `DATE.EXN`
+(no emulator runs yet). Untranslated.
+
+**File.** 4,096 bytes (2 sectors, LBA 44870), checksum trailer, loaded by
+DATE step 3 to `0x80197000` for every girl's date (§6k). 48 strings, each
+with exactly one pointer; 2,324 bytes of string space in 12 gaps. The rest
+is section lists, code bytes and zeroed work areas (`0x300`–`0x44F`,
+`0x79C`–`0x9B7`, `0xB14`–`0xBDB`, `0xEB8`–`0xFFB`: 24-byte records filled at
+run time; the pointer runs at `0x420`, `0x94C`, `0xBBC`, `0xFC0` point into
+them, not at text). Other `SERIFU` files load at the same address, so words
+in other overlays that point into `0x80197xxx` belong to those files.
+
+**Section table.** `DATE.EXN` holds three parallel 4-entry tables at
+`0x8015BD90` (masters), `0x8015BDA0` (code-byte lists) and `0x8015BDB0`
+(third pointers, into the work areas), the same layout as DATE_FU's (§6k):
+
+| Sec | Strings (file) | Count | Codes | Content | Setup / selector |
+|---:|---|---:|---|---|---|
+| 0 | `0x0`–`0x260` | 12 | `06` | concert blurbs ("X is a ... band"), one per concert, in the order of the EXE concert-name table (`town_news.json`: KNM Symphony, Chisa Morita, Chage & Aska, WIZARD, Riko Kodama, XeXeX, KNM Symphony, Bees, SNACK, KNM Symphony, prf, Rinsu) | `0x8013BAD4`: line = byte `0x8015B688`, set by the Concert Hall setup `0x80136340` (by date) |
+| 1 | `0x454`–`0x6EC` | 18 | `00 06 08 03 07` | the player alone at the meeting place: she's late, "did I get the place wrong?", the choice of where to go, or she never comes | `0x8013EFA0` (below); part in s16 `0x8015BF3C` |
+| 2 | `0x9B8`–`0xAA8` | 7 | `04` | impression thoughts after a choice, levels 0–4 (great → bad), then two "but my lie was exposed: I can't really swim / skate" lines | `0x8013B174`: line = s16 at `0x800CA22C + 2·choice` (the impression level copied from `TAKU3.BIN`, §6k); `0x8013B208` is a second caller (the lie lines, not traced) |
+| 3 | `0xBDC`–`0xE40` | 11 | `06` | movie blurbs, one per film, in the order of the EXE movie-name table (`town_news.json`: I'm Doing It, Forrest Gump, Summer Saw, Fungaa, Kanpanman, Sleep Fist II, Love Melody, Speed King, BANPO, The Mask, Love and Youth) | `0x8013B964`: line = byte `0x8015B684`, set by the Cinema setup `0x80135E7C` (by date) |
+
+Codes `04` and `06` are drawn as the player's thought with **both brackets
+drawn by the game** (seen on screen in the English dates: `（…。）` around
+strings that contain neither), so English gets no parentheses. Each blurb
+and impression section is a single part whose line is chosen by the value
+above; all four go through the talk runner `0x80082764`, which copies the
+string before cutting it (`share_identical` is safe, as in §6k).
+
+**Section 1, the missed meeting** (`0x8013EFA0`, a step of every date).
+Parts and codes:
+
+| Part | Strings | Content |
+|---:|---|---|
+| 0 | `0x454` `00`, `0x474` `06`, `0x4A4` `08` | "{G} isn't here yet" / "late… did I get the place wrong?" / action choice: "it was here" or `{A}` |
+| 1 | `0x4D4` `00` | "no, it was here; I'll wait" |
+| 2 | `0x508` `00` | "let's go to `{A}`" |
+| 3 | `0x520` `00`, `0x540` `06`, `0x570` `03` | as part 0 with three options: here, `{A}`, `{M}` |
+| 4–6 | `0x5B0`, `0x5E4`, `0x5FC` `00` | wait here / go to `{A}` / go to `{M}` |
+| 7 | `0x614` `06`, `0x630` `00` | "{G} never came" / "oh well, home" |
+| 8 | `0x650` `00`, `0x670` `06`, `0x694` `07`, `0x6D0` `06`, `0x6EC` `00` | stood up: waiting, the centered "・・・" pause, she never came, home |
+
+The function copies a 21 × 33-byte place-name table from `DATE.EXN`
+`0x8015B9DC` (file offset `0x299DC`; index = place id 0–20 as in §6k:
+近所の公園 … スキー場) to the stack, then: if the girl's rank
+(`0x80051A68(girl) & 0x7F`) is 4 it plays part 8 and skips ahead
+(`0x738A` += `0x24`). Otherwise it compares the meeting-place bytes
+`0x800E69A4`–`69A7` (agreed place, where the player went, and up to two
+other candidates; `0xFF` = none; the main loop asks "where were we
+meeting?" on the date day, `main_screen.json`): when they match (and the
+arrival byte `0x8015B654` is 1) the normal meeting runs (`0x738A` +=
+`0x11`). On a mismatch it `strcpy`s one candidate's name to the `{A}`
+buffer `0x800CA25C`, and, when `0x800E69A7` isn't `0xFF`, another to the
+`{M}` buffer `0x800CA280` and sets part 3 (three options) instead of 0.
+Afterwards the DATE_FU meeting continues with the player late (§6k,
+arrival 2). The detailed comparison (`0x8013F03C`–`0x8013F0B8`) hasn't been
+checked on screen.
+
+**The place-name table is the only source of `{A}`/`{M}` here.** It's read
+only by this function (the one reference to `0x8015B9DC`). Every slot is the
+Japanese name followed by NULs up to 33 bytes, so the in-place budget
+(original + NUL + padding to 4 bytes, AGENTS rule 5) is often below the
+English: 海 allows 2 letters, 神社 4, 遊園地/図書館/動物園/プール 6. Fitting
+"Beach" or "Theme Park" needs either the whole 33-byte slot (the bytes after
+each name are NUL up to the next slot, and `strcpy` stops at the first NUL)
+or a code change. The same function family at `0x80149D04` copies a second
+93 × 33-byte table at `0x8015D108`: birthday-present item names, a separate
+job.
+
+`{A}` and `{M}` are inserted by the renderer from those buffers; a
+pair-encoded name keeps its pairs (§6e), and an odd-length name ends in its
+padding space.
 
 ## 7. Graphics
 

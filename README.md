@@ -4,6 +4,18 @@ Patches the Japanese PS1 disc image (*PlayStation the Best*, SLPM-86053) with an
 English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
+<!-- progress:start -->
+**Translated: 3.3%**
+
+```text
+Whole game             █░░░░░░░░░░░░░░░░░░░   3.3%
+Dialogue               █░░░░░░░░░░░░░░░░░░░   2.7%
+Menus and other text   ██░░░░░░░░░░░░░░░░░░   8.4%
+```
+
+<sub>19,274 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<!-- progress:end -->
+
 ## Usage
 
 ```bash
@@ -41,10 +53,11 @@ existing output folder.
   (neighborhood park, Kirameki Park, Ferris wheel, pool) and the walk home
   after the Christmas party ([shiori_events.json](translation/shiori_events.json)).
   They're rare in normal play.
-- **Shiori's regular dates (started):** the Art Museum date's conversations,
-  choices and replies ([shiori_dates.json](translation/shiori_dates.json)).
-  The meeting, the end of the date, the other 19 places and her walk-home
-  talks are still Japanese.
+- **Shiori's regular dates (all):** meeting her, every place's
+  conversations, choices and replies, the end of the date and the way home
+  ([shiori_dates.json](translation/shiori_dates.json)). The player's
+  impression thoughts after a choice (`SERIFU.BIN`) and the walk-home talks
+  (`GEKO.BIN`) are separate files and still Japanese.
 - **Main game loop:** the weekly command screen's stat panel (Health, Art,
   Looks, Lit., Sport, Guts, Sci., Trivia, Stress), the calendar
   (`95 / 4 / 23 (Su)`), the player's thought prompts, and the in-game
@@ -84,7 +97,7 @@ existing output folder.
 | `translation/*.json` | The translation: `strings`, `dialogue` and `images` entries |
 | `translation/graphics/` | Replacement graphics (indexed PNGs using the game's palettes) |
 | `translation/font/free_glyphs.txt` | Font glyphs the game never uses (research data; no longer used by the patcher) |
-| `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation (`make_title_menu.py`, `make_main_screen.py`), renderer check |
+| `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation (`make_title_menu.py`, `make_main_screen.py`), renderer check, translation progress (`progress.py`) |
 | `tests/` | Unit tests on synthetic data (`python -m unittest discover tests`) |
 | `tools/emu/` | Emulator test harness: isolated DuckStation, input driver with screen detection, GDB client, file-load tracer, read-watchpoint logger, girl-event watcher and event/date/Christmas forcers |
 
