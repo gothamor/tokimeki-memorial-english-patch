@@ -26,8 +26,19 @@ Read these first. They're the contract and the knowledge base:
   main-loop notes.
 
 State at handoff:
-- Steps 1 and 2 now have implementations in the working tree. They are not
-  committed, and most of the new main-loop screens still need visual checks.
+- Current follow-up candidate: `.emu/review_settings/` includes all 13 default
+  files plus the 21-string Save/Load panel and 114-string in-game settings
+  drafts. Panel separators and Menu Mode confirmation rows have been reviewed
+  and corrected; static checks pass. Neither extra is enabled by default yet.
+  The user has verified populated Load panels and all settings submenus as
+  translated. Screenshots show slots 1/2 (None/Soccer), settings main list and
+  Text Speed choices/help. Remaining branch coverage is in `docs/testing.md`
+  under "Save/Load panel and settings handoff (2026-10-07)". Findings and
+  consumer addresses are in game-internals §6i. Leave accepted club cosmetics
+  alone. The previous main-loop work was committed in `567e3bf`; this
+  settings/panel follow-up is not committed.
+- Steps 1 and 2 have implementations committed in `567e3bf`, but most of the
+  new main-loop screens still need visual checks.
 - New default translation files are `main_events.json`, `clubs.json`,
   `outings.json`, `town_news.json` and `character_names.json`.
 - The default and full builds (the latter also including both `extra/` JSONs)
@@ -138,12 +149,15 @@ Validation notes and decisions:
   - anything `script.decode` rejects.
 - **Already drafted:**
   - `translation/extra/album_panel_exe.json` is the Save/Load slot panel
-    (名前…, あだ名…, 所属部‥, クリア人数‥). Check the English on screen, then
-    move it into `translation/`. It also has the panel's 番/年/月/日 pieces;
-    the date there (９５年４月４日) needs a look.
+    (名前…, あだ名…, 所属部‥, クリア人数‥). The user has verified populated
+    Load slots, including number/date pieces and None/Soccer club values.
+    Save-mode and empty/error/System branches remain unverified. Promotion to
+    `translation/` is a separate change, not part of the documentation update.
   - `translation/extra/system_settings.json` (114 strings) is the in-game
-    system settings screen. Reach it from the main loop, verify, then move it
-    in.
+    system settings screen. The user reports all submenus visually verified
+    as translated; main-list/Text Speed screenshots support the report.
+    Individual confirmations and conditional paths were not itemized. It
+    remains opt-in pending a separate promotion change.
 - The user liked the label style ("Health", "Lit.", "Sci.", …). Keep the
   wording consistent with `main_screen.json` and the stat panel.
 - Put each screen or feature in its own JSON (e.g. `outings.json`,

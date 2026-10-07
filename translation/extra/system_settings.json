@@ -1,5 +1,5 @@
 {
-  "description": "Settings strings in SLPM_86.053 (0x6FA08-0x70290), used by the in-game system settings screen (NOT by the title Options sub-screens, whose choices are graphics in FUKUTEST/OPTION.NBN). Multi-piece messages (e.g. 'Menu mode set ' + 'to Mouse-like' + '') are written to read correctly whether the pieces share a line or not. Not yet verified on screen, so kept in translation/extra/.",
+  "description": "Settings strings in SLPM_86.053 (0x6FA08-0x70290), used by the in-game system settings screen (NOT by the title Options sub-screens, whose choices are graphics in FUKUTEST/OPTION.NBN). Static disassembly confirms separate rows for multi-piece confirmations. Menu Mode retains three nonempty rows: 'Menu mode:' / selected mode / 'selected.'. No settings logic or coordinates are changed. The user reports all submenus visually verified as translated; screenshots verify the main list and Text Speed choices/help. Individual confirmations and conditional paths were not itemized. Still opt-in in translation/extra/; see docs/testing.md and docs/game-internals.md section 6i.",
   "strings": [
     {
       "file": "SLPM_86.053",
@@ -377,73 +377,73 @@
       "file": "SLPM_86.053",
       "offset": "0x6FF28",
       "original": "メニュー設定を",
-      "text": "Menu mode set "
+      "text": "Menu mode:"
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x6FF38",
       "original": "マウスライク",
-      "text": "to Mouse-like"
+      "text": "Mouse-like"
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x6FF48",
       "original": "にしました",
-      "text": ""
+      "text": "selected."
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x6FF54",
       "original": "メニュー設定を",
-      "text": "Menu mode set "
+      "text": "Menu mode:"
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x6FF64",
       "original": "メニューＡ",
-      "text": "to Menu A"
+      "text": "Menu A"
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x6FF70",
       "original": "にしました",
-      "text": ""
+      "text": "selected."
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x6FF7C",
       "original": "メニュー設定を",
-      "text": "Menu mode set "
+      "text": "Menu mode:"
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x6FF8C",
       "original": "メニューＢ",
-      "text": "to Menu B"
+      "text": "Menu B"
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x6FF98",
       "original": "にしました",
-      "text": ""
+      "text": "selected."
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x6FFA4",
       "original": "メニュー設定を",
-      "text": "Menu mode set "
+      "text": "Menu mode:"
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x6FFB4",
       "original": "マウスライク＋メニューＡ",
-      "text": "to Mouse-like + Menu A"
+      "text": "Mouse-like + Menu A"
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x6FFD0",
       "original": "にしました",
-      "text": ""
+      "text": "selected."
     },
     {
       "file": "SLPM_86.053",

@@ -1,11 +1,11 @@
 {
-  "description": "Album info-panel style labels in SLPM_86.053 (0x70790-0x70853, two copies: 名前…, あだ名…, 所属部‥, クリア人数‥, 年/月/日, 未使用, データ異常). NOT used by the album screen after GAME START (its panel is graphics); probably the in-game save/load screen. Unverified, so kept in extra/.",
+  "description": "In-game Save/Load info-panel labels in SLPM_86.053 (0x70790-0x70853, two copies). NOT used by the album screen after GAME START (its panel is graphics). Labels concatenate directly with saved values, so retain their colon/space separators. Slot-number and date suffixes are copied two bytes at a time: the slot number gets ': ', date separators use pair-encoded '/', and the day suffix is empty. Static layout reviewed; user screenshots verify populated Load slots 1/2, dates, labels and None/Soccer club values. Save-mode and empty/error/System branches remain unverified. Still opt-in in extra/; see docs/testing.md and docs/game-internals.md section 6i.",
   "strings": [
     {
       "file": "SLPM_86.053",
       "offset": "0x70790",
       "original": "番アルバム",
-      "text": ": Album"
+      "text": ": "
     },
     {
       "file": "SLPM_86.053",
@@ -47,25 +47,25 @@
       "file": "SLPM_86.053",
       "offset": "0x707C8",
       "original": "名前…",
-      "text": "Name"
+      "text": "Name: "
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x707D0",
       "original": "あだ名…",
-      "text": "Nickname"
+      "text": "Nickname: "
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x707DC",
       "original": "所属部‥",
-      "text": "Club"
+      "text": "Club: "
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x707E8",
       "original": "クリア人数‥",
-      "text": "Cleared"
+      "text": "Cleared: "
     },
     {
       "file": "SLPM_86.053",
@@ -83,7 +83,7 @@
       "file": "SLPM_86.053",
       "offset": "0x7080C",
       "original": "番アルバム",
-      "text": ": Album"
+      "text": ": "
     },
     {
       "file": "SLPM_86.053",
@@ -107,25 +107,25 @@
       "file": "SLPM_86.053",
       "offset": "0x70824",
       "original": "名前…",
-      "text": "Name"
+      "text": "Name: "
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x7082C",
       "original": "あだ名…",
-      "text": "Nickname"
+      "text": "Nickname: "
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x70838",
       "original": "所属部‥",
-      "text": "Club"
+      "text": "Club: "
     },
     {
       "file": "SLPM_86.053",
       "offset": "0x70844",
       "original": "クリア人数‥",
-      "text": "Cleared"
+      "text": "Cleared: "
     }
   ]
 }

@@ -365,3 +365,126 @@ pointer tables.
 The test harness's previous card was backed up under
 `.emu/memcard_backup/review_before_*` before the main-loop test card was copied
 in. This run did not operate the user's DuckStation installation or cards.
+
+## Save/Load panel and settings handoff (2026-10-07)
+
+Candidate: `.emu/review_settings/` (open its CUE); log:
+`.emu/review_settings.log`. It includes all 13 default translation files plus
+`translation/extra/album_panel_exe.json` and `system_settings.json`: 397
+in-place strings, 173 pooled dialogue entries, 4 images and 3 byte patches
+from 15 JSON files. The user has now reported successful visual verification
+of populated Load panels and all settings submenus (details below). Both
+extras remain opt-in; this documentation-only update does not promote them.
+This candidate preserves the user-accepted club selector overhang and notice
+gap. It does not translate the title Options' graphics-based choices or the
+new-game album panel's graphics.
+
+Changes from the drafts:
+
+- Both Save/Load panel copies now use `Name: `, `Nickname: `, `Club: ` and
+  `Cleared: ` before their saved values. Their destination buffers were checked
+  as well as the literal byte budgets. Slot headings intentionally use a colon
+  after the number: the game only appends two bytes, so `: Album` was misleading.
+- All four Menu Mode confirmations now read `Menu mode:` / `<mode>` /
+  `selected.` on the original three rows. Other settings translations remain
+  as drafted; no coordinates, selector sizes or settings logic were changed.
+- Consumer addresses, fixed copy limits, row coordinates and the two Cursor
+  Speed label sets are documented in game-internals §6i. The translation guide
+  now explains these patterns rather than recommending empty trailing pieces
+  without first checking their layout.
+
+Static checks completed on the candidate:
+
+- The normal patcher planned against the original disc and built successfully;
+  all 135 extra strings passed original-byte checks and in-place budgets.
+- Every output file matched the planned bytes and retained its original size;
+  all files with original valid checksum trailers still validate. The EXE and
+  `MAINROM.NBN` do not have those trailers.
+- A full raw Track 1 comparison found exactly the 37 planned changed sectors;
+  every changed sector is Mode 2 Form 1 with valid regenerated EDC/ECC and an
+  unchanged header/subheader. Compared with `.emu/review_clubs/`, only EXE
+  sectors 247, 248 and 249 differ. The CUE and audio track are identical to
+  the originals. All 1,981 incremental EXE byte differences are confined to
+  the two documented literal blocks (`0x6FA08`–`0x7028F` and
+  `0x70790`–`0x70853`); no code or other default translations changed.
+- Slot/date appends obey their two-byte limits. The panel's maximum current
+  label/value lengths stay inside their 32-byte stack buffers, including NUL.
+
+### Follow-up user verification
+
+The user supplied four screenshots and reported that these screens were
+successfully translated, adding that **all system settings submenus were
+visually verified**, although not all were photographed. Record that report
+as visual evidence without treating it as an exhaustive per-string test.
+
+1. Settings main screen: `System Settings`, Text Speed, Icon Mode, Mouse,
+   Menu Mode, Cursor Speed, Voice Mode and Exit render in English. Icon Mode
+   is highlighted; the help reads `Change system settings.`. Mascot is not
+   visible in this screenshot, so no unlock-condition conclusion follows.
+2. Text Speed submenu: `Text Spd`, Slow (highlighted), Normal, Fast and
+   `Change the text display speed.` are legible, without apparent clipping.
+   In particular, the padding-using `Normal` label fits.
+3. Load slot 1: number/colon heading, date 95/4/9, Name/Nickname/Club/Cleared
+   labels and saved values render correctly; the club is None and cleared
+   count is 0. The prompt is `Choose a file to load.`. Japanese player-entered
+   names remain intact; these are saved user values, not missing translations.
+4. Populated slot 2: heading and date change to 2 and 95/4/16, and the club
+   changes to Soccer. Labels and values remain readable with separators and
+   no apparent overlap. The blank prompt in this screenshot is not evidence
+   of Save mode; the screenshots explicitly establish populated Load panels.
+
+The other settings submenus are user-reported visually verified, not individually
+screenshot-verified. Individual setting-change confirmations (including the
+three-row Menu Mode messages), every highlighted state, which Cursor Speed
+label set appeared, and mouse-accessory/unlock-dependent paths were not
+separately itemized. Do not infer their detailed coverage from the general
+submenu report. The panel's Save-mode copy, empty/error/System entries,
+longest club values and nonzero cleared counts also remain unverified.
+An unpatched comparison and continuation after these particular screens
+were not explicitly reported. No emulator instance, settings or memory cards
+were operated by the agent during this documentation update; no screenshots
+or game data were added to the repository.
+
+Original test checklist (retain for remaining branch checks; the visual
+coverage above has already been completed and should not be discarded):
+
+1. Boot the candidate CUE fresh and load a **memory-card save**, not an old
+   emulator save state. Old states preserve old EXE strings and pointer tables.
+2. On Sunday night, open the memory-card command. Check populated and empty
+   slots in **both Save and Load**, without overwriting a valued save just to
+   test. Look at the slot number, date, name, nickname, club and cleared count:
+   there should be visible separators, intact values, and no clipping or
+   overlap. A saved club such as Literature/Basketball is a useful width test.
+   The full-width digits and spaces around date slashes are expected for now.
+3. Open **in-game System Settings**, not title OPTIONS. Check the item list,
+   highlighted/unselected choices, help text and confirmation for Text Speed,
+   Icon Mode, all four Menu Modes, all five Cursor Speeds, Voice Mode and
+   available Mascot choices. In particular check `Normal` and the longest
+   Menu Mode; its confirmation should have three readable rows. Note which
+   Cursor Speed label set appears; both sets exist but may require different
+   input/device conditions. Mouse settings need the mouse accessory and can
+   remain explicitly unverified without one.
+4. Restore preferred settings, exit to the game and play through the next
+   transition. Do not force memory-card errors or corrupt saves to exercise
+   `Bad data`; leave unseen error branches unverified. If a problem appears,
+   compare the original game at the same point before blaming the patch.
+
+The verification table in `AGENTS.md` now reflects the user's results.
+Promotion to `translation/` remains a separate implementation change; preserve
+the unverified-path notes if promoted. Do not mark inaccessible mouse/error
+paths as seen.
+
+Rebuild recipe (PowerShell; `-t` replaces the defaults, so list them too):
+
+```powershell
+$env:PYTHONIOENCODING = 'utf-8'
+$candidatePaths = @(Get-ChildItem translation -Filter *.json |
+    Sort-Object Name | ForEach-Object { $_.FullName }) + @(
+    'translation/extra/album_panel_exe.json',
+    'translation/extra/system_settings.json')
+$candidateArgs = @()
+foreach ($candidatePath in $candidatePaths) {
+    $candidateArgs += @('-t', $candidatePath)
+}
+python -m tokipatch '<original game.cue>' -o .emu/review_settings --force @candidateArgs
+```

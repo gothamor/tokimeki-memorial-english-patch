@@ -97,14 +97,22 @@ instruction is, and document the reasoning in game-internals.
   start with `": "`.
 - **Messages split into pieces.** Some messages are several adjacent strings
   (e.g. `メニュー設定を` + `マウスライク` + `にしました`). You can't always tell
-  whether the pieces share a line, so write them to read correctly either
-  way. End a leading piece with a space (`"Menu mode set "`), continue in the
-  next (`"to Mouse-like"`), and leave a trailing grammatical piece empty (`""`).
-  Check whether the game concatenates them or draws each at a fixed x position.
+  whether the pieces share a line. Inspect the consumers before settling the
+  wording: they may concatenate, draw on separate rows, or use fixed x positions.
+  The in-game Menu Mode confirmations are now mapped to three separate rows
+  (§6i in game-internals): `"Menu mode:"` / `"Mouse-like"` / `"selected."`.
+  Concatenated field labels instead need their own trailing separators, e.g.
+  `"Name: "` before a saved name. Do not remove dialogue display lines when
+  adapting pieces; dialogue's structural checks still apply.
   For example, the Club Day notice (§6h in game-internals) has only 56 px
   between its last two fragments: the first must fit eight pair-font letters,
   even though its disc slot can hold ten. Preserve intentional padding and
   verify the combined result; fitting each byte slot alone cannot catch overlap.
+- **Bounded appends.** A whole string literal may be present on disc while its
+  consumer copies only the first glyph. The Save/Load panel appends two bytes
+  from its slot-number and date suffixes (§6i). Its slot suffix must fit one
+  pair, `": "`; writing `": Album"` cannot make the unused tail appear.
+  Check the destination buffer as well as each literal's in-place budget.
 - **The same words as graphics.** A screen can show text that isn't a string
   at all (Options ▸ Text Speed / Icon Mode / Cursor Speed / Voice Mode use
   pre-drawn glyph cells). If a translated string doesn't change the screen,

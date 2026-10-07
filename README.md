@@ -49,9 +49,13 @@ existing output folder.
 - **Spacing fix:** English letter pairs are drawn evenly at the game's 14 px
   glyph advance, and the name-entry screen is patched from 16 px to 14 px
   ([code.json](translation/code.json)).
-- *Not applied by default:* the in-game system settings screen
-  ([translation/extra/system_settings.json](translation/extra/system_settings.json)),
-  pending an on-screen check.
+- *Not applied by default:* the in-game Save/Load info panel
+  ([album_panel_exe.json](translation/extra/album_panel_exe.json)) and system
+  settings screen ([system_settings.json](translation/extra/system_settings.json)).
+  Both have passed static review and a combined test build. The user has now
+  verified populated Load panels and reports all in-game settings submenus
+  translated. Remaining branch coverage is recorded in
+  [docs/testing.md](docs/testing.md); these files remain opt-in.
 
 ## Documentation
 

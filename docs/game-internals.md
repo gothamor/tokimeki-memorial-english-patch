@@ -172,7 +172,7 @@ the game.)
 | `SLPM_86.053` 0x6EB40–0x76000 | system/UI: memory card, save/load, options screen, calendar, places, weekday/holiday command prompts, club names |
 | `EXEDIR/NAME_ENT.EXN` 0x19150– | kana tables for name entry, memory-card/album prompts, prologue narration, name-entry questions (0x1ACE4 surname, 0x1AD04 name, 0x1AD10 nickname), default nicknames, prologue script |
 | `EXEDIR/OPTION.EXN` 0xA880–0xA8EF | Options page items (title ▸ OPTIONS), one string per item |
-| `SLPM_86.053` 0x6FA08–0x70290 | in-game system settings screen: item list, choices, help lines and confirmation messages (translated in `translation/extra/system_settings.json`, not verified on screen yet). **Not** used by the title Options sub-screens. |
+| `SLPM_86.053` 0x6FA08–0x70290 | in-game system settings screen: item list, choices, help lines and confirmation messages (`translation/extra/system_settings.json`). The user reports all submenus translated; main list and Text Speed choices/help are screenshot-verified. Individual confirmation/conditional-path coverage is not itemized (§6i). **Not** used by the title Options sub-screens. |
 | `EXEDIR/*.EXN` | per-mode UI text |
 | `SERIFU/`, `BUNKA/`, `SPEAKTST/`, `EVENT/` | dialogue (thousands of lines) |
 
@@ -571,8 +571,9 @@ the player's thought line in the message box.
     and aren't translated.
 - **In-game Save/Load (memory card icon, Sunday night only):** 0x6F76C–0x6F9E4.
   The slot panel's labels (名前…, あだ名…, 所属部‥, クリア人数‥) are
-  `translation/extra/album_panel_exe.json` (seen on this screen in Japanese;
-  the English isn't checked yet).
+  `translation/extra/album_panel_exe.json`. The user has now verified English
+  labels, dates and values on populated Load slots 1/2 (None/Soccer); Save-mode
+  and empty/error/System branches remain unverified (§6i).
 - **Date in RAM:** 0x800E62BE year (95), 0x800E62BF month, 0x800E62C0 day,
   0x800E62C1 weekday (0 = Monday … 6 = Sunday). Found by diffing RAM dumps
   of two Sundays. The calendar code at 0x80064CA0– sets the weekday sprite's
@@ -648,6 +649,85 @@ main-loop translation deliberately leaves the debug labels at `0x6F610`,
 `0x71804`–`0x71A3F`, fixed-width blank town-news rows, and unreferenced
 single-kanji data unchanged. These exclusions are also recorded in the JSON
 descriptions so a later audit does not repeatedly rediscover them.
+
+### 6i. Save/Load panel and in-game settings (review and user verification, 2026-10-07)
+
+These are the two opt-in files in `translation/extra/`, included in the
+combined `.emu/review_settings/` test build. The user reports successful
+translation of the panel and all in-game settings submenus. Screenshots show
+the main settings list, Text Speed choices/help, and populated Load slots 1/2
+with dates and None/Soccer club values. No overlap or clipping was reported.
+Detailed coverage and remaining checks are in `testing.md` under the settings
+handoff; the documentation update does not move these files into the defaults.
+The static findings below come from string-reference searches and Capstone
+disassembly of the original `extracted/SLPM_86.053`, mapped at `0x80040800`.
+They do not establish untested branch behavior or unlock title Options graphics.
+
+**Save/Load panel (`album_panel_exe.json`, 21 strings).** The two literal
+groups at file `0x70790`–`0x707F7` and `0x707F8`–`0x70853` are consumed by
+the panel code around RAM `0x80069758`–`0x80069F94`. The first branch reads
+card metadata indexed by `*(u8*)0x800E7D36`; the second uses the index at
+`0x800E7397` into records at `0x80123120`, stride `0xF00`.
+
+- Names and labels are **concatenated**, not independently positioned.
+  `strcpy` (`0x800AE0F0`) copies a label into a stack buffer, followed by
+  `strncat` (`0x800AE110`) or `strcat` for the value. The buffers are 32 bytes
+  apart: date `sp+0xC8`, name `sp+0xA8`, nickname `sp+0x88`, club `sp+0x68`,
+  cleared count `sp+0x48`. Name appends are bounded at 6 + 6 bytes, nickname
+  at 13; clubs come from the table at `0x800B3908` (current English maximum
+  10 bytes), cleared count uses one or two full-width digits (up to 4 bytes).
+  `Name: ` / `Nickname: ` / `Club: ` / `Cleared: ` therefore preserve a visible
+  separator while using at most 19 / 24 / 17 / 15 bytes including NUL.
+  These byte bounds do not prove the fields fit their on-screen panel.
+- The number heading appends **only two bytes** from file `0x70790` or
+  `0x7080C`. See RAM `0x80069770`–`0x80069784` and
+  `0x80069C48`–`0x80069C58`: the latter calls `strncat` with `a2 = 2`.
+  The former draft `: Album` would show only `: `; the translation now
+  explicitly stores that suffix. The heading is the existing full-width
+  slot number plus a colon, not a promised full English "Album" heading.
+- Year/month/day suffixes are also two-byte appends, in the date builders
+  around `0x80069848` onward and `0x80069CB0`–`0x80069E30`.
+  The year/month replacements `/` each encode as one two-byte `/ ` pair;
+  the empty day replacement starts with NUL, so it appends nothing.
+  No copy lengths, date digits or code instructions are changed.
+- The fields share an x origin and draw at y = -64 (date), -48 (name),
+  -32 (nickname), -16 (club), 0 (cleared count); the heading is at y = -80,
+  x = field origin + 12. Empty/error slots and the System entry use separate
+  paths. Test both Save and Load: two copies do not imply both were exercised.
+
+**In-game settings (`system_settings.json`, 114 strings).** Initialization
+at RAM `0x8005DC4C` uses file `0x6FA08`–`0x70290`; the main title is passed
+to `0x8006612C`. Choices, help and confirmations use the shared text drawer
+`0x8004E788`, not title Options' pre-rendered choice graphics.
+
+- Icon Mode confirmations use two distinct rows, x = -128, y = 50 and 66
+  (Type A references at `0x8005E660` and `0x8005E67C`; B/Free follow the
+  same layout). Cursor Speed and Voice Mode confirmations likewise use
+  separate rows (around `0x8005FABC`–`0x8005FD90`, and `0x80060000` onward).
+  Their drafts already read correctly across those rows.
+- Menu Mode descriptions occupy three rows at y = 50, 66, 82 (around
+  `0x8005F380`). Its confirmations also occupy three rows, not a concatenated
+  sentence: first x = -128, second x = -86 with color attribute 1, third
+  x = -128. The first choice's references are `0x8005F518`, `0x8005F534`,
+  `0x8005F550`; the other choices repeat the arrangement. All four now use
+  `Menu mode:` / `<mode>` / `selected.`, preserving all three visible pieces.
+  The longest mode, `Mouse-like + Menu A`, is 18 bytes / 126 px and fits the
+  row's static bounds. The user reports submenu translation success, but
+  individual confirmation states and selection rectangles were not itemized.
+- Menu Mode confirmation code writes values 0–3 to `0x800E7312`, corresponding
+  to Mouse-like, Menu A, Menu B, and Mouse-like + Menu A. This is a static
+  mapping, not a runtime identification of the old 95/4/23 test card's mode.
+- Cursor Speed has **two label sets**, file `0x6FFEC`–`0x7000C` and
+  `0x70014`–`0x7003C`. The branch around `0x8005F7FC` checks bytes at
+  `0x800E7D2C` (threshold 9) and `0x800E67C4` (threshold 2) to choose a set.
+  The meaning of those input/device conditions remains unverified; do not
+  assume one set is dead because only the other appears with a controller.
+- Help/confirmation lines retain their separate draws and fit within a
+  256 px row at the normal 14 px pair-cell advance. Padding-using labels
+  are screenshot-verified for Text Speed (`Normal` fits) and the main list
+  with Icon Mode highlighted. Every highlight state was not individually
+  documented; the user's broader report covers all submenus' translations.
+  No navigation, settings values, selector sizes or coordinates were patched.
 
 ## 7. Graphics
 
