@@ -920,6 +920,40 @@ English build; whether the 君 comes from a name field or the code isn't
 established. A translation of `0x2AA8` + `0x64C` must still fit
 the 3-line box together, since they share it.
 
+**All of `EVENT_FU.BIN` (2026-10-07, static).** Every one of the file's
+157 strings belongs to exactly one of Shiori's eight table entries; a part's
+string count is the length of its `FF`-terminated byte list (string lists
+can be back to back). Per-string codes: `00` player (『), `01` Shiori (「),
+`06` thought (both brackets drawn by the game), `0C` + `0D` two Shiori
+strings sharing one box, `07` and `10` sound-effect lines (a click, a phone
+ringing). Short one-word strings are stored together at `0x2AA8`–`0x2AF0`;
+each still belongs to one scene. Who runs each entry (setup function found by its table
+loads, then its scene step list, then the dispatcher):
+
+| Entry | Master | Overlay, selector | Strings | Content | Trigger (static) |
+|---|---|---|---:|---|---|
+| 6 | `0x390` | GEKO, scene 1 | 21 | sudden rain on the way home, Shiori without an umbrella | selector `0x8006FB4C` (bit 0 of `0x800E7378` set): `0x80066ACC() == 1` (a date-window check), rank `0x80051A68(0) & 0x7F < 2`, flag `0x800E67EC` |
+| 7 | `0x6F4` | GEKO, scene 2 | 5 | morning walk (translated) | see above |
+| 8 | `0xA78` | DATE, scene 3 | 19 | "do you remember this place?" | `0x800CA2F8 == 0`, months 9–11, both ranks best, flag `0x800E67EE`, date step `0x800E7389/738A == 1/1` |
+| 9 | `0xFFC` | DATE, scene 4 | 18 | park date in spring | place 1 (Kirameki Park), months 3–5, flag `0x800E67EF`, date step `0x738A == 13` |
+| 10 | `0x14DC` | DATE, scene 5 | 15 | theme park in winter, stuck on the Ferris wheel | place 12 (Theme Park), months 12–2, both ranks best plus bit `0x80` of `0x80051A68`, flag `0x800E67F0`, `*(u32*)0x80122CDC == 2`, step `1/0x23` |
+| 11 | `0x18FC` | DATE, scene 6 | 16 | pool in summer, Shiori goes missing | place 16 (Pool), year ≥ 96, months 6–8, `0x80051A68 & 0x7F < 3`, rank < 2, flag `0x800E67F1`, girl byte `0x800E646D`, step `1/10` |
+| 12 | `0x1D78` | SHOUGATU, stage 6 | 21 | Shiori asks to walk home together, in snow | stage `0x800E7389 == 6` of SHOUGATU's machine `0x8013D180`; how stage 6 is chosen isn't traced |
+| 13 | `0x2584` | GEKO, scene 8 | 42 | Shiori phones the player | EXE `0x800754C0` (two packed month/day fields equal, March or early April) |
+
+DATE's top-level switch (`0x8014C0C8`, table `0x8015B3D0`) is on the girl id
+in `0x80122CD4` too; case 0 runs Shiori's dispatcher `0x8014F370`, which maps
+scene ids 3/4/5/6 to step machines `0x8014FAE0`/`FBA0`/`FC80`/`FE90`. Date
+events are chosen by `0x8013272C` (girl id first) through the helper
+`0x801326B0(scene, one_shot, flag_index)`, which sets `0x80122CD0`, sets the
+one-shot byte `0x800E67EC + flag_index` and enters state `0x5E`. Flags come
+in blocks of 7 per girl; Shiori's are indices 0–6 (`0x800E67EC`–`F2`).
+**Place ids are 1-based** indexes of the outing-name table (file
+`0x72C30`): the scene texts match (park, Ferris wheel, swimming). Place 0
+(entry 8) isn't explained. GYOZI.EXN does not run any Shiori event: its
+read at `0x80135BC8` takes index 8 of its own scene tables, and the third
+word only coincides with the event table.
+
 **Overlay selection.** The loader switch (§3) is indexed by
 `*(u8*)0x800E738E − 0x11` through the jump table at `0x800B19E8`
 (0x81 entries). GEKO.EXN is loaded for values `0x45`, `0x46`, `0x48`, `0x49`,

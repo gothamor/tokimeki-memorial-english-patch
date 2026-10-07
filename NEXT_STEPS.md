@@ -277,7 +277,20 @@ original's `）`). Promoted to `translation/shiori_events.json`; the normal
 build `.emu/default_shiori/` is byte-identical to the tested candidate.
 Details in testing.md, "Forcing a girl event".
 
-Next: Step 8 order is cheaper than Step 7 here. The remaining seven EVENT_FU
+**EVENT_FU mapping done (2026-10-07, static; game-internals §6j table).**
+All 157 strings belong to the eight entries 6–13; nothing else uses the
+file. Remaining work by how it can be tested:
+- GEKO scenes 1 (rain, 21 strings) and 8 (Shiori's phone call, 42): run
+  from the day queue like the walk, so `force_event.py 0 1` / `0 8` should
+  work (not tried yet; clear flags `0x800E67EC` / `0x800E67F2` if needed).
+- DATE scenes 3–6 (19 + 18 + 15 + 16 strings): chosen inside a date with
+  Shiori by place, season and date step. Forcing needs either a real date
+  with her (she refuses at low affection) or writing the date state; not
+  designed yet.
+- SHOUGATU stage 6 (21 strings, snowy walk home): how the stage is reached
+  isn't traced.
+
+Earlier note (before mapping): Step 8 order is cheaper than Step 7 here. The remaining seven EVENT_FU
 scenes (table entries 6 and 8–13; 157 strings in the file) can be mapped
 the same way: master list → strings, then the trigger. GEKO dispatches only
 Shiori scene ids 1, 2 and 8 (§6j), so the other entries are presumably run by
