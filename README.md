@@ -5,15 +5,15 @@ English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
 <!-- progress:start -->
-**Translated: 3.3%**
+**Translated: 3.5%**
 
 ```text
-Whole game             █░░░░░░░░░░░░░░░░░░░   3.3%
-Dialogue               █░░░░░░░░░░░░░░░░░░░   2.7%
-Menus and other text   ██░░░░░░░░░░░░░░░░░░   8.4%
+Whole game             █░░░░░░░░░░░░░░░░░░░   3.5%
+Dialogue               █░░░░░░░░░░░░░░░░░░░   2.9%
+Menus and other text   ██░░░░░░░░░░░░░░░░░░   8.5%
 ```
 
-<sub>19,274 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>20,365 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage
@@ -55,9 +55,13 @@ existing output folder.
   They're rare in normal play.
 - **Shiori's regular dates (all):** meeting her, every place's
   conversations, choices and replies, the end of the date and the way home
-  ([shiori_dates.json](translation/shiori_dates.json)). The player's
-  impression thoughts after a choice (`SERIFU.BIN`) and the walk-home talks
-  (`GEKO.BIN`) are separate files and still Japanese.
+  ([shiori_dates.json](translation/shiori_dates.json)). The walk-home talks
+  (`GEKO.BIN`) are still Japanese.
+- **Lines shared by every girl's dates:** the impression thought after each
+  choice, the concert and movie blurbs, and the "did I get the meeting place
+  wrong?" monologue with its place names
+  ([date_shared.json](translation/date_shared.json)). The answering-machine
+  message after a missed date (`TEL.EXN`) is still Japanese.
 - **Main game loop:** the weekly command screen's stat panel (Health, Art,
   Looks, Lit., Sport, Guts, Sci., Trivia, Stress), the calendar
   (`95 / 4 / 23 (Su)`), the player's thought prompts, and the in-game

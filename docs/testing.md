@@ -591,6 +591,46 @@ statically. Careful: pressing on past the end of a date runs the next
 week's commands (here a library event) in RAM; nothing was saved. The
 normal build (all of DATE_FU) is byte-identical to the candidate.
 
+### SERIFU.BIN, the shared date lines (2026-10-08)
+
+Candidate `.emu/review_dates/` (all default files plus the draft): only
+SERIFU.BIN (LBA 44870–44871) and DATE.EXN's place-name sector and trailer
+(LBA 37501, 37513) differed from the default build. Forced dates from the
+Sunday state (sheets `s1p`, `s1m0`, `s1m1`, `s2`, `s3st`, `s3w`, `s3x`):
+- **Impressions.** A Pool version-1 date replayed for all three options
+  (state `.emu/savestates_backup/s1p_choice.sav`): levels 2, 3 and 4 after
+  the replies, and after the boast ("Swimming's my specialty.") the swim lie
+  line, then level 3. Levels 0 and 1 forced on museum dates with
+  `--at 0x8013B174 --mem16 0x800CA22C=N --mem16 0x800CA22E=N --mem16
+  0x800CA230=N`. Use a single hit: with `--times 0` the forcer stops the
+  game every frame and the screenshots missed the thought. Levels 3 and 4
+  showed a space before `)` (odd last line); fixed, but the new wording
+  wasn't re-shot.
+- **Blurbs.** `--at 0x8013BAD4 --mem8 0x8015B688=N` on Concert Hall dates
+  (N = 11, the 5-line Rinsu blurb, scrolls; N = 0) and `--at 0x8013B964
+  --mem8 0x8015B684=N` on Cinema dates (N = 3, 6): the forced blurb shows.
+- **Missed meeting.** Stood up: `--at 0x8013F008 --reg v0=4`. Wrong place:
+  `--at 0x8013F03C --mem8 0x800E69A4=4 --mem8 0x800E69A5=1 --mem8
+  0x800E69A6=12 --mem8 0x800E69A7=4` (three options: here, the theme park,
+  Kirameki Park, which is the agreed place) and `69A4=1 69A5=4 69A6=12
+  69A7=255` (two options). Every option replayed from a state on the
+  choice: waiting or a wrong place lead to "never showed up" and the
+  answering-machine message (TEL.EXN, Japanese); the agreed place leads to
+  the late arrival, and the date continues at Kirameki Park.
+- Odd-length names ("Kirameki Park") show a padding space before the
+  option's `』`, as expected.
+
+Not seen: the other ten concert and nine movie blurbs, the skate lie line,
+the other place names, natural triggers, other girls' dates.
+
+The same odd-ending space also affected nine DATE_FU notes and thoughts
+(hobby notes, the parade and hero-show thoughts); their endings were made
+even in `shiori_dates.json`. That repacks the whole of DATE_FU, so a park
+date was replayed on the new build (both action options and notes, one of
+them an edited note, the ending, the week continuing). EVENT_FU's 157
+strings were checked statically: all its `04`/`06` thoughts already end
+evenly. The normal build is byte-identical to the candidate.
+
 ### Disassembly
 
 ```bash

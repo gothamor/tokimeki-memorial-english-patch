@@ -1,9 +1,11 @@
 # Next steps: translate the shared date lines (`SERIFU/SERIFU.BIN`)
 
-This is the only active task. Keep the Status table current as batches land.
-Technical findings go in `docs/`, not here. The previous plan (Shiori's
-regular dates, `DATE_FU.BIN`) finished on 2026-10-08. For it and earlier
-plans, see git history (`cc0cbcc` and before).
+**Finished 2026-10-08.** All 47 translatable strings and the 21 `DATE.EXN`
+place names are in `translation/date_shared.json` and in normal builds (the
+`slot` feature was added for the place names). This file stays as the
+record of how it was done; see "Status" and "Candidates for the next task".
+Technical findings are in `docs/` (game-internals §6l, testing.md
+"SERIFU.BIN").
 
 ## Goal and scope
 
@@ -183,11 +185,24 @@ date needs `--mem8 0x800E67EF=1` (the spring event).
 
 | Batch | State |
 |---|---|
-| Analysis (game-internals §6l) | Done 2026-10-08, static only |
-| 1 impression thoughts (section 2) | Next |
-| 2 concert + movie blurbs (sections 0, 3) | Not started |
-| Slot decision for `DATE.EXN` place names | Ask the user |
-| 3 missed meeting (section 1) + place names | Not started |
+| Analysis (game-internals §6l) | Done; force rules confirmed on screen, meeting bytes corrected (`69A4` = where the player went, `69A5` = agreed place) |
+| `slot` field for fixed-size records | Done (patcher, unit tests, translation-guide, AGENTS rule 5) |
+| 1 impression thoughts (section 2) | Done, spot-checked, in normal builds |
+| 2 concert + movie blurbs (sections 0, 3) | Done, spot-checked, in normal builds |
+| 3 missed meeting (section 1) + place names | Done, spot-checked, in normal builds |
+| Follow-up: even endings on 9 DATE_FU notes/thoughts | Done (same "space before `)`" issue); park date replayed |
+
+## Candidates for the next task
+
+Found along the way; none is planned yet:
+- `EXEDIR/TEL.EXN`: the phone overlay. It holds the answering-machine
+  message after a missed or stood-up date (`0xDB5B`, `0x12B89`) and
+  presumably the phone calls used to make dates.
+- `SERIFU/GEKO.BIN`: the walk-home talks after school.
+- `DATE.EXN` `0x8015D108`: 93 birthday-present item names in 33-byte
+  records (`slot` makes them fittable; find the code that reads them first).
+- Other girls' `DATE_*.BIN` / `EVENT_*.BIN` (the tools and the DATE_FU
+  workflow carry over).
 
 ## Done when
 

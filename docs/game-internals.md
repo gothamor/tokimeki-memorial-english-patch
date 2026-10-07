@@ -1198,8 +1198,9 @@ shared `SERIFU/SERIFU.BIN` (§6l), with copies in `SPEAKTST/TEST_OT.BIN`.
 
 ### 6l. Shared date lines (`SERIFU/SERIFU.BIN`)
 
-Found 2026-10-08 by dumping the file and statically tracing `DATE.EXN`
-(no emulator runs yet). Untranslated.
+Found 2026-10-08 by dumping the file and statically tracing `DATE.EXN`,
+then forced in DuckStation (testing.md, "SERIFU.BIN"). Translated in
+`translation/date_shared.json`.
 
 **File.** 4,096 bytes (2 sectors, LBA 44870), checksum trailer, loaded by
 DATE step 3 to `0x80197000` for every girl's date (§6k). 48 strings, each
@@ -1216,14 +1217,16 @@ in other overlays that point into `0x80197xxx` belong to those files.
 
 | Sec | Strings (file) | Count | Codes | Content | Setup / selector |
 |---:|---|---:|---|---|---|
-| 0 | `0x0`–`0x260` | 12 | `06` | concert blurbs ("X is a ... band"), one per concert, in the order of the EXE concert-name table (`town_news.json`: KNM Symphony, Chisa Morita, Chage & Aska, WIZARD, Riko Kodama, XeXeX, KNM Symphony, Bees, SNACK, KNM Symphony, prf, Rinsu) | `0x8013BAD4`: line = byte `0x8015B688`, set by the Concert Hall setup `0x80136340` (by date) |
+| 0 | `0x0`–`0x260` | 12 | `06` | concert blurbs ("X is a ... band"), one per concert, in the order of the EXE concert-name table (`town_news.json`: KNM Symphony, Chisa Morita, Chage & Aska, WIZARD, Riko Kodama, XeXeX, KNM Symphony, Bees, SNACK, KNM Symphony, prf, Rinsu) | `0x8013BAD4`: line = byte `0x8015B688`, set by the Concert Hall setup `0x80136340` (by date); confirmed by forcing 0 and 11 |
 | 1 | `0x454`–`0x6EC` | 18 | `00 06 08 03 07` | the player alone at the meeting place: she's late, "did I get the place wrong?", the choice of where to go, or she never comes | `0x8013EFA0` (below); part in s16 `0x8015BF3C` |
-| 2 | `0x9B8`–`0xAA8` | 7 | `04` | impression thoughts after a choice, levels 0–4 (great → bad), then two "but my lie was exposed: I can't really swim / skate" lines | `0x8013B174`: line = s16 at `0x800CA22C + 2·choice` (the impression level copied from `TAKU3.BIN`, §6k); `0x8013B208` is a second caller (the lie lines, not traced) |
-| 3 | `0xBDC`–`0xE40` | 11 | `06` | movie blurbs, one per film, in the order of the EXE movie-name table (`town_news.json`: I'm Doing It, Forrest Gump, Summer Saw, Fungaa, Kanpanman, Sleep Fist II, Love Melody, Speed King, BANPO, The Mask, Love and Youth) | `0x8013B964`: line = byte `0x8015B684`, set by the Cinema setup `0x80135E7C` (by date) |
+| 2 | `0x9B8`–`0xAA8` | 7 | `04` | impression thoughts after a choice, levels 0–4 (great → bad), then two "but my lie was exposed: I can't really swim / skate" lines | `0x8013B174`: line = s16 at `0x800CA22C + 2·choice` (the impression level copied from `TAKU3.BIN`, §6k); forcing all three to N there once shows level N (seen 0 and 1). The swim lie line followed the Pool boast option on screen; `0x8013B208` is a second caller, presumably the lie lines (not traced) |
+| 3 | `0xBDC`–`0xE40` | 11 | `06` | movie blurbs, one per film, in the order of the EXE movie-name table (`town_news.json`: I'm Doing It, Forrest Gump, Summer Saw, Fungaa, Kanpanman, Sleep Fist II, Love Melody, Speed King, BANPO, The Mask, Love and Youth) | `0x8013B964`: line = byte `0x8015B684`, set by the Cinema setup `0x80135E7C` (by date); confirmed by forcing 3 and 6 |
 
 Codes `04` and `06` are drawn as the player's thought with **both brackets
 drawn by the game** (seen on screen in the English dates: `（…。）` around
-strings that contain neither), so English gets no parentheses. Each blurb
+strings that contain neither), so English gets no parentheses. An odd
+letter count on the last line shows its pair padding as a space before the
+game's `）` ("a bad impression. )", seen), so thoughts end on an even run. Each blurb
 and impression section is a single part whose line is chosen by the value
 above; all four go through the talk runner `0x80082764`, which copies the
 string before cutting it (`share_identical` is safe, as in §6k).
@@ -1243,28 +1246,41 @@ Parts and codes:
 
 The function copies a 21 × 33-byte place-name table from `DATE.EXN`
 `0x8015B9DC` (file offset `0x299DC`; index = place id 0–20 as in §6k:
-近所の公園 … スキー場) to the stack, then: if the girl's rank
-(`0x80051A68(girl) & 0x7F`) is 4 it plays part 8 and skips ahead
-(`0x738A` += `0x24`). Otherwise it compares the meeting-place bytes
-`0x800E69A4`–`69A7` (agreed place, where the player went, and up to two
-other candidates; `0xFF` = none; the main loop asks "where were we
-meeting?" on the date day, `main_screen.json`): when they match (and the
-arrival byte `0x8015B654` is 1) the normal meeting runs (`0x738A` +=
-`0x11`). On a mismatch it `strcpy`s one candidate's name to the `{A}`
-buffer `0x800CA25C`, and, when `0x800E69A7` isn't `0xFF`, another to the
-`{M}` buffer `0x800CA280` and sets part 3 (three options) instead of 0.
-Afterwards the DATE_FU meeting continues with the player late (§6k,
-arrival 2). The detailed comparison (`0x8013F03C`–`0x8013F0B8`) hasn't been
-checked on screen.
+近所の公園 … スキー場) to the stack (the `0x2D6`-byte loop at `0x8013EFB8`),
+then:
+- If the girl's rank (`0x80051A68(girl) & 0x7F`, read at `0x8013F008`) is
+  4, part 8 plays (stood up) and the step skips ahead (`0x738A` += `0x24`).
+- Otherwise it reads the meeting bytes: `0x800E69A4` = **where the player
+  went**, `0x800E69A5` = **the agreed place**, `0x800E69A6`/`69A7` = the
+  other places the player half-remembers (`0xFF` = none; the main loop asks
+  "where were we meeting?" on the date day, `main_screen.json`). If the
+  player is at the agreed place (and the arrival byte `0x8015B654` is 1),
+  or `69A6` is `0xFF`, the normal meeting runs (`0x738A` += `0x11`).
+- On a mismatch, `{A}` (`0x800CA25C`) gets `69A6`'s name and, when `69A7`
+  isn't `0xFF`, `{M}` (`0x800CA280`) gets `69A7`'s and part 3 (three
+  options) replaces part 0. A candidate equal to where the player stands is
+  replaced by the agreed place, so the right answer is always offered.
+  Names are `strcpy`'d from the table (stride 33, `0x8013F0C0`).
+
+Forced on screen (2026-10-08, testing.md "SERIFU.BIN"; this corrects the
+first, static reading, which had `69A4`/`69A5` swapped): staying ("it was
+here") or a wrong place leads to part 1/4 or 2/5/6, then part 7 ("she never
+came"). Back home **an answering-machine message** from the girl follows
+("ひどい事するのね…"); it is in `EXEDIR/TEL.EXN` (`0xDB5B`, `0x12B89`), not
+here, and is still Japanese. Being stood up (part 8) ends the same way.
+Choosing the agreed place goes there and continues as the player-late
+meeting (§6k arrival 2), and **the date then takes place at the agreed
+place**, not the appointment's original one (a forced museum date became a
+Kirameki Park walk).
 
 **The place-name table is the only source of `{A}`/`{M}` here.** It's read
 only by this function (the one reference to `0x8015B9DC`). Every slot is the
 Japanese name followed by NULs up to 33 bytes, so the in-place budget
 (original + NUL + padding to 4 bytes, AGENTS rule 5) is often below the
 English: 海 allows 2 letters, 神社 4, 遊園地/図書館/動物園/プール 6. Fitting
-"Beach" or "Theme Park" needs either the whole 33-byte slot (the bytes after
-each name are NUL up to the next slot, and `strcpy` stops at the first NUL)
-or a code change. The same function family at `0x80149D04` copies a second
+"Beach" or "Theme Park" needs the whole 33-byte record (the bytes after each
+name are NUL up to the next record, and `strcpy` stops at the first NUL):
+`date_shared.json` writes them with `"slot": 33` (translation-guide). The same function family at `0x80149D04` copies a second
 93 × 33-byte table at `0x8015D108`: birthday-present item names, a separate
 job.
 
