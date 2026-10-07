@@ -59,6 +59,14 @@ Screenshots land in `.emu/shots/<name>.png`.
 Keys go to the emulator window with `PostMessage`, so the window doesn't need
 focus and no other window ever receives input.
 
+The driver also accepts a hidden game window and matches its title (including
+the Japanese title's `forever with you` suffix). It stops if no matching window
+exists. Screenshots must be newly created after F10; a timeout is an error,
+not permission to reuse the previous file. These checks fixed a test run that
+previously continued after null-window input errors and falsely reported a
+screen match from a stale screenshot. Launch an isolated test with
+`Start-Process -WindowStyle Hidden` and wait for the game window to exist.
+
 ### Getting to screens reliably
 - **Don't rely on fixed delays.** Boot time varies between runs, so a sequence
   that hit the title once lands in the attract movie the next time.
@@ -116,8 +124,19 @@ Down:290,wait:300,Right:80,wait:600,               # ...onto album slot 1
 C,wait:2500,C,wait:2500,                           # pick slot 1, system-file explanation
 C,wait:9000                                        # "Make a system file?" Yes → name entry
 ```
-The hand moves at roughly 0.8 px per ms of key hold, measured in screenshot
-pixels (≈ 4.8 per game px).
+At normal emulator speed, the hand moved at roughly 0.8 screenshot px per ms
+of key hold (≈ 4.8 per game px) in one calibration. On the initial family-name
+screen, `Right:150` selected み and `Down:540` reached the Exit button; a
+screenshot after the move and another after `C` confirmed that the next name
+field opened. Treat these as starting values, not fixed coordinates.
+
+Directional holds are timed in host wall-clock milliseconds, while cursor
+movement advances in emulated frames. GDB read/watch/execution breakpoints
+slow the emulator enough that the same hold covers fewer game frames and
+therefore **undershoots**. Navigate and verify the cursor at normal speed
+before arming a watchpoint whenever possible. If the watchpoint must already
+be armed, recalibrate the hold under that exact tracing load; adding only a
+longer `wait:` after the hold does not recover the missed movement.
 
 With an album already on the test card, GAME START opens the album screen
 in Load mode with the hand on slot 1. Pressing `C` twice loads it; an album
@@ -160,10 +179,14 @@ user mid-run (they were also playing) made one comparison misleading.
 - From the planning screen, `C` on the first icon (study) runs a week and
   lands on the next Sunday, either the holiday screen (今日は…) or, after a
   day off, the planning screen again.
-- **The command grid's hand is hard to drive.** Short holds (< 250 ms) are
-  often ignored, and a held direction sometimes jumps diagonally to another
-  icon. Take a screenshot after every move. Reaching a specific icon
-  reliably is still unsolved (game-internals §8, question 8).
+- **Check the loaded save's menu behavior before calibrating.** In the review
+  run using the backed-up 95/4/23 card, `Down:300` advanced one item in list
+  order (book → science → art → fitness → school icon), even across a row;
+  `Up:300` reversed it. This is discrete selection, not free cursor movement.
+  The exact saved Menu Mode value has not been traced. Don't interpret every
+  sideways move as a timing error, or reuse name-entry free-hand timings here.
+  Take screenshots after moves; short holds and behavior in other modes still
+  need calibration.
 - **Graphics live in VRAM from boot.** `MAINROM.NBN` is uploaded once at boot,
   so a save state shows the art of the build that made it. Test graphics
   changes with a real boot and the save card.
@@ -252,6 +275,8 @@ functions the renderer hook reuses were shown to be unused (game-internals
 §6f): run it on the **unpatched** game and play through as much as you can.
 - The emulator runs noticeably slower while breakpoints are armed (a page
   fade took ~10 s instead of ~4 s), so give `drive.ps1` steps longer waits.
+  Free-moving cursors also travel less during a fixed directional hold; see
+  the calibration warning under "New-game flow" above.
 - The Options page and the in-game command grid use the free-moving hand
   (Mouse-like menu mode), so a short `Down` doesn't step one item. `X` on the
   Options page jumps the hand to オプション終了; `C` there returns to the title.
@@ -300,3 +325,43 @@ the code (an early search for BIOS calls found nothing because of this).
   driver waits 1.2 s before moving it.
 - Kill only the isolated instance:
   `Get-Process | ? { $_.Path -like "*\.emu\duckstation\*" } | Stop-Process`.
+
+## Club correction handoff (2026-10-07)
+
+The current test image is `.emu/review_clubs/` (open its CUE), built from the
+default 13 translation files; `.emu/review_clubs.log` is the build log.
+It includes Literature and the revised Club Day fragments. Real boot and
+loading the 95/4/23 test card succeeded, and play continued to the 4/29 holiday.
+The first News issue also displayed its English introduction, Movie “Closed”,
+Concert “KNM Symphony” and event announcement; later issues are unverified.
+No unpatched comparison at the corrected club screens has been completed.
+
+Final static checks passed: a full raw-track comparison found exactly the 37
+sectors predicted by the patch plan, with valid regenerated EDC/ECC on each.
+Every patched file retained its size, and all files that originally had valid
+checksum trailers still validate. `SLPM_86.053` and `MAINROM.NBN` do not have
+those trailers; earlier session claims of an EXE checksum update were mistaken.
+All 12 club-table pointers resolve to their expected English strings, and the
+three adjacent notice-fragment pairs fit their fixed x-coordinate gaps.
+The driver passes PowerShell syntax validation. The isolated emulator was
+stopped after the review.
+
+Follow-up user verification (screenshots and play test):
+
+1. Club List: Literature replaces 文芸 and fits the column. Its selected state
+   extends slightly beyond the green selector rectangle; the user accepts this
+   for now. The first screenshot shows Literature highlighted.
+2. Joining Soccer: the user confirms successful joining and the second
+   screenshot shows the corrected captain's notice: “Capt. Each 3rd Sunday is”
+   / “Club Day, so” / “don't   miss it.”. There is no text overlap. The wide
+   gap before “miss it.” is noticeable but accepted by the user for now.
+
+Leave both cosmetic issues unchanged, as requested. Continuation after this
+corrected notice was not explicitly reported; the earlier build's club flow
+had already been checked for continuation. For future text tests, boot the CUE
+and load a memory-card save: older emulator states retain old EXE strings and
+pointer tables.
+
+The test harness's previous card was backed up under
+`.emu/memcard_backup/review_before_*` before the main-loop test card was copied
+in. This run did not operate the user's DuckStation installation or cards.

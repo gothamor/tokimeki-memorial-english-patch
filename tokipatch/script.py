@@ -38,8 +38,8 @@ MAX_CELLS = 28
 # full-width character). Used for line-width checks only, so these are
 # deliberately generous estimates where the real maximum isn't known yet.
 TOKEN_CELLS: Dict[str, int] = {
-    "P": 12, "p": 6, "m": 6, "F": 12, "G": 12, "Y": 4, "S": 12,
-    "O": 12, "W": 12, "A": 16, "M": 16,
+    "P": 12, "p": 6, "m": 6, "F": 12, "G": 18, "Y": 6, "S": 18,
+    "O": 18, "W": 18, "A": 18, "M": 18,
 }
 
 _TOKEN = re.compile(r"\{([A-Za-z])\}|\n")

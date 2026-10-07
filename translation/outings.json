@@ -1,0 +1,46 @@
+{
+  "description": "Stat-name and outing-place pointer tables in SLPM_86.053. These are text used outside the sprite-based main stat panel. Entries are pooled only within their original contiguous table regions, and every original pointer is relocated by the dialogue patcher.",
+  "dialogue": [
+    {
+      "file": "SLPM_86.053",
+      "base": "0x80040800",
+      "lines": [
+        {"offset": "0x72AD0", "original": "体調", "text": "Health"},
+        {"offset": "0x72AD8", "original": "文系", "text": "Lit."},
+        {"offset": "0x72AE0", "original": "理系", "text": "Sci."},
+        {"offset": "0x72AE8", "original": "芸術", "text": "Arts"},
+        {"offset": "0x72AF0", "original": "運動", "text": "Fitness"},
+        {"offset": "0x72AF8", "original": "雑学", "text": "General"},
+        {"offset": "0x72B00", "original": "容姿", "text": "Looks"},
+        {"offset": "0x72B08", "original": "根性", "text": "Guts"},
+        {"offset": "0x72B10", "original": "ストレス", "text": "Stress"}
+      ]
+    },
+    {
+      "file": "SLPM_86.053",
+      "base": "0x80040800",
+      "lines": [
+        {"offset": "0x72B4C", "original": "きらめき中央公園", "text": "Kirameki Park"},
+        {"offset": "0x72B60", "original": "ショッピング街", "text": "Shopping"},
+        {"offset": "0x72B70", "original": "水族館", "text": "Aquarium"},
+        {"offset": "0x72B78", "original": "動物園", "text": "Zoo"},
+        {"offset": "0x72B80", "original": "植物園", "text": "Botanical Gdn"},
+        {"offset": "0x72B88", "original": "プラネタリウム", "text": "Planetarium"},
+        {"offset": "0x72B98", "original": "美術館", "text": "Art Museum"},
+        {"offset": "0x72BA0", "original": "図書館", "text": "Library"},
+        {"offset": "0x72BA8", "original": "ゲームセンター", "text": "Arcade"},
+        {"offset": "0x72BB8", "original": "ボーリング場", "text": "Bowling Alley"},
+        {"offset": "0x72BC8", "original": "カラオケ屋", "text": "Karaoke"},
+        {"offset": "0x72BD4", "original": "遊園地", "text": "Theme Park"},
+        {"offset": "0x72BDC", "original": "スタジアム", "text": "Stadium"},
+        {"offset": "0x72BE8", "original": "映画館", "text": "Cinema"},
+        {"offset": "0x72BF0", "original": "コンサート会場", "text": "Concert Hall"},
+        {"offset": "0x72C00", "original": "プール", "text": "Pool"},
+        {"offset": "0x72C08", "original": "海", "text": "Beach"},
+        {"offset": "0x72C0C", "original": "神社", "text": "Shrine"},
+        {"offset": "0x72C14", "original": "スケート場", "text": "Skating Rink"},
+        {"offset": "0x72C20", "original": "スキー場", "text": "Ski Resort"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "description": "All 12 club-name table entries in SLPM_86.053 at 0x730A4-0x73107, including Literature and None. The strings are pooled and their table pointers are relocated together; labels match the compact style used on the main stat panel.",
+  "dialogue": [
+    {
+      "file": "SLPM_86.053",
+      "base": "0x80040800",
+      "lines": [
+        {"offset": "0x730A4", "original": "文芸", "text": "Literature"},
+        {"offset": "0x730AC", "original": "演劇", "text": "Drama"},
+        {"offset": "0x730B4", "original": "科学", "text": "Science"},
+        {"offset": "0x730BC", "original": "電脳", "text": "Computer"},
+        {"offset": "0x730C4", "original": "美術", "text": "Art"},
+        {"offset": "0x730CC", "original": "吹奏楽", "text": "Band"},
+        {"offset": "0x730D4", "original": "野球", "text": "Baseball"},
+        {"offset": "0x730DC", "original": "サッカー", "text": "Soccer"},
+        {"offset": "0x730E8", "original": "テニス", "text": "Tennis"},
+        {"offset": "0x730F0", "original": "水泳", "text": "Swimming"},
+        {"offset": "0x730F8", "original": "バスケ", "text": "Basketball"},
+        {"offset": "0x73100", "original": "無所属", "text": "None"}
+      ]
+    }
+  ]
+}

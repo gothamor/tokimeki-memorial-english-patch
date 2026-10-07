@@ -15,6 +15,8 @@
 #                 the next step follows within ~2 s (the title times out quickly).
 param([string]$Seq)
 
+$ErrorActionPreference = 'Stop'
+
 Add-Type @"
 using System;
 using System.Text;
@@ -30,7 +32,7 @@ public class W {
   [DllImport("user32.dll")] public static extern uint MapVirtualKey(uint code, uint type);
   public static List<IntPtr> Windows(uint pid) {
     var res = new List<IntPtr>();
-    EnumWindows((h, l) => { uint p; GetWindowThreadProcessId(h, out p); if (p == pid && IsWindowVisible(h)) res.Add(h); return true; }, IntPtr.Zero);
+    EnumWindows((h, l) => { uint p; GetWindowThreadProcessId(h, out p); if (p == pid) res.Add(h); return true; }, IntPtr.Zero);
     return res;
   }
   public static string Title(IntPtr h) { var s = new StringBuilder(256); GetWindowText(h, s, 256); return s.ToString(); }
@@ -44,7 +46,9 @@ New-Item -ItemType Directory -Force $Shots | Out-Null
 
 $proc = Get-Process | Where-Object { $_.Path -like "$Emu\*" } | Select-Object -First 1
 if (-not $proc) { throw "isolated DuckStation ($Emu) is not running" }
-$hwnd = [W]::Windows([uint32]$proc.Id) | Where-Object { [W]::Title($_) -ne '' } | Select-Object -First 1
+$hwnd = [W]::Windows([uint32]$proc.Id) | Where-Object { [W]::Title($_) -match 'DuckStation|Tokimeki|forever with you' } | Select-Object -First 1
+if (-not $hwnd) { throw 'isolated DuckStation has no game window yet' }
+$hwnd = [IntPtr]$hwnd
 
 $vk = @{ Return=0x0D; X=0x58; C=0x43; Z=0x5A; S=0x53; Up=0x26; Down=0x28; Left=0x25; Right=0x27;
          Backspace=0x08; Tab=0x09; F1=0x70; F2=0x71; F10=0x79 }
@@ -54,20 +58,29 @@ function Press($name, $hold) {
   $code = $vk[$name]; if (-not $code) { throw "unknown key $name" }
   $scan = [W]::MapVirtualKey($code, 0)
   $l = 1 -bor ($scan -shl 16); if ($extended -contains $name) { $l = $l -bor (1 -shl 24) }
-  [void][W]::PostMessage($hwnd, 0x100, [IntPtr]$code, [IntPtr]$l)        # WM_KEYDOWN
-  Start-Sleep -Milliseconds $hold
-  [void][W]::PostMessage($hwnd, 0x101, [IntPtr]$code, [IntPtr][int64]($l -bor (3 -shl 30)))  # WM_KEYUP
+  if (-not [W]::PostMessage($hwnd, 0x100, [IntPtr]$code, [IntPtr]$l)) { throw "key down failed: $name" }
+  try { Start-Sleep -Milliseconds $hold }
+  finally {
+    if (-not [W]::PostMessage($hwnd, 0x101, [IntPtr]$code, [IntPtr][int64]($l -bor (3 -shl 30)))) { throw "key up failed: $name" }
+  }
   Start-Sleep -Milliseconds 150
 }
 
 function Shoot($dest) {
   $dir = "$Emu\screenshots"
-  $before = @(Get-ChildItem $dir -Filter *.png -ErrorAction SilentlyContinue).Count
+  $before = @(Get-ChildItem $dir -Filter *.png -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName)
   Press 'F10' 120
-  for ($i = 0; $i -lt 30 -and @(Get-ChildItem $dir -Filter *.png -ErrorAction SilentlyContinue).Count -le $before; $i++) { Start-Sleep -Milliseconds 200 }
+  $latest = $null
+  for ($i = 0; $i -lt 30; $i++) {
+    $latest = Get-ChildItem $dir -Filter *.png -ErrorAction SilentlyContinue |
+      Where-Object { $before -notcontains $_.FullName } |
+      Sort-Object LastWriteTime | Select-Object -Last 1
+    if ($latest) { break }
+    Start-Sleep -Milliseconds 200
+  }
+  if (-not $latest) { throw 'DuckStation did not produce a new screenshot' }
   Start-Sleep -Milliseconds 1200   # let DuckStation finish writing the file
-  $latest = Get-ChildItem $dir -Filter *.png | Sort-Object LastWriteTime | Select-Object -Last 1
-  Move-Item -Force $latest.FullName $dest
+  Move-Item -LiteralPath $latest.FullName -Destination $dest -Force
 }
 
 foreach ($step in $Seq.Split(',')) {
@@ -81,6 +94,7 @@ foreach ($step in $Seq.Split(',')) {
         Shoot "$Shots\_until.png"
         & python "$Repo\tools\emu\screens.py" $screen "$Shots\_until.png"
         if ($LASTEXITCODE -eq 0) { "reached $screen"; break }
+        if ($LASTEXITCODE -ne 1) { throw "screen detector failed with exit code $LASTEXITCODE" }
         if ((Get-Date) -gt $deadline) { throw "timed out waiting for screen '$screen'" }
       }
     }

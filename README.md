@@ -34,12 +34,15 @@ existing output folder.
   and the kana grid are still Japanese.
 - **Prologue dialogue:** the 43-line entrance-ceremony scene after name entry
   ([prologue.json](translation/prologue.json)), the first dialogue in the
-  translation. The speaker labels are still Japanese.
+  translation. Character-name tables and speaker labels are translated by
+  [character_names.json](translation/character_names.json).
 - **Main game loop:** the weekly command screen's stat panel (Health, Art,
   Looks, Lit., Sport, Guts, Sci., Trivia, Stress), the calendar
   (`95 / 4 / 23 (Su)`), the player's thought prompts, and the in-game
   Save/Load messages ([main_screen.json](translation/main_screen.json)).
-  The command icons are pictures; what they open is still Japanese.
+  Club names, recurring notices, outing names and town-news text also have
+  translations. Coverage and on-screen verification vary; see the status table
+  in [AGENTS.md](AGENTS.md). The command icons themselves are pictures.
 - **Renderer hook:** the game's text renderer draws English two letters per
   character cell, composed on the fly from a narrow font, so any amount of
   English text fits the font ([tokipatch/renderer.py](tokipatch/renderer.py)).
@@ -99,8 +102,8 @@ existing output folder.
 ## Roadmap
 1. ~~Compose letter-pair glyphs on the fly in the renderer.~~ Done
    (game-internals §6f).
-2. Translate `SERIFU/` dialogue file by file, verifying each scene, and find
-   where speaker labels come from.
+2. Translate `SERIFU/` dialogue file by file, verifying each scene, and check
+   longer translated speaker labels across more dialogue paths.
 3. Find the LBA tables for data files, then support relocating or growing files.
 4. Text renderer: variable-width English. The renderer hook (game-internals §6f)
    is the place for it; it needs more code space.

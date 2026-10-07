@@ -100,6 +100,11 @@ instruction is, and document the reasoning in game-internals.
   whether the pieces share a line, so write them to read correctly either
   way. End a leading piece with a space (`"Menu mode set "`), continue in the
   next (`"to Mouse-like"`), and leave a trailing grammatical piece empty (`""`).
+  Check whether the game concatenates them or draws each at a fixed x position.
+  For example, the Club Day notice (§6h in game-internals) has only 56 px
+  between its last two fragments: the first must fit eight pair-font letters,
+  even though its disc slot can hold ten. Preserve intentional padding and
+  verify the combined result; fitting each byte slot alone cannot catch overlap.
 - **The same words as graphics.** A screen can show text that isn't a string
   at all (Options ▸ Text Speed / Icon Mode / Cursor Speed / Voice Mode use
   pre-drawn glyph cells). If a translated string doesn't change the screen,
@@ -183,6 +188,14 @@ every pointer to a moved string is rewritten (game-internals §6e). Example:
 - A text run with an odd number of letters before a name code wastes a cell,
   showing as a double space (`"My name is {P}"` → "is  Name"). Prefer an even
   run (`"My name's {P}"`).
+
+`TOKEN_CELLS` must cover the widest text a control code can insert after name
+tables are translated, not merely the width of the original Japanese value.
+The current conservative widths are 18 cells for `{G}`, `{S}`, `{O}`, `{W}`,
+`{A}` and `{M}`, 6 for `{Y}`, and 12 for `{P}`. If an inserted-name table is
+changed, update these limits and revalidate every translated line containing
+the affected code; otherwise the static width check can accept a line that
+overruns the dialogue box.
 
 Only UI strings with a numeric budget go through `strings`. Pair encoding
 halves the bytes English needs, which makes many more UI strings fit in place

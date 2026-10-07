@@ -3,11 +3,11 @@
 Temporary planning note for the next agent. Delete it (or fold what's still
 useful into `docs/`) once the work is done.
 
-**Recommendation: do Step 1 and Step 2 first.** Together they make the whole
-weekly game loop English, and every dialogue box English apart from its
-lines. Both use tools that already exist and need little new reverse
-engineering. Step 3 (dialogue) is the bulk of the game, but its own pilot
-should come first to measure space. Step 4 (graphics) matters less.
+**Recommendation: finish the on-screen checks for Steps 1 and 2 first.** Their
+patches now build and the names have had an initial user smoke test, but the
+remaining main-loop consumers and longest speaker labels have not all been
+seen. Step 3 (dialogue) is the bulk of the game, but its own pilot should come
+first to measure space. Step 4 (graphics) matters less.
 
 ## Before you start
 
@@ -26,8 +26,24 @@ Read these first. They're the contract and the knowledge base:
   main-loop notes.
 
 State at handoff:
-- Everything is committed except a small `AGENTS.md` table edit (the user
-  verified the Save/Load screen).
+- Steps 1 and 2 now have implementations in the working tree. They are not
+  committed, and most of the new main-loop screens still need visual checks.
+- New default translation files are `main_events.json`, `clubs.json`,
+  `outings.json`, `town_news.json` and `character_names.json`.
+- The default and full builds (the latter also including both `extra/` JSONs)
+  completed successfully. The user booted and played the default patch and
+  confirmed that character names appear translated.
+- User screenshots also verify the Club List, Soccer selection/join result and
+  monthly Club Day notice. They exposed one omitted name (`文芸` at `0x730A4`)
+  and overlapping fixed-position fragments. Both now have fixes in the source
+  and `.emu/review_clubs/` build. The user has now verified Literature and
+  joining Soccer through the corrected captain's notice: the text no longer
+  overlaps. Literature slightly overhangs the green selector and the notice
+  retains a wide gap; the user accepts both for now and requests no changes.
+  Results are recorded in `docs/testing.md` and the `AGENTS.md` status table.
+- Review verified a real boot, loading the saved game, play to the 4/29 holiday
+  and the first News issue. All 12 club-table pointers and original file sizes
+  were checked. Longer names and most remaining screens still need visual QA.
 - English text goes through the renderer hook. Any pair of letters is
   available; the limits are bytes and line width, not glyphs.
 - `translation/main_screen.json` covers the main screen, the thought prompts
@@ -53,9 +69,11 @@ Environment gotchas (Windows dev box):
 
 ## Step 0: make the command grid drivable (prerequisite for testing 1 and 2)
 
-The command grid's hand cursor doesn't respond predictably to `drive.ps1`.
-Short holds are dropped, and a held direction sometimes jumps diagonally.
-That blocked on-screen checks of most main-loop text.
+The review fixed hidden-window detection and stale-screenshot handling in
+`drive.ps1`. The backed-up 95/4/23 card uses discrete list-order navigation:
+`Down:300` advances one command, `Up:300` reverses. The exact Menu Mode value
+is not yet mapped. Other saves/modes may still require calibration; see
+`docs/testing.md` before assuming the hand is free-moving.
 
 - Try switching **Options ▸ Menu Mode** to *Menu A*. Its description says the
   D-pad moves the cursor to the item in that direction. The setting is
@@ -65,17 +83,16 @@ That blocked on-screen checks of most main-loop text.
   via the GDB stub (find it by diffing RAM dumps as the hand moves).
 - Document whatever works in `docs/testing.md` ("The main game loop").
 
-## Step 1: finish the main loop's EXE text (highest value for effort)
+## Step 1: finish the main loop's EXE text (implemented; visual verification remains)
 
-The EXE's system-text block (`SLPM_86.053` 0x6EB40–0x76000) has 413 Japanese
-strings; **225 are still untranslated** (about 3 KB). They show up every
-week. Most are reached from code (`lui`/`addiu`), so each must fit its own
-slot: the original bytes + NUL + zero padding to the next 4-byte boundary. Use
-`strings` entries for single-line text and `dialogue` entries (base
-`0x80040800`) for text with `\n` (0x20 line breaks) or full-width symbols such
-as ○. `translation/main_screen.json` shows both.
+The player-facing candidates in the EXE's system-text block (`SLPM_86.053`
+0x6EB40–0x76000) are now covered by `main_events.json`, `clubs.json`,
+`outings.json`, `town_news.json` and `character_names.json`. Ordinary strings
+remain in place; pointer-backed contiguous tables use pooled `dialogue` blocks
+with base `0x80040800`. The exclusions and reasons are recorded in each JSON
+description and in game-internals §6h.
 
-Untranslated, by area (rough contents):
+Original inventory, now covered or deliberately excluded by area:
 
 | Around | Contents |
 |---|---|
@@ -106,10 +123,10 @@ while p < 0x76000:
     p = e + 1
 ```
 
-Notes and decisions:
+Validation notes and decisions:
 - **Inserted words.** Place and club names (and girls' names, Step 2) are
   inserted into other lines by name codes (`{S}`, `{O}`, …; game-internals
-  §6e). Before translating the tables, check one insertion end to end, e.g.
+  §6e). Check one insertion end to end, e.g.
   the meeting prompt "Well then," / "<place> it is" (0x70ECC/0x70ED8 + place).
   Confirm that a pair-encoded English name inserts correctly. A display line
   must stay under 64 bytes after expansion (the renderer `strncpy`s into a
@@ -136,21 +153,30 @@ Done when every string in the block is translated or deliberately skipped
 (note why in the JSON `description`), each screen has been seen in the
 emulator, and `AGENTS.md`'s verification table says what was checked.
 
-## Step 2: speaker labels and character names (every dialogue box)
+## Step 2: speaker labels and character names (implemented; breadth/width checks remain)
 
-Every dialogue line shows a speaker label (好雄, 伊集院, 藤崎, 女子Ａ, …) in
-front of the bracket. Those are still Japanese, and their source isn't known
-(game-internals §6e). The girl's name for `{G}` comes from RAM 0x800CA190.
+Normal speaker labels are built by EXE function `0x80051438`: Shiori is read
+from `0x800AFB7C`; other characters use the 16-entry short-name pointer table
+at `0x800B35F4`, then append `ちゃん` or `さん`. The full-name table begins at
+file offset `0x72D3C`; the short-name table begins at `0x72DF4`. Special
+Shiori/Yoshio paths and the fixed `{Y}` values use separate literals around
+file offsets `0x71980`–`0x71A50`. All are translated by
+`character_names.json`; see game-internals §6e for exact ranges and method.
 
-1. Candidates: the 藤崎 / 好雄 strings around `SLPM_86.053` 0x71800 (several
-   copies), 詩織 / ちゃん / さん around 0x6F000. `Y` (好雄) is a fixed string at
-   0x800B2240.
-2. Confirm with a read watchpoint (`tools/emu/watch_reads.py`) on a
-   candidate, armed **before** a line with that speaker starts. The prologue
-   is easiest: Yoshio and Ijuin speak (testing.md, "Reaching the prologue").
-   For `{G}`, use a write watchpoint (Z2) on 0x800CA190 to find where the name
-   is copied from, at new game or when loading.
-3. Translate the labels and name tables. Watch out for these:
+The user has confirmed translated character names during normal play. Still
+check each special speaker path and the longest names at the dialogue-box
+edge; the existing confirmation does not prove every path or width.
+
+Implementation and remaining checks:
+
+1. Static disassembly established the normal label builder and the separate
+   special literals. Dynamic read-watchpoint confirmation was not obtained:
+   the automated run failed to leave name entry because tracing changed the
+   free cursor's travel. See `docs/testing.md` for the timing caveat.
+2. The full-name pool uses 171/172 bytes after translation; abbreviations are
+   required unless relocation support is added. The short-name pool uses
+   100/124 bytes.
+3. Keep watching for these constraints:
    - The **cheat-name list** in `NAME_ENT.EXN` (0x19590–) and the default
      names 藤崎 / 詩織 (0x1956C / 0x19574) are compared with what the player
      types. Don't change those unless you know what reads them.
@@ -162,7 +188,9 @@ front of the bracket. Those are still Japanese, and their source isn't known
      Recheck the right edge with a longer English label.
    - Name insertion width (`script.TOKEN_CELLS`) changes if names become
      English.
-4. Record the label source and the name table in game-internals §6e.
+4. `script.TOKEN_CELLS` was raised conservatively for the longer translated
+   insertions. Recheck lines containing `{G}`, `{Y}`, `{S}`, `{O}`, `{W}`,
+   `{A}` and `{M}` when their actual consumers are reached.
 
 ## Step 3: dialogue, starting with a pilot to measure space
 

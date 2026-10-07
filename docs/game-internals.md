@@ -282,10 +282,12 @@ these as `\n` and `{X}` in translation files (`tokipatch/script.py`).
 | `G` | the girl's name (RAM 0x800CA190) |
 | `p`, `m` | RAM 0x800CA16C / 0x800CA174 (likely family / given name; unverified) |
 | `F` | `sprintf("%s%s", p-buffer, 0x800CA174)` (unverified) |
-| `Y` | the fixed string 好雄 (Yoshio) at 0x800B2240 |
+| `Y` | the fixed string 好雄 (Yoshio) at 0x800B2240; a parallel expansion path uses 0x800B2250 |
 | `S`, `O`, `W`, `A`, `M` | RAM 0x800CA23C / 0x800CA248 / 0x800CA250 / 0x800CA25C / 0x800CA280 (place, item, ...? unverified) |
 
-Names are inserted as full-width Shift-JIS, 14 px per character.
+Unpatched dynamic names are inserted as full-width Shift-JIS, 14 px per
+character. Fixed names and name-table entries translated with `pairs` retain
+their pair encoding when the renderer inserts them.
 
 **Renderer:** `0x80081190` (EXE), called with (x, y, attr, string, ...). It
 copies the string to a 512-byte stack buffer, splits it at `0x20`/`q`, copies
@@ -293,12 +295,32 @@ each line into a 64-byte buffer (`strncpy`, so a line must stay under 64 bytes
 after name expansion), expands the name codes, and draws each line with
 `add_text` (§6a) at 16 px line spacing. So dialogue uses the same font, glyph
 cache and 14 px advance as the UI, and **letter-pair English works unchanged**.
-- The speaker label (好雄, 伊集院, 女子Ａ, the player's given name) and an
-  opening bracket are drawn by the game before the first line: `「` for other
-  characters, `『` for the player, `（` for the player's thoughts. Thought
-  strings therefore end with `）` but never start with `（`; in English, end
-  them with `)` only. Where the labels come from isn't known yet (still
-  Japanese).
+- The speaker label and an opening bracket are drawn by the game before the
+  first line: `「` for other characters, `『` for the player, `（` for the
+  player's thoughts. Thought strings therefore end with `）` but never start
+  with `（`; in English, end them with `)` only.
+- **Speaker-label source:** EXE function `0x80051438` constructs the normal
+  character label. Character 0 copies Shiori from `0x800AFB7C`; the other
+  character IDs select a pointer from the 16-entry table at `0x800B35F4`.
+  It then appends `ちゃん` from `0x800AFB84` for its special case, or `さん`
+  from `0x800AFB8C` normally. `translation/character_names.json` replaces the
+  short-name strings and blanks both suffixes, because English uses bare given
+  names here. This was found by statically following the string references and
+  table loads in `SLPM_86.053`; EXE RAM addresses convert to file offsets by
+  subtracting `0x80040800` (§2).
+- **Name tables:** the adjacent full-name strings occupy file offsets
+  `0x72C8C`–`0x72D37`, with their 15-entry pointer table beginning at `0x72D3C`.
+  The 16 short speaker names occupy `0x72D78`–`0x72DF3`, followed immediately
+  by their pointer table at `0x72DF4` (`0x800B35F4` in RAM). Both string areas
+  are pooled and repointed by the dialogue patcher. The English full-name pool
+  uses 171 of 172 available bytes, so several given names have to be initials;
+  the short-name pool uses 100 of 124 bytes.
+- Four special Shiori literals and four special Yoshio literals live at file
+  offsets `0x71980`–`0x719DC` (RAM `0x800B2180`–`0x800B21DC`) and bypass the
+  normal short-name table. The fixed `{Y}` expansions are at file offsets
+  `0x71A40` and `0x71A50` (RAM `0x800B2240`/`0x800B2250`). These all need to be
+  translated along with the two name tables for names to be consistent across
+  normal dialogue and special paths.
 - Lines that start with `（` are outdented by 14 px.
 - A first pass (0x800812D4) sets `*(u32*)0x80122D1C = 0` unless every
   character is one of `…‥「。、`. Purpose unknown (silent lines?). English
@@ -528,7 +550,8 @@ the player's thought line in the message box.
   13-glyph line). The stat labels, numbers, calendar and icons are sprites
   (§7, "Sprite frames" and `MAINROM.NBN`). A read watchpoint on the 体調
   string at `SLPM_86.053` 0x72AD0 never fired while the panel redrew, so the
-  stat-name strings there are used elsewhere (not translated yet).
+  stat-name strings there are used elsewhere (now translated in `outings.json`,
+  but their consuming screens remain unverified).
 - **Thought lines** are EXE strings reached from code (`lui`/`addiu`), so each
   must fit its own slot. They contain `0x20` line breaks and go through the
   dialogue renderer. The game draws `（`, so they end with `）` and the English
@@ -555,6 +578,76 @@ the player's thought line in the message box.
   of two Sundays. The calendar code at 0x80064CA0– sets the weekday sprite's
   frame to `0x52 + weekday`, and its colour byte to 0x43 (Saturday) or 0x44
   (Sunday or a holiday from the table at 0x800E62C4 + day).
+
+### 6h. Main-loop EXE text tables
+
+The remaining main-loop text in `SLPM_86.053` is not one screen-sized block.
+It includes ordinary in-place strings plus several contiguous, pointer-backed
+string pools. The latter are declared as `dialogue` blocks even when they are
+short labels, so all pointers can be relocated within the original pool:
+
+| File offsets | Contents | Translation |
+|---|---|---|
+| `0x6F3FC`–`0x71A50` | system title fragments; recurring club, term/holiday, health, Christmas/New Year and sound-effect text; phone/news labels; special name paths | `main_events.json`, `character_names.json` |
+| `0x72AD0`–`0x72B1B` | nine textual stat names (not the sprite-based main stat panel) | `outings.json` |
+| `0x72B4C`–`0x72C2B` | 20 outing-place names | `outings.json` |
+| `0x72C8C`–`0x72DF3` | full and short character-name pools (§6e) | `character_names.json` |
+| `0x730A4`–`0x73107` | 11 clubs plus None, including Literature at the start | `clubs.json` |
+| `0x751F8`–`0x75FFC` | memory-card check, concert/movie listings, town-news copy and magazine reactions | `town_news.json` |
+
+The stat-name strings at `0x72AD0` still do not drive the main screen's stat
+panel: that panel is graphics (§6g/§7). Their exact consumer remains to be
+confirmed on screen. Likewise, the place and club tables are identified by
+their contents and pointer structure, but every screen that consumes them has
+not yet been reached.
+
+The club-list screen is a confirmed consumer of the pool at
+`0x730A4`–`0x73107`. The user's original screenshots show ten translated club
+names, untranslated Literature, Cancel, a successful Soccer selection and the
+“Soccer club joined.” result. Literature at `0x730A4` was omitted when the
+pool started at `0x730AC`; it is now included. The complete pool uses 94/100
+bytes, and all 12 relocated pointers were checked against the encoded text.
+Disassembly of `0x8006B648` confirms that the menu draws only the first eleven
+entries from the pointer table at `0x800B3908` (file `0x73108`); None is the
+twelfth table entry and Cancel is a separate literal at file `0x70860`.
+
+**Club Day notice: fixed coordinates, not concatenation.** Disassembling
+`0x800607E0`–`0x800608B4` shows six separate calls to `add_text` with these
+positions (game pixels relative to the text origin):
+
+| String file offset | x | y | Current English |
+|---|---:|---:|---|
+| `0x7029C` | -86 | 50 | ` Each ` |
+| `0x702A4` | -44 | 50 | `3rd Sunday` |
+| `0x702B0` | 26 | 50 | ` is` |
+| `0x702B8` | -72 | 66 | ` Club Day, so` |
+| `0x702CC` | -72 | 82 | `don't   ` (three trailing spaces) |
+| `0x702D8` | -16 | 82 | `miss it.` |
+
+At 7 px per English letter, the last two fragments have only eight letters
+between their starting positions. The previous `don't miss` used ten encoded
+cells including padding, so the final fragment overprinted it. Repartitioning
+the words respects that eight-cell limit. The speaker label is drawn through
+`0x80050DFC`; a six-byte name starts at x = -128 and ends at -86, immediately
+before the first fragment. `Capt.` plus the leading space in ` Each ` gives
+the label a visible gap. The old claim that a leading pair-space was dropped
+was not established; fixed-position overlap explains the screenshot.
+
+The user's follow-up screenshots and play test verify both corrections:
+Literature fits its list column and joining Soccer reaches the captain's
+notice without overlapping text. The Literature label extends slightly beyond
+the green selector rectangle; the fixed-position notice retains a wide gap
+between “don't” and “miss it.”. The user accepts these cosmetic issues for now
+and explicitly requests leaving both unchanged. This verifies the corrected
+list and notice, not every other consumer of the club-name table.
+
+Not every Shift-JIS-looking run in these regions is player-facing text. The
+main-loop translation deliberately leaves the debug labels at `0x6F610`,
+`0x70940`, `0x709AC` and `0x70D90`, obsolete album fragments at
+`0x6EB40`–`0x6EB67`, renderer punctuation/control literals around
+`0x71804`–`0x71A3F`, fixed-width blank town-news rows, and unreferenced
+single-kanji data unchanged. These exclusions are also recorded in the JSON
+descriptions so a later audit does not repeatedly rediscover them.
 
 ## 7. Graphics
 
@@ -665,8 +758,9 @@ command's month pages, which are already in English (MON TUE …).
 
 1. **Dialogue beyond the prologue** (§6e): confirm the SERIFU load addresses
    in the game, find which scene code drives each file (and any line-timed
-   events like Rei's), and where the speaker labels and the remaining name
-   codes (`S O W A M p m F`) come from. Check `BUNKA/`, `SPEAKTST/`, `EVENT/`.
+   events like Rei's), and where the remaining name codes (`S O W A M p m F`)
+   come from. The ordinary speaker-label source and `{Y}` are now mapped.
+   Check `BUNKA/`, `SPEAKTST/`, `EVENT/`.
 2. **Text renderer leftovers:** the sprite drawer that places cached glyphs (for
    a true variable-width font later). Dialogue does go through
    `add_text`/`layout_string` (§6e).
