@@ -284,6 +284,65 @@ functions the renderer hook reuses were shown to be unused (game-internals
   (study) each week and advances the calendar. It reached a SERIFU event
   (meeting 如月) after ~30 presses, a handy way to exercise dialogue files.
 
+### Which girl events happen? (event watcher)
+
+```bash
+python tools/emu/watch_events.py 420 --states > .emu/events.log
+```
+
+Breaks where the main loop starts a girl's scene from the daily event queue
+and logs the date, record (type, girl, scene) and the queue (game-internals
+§6j). `--states` also logs every main-loop state change. Drive the game in
+parallel, e.g. `C,wait:2500` repeated to study through the weeks.
+
+First run (2026-10-07, **unpatched** original, 95/4/23 test card, 45 presses
+of `C`, about 2 minutes): reached 95/5/17. Two meeting events (type `0x48`,
+girl 1 on 5/10 and girl 8 on 5/17), no Shiori special event. Replay
+assets from that run:
+- `.emu/savestates_backup/shiori_0423_unpatched.sav`: unpatched, 95/4/23
+  Sunday night, hand on Study. Only for unpatched comparisons; it holds the
+  original EXE and text.
+- `.emu/memcard_backup/pre_shiori_<timestamp>_*.mcd`: the harness card from
+  before this run (it had the user's 95/4/9 and 95/4/16 saves). The
+  95/4/23 test card is installed in its place.
+
+The unpatched original is in the repo folder
+`Tokimeki Memorial - Forever with You (Japan) (PlayStation the Best)/`
+(gitignored; checked byte-identical to `extracted/` for the EXE, GEKO.EXN and
+EVENT_FU.BIN).
+
+### Forcing a girl event (Shiori's morning walk)
+
+Rare special events can be forced on a test card, with the user's agreement
+(given 2026-10-07 for Shiori's walk). Do the same forcing on the unpatched
+game for the comparison. Recipe, about one minute:
+
+```powershell
+Start-Process -WindowStyle Hidden .emu\duckstation\duckstation-qt-x64-ReleaseLTCG.exe -ArgumentList '-batch','-statefile','"<abs>\.emu\savestates_backup\shiori_0423_unpatched.sav"','"<abs>\<game>.cue"'
+```
+
+Wait ~9 s, then start the forcer and choose Study:
+
+```bash
+python tools/emu/force_event.py 0 2 --clear-flag 0x800E67ED --timeout 120
+```
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools\emu\drive.ps1 -Seq "C,wait:4000,shot:walk_01,wait:3000,shot:walk_02,wait:3000,shot:walk_03,C,wait:2500,shot:walk_04,wait:2500,shot:walk_05,C,wait:2500,shot:walk_06,C,wait:2500,shot:walk_07,C,wait:2500,shot:walk_08"
+```
+
+The forcer prints `forced 45 00 02 00 at 0x800e6924` (Tuesday 95/4/25). The
+first line appears about 10 s after `C`; each later `C` advances one box
+(4 boxes, game-internals §6j), and the week then continues to the weekend
+command screen. Done twice on the unpatched game, once with
+`trace_reads.py` chained after the forcer (`EVENT_FU.BIN` → `0x80198000`).
+
+**For a patched build** the save state can't be used: it holds the original
+EXE and text. Boot the patched CUE, load the 95/4/23 card save
+(title → GAME START → `C,wait:3000,C`), then run the forcer and the same
+drive sequence. The forcer only writes RAM; nothing is saved unless you save
+in the game, and a forced run must not be saved over the test card.
+
 ### Disassembly
 
 ```bash

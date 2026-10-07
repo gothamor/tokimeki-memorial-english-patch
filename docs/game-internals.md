@@ -453,10 +453,12 @@ school; they have 2/2/3/3 display lines with no choices or name codes.
 Each has exactly one pointer, at file `0x648`, `0x6A0`, `0x6A4`, `0x6F0`
 respectively, and no code references. A dry run of `patcher.apply_dialogue`
 with placeholder English on the extracted file accepted all four, rewrote
-only those pointers, and reported a **180-byte pool** for the scene. This is a
-compact candidate, **not a verified first-week event**: calendar/year,
-affection and random-selection conditions haven't been decoded, and it hasn't
-been seen in the emulator.
+only those pointers, and reported a 180-byte pool for those four; with the
+scene's fifth string `0x2AA8` (§6j) the pool is **188 bytes**. This is a
+compact candidate, but **not an early-game event**: §6j decodes its trigger
+(Shiori affection ≥ 61 plus another score ≥ 50, nonzero interaction counters,
+about a 1% roll per check, once per game). The scene also includes the string
+at `0x2AA8`.
 
 A fallback is the shared `SERIFU/GEKO.BIN` Shiori walk-home dialogue (inferred
 base `0x80197000`): candidate clusters start at file `0x1A24` (her invitation),
@@ -814,6 +816,111 @@ to `0x8006612C`. Choices, help and confirmations use the shared text drawer
   documented; the user's broader report covers all submenus' translations.
   No navigation, settings values, selector sizes or coordinates were patched.
 
+### 6j. Girl special events (`SERIFU/EVENT_*.BIN`) and how they're triggered
+
+Found 2026-10-07 by static disassembly (capstone, `tools/mipsdis.py`) of the
+original `SLPM_86.053` and overlays, then a GDB run of the **unpatched** game
+from the 95/4/23 test card to 95/5/17 (`tools/emu/watch_events.py`). Shiori
+is girl id 0 throughout. Nothing here has been patched.
+
+**Scene data in an EVENT file.** A scene is a *master* list of pointers to
+string lists, one list per part; a parallel list points at one byte list per
+part (one byte per string, `FF`-terminated; probably speaker/expression codes,
+not decoded), and a third pointer per scene leads to further per-scene records
+(not decoded). In `EVENT_FU.BIN`, scene 2 (the early-morning walk) is master
+`0x6F4` → lists `0x648` {`0x62C`}, `0x69C` {`0x2AA8`, `0x64C`, `0x668`},
+`0x6F0` {`0x6A8`}; byte lists via `0x70C` → `06` / `0C 0D 00` / `06`. The
+string at `0x2AA8` lies far from the rest and is part of the scene too.
+Scene 1 is master `0x390`, byte lists via `0x3C0`.
+
+**Event table.** GEKO, DATE, GYOZI, SHOUGATU and SHUGAKU each contain the
+same 237-word table (GEKO: `0x80145EC0`, written by code at
+`0x8013799C`–`0x80138828`): 79 masters, then 79 byte-list pointers, then 79
+third pointers. Shiori's events are entries **6–13**. Each event has a setup
+function that copies entry k of the three tables to the current-event slots
+`0x80146274/78/7C`; entry 7 (scene 2) is set up at `0x8013AA1C`, which also
+sets girl id `0x800E71DF = 0`. `EVENT.EXN` contains a similar per-girl table,
+but its offsets don't match the disc's `EVENT_FU.BIN` (e.g. `0x6F8` for
+`0x6F4`) and its code calls addresses outside the main EXE, so it looks like
+a stale build; the overlay loader never loads it (§3).
+
+**Loading.** GEKO's `0x80138F7C` switches on girl id `*(u8*)0x800E71DF`
+(14 cases) and reads that girl's EVENT file: Shiori's case reads LBA 44581
+(`EVENT_FU.BIN`), 6 sectors, to `0x80198000`. This confirms the
+`0x80198000` base statically; DATE, SHOUGATU and SHUGAKU have the same loader
+(immediates `0x8014C840`, `0x8013D3F8`, `0x80137744`).
+
+**Dispatch.** `*(u32*)0x80122CD4` = girl id, `*(u32*)0x80122CD0` = scene.
+GEKO's `0x80138840` jumps through `0x80144910` on the girl id; Shiori's
+handler `0x80139A8C` runs scene 1 → `0x80139B08`, scene 2 → `0x8013A144`,
+scene 8 → `0x8013A230`. Each scene is a step machine: a copied list of
+function pointers indexed by the step byte `0x800E738A` (scene 2's list is at
+`0x801464BC`, starting with the setup above and later the EVENT loader).
+
+**Main-loop event queue.** The EXE's main state is set by `0x80042878(state)`
+(`0x800E7388`). Each day's event is a 4-byte record `type, girl, scene, flags`
+in a queue starting at `0x800E691C`, current index `0x800E699C`. The day
+handler around `0x800714D0`–`0x800722B8` switches on the record type: case
+`0x800721B0` copies girl/scene into `0x80122CD4/CD0` (special events), case
+`0x80072210` sets the girl id and enters state `0x5B` (meeting scenes). In
+the test run, type-`0x48` records produced meetings with girl 1 (95/5/10) and
+girl 8 (95/5/17); no Shiori special event occurred.
+
+**Why the walk is rare: `0x8006FB4C`.** The queue builder (`0x80070B80`)
+asks this selector for a (girl, scene) pair and writes it as a type-`0x45`
+record. The selector loops over girls 0–10 and, for each, requires:
+the met flag (bit 1 of `0x800E6448 + 0x38·g`), rank `0x80051B48(g) < 2`,
+a nonzero sum of 20 per-girl counters (`0x800E6451 + 0x38·g`; all were 0 at
+95/5/17), and `rand() & 15 < 5`, then jumps through `0x800B1314` by girl.
+Shiori's case `0x8006FC70` requires `rand() % 100 < 3`; then if bit 0 of
+`0x800E7378` is 1 it may pick scene 1 (needs `0x80066ACC() == 1`,
+`0x80051A68(0) & 0x7F < 2` and flag `0x800E67EC == 0`), otherwise **scene 2,
+once, if flag `0x800E67ED == 0`** (the flag is then set).
+
+The rank function returns 4 if A < 10, 3 if A < 50, 2 if B < 50, 1 if
+B < 80, else 0, with A = `0x80052C88(g)` = weight × affection / 100, clamped
+to 0–100 (weight byte at `0x800B41A0 + g`, Shiori 83; affection = s16 at
+`0x800E6442 + 0x38·g`) and B = `0x80052648(g)` (another score, not decoded).
+So scene 2 needs **A ≥ 50 (Shiori's affection ≥ 61) and B ≥ 50**, the
+counters above, and a roll of about 1% per check. On the test card at 95/5/17
+her affection was 47 (A = 39). **The walk is not an early-game event.**
+
+Other Shiori scenes found on the way: scene 8 is chosen by the EXE directly
+(`0x80075628`) when `0x800754C0()` returns 1: two packed month/day fields
+(`0x800E6378` vs `0x800E644C`, probably birthdays) must match, in March or
+early April, among other checks. The injury message step machine
+(`0x80073198`, string file `0x709D0`) can start a one-shot event for girl
+`0x0B` scene 2 when `0x800E7378 & 0xFF < 0x19`, flag `0x800E6837 == 0` and
+`0x800E62BD == 0`.
+
+**Forced in the emulator (2026-10-07, unpatched).** The day handler's
+record-type switch is the jump table at `0x800B1340`, indexed by the type
+itself (`type < 0x4B`): type `0x45` → `0x800721B0`, type `0x48` →
+`0x80072210`. `tools/emu/force_event.py 0 2 --clear-flag 0x800E67ED` stops
+at `0x80071DD0` (index already advanced, record about to be read) and turns
+the next type-`0x00` record into `45 00 02 00`. From the 95/4/23 test card
+that was Tuesday 95/4/25; the scene played in full and the rest of the week
+ran normally, twice. `trace_reads.py` during the replay showed
+`EVENT_FU.BIN` (LBA 44581, 6 sectors) read to **`0x80198000`** from
+`ra = 0x80138FC4` (the GEKO loader above), then Shiori's portrait
+`BUSTUP/HU02.BIN` to `0x80180000`. That confirms the load address at
+runtime. What the screen showed, in order:
+1. `0x62C`: the player's thought (`（`), 2 lines, over a morning street.
+2. `0x2AA8` + `0x64C` **in one box**: label 藤崎 and `「`, then
+   "あっ、{P}" as line 1 and the two-line greeting as lines 2–3. The part's
+   byte list gives these two strings `0C` and `0D`.
+3. `0x668`: the player speaking (`『`, code `00`), 3 lines.
+4. `0x6A8`: the player's thought (code `06`), 3 lines.
+With this test save `{P}` displayed as ま君; which name field Shiori's lines
+use isn't established. A translation of `0x2AA8` + `0x64C` must still fit
+the 3-line box together, since they share it.
+
+**Overlay selection.** The loader switch (§3) is indexed by
+`*(u8*)0x800E738E − 0x11` through the jump table at `0x800B19E8`
+(0x81 entries). GEKO.EXN is loaded for values `0x45`, `0x46`, `0x48`, `0x49`,
+`0x4C` of that index (mapped by following each case to its LBA constant;
+cases falling through to a shared default weren't separated).
+
 ## 7. Graphics
 
 ### General
@@ -933,7 +1040,8 @@ command's month pages, which are already in English (MON TUE …).
    can be relocated into free space instead of only fitting in place.
 4. **Data-file LBA tables:** how non-overlay files (e.g. `TITLE.NBN`, `SERIFU/*`) are
    located (hard-coded constants like the overlays?). Needed before files can grow.
-5. Where `EVENT.EXN`, `GYOZI.EXN` and `O.BIN` are loaded from.
+5. Where `GYOZI.EXN` and `O.BIN` are loaded from. `EVENT.EXN` looks like a
+   stale build that is never loaded (§6j).
 6. Which title-menu graphics remain: the logo (ときめきメモリアル) is Japanese art
    in the same file and hasn't been touched.
 7. **More room for code.** The renderer hook (§6f) uses two unused EXE

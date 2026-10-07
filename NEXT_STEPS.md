@@ -41,15 +41,15 @@ left out by `script.decode` and need their consumer identified first.
 
 ### Early pilot candidates (static inspection; not yet played/traced)
 
-1. **Preferred special-event candidate: an early-morning walk to school with
-   Shiori**, `CDROM/SERIFU/EVENT_FU.BIN`. Four pointer-referenced entries at
-   `0x62C`, `0x64C`, `0x668`, `0x6A8` describe getting up early, her greeting,
-   the player's reply addressing Shiori, and his thought after the pleasant
-   walk. They have 2 / 2 / 3 / 3 display lines and no choice markers. This is
-   a compact first translation/test unit without a date-location choice tree.
-   **Near-start availability is still a hypothesis:** the text has no explicit
-   late-game requirement, but date/year, affection and random-event conditions
-   have not been established. Do not promise it happens in the first week.
+1. **Early-morning walk to school with Shiori**, `CDROM/SERIFU/EVENT_FU.BIN`
+   scene 2 (event-table entry 7). Strings `0x62C`, `0x2AA8`, `0x64C`, `0x668`,
+   `0x6A8` (2 / 1 / 2 / 3 / 3 display lines, no choices; `0x2AA8` is a short
+   `{P}` line found through the scene's master list). **Mapped, but not
+   early (2026-10-07, game-internals §6j):** it needs Shiori's affection
+   ≥ 61 and a second score ≥ 50, nonzero interaction counters, then about a
+   1% roll per check, once per game. At 95/5/17 on the test card her
+   affection was 47 and the counters were 0. Natural replay needs a
+   mid-game save with good Shiori standing.
 2. **Fallback conversation: meeting Shiori after school / asking to walk home**,
    `CDROM/SERIFU/GEKO.BIN` at inferred base `0x80197000`. Candidate clusters
    begin at `0x1A24` (her invitation), `0x1B50` (player invitation accepted),
@@ -59,9 +59,9 @@ left out by `script.decode` and need their consumer identified first.
    are not yet known. Shared-file ownership and complete branch boundaries
    must be mapped before patching; do not translate the entire GEKO pool.
 
-Search for these during the first April school weeks on an isolated copy of
-a fresh game or an early saved game. Record whichever appears first, back up
-a replay point, and trace its file/scene. The existing 95/4/23 card is useful
+Runtime check done (unpatched, 95/4/23 → 95/5/17, `tools/emu/watch_events.py`):
+two meeting events, no Shiori event. Record whichever appears first in later
+checks, back up a replay point, and trace its file/scene. The existing 95/4/23 card is useful
 for a quick check; it does not guarantee either event. Prefer the earliest
 naturally observed replayable Shiori conversation over forcing the preferred
 candidate. If neither appears in a short bounded check, ask the user for an
@@ -137,6 +137,7 @@ remain explicit blockers for later batches.
   replay branches after that, but old-build states cannot validate new bytes.
 
 Done when the pilot can be replayed and compared without risking user data.
+**Done for the morning walk (forced replay; see the status above).**
 
 ### Step 4 — translate one complete pilot scene
 
@@ -252,10 +253,20 @@ Distinguish such content gaps from translated branches awaiting visual tests.
   prerequisites documented. "All character dialogue" requires a cross-file
   audit, not simply reaching the end of two JSON files.
 
-Next action: map the pilot scene (Step 2's remaining bullets: confirm the
-EVENT_FU load address with `trace_reads.py`, decode the nested pointer lists
-around `0x648`–`0x6FC` and the event's trigger conditions) and find a replay
-point for it (Step 3). Shiori is already selected.
+Status 2026-10-07: **Steps 2 and 3 are done for the pilot.** The walk is
+mapped (scene lists, loader, dispatch, trigger; game-internals §6j). It can't
+happen early naturally, so with the user's agreement it is **forced** on the
+test card (`tools/emu/force_event.py`, recipe in testing.md "Forcing a girl
+event"). The unpatched scene was replayed twice from
+`.emu/savestates_backup/shiori_0423_unpatched.sav`: 4 boxes, five strings
+(`0x62C`; `0x2AA8` + `0x64C` sharing one 3-line box; `0x668`; `0x6A8`), then
+the week continues. `EVENT_FU.BIN` → `0x80198000` is confirmed at runtime.
+Reference screenshots are `.emu/shots/f_*.png` (not committed).
+
+Next action: Step 4, translate the five strings into
+`translation/extra/shiori_events.json` (188-byte pool for all five strings), then Step 5/6: build
+with all default JSONs plus the draft, boot it, load the 95/4/23 card save,
+force the scene and compare with the unpatched shots.
 
 ## Before you start
 
