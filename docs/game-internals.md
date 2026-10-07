@@ -172,7 +172,7 @@ the game.)
 | `SLPM_86.053` 0x6EB40–0x76000 | system/UI: memory card, save/load, options screen, calendar, places, weekday/holiday command prompts, club names |
 | `EXEDIR/NAME_ENT.EXN` 0x19150– | kana tables for name entry, memory-card/album prompts, prologue narration, name-entry questions (0x1ACE4 surname, 0x1AD04 name, 0x1AD10 nickname), default nicknames, prologue script |
 | `EXEDIR/OPTION.EXN` 0xA880–0xA8EF | Options page items (title ▸ OPTIONS), one string per item |
-| `SLPM_86.053` 0x6FA08–0x70290 | in-game system settings screen: item list, choices, help lines and confirmation messages (`translation/extra/system_settings.json`). The user reports all submenus translated; main list and Text Speed choices/help are screenshot-verified. Individual confirmation/conditional-path coverage is not itemized (§6i). **Not** used by the title Options sub-screens. |
+| `SLPM_86.053` 0x6FA08–0x70290 | in-game system settings screen: item list, choices, help lines and confirmation messages (`translation/system_settings.json`, included in normal builds). The user reports all submenus translated; main list and Text Speed choices/help are screenshot-verified. Individual confirmation/conditional-path coverage is not itemized (§6i). **Not** used by the title Options sub-screens. |
 | `EXEDIR/*.EXN` | per-mode UI text |
 | `SERIFU/`, `BUNKA/`, `SPEAKTST/`, `EVENT/` | dialogue (thousands of lines) |
 
@@ -387,6 +387,57 @@ A few strings (mostly `SPEAKTST`) also contain bytes such as `<`, `>`, `-`,
 rejects them, so `dump_dialogue.py` leaves them out. Find out what reads them
 before translating those files.
 
+**Character-pack planning inventory (2026-10-07).** Running the existing
+`tools/dump_dialogue.py` helper `targets(data, base)` on the extracted files
+found 186 decodable pointer-target entries in `SERIFU/DATE_FU.BIN` (47,104
+file bytes), 119 in `SERIFU/EVENT_FU.BIN` (12,288 bytes), both using the
+inferred base `0x80198000`; `SPEAKTST/TEST_FU.BIN` yielded 2,473 entries
+(186,368 bytes) at inferred base `0x80180000`. Directory enumeration found
+11 `SERIFU/DATE_*` files. These are decoded-entry counts, including choices
+and player replies, not display-line counts, scene counts or available
+repack bytes. These counts are now known to omit valid strings as explained
+below. The user has selected Shiori for the first pack, and inspection finds
+Shiori-specific content in the FU scripts, but per-scene consumers and runtime
+load addresses still need tracing. The staged plan is in `NEXT_STEPS.md`;
+this inventory does not establish full-file or full-route coverage.
+
+**Early Shiori pilot candidates and extraction caveat (2026-10-07, static
+inspection only).** `SERIFU/EVENT_FU.BIN` contains a short early-morning
+school-walk exchange: file offsets `0x62C`, `0x64C`, `0x668`, `0x6A8`
+(inferred RAM `0x8019862C`, `0x8019864C`, `0x80198668`, `0x801986A8`).
+The entries cover getting up early, a greeting, the player addressing Shiori,
+and a thought after walking to school; they have 2/2/3/3 display lines with
+no choices. References to those strings occur at file `0x648`, `0x6A0`,
+`0x6A4`, `0x6F0`, respectively. This is a compact candidate, **not a verified
+first-week event**: calendar/year, affection and random-selection conditions
+have not been decoded, and no emulator test was performed in this review.
+
+The current `tools/dump_dialogue.py:string_at()` requires `data[off-1] == 0`.
+That rejects legitimate starts directly after a pointer table: in this scene
+`0x62C`, `0x64C` and `0x6A8` are preceded by `0x80` and omitted; only `0x668`
+is included. Another concrete case is `EVENT_FU.BIN` string `0x6C`, referenced
+by the 32-bit word at `0x1E0`; its preceding byte is likewise `0x80`. Direct
+`script.read_string()`/`decode()` of these pointer targets succeeds. Thus
+"dumped every entry" does not mean "translated every line" with this helper.
+A diagnostic skipping only the preceding-NUL test found 38 additional
+decodable pointer targets in EVENT_FU and 288 in DATE_FU. Those extra candidates
+still need a boundary/interior-pointer audit; they are not validated totals.
+Fix extraction with regression cases before bulk translation, without relaxing
+the patcher's guards against interior references or invalid relocation.
+
+A fallback is the shared `SERIFU/GEKO.BIN` Shiori walk-home dialogue (inferred
+base `0x80197000`): candidate clusters start at file `0x1A24` (her invitation),
+`0x1B50` (accepting a player invitation), `0x1C54` (declining it). The last
+contains the two-choice prompt at `0x1C9C` and response at `0x1CD0`; some of
+these strings also follow pointer tables and are omitted by the dumper.
+Ownership is supported by explicit Shiori references in the exchange, not
+just a filename. Actual early-game availability, relationship thresholds,
+scene boundaries and shared consumers remain unverified. These candidates
+were found by enumerating aligned pointer values in the inferred file range,
+decoding their targets and inspecting the local text; no script dumps or
+screenshots are committed. Prefer whichever scene is naturally encountered
+and replayable near the start, then trace its real loader and scene driver.
+
 **Budgets: the two limits for translating the whole script.**
 1. **Space.** English pair text costs 1 byte per letter, Japanese 2 bytes per
    character, and English needs ~2× the characters, so a translation uses
@@ -571,9 +622,9 @@ the player's thought line in the message box.
     and aren't translated.
 - **In-game Save/Load (memory card icon, Sunday night only):** 0x6F76C–0x6F9E4.
   The slot panel's labels (名前…, あだ名…, 所属部‥, クリア人数‥) are
-  `translation/extra/album_panel_exe.json`. The user has now verified English
-  labels, dates and values on populated Load slots 1/2 (None/Soccer); Save-mode
-  and empty/error/System branches remain unverified (§6i).
+  `translation/album_panel_exe.json` (included in normal builds). The user has
+  verified English labels, dates and values on populated Load slots 1/2
+  (None/Soccer); Save-mode and empty/error/System branches remain unverified (§6i).
 - **Date in RAM:** 0x800E62BE year (95), 0x800E62BF month, 0x800E62C0 day,
   0x800E62C1 weekday (0 = Monday … 6 = Sunday). Found by diffing RAM dumps
   of two Sundays. The calendar code at 0x80064CA0– sets the weekday sprite's
@@ -652,13 +703,14 @@ descriptions so a later audit does not repeatedly rediscover them.
 
 ### 6i. Save/Load panel and in-game settings (review and user verification, 2026-10-07)
 
-These are the two opt-in files in `translation/extra/`, included in the
-combined `.emu/review_settings/` test build. The user reports successful
-translation of the panel and all in-game settings submenus. Screenshots show
+These are `translation/album_panel_exe.json` and `system_settings.json`, now
+included in normal builds after testing in the combined `.emu/review_settings/`
+candidate. The user reports successful translation of the panel and all
+in-game settings submenus. Screenshots show
 the main settings list, Text Speed choices/help, and populated Load slots 1/2
 with dates and None/Soccer club values. No overlap or clipping was reported.
 Detailed coverage and remaining checks are in `testing.md` under the settings
-handoff; the documentation update does not move these files into the defaults.
+handoff. Promotion changes file discovery only, not the tested patch contents.
 The static findings below come from string-reference searches and Capstone
 disassembly of the original `extracted/SLPM_86.053`, mapped at `0x80040800`.
 They do not establish untested branch behavior or unlock title Options graphics.

@@ -369,12 +369,13 @@ in. This run did not operate the user's DuckStation installation or cards.
 ## Save/Load panel and settings handoff (2026-10-07)
 
 Candidate: `.emu/review_settings/` (open its CUE); log:
-`.emu/review_settings.log`. It includes all 13 default translation files plus
-`translation/extra/album_panel_exe.json` and `system_settings.json`: 397
+`.emu/review_settings.log`. It originally included the 13 default translation
+files plus the two drafts, now at `translation/album_panel_exe.json` and
+`translation/system_settings.json`: 397
 in-place strings, 173 pooled dialogue entries, 4 images and 3 byte patches
 from 15 JSON files. The user has now reported successful visual verification
 of populated Load panels and all settings submenus (details below). Both
-extras remain opt-in; this documentation-only update does not promote them.
+translations have now been promoted into normal builds at the user's request.
 This candidate preserves the user-accepted club selector overhang and notice
 gap. It does not translate the title Options' graphics-based choices or the
 new-game album panel's graphics.
@@ -469,22 +470,34 @@ coverage above has already been completed and should not be discarded):
    `Bad data`; leave unseen error branches unverified. If a problem appears,
    compare the original game at the same point before blaming the patch.
 
-The verification table in `AGENTS.md` now reflects the user's results.
-Promotion to `translation/` remains a separate implementation change; preserve
-the unverified-path notes if promoted. Do not mark inaccessible mouse/error
-paths as seen.
+The verification table in `AGENTS.md` reflects the user's results. Both JSONs
+have now been moved into `translation/`, so the normal command includes them.
+Unverified-path notes are retained; inaccessible mouse/error paths are not
+marked as seen. The user's standing preference is to promote tested new
+translation files into normal builds after testing, not leave them opt-in.
 
-Rebuild recipe (PowerShell; `-t` replaces the defaults, so list them too):
+### Normal-build promotion verification
+
+Built `.emu/default_promoted_settings/` from the original CUE with
+`python -m tokipatch <original cue> -o .emu/default_promoted_settings --force`,
+**without any `-t` options**. Log: `.emu/default_promoted_settings.log`.
+Default discovery loaded all 15 JSON files (397 strings, 173 pooled dialogue
+entries, 4 images and 3 byte patches). The two old `extra/` paths no longer
+exist; their patch entries are unchanged, with only description metadata
+updated alongside the moves.
+
+SHA-256 comparisons confirmed that the CUE and both BIN tracks are identical
+to `.emu/review_settings/`, the candidate the user tested. An independent
+check against the original confirmed exact planned output bytes, unchanged
+file sizes, valid applicable checksum trailers, exactly 37 expected changed
+sectors and valid EDC/ECC on every changed sector. The original source files
+were only read. No new emulator run was performed for this path-only promotion;
+the user's candidate verification applies to the byte-identical output, with
+the same branch-coverage limitations recorded above.
+
+Rebuild recipe after promotion (PowerShell; no `-t` flags are needed):
 
 ```powershell
 $env:PYTHONIOENCODING = 'utf-8'
-$candidatePaths = @(Get-ChildItem translation -Filter *.json |
-    Sort-Object Name | ForEach-Object { $_.FullName }) + @(
-    'translation/extra/album_panel_exe.json',
-    'translation/extra/system_settings.json')
-$candidateArgs = @()
-foreach ($candidatePath in $candidatePaths) {
-    $candidateArgs += @('-t', $candidatePath)
-}
-python -m tokipatch '<original game.cue>' -o .emu/review_settings --force @candidateArgs
+python -m tokipatch '<original game.cue>' -o .emu/review_settings --force
 ```

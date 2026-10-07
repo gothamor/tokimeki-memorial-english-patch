@@ -1,13 +1,258 @@
-# Next steps (temporary handoff plan)
+# Next steps — character dialogue and special events
 
-Temporary planning note for the next agent. Delete it (or fold what's still
-useful into `docs/`) once the work is done.
+Active implementation plan and handoff notes. Keep the current plan/status
+up to date; fold completed technical findings into `docs/`.
 
-**Recommendation: finish the on-screen checks for Steps 1 and 2 first.** Their
-patches now build and the names have had an initial user smoke test, but the
-remaining main-loop consumers and longest speaker labels have not all been
-seen. Step 3 (dialogue) is the bulk of the game, but its own pilot should come
-first to measure space. Step 4 (graphics) matters less.
+**Next priority: a character-focused dialogue and special-event pack.** The
+settings and Save/Load panel work is tested and included in normal builds.
+The character plan below is the next execution order; the older Step 0–4
+sections later in this file are background/backlog, not prerequisites to
+finishing every unrelated screen first. No character translation has been
+implemented as part of writing this plan.
+
+## Active plan: Shiori's complete conversations
+
+Confirmed target: **Shiori Fujisaki**, explicitly selected by the user.
+Prioritize a short conversation near the beginning of the game so testing
+does not require late-game progress or a high-affection date. The `FU` scripts
+contain Shiori-specific dialogue, but their runtime consumers/load addresses
+and event conditions still need tracing; choosing the character does not
+complete that technical mapping.
+
+First release goal: Shiori's date dialogue and character-specific
+special events, including player replies, thoughts and choices. This is a
+bounded dialogue/events pack, **not a claim that the entire character route
+is translated**. Shared scenes and the larger conversation pool are a later
+milestone. Existing settings, names and accepted club cosmetics stay unchanged.
+
+Read-only inventory, 2026-10-07 (method/caveats in game-internals §6e):
+
+| Candidate source file | Current dumper output (incomplete) | Inferred RAM base |
+|---|---:|---|
+| `CDROM/SERIFU/DATE_FU.BIN` | 186 | `0x80198000` |
+| `CDROM/SERIFU/EVENT_FU.BIN` | 119 | `0x80198000` |
+| `CDROM/SPEAKTST/TEST_FU.BIN` | 2,473 | `0x80180000` |
+
+The earlier first-two-file estimate of 305 entries is **not a complete scope
+count**. Inspection now proves the dumper omits valid strings immediately
+following pointer tables, as well as potentially unsupported controls. Audit
+and correct extraction before estimating total work. See game-internals §6e.
+
+### Early pilot candidates (static inspection; not yet played/traced)
+
+1. **Preferred special-event candidate: an early-morning walk to school with
+   Shiori**, `CDROM/SERIFU/EVENT_FU.BIN`. Four pointer-referenced entries at
+   `0x62C`, `0x64C`, `0x668`, `0x6A8` describe getting up early, her greeting,
+   the player's reply addressing Shiori, and his thought after the pleasant
+   walk. They have 2 / 2 / 3 / 3 display lines and no choice markers. This is
+   a compact first translation/test unit without a date-location choice tree.
+   **Near-start availability is still a hypothesis:** the text has no explicit
+   late-game requirement, but date/year, affection and random-event conditions
+   have not been established. Do not promise it happens in the first week.
+2. **Fallback conversation: meeting Shiori after school / asking to walk home**,
+   `CDROM/SERIFU/GEKO.BIN` at inferred base `0x80197000`. Candidate clusters
+   begin at `0x1A24` (her invitation), `0x1B50` (player invitation accepted),
+   and `0x1C54` (player invitation declined). The decline cluster includes the
+   two-choice entry `0x1C9C` and Shiori's response at `0x1CD0`; it may be useful
+   for early/low-affection testing, but the selection thresholds and timing
+   are not yet known. Shared-file ownership and complete branch boundaries
+   must be mapped before patching; do not translate the entire GEKO pool.
+
+Search for these during the first April school weeks on an isolated copy of
+a fresh game or an early saved game. Record whichever appears first, back up
+a replay point, and trace its file/scene. The existing 95/4/23 card is useful
+for a quick check; it does not guarantee either event. Prefer the earliest
+naturally observed replayable Shiori conversation over forcing the preferred
+candidate. If neither appears in a short bounded check, ask the user for an
+early Shiori encounter/save and investigate the event conditions rather than
+grinding weeks or inventing a guaranteed date. The prologue is already
+translated and is not new Shiori-pilot coverage.
+
+If the fallback is selected, a small Shiori-only `GEKO.BIN` scene becomes the
+pilot exception to the initial DATE/EVENT file scope (feature JSON such as
+`shiori_school.json`). The broader first release still targets the FU date
+and special-event files. No translation, dumper fix or emulator run has been
+performed as part of this planning/research update.
+
+### Step 1 — lock Shiori's release boundary (target confirmed)
+
+- Target selection is complete: Shiori. Do not ask the user to choose again.
+- Name the first milestone `Shiori date dialogue + special events`, preceded
+  by the early school-conversation pilot if it is easier to reach.
+  Reserve "all character text" for a later cross-file coverage audit.
+- Record the selected character, candidate files and excluded shared systems
+  here. Do not treat filename suffixes or appearances of a name in text as
+  sufficient speaker/ownership evidence.
+
+Character choice is done; confirm the actual pilot after Steps 2–3 establish
+the earliest practical replay point.
+
+### Step 2 — map files, scenes, speakers and format limits
+
+- Use `tools/dump_dialogue.py` to make local skeletons under
+  `extracted/dumps/`. Do not commit untranslated dumps or copied script text.
+  Start from the inferred bases above, then confirm actual CD loads and RAM
+  destinations with `tools/emu/trace_reads.py` at representative scenes.
+- First address the now-proven dumper omission: `string_at()` rejects a
+  target unless its preceding byte is NUL, but strings can legitimately follow
+  a pointer table ending in `0x80`. Three of the four preferred-pilot strings
+  are omitted. Add focused extraction regression tests and a boundary-aware
+  correction during implementation. Use synthetic test fixtures, not committed
+  game data, and include interior/invalid-pointer rejection cases; do not
+  simply accept every interior pointer or weaken patcher relocation checks.
+  Re-inventory the scoped files.
+- Build a scene inventory keyed by disc file, original string offset and
+  pointer/scene index. Record speaker, player replies, choices and outcomes,
+  variants and the conditions needed to reach them. Inspect the scene tables
+  and control flow: adjacent strings need not be sequential conversation.
+- Audit omissions from the decoder, aliases/interior pointers, code-built
+  references, punctuation-only runs and unusual controls. Record unknown
+  offsets and what consumes them; do not silently discard or reinterpret them.
+- Record addresses and the discovery method in `docs/game-internals.md` as
+  they become established. Keep full originals local; committed tracking
+  should use offsets, English scene summaries and status, not script dumps.
+
+Done when one reachable complete scene is mapped and its load base, speaker
+identity and branches are confirmed. Unknown formats outside that pilot may
+remain explicit blockers for later batches.
+
+### Step 3 — prepare repeatable testing before bulk work
+
+- Try the early school-conversation candidates above before arranging dates
+  or seeking later special events. Keep a backed-up
+  memory-card save before it in `.emu/`; record date, prerequisites, choices
+  and how to replay it. A Sunday-night save alone does not guarantee access
+  to a particular date/event.
+- Capture the unpatched behavior at the same point using copied cards in the
+  isolated harness. Never operate the user's DuckStation or overwrite their
+  real cards. Do not assume early saves can reach late-game/affection variants.
+- The user may do the gameplay checks. Supply an exact CUE path, scene-entry
+  instructions, choices to try and expected text; ask for the needed save or
+  test result if reaching the scene requires their progress. Do not spend an
+  unbounded run guessing cursor timings or arbitrarily changing game state.
+- Fresh-boot the candidate and load a card save. Same-build states can help
+  replay branches after that, but old-build states cannot validate new bytes.
+
+Done when the pilot can be replayed and compared without risking user data.
+
+### Step 4 — translate one complete pilot scene
+
+- Establish a short English style/glossary: names matching existing patches,
+  character voice, forms of address, recurring places and tone. Preserve
+  meaning, relationship cues and the intent of each choice; review uncertain
+  wording in context instead of silently inventing content.
+- Translate the entire exchange: the character, player replies/thoughts,
+  prompts and all mapped choice branches. Use a small complete scene rather
+  than an arbitrary number of neighboring strings.
+- Preserve display-line count, choice order/count and name codes on their
+  original lines. Keep the 28-cell limit and current `TOKEN_CELLS`; check
+  expanded names against the renderer's 64-byte per-line buffer. Keep
+  punctuation-only runs unchanged where they may affect scene behavior.
+- Draft in the pilot's appropriate feature JSON, such as
+  `translation/extra/shiori_events.json` for the early-morning candidate or
+  `translation/extra/shiori_school.json` for the shared walk-home scene,
+  using a `dialogue` block and the confirmed base. Commit only translated
+  entries, not the complete untranslated skeleton.
+- Measure actual pooled-space usage with `patcher.plan()`. Only translated
+  strings contribute usable slots; an empty `text` does not donate its space.
+  A file's total byte size is not its text budget. Preserve meaning while
+  tightening prose; if it still cannot fit, report the budget blocker.
+  Never grow files, borrow unproven "free" regions or loosen validation.
+
+Done when the complete pilot fits and has had a context/style review.
+
+### Step 5 — build and verify the pilot candidate
+
+- Build from the original disc into a fresh `.emu/` output through the normal
+  patcher pipeline. Include all current default JSONs plus the draft: `-t`
+  replaces the defaults, so supplying only the new file is not sufficient.
+- Check original-byte guards, dialogue structure, line widths, repacked
+  pointers, file sizes/LBAs, applicable checksum trailers and sector EDC/ECC.
+  Diff the track against the plan; only predicted sectors should change.
+- Keep one canonical block per source-file pool when expanding the pack.
+  If a draft replaces an already promoted JSON, omit that default JSON from
+  the candidate's explicit `-t` list and include its revised draft once.
+  Do not apply old and new versions together or duplicate original offsets.
+- Record the build path, translated entries, bytes used/available and any
+  warnings. A passing build is not an emulator test.
+
+Done when static checks pass and the user has a clearly identified candidate.
+
+### Step 6 — test, then include the accepted batch in normal builds
+
+- Check the pilot from scene entry through the next transition: speaker
+  labels, widest inserted names, scrolling, voiced auto-advance, animation
+  timing, every mapped choice and its response. Compare with the unpatched
+  scene; no new stalls, missing lines, clipping or changed branch behavior.
+- If the user tests, distinguish their report from screenshots and record
+  exactly which scenes/branches they saw. Give a short targeted retest list
+  for any failure; do not claim untested variants were seen.
+- **After the relevant tests pass, promote that batch to `translation/`
+  immediately.** Move the tested Shiori pilot JSON out of `extra/`, or replace
+  its tested default version with the accepted revision. Do not wait
+  for the whole route or leave tested files opt-in. Known failures block the
+  affected promotion and must be reported explicitly.
+- Build without `-t` and compare game bytes to the tested candidate. Update
+  `AGENTS.md`, README coverage, JSON descriptions and testing notes. Keep
+  unseen-path caveats even after promotion.
+
+Done when the pilot is playable through the normal patcher command, not only
+through a manually assembled test build.
+
+### Step 7 — expand the date-dialogue pack in complete-scene batches
+
+- Use the confirmed scene inventory to work through `DATE_FU.BIN`.
+  Group branches and affection/location variants with their parent exchange;
+  include the player's replies and choices throughout.
+- Repeat Steps 4–6 for each manageable batch, retaining one canonical feature
+  JSON. Track translated/reviewed/tested/blocked status by source offset and
+  scene; counts alone do not measure branch coverage.
+- Re-test earlier scenes affected by repacking, especially those with long
+  labels/names and shared strings. Do not assume a passing first batch proves
+  a larger pool's new pointer placements or widths.
+
+Done when the scoped date file is translated/reviewed, representative mapped
+branches pass in-game, and any genuinely missing/blocked content is listed.
+
+### Step 8 — translate character-specific special events
+
+- Apply the same workflow to `EVENT_FU.BIN`, using a separate feature
+  JSON such as `shiori_events.json`. Confirm this `SERIFU/EVENT_*` source;
+  the separate `CDROM/EVENT/` folder is not automatically dialogue.
+- Inventory event triggers and variants first. Use appropriate saved progress
+  or user playthrough checkpoints, rather than assuming every event is
+  available in April. Check all participants' lines, player thoughts and
+  post-event continuation, including line-timed animation/voice behavior.
+- Promote each successfully tested batch into normal builds. Keep events
+  that cannot yet be reached explicitly pending, with exact requested tests.
+
+Done when the first date/events pack has a source-offset coverage report,
+normal-build delivery and an honest list of untested or blocked branches.
+If player-facing text in the scoped files is still untranslated or blocked,
+label the delivered pack partial; a documented gap is not completed coverage.
+Distinguish such content gaps from translated branches awaiting visual tests.
+
+### Step 9 — investigate shared conversations toward full character coverage
+
+- Treat `SPEAKTST/TEST_FU.BIN` as a separate research milestone:
+  determine when it loads (phone, hallway or other interaction) and explain
+  unsupported controls before bulk translation. Its extractable-entry count
+  is not an assurance that all its dialogue is understood.
+- Trace shared appearance/invitation, birthday, seasonal, school-trip, camp,
+  festival, epilogue/ending and `BUNKA` scenes as encountered. Identify the
+  chosen character's scene indices from the consumers, including generic
+  dialogue that inserts `{G}`. Name searches alone will miss such text.
+- Translate shared strings with all affected speakers/routes in mind and
+  regression-test another consumer where feasible. Do not promise that
+  finishing `DATE_*` and `EVENT_*` means every line for that character is done.
+- End each milestone with remaining source files/unknowns, coverage and test
+  prerequisites documented. "All character dialogue" requires a cross-file
+  audit, not simply reaching the end of two JSON files.
+
+First action when implementation is requested: audit the missing pilot
+strings and map/replay an early Shiori school conversation (Steps 2–3).
+Shiori is already selected. This planning change does not start
+bulk translation, emulator automation or new patcher code.
 
 ## Before you start
 
@@ -27,16 +272,22 @@ Read these first. They're the contract and the knowledge base:
 
 State at handoff:
 - Current follow-up candidate: `.emu/review_settings/` includes all 13 default
-  files plus the 21-string Save/Load panel and 114-string in-game settings
-  drafts. Panel separators and Menu Mode confirmation rows have been reviewed
-  and corrected; static checks pass. Neither extra is enabled by default yet.
+  files from that review plus the 21-string Save/Load panel and 114-string
+  in-game settings translations. Both have now been moved to `translation/`
+  and are included in normal builds (15 default files). Panel separators and
+  Menu Mode confirmation rows have been reviewed and corrected; static checks
+  pass. The user's standing rule is to promote tested new translations to
+  normal builds after testing; see `AGENTS.md` and the translation guide.
+  A normal build without `-t` in `.emu/default_promoted_settings/` loads all
+  15 files and is byte-identical (CUE and both tracks) to the tested candidate.
+  Planned bytes, sizes, checksums, 37 changed sectors and EDC/ECC validate.
   The user has verified populated Load panels and all settings submenus as
   translated. Screenshots show slots 1/2 (None/Soccer), settings main list and
   Text Speed choices/help. Remaining branch coverage is in `docs/testing.md`
   under "Save/Load panel and settings handoff (2026-10-07)". Findings and
   consumer addresses are in game-internals §6i. Leave accepted club cosmetics
   alone. The previous main-loop work was committed in `567e3bf`; this
-  settings/panel follow-up is not committed.
+  normal-build promotion has not been committed by the agent.
 - Steps 1 and 2 have implementations committed in `567e3bf`, but most of the
   new main-loop screens still need visual checks.
 - New default translation files are `main_events.json`, `clubs.json`,
@@ -78,7 +329,12 @@ Environment gotchas (Windows dev box):
 - The game can only save on the **Sunday-night planning screen**, via the
   lit memory-card icon at the bottom right of the command grid.
 
-## Step 0: make the command grid drivable (prerequisite for testing 1 and 2)
+## Earlier roadmap / background
+
+The numbered sections below describe the previous main-loop work and wider
+backlog. Follow the active character plan above for the next milestone.
+
+## Step 0: make the command grid drivable (earlier testing prerequisite)
 
 The review fixed hidden-window detection and stale-screenshot handling in
 `drive.ps1`. The backed-up 95/4/23 card uses discrete list-order navigation:
@@ -148,16 +404,16 @@ Validation notes and decisions:
   - single odd kanji (慰 釀 榜 at 0x75000, probably not text)
   - anything `script.decode` rejects.
 - **Already drafted:**
-  - `translation/extra/album_panel_exe.json` is the Save/Load slot panel
+  - `translation/album_panel_exe.json` is the Save/Load slot panel
     (名前…, あだ名…, 所属部‥, クリア人数‥). The user has verified populated
     Load slots, including number/date pieces and None/Soccer club values.
-    Save-mode and empty/error/System branches remain unverified. Promotion to
-    `translation/` is a separate change, not part of the documentation update.
-  - `translation/extra/system_settings.json` (114 strings) is the in-game
+    Save-mode and empty/error/System branches remain unverified. It is now
+    included in normal builds following the user's testing and request.
+  - `translation/system_settings.json` (114 strings) is the in-game
     system settings screen. The user reports all submenus visually verified
     as translated; main-list/Text Speed screenshots support the report.
-    Individual confirmations and conditional paths were not itemized. It
-    remains opt-in pending a separate promotion change.
+    Individual confirmations and conditional paths were not itemized. It is
+    now included in normal builds following the user's testing and request.
 - The user liked the label style ("Health", "Lit.", "Sci.", …). Keep the
   wording consistent with `main_screen.json` and the stat panel.
 - Put each screen or feature in its own JSON (e.g. `outings.json`,
@@ -220,9 +476,11 @@ Strings are found by a scan, so the counts are approximate. Load addresses
 for each file are in game-internals §6e; only the prologue is verified in
 the game.
 
-- **Choose by frequency, not size.** GASSHUKU (50 KB) is summer camp, once a
-  year. The eight `SERIFU/DATE_*` files (about 8–9 KB each, one per girl) and
-  `G_APPEAR` (about 11 KB) come up constantly.
+- **Choose by frequency, not total file size.** The local inventory has
+  eleven `SERIFU/DATE_*` files, not eight. Physical file sizes include tables
+  and other data, so do not confuse them with decoded text or repack capacity.
+  The active plan prioritizes one mapped date/event pack; larger camp/shared
+  pools remain later work.
 - **Pilot one `DATE_*` file first** to measure space. The English must fit
   in the Japanese bytes of the strings it replaces; the prologue fit with 16
   bytes to spare (game-internals §6e, "Budgets"). If a date file doesn't fit,

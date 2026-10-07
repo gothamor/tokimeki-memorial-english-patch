@@ -10,6 +10,15 @@ Put work that isn't ready in `translation/extra/`, and apply it on purpose
 with `-t translation/extra/<file>.json` (`-t` replaces the default set, so
 list every file you want).
 
+**After testing, promote the translation into normal builds.** This is the
+user's standing preference: once the relevant on-screen checks pass, move the
+tested JSON from `translation/extra/` into `translation/`, update its references
+and verification status, and build without `-t` to check default inclusion.
+Do not leave a successfully tested translation opt-in. Retain specific notes
+about untested conditional paths; a known failure blocking promotion must be
+reported explicitly. For a path-only promotion, compare the normal build's
+game files with the tested candidate to confirm the output is unchanged.
+
 One JSON file per screen or feature. It can have a `strings` list, an
 `images` list, or both:
 

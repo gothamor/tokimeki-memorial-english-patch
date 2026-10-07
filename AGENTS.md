@@ -88,6 +88,20 @@ These are hard-won. Every one of them has broken the game, or would.
 - [ ] New findings written into `docs/`. New translation entries follow
       [docs/translation-guide.md](docs/translation-guide.md).
 
+## Translation promotion workflow
+
+The user requests that **tested new translation files always be included in
+normal builds**. Keep drafts in `translation/extra/` only while they await
+testing. After the user or agent completes the relevant on-screen checks,
+move the tested JSON into `translation/` as part of the same follow-up; do not
+leave it opt-in after reporting success. Preserve explicit notes about unseen
+error, hardware-dependent and other conditional branches rather than claiming
+exhaustive coverage. If a known failure blocks promotion, explain it clearly.
+
+After promotion, build using the normal command **without `-t`** to verify
+default discovery, update paths/status in the docs, and check the output
+against the tested candidate when promotion should not change game bytes.
+
 ## Verification status of current patches
 
 | Patch | Status |
@@ -104,8 +118,8 @@ These are hard-won. Every one of them has broken the game, or would.
 | `translation/character_names.json` (speaker labels, full/short name tables, special Shiori/Yoshio paths) | Builds successfully. The user booted and played the patched game and confirmed that character names appear translated. Individual label paths and the longest names have not all been checked at the dialogue-box edge. |
 | `translation/clubs.json` + club strings in `main_events.json` | Verified by the user's follow-up screenshots and play test: Literature appears and fits its column, and joining Soccer reaches the corrected captain's Club Day notice with no overlapping text. Literature extends slightly beyond the green selector; the notice has a wide gap before “miss it.”. **Both cosmetic issues are accepted by the user for now; leave them unchanged.** Earlier screenshots verify the other ten English club names, Cancel and the join result. All 12 club-table pointers validate; the build also boots, loads a card save and plays onward. |
 | Remaining `translation/main_events.json`, `outings.json`, `town_news.json` main-loop EXE text | Build successfully. Review screenshots verify the first News issue's introduction, Closed movie listing, KNM Symphony concert listing and event announcement. Other consumers/issues remain unverified; the stat-name table is not the sprite-based main stat panel. |
-| `translation/extra/album_panel_exe.json` (21 panel-style labels in `SLPM_86.053`) | User-verified on screen in `.emu/review_settings/`: populated Load slots 1 and 2, number/colon headings, dates 95/4/9 and 95/4/16, Name/Nickname/Club/Cleared labels and values, clubs None/Soccer. Screenshots show readable separators and no apparent overlap. Save-mode copy, empty/error/System entries and longest club values remain unverified. Still opt-in; this documentation update does not promote it. |
-| `translation/extra/system_settings.json` (114 strings: in-game system settings screen in `SLPM_86.053`) | User visually verified the settings screen and all submenus as translated, reporting success. Screenshots specifically show the main title/list/help (Icon Mode highlighted) and Text Speed submenu with Slow/Normal/Fast and its help; Normal fits. Individual confirmations, alternate Cursor Speed label-set coverage and hardware/unlock-dependent paths were not separately reported. Still opt-in; this documentation update does not promote it. |
+| `translation/album_panel_exe.json` (21 panel-style labels in `SLPM_86.053`) | Included in normal builds after user verification in `.emu/review_settings/`: populated Load slots 1 and 2, number/colon headings, dates 95/4/9 and 95/4/16, Name/Nickname/Club/Cleared labels and values, clubs None/Soccer. Screenshots show readable separators and no apparent overlap. Save-mode copy, empty/error/System entries and longest club values remain unverified. |
+| `translation/system_settings.json` (114 strings: in-game system settings screen in `SLPM_86.053`) | Included in normal builds after the user visually verified the settings screen and all submenus as translated. Screenshots specifically show the main title/list/help (Icon Mode highlighted) and Text Speed submenu with Slow/Normal/Fast and its help; Normal fits. Individual confirmations, alternate Cursor Speed label-set coverage and hardware/unlock-dependent paths were not separately reported. |
 
 Update this table when you verify something.
 
