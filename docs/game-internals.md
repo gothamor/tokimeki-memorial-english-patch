@@ -938,7 +938,7 @@ loads, then its scene step list, then the dispatcher):
 | 9 | `0xFFC` | DATE, scene 4 | 18 | park date in spring | place 1 (Kirameki Park), months 3–5, flag `0x800E67EF`, date step `0x738A == 13` |
 | 10 | `0x14DC` | DATE, scene 5 | 15 | theme park in winter, stuck on the Ferris wheel | place 12 (Theme Park), months 12–2, both ranks best plus bit `0x80` of `0x80051A68`, flag `0x800E67F0`, `*(u32*)0x80122CDC == 2`, step `1/0x23` |
 | 11 | `0x18FC` | DATE, scene 6 | 16 | pool in summer, Shiori goes missing | place 16 (Pool), year ≥ 96, months 6–8, `0x80051A68 & 0x7F < 3`, rank < 2, flag `0x800E67F1`, girl byte `0x800E646D`, step `1/10` |
-| 12 | `0x1D78` | SHOUGATU, stage 6 | 21 | Shiori asks to walk home together, in snow | stage `0x800E7389 == 6` of SHOUGATU's machine `0x8013D180`; how stage 6 is chosen isn't traced |
+| 12 | `0x1D78` | SHOUGATU, Christmas party stage 6 | 21 | walking home after the Christmas party, white Christmas | Christmas-party flow (state `0x52`); stage 3's girl selector `0x80140030` picks stage 6 when `*(u8*)0x80145FE4 == 0` (set in stage 2), writes girl 0 / scene id 7 and counts up flag `0x800E67F2` |
 | 13 | `0x2584` | GEKO, scene 8 | 42 | Shiori phones the player | EXE `0x800754C0` (two packed month/day fields equal, March or early April) |
 
 DATE's top-level switch (`0x8014C0C8`, table `0x8015B3D0`) is on the girl id
@@ -950,7 +950,7 @@ one-shot byte `0x800E67EC + flag_index` and enters state `0x5E`. Flags come
 in blocks of 7 per girl; Shiori's are indices 0–6 (`0x800E67EC`–`F2`).
 **Place ids are 1-based** indexes of the outing-name table (file
 `0x72C30`): the scene texts match (park, Ferris wheel, swimming). Place 0
-(entry 8) isn't explained. GYOZI.EXN does not run any Shiori event: its
+(entry 8) is the neighborhood park (近所の公園, seen on screen); its name isn't in the outing table. GYOZI.EXN does not run any Shiori event: its
 read at `0x80135BC8` takes index 8 of its own scene tables, and the third
 word only coincides with the event table.
 
@@ -962,6 +962,37 @@ way. In the English build `{G}` showed "Shiori" in the player's line, so it
 expands from the translated name table; `{p}` showed the test save's ま and
 Shiori's `{P}` showed ま君. The rain scene starts in the classroom, the phone
 call moves to Shiori's room.
+
+**Dates and the other event flows (2026-10-07, traced and forced).**
+- **Appointments.** Eight slots at `0x800E67CC + 4·i`: bits 0–4 place
+  (1-based; 0 = neighborhood park), 12–15 month, 16–20 day, 24 a flag,
+  25–28 girl, 29 active. `0x8006AEC4(year, month, day)` checks the slots
+  against today's date; on a match the holiday screen says "today I have a
+  date with <girl>" and the heart icon starts it. The launcher `0x80076DA0`
+  copies slot 0's girl/place into a `[0x80, girl, place]` queue record and
+  enters state `0x50` (DATE.EXN). Writing slot 0 on the 95/4/23 test save
+  (`tools/emu/force_date.py`) gives a real date with Shiori on 4/30.
+- **Date-event chooser.** DATE.EXN calls `0x8013272C` at each date step
+  (`0x800E7389`/`738A`); the steps seen were 0/15, 0/41, then 1/x. A park
+  date reached 1/13 and picked scene 4 by itself. The other three need a
+  season and affection ranks the test save lacks, so the tool jumps to the
+  scene's call (PC write through the GDB stub) at its step: 1/1 (scene 3,
+  place 0), 1/35 (scene 5, theme park), 1/10 (scene 6, pool). The scene
+  plays and the date ends normally. The theme-park date asks which ride
+  first (DATE_FU text); the forced Ferris-wheel scene doesn't follow that
+  choice.
+- **SHOUGATU flows.** State `0x52` runs the Christmas-party flow through
+  the stage dispatcher `0x8013D180` (stage in `0x800E7389`; stages 6/7/8 are
+  Shiori/KG/MI's after-party scenes, their entries 12/36/60). The day-record
+  type `0x30` runs White Day (state `0x55`; Ijuin in the hallway, then a
+  reply event when a girl gave chocolate). A forced type-`0x48` record
+  (meeting) with girl 0 returned the game to the title screen: don't force
+  it for Shiori. `tools/emu/force_christmas.py` swaps the next weekday's
+  state `0x40` for `0x52` and sets stage 6 / girl 0 / scene id 7.
+- **Overlay entry points** (GEKO `0x8013882C`, DATE `0x8014C0A0`,
+  SHOUGATU `0x8013D180`) aren't referenced by any `jal`, data word or
+  `lui`/`addiu` pair in the EXE or overlays; how the EXE calls them isn't
+  known yet.
 
 **Overlay selection.** The loader switch (§3) is indexed by
 `*(u8*)0x800E738E − 0x11` through the jump table at `0x800B19E8`

@@ -1,11 +1,13 @@
 """Force one girl special event in the isolated emulator (test cards only).
 
-Usage:  python tools/emu/force_event.py GIRL SCENE [--clear-flag ADDR] [--timeout S]
+Usage:  python tools/emu/force_event.py GIRL SCENE [--type T] [--clear-flag ADDR] [--timeout S]
 
 Breaks where the main loop is about to read the next day record from its
 event queue (0x80071DD0, game-internals §6j) and, at the first ordinary
 record (type 0x00), writes a special-event record `45 GIRL SCENE 00` in its
 place, so that day runs the girl's scene instead of the chosen command.
+--type changes the record type (0x30 White Day; 0x48 the meeting scenes run
+by SHOUGATU.EXN, which with girl 0 returns the game to the title screen).
 --clear-flag zeroes a one-shot "seen" byte first (Shiori's scene 2 uses
 0x800E67ED). Then it detaches and the game continues on its own.
 
@@ -34,13 +36,16 @@ def main() -> None:
     args = sys.argv[1:]
     flag = None
     timeout = 300.0
-    for opt in ("--clear-flag", "--timeout"):
+    rtype = 0x45
+    for opt in ("--clear-flag", "--timeout", "--type"):
         if opt in args:
             i = args.index(opt)
             value = args[i + 1]
             del args[i:i + 2]
             if opt == "--clear-flag":
                 flag = int(value, 0)
+            elif opt == "--type":
+                rtype = int(value, 0)
             else:
                 timeout = float(value)
     if len(args) != 2:
@@ -67,7 +72,7 @@ def main() -> None:
             y, m, d, wd = g.mem(DATE, 4)
             print(f"{y}/{m}/{d} wd{wd} index {index} record {record.hex(' ')}", flush=True)
             if record[0] == 0x00:
-                new = bytes([0x45, girl, scene, 0])
+                new = bytes([rtype, girl, scene, 0])
                 g.cmd(f"M{addr:x},4:{new.hex()}")
                 print(f"forced {new.hex(' ')} at {addr:#x} (was {record.hex(' ')})", flush=True)
                 return

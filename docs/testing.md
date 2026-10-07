@@ -369,6 +369,47 @@ caught them mid-typing). Screenshots need at least ~1.5 s between them;
 0.7 s makes `drive.ps1` fail. Promoted; the normal build
 `.emu/default_shiori2/` is byte-identical to the candidate.
 
+### Forcing a date with Shiori, and her date events
+
+On the Sunday-night screen of the 95/4/23 test save (state or card save):
+
+```bash
+python tools/emu/force_date.py 0 PLACE 4 30 [--scene N] --timeout 400
+```
+
+then drive `C,wait:12000,C,wait:12000,C,wait:7000` (Study for the week,
+Study on the 4/29 holiday, then the heart icon on 4/30 starts the date) and
+step through with `C,wait:2800`. Places are 1-based outing ids (1 Kirameki
+Park, 12 Theme Park, 16 Pool), 0 is the neighborhood park. `--scene` jumps to
+Shiori's date event when the date reaches its step: 3 (place 0), 4 (place 1;
+also happens by itself), 5 (place 12), 6 (place 16). One date per boot; the
+event appears about 15–20 presses in, and the date ends back home.
+
+### Forcing the walk home after the Christmas party
+
+```bash
+python tools/emu/force_christmas.py --timeout 400
+```
+
+Start it on Sunday night and choose Study; at the next weekday it switches to
+the Christmas-party flow at Shiori's stage. It can follow a
+`force_event.py` chain (it waits for the next weekday). Leftover weekday
+graphics show behind the scene.
+
+**All of EVENT_FU (2026-10-07).** Unpatched references: `d3_*`, `dg_*`
+(park), `tp_*` (theme park), `d6_*` (pool), `ny_*` (Christmas). Candidate
+`.emu/review_shiori3/`: only EVENT_FU's six sectors differ from the default
+build, EDC/ECC and headers valid, checksum valid, all 157 strings' pointers
+resolve, nothing else in the file changed. Real boots of the candidate:
+boot 1 chained rain (4/25), phone (4/26), walk (4/27) and Christmas (4/28),
+`p1_*`; boots 2–5 one date event each, `p3_* p4_* p5_* p6_*`. Every box was
+English and fit; first lines of 4-/5-line strings scroll away before a
+screenshot. Promoted; the normal build `.emu/default_shiori3/` is
+byte-identical to the candidate.
+
+Card note: the harness card's frame 63 of block 0 (`0x1F80`, the memory
+card write-test frame) changes during these runs; no save data changes.
+
 **For a patched build** the save state can't be used: it holds the original
 EXE and text. Boot the patched CUE, load the 95/4/23 card save
 (title → GAME START → `C,wait:3000,C`), then run the forcer and the same

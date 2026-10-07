@@ -1,5 +1,5 @@
 {
-  "description": "Shiori's special events in SERIFU/EVENT_FU.BIN (load address 0x80198000; scene map in game-internals 6j). Translated: entry 7 / GEKO scene 2, the early-morning walk to school (5 strings; tested and promoted earlier); entry 6 / GEKO scene 1, sudden rain on the way home, sharing an umbrella (21 strings, 0x0-0x360); entry 13 / GEKO scene 8, Shiori phones on your shared birthday and you celebrate in her room (42 strings, 0x203C-0x2560, 0x2AE8, 0x2AF0). Speaker codes: 00 player, 01 Shiori, 06 thought (the game draws both brackets, so no ')'), 0C+0D one shared Shiori box, 07/10 sound lines drawn without a label. 2162 of 2216 pooled bytes used. All three are rare in play; they were verified on screen by forcing them with tools/emu/force_event.py 0 <scene> (docs/testing.md); their natural triggers have not been played. Not translated yet: the four date events (entries 8-11) and the New Year walk (entry 12).",
+  "description": "All of Shiori's special events in SERIFU/EVENT_FU.BIN (load address 0x80198000; scene map in game-internals 6j), 157 strings. GEKO walk-home/commute: entry 6 / scene 1 rain and umbrella (0x0-0x360), entry 7 / scene 2 early-morning walk (0x62C-0x6A8, 0x2AA8), entry 13 / scene 8 shared-birthday phone call (0x203C-0x2560). DATE events (forced in a date with Shiori): entry 8 / scene 3 neighborhood park, height marks (0x7B0-0xA5C); entry 9 / scene 4 Kirameki Park in spring, the pond (0xCF8-0xFE0); entry 10 / scene 5 theme park, stuck on the Ferris wheel (0x1240-0x14A0); entry 11 / scene 6 pool, Shiori goes missing (0x16E4-0x18B8). SHOUGATU: entry 12 / stage 6, walking home after the Christmas party, white Christmas (0x1AF8-0x1D3C). Short one-word strings at 0x2AA8-0x2AF0. Speaker codes: 00 player, 01 Shiori, 06 thought (the game draws both brackets, so no ')'), 0C+0D one shared Shiori box, 07/10 sound lines without a label. 5158 of 5244 pooled bytes used. All are rare in play; each was verified on screen by forcing it (tools/emu/force_event.py, force_date.py, force_christmas.py; docs/testing.md). Their natural triggers have not been played.",
   "dialogue": [
     {
       "file": "CDROM/SERIFU/EVENT_FU.BIN",
@@ -129,6 +129,416 @@
           "offset": "0x6a8",
           "original": "今日は楽しく登校できた。\n早起きは三文の得とは、\nよく言ったもんだぜ。",
           "text": "Fun walk to school today.\nEarly bird gets the worm.\nSo true."
+        },
+        {
+          "offset": "0x7b0",
+          "original": "こういう所で、\nお話するのって、\nいいね。",
+          "text": "Talking in a place\nlike this...\nit's nice."
+        },
+        {
+          "offset": "0x7dc",
+          "original": "ねぇ、覚えてる？",
+          "text": "Hey, do you remember?"
+        },
+        {
+          "offset": "0x7f0",
+          "original": "私も、\n今思い出したんだけど…。\n確かこっちの方。",
+          "text": "I only just\nremembered it myself...\nIt was over this way."
+        },
+        {
+          "offset": "0x834",
+          "original": "おい詩織。\nどこ行くんだよ。",
+          "text": "Hey, Shiori.\nWhere are you going?"
+        },
+        {
+          "offset": "0x850",
+          "original": "あっ、あった。",
+          "text": "Oh, here it is."
+        },
+        {
+          "offset": "0x860",
+          "original": "えっ、何があったって？",
+          "text": "Huh? Here what is?"
+        },
+        {
+          "offset": "0x884",
+          "original": "ほら、これ覚えてる？\n１０年ぐらい前に、\n一緒に背比べした跡よ。",
+          "text": "Look, remember this?\nWe compared heights here\nabout ten years ago."
+        },
+        {
+          "offset": "0x8c4",
+          "original": "そ、そうだっけ？",
+          "text": "D-did we?"
+        },
+        {
+          "offset": "0x8d8",
+          "original": "そうよ。\nあの頃はあまり身長も\n変わらなかったのにね。",
+          "text": "We did.\nWe were about the\nsame height back then."
+        },
+        {
+          "offset": "0x910",
+          "original": "今じゃ俺の方が\n高いけど。",
+          "text": "Now I'm the\ntaller one, though."
+        },
+        {
+          "offset": "0x93c",
+          "original": "あの頃は、\nいつも一緒に遊んでたのに、\nいつからかな…？",
+          "text": "Back then we always\nplayed together...\nWhen did it change...?"
+        },
+        {
+          "offset": "0x974",
+          "original": "いつから、\n一緒に遊ばなく\nなったのかな…。",
+          "text": "When did we\nstop playing\ntogether, I wonder..."
+        },
+        {
+          "offset": "0x9a0",
+          "original": "一緒にか…。\nいつぐらい\nだろう…。",
+          "text": "Together, huh...\nWhen was\nthat...?"
+        },
+        {
+          "offset": "0x9d4",
+          "original": "今からでも遅くないよね。\nまた、あの頃みたいに…。",
+          "text": "It's not too late, is it?\nTo be like we were..."
+        },
+        {
+          "offset": "0xa08",
+          "original": "えっ…。",
+          "text": "Huh...?"
+        },
+        {
+          "offset": "0xa1c",
+          "original": "い、いいの。\n別になんでもないから。\nさあ、もう帰りましょう。",
+          "text": "N-never mind.\nIt's nothing, really.\nCome on, let's go home."
+        },
+        {
+          "offset": "0xa5c",
+          "original": "あっ、う、うん。",
+          "text": "Oh, y-yeah."
+        },
+        {
+          "offset": "0xcf8",
+          "original": "今日は天気が良くて\n気持ちがいいから、\n芝生にでも座らない？",
+          "text": "The weather's so nice\ntoday, it feels great.\nShall we sit on the grass?"
+        },
+        {
+          "offset": "0xd34",
+          "original": "いいよ。",
+          "text": "Sure."
+        },
+        {
+          "offset": "0xd48",
+          "original": "あっ、そういえば、\nこの公園じゃない？",
+          "text": "Oh, come to think of it,\nisn't this the park?"
+        },
+        {
+          "offset": "0xd70",
+          "original": "ほら、昔お父さんと\nお母さんに内緒で、\n遠くの公園に行ったことが\nあったじゃない。",
+          "text": "You know, the time we\nsnuck off to a faraway\npark without telling\nour parents."
+        },
+        {
+          "offset": "0xdc0",
+          "original": "そんな事あったかなぁ。",
+          "text": "Did that happen?"
+        },
+        {
+          "offset": "0xdd8",
+          "original": "あったわよ。\nよく覚えてるから。",
+          "text": "It did.\nI remember it well."
+        },
+        {
+          "offset": "0xdf8",
+          "original": "例えば？",
+          "text": "Like what?"
+        },
+        {
+          "offset": "0xe04",
+          "original": "例えばね、\n大きな池に落ちそうに\nなったこととか…。",
+          "text": "Like when someone\nalmost fell into\nthe big pond..."
+        },
+        {
+          "offset": "0xe38",
+          "original": "池に？\nあっ、思い出した。\nそれ、俺だ。",
+          "text": "The pond?\nOh, I remember.\nThat was me."
+        },
+        {
+          "offset": "0xe60",
+          "original": "そうよ。\nよく思い出したね。",
+          "text": "That's right.\nGood, you remember."
+        },
+        {
+          "offset": "0xe7c",
+          "original": "池に落ちそうになって\n知らないおじさんに\n助けてもらったんだよなぁ。\nあん時は死ぬかと思ったよ。\nあれ、そんとき詩織は？",
+          "text": "I almost fell in and\nsome stranger had to\nhelp me out. I thought\nI was going to die.\nWait, where were you?"
+        },
+        {
+          "offset": "0xf1c",
+          "original": "私は怖くて、見てた…\nと思う。",
+          "text": "I was scared, so I just\nwatched... I think."
+        },
+        {
+          "offset": "0xf3c",
+          "original": "助けてくれても\nいいのに…。",
+          "text": "You could've\nhelped me..."
+        },
+        {
+          "offset": "0xf60",
+          "original": "もういいじゃない。\n懐かしい思い出よ。",
+          "text": "Oh, let it go.\nIt's a fond memory."
+        },
+        {
+          "offset": "0xf88",
+          "original": "いまさらいいけどね。\nでも、本当に懐かしいね。",
+          "text": "Not that it matters now.\nBut it really takes me back."
+        },
+        {
+          "offset": "0xfb8",
+          "original": "他にも色々あったよね。\n‥‥‥‥‥‥‥。",
+          "text": "So many other things too.\n......."
+        },
+        {
+          "offset": "0xfe0",
+          "original": "そうだね。",
+          "text": "Yeah."
+        },
+        {
+          "offset": "0x1240",
+          "original": "結構空いてるね。\nさあ乗りましょう。",
+          "text": "It's pretty empty.\nCome on, let's ride."
+        },
+        {
+          "offset": "0x1268",
+          "original": "この観覧車、\n止まっちゃったみたい。",
+          "text": "Looks like the Ferris\nwheel stopped."
+        },
+        {
+          "offset": "0x128c",
+          "original": "えっ、本当？\nどうしよう。",
+          "text": "What, really?\nWhat do we do?"
+        },
+        {
+          "offset": "0x12b0",
+          "original": "大丈夫だよ。\nすぐに動きだすって。",
+          "text": "It's okay.\nIt'll start up soon."
+        },
+        {
+          "offset": "0x12d4",
+          "original": "うん…。\nでも、やっぱり怖いわ。",
+          "text": "Okay...\nBut I'm still scared."
+        },
+        {
+          "offset": "0x12f4",
+          "original": "ほら、止まってるぶんだけ、\n長く乗ってられるんだから\n得した気分でしょう。",
+          "text": "Look, the longer it's\nstopped, the longer we\nget to ride. Lucky us."
+        },
+        {
+          "offset": "0x1340",
+          "original": "そ、そうだけど…。",
+          "text": "W-well, yes, but..."
+        },
+        {
+          "offset": "0x1354",
+          "original": "それとも、\n俺と一緒じゃやだ？",
+          "text": "Or do you hate\nbeing stuck with me?"
+        },
+        {
+          "offset": "0x1388",
+          "original": "そ、そんなこと…。\nだって私…。",
+          "text": "N-no, it's not that...\nIt's just, I..."
+        },
+        {
+          "offset": "0x13a8",
+          "original": "あっ、動きだしたみたい。",
+          "text": "Oh, it's moving again."
+        },
+        {
+          "offset": "0x13c4",
+          "original": "はははは…。\n良かったね。\n（観覧車の馬鹿野郎！！）",
+          "text": "Ha ha ha...\nThat's good.\n(Stupid Ferris wheel!!)"
+        },
+        {
+          "offset": "0x1404",
+          "original": "さっきは、\n本当に怖かったね。",
+          "text": "That was\nreally scary."
+        },
+        {
+          "offset": "0x1424",
+          "original": "それよりもさ、\nさっき言いかけてた\n続きが聞きたいな。",
+          "text": "More importantly,\nI'd like to hear what\nyou were about to say."
+        },
+        {
+          "offset": "0x1464",
+          "original": "えっ、な、何の事か\n忘れちゃった。\nそんな事いいじゃない。",
+          "text": "Huh? Wh-what was it?\nI forgot.\nNever mind that."
+        },
+        {
+          "offset": "0x14a0",
+          "original": "忘れちゃったか…。\n何だかなぁ。\n（ま、いいか。）",
+          "text": "You forgot, huh...\nOh well.\n(Guess it's fine.)"
+        },
+        {
+          "offset": "0x16e4",
+          "original": "あれ、詩織が\n見当たらないぞ。",
+          "text": "Huh, where's\nShiori gone?"
+        },
+        {
+          "offset": "0x1704",
+          "original": "どこに\n行っちゃったのかな…。",
+          "text": "Where could\nshe have gone..."
+        },
+        {
+          "offset": "0x1724",
+          "original": "{P}、きゃーっ。",
+          "text": "{P}, eeek!"
+        },
+        {
+          "offset": "0x1734",
+          "original": "あれは、詩織の声。\nどこから…、",
+          "text": "That's Shiori's voice.\nWhere's it coming from..."
+        },
+        {
+          "offset": "0x1768",
+          "original": "ああ、楽しかった。",
+          "text": "Ah, that was fun!"
+        },
+        {
+          "offset": "0x177c",
+          "original": "見当たらないから\nどこに行ったのかと\n思ってたよ。",
+          "text": "I couldn't find you.\nI was wondering\nwhere you'd gone."
+        },
+        {
+          "offset": "0x17b0",
+          "original": "ごめんなさい。\nちょっと\n驚かそうと思って。",
+          "text": "I'm sorry.\nI just wanted\nto surprise you."
+        },
+        {
+          "offset": "0x17dc",
+          "original": "俺はまんまと\n驚かされたわけだ。",
+          "text": "And I fell for it\ncompletely."
+        },
+        {
+          "offset": "0x17fc",
+          "original": "うふふふふふ。",
+          "text": "Tee-hee-hee."
+        },
+        {
+          "offset": "0x180c",
+          "original": "き、急に。\n何がおかしいの？",
+          "text": "Wh-what's so\nfunny all of a sudden?"
+        },
+        {
+          "offset": "0x1828",
+          "original": "さっきの驚いた顔を\n思い出しちゃって…。\nうふふふふふ。",
+          "text": "I just remembered\nyour surprised face...\nTee-hee-hee."
+        },
+        {
+          "offset": "0x1860",
+          "original": "そ、そんなに\n変な顔だった？",
+          "text": "W-was it that\nweird a face?"
+        },
+        {
+          "offset": "0x187c",
+          "original": "ご、ごめんなさい。\n笑ったりして…。",
+          "text": "S-sorry.\nI shouldn't laugh..."
+        },
+        {
+          "offset": "0x18a0",
+          "original": "別に、いいけどさ…。",
+          "text": "It's fine, really..."
+        },
+        {
+          "offset": "0x18b8",
+          "original": "さあ、泳ぎましょうよ。",
+          "text": "Come on, let's swim!"
+        },
+        {
+          "offset": "0x1af8",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}."
+        },
+        {
+          "offset": "0x1b08",
+          "original": "あれ、{G}？\nどうしたの？",
+          "text": "Oh, {G}?\nWhat's up?"
+        },
+        {
+          "offset": "0x1b20",
+          "original": "よかったら…\n一緒に帰らない？",
+          "text": "If you'd like...\nshall we walk home?"
+        },
+        {
+          "offset": "0x1b40",
+          "original": "うん、送っていくよ。",
+          "text": "Sure, I'll walk you."
+        },
+        {
+          "offset": "0x1b64",
+          "original": "パーティー、楽しかったね。",
+          "text": "The party was fun."
+        },
+        {
+          "offset": "0x1b80",
+          "original": "伊集院がいなかったら\nもっと良かったのに",
+          "text": "Would've been better\nwithout Ijuin around"
+        },
+        {
+          "offset": "0x1ba8",
+          "original": "そういえば、前はいつも\n一緒にクリスマスパーティー\nやってたよね。",
+          "text": "You know, we always used\nto have Christmas parties\ntogether."
+        },
+        {
+          "offset": "0x1bec",
+          "original": "そうだね。\nいつから\n別々になったのかな。",
+          "text": "Yeah.\nI wonder when we\nstopped doing that."
+        },
+        {
+          "offset": "0x1c18",
+          "original": "覚えてないの？",
+          "text": "Don't you remember?"
+        },
+        {
+          "offset": "0x1c28",
+          "original": "小学生のとき、勝手に友達と\nクリスマスパーティーの約束\nしちゃったの誰だっけ？",
+          "text": "In grade school, who\nmade Christmas party plans\nwith friends on their own?"
+        },
+        {
+          "offset": "0x1c78",
+          "original": "…俺か？",
+          "text": "...Me?"
+        },
+        {
+          "offset": "0x1ca0",
+          "original": "わ・た・し。",
+          "text": "It was m-e."
+        },
+        {
+          "offset": "0x1cb8",
+          "original": "きゃあ、ごめん！\nごめんなさい。",
+          "text": "Eek, sorry!\nI'm sorry."
+        },
+        {
+          "offset": "0x1cd8",
+          "original": "人をからかって…。",
+          "text": "Teasing me like that..."
+        },
+        {
+          "offset": "0x1cf4",
+          "original": "あっ…。\nねぇ、見て！",
+          "text": "Oh...\nHey, look!"
+        },
+        {
+          "offset": "0x1d0c",
+          "original": "本当だ…。",
+          "text": "So it is..."
+        },
+        {
+          "offset": "0x1d18",
+          "original": "素敵…。\nホワイトクリスマスね…。",
+          "text": "It's lovely...\nA white Christmas..."
+        },
+        {
+          "offset": "0x1d3c",
+          "original": "サンタクロースに、\n感謝しなきゃな。",
+          "text": "Guess I should thank\nSanta Claus."
         },
         {
           "offset": "0x203c",
@@ -334,6 +744,41 @@
           "offset": "0x2aa8",
           "original": "あっ、{P}",
           "text": "Oh, {P}!"
+        },
+        {
+          "offset": "0x2ab0",
+          "original": "何を？",
+          "text": "What?"
+        },
+        {
+          "offset": "0x2ab8",
+          "original": "何が？",
+          "text": "Change what?"
+        },
+        {
+          "offset": "0x2ac0",
+          "original": "何が？",
+          "text": "What park?"
+        },
+        {
+          "offset": "0x2ac8",
+          "original": "！！！",
+          "text": "!!!"
+        },
+        {
+          "offset": "0x2ad0",
+          "original": "こら！",
+          "text": "Hey!"
+        },
+        {
+          "offset": "0x2ad8",
+          "original": "え？",
+          "text": "Huh?"
+        },
+        {
+          "offset": "0x2ae0",
+          "original": "雪…。",
+          "text": "Snow..."
         },
         {
           "offset": "0x2ae8",

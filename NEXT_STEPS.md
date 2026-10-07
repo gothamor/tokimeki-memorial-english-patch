@@ -288,8 +288,24 @@ file. Remaining work by how it can be tested:
   Shiori by place, season and date step. Forcing needs either a real date
   with her (she refuses at low affection) or writing the date state; not
   designed yet.
-- SHOUGATU stage 6 (21 strings, snowy walk home): how the stage is reached
-  isn't traced.
+- **Done (2026-10-07): the rest of the file.** Date events 3–6 and the
+  after-Christmas-party walk (entry 12; it isn't a New Year scene) were
+  traced, forced (`force_date.py`, `force_christmas.py`), translated and
+  verified; `translation/shiori_events.json` now covers all 157 strings
+  (5158 of 5244 pooled bytes). **EVENT_FU.BIN is complete.**
+
+Found on the way, for later:
+- The meeting-place thought shows 近所の公園 for place 0 (neighborhood
+  park): that name is a separate untranslated string, not in the outing
+  table. Find it (probably near the outing names in the EXE).
+- "Kirameki Park" (outings.json) has 13 letters, so the meeting-place thought
+  shows "Kirameki Park  it is" with a padding space. An even-length name would
+  fix it; check every consumer of that table first.
+- A natural walk-home encounter with Shiori (GEKO.BIN, with a "walk home
+  together?" choice) occurred on 95/5/1 of the test save without forcing:
+  a good early candidate for the GEKO work.
+- Shiori's regular date talk (DATE_FU.BIN, 474 strings) can now be reached
+  with `force_date.py` without `--scene`.
 
 Earlier note (before mapping): Step 8 order is cheaper than Step 7 here. The remaining seven EVENT_FU
 scenes (table entries 6 and 8–13; 157 strings in the file) can be mapped

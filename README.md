@@ -36,11 +36,12 @@ existing output folder.
   ([prologue.json](translation/prologue.json)), the first dialogue in the
   translation. Character-name tables and speaker labels are translated by
   [character_names.json](translation/character_names.json).
-- **Shiori's special events (3 of 8):** the early-morning walk to school, the
-  umbrella walk home in the rain, and the shared-birthday phone call
-  ([shiori_events.json](translation/shiori_events.json)). They're rare in
-  normal play (good standing with Shiori, or matching birthdays). Her four
-  date events, the New Year walk and her regular dates are still Japanese.
+- **Shiori's special events (all 8):** the morning walk to school, the
+  umbrella in the rain, the shared-birthday phone call, the four date events
+  (neighborhood park, Kirameki Park, Ferris wheel, pool) and the walk home
+  after the Christmas party ([shiori_events.json](translation/shiori_events.json)).
+  They're rare in normal play. Her regular date conversations (`DATE_FU`)
+  and walk-home talks are still Japanese.
 - **Main game loop:** the weekly command screen's stat panel (Health, Art,
   Looks, Lit., Sport, Guts, Sci., Trivia, Stress), the calendar
   (`95 / 4 / 23 (Su)`), the player's thought prompts, and the in-game
@@ -82,7 +83,7 @@ existing output folder.
 | `translation/font/free_glyphs.txt` | Font glyphs the game never uses (research data; no longer used by the patcher) |
 | `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation (`make_title_menu.py`, `make_main_screen.py`), renderer check |
 | `tests/` | Unit tests on synthetic data (`python -m unittest discover tests`) |
-| `tools/emu/` | Emulator test harness: isolated DuckStation, input driver with screen detection, GDB client, file-load tracer, read-watchpoint logger, girl-event watcher and forcer |
+| `tools/emu/` | Emulator test harness: isolated DuckStation, input driver with screen detection, GDB client, file-load tracer, read-watchpoint logger, girl-event watcher and event/date/Christmas forcers |
 
 ## Key findings in brief
 
