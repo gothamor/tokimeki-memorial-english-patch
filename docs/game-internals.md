@@ -1007,7 +1007,8 @@ Found 2026-10-07 by static disassembly of `DATE.EXN` and the EXE, then forced
 museum dates in DuckStation (unpatched and English; testing.md "Testing date
 conversations"). All 27 sections are translated in
 `translation/shiori_dates.json` (2026-10-08; 471 of 476 strings, the five
-pure-punctuation pause lines stay Japanese).
+pure-punctuation pause lines stay Japanese). Yuko's `DATE_AS.BIN` is in
+`translation/yuko_dates.json` (456 of 460; see "Other girls' date files").
 
 **Section table.** `DATE.EXN` holds three parallel 27-entry tables at
 `0x8015BDC0` (masters), `0x8015BE2C` (byte lists) and `0x8015BE98` (third
@@ -1152,9 +1153,11 @@ option**: in section 4 the player's compliment `0x2450` ends in `nn` and
 Shiori's reply `0x2478` is "thanks{q}nn". Seen on screen at the Shrine:
 choosing to praise shows the compliment (no trace of `nn`) and her thanks;
 choosing not to skips both lines. The picker skips an option that starts
-with `n` (`0x80081024`); the renderer drops `nn` as an invalid code. Every
-girl's DATE file (and its SPEAKTST copy) has the same pair; no other script
-uses `n`. `script.py` decodes it as `{n}` only as a run ending an option,
+with `n` (`0x80081024`); the renderer drops `nn` as an invalid code. Seven of
+the eleven DATE files have the same pair (FU, KA, KG, KI, KY, MI, NI, and
+their SPEAKTST copies); AS, HI, KO and SA have no yukata exchange and no
+`n` at all (checked 2026-10-08 by searching for 浴衣 and `nn`). No other
+script uses `n`. `script.py` decodes it as `{n}` only as a run ending an option,
 and the structure check keeps it there.
 
 **Speaking a part: EXE `0x8007EF48(string, code, option, ...)`.** It
@@ -1208,10 +1211,32 @@ function and lists that girl's sections.
 
 - **Yuko (`DATE_AS.BIN`, girl 8):** all 27 sections valid; they reach
   exactly the 460 strings `dump_dialogue.py` finds, each once. Part counts
-  match Shiori's except the Shrine (13 parts vs 15), Shopping (11 vs 20),
-  Library (5 vs 6) and Theme Park (55 vs 57). The Library setup still
-  assumes 2 versions of 3 parts, so Yuko's version 1 would need a part 5
-  her section doesn't have: check on screen what it shows.
+  match Shiori's except the Shrine (13 parts vs 15; no yukata pair),
+  Shopping (11 vs 20), Library (5 vs 6) and Theme Park (55 vs 57).
+  Translated 2026-10-08 (`translation/yuko_dates.json`).
+  - **Library version 1 reads past her list.** The setup still assumes 2
+    versions of 3 parts. Seen on screen, unpatched and English alike
+    (`--version 1`): part 3 (going in), part 4 ("I'm done with the
+    library, I'm going home"), then "part 5", which is the word after her
+    5-entry master (`0x00FF0001`, code bytes at `0x7798`) with byte list
+    `0x1700001C`: an **empty choice box**; ○ on it gives the bad-impression
+    thought and the date ends normally. Those words are code-list and table
+    bytes the translation never changes, so the English build behaves the
+    same. Not checked on real hardware, where such a read could fault.
+  - **Her date events (EVENT_AS)** are picked in the date-event chooser
+    (`0x8013272C`, Yuko's block at `0x80133618`, girl `0x800E71DF` = 8);
+    each fires once at its date step (`0x800E738A`) and sub-step 1:
+    Arcade (place 9) in months 3–5, flag `0x800E6823`, step 12 → scene 2
+    (a crane-game scene; it took over a forced 4/30 Arcade date, and
+    setting the flag to 1 in the meeting rule let the regular part play);
+    Theme Park (12) months 6–8 with `*(u8*)0x8015B680` = 1, flag `0x6824`,
+    step `0x3C` → scene 3; Concert Hall (15) months 9–11 with
+    `*(u8*)0x8015B688` = 10, flag `0x6825`, step `0x11` → scene 4; Skating
+    Rink (19) in months 12, 1, 2, flag `0x6826`, step 8 → scene 5; Library
+    (8) on 95/12/10, 96/12/8 or 97/12/7 with bit 17 of `0x800E6374`, step
+    0 → scene 6. The Arcade case also checks `*(u8*)0x8015B670` and
+    `*(u32*)0x80122CDC`; the rank values (`sp+0x31`/`0x33`) some cases test
+    weren't decoded. (Shiori's flags are `0x800E67EE`–`0x800E67F1`.)
 - Mio, Yuina, Ayako, Megumi have one section whose master or code-list
   pointer falls outside the file, and Mio, Yuina, Nozomi, Mira, Megumi and
   Yumi have 4–9 strings their tables reach that `dump_dialogue.py` misses.

@@ -451,9 +451,11 @@ reader (`pc 0x80082B3C`) before the file loads; prefer static tracing.
 **Tools (2026-10-07).** All run from the repo root with `powershell.exe`
 (5.1) and the isolated emulator; they change RAM only.
 - `tools/emu/launch_state.ps1 -State X.sav [-Build review_dates|orig]`:
-  restart the emulator (visible) from a state.
-- `tools/emu/date_run.ps1 -Place P [-Version N] [-Presses K] [-Prefix name]
-  [-Break "rules"]`: launch the Sunday state, force a 4/30 date at place P
+  restart the emulator (visible) from a state. It stops only the isolated
+  `.emu\duckstation` instance, never another DuckStation.
+- `tools/emu/date_run.ps1 -Place P [-Version N] [-Girl G] [-Presses K]
+  [-Prefix name] [-Break "rules"]`: launch the Sunday state, force a 4/30
+  date with girl G (default 0, Shiori) at place P
   (and version N), drive into it and screenshot K boxes; contact sheet in
   `.emu/shots/<prefix>_sheet.png`, forcer log in `.emu/date_run.log` (the
   forcer runs detached so late rules still fire).
@@ -712,6 +714,58 @@ player's "Was I a little too cold...?"); Yuko accepted (arcade, "Meet at
 the arcade," with the English place name), after which the Sunday date
 with her starts (her date file is still Japanese). Not seen: the other
 nine girls, the other places and meeting-place names, natural triggers.
+
+### Yuko's dates (DATE_AS.BIN, 2026-10-08)
+
+`date_run.ps1 -Girl 8` forces a Yuko date (the forcer's first argument).
+Checked first: the date's girl byte `0x800E69DD` reads 8 during and after
+the date, the label says Yuko, and the lines come from `DATE_AS.BIN` (her
+Library lines exist only there). Same rules as Shiori's; the on-time
+meeting rule `--at 0x80132570 --reg v0=0 --mem8 0x8015B654=1` gives a fixed
+3-box meeting, then 7 presses reach most places' first choice.
+`date_choices.ps1` now waits 2 s after relaunching its state: right after a
+state loads, early presses were dropped (a Bowling run "chose" nothing).
+
+- **Library version 1, unpatched first** (`yl1`): going in, "図書館はもういいよ"
+  (she gives up), then an empty choice box (the part read past her list,
+  game-internals §6k), the bad-impression thought, the ending. The English
+  build (`y4l`) does exactly the same.
+- **Her Arcade event.** A forced 4/30 Arcade date played EVENT_AS's crane
+  game scene instead of the section-5 part (spring, game-internals §6k);
+  `--mem8 0x800E6823=1` in the meeting rule suppresses it.
+- Candidate in `.emu/review_dates/` (all default files plus the draft):
+  only DATE_AS's sectors (LBA 44309–44328) differed from a default build,
+  checksum valid, after every batch.
+- Batch 1 (sheets `y1a`, `y1b`, `y1c`, `y2e`): meeting arrival 0 / mood 2
+  (parts 4–5), arrival 2 / mood 0 (part 9, the "(Truth is...)" thought),
+  arrival 0 / mood 0 (part 1 with her late-arrival thought); small talk 0,
+  1, 4; ending parts 12 (poetry book) and 3, plus the player's replies;
+  going home bands 0 (`{P}` shows as the name + 君), 1–2 and 3. In runs
+  forcing a poor ending her line passed during a screen fade; a slower
+  replay (`y2e`) caught part 3.
+- Batch 2 (`y2m`, `y2p`): museum exhibition 0 with every option; a park-0
+  date (`--at 0x8013A8B0 --reg v0=3`) with both actions, the pause and two
+  notes.
+- Batch 3 (`y3k`, `y3s`, `y3a`): Kirameki Park version 2 (cherry blossoms;
+  no spring event for Yuko) with every option; Shopping's first choice with
+  every option, then the accessories list and one reply.
+- Batch 4 (`y4l`, `y4b`, `y4e`): Library version 1; Bowling version 0 and
+  Beach version 1 with every option (the kept "‥‥‥‥‥。" option shows as
+  is).
+- Batch 5 (`y5s`, `y5z`, `y5a`, `y5p`, `y5q`): Stadium version 1 (the
+  "(Explain it to her.)" option) and Arcade version 1 with every option, the
+  Zoo with two of three, Planetarium and Aquarium driven through.
+- Batch 6 (`y6c`, `y6s`, `y6m`): Concert Hall and Cinema choices with every
+  reply; the Shrine up to the goldfish minigame (needs real input).
+- Batch 7 (`y7a`, `y7w`): the Theme Park's ride choice, then each ride from
+  a state on it (`.emu/savestates_backup/y7w_choice.sav`): going in, the
+  remark, the choice and a reply.
+
+Every forced date ended normally. Not seen: other versions and moods, the
+Shrine after the minigames, the hero show, later ride rounds, the parade,
+the Arcade's medal branch, natural triggers. After promotion the normal
+build (`.emu/default_yuko/`, 22 files, no `-t`) is byte-identical to the
+candidate.
 
 ### Disassembly
 

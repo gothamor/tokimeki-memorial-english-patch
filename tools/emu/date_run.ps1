@@ -1,26 +1,27 @@
-# Start a forced date with Shiori from a Sunday-night state and screenshot
-# the first boxes.
+# Start a forced date from a Sunday-night state and screenshot the first
+# boxes.
 #
-#   powershell.exe -File tools\emu\date_run.ps1 -Place 7 -Version 2 [-Presses 6] [-Prefix p7v2]
+#   powershell.exe -File tools\emu\date_run.ps1 -Place 7 -Version 2 [-Girl 0] [-Presses 6] [-Prefix p7v2]
 #       [-State .emu\savestates_backup\dates_sunday_0423_candidate.sav] [-Build review_dates]
 #       [-Extra "--set-at ..."] [-Break "--at 0x8013B6F8 --sp16 0x3a=7"]
 #
 # -Break passes tools/emu/break_set.py rules (after `--`) to force_date.py, so
 # the meeting, ending or going-home part can be chosen in the same session.
-# Launches the state, runs tools/emu/force_date.py (date on 4/30 at PLACE;
+# Launches the state, runs tools/emu/force_date.py (date with -Girl, default 0
+# Shiori, 8 Yuko, on 4/30 at PLACE;
 # -Version N forces the place's version, -Version -1 leaves it alone), then
 # drives Study, Study, the heart icon, and -Presses boxes with a screenshot
 # each (<Prefix>_01 ...). The meeting before the place is random (4-8 boxes),
 # so look at the sheet (.emu/shots/<Prefix>_sheet.png) and continue by hand
 # or with date_choices.ps1. The forcer's log is .emu\date_run.log. Keep your
 # hands off the emulator meanwhile.
-param([Parameter(Mandatory)][int]$Place, [int]$Version = -1, [int]$Presses = 6, [string]$Prefix = "",
+param([Parameter(Mandatory)][int]$Place, [int]$Version = -1, [int]$Girl = 0, [int]$Presses = 6, [string]$Prefix = "",
       [string]$State = ".emu\savestates_backup\dates_sunday_0423_candidate.sav",
       [string]$Build = "review_dates", [string]$Extra = "", [string]$Break = "")
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 if (-not $Prefix) { $Prefix = "p${Place}v${Version}" }
 & "$here\launch_state.ps1" -State $State -Build $Build
-$forceArgs = @("tools/emu/force_date.py", "0", "$Place", "4", "30", "--timeout", "400")
+$forceArgs = @("tools/emu/force_date.py", "$Girl", "$Place", "4", "30", "--timeout", "400")
 if ($Version -ge 0) { $forceArgs += @("--version", "$Version") }
 if ($Extra) { $forceArgs += $Extra.Split(" ") }
 if ($Break) { $forceArgs += @("--") + $Break.Split(" ") }

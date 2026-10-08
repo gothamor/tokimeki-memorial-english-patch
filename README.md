@@ -5,15 +5,15 @@ English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
 <!-- progress:start -->
-**Translated: 8.5%**
+**Translated: 10%**
 
 ```text
-Whole game             ██░░░░░░░░░░░░░░░░░░   8.5%
-Dialogue               █░░░░░░░░░░░░░░░░░░░   6.6%
+Whole game             ██░░░░░░░░░░░░░░░░░░    10%
+Dialogue               ██░░░░░░░░░░░░░░░░░░   8.5%
 Menus and other text   █████░░░░░░░░░░░░░░░    26%
 ```
 
-<sub>49,938 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>59,583 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage
@@ -56,6 +56,8 @@ existing output folder.
 - **Shiori's regular dates (all):** meeting her, every place's
   conversations, choices and replies, the end of the date and the way home
   ([shiori_dates.json](translation/shiori_dates.json)).
+- **Yuko's regular dates (all):** the same for Yuko Asahina, in her slangy
+  voice ([yuko_dates.json](translation/yuko_dates.json)).
 - **Walking home from school** with any of the girls: her invitation or
   yours, her answer, and the chat on the way about upcoming events
   ([walk_home.json](translation/walk_home.json)).

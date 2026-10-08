@@ -1,6 +1,10 @@
 # Next steps: translate Yuko's regular dates (`SERIFU/DATE_AS.BIN`)
 
-This is the only active task. Keep the Status table current as batches land.
+**Done 2026-10-08:** all seven batches translated, spot-checked on screen
+and promoted to `translation/yuko_dates.json` (normal build byte-identical
+to the tested candidate). What was and wasn't seen is in the AGENTS.md
+status table and testing.md "Yuko's dates". The next task is one of the
+"Later candidates" below; this file keeps Yuko's plan as the template.
 Technical findings go in `docs/`, not here.
 
 Finished before this (2026-10-08), all in normal builds; what was and
@@ -133,12 +137,19 @@ Total 460.
 | Batch | State |
 |---|---|
 | Layout check (`date_sections.py --girl 8`) | Done 2026-10-08, static |
-| `date_run.ps1 -Girl`, verify a forced Yuko date | Next |
-| Library version-1 question (unpatched) | Next |
-| 1–7 | Not started |
+| `date_run.ps1 -Girl`, verify a forced Yuko date | Done: girl byte 8, DATE_AS read |
+| Library version-1 question (unpatched) | Done: an empty choice box from the read past her list, same in English; her lines are translated (game-internals §6k) |
+| 1–7 | Done 2026-10-08, promoted |
+
+Learned on the way (details in docs): Yuko's Shrine has no yukata pair;
+her spring Arcade **date event** (EVENT_AS) replaces the regular part on a
+4/30 Arcade date unless `0x800E6823` is set; her other date-event flags are
+`0x800E6824`–`6826`.
 
 ## Later candidates
 
+- **Yuko's date events** (`EVENT_AS.BIN`): the chooser conditions are in
+  game-internals §6k, so they can be forced like Shiori's.
 - **The other nine girls' date files**, in rough size order: Megumi
   (DATE_MI), Nozomi (KY), Yuina (HI), Saki (NI), Yumi (SA), Yukari (KO),
   Ayako (KA), Mio (KI), Mira (KG).

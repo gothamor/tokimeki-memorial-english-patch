@@ -7,7 +7,8 @@
 # whatever CUE is passed, so rebuild candidates into the state's own folder
 # (docs/testing.md, "Testing date conversations").
 param([Parameter(Mandatory)][string]$State, [string]$Build = "review_dates", [int]$Wait = 9)
-Get-Process duckstation* -ErrorAction SilentlyContinue | Stop-Process -Force -Confirm:$false
+# Only the isolated instance, never the user's own DuckStation.
+Get-Process duckstation* -ErrorAction SilentlyContinue | Where-Object { $_.Path -like "*\.emu\duckstation\*" } | Stop-Process -Force -Confirm:$false
 Start-Sleep -Seconds 2
 $root = (Get-Location).Path
 $name = "Tokimeki Memorial - Forever with You (Japan) (PlayStation the Best).cue"

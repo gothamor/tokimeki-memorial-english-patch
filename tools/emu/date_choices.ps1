@@ -19,7 +19,8 @@ Copy-Item .emu\duckstation\savestates\SLPM-86053_1.sav $state -Force
 $names = @("${Prefix}_ch")
 for ($k = 0; $k -lt $Options; $k++) {
     if ($k -gt 0) { & "$here\launch_state.ps1" -State $state -Build $Build | Out-Null }
-    $seq = ""
+    # A freshly loaded state drops presses for a moment.
+    $seq = if ($k -gt 0) { "wait:2000," } else { "" }
     for ($d = 0; $d -lt $k; $d++) { $seq += "Down,wait:600," }
     $seq += "shot:${Prefix}_d$k,C,wait:5000,shot:${Prefix}_r$k,C,wait:3200,shot:${Prefix}_r${k}b"
     powershell.exe -NoProfile -ExecutionPolicy Bypass -File $drive -Seq $seq | Out-Null
