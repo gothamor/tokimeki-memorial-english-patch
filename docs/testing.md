@@ -696,6 +696,23 @@ Not seen: the other girls' sections (Mio, Yuina, Ayako, Saki, Yukari,
 Nozomi, Yumi), the declined-invitation paths and regret thoughts, the
 other topics, Saki's and Mira's extra parts, natural triggers.
 
+### A girl asks the player out (G_INVITE.BIN, 2026-10-08)
+
+`force_event.py GIRL 0 --type 0x46` on the Sunday state, then pick a
+weekly command: on Monday 4/25 the girl asks about Sunday. Boxes: greeting
+(two boxes), "are you free?", the choice (`Down` for "busy"), her
+invitation for a place, the yes/no choice, her reply, "Meet at {M}?", her
+goodbye, the player's thought. Give each press ~3.5 s and screenshot
+before pressing `Down`; early presses get eaten.
+
+Results on the candidate (only G_INVITE.BIN's sectors and GEKO.EXN's
+place-name sector and trailer changed): Shiori accepted (zoo invitation,
+"Meet at {M}", the thought) and refused (her "it can't be helped" and the
+player's "Was I a little too cold...?"); Yuko accepted (arcade, "Meet at
+the arcade," with the English place name), after which the Sunday date
+with her starts (her date file is still Japanese). Not seen: the other
+nine girls, the other places and meeting-place names, natural triggers.
+
 ### Disassembly
 
 ```bash

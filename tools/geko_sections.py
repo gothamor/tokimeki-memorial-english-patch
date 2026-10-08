@@ -1,7 +1,11 @@
-"""List SERIFU/GEKO.BIN's walk-home sections: parts, speaker codes, strings.
+"""List the GEKO.EXN script sections: parts, speaker codes, strings.
 
 Usage:
-  python tools/geko_sections.py [--strings] [--girl N]
+  python tools/geko_sections.py [--invite] [--strings] [--girl N]
+
+Default: SERIFU/GEKO.BIN, walking home (game-internals 6n). --invite:
+SERIFU/G_INVITE.BIN, a girl asking the player out (6o), from GEKO.EXN's
+13-entry tables at 0x80147630.
 
 GEKO.EXN holds three parallel 12-entry tables at 0x80144BA0 (masters),
 0x80144BD0 (code-byte lists) and 0x80144C00 (third pointers), one entry per
@@ -28,18 +32,24 @@ TABLE = 0x80144BA0
 # is the player's own thoughts, set up for every walk at 0x801326D4).
 GIRLS = ["Yuko", "Shiori", "Yuina", "Ayako", "Mira", "Mio", "Yukari",
          "Nozomi", "Megumi", "Saki", "(player)", "Yumi"]
+INVITE_TABLE = 0x80147630
+# GEKO.EXN's switch at 0x80143804 (jump table 0x80144B68) maps girls 0..10
+# to sections 1,5,2,3,10,6,8,4,0,9,12; 11 is the player's thoughts and 7
+# isn't selected by any girl id (game-internals 6o).
+INVITE_NAMES = ["Yuko", "Shiori", "Yuina", "Ayako", "Mira", "Mio", "Yukari",
+                "(unused)", "Nozomi", "Megumi", "Saki", "(player)", "Yumi"]
 CODES = {0: "player", 1: "girl", 2: "reply", 3: "choice", 4: "note", 6: "thought",
          7: "sound", 8: "action", 0x0C: "girl+", 0x0D: "girl+2"}
 
 
-def sections(geko: bytes, exn: bytes):
-    """[(girl, master, [(part, [(offset, code)])])]"""
-    tab = struct.unpack_from("<36I", exn, TABLE - EXN_BASE)
+def sections(geko: bytes, exn: bytes, table: int = TABLE, count: int = 12):
+    """[(section, master, [(part, [(offset, code)])])]"""
+    tab = struct.unpack_from(f"<{3 * count}I", exn, table - EXN_BASE)
     inside = lambda w: BASE <= w < BASE + len(geko)
     word = lambda o: struct.unpack_from("<I", geko, o)[0]
     out = []
-    for g in range(12):
-        master, codes = tab[g] - BASE, tab[12 + g] - BASE
+    for g in range(count):
+        master, codes = tab[g] - BASE, tab[count + g] - BASE
         parts, k = [], 0
         while inside(word(master + 4 * k)) and inside(word(codes + 4 * k)):
             lst, cl = word(master + 4 * k) - BASE, word(codes + 4 * k) - BASE
@@ -60,20 +70,24 @@ def sections(geko: bytes, exn: bytes):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--file", default=str(ROOT / "extracted/CDROM/SERIFU/GEKO.BIN"))
+    ap.add_argument("--file")
+    ap.add_argument("--invite", action="store_true", help="G_INVITE.BIN instead of GEKO.BIN")
     ap.add_argument("--exn", default=str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"))
     ap.add_argument("--strings", action="store_true", help="print each string's Japanese")
     ap.add_argument("--girl", type=int)
     args = ap.parse_args()
-    geko, exn = Path(args.file).read_bytes(), Path(args.exn).read_bytes()
+    name = "G_INVITE.BIN" if args.invite else "GEKO.BIN"
+    geko = Path(args.file or ROOT / "extracted/CDROM/SERIFU" / name).read_bytes()
+    exn = Path(args.exn).read_bytes()
+    table, count, names = (INVITE_TABLE, 13, INVITE_NAMES) if args.invite else (TABLE, 12, GIRLS)
     total = 0
-    for g, master, parts in sections(geko, exn):
+    for g, master, parts in sections(geko, exn, table, count):
         n = sum(len(s) for _, s in parts)
         total += n
         if args.girl is not None and g != args.girl:
             continue
         offs = [o for _, s in parts for o, _ in s]
-        print(f"section {g:2d} {GIRLS[g]:<8} master {master:#07x}  {min(offs):#07x}-{max(offs):#07x}"
+        print(f"section {g:2d} {names[g]:<8} master {master:#07x}  {min(offs):#07x}-{max(offs):#07x}"
               f"  {len(parts):3d} parts {n:4d} strings")
         for k, strings in parts:
             if args.strings:

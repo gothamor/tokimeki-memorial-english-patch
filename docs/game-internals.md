@@ -1193,6 +1193,30 @@ tables `*(0x8015B520)` = `0x801A427C` and `*(0x8015B524)` = `0x801A4D2C`
 (15 bytes per girl, loaded from another file) give each choice's
 impression level, copied to `0x800CA21C`–`0x800CA230`.
 
+**Other girls' date files (checked 2026-10-08, static).** DATE.EXN's step
+that loads the girl's file (`0x8013E7B0`) switches on the date's girl byte
+`*(u8*)0x800E69DD` (jump table `0x8015AFE4`, girls 0–9; girl 10 is the
+default case `0x8013E94C`). Each case calls a **fill function** that writes
+all 81 section-table words as `lui`/`ori` immediates (`0x80141004`
+Shiori, `0x80141518` Mio, `0x801419FC` Yuina, `0x80141EE0` Ayako,
+`0x801423C4` Saki, `0x801428D8` Yukari, `0x80142DEC` Nozomi, `0x80143300`
+Mira, `0x80143814` Yuko, `0x80143D28` Megumi, `0x8014420C` Yumi), then
+reads her `DATE_xx.BIN` (FU, KI, HI, KA, NI, KO, KY, KG, AS, MI, SA) to
+`0x80198000` by LBA. All files use the same 27-section layout and the same
+place setups; `tools/date_sections.py --girl N` simulates the fill
+function and lists that girl's sections.
+
+- **Yuko (`DATE_AS.BIN`, girl 8):** all 27 sections valid; they reach
+  exactly the 460 strings `dump_dialogue.py` finds, each once. Part counts
+  match Shiori's except the Shrine (13 parts vs 15), Shopping (11 vs 20),
+  Library (5 vs 6) and Theme Park (55 vs 57). The Library setup still
+  assumes 2 versions of 3 parts, so Yuko's version 1 would need a part 5
+  her section doesn't have: check on screen what it shows.
+- Mio, Yuina, Ayako, Megumi have one section whose master or code-list
+  pointer falls outside the file, and Mio, Yuina, Nozomi, Mira, Megumi and
+  Yumi have 4–9 strings their tables reach that `dump_dialogue.py` misses.
+  Look at those before translating those girls.
+
 **Impression thoughts** after each choice (the player's thought, in levels
 from a great impression to a bad one) are not in `DATE_FU`: they are in the
 shared `SERIFU/SERIFU.BIN` (§6l), with copies in `SPEAKTST/TEST_OT.BIN`.
@@ -1369,8 +1393,7 @@ in the event queue (§6j): the handler `0x80072030` enters state `0x59`
 (GEKO.EXN) if the girl has been met (bit 1 of `0x800E6448 + 0x38·girl`),
 unless the previous record was type `0x28`/`0x47` or `0x800E6375 & 0xF ==
 3`. GEKO.EXN serves several states: `0x5A` (record type `0x46`) is a girl
-asking the player out for Sunday, from `SERIFU/G_INVITE.BIN` (not this
-file); `0x5D` (type `0x45`) the special events (§6j). The weekly picker
+asking the player out for Sunday, from `SERIFU/G_INVITE.BIN` (§6o); `0x5D` (type `0x45`) the special events (§6j). The weekly picker
 `0x80070850` writes the type-`0x46` records; who writes type `0x44` wasn't
 traced. The walk's entry is `0x80132244`: substate `0x800E7389` 0 runs the
 step list `0x80144C5C` (the walk), 1 the list `0x80144D40` (the talk on the
@@ -1418,6 +1441,43 @@ Oddities: Mira's part-7 choice (`0x68F0`) separates its two options with a
 line break instead of `{q}`; on screen it shows as two normal options like
 the others (the choice box splits on line breaks too), so the English keeps
 the line break. Shiori's lines use 詩織 instead of `{G}` in three places.
+
+### 6o. A girl asks the player out (`SERIFU/G_INVITE.BIN`)
+
+Found 2026-10-08 the same way as §6n. Translated in
+`translation/invitations.json`.
+
+**Trigger.** Day record type `0x46` (`46 GIRL ...`): the handler
+`0x80072164` enters state `0x5A` (GEKO.EXN) unless appointment slot 0
+(`0x800E67CC`) is already active. The weekly picker `0x80070850` writes
+these records (once a week at most). `force_event.py GIRL 0 --type 0x46`
+forces one; no met check was seen.
+
+**File.** 32,768 bytes at LBA 44835 (16 sectors), base `0x80197000`,
+checksum trailer, 351 strings in 13 sections from GEKO.EXN's three
+parallel 13-entry tables at `0x80147630` (masters), `0x80147664` (code
+bytes), `0x80147698` (third pointers). The switch at `0x80143804` (jump
+table `0x80144B68`) maps girls 0–10 to sections **1, 5, 2, 3, 10, 6, 8, 4,
+0, 9, 12** (note Saki 10, Nozomi 8, Megumi 9, unlike GEKO.BIN); section 11
+is the player's thoughts after turning her down (loaded at `0x80143FB0`),
+and section 7 isn't selected by any girl id (its strings are mostly shared;
+translated anyway). `tools/geko_sections.py --invite` lists them.
+
+**Parts** (each girl): 0 her greeting, "are you free this Sunday?" and the
+player's choice (free / busy); 1–19 her invitation for place 2–20 (the
+outing ids of §6j: shopping, aquarium, zoo, botanical garden, planetarium,
+art museum, library, arcade, bowling, karaoke, theme park, baseball,
+wrestling, cinema, concert, pool, beach, skating, skiing); 20 the
+player's yes/no; 21 her reply and "Meet at {M}?"; 22 the player's "this
+Sunday" thought; 23 her reaction when refused. Some girls have no line for
+some places (they don't invite there). Yukari's parts 16 and 17 are the
+beach and the pool, swapped against everyone else's (original data, left
+as is).
+
+**`{M}` here is the meeting place**, from a 19 × 33-byte table in GEKO.EXN
+at `0x80147988` (file `0x15988`: ショッピング街, 水族館の前 … スキー場の前,
+place 2–20), copied whole (`0x273` = 19 × 33 bytes) at `0x80142E0C`.
+Translated with `"slot": 33` ("the zoo gate", "the arcade", ...).
 
 ## 7. Graphics
 

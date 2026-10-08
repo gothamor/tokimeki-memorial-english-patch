@@ -5,15 +5,15 @@ English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
 <!-- progress:start -->
-**Translated: 7.4%**
+**Translated: 8.5%**
 
 ```text
-Whole game             █░░░░░░░░░░░░░░░░░░░   7.4%
-Dialogue               █░░░░░░░░░░░░░░░░░░░   5.4%
-Menus and other text   █████░░░░░░░░░░░░░░░    25%
+Whole game             ██░░░░░░░░░░░░░░░░░░   8.5%
+Dialogue               █░░░░░░░░░░░░░░░░░░░   6.6%
+Menus and other text   █████░░░░░░░░░░░░░░░    26%
 ```
 
-<sub>43,173 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>49,938 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage
@@ -59,6 +59,9 @@ existing output folder.
 - **Walking home from school** with any of the girls: her invitation or
   yours, her answer, and the chat on the way about upcoming events
   ([walk_home.json](translation/walk_home.json)).
+- **Girls asking you out** for Sunday: the invitation for every place,
+  your answer and the meeting place
+  ([invitations.json](translation/invitations.json)).
 - **Lines shared by every girl's dates:** the impression thought after each
   choice, the concert and movie blurbs, and the "did I get the meeting place
   wrong?" monologue with its place names

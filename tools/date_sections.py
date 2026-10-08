@@ -1,8 +1,7 @@
 """List the sections of a girl's DATE_*.BIN as a translation/test checklist.
 
 Usage:
-  python tools/date_sections.py [--file extracted/CDROM/SERIFU/DATE_FU.BIN]
-                                [--exn extracted/CDROM/EXEDIR/DATE.EXN] [--strings]
+  python tools/date_sections.py [--girl N] [--file ...] [--exn ...] [--strings]
 
 Reads DATE.EXN's section tables (game-internals §6k) and the place switch,
 then prints, per section: the place it belongs to, its file range, string
@@ -14,8 +13,11 @@ first reads the version byte 0x800CA2FC. Pass that address to
 --strings also lists each part's string offsets and speaker codes. Nothing
 here prints game text, so the output can go into docs.
 
-The section tables hold Shiori's offsets statically; other girls' files need
-their tables (written by DATE.EXN code at run time) and aren't supported.
+--girl N (0-10, default 0 Shiori) picks the girl: DATE.EXN's switch at
+0x8013E7B0 (girl byte 0x800E69DD, jump table 0x8015AFE4) calls one fill
+function per girl that writes the 81 table words, then reads her file by
+LBA (game-internals 6k). This tool simulates that girl's fill function and
+opens her file (DATE_FU/KI/HI/KA/NI/KO/KY/KG/AS/MI/SA.BIN).
 """
 
 from __future__ import annotations
@@ -28,6 +30,37 @@ from pathlib import Path
 EXN_BASE = 0x80132000
 FILE_BASE = 0x80198000
 TABLE = 0x8015BDC0          # 27 masters, then 27 byte lists, then 27 thirds
+GIRL_JUMPS = 0x8015AFE4     # girl 0-9 -> case (girl 10 is the default case)
+GIRL_DEFAULT = 0x8013E94C
+GIRL_FILES = ["FU", "KI", "HI", "KA", "NI", "KO", "KY", "KG", "AS", "MI", "SA"]
+
+
+def girl_table(exn: bytes, girl: int) -> list:
+    """The 81 section-table words girl's fill function writes."""
+    words = struct.unpack_from(f"<{len(exn) // 4}I", exn)
+    case = GIRL_DEFAULT if girl == 10 else words[(GIRL_JUMPS - EXN_BASE) // 4 + girl]
+    jal = words[(case - EXN_BASE) // 4]
+    fill = ((jal & 0x3FFFFFF) << 2) | 0x80000000
+    regs, table, i, end = {}, [0] * 81, (fill - EXN_BASE) // 4, None
+    while True:
+        w = words[i]
+        op, rs, rt, imm = w >> 26, (w >> 21) & 31, (w >> 16) & 31, w & 0xFFFF
+        simm = imm - 0x10000 if imm & 0x8000 else imm
+        if op == 0x0F:
+            regs[rt] = imm << 16
+        elif op == 0x0D:
+            regs[rt] = regs.get(rs, 0) | imm
+        elif op == 0x09:
+            regs[rt] = (regs.get(rs, 0) + simm) & 0xFFFFFFFF
+        elif op == 0x2B:
+            addr = (regs.get(rs, 0) + simm) & 0xFFFFFFFF
+            if TABLE <= addr < TABLE + 81 * 4:
+                table[(addr - TABLE) // 4] = regs.get(rt, 0)
+        if i == end:
+            return table
+        if w == 0x03E00008:     # jr ra: one more for the delay slot
+            end = i + 1
+        i += 1
 SECTIONS = 27
 PLACE_JUMPS = 0x8015B060    # place - 1 -> case storing the setup function
 PLACES = 20
@@ -94,12 +127,14 @@ def scan_places(exn: bytes) -> dict:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--file", default=str(ROOT / "extracted/CDROM/SERIFU/DATE_FU.BIN"))
+    ap.add_argument("--girl", type=int, default=0)
+    ap.add_argument("--file")
     ap.add_argument("--exn", default=str(ROOT / "extracted/CDROM/EXEDIR/DATE.EXN"))
     ap.add_argument("--strings", action="store_true")
     args = ap.parse_args()
-    data = Path(args.file).read_bytes()
+    data = Path(args.file or ROOT / f"extracted/CDROM/SERIFU/DATE_{GIRL_FILES[args.girl]}.BIN").read_bytes()
     exn = Path(args.exn).read_bytes()
+    table = girl_table(exn, args.girl)
 
     def xw(addr):
         return struct.unpack_from("<I", exn, addr - EXN_BASE)[0]
@@ -116,7 +151,7 @@ def main() -> None:
 
     total = 0
     for s in range(SECTIONS):
-        master, blists = xw(TABLE + 4 * s) - FILE_BASE, xw(TABLE + 4 * (SECTIONS + s)) - FILE_BASE
+        master, blists = table[s] - FILE_BASE, table[SECTIONS + s] - FILE_BASE
         parts = []
         while in_file(fw(master + 4 * len(parts))) and fw(master + 4 * len(parts)) - FILE_BASE < master:
             p = len(parts)
