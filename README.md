@@ -5,15 +5,15 @@ English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
 <!-- progress:start -->
-**Translated: 12%**
+**Translated: 14%**
 
 ```text
-Whole game             ██░░░░░░░░░░░░░░░░░░    12%
-Dialogue               ██░░░░░░░░░░░░░░░░░░    11%
-Menus and other text   █████░░░░░░░░░░░░░░░    26%
+Whole game             ███░░░░░░░░░░░░░░░░░    14%
+Dialogue               ██░░░░░░░░░░░░░░░░░░    12%
+Menus and other text   ██████░░░░░░░░░░░░░░    31%
 ```
 
-<sub>70,572 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>82,621 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage
@@ -63,6 +63,9 @@ existing output folder.
   the library ([yuko_events.json](translation/yuko_events.json)).
 - **Your birthday:** the girl who brings you a present, or the lonely
   version ([birthday.json](translation/birthday.json)).
+- **The girls' birthdays:** choosing and giving her a present, her
+  reaction, and calling her out on a holiday
+  ([girl_birthdays.json](translation/girl_birthdays.json)).
 - **Walking home from school** with any of the girls: her invitation or
   yours, her answer, and the chat on the way about upcoming events
   ([walk_home.json](translation/walk_home.json)).

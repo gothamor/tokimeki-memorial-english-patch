@@ -885,6 +885,34 @@ odd-length name's padding; both reworded to end the line on the name and
 re-checked (`pbz`). Not seen: section 2 (KANGEI's flow). Normal build
 (`.emu/default_pbirth/`, 26 files) byte-identical to the candidate.
 
+### The girls' birthdays (G_BIRTH.BIN, 2026-10-08)
+
+`meet_run.ps1 -Girl G -GirlBirthday [-Date M/D] -Hidden` runs
+`force_birthday.py --her 0 [--as G]`: Shiori's birthday (u32 at
+`0x800E644C`) is set to 4/25, so her birthday scene plays on Monday by
+itself; for another girl, the scene's girl byte is switched to G at GEKO's
+G_BIRTH section switch (game-internals §6s). That plays G's section (her
+gift list, lines and reactions), but the speaker label and `{G}` keep
+Shiori's name, set before the switch. Setting an unmet girl's birthday and
+met bit instead (first attempt, `gbg_*`) played her first-meeting scene,
+not a birthday. `C` takes the first option of each choice; `-Date 4/29`
+puts the birthday on the Saturday holiday, which plays the phone version.
+
+Candidate in `.emu/review_dates/`: G_BIRTH's sectors, GEKO's banner and
+gift-table sectors, and the gift-table sectors of DATE, DATE2, KANGEI,
+SHOUGATU and SHUGAKU changed (42 sectors), checksums valid. Seen in
+English (`gbs`, `gbh0`, `gbt2`, `gbt3b`, `gbA`–`gbC`): Shiori's school-day
+birthday (gift list, `{A}` gift name, greeting, thanks, "fine" reaction)
+and her holiday phone version in full (the call, "Click.", meeting at the
+front door, the present); every other girl's section with the swap. Mio's,
+Saki's, Yuko's, Megumi's and Yumi's lists etc. read fine; **Megumi's and
+Yumi's 1995 gift lists are empty boxes**: part 3·girl + (year − 1995) of
+section 11 hits the original's two empty placeholder strings (parts 27,
+30), so the same would happen unpatched; Yumi only starts school in 1996.
+Not seen: other ranks' greetings and reactions, Yuina's and Nozomi's
+phone versions, the 1996/97 lists. Normal build (`.emu/default_gbirth/`,
+27 files) byte-identical to the candidate.
+
 ### Disassembly
 
 ```bash

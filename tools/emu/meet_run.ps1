@@ -11,10 +11,12 @@
 # instead: the club-welcome scene (NYUBU.BIN, game-internals 6q) with girl
 # GIRL; -Part N and -Club C (N, C >= 0) set its part and the player's club.
 # -Birthday runs force_birthday.py instead: the player's birthday on Monday
-# 4/25 with GIRL's present (-Girl -1: nobody's; game-internals 6r). Contact
+# 4/25 with GIRL's present (-Girl -1: nobody's; game-internals 6r).
+# -GirlBirthday: GIRL's birthday on -Date (default 4/25; 6s), played as
+# Shiori's birthday with the scene's girl switched to GIRL. Contact
 # sheet: .emu\shots\<Prefix>_sheet.png. -Hidden hides the emulator window.
 param([Parameter(Mandatory)][int]$Girl, [int]$Scene = 0, [int]$Presses = 14, [string]$Type = "0x48",
-      [switch]$Welcome, [int]$Part = -1, [int]$Club = -1, [switch]$Birthday,
+      [switch]$Welcome, [int]$Part = -1, [int]$Club = -1, [switch]$Birthday, [switch]$GirlBirthday, [string]$Date = "4/25",
       [string]$Prefix = "", [string]$Keys = "C",
       [string]$State = ".emu\savestates_backup\dates_sunday_0423_candidate.sav",
       [string]$Build = "review_dates", [switch]$Hidden)
@@ -26,6 +28,10 @@ if ($Welcome) {
     $a = @("tools/emu/force_club_welcome.py", "$Girl", "--timeout", "300")
     if ($Part -ge 0) { $a += @("--part", "$Part") }
     if ($Club -ge 0) { $a += @("--club", "$Club") }
+}
+if ($GirlBirthday) {
+    $a = @("tools/emu/force_birthday.py", "--her", "0", "--date", $Date)
+    if ($Girl -ne 0) { $a += @("--as", "$Girl") }
 }
 if ($Birthday) {
     $a = @("tools/emu/force_birthday.py", "--timeout", "300")

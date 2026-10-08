@@ -1681,6 +1681,57 @@ before arming the breakpoint. Note: `0x800B6D40` is the LBA of the **last
 CD read**, not of the loaded overlay; right after an overlay loads a data
 file it no longer identifies the overlay.
 
+### 6s. The girls' birthdays (`SERIFU/G_BIRTH.BIN`) and the gift names
+
+Found 2026-10-08 by static tracing and DuckStation runs
+(`force_birthday.py --her/--as`, testing.md "The girls' birthdays").
+Translated in `translation/girl_birthdays.json`.
+
+**Trigger.** A girl's birthday (u32 at `0x800E644C + 0x38·girl`, bits 0–3
+month, 4–8 day; Shiori 2/3 on the test save, `0xE2`) set to an upcoming
+school day makes her birthday scene play that day in GEKO.EXN, for a girl
+the save has met. Setting only the met bit (bit 1 of `0x800E6448 +
+0x38·girl`) for an unmet girl didn't: the game queued her first-meeting
+scene (G_APPEAR, §6p) instead, and no birthday. The birthday check isn't in
+GEKO (no read of `0x644C` there); the EXE, DATE, KANGEI, SHOUGATU and
+SHUGAKU read the field (`0x80052DA4(who, month, day)` is the EXE's
+"is it this person's birthday" test, who 0xF = the player). Not traced.
+
+**File.** 45,056 bytes at LBA 44813 (22 sectors), base `0x801B0000` (same
+as P_BIRTH, §6r), checksum trailer. 13 sections from GEKO's fill
+`0x80134D10` (tables `0x80144F10`: 13 masters, 13 code lists, 12 third
+pointers); they reach 584 pointers, 582 strings the dumper finds plus two
+empty `09` placeholders (`0xAC60`, `0xAC64`, parts 27 and 30 of section 11).
+GEKO's switch `0x801361D4` (jump table `0x801448A0`): girl 0 Shiori → 1,
+1 Mio → 5, 2 Yuina → 2, 3 Ayako → 3, 4 Saki → 10, 5 Yukari → 6, 6 Nozomi →
+8, 7 Mira → 4, 8 Yuko → 0, 9 Megumi → 9, 10 Yumi → 12; section 11 is the
+gift choice lists and section 7 a copy of Nozomi's (no girl id maps to it).
+Each girl's parts: 0 "today is {G}'s birthday", the give/skip action choice
+(`08`); 1 skip; 2–3 "what should I get her?" and "I'll go with {A}"; 4–12
+the meeting by rank (four greetings); 13/15/17 her reaction (loved / fine /
+disliked) with 14/16/18 the player's thought; Shiori, Yuina and Nozomi
+also have 19–35: calling her out on a holiday (no number known, three
+answers by rank, "Click.", meeting at home or the park, the hand-over), the
+phone greeting by rank, and "she's not home". The gift choice is one part
+of section 11 (three options, shown shuffled; which part each girl gets
+wasn't traced: Shiori's run listed CD/handkerchief/earrings, part 0, and
+Yuina's perfume/CPU book/whip, part 6).
+
+**`{A}` is the chosen gift's name**, from a 99-record × 33-byte table
+(`クラシックのＣＤ`, `ハンカチ` …; records 90–92 empty) that six overlays
+carry identically: DATE `0x2B108`, DATE2 `0x8878`, GEKO `0x131FC`, KANGEI
+`0x8570`, SHOUGATU `0x120C0`, SHUGAKU `0x91AC` (file offsets). All six are
+translated with `"slot": 33`, using the same English as the gift options.
+BUNKAKEN, BUNKASAI and GYOZI have **different** tables at the same layout
+(only the first 9 or 42 records match; e.g. GYOZI's 料理の鉄人ビデオ全４巻
+without お); they belong to other events and are left for those files.
+
+**Location banners** in GEKO (`0x12710`–`0x12864`, strcpy'd like
+SHOUGATU's, §6p): 校門前, 近所の公園, 玄関, 廊下, 自宅前, the club rooms,
+グランド, プール, 体育館, and two プルルルルル (phone ringing) strings
+drawn by `0x8004E788`. Translated in place in `girl_birthdays.json`; they
+also show in walk-home and other GEKO scenes.
+
 ## 7. Graphics
 
 ### General
