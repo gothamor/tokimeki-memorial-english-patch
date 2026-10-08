@@ -5,15 +5,15 @@ English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
 <!-- progress:start -->
-**Translated: 11%**
+**Translated: 12%**
 
 ```text
-Whole game             ██░░░░░░░░░░░░░░░░░░    11%
-Dialogue               ██░░░░░░░░░░░░░░░░░░   9.9%
+Whole game             ██░░░░░░░░░░░░░░░░░░    12%
+Dialogue               ██░░░░░░░░░░░░░░░░░░    10%
 Menus and other text   █████░░░░░░░░░░░░░░░    26%
 ```
 
-<sub>67,250 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>68,314 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage
@@ -64,6 +64,8 @@ existing output folder.
 - **First meetings** with nine of the girls (Yuko, Yuina, Ayako, Mira,
   Mio, Yukari, Nozomi, Saki, Yumi), including the location banners
   ([meetings.json](translation/meetings.json)).
+- **Joining a club:** the girl already in it welcomes you
+  ([club_welcome.json](translation/club_welcome.json)).
 - **Girls asking you out** for Sunday: the invitation for every place,
   your answer and the meeting place
   ([invitations.json](translation/invitations.json)).

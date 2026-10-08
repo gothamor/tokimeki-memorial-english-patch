@@ -1,12 +1,14 @@
 """List the GEKO.EXN script sections: parts, speaker codes, strings.
 
 Usage:
-  python tools/geko_sections.py [--invite | --appear] [--strings] [--girl N]
+  python tools/geko_sections.py [--invite | --appear | --nyubu] [--strings] [--girl N]
 
 Default: SERIFU/GEKO.BIN, walking home (game-internals 6n). --invite:
 SERIFU/G_INVITE.BIN, a girl asking the player out (6o), from GEKO.EXN's
 13-entry tables at 0x80147630. --appear: SERIFU/G_APPEAR.BIN, the first
-meetings (6p), from SHOUGATU.EXN's 9-entry tables at 0x80144D90.
+meetings (6p), from SHOUGATU.EXN's 9-entry tables at 0x80144D90. --nyubu:
+SERIFU/NYUBU.BIN, a girl welcoming the player to her club (6q), from
+KANGEI.EXN's 8-entry tables at 0x80139950.
 
 GEKO.EXN holds three parallel 12-entry tables at 0x80144BA0 (masters),
 0x80144BD0 (code-byte lists) and 0x80144C00 (third pointers), one entry per
@@ -44,6 +46,10 @@ APPEAR_TABLE = 0x80144D90   # in SHOUGATU.EXN, filled by 0x80136F90
 # girls 1-8 and 10; each girl's handler copies one entry (game-internals 6p).
 APPEAR_NAMES = ["Yuko", "Yuina", "Ayako", "Mira", "Mio", "Yukari", "Nozomi",
                 "Saki", "Yumi"]
+NYUBU_TABLE = 0x80139950    # in KANGEI.EXN, filled by 0x80132090
+# KANGEI.EXN's switch at 0x8013260C (jump table 0x80139668) maps girls 0-6
+# to sections 0, 3, 1, 2, 6, 4, 5; girl 7 and up get section 7 (6q).
+NYUBU_NAMES = ["Shiori", "Yuina", "Ayako", "Mio", "Yukari", "Nozomi", "Saki", "(default)"]
 CODES = {0: "player", 1: "girl", 2: "reply", 3: "choice", 4: "note", 6: "thought",
          7: "sound", 8: "action", 9: "sfx", 0x0A: "Yoshio", 0x0C: "girl+", 0x0D: "girl+2"}
 
@@ -79,17 +85,22 @@ def main():
     ap.add_argument("--file")
     ap.add_argument("--invite", action="store_true", help="G_INVITE.BIN instead of GEKO.BIN")
     ap.add_argument("--appear", action="store_true", help="G_APPEAR.BIN (tables in SHOUGATU.EXN)")
+    ap.add_argument("--nyubu", action="store_true", help="NYUBU.BIN (tables in KANGEI.EXN)")
     ap.add_argument("--exn", default=str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"))
     ap.add_argument("--strings", action="store_true", help="print each string's Japanese")
     ap.add_argument("--girl", type=int)
     args = ap.parse_args()
-    name = "G_INVITE.BIN" if args.invite else "G_APPEAR.BIN" if args.appear else "GEKO.BIN"
+    name = ("G_INVITE.BIN" if args.invite else "G_APPEAR.BIN" if args.appear else
+            "NYUBU.BIN" if args.nyubu else "GEKO.BIN")
+    if args.nyubu and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
+        args.exn = str(ROOT / "extracted/CDROM/EXEDIR/KANGEI.EXN")
     if args.appear and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
         args.exn = str(ROOT / "extracted/CDROM/EXEDIR/SHOUGATU.EXN")
     geko = Path(args.file or ROOT / "extracted/CDROM/SERIFU" / name).read_bytes()
     exn = Path(args.exn).read_bytes()
     table, count, names = ((INVITE_TABLE, 13, INVITE_NAMES) if args.invite else
-                           (APPEAR_TABLE, 9, APPEAR_NAMES) if args.appear else (TABLE, 12, GIRLS))
+                           (APPEAR_TABLE, 9, APPEAR_NAMES) if args.appear else
+                           (NYUBU_TABLE, 8, NYUBU_NAMES) if args.nyubu else (TABLE, 12, GIRLS))
     total = 0
     for g, master, parts in sections(geko, exn, table, count):
         n = sum(len(s) for _, s in parts)

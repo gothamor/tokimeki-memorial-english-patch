@@ -811,6 +811,34 @@ scenes, Yukari's doubles, Nozomi's swim-team scenes, Saki's soccer and
 manager scenes), the other banners, natural triggers. Normal build
 (`.emu/default_meet/`, 23 files) byte-identical to the candidate.
 
+### Club welcome (NYUBU.BIN, 2026-10-08)
+
+`meet_run.ps1 -Girl G -Welcome [-Club C] [-Part N] -Hidden` runs
+`tools/emu/force_club_welcome.py`: at the next weekday's day record it
+sets the scene's girl (`0x800E69DD`) and makes the day handler enter main
+state `0x60` (KANGEI.EXN's club-welcome entry), optionally setting the
+player's club and the part (game-internals §6q). The scene plays on Monday
+4/25 right after the week starts. A first attempt with a forced day
+record type `0x42` reached the training camp instead (same overlay,
+other entry), and type `0x20` the sports day.
+
+**Give Shiori a club.** On the 95/4/23 save the player has none (11);
+Shiori's background is looked up by club, and her scene sat on an empty
+box forever. The same happened with the untranslated NYUBU (an unpatched
+build swapped into `.emu/review_dates/`), so it's the forcing, not the
+patch; with `-Club 6` / `7` / `0` it plays.
+
+Candidate in `.emu/review_dates/`: only NYUBU's three sectors (LBA
+44860–44862) differ from the default build; checksum valid. Seen in
+English (sheets `w*`, `x*`): Shiori's baseball (club 6, part 2), soccer
+(club 7, part 5) and general (part 0) welcomes; Yuina; Ayako's Art Club
+and Band; Mio; Yukari; Nozomi; Saki's soccer part; section 7 (girl 10,
+label Yumi). The player's "{G}," lines showed a space before the comma
+for Mio, Yuina and Ayako; reworded to end on the name ("Hi, {G}" /
+"Oh, {G}") and re-checked. Not seen: the other parts, the natural trigger.
+Normal build (`.emu/default_nyubu/`, 24 files) byte-identical to the
+candidate.
+
 ### Disassembly
 
 ```bash

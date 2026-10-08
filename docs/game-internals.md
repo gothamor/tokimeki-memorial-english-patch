@@ -1576,6 +1576,56 @@ label before her introduction, to `0x800CA188`) and 廊下, 教室, 実験室, �
 `tools/code_strings.py SHOUGATU.EXN --range 0x11600 0x11a00` lists them
 with their callers.
 
+### 6q. A girl welcomes the player to her club (`SERIFU/NYUBU.BIN`)
+
+Found 2026-10-08 by static tracing of `KANGEI.EXN` and the EXE, then forced
+in DuckStation (`tools/emu/force_club_welcome.py`, testing.md "Club
+welcome"). Translated in `translation/club_welcome.json`.
+
+**KANGEI.EXN serves three main states** with different entry points (the
+EXE's overlay-entry switch, jump table `0x800B1BEC` indexed by state −
+0x11): `0x60` → `0x80132000` (this scene), `0x5F` → `0x80132FF8` (the
+training camp: GASSHUKU.BIN / GASSH_FU.BIN and the NOZOKI peeking event),
+`0x72` → `0x80141280`. The day handler enters `0x5F` for record type
+`0x42` (a forced one on 4/25 started the camp: "合宿所に着いたぞ") and
+`0x72` for type `0x20` (a forced one started the sports day, 体育祭).
+KANGEI also has loaders for G_BIRTH.BIN and P_BIRTH.BIN (`0x80138CE4`,
+`0x80138D1C`), not traced to a state. (The older "loader switch at
+`0x800B19E8`", §3, is the overlay-load table; the entry table is separate.)
+
+**Trigger.** State `0x60` is set in `0x80077908` (reached through a
+function table at `0x80076FAC`, not by `jal`): on a weekly club day with
+the player in a club (`*(u16*)0x800E6374 >> 12` ≠ 11), `0x80053564(club)`
+returns the girl in that club, stored as the scene's girl `0x800E69DD`, and
+her byte `0x800E6280 + 0x38·girl + 0x1CA` gets bit 2 (seen once). Other
+conditions there (a byte `0x800E62C1` = 6, a day-record girl of 4, the
+day count `0x800E62C2` < `0x2DA`) weren't decoded.
+
+**File and sections.** 6,144 bytes at LBA 44860 (3 sectors), base
+`0x80197000`, checksum trailer, 93 strings, no choices. The step list at
+`0x801399B0` (21 steps) loads it at step 3 (`0x801324D8`), and `0x80132090`
+fills three parallel 8-entry tables at `0x80139950` (masters, code lists,
+third pointers; the EVENT_FU layout, §6j). `0x8013260C` picks the entry by
+girl (jump table `0x80139668`): girls 0–6 (Shiori, Mio, Yuina, Ayako, Saki,
+Yukari, Nozomi) → sections 0, 3, 1, 2, 6, 4, 5; any other girl → section 7,
+a basketball-team line ("バスケ部に入部してくれたんですね"). Which girl, if
+any, reaches section 7 in normal play wasn't found; forced with girl 10 the
+label showed Yumi. `tools/geko_sections.py --nyubu` lists the sections.
+The part (`*(s16*)0x800CA148`) is chosen at `0x80132A00`–`0x80132C0C` from
+the player's club and the girl's flags (`0x800E6448 + 0x38·girl` bit 2:
+whether he already knew she was in the club, giving "so you joined" vs.
+"so you're in this club").
+
+**Backgrounds by club.** Step 9 (`0x80132C24`) picks the background's LBA
+for the girl; Shiori's and three other cases index a table by the
+player's club. With no club (11) Shiori's lookup reads past her 11-entry
+table, step 10 waits forever for a CD read, and the box stays empty
+(unpatched too). Natural play can't reach that (the scene needs a club),
+so the forcer has `--club`.
+
+**Codes.** `00` player, `01` girl, `0C`/`0D` "Oh, {P}" and her greeting in
+one box. `{P}` is the name plus the girl's suffix (君 or さん).
+
 ## 7. Graphics
 
 ### General

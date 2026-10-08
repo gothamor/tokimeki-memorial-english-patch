@@ -17,7 +17,9 @@ wasn't seen is in the AGENTS.md status table:
 - after Yuko's dates: the first meetings, `meetings.json` (all of
   `G_APPEAR.BIN` plus SHOUGATU.EXN's banners; §6p). That work added
   in-string speaker labels to `script.py` (`{>部長}`), `meet_run.ps1`, and
-  a hidden-emulator option (testing.md).
+  a hidden-emulator option (testing.md);
+- the club welcome, `club_welcome.json` (all of `NYUBU.BIN`; §6q), with
+  `force_club_welcome.py`.
 
 ## Why Yuko, and what was checked (2026-10-08)
 
@@ -157,6 +159,9 @@ her spring Arcade **date event** (EVENT_AS) replaces the regular part on a
 - **Megumi's meeting**: she isn't in `G_APPEAR.BIN` (girl 9 has no
   handler in SHOUGATU's meeting switch); find where she's introduced
   (probably through Shiori) before calling the meetings complete.
+- **KANGEI.EXN's other text**: the training camp (`GASSHUKU.BIN`,
+  `GASSH_FU.BIN`) and the birthdays (`G_BIRTH.BIN`, `P_BIRTH.BIN`) are
+  run by the same overlay (§6q); day record type `0x42` forces the camp.
 - **Other SERIFU files with label prefixes**: `EVENT_OT.BIN` starts a
   line with `-女生徒`; re-dump such files with the current dumper.
 - **The other nine girls' date files**, in rough size order: Megumi
