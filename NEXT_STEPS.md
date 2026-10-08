@@ -135,6 +135,10 @@ sectors change, checksum valid.
 
 ## Later candidates
 
+- **`G_BIRTH.BIN`** (about 8,900 characters, the girls' birthdays): loads to
+  `0x801B0000` like P_BIRTH, and GEKO has its table fill at `0x80134D10`
+  (game-internals §6r). `P_BIRTH.BIN` (the player's birthday) is done:
+  `birthday.json`, `force_birthday.py`.
 - **Other girls' `EVENT_*.BIN`**: follow this plan; their entries are the
   other blocks of the 79-entry table (find them by which entries reach the
   file's strings, as for Yuko).

@@ -865,6 +865,26 @@ with `dialogue_budget.py`'s per-string overrun list as the guide. Normal
 build (`.emu/default_evas/`, 25 files) byte-identical to the candidate.
 Not tested: natural triggers, the parade at its own step.
 
+### The player's birthday (P_BIRTH.BIN, 2026-10-08)
+
+`meet_run.ps1 -Girl G -Birthday -Hidden` (or `-Girl -1` for nobody) runs
+`tools/emu/force_birthday.py`: it sets the player's birthday to 4/25 on
+the Sunday state, so the scene plays by itself on Monday after the first
+weekly command (game-internals §6r), and with a girl it sets her as the
+one bringing a present. First attempts broke at KANGEI's selector and
+watched `0x800B6D40` for KANGEI's LBA; neither worked, because the scene
+ran in GEKO and that address holds the last CD read's LBA. The forcer now
+polls for GEKO's or KANGEI's code at the selector.
+
+Untranslated reference: nobody (`pb1`), Shiori (`pbs`). Candidate in
+`.emu/review_dates/`: only P_BIRTH's 3 sectors (LBA 44867–44869) differ
+from the default build; checksum valid. Seen in English (sheets `pbx_*`,
+`pbA`–`pbD`): nobody, and every girl's present (girls 0–10; Yumi's via the
+default section). "Yuina , for me?" and "(Yuina  gave me" showed the
+odd-length name's padding; both reworded to end the line on the name and
+re-checked (`pbz`). Not seen: section 2 (KANGEI's flow). Normal build
+(`.emu/default_pbirth/`, 26 files) byte-identical to the candidate.
+
 ### Disassembly
 
 ```bash

@@ -1642,6 +1642,45 @@ so the forcer has `--club`.
 **Codes.** `00` player, `01` girl, `0C`/`0D` "Oh, {P}" and her greeting in
 one box. `{P}` is the name plus the girl's suffix (君 or さん).
 
+### 6r. The player's birthday (`SERIFU/P_BIRTH.BIN`)
+
+Found 2026-10-08 by static tracing and a natural trigger in DuckStation
+(`tools/emu/force_birthday.py`, testing.md "The player's birthday").
+Translated in `translation/birthday.json`.
+
+**Trigger.** The player's birthday is bits 0–3 (month) and 4–8 (day) of
+the u32 at `0x800E6378` (1/1 on the test save; Shiori's is the same format
+at `0x800E644C`, §6j). Writing 4/25 on the Sunday 95/4/23 state makes the
+scene play by itself on Monday, in **GEKO.EXN** (main state `0x56`). It is
+not only KANGEI's: GEKO, KANGEI, DATE and SHOUGATU each contain a P_BIRTH
+loader (GEKO `0x8013448C`, KANGEI `0x80138D08`) and their own copy of the
+section tables (filled by GEKO `0x80134F84`, KANGEI `0x80137B90`), so the
+scene runs in whichever overlay serves that day. All copies point into the
+same file; the translation only moves strings inside it.
+
+**File.** 6,144 bytes at LBA 44867 (3 sectors), loaded to **`0x801B0000`**
+(G_BIRTH.BIN loads to the same address), checksum trailer, 79 strings.
+13 sections: 13 masters, 13 code lists and 12 third pointers. Girl →
+section through each overlay's switch (KANGEI's jump table `0x80139928`):
+0 Shiori → 1, 1 Mio → 6, 2 Yuina → 3, 3 Ayako → 4, 4 Saki → 10, 5 Yukari
+→ 7, 6 Nozomi → 8, 7 Mira → 5, 8 Yuko → 0, 9 Megumi → 9, any other girl
+→ 12 (Yumi's lines); section 11 is "nobody gave me a present". Section 2,
+a classmate calling "おーい、{p}、女の子が来てるぜ" (code `07`), is read
+only by KANGEI's flow (`0x801389AC`), probably a birthday during the
+training camp; not seen.
+
+**Who brings a present.** The selector (GEKO `0x80134840`–`0x80134950`,
+KANGEI `0x80138F88`) loops over met girls (bit 1 of `0x800E6448 +
+0x38·girl`) and keeps the one with the best rank (`0x80051A68(g) & 0x7F`,
+ties by the scores `0x80052C88`/`0x80052648`); she comes only if that rank
+is below 2 (GEKO also needs bit 3 of `0x800E699E` clear), else section 11.
+The forcer sets the girl and rank at the check (GEKO `0x80134930`: `fp`,
+`t7`; KANGEI `0x8013907C`: `s7`, `t5`). Both addresses are other code in
+the main-screen overlay, so it polls RAM for the overlay's code bytes
+before arming the breakpoint. Note: `0x800B6D40` is the LBA of the **last
+CD read**, not of the loaded overlay; right after an overlay loads a data
+file it no longer identifies the overlay.
+
 ## 7. Graphics
 
 ### General
