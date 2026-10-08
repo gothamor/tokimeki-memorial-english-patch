@@ -5,15 +5,15 @@ English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
 <!-- progress:start -->
-**Translated: 5.1%**
+**Translated: 7.4%**
 
 ```text
-Whole game             █░░░░░░░░░░░░░░░░░░░   5.1%
-Dialogue               █░░░░░░░░░░░░░░░░░░░   2.9%
+Whole game             █░░░░░░░░░░░░░░░░░░░   7.4%
+Dialogue               █░░░░░░░░░░░░░░░░░░░   5.4%
 Menus and other text   █████░░░░░░░░░░░░░░░    25%
 ```
 
-<sub>30,064 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>43,173 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage
@@ -55,8 +55,10 @@ existing output folder.
   They're rare in normal play.
 - **Shiori's regular dates (all):** meeting her, every place's
   conversations, choices and replies, the end of the date and the way home
-  ([shiori_dates.json](translation/shiori_dates.json)). The walk-home talks
-  (`GEKO.BIN`) are still Japanese.
+  ([shiori_dates.json](translation/shiori_dates.json)).
+- **Walking home from school** with any of the girls: her invitation or
+  yours, her answer, and the chat on the way about upcoming events
+  ([walk_home.json](translation/walk_home.json)).
 - **Lines shared by every girl's dates:** the impression thought after each
   choice, the concert and movie blurbs, and the "did I get the meeting place
   wrong?" monologue with its place names
@@ -105,7 +107,7 @@ existing output folder.
 | `translation/*.json` | The translation: `strings`, `dialogue` and `images` entries |
 | `translation/graphics/` | Replacement graphics (indexed PNGs using the game's palettes) |
 | `translation/font/free_glyphs.txt` | Font glyphs the game never uses (research data; no longer used by the patcher) |
-| `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation (`make_title_menu.py`, `make_main_screen.py`), renderer check, translation progress (`progress.py`), code-string lister (`code_strings.py`) |
+| `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation (`make_title_menu.py`, `make_main_screen.py`), renderer check, translation progress (`progress.py`), code-string lister (`code_strings.py`), walk-home section lister (`geko_sections.py`) |
 | `tests/` | Unit tests on synthetic data (`python -m unittest discover tests`) |
 | `tools/emu/` | Emulator test harness: isolated DuckStation, input driver with screen detection, GDB client, file-load tracer, read-watchpoint logger, girl-event watcher and event/date/Christmas forcers |
 

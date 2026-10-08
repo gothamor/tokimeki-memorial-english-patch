@@ -1,6 +1,6 @@
 # Next steps
 
-No task is active. The last two finished on 2026-10-08:
+No task is active. The last three finished on 2026-10-08:
 
 - **Shared date lines** (`SERIFU/SERIFU.BIN` and the `DATE.EXN` place
   names): `translation/date_shared.json`. See game-internals §6l and
@@ -8,17 +8,17 @@ No task is active. The last two finished on 2026-10-08:
 - **Phone calls** (`EXEDIR/TEL.EXN`): `translation/phone_calls.json`, all 680
   strings. See game-internals §6m, testing.md "Phone calls" and
   translation-guide (strings the code addresses directly).
+- **Walking home** (`SERIFU/GEKO.BIN`): `translation/walk_home.json`, all
+  996 text strings. See game-internals §6n and testing.md "Walking home"
+  (`tools/emu/force_walk.py`, `walk_run.ps1`, `tools/geko_sections.py`).
 
 What was and wasn't seen on screen is in the AGENTS.md status table.
 
 ## Candidates for the next task
 
-1. **`SERIFU/GEKO.BIN`, the walk-home talks** (1,011 strings, ~13,100
-   characters). A plain script file, like `EVENT_FU`/`DATE_FU`, so the
-   dump/budget/repack workflow carries over unchanged. Plan it in batches
-   (the DATE_FU plan in git history `ba3bbf3` is the template), with the
-   same limited-testing policy. Forcing a walk home with a given girl needs
-   a forcer (GEKO's event selector is partly mapped in game-internals §6j).
+1. **`SERIFU/G_INVITE.BIN`**: a girl phoning/asking the player out for
+   Sunday (record type `0x46`, game-internals §6n). GEKO.EXN loads it, and
+   `force_event.py 0 0 --type 0x46` already reaches Shiori's version.
 2. **`FUKUTEST/JOHO.NBN`**: the values on Yoshio's girl info card (sign,
    blood type, club, notes, §6m). It's an `.NBN` file, so check first
    whether the text is plain Shift-JIS strings or graphics.

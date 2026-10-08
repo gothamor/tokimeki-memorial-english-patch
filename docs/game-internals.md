@@ -1358,6 +1358,67 @@ player's thoughts. A missed date (§6l) is followed at home by the
 answering-machine message (data area, one list per girl × 3 moods) and
 the player's realization.
 
+### 6n. Walking home from school (`SERIFU/GEKO.BIN`)
+
+Found 2026-10-08 by tracing `GEKO.EXN` and the EXE's day handler, then
+forced in DuckStation (`tools/emu/force_walk.py`, testing.md "Walking
+home"). Translated in `translation/walk_home.json`.
+
+**Trigger.** Day record type `0x44` (`44 GIRL 00 00`, the girl in byte 1)
+in the event queue (§6j): the handler `0x80072030` enters state `0x59`
+(GEKO.EXN) if the girl has been met (bit 1 of `0x800E6448 + 0x38·girl`),
+unless the previous record was type `0x28`/`0x47` or `0x800E6375 & 0xF ==
+3`. GEKO.EXN serves several states: `0x5A` (record type `0x46`) is a girl
+asking the player out for Sunday, from `SERIFU/G_INVITE.BIN` (not this
+file); `0x5D` (type `0x45`) the special events (§6j). The weekly picker
+`0x80070850` writes the type-`0x46` records; who writes type `0x44` wasn't
+traced. The walk's entry is `0x80132244`: substate `0x800E7389` 0 runs the
+step list `0x80144C5C` (the walk), 1 the list `0x80144D40` (the talk on the
+way).
+
+**File.** 73,728 bytes at LBA 44744 (36 sectors), base `0x80197000`,
+checksum trailer. 1,011 strings (492 distinct texts: the same lines recur
+across girls), all reached from 12 sections. Three parallel 12-entry tables
+in GEKO.EXN at `0x80144BA0` (masters), `0x80144BD0` (code-byte lists),
+`0x80144C00` (third pointers), the EVENT_FU layout (§6j). The section isn't
+the girl id: the switch at `0x801327AC` (jump table `0x80144724`) maps
+girls 0–10 to sections **1, 5, 2, 3, 9, 6, 7, 4, 0, 8, 11** (Shiori, Mio,
+Yuina, Ayako, Saki, Yukari, Nozomi, Mira, Yuko, Megumi, Yumi), and section
+10 is the player's own thoughts (set up for every walk at `0x801326D4`).
+`tools/geko_sections.py --strings [--girl S]` lists them.
+
+**Parts** (each girl's section, ~40 parts; s16 part index at `0x80144C3C`,
+read through `0x800CA134` like DATE's):
+
+| Parts | Content |
+|---|---|
+| 0 | (section 10) "Phew, what a long day" thought |
+| 1–5 | she waited for the player: invitation + action choice (`08`), accepted (2, 3 "{G} and I had a nice walk home"), turned down (4, 5 / section 10 regret thoughts) |
+| 6–11 | the player spots her and calls out; `0C`+`0D` "Oh, {P}." + "Heading home?" share one box; his choice; she agrees (8) |
+| 12–17 | same, but she has other plans (14) |
+| 18–21 | she runs off ("‥‥‥‥‥。"), the player wonders if he hurt her |
+| 22 | "And then..." (code `07`) |
+| 23–38 | the talk on the way, one per topic: exams, culture festival (24–27 by club), sports day, school trip (29–30), New Year, her birthday, summer/winter/spring break, moving up to 2nd/3rd year, graduation |
+| 39 | "We talked about things like that on our walk home" |
+| 40–42 | Saki only: Koshien / National Stadium / future (club manager lines), Mira only: she parts at a corner (40–41) |
+
+The opening is chosen by the girl's rank (`0x80051A68`, §6j) at
+`0x801331A0`: base part 0 for rank 0/1, +6 for rank 2, +12 for rank 3,
++18 for rank 4 (or flag byte `0x80144C58`). The talk on the way only runs
+when a topic is pending: byte `0x80144C50` (0 = none) is proposed from the
+calendar by `0x80132A4C(topic)`; the talk's part is 22 + the topic id
+(`0x80133F94`). Forced: ranks 0, 2, 3, 4 and topics 1 (exams) and 12
+(winter break) by `force_walk.py --rank R --topic P`.
+
+Code bytes as in EVENT_FU: `00` player, `01` girl, `03`/`08` choices, `06`
+thought (the game draws both brackets), `07` narration, `0C`/`0D` two girl
+strings in one box, `09` and some empty strings (`0x11CC8`–`0x11EB8`) are
+placeholders. `{M}` in the culture-festival lines is the player's club.
+Oddities: Mira's part-7 choice (`0x68F0`) separates its two options with a
+line break instead of `{q}`; on screen it shows as two normal options like
+the others (the choice box splits on line breaks too), so the English keeps
+the line break. Shiori's lines use 詩織 instead of `{G}` in three places.
+
 ## 7. Graphics
 
 ### General

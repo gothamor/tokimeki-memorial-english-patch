@@ -668,6 +668,34 @@ declined date, cold or stood-up calls, Yoshio's warnings and Yumi
 answering, Miharu's wrong numbers, the anthology thanks, Tome, the club
 captain, the girl-ratings screen.
 
+### Walking home (GEKO.BIN, 2026-10-08)
+
+`tools/emu/force_walk.py GIRL [--rank R] [--topic P]` (game-internals §6n)
+marks the girl as met, turns Monday's day record into a walk-home record
+`44 GIRL 00 00`, and with `--rank` makes every rank call in the walk return
+R (0/1 she waited for you, 2 you call out and she agrees, 3 she has plans,
+4 she runs off); `--topic P` makes the walk end with the talk on the way,
+part P (23-38). `tools/emu/walk_run.ps1 -Girl G [-Rank R] [-Topic P]
+[-Presses K]` launches the Sunday state, runs it detached (log
+`.emu/walk_run.log`), picks the first weekly command and screenshots K
+boxes (`C` also takes the first option of each choice). The walk plays
+on Monday 4/25, straight after the week starts.
+
+Results on the candidate in `.emu/review_dates/` (only GEKO.BIN's sectors,
+LBA 44744-44779, changed): Shiori rank 0 (she waits and asks, the choice,
+accepting, "Shiori and I had a nice walk home") and with topic 23 (exams:
+"And then...", her question, his answers, the closing thought); Yuko rank 2
+(he calls out, the shared `0C`/`0D` box "Oh, {P}. / Heading home?", the
+choice, "grab a drink", topic 34: the four-line winter-plans string
+scrolls); Mira rank 3 (plans with another boy); Megumi rank 4 (she runs
+off); Mira rank 2 (her line-break choice shows as two options). Before the translation, an unpatched-text run of Shiori (`gw`) showed
+the same flow in Japanese (she declined). The section-10 thought
+"Phew, what a long day" opens every walk.
+
+Not seen: the other girls' sections (Mio, Yuina, Ayako, Saki, Yukari,
+Nozomi, Yumi), the declined-invitation paths and regret thoughts, the
+other topics, Saki's and Mira's extra parts, natural triggers.
+
 ### Disassembly
 
 ```bash
