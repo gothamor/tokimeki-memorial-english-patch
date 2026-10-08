@@ -5,15 +5,15 @@ English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
 <!-- progress:start -->
-**Translated: 3.5%**
+**Translated: 5.1%**
 
 ```text
-Whole game             █░░░░░░░░░░░░░░░░░░░   3.5%
+Whole game             █░░░░░░░░░░░░░░░░░░░   5.1%
 Dialogue               █░░░░░░░░░░░░░░░░░░░   2.9%
-Menus and other text   ██░░░░░░░░░░░░░░░░░░   8.5%
+Menus and other text   █████░░░░░░░░░░░░░░░    25%
 ```
 
-<sub>20,365 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>30,064 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage
@@ -60,8 +60,12 @@ existing output folder.
 - **Lines shared by every girl's dates:** the impression thought after each
   choice, the concert and movie blurbs, and the "did I get the meeting place
   wrong?" monologue with its place names
-  ([date_shared.json](translation/date_shared.json)). The answering-machine
-  message after a missed date (`TEL.EXN`) is still Japanese.
+  ([date_shared.json](translation/date_shared.json)).
+- **Phone calls:** calling the girls to ask them out (greetings, yes/no,
+  the date and place picker), calling Yoshio for advice and girl info,
+  Ijuin, the answering-machine messages after a missed date, and the other
+  calls in `TEL.EXN` ([phone_calls.json](translation/phone_calls.json)).
+  The girl info card's values are still Japanese.
 - **Main game loop:** the weekly command screen's stat panel (Health, Art,
   Looks, Lit., Sport, Guts, Sci., Trivia, Stress), the calendar
   (`95 / 4 / 23 (Su)`), the player's thought prompts, and the in-game
@@ -101,7 +105,7 @@ existing output folder.
 | `translation/*.json` | The translation: `strings`, `dialogue` and `images` entries |
 | `translation/graphics/` | Replacement graphics (indexed PNGs using the game's palettes) |
 | `translation/font/free_glyphs.txt` | Font glyphs the game never uses (research data; no longer used by the patcher) |
-| `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation (`make_title_menu.py`, `make_main_screen.py`), renderer check, translation progress (`progress.py`) |
+| `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation (`make_title_menu.py`, `make_main_screen.py`), renderer check, translation progress (`progress.py`), code-string lister (`code_strings.py`) |
 | `tests/` | Unit tests on synthetic data (`python -m unittest discover tests`) |
 | `tools/emu/` | Emulator test harness: isolated DuckStation, input driver with screen detection, GDB client, file-load tracer, read-watchpoint logger, girl-event watcher and event/date/Christmas forcers |
 

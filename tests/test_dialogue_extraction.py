@@ -94,6 +94,17 @@ class StartsString(unittest.TestCase):
         self.assertFalse(dump_dialogue.starts_string(self.data, BASE, self.at["after_table"] + 2))
         self.assertFalse(dump_dialogue.starts_string(self.data, BASE, self.at["long"] + 4))
 
+    def test_after_record_table(self):
+        # TEL.EXN: strings follow tables of 4-byte records like 27 00 00 03,
+        # or 5a 00 00 20 (the last byte equals the line-break code).
+        text = "あっ…。".encode("shift_jis") + b"\0"
+        for record in (b"\x27\x00\x00\x03", b"\x5a\x00\x00\x20"):
+            data = b"\0" * 8 + record + text
+            self.assertTrue(dump_dialogue.starts_string(data, BASE, 12), record.hex())
+        # ...but a line break inside a string is not a start.
+        data = b"\0" * 4 + "あいう".encode("shift_jis") + b" " + "えお".encode("shift_jis") + b"\0"
+        self.assertFalse(dump_dialogue.starts_string(data, BASE, 11))
+
     def test_after_word_pointing_outside_the_file_rejected(self):
         self.assertFalse(dump_dialogue.starts_string(self.data, BASE, self.at["after_foreign"]))
 

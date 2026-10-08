@@ -631,6 +631,43 @@ them an edited note, the ending, the week continuing). EVENT_FU's 157
 strings were checked statically: all its `04`/`06` thoughts already end
 evenly. The normal build is byte-identical to the candidate.
 
+### Phone calls (TEL.EXN, 2026-10-08)
+
+No forcer needed: the phone works from any holiday screen. State
+`.emu/savestates_backup/phone_sat0429.sav` (Saturday 95/4/29, made from
+`.emu/review_dates/` by pressing `C` on the Sunday state, so a week of
+study runs) has the cursor on the first command icon. From it:
+- phone book: `Down` ×8 (one icon per press, waits of ~900 ms; faster
+  presses get dropped), `C`. In the book `Down` goes Yoshio → Shiori; from
+  Yoshio, `Down`,`Down` reaches Rei Ijuin.
+- **Shiori**: `Down`, `C`, then `C` through her greeting, the day picker
+  (the first offered day, 4/30), the place book (`Down`, `C`: Theme Park),
+  the invitation, her yes, the confirmation, "Click.", the thoughts.
+- **Yoshio**: `C` through the greeting to the two-item menu (`Down` is
+  "date spots", the cursor starts there), then the girl list (the cursor
+  starts on an empty row; `Up` reaches Shiori) and her info card.
+- **Ijuin**: the full call, then back to the holiday screen.
+- **Missed date**: the SERIFU wrong-place state
+  `.emu/savestates_backup/s3w_choice.sav`, `C` and on: waiting, going home,
+  the answering-machine message and the thoughts.
+
+Results (candidate in `.emu/review_dates/`; only TEL.EXN's text sectors and
+trailer and one EXE sector, the full-name table, changed): all of the above
+in English and within the boxes, including the composed lines (the
+greeting "Hi, it's / ま.", the invitation "4／30, would / Theme Park / work
+for you?", the date confirmation). On the info card "BWH." and "Notes"
+overlapped the game's colon (compared with the unpatched card from
+`shiori_0423_unpatched.sav` on the same path); shortened to "B W H" and
+"Memo" and re-checked. A fresh boot of the candidate (load the card save,
+a week of study, phone book) shows "S. Fujisaki"; the save states still
+show 藤崎詩織 because they keep the old EXE in RAM. The normal build is
+byte-identical to the candidate.
+
+Not seen: other girls' calls (only Shiori is in this save's book), a
+declined date, cold or stood-up calls, Yoshio's warnings and Yumi
+answering, Miharu's wrong numbers, the anthology thanks, Tome, the club
+captain, the girl-ratings screen.
+
 ### Disassembly
 
 ```bash

@@ -41,8 +41,18 @@ def starts_string(data: bytes, base: int, off: int) -> bool:
     """
     if off == 0 or data[off - 1] == 0:
         return True
+    # A byte below 0x40 that isn't the line-break code can't be part of a
+    # string (it's neither a Shift-JIS byte nor a control code). TEL.EXN puts
+    # strings straight after tables of 4-byte records like `27 00 00 03`
+    # (game-internals 6m), so this is a string start too.
+    if data[off - 1] < 0x40 and data[off - 1] != script.LINE_BREAK:
+        return True
     if off % 4 or off < 4:
         return False
+    # ...or a record whose last byte happens to be 0x20 (`xx 00 00 20`):
+    # the NULs two bytes back mean no string runs into this word.
+    if data[off - 2] == 0:
+        return True
     word = struct.unpack_from("<I", data, off - 4)[0]
     return base <= word < base + len(data)
 

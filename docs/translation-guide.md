@@ -237,6 +237,16 @@ every pointer to a moved string is rewritten (game-internals §6e). Example:
   ranges, parts, choices/replies and how to force each version (§6k of
   game-internals; testing.md "Testing date conversations").
 
+**Strings the code addresses directly** (overlays like `TEL.EXN`,
+game-internals §6m) can go in a `dialogue` block too: the patcher finds
+their `lui`/`addiu` references and keeps each in its own slot (original
+bytes + NUL + padding) instead of moving it; `dialogue_budget.py` reports
+the space. Use a separate block for them. Many are fragments the code
+glues together with `strcpy`/`strcat` (a name or date goes between them),
+so translate them as pieces of one sentence and check the joined result on
+screen. `python tools/code_strings.py FILE --range A B` (needs capstone)
+lists each such string with the call it feeds.
+
 **`"share_identical": true`** (per `dialogue` block): strings whose English
 encodes to the same bytes are stored once and all their pointers point at
 that copy. `DATE_FU.BIN` repeats "shall we go inside?" 31 times; sharing

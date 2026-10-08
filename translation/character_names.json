@@ -20,6 +20,7 @@
       "file": "SLPM_86.053",
       "base": "0x80040800",
       "lines": [
+        {"offset": "0x72C80", "original": "藤崎詩織", "text": "S. Fujisaki"},
         {"offset": "0x72C8C", "original": "如月未緒", "text": "Mio Kisaragi"},
         {"offset": "0x72C98", "original": "紐緒結奈", "text": "Y. Himoo"},
         {"offset": "0x72CA4", "original": "片桐彩子", "text": "A Katagiri"},

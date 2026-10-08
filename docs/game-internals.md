@@ -313,11 +313,12 @@ cache and 14 px advance as the UI, and **letter-pair English works unchanged**.
   table loads in `SLPM_86.053`; EXE RAM addresses convert to file offsets by
   subtracting `0x80040800` (§2).
 - **Name tables:** the adjacent full-name strings occupy file offsets
-  `0x72C8C`–`0x72D37`, with their 15-entry pointer table beginning at `0x72D3C`.
+  `0x72C80`–`0x72D37` (Shiori's at `0x72C80`), with their 16-entry pointer table
+  beginning at `0x72D38`.
   The 16 short speaker names occupy `0x72D78`–`0x72DF3`, followed immediately
   by their pointer table at `0x72DF4` (`0x800B35F4` in RAM). Both string areas
   are pooled and repointed by the dialogue patcher. The English full-name pool
-  uses 171 of 172 available bytes, so several given names have to be initials;
+  uses all 184 available bytes (with Shiori's "S. Fujisaki", §6m), so several given names have to be initials;
   the short-name pool uses 100 of 124 bytes.
 - Four special Shiori literals and four special Yoshio literals live at file
   offsets `0x71980`–`0x719DC` (RAM `0x800B2180`–`0x800B21DC`) and bypass the
@@ -1266,8 +1267,7 @@ Forced on screen (2026-10-08, testing.md "SERIFU.BIN"; this corrects the
 first, static reading, which had `69A4`/`69A5` swapped): staying ("it was
 here") or a wrong place leads to part 1/4 or 2/5/6, then part 7 ("she never
 came"). Back home **an answering-machine message** from the girl follows
-("ひどい事するのね…"); it is in `EXEDIR/TEL.EXN` (`0xDB5B`, `0x12B89`), not
-here, and is still Japanese. Being stood up (part 8) ends the same way.
+("ひどい事するのね…"); it is in `EXEDIR/TEL.EXN` (§6m), not here. Being stood up (part 8) ends the same way.
 Choosing the agreed place goes there and continues as the player-late
 meeting (§6k arrival 2), and **the date then takes place at the agreed
 place**, not the appointment's original one (a forced museum date became a
@@ -1287,6 +1287,76 @@ job.
 `{A}` and `{M}` are inserted by the renderer from those buffers; a
 pair-encoded name keeps its pairs (§6e), and an odd-length name ends in its
 padding space.
+
+### 6m. Phone calls (`EXEDIR/TEL.EXN`)
+
+Found 2026-10-08 by dumping the overlay, listing its code's string
+references (`tools/code_strings.py`), and calling Shiori, Yoshio and Ijuin
+in DuckStation. Translated in `translation/phone_calls.json`.
+
+**File.** Overlay, 196,608 bytes at LBA 39434, base `0x80132000`, checksum
+trailer. Opened from the main loop's phone icon (holiday screen; Down
+×8 from the first icon). Its text sits in two areas that work differently:
+
+- **Data area `0xE5F0`–`0x14F0C`** (470 strings): the call scripts. Strings
+  are followed by lists of pointers to them, one list per exchange; a
+  12-entry list is indexed by girl (Shiori, Mio, Yuina, Ayako, Saki, Yukari,
+  Nozomi, Mira, Yuko, Megumi, Yumi, then Ijuin), an 11-entry list by girl
+  without Ijuin, and 13-entry lists probably by mood or day. Between the
+  lists are tables of 4-byte records (`xx 0x 00 yy`, e.g. `5a 00 00 02`),
+  and some strings start right after such a record, without a NUL.
+  `dump_dialogue.py` treats a byte below `0x40` (other than the `0x20` line
+  break), or an aligned word ending `00 00 xx`, as a string start for this
+  reason. Every one of these strings has a pointer and none is addressed by
+  code, so the block is repacked like a SERIFU file; 8 strings have two
+  pointers (shared answers).
+- **Code area `0xC430`–`0xE4F4`** (219 strings): addressed directly by the
+  code (`lui` + `addiu`), so they stay in their own slots (the patcher keeps
+  code-referenced strings in place). They're printed one line at a time
+  (`0x80051010(text, line, speaker)`; speaker `13` = the callee, `15` the
+  player, `31` a thought, `47` a sound, `10` Yumi), a whole box at a time
+  (`0x80050E8C`), or are **fragments the code concatenates** with
+  `strcpy`/`strcat` (`0x800AE0F0`/`0x800AE100`) into a stack buffer:
+  - the player's greeting to Yoshio: "もしもし、" + player name + "ですけど。";
+    Yoshio's reply "おっ、" + name + "か。";
+  - the invitation (`0x80136A80`–): month digits (EXE table `0x800B3288`,
+    full-width) + 月 + day digits + 日 + "に、 " + place name (EXE table
+    `0x800B342C`, already English via `outings.json`) + "へ 行かない？";
+    the confirmation adds "の前で 待ち合わせということで。" and the
+    player's "やったー。 " + date + "が、楽しみだぜ。 ";
+  - Yoshio's girl info: name + "、" + name + "‥‥と。"; the request
+    name + "の" + "ことについて"; the missed-date thoughts
+    "しまった！！今日は、 " + name + "と デートの約束があったんだ。）" and
+    "そうかっ！ " + name + "は、 怒って来なかったのか。）".
+
+  In English the fragments are written as pieces of one sentence ("4／30, would
+  ⏎Theme Park⏎work for you?"). 月 became "／" and 日 ", ".
+- `0x80050DFC(text)` sets a custom speaker label: 留さん (Tome, the
+  fireworks man), 部長 (the club captain), and Yoshio's label for his own
+  lines. 自宅 ("Home") is a location banner.
+- The Yoshio menu ("ask about the girls / date spots") is drawn by
+  `0x80050D78`; the girl-info card labels (`0xE478`–`0xE4BC`) by
+  `0x8004E788` at fixed x positions. The card's label column is narrow:
+  "BWH." and "Notes" overlapped the colon the game draws, so they became
+  "B W H" and "Memo". The card's values (sign, blood type, club, notes) come
+  from `FUKUTEST/JOHO.NBN` and are still Japanese.
+- `0xCED4` ("くそ、次こそ絶対 誘ってみせるぜ。）") has no reference
+  anywhere: unused, translated anyway.
+
+**The phone book** lists full names from the EXE table at `0x72C80`
+(§6e). That table's first entry, 藤崎詩織 at `0x72C80`, wasn't in
+`character_names.json` (the pointer table at `0x72D38` starts one entry
+earlier than documented before); it's now "S. Fujisaki", and the full-name
+pool is 184 of 184 bytes. Only a fresh boot shows EXE changes: a save state
+keeps the EXE it was made with in RAM.
+
+**Calls seen** (2026-10-08): Shiori answers, the player introduces himself
+("Um...⏎This is {P}."), her greeting by mood, then the date picker ("Choose
+a day / place for the date.", the date-spot book), the assembled
+invitation, her answer, the confirmation and goodbye, "Click.", then the
+player's thoughts. A missed date (§6l) is followed at home by the
+answering-machine message (data area, one list per girl × 3 moods) and
+the player's realization.
 
 ## 7. Graphics
 
