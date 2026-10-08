@@ -342,5 +342,34 @@ class ShareIdentical(unittest.TestCase):
                          script.encode_english("Bye now", font.PairEncoder())[0])
 
 
+class SpeakerLabels(unittest.TestCase):
+    """A code-07 line may start with a prefix byte and a fixed-size label."""
+
+    RAW = b">" + "部長".encode("shift_jis") + "はい".encode("shift_jis")
+
+    def test_decode_and_reencode(self):
+        text = script.decode(self.RAW)
+        self.assertEqual(text, "{>部長}はい")
+        self.assertEqual(script.encode_original(text), self.RAW)
+
+    def test_english_label_is_padded_and_takes_no_line_width(self):
+        raw, widths = script.encode_english("{-???}Hi", font.PairEncoder())
+        self.assertEqual(raw[:1], b"-")
+        self.assertEqual(len(raw), 1 + 6 + 2)
+        self.assertEqual(widths, [2])
+
+    def test_label_too_long_rejected(self):
+        with self.assertRaises(ValueError):
+            script.encode_english("{>Captain}Hi", font.PairEncoder())
+
+    def test_structure_keeps_the_prefix(self):
+        self.assertEqual(script.structure("{>Capt}Hi"), script.structure("{>部長}はい"))
+        self.assertNotEqual(script.structure("Hi"), script.structure("{>部長}はい"))
+
+    def test_lone_prefix_byte_is_not_a_label(self):
+        with self.assertRaises(ValueError):
+            script.decode(b">" + "部長".encode("shift_jis"))
+
+
 if __name__ == "__main__":
     unittest.main()

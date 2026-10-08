@@ -1504,6 +1504,78 @@ at `0x80147988` (file `0x15988`: ショッピング街, 水族館の前 … ス�
 place 2–20), copied whole (`0x273` = 19 × 33 bytes) at `0x80142E0C`.
 Translated with `"slot": 33` ("the zoo gate", "the arcade", ...).
 
+### 6p. First meetings (`SERIFU/G_APPEAR.BIN`)
+
+Found 2026-10-08 by static tracing of `SHOUGATU.EXN` and the EXE, then
+forced in DuckStation (`tools/emu/meet_run.ps1`, testing.md "First
+meetings"). Translated in `translation/meetings.json`.
+
+**Trigger.** Day record type `0x48` (`48 GIRL SCENE 00`): the EXE's handler
+`0x80072210` enters state `0x5B`, served by **SHOUGATU.EXN**. Its loaders
+`0x80137A04`/`0x80137A5C` read `G_APPEAR.BIN` (LBA 44797, 16 sectors,
+32,768 bytes, checksum trailer) to `0x80197000` and store the record's girl
+in `*(u8*)0x80144E10`; the scene byte (`*(u32*)0x80122CD0`) is copied to
+`*(u8*)0x80144E14` (`0x801376F8`) and picks the girl's **variant**.
+`force_event.py GIRL SCENE --type 0x48` forces one. The switch at
+`0x80137204` (jump table `0x80143730`) maps girl ids 1–8 and 10 to a
+handler (`0x801398F0` Mio, `0x80137FF0` Yuina, `0x80138B40` Ayako,
+`0x8013A950` Saki, `0x8013A190` Yukari, `0x8013A500` Nozomi, `0x801391D4`
+Mira, `0x80137BB0` Yuko, `0x8013AF10` Yumi); Shiori (0) and Megumi (9) go to
+a stub (`0x80046500`), and a forced Shiori meeting returns to the title
+(§6j). Yuko's handler: variants 0–2 run one step list with part =
+variant × 3 (the three collisions, `0x80137F70`), variant ≥ 3 another (Yoshio
+introduces her). Other girls' variant logic wasn't traced; in the forced
+runs Ayako's variant 0 played parts 6–7 and Yuina's variant 2 the lab with
+the Computer Club branch (presumably by the player's club).
+
+**Sections.** A fill function (`0x80136F90`, the same values as the static
+table) writes three parallel 9-entry tables at `0x80144D90` (masters),
+`0x80144DB4` (code-byte lists), `0x80144DD8` (third pointers), the EVENT_FU
+layout (§6j). Section = 0 Yuko, 1 Yuina, 2 Ayako, 3 Mira, 4 Mio, 5 Yukari,
+6 Nozomi, 7 Saki, 8 Yumi (each confirmed by a forced meeting). The nine
+sections reach 416 strings, each once; `dump_dialogue.py` used to find 408
+(below). `tools/geko_sections.py --appear [--strings]` lists them. No
+choices in this file. Codes: `00` player, `01` girl, `06` thought (both
+brackets drawn by the game), `07` narration or sound, `09` the collision
+sound (ドン), `0A` Yoshio (his own label), `0C`/`0D` two girl strings in one
+box. `{F}` is the player's full name (まま for the test save), `{p}` the
+short name and `{P}` the name with a suffix; in Yumi's scene `{P}` uses
+SHOUGATU's format `%sさん` (`0x11890`, `sprintf` at `0x8013B0C0`), elsewhere
+君. `{m}` (Yoshio to the player) showed ま.
+
+**Speaker labels inside a code-07 string.** The EXE's speak function
+(`0x8007EF48`, code-07 case `0x8007F030`) checks the string's first byte:
+`>` copies the next 4 bytes as a label (`sprintf "%s "`, drawn by
+`0x8004E788` at x −0x78), draws 「 at −0x56 and the text from byte 5 at
+−0x48; `<` the same with （ and ）(`0x800B2034`); `-` takes 6 bytes (label
+at −0x80, text from byte 7); `+` takes 2 bytes (label at −0x70). G_APPEAR
+uses `>部長` (the drama-club captain, Mio's section) and `-？？？` (Yumi
+before she gives her name). `dump_dialogue.py` rejected these 8 strings
+until `script.py` learned the prefix (2026-10-08): it's written `{>部長}` /
+`{-？？？}` at the start of the string, and the English label is padded to
+the same byte count (`{>Capt}`, `{-???}`, one byte per letter); the label
+takes no room on the text's line. Other files may have the same prefixes
+(EVENT_OT.BIN has `-女生徒`); re-dump before translating them.
+
+**Fixed sound strings.** After the prefixes, the code-07 case compares the
+whole text with fixed strings: そして… and ピンポーン are drawn lower and
+indented (x −0x28); ガチャ, カチャ, ガラッ, ごそごそ get colour argument 2,
+ジロジロ and ドン colour 1; anything else the caller's colour at the same
+x. The code-09 case (`0x8007F6A8`) does the same for ドン. So a translated
+sound keeps its place but may change colour (on screen "Bonk!" showed in
+the default pink; the original ボカ isn't special either). Earlier files
+already translate these sounds ("Click.", "And then...").
+
+**Words in SHOUGATU.EXN.** The meeting code `strcpy`s a speaker label and
+a **location banner** (shown top left as the scene opens; the box sizes to
+the text) from in-place strings at file `0x11760`–`0x118A0`: 女生徒 (Yuko's
+label before her introduction, to `0x800CA188`) and 廊下, 教室, 実験室, 中庭,
+美術室, 音楽室, 図書室, 演劇部, グランド, 近所の公園, プール, 学校前 (to
+`0x800CA19C`), one copy per use. Translated in place in `meetings.json`
+(4- and 6-byte originals allow 6 letters, グランド and 近所の公園 10).
+`tools/code_strings.py SHOUGATU.EXN --range 0x11600 0x11a00` lists them
+with their callers.
+
 ## 7. Graphics
 
 ### General

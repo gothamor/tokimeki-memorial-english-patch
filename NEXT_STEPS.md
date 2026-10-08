@@ -13,7 +13,11 @@ wasn't seen is in the AGENTS.md status table:
 - the shared date lines `date_shared.json` (§6l);
 - phone calls `phone_calls.json` (§6m);
 - walking home `walk_home.json` (§6n);
-- girls asking you out `invitations.json` (§6o).
+- girls asking you out `invitations.json` (§6o);
+- after Yuko's dates: the first meetings, `meetings.json` (all of
+  `G_APPEAR.BIN` plus SHOUGATU.EXN's banners; §6p). That work added
+  in-string speaker labels to `script.py` (`{>部長}`), `meet_run.ps1`, and
+  a hidden-emulator option (testing.md).
 
 ## Why Yuko, and what was checked (2026-10-08)
 
@@ -150,6 +154,11 @@ her spring Arcade **date event** (EVENT_AS) replaces the regular part on a
 
 - **Yuko's date events** (`EVENT_AS.BIN`): the chooser conditions are in
   game-internals §6k, so they can be forced like Shiori's.
+- **Megumi's meeting**: she isn't in `G_APPEAR.BIN` (girl 9 has no
+  handler in SHOUGATU's meeting switch); find where she's introduced
+  (probably through Shiori) before calling the meetings complete.
+- **Other SERIFU files with label prefixes**: `EVENT_OT.BIN` starts a
+  line with `-女生徒`; re-dump such files with the current dumper.
 - **The other nine girls' date files**, in rough size order: Megumi
   (DATE_MI), Nozomi (KY), Yuina (HI), Saki (NI), Yumi (SA), Yukari (KO),
   Ayako (KA), Mio (KI), Mira (KG).

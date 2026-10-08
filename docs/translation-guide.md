@@ -266,6 +266,18 @@ that.
 `{n}{n}` and a reply's second option is just `{n}{n}`: the game skips an
 option starting with `n`. Keep each `{n}` run exactly where it is (the
 patcher's structure check enforces it); write the English before it.
+Not every girl's date file has this exchange (game-internals §6k).
+
+**Speaker labels in a string (`{>部長}`, `{-？？？}`).** A narration line
+(code `07`) can carry its own speaker label: a prefix byte and a fixed
+number of label bytes before the text (`>` and `<` 4, `-` 6, `+` 2;
+game-internals §6p). Keep the token at the start and write an English label
+of at most that many letters (`{>Capt}`, `{-???}`); the patcher pads it
+with spaces. The label isn't counted in the line width.
+
+**Lines near the page icon.** The "next" hand icon sits at the right end of
+the box's lower lines; 27–28-letter lines on lines 2–3 touch it. The
+patcher allows 28, but keep those lines at 26 or less where it's easy.
 
 **Style notes (from the prologue):**
 - The box shows 3 lines at a time; 4–5 line strings scroll, which is fine.

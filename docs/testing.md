@@ -767,6 +767,50 @@ the Arcade's medal branch, natural triggers. After promotion the normal
 build (`.emu/default_yuko/`, 22 files, no `-t`) is byte-identical to the
 candidate.
 
+### Running the emulator hidden
+
+When the user is working on the same desktop, start the isolated emulator
+with a hidden window so their input can't reach it:
+`launch_state.ps1 -Hidden`, `meet_run.ps1 -Hidden`, or set
+`$env:TOKI_EMU_HIDDEN = "1"` for scripts that call `launch_state.ps1`
+(`date_run.ps1`, `walk_run.ps1`, `date_choices.ps1`). `drive.ps1` posts
+keys to the hidden window and F10 screenshots still work; every G_APPEAR
+test below ran this way. The default stays visible.
+
+### First meetings (G_APPEAR.BIN, 2026-10-08)
+
+`tools/emu/meet_run.ps1 -Girl G [-Scene V] [-Presses K] [-Hidden]`
+launches the Sunday state, writes a type-`0x48` record `48 G V 00` for the
+next weekday (`force_event.py G V --type 0x48`, log `.emu/meet_run.log`),
+picks the first weekly command and screenshots K boxes. The meeting plays
+on Tuesday 4/25 straight after the week starts. V is the girl's variant
+(game-internals §6p). The location banner shows only in the first ~3 s of
+the scene: to see it, screenshot every 0.6 s right after `C` (`bn_*`).
+
+Unpatched-text runs first (`gy0`: Yuko variant 0 with the 女生徒 label;
+`gm10`: Yumi with the ？？？ labels and `{P}` = まさん; `gb_*`: the 学校前
+banner). Candidate in `.emu/review_dates/` (all default files plus the
+draft): only G_APPEAR (LBA 44797–44812) and SHOUGATU.EXN's banner sector
+and trailer (LBA 39084, 39085, 39145) differ from the default build, both
+checksums valid. The default build itself was unchanged by the new
+speaker-label code in `script.py`.
+
+Seen in English (sheets `e8a`, `e8d`, `e2c`, `e3a`, `e7a`, `e1d`, `e5a`,
+`e6a`, `e4a`, `e10`, `bn_sheet`): Yuko's first collision ("Girl" label) and
+her whole introduction by Yoshio (girl 8, variants 0 and 3); Yuina's lab
+scene (girl 2 variant 2, Computer Club branch); Ayako painting outside
+(girl 3 variant 0, parts 6–7); Mira (girl 7); Mio's drama-club scene with
+the "Capt" labels (girl 1 variant 4); Yukari's tennis ball (girl 5); Nozomi's
+morning run (girl 6); Saki's baseball recruiting (girl 4); Yumi's whole
+scene with the "???" labels (girl 10); banners Hall, Local Park, Drama.
+Lines of 27–28 letters on the box's lower lines touched the page icon and
+were shortened. "(It's Mio )" shows the odd-length name's pair padding.
+Not seen: the other variants (Yuko's 2nd/3rd collision, Yuina's other
+scenes, Ayako's band and art-club scenes, Mio's library/book/literature
+scenes, Yukari's doubles, Nozomi's swim-team scenes, Saki's soccer and
+manager scenes), the other banners, natural triggers. Normal build
+(`.emu/default_meet/`, 23 files) byte-identical to the candidate.
+
 ### Disassembly
 
 ```bash

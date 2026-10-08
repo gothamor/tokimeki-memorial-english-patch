@@ -11,13 +11,20 @@ Facts (docs/game-internals.md, "Dialogue"):
     skips an option that starts with it. It occurs only as a run ending an
     option ("...nn" or "qnn" in the DATE_* yukata lines, game-internals 6k),
     and is only accepted there.
+  - A narration/sound line (speaker code 07) may start with a speaker label:
+    one ASCII prefix byte, then a fixed number of label bytes, then the text
+    (EXE 0x8007F174...: '>' 4 bytes and '<' 4 bytes in （）, '-' 6 bytes,
+    '+' 2 bytes). The label is drawn on its own before the bracket, so it
+    takes no room on the text's line (game-internals 6p).
   - Strings are reached through tables of absolute RAM pointers, stored in the
     same file (base = the file's load address). So a translated string can
     be moved anywhere inside the space freed by the strings being replaced,
     as long as every pointer to it is updated.
 
 In translation files a dialogue string is written with "\\n" for a line break
-and "{X}" for control byte X ("{P}", "{G}", "{q}", ...).
+and "{X}" for control byte X ("{P}", "{G}", "{q}", ...). A speaker label is
+written "{>部長}" at the very start of the string; in English "{>Capt}",
+padded with spaces to the label's byte count (one byte per letter).
 """
 
 from __future__ import annotations
@@ -34,6 +41,9 @@ CHOICE = ord("q")
 CONTROL = frozenset(b" qmMAWOFYSPpG")
 # Empty-option marker; not a renderer code (see the module docstring).
 SKIP = ord("n")
+# Speaker-label prefix byte -> label length in bytes (code-07 lines only).
+LABELS: Dict[int, int] = {ord(">"): 4, ord("<"): 4, ord("-"): 6, ord("+"): 2}
+_LABEL = re.compile(r"\{([><+-])([^{}\n]*)\}")
 
 # Widest display line, in 7 px cells (one cell per English letter, two per
 # full-width character). The dialogue box fits about 29 letters after the
@@ -55,9 +65,34 @@ def _is_lead(b: int) -> bool:
     return 0x81 <= b <= 0x9F or 0xE0 <= b <= 0xEA
 
 
+def _label_len(raw: bytes) -> int:
+    """Length of a speaker-label prefix at the start of raw (0 if none)."""
+    if not raw or raw[0] not in LABELS:
+        return 0
+    n = LABELS[raw[0]]
+    label = raw[1:1 + n]
+    if len(label) < n or len(raw) == 1 + n:
+        return 0
+    try:
+        label.decode("shift_jis")
+    except UnicodeDecodeError:
+        return 0
+    return 1 + n
+
+
+def _take_label(text: str):
+    """"{>部長}rest" -> (">", "部長", "rest"); (None, "", text) without one."""
+    m = _LABEL.match(text)
+    if not m:
+        return None, "", text
+    return m.group(1), m.group(2), text[m.end():]
+
+
 def decode(raw: bytes) -> str:
     """Bytes of one dialogue string (without NUL) -> readable text."""
-    out, i = [], 0
+    out, i = [], _label_len(raw)
+    if i:
+        out.append("{%s%s}" % (chr(raw[0]), raw[1:i].decode("shift_jis")))
     while i < len(raw):
         b = raw[i]
         if b == LINE_BREAK:
@@ -92,6 +127,9 @@ def read_string(data: bytes, offset: int) -> bytes:
 def encode_original(text: str) -> bytes:
     """Readable Japanese text (as written in a translation file) -> bytes."""
     out = bytearray()
+    prefix, label, text = _take_label(text)
+    if prefix:
+        out += prefix.encode() + label.encode("shift_jis")
     for piece, token in _split(text):
         out += piece.encode("shift_jis") if token is None else token
     return bytes(out)
@@ -124,6 +162,20 @@ def encode_english(text: str, pairs) -> Tuple[bytes, List[int]]:
     """
     out = bytearray()
     widths = [0]
+    prefix, label, text = _take_label(text)
+    if prefix:
+        # Drawn on its own before the bracket: a fixed size and no width on
+        # the text's line. ASCII letters are padded with spaces.
+        size = LABELS[ord(prefix)]
+        if label and all(c < "\x7f" for c in label):
+            if len(label) > size:
+                raise ValueError(f"{text!r}: speaker label {label!r} is longer than {size} letters")
+            encoded = pairs.encode(label.ljust(size))
+        else:
+            encoded = label.encode("shift_jis")
+        if len(encoded) != size:
+            raise ValueError(f"{text!r}: speaker label {label!r} must take exactly {size} bytes")
+        out += prefix.encode() + encoded
     for piece, token in _split(text):
         if token is not None:
             out += token
@@ -156,6 +208,9 @@ def structure(text: str) -> str:
     name codes in each line (their order within a line may change).
     """
     lines = []
+    prefix, _, text = _take_label(text)
+    if prefix:
+        lines.append("label" + prefix)
     for line in text.split("\n"):
         parts = []
         for option in line.split("{q}"):
