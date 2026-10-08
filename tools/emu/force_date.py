@@ -2,7 +2,7 @@
 
 Usage:
   python tools/emu/force_date.py GIRL PLACE MONTH DAY
-  python tools/emu/force_date.py 0 PLACE MONTH DAY --scene N [--any-step] [--timeout S]
+  python tools/emu/force_date.py GIRL PLACE MONTH DAY --scene N [--any-step] [--timeout S]
   python tools/emu/force_date.py GIRL PLACE MONTH DAY --set-at PC ADDR VALUE [--timeout S]
   python tools/emu/force_date.py 0 PLACE MONTH DAY --version N [--timeout S]
   python tools/emu/force_date.py 0 PLACE MONTH DAY [--version N] -- BREAK_SET_RULES
@@ -12,7 +12,7 @@ PLACE (1-based outing id; 0 is also accepted by the game), MONTH/DAY. Run it
 on the Sunday-night planning screen for a holiday later that week; the
 holiday screen then says you have a date and the heart icon starts it.
 
---scene N (Shiori only, scenes 3-6) also breaks in DATE.EXN's date-event
+--scene N (Shiori scenes 3-6, Yuko scenes 2-6) also breaks in DATE.EXN's date-event
 chooser (0x8013272C, just after its prologue) and, at the date step the
 scene normally needs, clears the scene's one-shot flag and jumps to the call
 that picks it. That skips the season and affection checks, which can't be
@@ -53,13 +53,20 @@ LOADED_LBA = 0x800B6D40      # LBA of the overlay in memory
 DATE_EXN_LBA = 37418
 CHOOSER = 0x8013273C         # DATE.EXN 0x8013272C after its prologue (ra saved)
 
-# Shiori's date events: call site that loads the helper's arguments, the
-# one-shot flag, and the (sub-step, step) the chooser checks (None = any).
+# Date events by (girl, scene): the call site that loads the helper's
+# arguments, the one-shot flag, and the (sub-step, step) the chooser checks
+# (None = any). Shiori (game-internals 6j) and Yuko (6k, her block of the
+# chooser from 0x80133618; EVENT_AS entries 1-5).
 SCENES = {
-    3: (0x8013290C, 0x800E67EE, (1, 1)),
-    4: (0x801327C4, 0x800E67EF, (None, 13)),
-    5: (0x8013298C, 0x800E67F0, (1, 0x23)),
-    6: (0x80132894, 0x800E67F1, (1, 10)),
+    (0, 3): (0x8013290C, 0x800E67EE, (1, 1)),
+    (0, 4): (0x801327C4, 0x800E67EF, (None, 13)),
+    (0, 5): (0x8013298C, 0x800E67F0, (1, 0x23)),
+    (0, 6): (0x80132894, 0x800E67F1, (1, 10)),
+    (8, 2): (0x80133684, 0x800E6823, (1, 12)),      # Arcade, crane game
+    (8, 3): (0x801336FC, 0x800E6824, (1, 0x3C)),    # Theme Park, parade
+    (8, 4): (0x80133760, 0x800E6825, (1, 0x11)),    # Concert Hall
+    (8, 5): (0x801337BC, 0x800E6826, (1, 8)),       # Skating Rink
+    (8, 6): (0x80133860, 0x800E6827, (1, 0)),       # Library, cram sheets
 }
 
 
@@ -101,8 +108,8 @@ def main() -> None:
     if len(args) != 4:
         sys.exit(__doc__)
     girl, place, month, day = (int(a, 0) for a in args)
-    if scene is not None and (girl != 0 or scene not in SCENES):
-        sys.exit("--scene is only mapped for Shiori (girl 0), scenes 3-6")
+    if scene is not None and (girl, scene) not in SCENES:
+        sys.exit("--scene is mapped for Shiori (girl 0) scenes 3-6 and Yuko (8) scenes 2-6")
 
     g = Gdb()
     word = 1 << 29 | girl << 25 | day << 16 | month << 12 | place
@@ -120,7 +127,7 @@ def main() -> None:
         g.detach()
         return
 
-    site, flag, (sub, step) = SCENES[scene]
+    site, flag, (sub, step) = SCENES[(girl, scene)]
     g.break_at(CHOOSER)
     t0 = time.time()
     try:

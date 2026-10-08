@@ -1237,6 +1237,22 @@ function and lists that girl's sections.
     0 → scene 6. The Arcade case also checks `*(u8*)0x8015B670` and
     `*(u32*)0x80122CDC`; the rank values (`sp+0x31`/`0x33`) some cases test
     weren't decoded. (Shiori's flags are `0x800E67EE`–`0x800E67F1`.)
+    The Library's one-shot flag is index `0x3B` (`0x800E6827`). The
+    chooser's call sites (each loads the scene into `a0`, then calls
+    `0x801326B0`): scene 2 `0x80133684`, 3 `0x801336FC`, 4 `0x80133760`,
+    5 `0x801337BC`, 6 `0x80133860`; `force_date.py 8 PLACE … --scene N`
+    jumps there. A Theme Park date that takes one ride ends at step
+    `0x38` without reaching `0x3C` (the parade steps follow later rides),
+    so the parade scene was forced with `--any-step`.
+  - **EVENT_AS.BIN** (LBA 44577, 4 sectors, base `0x80198000`, checksum
+    trailer, 89 strings) is entries **0–5** of the shared event table (§6j;
+    Shiori's are 6–13). Entries 1–5 are scenes 2–6 above (DATE reads them
+    at `0x8014D0A4` ff.); entry 0, the staff room, is GEKO's girl-8 scene 1
+    (handler `0x80139470`, setup `0x80139640`; a `45 08 01 00` day record
+    plays it). SHOUGATU and SHUGAKU load EVENT_AS with their generic
+    per-girl loader but read none of entries 0–5 (they use 12/36/60 and
+    19/29/48/66). Entry 0 has the in-string label `{>先生}` (§6p).
+    Translated in `translation/yuko_events.json` (2026-10-08).
 - Mio, Yuina, Ayako, Megumi have one section whose master or code-list
   pointer falls outside the file, and Mio, Yuina, Nozomi, Mira, Megumi and
   Yumi have 4–9 strings their tables reach that `dump_dialogue.py` misses.

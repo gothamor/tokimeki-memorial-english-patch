@@ -13,7 +13,7 @@ Dialogue               ██░░░░░░░░░░░░░░░░░
 Menus and other text   █████░░░░░░░░░░░░░░░    26%
 ```
 
-<sub>68,314 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>69,523 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage
@@ -58,6 +58,9 @@ existing output folder.
   ([shiori_dates.json](translation/shiori_dates.json)).
 - **Yuko's regular dates (all):** the same for Yuko Asahina, in her slangy
   voice ([yuko_dates.json](translation/yuko_dates.json)).
+- **Yuko's special events (all 6):** the staff room, and her date events
+  at the arcade, the theme park parade, the concert, the skating rink and
+  the library ([yuko_events.json](translation/yuko_events.json)).
 - **Walking home from school** with any of the girls: her invitation or
   yours, her answer, and the chat on the way about upcoming events
   ([walk_home.json](translation/walk_home.json)).

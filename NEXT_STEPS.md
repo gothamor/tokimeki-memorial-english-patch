@@ -1,7 +1,10 @@
 # Next steps: translate Yuko's special events (`SERIFU/EVENT_AS.BIN`)
 
-This is the only active task. Keep the Status table current as steps land.
-Technical findings go in `docs/`, not here.
+**Done 2026-10-08:** translated, every scene seen on screen, promoted to
+`translation/yuko_events.json` (normal build byte-identical to the tested
+candidate; testing.md "Yuko's special events"). The next task is one of
+the "Later candidates" below; this plan stays as a template for the other
+girls' EVENT files. Technical findings go in `docs/`, not here.
 
 Finished before this (all 2026-10-08, in normal builds; what was and
 wasn't seen is in the AGENTS.md status table):
@@ -124,14 +127,17 @@ sectors change, checksum valid.
 | Step | State |
 |---|---|
 | Survey: entries 0–5, 89 strings, triggers | Done 2026-10-08, static |
-| SHOUGATU/SHUGAKU loader check | Next |
-| `force_date.py --scene` for Yuko | Next |
-| Draft translation | Not started |
-| On-screen tests (entries 0–5) | Not started |
-| Promote | Not started |
+| SHOUGATU/SHUGAKU loader check | Done: they use entries 12/36/60 and 19/29/48/66, none of 0–5 |
+| `force_date.py --scene` for Yuko | Done (scenes 2–6) |
+| Draft translation | Done (85 strings; 16 lines shortened to pack) |
+| On-screen tests (entries 0–5) | Done, all six (parade via `--any-step`) |
+| Promote | Done 2026-10-08 |
 
 ## Later candidates
 
+- **Other girls' `EVENT_*.BIN`**: follow this plan; their entries are the
+  other blocks of the 79-entry table (find them by which entries reach the
+  file's strings, as for Yuko).
 - **Megumi's meeting**: she isn't in `G_APPEAR.BIN` (girl 9 has no
   handler in SHOUGATU's meeting switch); find where she's introduced
   (probably through Shiori) before calling the meetings complete.
@@ -150,8 +156,6 @@ sectors change, checksum valid.
   - See game-internals §6k.
 - `FUKUTEST/JOHO.NBN` (the values on Yoshio's girl info card).
 - `DATE.EXN` `0x8015D108` (93 birthday-present names, 33-byte records).
-- Other girls' `EVENT_*.BIN`. Testing them needs a save with more girls
-  met, or a RAM poke to add them.
 
 ## Working notes (Windows dev box)
 

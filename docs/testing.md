@@ -839,6 +839,32 @@ for Mio, Yuina and Ayako; reworded to end on the name ("Hi, {G}" /
 Normal build (`.emu/default_nyubu/`, 24 files) byte-identical to the
 candidate.
 
+### Yuko's special events (EVENT_AS.BIN, 2026-10-08)
+
+All six scenes, emulator hidden (`$env:TOKI_EMU_HIDDEN = "1"` for
+`date_run.ps1`), from the Sunday state:
+- **Staff room:** `meet_run.ps1 -Girl 8 -Scene 1 -Type 0x45` (a `45 08 01
+  00` record; plays on Monday 4/25). Sheets `ev0`, `ev0b`: the "Tchr" label,
+  the centered pause, and the whole talk.
+- **Crane game:** `date_run.ps1 -Girl 8 -Place 9` with no flag rule; the
+  event plays by itself on the 4/30 date (`ev1`).
+- **Concert, skating, library:** `date_run.ps1 -Girl 8 -Place 15/19/8
+  -Extra "--scene 4/5/6"` (`ev3`, `ev4`, `ev5`; `force_date.py --scene` now
+  takes Yuko's scenes 2–6; don't add `-Break` rules, which make
+  `force_date.py` skip `--scene`). Each forcer stopped at its step (1/0x11, 1/8,
+  1/0) and the date ended normally.
+- **Parade:** `-Place 12 -Extra "--scene 3"` didn't fire: the date took
+  the Ferris wheel and ended at step 1/0x38, before 0x3C. With
+  `--scene 3 --any-step` it played at the date's first step (`ev2b`) and
+  the date ended normally.
+
+Candidate in `.emu/review_dates/`: only EVENT_AS's 4 sectors (LBA
+44577–44580) differ from the default build; checksum valid. The first
+draft didn't pack (2,827 of 2,704 bytes): sixteen lines were shortened,
+with `dialogue_budget.py`'s per-string overrun list as the guide. Normal
+build (`.emu/default_evas/`, 25 files) byte-identical to the candidate.
+Not tested: natural triggers, the parade at its own step.
+
 ### Disassembly
 
 ```bash
