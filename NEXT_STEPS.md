@@ -1,161 +1,137 @@
-# Next steps: translate Yuko's regular dates (`SERIFU/DATE_AS.BIN`)
+# Next steps: translate Yuko's special events (`SERIFU/EVENT_AS.BIN`)
 
-**Done 2026-10-08:** all seven batches translated, spot-checked on screen
-and promoted to `translation/yuko_dates.json` (normal build byte-identical
-to the tested candidate). What was and wasn't seen is in the AGENTS.md
-status table and testing.md "Yuko's dates". The next task is one of the
-"Later candidates" below; this file keeps Yuko's plan as the template.
+This is the only active task. Keep the Status table current as steps land.
 Technical findings go in `docs/`, not here.
 
-Finished before this (2026-10-08), all in normal builds; what was and
-wasn't seen is in the AGENTS.md status table:
-- Shiori's dates `shiori_dates.json` (game-internals §6k);
-- the shared date lines `date_shared.json` (§6l);
-- phone calls `phone_calls.json` (§6m);
-- walking home `walk_home.json` (§6n);
-- girls asking you out `invitations.json` (§6o);
-- after Yuko's dates: the first meetings, `meetings.json` (all of
-  `G_APPEAR.BIN` plus SHOUGATU.EXN's banners; §6p). That work added
-  in-string speaker labels to `script.py` (`{>部長}`), `meet_run.ps1`, and
-  a hidden-emulator option (testing.md);
-- the club welcome, `club_welcome.json` (all of `NYUBU.BIN`; §6q), with
-  `force_club_welcome.py`.
+Finished before this (all 2026-10-08, in normal builds; what was and
+wasn't seen is in the AGENTS.md status table):
+- Shiori's dates `shiori_dates.json` (game-internals §6k), the shared date
+  lines `date_shared.json` (§6l), phone calls `phone_calls.json` (§6m),
+  walking home `walk_home.json` (§6n), invitations `invitations.json` (§6o);
+- Yuko's regular dates `yuko_dates.json` (§6k). Its plan, a good template
+  for a date file, is in git history (`NEXT_STEPS.md` at commit `31d8608`);
+- the first meetings `meetings.json` (§6p; added in-string speaker labels
+  `{>部長}` to `script.py`, `meet_run.ps1`, the hidden-emulator option);
+- the club welcome `club_welcome.json` (§6q; `force_club_welcome.py`).
 
-## Why Yuko, and what was checked (2026-10-08)
+## Why this file, and what was checked (2026-10-08, static)
 
-- **Size.** `DATE_AS.BIN` is the smallest of the ten untranslated date
-  files:
-  - 460 strings, 324 distinct lines, about 8,700 Japanese characters
-    (Shiori's had 344 distinct lines, about 11,000);
-  - only 55 of her lines are identical to Shiori's.
-- **Already reachable.** Her invitation and walk home are English. In the
-  invitation test, accepting her arcade invitation started her Sunday date
-  (testing.md "A girl asks the player out").
-- **Same layout, verified statically** (game-internals §6k "Other girls'
-  date files"):
-  - DATE.EXN fills the 27 section tables per girl (Yuko's fill function is
-    `0x80143814`) and loads `DATE_AS.BIN` to `0x80198000`, the same base as
-    Shiori's.
-  - All 27 sections are valid and reach exactly the 460 strings the dumper
-    finds, each once.
-  - `python tools/date_sections.py --girl 8 [--strings]` lists them.
-- **Differences from Shiori's file:** Shrine 13 parts (Shiori 15), Shopping
-  11 (20), Library 5 (6), Theme Park 55 (57).
+- **It interrupts English text.** A spring Arcade date with Yuko plays her
+  crane-game event instead of the (English) date conversation: seen on a
+  forced 4/30 Arcade date (testing.md "Yuko's dates").
+- **Small.** 8,192 bytes at LBA 44577 (4 sectors), base `0x80198000`
+  (like EVENT_FU), checksum trailer. **89 strings**, about 1,200 Japanese
+  characters; the dumper finds all 89 (`extracted/dumps/EVENT_AS.json`,
+  local only).
+- **Layout.** Entries **0–5** of the shared 237-word event table (79 × 3;
+  GEKO.EXN `0x80145EC0`, filled by `0x8013799C`–`0x80138828`, game-internals
+  §6j) are Yuko's: they reach exactly the 89 strings, each once. (Shiori's
+  are entries 6–13.) Each entry has the EVENT_FU layout.
 
-**Open question to settle first: the Library.** Its setup (girl-independent)
-assumes 2 versions of 3 parts, but Yuko's section has only 5 parts. Force a
-Library date with `--version 1` on the **unpatched** game and see what plays.
-If it reads past her list, leave that version's lines alone and document it.
+| Entry | Master | Parts | Strings | Scene | Runs in | Trigger / how to force |
+|---|---|---:|---:|---|---|---|
+| 0 | `0x304` | 6 | 21 | the staff room: Yuko being scolded for lateness (has a `{>先生}` teacher label and a centered `・` pause) | GEKO, girl 8 scene 1 (handler `0x80139470` → setup `0x80139640`) | day record `45 08 01 00`: `force_event.py 8 1`. Natural selector: the girl-8 case of `0x8006FB4C` (§6j), not traced |
+| 1 | `0x7BC` | 4 | 14 | Arcade: she wins a plush from the crane game | DATE, scene 2 | Arcade (place 9), months 3–5, flag `0x800E6823`, date step sub 1 / step 12. **Plays by itself on a forced 4/30 Arcade date** |
+| 2 | `0xB9C` | 3 | 13 | Theme Park parade: "I always wanted to see it with someone I like" | DATE, scene 3 | Theme Park (12), months 6–8, `*(u8*)0x8015B680` = 1, flag `0x6824`, step 1 / `0x3C` |
+| 3 | `0xE94` | 4 | 11 | Concert: she gets carried away, the player stands with her | DATE, scene 4 | Concert Hall (15), months 9–11, `*(u8*)0x8015B688` = 10, flag `0x6825`, step 1 / `0x11` |
+| 4 | `0x11B8` | 4 | 12 | Skating Rink: she falls on the melting ice | DATE, scene 5 | Skating Rink (19), months 12–2, flag `0x6826`, step 1 / 8 |
+| 5 | `0x1608` | 6 | 18 | Library: she makes him write cram sheets | DATE, scene 6 | Library (8), 95/12/10, 96/12/8 or 97/12/7 with bit 17 of `0x800E6374`, flag index `0x3B` (`0x800E6827`), step 1 / 0 |
+
+DATE's chooser call sites for Yuko (`0x8013272C`, her block from
+`0x80133618`; each loads `a0` = scene then calls `0x801326B0`): scene 2
+`0x80133684`, 3 `0x801336FC`, 4 `0x80133760`, 5 `0x801337BC`, 6
+`0x80133860`. Conditions on the rank values (`sp+0x31`/`0x33`) weren't
+decoded (game-internals §6k "Her date events").
+
+**Check first (cheap, static):** SHOUGATU (`0x8013D4D8`) and SHUGAKU
+(`0x80137824`) also contain EVENT_AS's LBA. They are probably the same
+per-girl EVENT loader as GEKO's and DATE's (§6j "Loading"), used for other
+scenes; confirm they don't run Yuko entries outside 0–5 or a different
+table before calling the file complete.
 
 ## Scope
 
-Translate every string of `DATE_AS.BIN` into a new file,
-`translation/yuko_dates.json`: one `dialogue` block for
-`CDROM/SERIFU/DATE_AS.BIN`, base `0x80198000`, `share_identical: true`.
-Pure-punctuation pause lines ("・・・", "‥‥‥‥。") stay Japanese, as in
-Shiori's file.
+Translate every string of `EVENT_AS.BIN` into
+`translation/yuko_events.json`: one `dialogue` block for
+`CDROM/SERIFU/EVENT_AS.BIN`, base `0x80198000`, `share_identical: true`.
+The centered `・` pause lines stay Japanese, as in Shiori's files.
+Out of scope: Yuko's dates (done), the `SPEAKTST` copy, other girls'
+EVENT files.
 
-**Out of scope:**
-- the impression thoughts and blurbs (already English, `date_shared.json`);
-- her walk-home talks (`GEKO.BIN`, done);
-- her special events (`EVENT_AS.BIN`);
-- the `SPEAKTST` copies.
+**Watch for:**
+- `{>先生}` (entry 0, `0x5C`): a 4-byte in-string label. In English at most
+  4 letters, e.g. `{>Tchr}` (translation-guide "Speaker labels").
+- Entry 2 begins with the same line as DATE_AS's parade section 9
+  ("パレードやってるよ"): translate it consistently with `yuko_dates.json`.
+- `0C`/`0D` pairs and `06` thoughts, as in EVENT_FU (§6j): thoughts get no
+  parentheses unless the Japanese ends with `）`, and end on an even letter
+  count.
+- Lines that address her: avoid an odd-length run before `{G}`, and put
+  the name at the line end where punctuation would follow it.
 
-## Batches (same order as Shiori's; counts from `date_sections.py --girl 8`)
+## Tools to add before testing
 
-| # | Sections | Strings | Notes |
-|---|---|---:|---|
-| 1 | 22 ending, 23 meeting, 24 small talk, 26 going home | 85 | Seen in every date. Same selectors as Shiori's: the `-Break` rules in testing.md "Testing date conversations" apply. Check that they fire for girl 8. |
-| 2 | 0 Art Museum, 7 neighborhood park, 25 hobby notes | 55 | Museum: `--set-at 0x80134F74 0x800CA2FC N`. Park: `--at 0x8013A8B0 --reg v0=RANK`. |
-| 3 | 21 Kirameki Park, 14 Shopping | 34 | Her Shopping is shorter (11 parts): walk it with `date_choices.ps1`. `0x800E67EF` is Shiori's park-event flag; Yuko's event flags aren't mapped. |
-| 4 | 1 Bowling, 6 Karaoke, 10 Pool, 12 Beach, 13 Botanical, 15 Skating, 16 Ski, 19 Library | 76 | Settle the Library question first. |
-| 5 | 3 Zoo, 18 Aquarium, 11 Planetarium, 5 Arcade, 17 Stadium | 81 | |
-| 6 | 2 Concert Hall, 8 Cinema, 4 Shrine | 34 | Shrine has 13 parts (Shiori 15): check whether the `{n}` yukata pair is there. |
-| 7 | 20 Theme Park, 9 parade | 95 | Largest. The parade wasn't reachable for Shiori either. |
+1. **`force_date.py --scene` for Yuko.** Its `SCENES` table is Shiori-only.
+   Make it per girl: `{(girl, scene): (call site, flag, (sub, step))}`,
+   adding Yuko's five from the table above (flags `0x800E6823`–`6827`), and
+   accept `--scene` for girl 8. Keep Shiori's entries unchanged.
+2. Optionally `date_run.ps1 -Scene N` passing it through (`-Girl 8` exists).
+3. Entry 0 needs no new tool: `meet_run.ps1 -Girl 8 -Scene 1 -Type 0x45
+   -Hidden`.
 
-Total 460.
+Verify each forcer on the **unpatched** text first (the current default
+build already has DATE_AS in English but EVENT_AS Japanese, so the default
+build is the "before" reference): the scene plays, ends, and the date or
+week continues.
 
-## How to test (limited-testing policy, same as Shiori's dates)
+## Test plan (all scenes; it's one small file)
 
-- **Forcing.** `force_date.py` takes the girl as its first argument:
-  `force_date.py 8 PLACE 4 30 [--version N] -- RULES`. `date_run.ps1`
-  hard-codes girl 0 in its force_date call, so add a `-Girl` parameter
-  first.
-  - **Verify before relying on it:** that appointment slot 0 with girl 8
-    gives a Yuko date, i.e. the date's girl byte `0x800E69DD` = 8 and
-    `DATE_AS.BIN` is the file read (`trace_reads.py`, or the DATE_AS LBA).
-  - Her arcade invitation (`force_event.py 8 0 --type 0x46`, then accept)
-    is a known-good fallback that books a real Yuko date.
-- **Per batch:** one forced date per place, one `date_choices.ps1` run on
-  one place of the batch, and `-Break` rules for the shared sections. Look
-  at the sheets: English, fits, no stalls, the date ends and the week
-  continues.
-- **Static checks every time:**
-  - the build succeeds;
-  - `dialogue_budget.py` shows no `OVER-GAP`;
-  - only DATE_AS's sectors change (LBA from `extracted/files.tsv`);
-  - checksum valid.
-- Compare with the unpatched game only if something looks wrong (and for
-  the Library question).
+From the Sunday state (`.emu/savestates_backup/dates_sunday_0423_candidate.sav`,
+built on `.emu/review_dates/`), emulator **hidden** while the user works:
 
-## Per-batch workflow
+| Entry | How | Look for |
+|---|---|---|
+| 0 | `meet_run.ps1 -Girl 8 -Scene 1 -Type 0x45` | the `{>Tchr}` label, the centered pause, the `0C`/`0D` box, the week continues |
+| 1 | `date_run.ps1 -Girl 8 -Place 9` with the on-time meeting rule (no `0x800E6823` rule) | the crane-game scene on 4/30, then the date's ending |
+| 2 | Theme Park date, `--scene 3` | parade lines, the thought, the date ends |
+| 3 | Concert Hall date, `--scene 4` | her lines, the player standing with her, ending |
+| 4 | Skating Rink date, `--scene 5` | ending |
+| 5 | Library date, `--scene 6` | the pause line, 3-line replies, ending |
 
-1. `python tools/dump_dialogue.py extracted/CDROM/SERIFU/DATE_AS.BIN -o extracted/dumps/DATE_AS.json`
-   (local only; never commit dumps).
-2. Draft into `translation/extra/yuko_dates.json`.
-   - For a line identical to one in `shiori_dates.json`, start from
-     Shiori's English, but re-voice her lines for Yuko. Player lines can
-     usually stay as they are.
-   - Translate repeated Japanese identically so the copies are shared.
-3. `python tools/dialogue_budget.py translation/extra/yuko_dates.json`.
-4. Build into `.emu/review_dates` from every default file plus the draft
-   (testing.md "Testing date conversations"). Close the emulator first,
-   then diff against a default build.
-5. Spot test per the policy above.
-6. Promote:
-   - move the draft to `translation/yuko_dates.json`;
-   - build without `-t` and confirm it's byte-identical to the candidate;
-   - update the JSON description, the AGENTS.md row, `docs/testing.md` and
-     the status below.
+If a jumped-to scene misbehaves, compare with the same forcing on the
+default build before blaming the patch. Then the static checks: build
+succeeds, `dialogue_budget.py` shows no `OVER-GAP`, only EVENT_AS's
+sectors change, checksum valid.
 
-## Translation conventions
+## Workflow
 
-- **Yuko's voice:** a carefree, slangy party girl. Already set in
-  `walk_home.json` / `invitations.json` ("Totally excited", "What a drag",
-  "Lucky!", "Wanna..."). Keep her teasing and her impatience with study.
-  Her replies still encode how well a choice went (the graded impression
-  thought follows).
-- **Everything else as in Shiori's dates** (her old plan is in git history,
-  commit `ba3bbf3`, section "Translation conventions"):
-  - the same option count and order;
-  - even letter counts per option;
-  - ≤ 28 cells per line; `{G}` counts 18 cells, `{P}` 12;
-  - the same line count as the Japanese;
-  - thoughts get no parentheses (the game draws both) and end on an even
-    letter count;
-  - `{n}{n}` stays at the end of its option;
-  - place names as in `outings.json`.
-- Reuse the player's lines from `shiori_dates.json` where the Japanese is
-  identical (meeting, ending, going home).
+1. Dump is already in `extracted/dumps/EVENT_AS.json` (re-dump if the
+   dumper changes).
+2. Draft into `translation/extra/yuko_events.json`, Yuko's voice as in
+   `yuko_dates.json` (slangy: "super", "sooo", "a teeny bit", "lame").
+3. `python tools/dialogue_budget.py translation/extra/yuko_events.json`.
+4. Build the candidate into `.emu/review_dates` (emulator closed) from every
+   default file plus the draft; diff against a default build.
+5. Run the test plan.
+6. Promote: move to `translation/yuko_events.json`, build without `-t` and
+   confirm byte-identical; update the JSON description, AGENTS.md row,
+   README feature list and progress (`tools/progress.py --update-readme`),
+   game-internals §6j/§6k (Yuko's entries and triggers), testing.md, and
+   this file.
 
 ## Status
 
-| Batch | State |
+| Step | State |
 |---|---|
-| Layout check (`date_sections.py --girl 8`) | Done 2026-10-08, static |
-| `date_run.ps1 -Girl`, verify a forced Yuko date | Done: girl byte 8, DATE_AS read |
-| Library version-1 question (unpatched) | Done: an empty choice box from the read past her list, same in English; her lines are translated (game-internals §6k) |
-| 1–7 | Done 2026-10-08, promoted |
-
-Learned on the way (details in docs): Yuko's Shrine has no yukata pair;
-her spring Arcade **date event** (EVENT_AS) replaces the regular part on a
-4/30 Arcade date unless `0x800E6823` is set; her other date-event flags are
-`0x800E6824`–`6826`.
+| Survey: entries 0–5, 89 strings, triggers | Done 2026-10-08, static |
+| SHOUGATU/SHUGAKU loader check | Next |
+| `force_date.py --scene` for Yuko | Next |
+| Draft translation | Not started |
+| On-screen tests (entries 0–5) | Not started |
+| Promote | Not started |
 
 ## Later candidates
 
-- **Yuko's date events** (`EVENT_AS.BIN`): the chooser conditions are in
-  game-internals §6k, so they can be forced like Shiori's.
 - **Megumi's meeting**: she isn't in `G_APPEAR.BIN` (girl 9 has no
   handler in SHOUGATU's meeting switch); find where she's introduced
   (probably through Shiori) before calling the meetings complete.
@@ -182,6 +158,8 @@ her spring Arcade **date event** (EVENT_AS) replaces the regular part on a
 - `PYTHONIOENCODING=utf-8` when redirecting patcher output.
 - Close the emulator before building; it locks the review disc's BIN.
 - `drive.ps1` and `tools/emu/*.ps1` need `powershell.exe` 5.1.
+- Run the emulator hidden when the user is working on the same machine
+  (`-Hidden` or `$env:TOKI_EMU_HIDDEN = "1"`).
 - A save state reopens the disc it was made with, and keeps that build's
   EXE in RAM: EXE changes need a fresh boot to be seen.
 - Test states:
