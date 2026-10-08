@@ -5,15 +5,15 @@ English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
 <!-- progress:start -->
-**Translated: 14%**
+**Translated: 15%**
 
 ```text
-Whole game             ███░░░░░░░░░░░░░░░░░    14%
-Dialogue               ██░░░░░░░░░░░░░░░░░░    12%
+Whole game             ███░░░░░░░░░░░░░░░░░    15%
+Dialogue               ███░░░░░░░░░░░░░░░░░    13%
 Menus and other text   ██████░░░░░░░░░░░░░░    31%
 ```
 
-<sub>82,621 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>88,823 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage
@@ -66,6 +66,10 @@ existing output folder.
 - **The girls' birthdays:** choosing and giving her a present, her
   reaction, and calling her out on a holiday
   ([girl_birthdays.json](translation/girl_birthdays.json)).
+- **The Christmas party:** getting past Ijuin's doorman, his speeches,
+  chatting with the girls (or meeting them for the first time), the present
+  exchange, and the lonely evening at home if you're turned away
+  ([christmas.json](translation/christmas.json)).
 - **Walking home from school** with any of the girls: her invitation or
   yours, her answer, and the chat on the way about upcoming events
   ([walk_home.json](translation/walk_home.json)).

@@ -913,6 +913,39 @@ Not seen: other ranks' greetings and reactions, Yuina's and Nozomi's
 phone versions, the 1996/97 lists. Normal build (`.emu/default_gbirth/`,
 27 files) byte-identical to the candidate.
 
+### The Christmas party (XMAS.BIN, 2026-10-09)
+
+`xmas_run.ps1 -Opts "..." [-Presses N] [-Wait 4000] [-Prefix p]` launches
+the Sunday state, runs `force_christmas.py --party` with the options
+(game-internals §6t; the tool's docstring lists them), picks the first
+weekly command, and screenshots every box, in sheets of 15. The next
+weekday becomes the party: arrival, Ijuin's speech, Shiori, two girls,
+the present exchange, then the week goes on. Runs used (unpatched first,
+`x0`/`x1`, then the English candidate):
+- default stats: turned away, evening at home (`x0`); `--visit`: Megumi
+  visits with a present first (`f1`); `--looks 999`: let in politely
+  (`f2`); `--physique 999`: Sotoi's "physique" lines (`e1`–`e9`);
+  `--physique 999 --sotoi 1 --visits 1`: "you've come again" (`f3`);
+- `--girls A,B` for first meetings (`e1` Yuko/Mio, `e2` Yuina/Ayako, `e3`
+  Mira/Yukari, `e4` Nozomi/Saki); `--intro --girls 9,10 --met 10`:
+  Shiori introduces Megumi, then Yumi chats (`e5`); `--met` chats and
+  `--mood 4` brush-offs, `--visits 1`/`2` for the later speeches (`e6`–`e9`);
+- `--present P` for each run's present (it overrides the opened box's
+  part; the closing thought still follows the real box, so a forced
+  girl's present can be followed by the "a girl's present would've been
+  nicer" thought).
+
+Use `-Wait 4000` or more: the present-exchange announcement types slowly
+and at 3.5 s its second line is still half drawn (the Japanese too).
+Sound lines (`Thud`) advance by themselves between screenshots. The first
+`--intro` run stalled the emulator once at stage 2 (no breakpoint hit, the
+driver's screenshots stopped); the same run passed on a retry.
+
+Candidate in `.emu/review_dates/`: XMAS's 14 sectors and SHOUGATU's word
+sector + checksum changed (16 sectors), checksums valid. Seen in English:
+see the AGENTS.md row. Normal build (`.emu/default_xmas/`, 28 files)
+byte-identical to the candidate.
+
 ### Disassembly
 
 ```bash

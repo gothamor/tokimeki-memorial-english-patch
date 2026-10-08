@@ -989,7 +989,8 @@ call moves to Shiori's room.
   reply event when a girl gave chocolate). A forced type-`0x48` record
   (meeting) with girl 0 returned the game to the title screen: don't force
   it for Shiori. `tools/emu/force_christmas.py` swaps the next weekday's
-  state `0x40` for `0x52` and sets stage 6 / girl 0 / scene id 7.
+  state `0x40` for `0x52` and sets stage 6 / girl 0 / scene id 7; with
+  `--party` it starts the party itself (stages 0–4, XMAS.BIN, §6t).
 - **Overlay entry points** (GEKO `0x8013882C`, DATE `0x8014C0A0`,
   SHOUGATU `0x8013D180`) aren't referenced by any `jal`, data word or
   `lui`/`addiu` pair in the EXE or overlays; how the EXE calls them isn't
@@ -1731,6 +1732,74 @@ SHOUGATU's, §6p): 校門前, 近所の公園, 玄関, 廊下, 自宅前, the cl
 グランド, プール, 体育館, and two プルルルルル (phone ringing) strings
 drawn by `0x8004E788`. Translated in place in `girl_birthdays.json`; they
 also show in walk-home and other GEKO scenes.
+
+### 6t. The Christmas party (`SERIFU/XMAS.BIN`)
+
+Found 2026-10-08/09 by static disassembly of SHOUGATU.EXN and forced
+parties in DuckStation (`force_christmas.py --party`, testing.md "The
+Christmas party"). Translated in `translation/christmas.json`.
+
+**File.** 28,672 bytes at LBA 44988 (14 sectors), base `0x80197000`,
+checksum trailer. SHOUGATU loads it at `0x8013D7BC` (`0x80046318(0xE,
+0x80197000, 44988)`) and fills the section tables at `0x8013C070`: 13
+masters at `0x80145AD0`, 13 code lists at `0x80145B04`, 13 third pointers
+at `0x80145B38` (the dumper's six rejected "no Japanese text" targets are
+those third records). Sections (EVENT_FU layout, §6j): 0 Yuko, 1 Shiori,
+2 Yuina, 3 Ayako, 4 Mira, 5 Mio, 6 Yukari, 7 Nozomi, 8 Megumi, 9 Saki, 10
+the present exchange, 11 the arrival, Ijuin's speeches and the lonely
+evening at home, 12 Yumi (`tools/geko_sections.py --xmas`). They reach 359
+pointers: the 358 dumped strings plus an empty string at `0x6C44`
+(section 10 part 32, Yumi's 1995 present: she isn't at school yet).
+
+**Flow.** Main state `0x52`; SHOUGATU's stage dispatcher `0x8013D180`
+(jump table `0x801438E0`, stage `0x800E7389`, step `0x800E738A`):
+- **Stage 0, arrival** (`0x8013D660`; section 11 parts 0–8). The count of
+  earlier parties is bits 9–11 of `0x800E66E8`. The butler (label 黒服,
+  the first year; 外井 Sotoi later, strcpy'd from SHOUGATU `0x1194C` /
+  `0x11954` into the label buffer `0x800CA188`, girl id 12) lets the player
+  in politely when `0x800E6396` (probably Looks, §6k) ≥ 70 + 30·count
+  (−10 from the third party). Otherwise, when the stat `0x800E638E` ≥
+  150 + 25·count, Sotoi is "dazzled by the physique" (parts 4–5, the first
+  time) or "you've come again" (part 7, when bits 9–11 of `0x800E6758`,
+  the times he did this, are nonzero; `0x8013D92C` counts them up).
+  Otherwise the player is turned away (part 3) and spends the evening
+  alone (parts 19–21).
+- **Stage 1, Ijuin's speech** (`0x8013DDD0`): part 9 + 3·count of
+  section 11 (welcome, "did you say something?", the cocktail glass). The
+  label 伊集院 comes from SHOUGATU `0x11960`/`0x11968`; the banners
+  伊集院邸 (`0x11940`) and パーティー会場 (`0x11970`) go to `0x800CA19C` /
+  `0x800CA1DC`.
+- **Stage 2, mingling** (`0x8013E330`): Shiori first (section 1; part 0,
+  or 4 when the mood call `0x80051A68` returns 4), then two random girls
+  1–10 (`(*(u32*)0x800E7378 + i) % 10 + 1`, written to `0x800E71DF` and
+  kept at `0x80146054` / `0x80146058`; unmet girls only while fewer than
+  two/three are met; Mio needs `0x800E644A >> 4 != 8`, Yukari `!= 9`).
+  The girl switch `0x8013EE30` (table `0x80143990`) maps girls 1 Mio → 5,
+  2 Yuina → 2, 3 Ayako → 3, 4 Saki → 9, 5 Yukari → 6, 6 Nozomi → 7, 7 Mira
+  → 4, 8 Yuko → 0, 9 Megumi → 8, 10 Yumi → 12. Part 0 is the chat ("talked
+  to {G}"), part 1 her brush-off (mood 4; Nozomi: mood ≥ 2 → part 1, 4 →
+  part 2), then "we haven't even talked"; an unmet girl plays her first
+  meeting instead (later parts) and is marked met (bit 1 of `0x800E6448 +
+  0x38·girl`). When `0x80146050` is set (Megumi unmet, her `+0x1BE` field ≥
+  20, and a coin flip) Shiori says she'll introduce a friend (section 1
+  parts 2–3) and the first girl is Megumi.
+- **Stage 3, present exchange** (`0x8013F224`; section 10): four boxes
+  hold Shiori, Ijuin (11) and the two girls; the opened box gives part
+  3·girl + (year − 1995) + 2 (`0x80145F2C`, stored at `0x8013FEBC`). Parts
+  with two strings are alternatives (Shiori's score: "I can't read it"
+  when `0x800E638A` < 100). Then the closing thought (part 38, or 39 after
+  Ijuin's present) and the girl selector `0x80140030` for stages 6–8.
+- **Stage 4, turned away** (`0x801407C0`; also loads file `0xD` to
+  `0x801B0000`, LBA 48315): the evening at home, section 11 parts 19–21.
+  Before it, at `0x80140AD8`, Megumi visits with a present (section 8
+  parts 5–7, she's marked met) under the same conditions as Shiori's
+  introduction: Megumi unmet, `0x800E6636` ≥ 20, `*(u32*)0x800E7378`
+  odd.
+- **Stages 6–8**: a girl's walk home after the party (EVENT_FU etc., §6j).
+
+In the forced runs the player's "we haven't even talked" part after a
+brush-off (e.g. section 0 part 2) didn't play; it's reached some other
+way, not traced.
 
 ## 7. Graphics
 

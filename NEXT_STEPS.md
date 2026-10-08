@@ -15,7 +15,8 @@ seen is in the AGENTS.md status table, how in docs/testing.md):
   `7f899d5`);
 - first meetings `meetings.json` (§6p), the club welcome
   `club_welcome.json` (§6q), the player's birthday `birthday.json` (§6r),
-  the girls' birthdays and gift names `girl_birthdays.json` (§6s).
+  the girls' birthdays and gift names `girl_birthdays.json` (§6s);
+- the Christmas party `christmas.json` (§6t, 2026-10-09).
 
 ## Why this file (2026-10-08, static survey)
 
@@ -74,11 +75,14 @@ translated in SHOUGATU, §6s), odd-length names before punctuation.
 | Step | State |
 |---|---|
 | Survey (loader, size, base, forcer) | Done 2026-10-08 |
-| Map sections, stages, girls | Next |
-| Forcer for the party's stages | Not started |
-| Translate + candidate | Not started |
-| On-screen tests | Not started |
-| Promote | Not started |
+| Map sections, stages, girls | Done 2026-10-09 (§6t, `geko_sections.py --xmas`) |
+| Forcer for the party's stages | Done 2026-10-09 (`force_christmas.py --party`, `xmas_run.ps1`) |
+| Translate + candidate | Done 2026-10-09 (357 strings + 8 SHOUGATU words) |
+| On-screen tests | Done 2026-10-09 (testing.md "The Christmas party") |
+| Promote | Done 2026-10-09: `translation/christmas.json`, normal build byte-identical |
+
+**The party is finished.** Pick the next file from "Later candidates" and
+rewrite this plan for it.
 
 ## Later candidates
 
