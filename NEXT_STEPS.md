@@ -20,7 +20,8 @@ seen is in the AGENTS.md status table, how in docs/testing.md):
 - White Day `white_day.json` (§6u) and Valentine's Day `valentine.json`
   (§6v), 2026-10-09;
 - New Year's Day `new_year.json` (§6w), 2026-10-09;
-- the training camp `training_camp.json` (§6x), 2026-10-09.
+- the training camp `training_camp.json` (§6x), 2026-10-09;
+- the school trip `school_trip.json` (§6y), 2026-10-09.
 
 ## Why this file (2026-10-08, static survey)
 
@@ -85,7 +86,7 @@ translated in SHOUGATU, §6s), odd-length names before punctuation.
 | On-screen tests | Done 2026-10-09 (testing.md "The Christmas party") |
 | Promote | Done 2026-10-09: `translation/christmas.json`, normal build byte-identical |
 
-**The party, White Day, Valentine's Day, New Year's Day and the training camp are finished.** Pick the next file from "Later candidates" and
+**The party, White Day, Valentine's Day, New Year's Day, the training camp and the school trip are finished.** Pick the next file from "Later candidates" and
 rewrite this plan for it.
 
 ## Later candidates
@@ -95,7 +96,9 @@ rewrite this plan for it.
   ranking `0x80134540` (§6v) if it needs an on-screen check.
 - **New Year's graduation endings** (§6w): translated, not reached on
   screen; find what picks parts 36/38 if they need a check.
-- **The school trip** (`SHUGAKU.BIN`, ~18,700, SHUGAKU.EXN).
+- **The school trip's leftovers** (§6y): the RPG battles it starts
+  (`EXEDIR/RPG_BAT.EXN`: monster names, 攻撃/防御, battle messages) and the
+  girls' special events it plays (in their `EVENT_*.BIN`).
 - **The camp's technique box** (§6x): translated, not reached on screen.
 - **The culture festival (`CDROM/BUNKA/`, 46 files, ~217,000 chars: over a
   third of the game's text)**, per girl and club; very repetitive. Needs its

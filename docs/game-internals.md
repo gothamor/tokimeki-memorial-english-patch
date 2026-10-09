@@ -2023,6 +2023,85 @@ to the stack at `0x8013769C`: club names, 11 × 20 bytes at file `0x7FAC`
 (`0x80132834`…) and were left alone (8-byte slots: "Baseball" doesn't
 fit; not seen on screen).
 
+### 6y. The school trip (`SERIFU/SHUGAKU.BIN`, `EXEDIR/SHUGAKU.EXN`)
+
+Found 2026-10-09 by static disassembly of SHUGAKU.EXN and forced trips in
+DuckStation (`force_trip.py`, testing.md "The school trip"). Translated in
+`translation/school_trip.json`.
+
+**Trigger.** Day-record type `0x41` (the EXE's switch, case `0x80071FF0`)
+enters main state `0x51`; the overlay-load table maps `0x51` to
+SHUGAKU.EXN (LBA 39146, case `0x80078F18`) and the entry table to
+`0x80137490`. Stage dispatcher there (stage `0x800E7389`, 12 stages, jump
+table `0x8013ADB0`). The trip lasts six days (the date advances). One
+forced `0x41` record, with the week's first record also `0x41` as for the
+camp (§6x), played the whole trip; then the week went on normally (a
+meeting scene, then the holiday and weekly prompts). Making the following
+records `0x41` too (`--week`) replays the trip from the start after day
+6. Where the game writes the real records wasn't traced.
+
+**File.** 92,160 bytes at LBA 44924, base `0x80197000`, 1,111 strings
+(1,236 reached: the rest are empty placeholders `0x163F4`–`0x16690`; the
+dumper's 8 rejected targets are non-text). Thirteen sections, static
+tables at `0x8013C420` (masters), `0x8013C454` (code lists), `0x8013C488`
+(third pointers), also written by `0x80136380`; current section
+`0x800CA2D0`/`D4`/`D8`, part `0x800CA2DC` (u16). After them, at
+`0x8013C4BC`, the 237-word event table GEKO/DATE/SHOUGATU share (§6j):
+the trip plays girls' special events from their `EVENT_*.BIN` (Ayako's
+Okinawa day ended in her EVENT_KA scene: lost, asking a foreigner the way,
+label 外国人 from SHUGAKU `0x8D70` → `0x800CA188`). Those scenes and the
+label belong to the EVENT files and are still Japanese.
+
+**Sections** (switch `0x801399F4` on `0x800E71DF`, jump table
+`0x8013AF38`): girl 0 Shiori → 1, 1 Mio → 5, 2 Yuina → 2, 3 Ayako → 3,
+4 Saki → 10, 5 Yukari → 6, 6 Nozomi → 8 (7 when `0x80051A68(6)` & 0x7F <
+2: a softer Nozomi), 7 Mira → 4, 8 Yuko → 0, 9 Megumi → 9. Section 11 is
+the default (no girl yet; the opening, destination choice and day
+narration), 12 Yoshio (girl `0x0D`). Yumi (a year below) has none.
+`tools/geko_sections.py --trip` lists them. Each girl's section has the
+same 46 parts: 7–9 she invites the player, 11 go with a girl or alone,
+13–25 asking her (15, 18, 21 by mood; 24–25 she refuses), 26/27/28 the
+first free day in Kyoto/Okinawa/Sapporo, 29 the way back and the promise,
+33–34 the second free day, 35/36/37 the danger (deer, habu, bear) with
+"run together / leave this to me", 38 escaped, 39–40 after the fight,
+41–45 the last day.
+
+**Flow** (as forced; stage numbers not mapped one by one): day 1
+destination choice (京都・奈良 / 沖縄 / 北海道, a three-line choice; the
+index goes to `0x800CA2CC`) and arrival; day 2 group tour; day 3 free
+time: a girl with mood < 2 may ask him first (loop `0x80139164` over girls
+0–9: the best mood below 4, ties by two stat calls; `0x80139200`), else he
+chooses: a girl from the menu of met girls (pick in a0 at `0x801399C8`) or
+alone (Yoshio, section 12). Her answer follows her mood at `0x80139628`:
+0–1 → part +0, 2 → +3, 3 → +6, else +9 (refusal). Day 4 group tour; day 5
+the promised free time, the danger choice; "leave this to me" starts an
+RPG-style battle (`EXEDIR/RPG_BAT.EXN`, its own text, e.g. ハブ・ロード;
+not part of this file); day 6 home. When the player is ill (low nibble of
+`0x800E6375`), step `0x8013799C` blanks the opening line and draws four
+add_text lines (くぅー、/体の調子が、最悪だぜ。/…).
+
+**Words in SHUGAKU.EXN** (`code_strings.py SHUGAKU.EXN`), translated in
+place: banners ホテル・廊下 (`0x8D80`–`0x8DA0`), 修学旅行 (`0x8E78`,
+`0x8E84`), ホテル・ロビー (`0x8EF0`, `0x8F60`), 社寺巡り, 守礼門, 時計台前,
+土産屋, 浜辺, クラーク像前 (to `0x800CA19C`); the destination as banner
+(`0x8E9C`/`0x8EB0`/`0x8EC0` → `0x800CA1DC`) and as `{S}` (`0x800CA23C`:
+`0x8E90`… on day 1, 京都/沖縄/北海道 `0x8EC8`–`0x8ED8` after arriving, the
+cities 京都/那覇/札幌 `0x8F20`–`0x8F30` on day 3, `0x8FB0`–`0x8FC0`
+later); 【団体行動中】 (`0x8EE0`, add_text) and the four sick-day lines
+(`0x8E24`–`0x8E60`, add_text).
+
+**Repacked destination names.** "Okinawa", "Hokkaido" and "Sapporo" need
+9 bytes with the NUL; their slots hold 8. The 56 bytes `0x8EA8`–`0x8EDF`
+(only these strcpy sources use them: no data word or other immediate
+points there) are rewritten as Okinawa `0x8EA8`, Hokkaido `0x8EB4`, Kyoto
+`0x8EC0`, Sapporo `0x8EC8`, and the `addiu $a1` of each strcpy that read
+them (`0x80138240`, `…258`, `…26C`, `…2CC`, `…2E4`, `…2FC`, `0x8013AB40`,
+`…B58`, and 札幌's `0x80139474`) points at the new place: ten `bytes`
+patches, each checking the original instruction. The old 札幌/沖縄/北海道
+at `0x8F30`/`0x8FB8`/`0x8FC0` are then unused and left as they were.
+`{S}` counts 18 cells in the width check; an odd-length place name ends in
+its padding space, so the dialogue ends a line on `{S}`.
+
 ## 7. Graphics
 
 ### General

@@ -5,15 +5,15 @@ English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
 <!-- progress:start -->
-**Translated: 28%**
+**Translated: 32%**
 
 ```text
-Whole game             ██████░░░░░░░░░░░░░░    28%
-Dialogue               ██████░░░░░░░░░░░░░░    28%
+Whole game             ██████░░░░░░░░░░░░░░    32%
+Dialogue               ██████░░░░░░░░░░░░░░    32%
 Menus and other text   ██████░░░░░░░░░░░░░░    31%
 ```
 
-<sub>166,701 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>185,527 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage
@@ -82,6 +82,10 @@ existing output folder.
   poisoning, the test of courage, fainting at practice), her advice
   through the years, and the last night's bath
   ([training_camp.json](translation/training_camp.json)).
+- **The school trip:** Kyoto/Nara, Okinawa or Hokkaido, the free days
+  with a girl (or with Yoshio), her answer, the sights, and the deer, habu
+  or bear that interrupts the second free day
+  ([school_trip.json](translation/school_trip.json)).
 - **Walking home from school** with any of the girls: her invitation or
   yours, her answer, and the chat on the way about upcoming events
   ([walk_home.json](translation/walk_home.json)).

@@ -2,7 +2,7 @@
 
 Usage:
   python tools/geko_sections.py [--invite | --appear | --nyubu | --xmas | --white | --valen
-      | --newyear | --camp | --camp-fu] [--strings] [--girl N]
+      | --newyear | --camp | --camp-fu | --trip] [--strings] [--girl N]
 
 Default: SERIFU/GEKO.BIN, walking home (game-internals 6n). --invite:
 SERIFU/G_INVITE.BIN, a girl asking the player out (6o), from GEKO.EXN's
@@ -17,7 +17,8 @@ VALEN.EXN's tables at 0x801343F0. --newyear: SERIFU/SHOGATU.BIN, New Year's
 Day (6w), SHOUGATU.EXN's 15-entry tables at 0x80143A40. --camp:
 SERIFU/GASSHUKU.BIN, the training camp (6x), KANGEI.EXN's 8-entry tables at
 0x80139A5C; --camp-fu: SERIFU/GASSH_FU.BIN (base 0x801B4400), Shiori's camp,
-one entry at 0x80139A50.
+one entry at 0x80139A50. --trip: SERIFU/SHUGAKU.BIN, the school trip (6y),
+SHUGAKU.EXN's 13-entry tables at 0x8013C420.
 
 GEKO.EXN holds three parallel 12-entry tables at 0x80144BA0 (masters),
 0x80144BD0 (code-byte lists) and 0x80144C00 (third pointers), one entry per
@@ -82,6 +83,13 @@ NEWYEAR_NAMES = ["alone", "Yuko", "Shiori", "Yuina", "Ayako", "Mira", "Mio", "Yu
 CAMP_TABLE = 0x80139A5C
 CAMP_NAMES = ["Yuina", "Ayako", "Mio", "Yukari", "Nozomi", "Saki", "shared", "Yumi"]
 CAMP_FU_TABLE = 0x80139A50
+# SHUGAKU.EXN's switch at 0x801399F4 (jump table 0x8013AF38) maps girls 0-9
+# to sections 1,5,2,3,10,6,8,4,0,9; Nozomi (6) gets 7 instead of 8 when the
+# mood call 0x80051A68(6) returns < 2. 11 is the default before a girl is
+# chosen, 12 Yoshio (girl 0x0D) (6y).
+TRIP_TABLE = 0x8013C420
+TRIP_NAMES = ["Yuko", "Shiori", "Yuina", "Ayako", "Mira", "Mio", "Yukari", "Nozomi(<2)",
+              "Nozomi", "Megumi", "Saki", "default", "Yoshio"]
 CODES = {0: "player", 1: "girl", 2: "reply", 3: "choice", 4: "note", 6: "thought",
          7: "sound", 8: "action", 9: "sfx", 0x0A: "Yoshio", 0x0C: "girl+", 0x0D: "girl+2",
          0x0B: "Shiori", 0x0E: "prompt", 0x10: "ring"}
@@ -126,6 +134,7 @@ def main():
     ap.add_argument("--newyear", action="store_true", help="SHOGATU.BIN (tables in SHOUGATU.EXN)")
     ap.add_argument("--camp", action="store_true", help="GASSHUKU.BIN (tables in KANGEI.EXN)")
     ap.add_argument("--camp-fu", action="store_true", help="GASSH_FU.BIN (tables in KANGEI.EXN)")
+    ap.add_argument("--trip", action="store_true", help="SHUGAKU.BIN (tables in SHUGAKU.EXN)")
     ap.add_argument("--exn", default=str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"))
     ap.add_argument("--strings", action="store_true", help="print each string's Japanese")
     ap.add_argument("--girl", type=int)
@@ -134,13 +143,15 @@ def main():
             "NYUBU.BIN" if args.nyubu else "XMAS.BIN" if args.xmas else
             "WHITE.BIN" if args.white else "VALEN.BIN" if args.valen else
             "SHOGATU.BIN" if args.newyear else "GASSHUKU.BIN" if args.camp else
-            "GASSH_FU.BIN" if args.camp_fu else "GEKO.BIN")
+            "GASSH_FU.BIN" if args.camp_fu else "SHUGAKU.BIN" if args.trip else "GEKO.BIN")
     if (args.nyubu or args.camp or args.camp_fu) and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
         args.exn = str(ROOT / "extracted/CDROM/EXEDIR/KANGEI.EXN")
     if args.valen and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
         args.exn = str(ROOT / "extracted/CDROM/EXEDIR/VALEN.EXN")
     if (args.appear or args.xmas or args.white or args.newyear) and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
         args.exn = str(ROOT / "extracted/CDROM/EXEDIR/SHOUGATU.EXN")
+    if args.trip and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
+        args.exn = str(ROOT / "extracted/CDROM/EXEDIR/SHUGAKU.EXN")
     geko = Path(args.file or ROOT / "extracted/CDROM/SERIFU" / name).read_bytes()
     exn = Path(args.exn).read_bytes()
     table, count, names = ((INVITE_TABLE, 13, INVITE_NAMES) if args.invite else
@@ -151,7 +162,8 @@ def main():
                            (VALEN_TABLE, 13, VALEN_NAMES) if args.valen else
                            (NEWYEAR_TABLE, 15, NEWYEAR_NAMES) if args.newyear else
                            (CAMP_TABLE, 8, CAMP_NAMES) if args.camp else
-                           (CAMP_FU_TABLE, 1, ["Shiori"]) if args.camp_fu else (TABLE, 12, GIRLS))
+                           (CAMP_FU_TABLE, 1, ["Shiori"]) if args.camp_fu else
+                           (TRIP_TABLE, 13, TRIP_NAMES) if args.trip else (TABLE, 12, GIRLS))
     base = 0x801B4400 if args.camp_fu else BASE
     total = 0
     for g, master, parts in sections(geko, exn, table, count, base):

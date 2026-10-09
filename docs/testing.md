@@ -1037,6 +1037,43 @@ Two harness traps found here:
   day (game-internals §6x), which first looked like a hang on the
   unpatched disc too.
 
+### The school trip (SHUGAKU.BIN, 2026-10-09)
+
+`xmas_run.ps1 -Tool "tools/emu/force_trip.py --year 1" -Opts "--met G
+--girl G [--mood M]" -Presses 50 -KeyList ";Down+C" -Hidden` from the
+Sunday state (game-internals §6y). The forcer writes one trip day record
+(plus the week's first record, as for the camp); the six days then play by
+themselves and the week continues. `-KeyList` (new in `xmas_run.ps1`,
+";"-separated presses, "+" between keys of one press) picks the
+destination on the second press: `C` Kyoto/Nara, `Down+C` Okinawa,
+`Down+Down+C` Hokkaido. At the "ask a girl / go alone" choice `C` asks a
+girl; the menu lists only met girls, so `--met G --girl G` swaps the pick.
+- English runs (`t1`–`t12`, `u1`–`u6`): Shiori (all three destinations),
+  Yuko, Yuina, Ayako, Mira, Mio, Yukari, Nozomi, Megumi and Saki, each
+  through both free days, the danger and the escape; `u1` Yuina with
+  "leave this to me" (the habu RPG battle, then her after-fight lines);
+  `u2` Yuina inviting him herself (`--invite 2`); `u3` Mio refusing
+  (`--mood 4`); `u4` Yoshio (go alone), the three-way choice and the bear
+  battle; `u5` the sick-day start (`--sick`); `u6` a single record: the
+  trip ends and the week goes on.
+- Fixed on the way: Yuina's and Mio's odd-length names showed their pair
+  padding before punctuation ("Yuina ," / "Mio !"): their sections' lines
+  end on `{G}` or put no punctuation after it (per-offset overrides, since
+  the shared lines are fine for even names). `{S}` lines end on the place
+  name for the same reason ("Okinawa " is odd). "Right, I remember now."
+  first ran to 34 cells with `{S}`.
+- Odd, but from files this patch doesn't touch: Ayako's Okinawa run ended in her
+  EVENT_KA special event (Japanese: lost, asking a foreigner); the
+  battles are `RPG_BAT.EXN`'s own Japanese text (ハブ・ロード, キラーヒグマ,
+  攻撃/防御); a blank box between scenes; the first sick-day line
+  (くぅー → "Ugh...") wasn't captured.
+- `--week N` makes later records trip days too; the trip then restarts
+  from day 1 after the last day (not a hang; the real game queues one
+  record).
+- Not reached: the other moods' answers (parts 18/21) for most girls,
+  most girls' invitations and refusals, the softer Nozomi section 7, other
+  battle outcomes.
+
 ### Disassembly
 
 ```bash

@@ -106,9 +106,20 @@ width.
  "original": "10000424", "replacement": "0e000424",
  "comment": "set_glyph_advance(16) -> 14"}
 ```
-These are raw bytes, verified against `original` before patching. Keep them
-in `translation/code.json`, give each one a comment saying what the
+These are raw bytes, verified against `original` before patching. Keep
+general code changes in `translation/code.json`; patches that only serve
+one translation file live in that file (`new_year.json`'s `%s` formats,
+`school_trip.json`'s place names). Give each one a comment saying what the
 instruction is, and document the reasoning in game-internals.
+
+**Repacking strings the code addresses directly.** When a few in-place
+words can't fit their slots but sit next to each other, and nothing else
+points into that stretch (search the overlay for data words and
+`lui`/`addiu` immediates aimed at it), one `bytes` patch can rewrite the
+whole stretch with the English laid out freely, and one more per `addiu`
+points each reader at its new string (game-internals §6y: Okinawa,
+Hokkaido, Sapporo in SHUGAKU.EXN). Strings that keep their place still go
+in `strings` with their `original`.
 
 ### Patterns to watch for
 - **Icons and numbers drawn over text cells.** The game draws ○/× icons and
