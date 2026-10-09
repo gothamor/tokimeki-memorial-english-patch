@@ -1,7 +1,8 @@
 """List the GEKO.EXN script sections: parts, speaker codes, strings.
 
 Usage:
-  python tools/geko_sections.py [--invite | --appear | --nyubu | --xmas] [--strings] [--girl N]
+  python tools/geko_sections.py [--invite | --appear | --nyubu | --xmas | --white | --valen]
+      [--strings] [--girl N]
 
 Default: SERIFU/GEKO.BIN, walking home (game-internals 6n). --invite:
 SERIFU/G_INVITE.BIN, a girl asking the player out (6o), from GEKO.EXN's
@@ -10,6 +11,9 @@ meetings (6p), from SHOUGATU.EXN's 9-entry tables at 0x80144D90. --nyubu:
 SERIFU/NYUBU.BIN, a girl welcoming the player to her club (6q), from
 KANGEI.EXN's 8-entry tables at 0x80139950. --xmas: SERIFU/XMAS.BIN, the
 Christmas party (6t), from SHOUGATU.EXN's 13-entry tables at 0x80145AD0.
+--white: SERIFU/WHITE.BIN, White Day (6u), SHOUGATU.EXN's tables at
+0x80145960. --valen: SERIFU/VALEN.BIN, Valentine's Day (6v), from
+VALEN.EXN's tables at 0x801343F0.
 
 GEKO.EXN holds three parallel 12-entry tables at 0x80144BA0 (masters),
 0x80144BD0 (code-byte lists) and 0x80144C00 (third pointers), one entry per
@@ -56,9 +60,19 @@ XMAS_TABLE = 0x80145AD0     # in SHOUGATU.EXN, filled by 0x8013C070
 # party's girls 1-10 to these sections; Shiori's is loaded directly (6t).
 XMAS_NAMES = ["Yuko", "Shiori", "Yuina", "Ayako", "Mira", "Mio", "Yukari", "Nozomi",
               "Megumi", "Saki", "presents", "arrival", "Yumi"]
+# SHOUGATU.EXN's switch 0x8013BDE0 (jump table 0x801438B0) maps girls 0-10
+# to these sections; 3 is Ijuin in the hallway, 11 the player's prompts (6u).
+WHITE_TABLE = 0x80145960
+WHITE_NAMES = ["Yuko", "Shiori", "Yuina", "Ijuin", "Ayako", "Mira", "Mio", "Yukari",
+               "Nozomi", "Megumi", "Saki", "player", "Yumi"]
+# VALEN.EXN's switch at 0x80132E10 (jump table 0x8013437C); 1 is the
+# player's count of the day, 4 Ijuin (6v).
+VALEN_TABLE = 0x801343F0
+VALEN_NAMES = ["Yuko", "count", "Shiori", "Yuina", "Ijuin", "Ayako", "Mira", "Mio",
+               "Yukari", "Nozomi", "Megumi", "Saki", "Yumi"]
 CODES = {0: "player", 1: "girl", 2: "reply", 3: "choice", 4: "note", 6: "thought",
          7: "sound", 8: "action", 9: "sfx", 0x0A: "Yoshio", 0x0C: "girl+", 0x0D: "girl+2",
-         0x0E: "prompt"}
+         0x0B: "Shiori", 0x0E: "prompt"}
 
 
 def sections(geko: bytes, exn: bytes, table: int = TABLE, count: int = 12):
@@ -94,22 +108,29 @@ def main():
     ap.add_argument("--appear", action="store_true", help="G_APPEAR.BIN (tables in SHOUGATU.EXN)")
     ap.add_argument("--nyubu", action="store_true", help="NYUBU.BIN (tables in KANGEI.EXN)")
     ap.add_argument("--xmas", action="store_true", help="XMAS.BIN (tables in SHOUGATU.EXN)")
+    ap.add_argument("--white", action="store_true", help="WHITE.BIN (tables in SHOUGATU.EXN)")
+    ap.add_argument("--valen", action="store_true", help="VALEN.BIN (tables in VALEN.EXN)")
     ap.add_argument("--exn", default=str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"))
     ap.add_argument("--strings", action="store_true", help="print each string's Japanese")
     ap.add_argument("--girl", type=int)
     args = ap.parse_args()
     name = ("G_INVITE.BIN" if args.invite else "G_APPEAR.BIN" if args.appear else
-            "NYUBU.BIN" if args.nyubu else "XMAS.BIN" if args.xmas else "GEKO.BIN")
+            "NYUBU.BIN" if args.nyubu else "XMAS.BIN" if args.xmas else
+            "WHITE.BIN" if args.white else "VALEN.BIN" if args.valen else "GEKO.BIN")
     if args.nyubu and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
         args.exn = str(ROOT / "extracted/CDROM/EXEDIR/KANGEI.EXN")
-    if (args.appear or args.xmas) and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
+    if args.valen and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
+        args.exn = str(ROOT / "extracted/CDROM/EXEDIR/VALEN.EXN")
+    if (args.appear or args.xmas or args.white) and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
         args.exn = str(ROOT / "extracted/CDROM/EXEDIR/SHOUGATU.EXN")
     geko = Path(args.file or ROOT / "extracted/CDROM/SERIFU" / name).read_bytes()
     exn = Path(args.exn).read_bytes()
     table, count, names = ((INVITE_TABLE, 13, INVITE_NAMES) if args.invite else
                            (APPEAR_TABLE, 9, APPEAR_NAMES) if args.appear else
                            (NYUBU_TABLE, 8, NYUBU_NAMES) if args.nyubu else
-                           (XMAS_TABLE, 13, XMAS_NAMES) if args.xmas else (TABLE, 12, GIRLS))
+                           (XMAS_TABLE, 13, XMAS_NAMES) if args.xmas else
+                           (WHITE_TABLE, 13, WHITE_NAMES) if args.white else
+                           (VALEN_TABLE, 13, VALEN_NAMES) if args.valen else (TABLE, 12, GIRLS))
     total = 0
     for g, master, parts in sections(geko, exn, table, count):
         n = sum(len(s) for _, s in parts)

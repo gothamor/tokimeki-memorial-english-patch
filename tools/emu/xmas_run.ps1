@@ -1,21 +1,25 @@
-# Force the Christmas party (XMAS.BIN) and screenshot the boxes.
+# Force the Christmas party (XMAS.BIN), or another seasonal event, and
+# screenshot the boxes.
 #
-#   powershell.exe -File tools\emu\xmas_run.ps1 [-Opts "--girls 8,1 --met"] [-Presses 30]
-#       [-Prefix name] [-Keys "C"] [-State ...] [-Build review_dates] [-Hidden]
+#   powershell.exe -File tools\emu\xmas_run.ps1 [-Opts "--girls 8,1 --met 8"] [-Presses 30]
+#       [-Tool "tools/emu/force_white.py"] [-Prefix name] [-Keys "C"] [-Wait 4000]
+#       [-State ...] [-Build review_dates] [-Hidden]
 #
-# Launches the Sunday-night state, runs tools/emu/force_christmas.py --party
-# with -Opts detached (log .emu\xmas_run.log; options in its docstring and
-# game-internals 6t), picks the first weekly command, then presses -Keys
-# (default C) with a screenshot per box. Contact sheets of 15 boxes each:
+# Launches the Sunday-night state, runs -Tool (default
+# "tools/emu/force_christmas.py --party") with -Opts detached (log
+# .emu\xmas_run.log; options in each tool's docstring, game-internals
+# 6t/6u/6v), picks the first weekly command, then presses -Keys (default C)
+# with a screenshot per box. Contact sheets of 15 boxes each:
 # .emu\shots\<Prefix>_sheet0.png, _sheet1.png, ... -Hidden hides the
 # emulator window.
-param([string]$Opts = "", [int]$Presses = 30, [string]$Prefix = "xmas", [string]$Keys = "C",
+param([string]$Opts = "", [string]$Tool = "tools/emu/force_christmas.py --party",
+      [int]$Presses = 30, [string]$Prefix = "xmas", [string]$Keys = "C",
       [int]$Wait = 3500,
       [string]$State = ".emu\savestates_backup\dates_sunday_0423_candidate.sav",
       [string]$Build = "review_dates", [switch]$Hidden)
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 & "$here\launch_state.ps1" -State $State -Build $Build -Hidden:$Hidden | Out-Null
-$a = @("tools/emu/force_christmas.py", "--party", "--timeout", "600")
+$a = $Tool.Split(" ", [StringSplitOptions]::RemoveEmptyEntries) + @("--timeout", "600")
 if ($Opts) { $a += $Opts.Split(" ", [StringSplitOptions]::RemoveEmptyEntries) }
 Start-Process python -ArgumentList $a -WindowStyle Hidden -RedirectStandardOutput .emu\xmas_run.log -RedirectStandardError .emu\xmas_run.err | Out-Null
 Start-Sleep -Seconds 3

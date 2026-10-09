@@ -5,15 +5,15 @@ English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
 <!-- progress:start -->
-**Translated: 15%**
+**Translated: 16%**
 
 ```text
-Whole game             ███░░░░░░░░░░░░░░░░░    15%
-Dialogue               ███░░░░░░░░░░░░░░░░░    13%
+Whole game             ███░░░░░░░░░░░░░░░░░    16%
+Dialogue               ███░░░░░░░░░░░░░░░░░    15%
 Menus and other text   ██████░░░░░░░░░░░░░░    31%
 ```
 
-<sub>88,823 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>95,460 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage
@@ -70,6 +70,11 @@ existing output folder.
   chatting with the girls (or meeting them for the first time), the present
   exchange, and the lonely evening at home if you're turned away
   ([christmas.json](translation/christmas.json)).
+- **Valentine's Day and White Day:** Ijuin's boasting, each girl's
+  chocolate (courtesy or heartfelt), Shiori introducing Megumi, and the
+  player's special return gift a month later
+  ([valentine.json](translation/valentine.json),
+  [white_day.json](translation/white_day.json)).
 - **Walking home from school** with any of the girls: her invitation or
   yours, her answer, and the chat on the way about upcoming events
   ([walk_home.json](translation/walk_home.json)).

@@ -946,6 +946,33 @@ sector + checksum changed (16 sectors), checksums valid. Seen in English:
 see the AGENTS.md row. Normal build (`.emu/default_xmas/`, 28 files)
 byte-identical to the candidate.
 
+### White Day and Valentine's Day (WHITE.BIN, VALEN.BIN, 2026-10-09)
+
+Both are forced with `xmas_run.ps1 -Tool <forcer> -Opts "..." -Hidden`
+from the Sunday state (game-internals §6u/§6v; options in each tool's
+docstring). The forcer writes a White Day (`30`) or Valentine (`31`) day
+record over the next ordinary one, then polls for the overlay's code
+before arming its breakpoints.
+- `force_white.py --gave G,... --pick G --mood M [--year97]`: `w1` Yuko
+  mood 0 with Shiori also in the menu, `w2` nobody (Ijuin's "no" branch),
+  `w3` Yuina mood 2 with Ijuin's 1997 lines, `w4` Mira mood 3, `w5` Yumi
+  mood 4 ("give it to my brother"), `w6` Mio and `w7`/`w8` Saki mood 0.
+  The girl menu lists the `--gave` girls with their English names.
+- `force_valen.py --girls G,... --parts P,... [--intro] [--year N]`: `v1`
+  Yuko heartfelt, Shiori and Megumi courtesy; `v2` Shiori, Yuina, Mio
+  heartfelt; `v3` year 1, Megumi's introduction by Shiori and Shiori's
+  apology; `v4` year 2, Ayako, Mira, Yukari, Nozomi heartfelt; `v5` Saki,
+  Yumi heartfelt, Mio, Ayako courtesy; `v7`/`v8`/`v9` the other courtesy
+  versions and Megumi's heartfelt one (`v8` stalled the emulator once
+  after Ijuin; the retry passed). A six-girl list (`v6`) played Shiori's courtesy scene six
+  times: keep to four girls.
+
+The forced list skips the ranking that seems to pick the later
+"part 2" scenes (game-internals §6v), so those weren't seen. Each forced
+day ends normally and the week continues (Mio's library meeting followed
+in several runs). Candidate in `.emu/review_dates/`: WHITE's 9, VALEN's 7
+and VALEN.EXN's 2 sectors changed (18), checksums valid.
+
 ### Disassembly
 
 ```bash

@@ -986,7 +986,8 @@ call moves to Shiori's room.
   the stage dispatcher `0x8013D180` (stage in `0x800E7389`; stages 6/7/8 are
   Shiori/KG/MI's after-party scenes, their entries 12/36/60). The day-record
   type `0x30` runs White Day (state `0x55`; Ijuin in the hallway, then a
-  reply event when a girl gave chocolate). A forced type-`0x48` record
+  reply event when a girl gave chocolate; §6u), and type `0x31`
+  Valentine's Day (state `0x54`, VALEN.EXN, §6v). A forced type-`0x48` record
   (meeting) with girl 0 returned the game to the title screen: don't force
   it for Shiori. `tools/emu/force_christmas.py` swaps the next weekday's
   state `0x40` for `0x52` and sets stage 6 / girl 0 / scene id 7; with
@@ -1800,6 +1801,105 @@ pointers: the 358 dumped strings plus an empty string at `0x6C44`
 In the forced runs the player's "we haven't even talked" part after a
 brush-off (e.g. section 0 part 2) didn't play; it's reached some other
 way, not traced.
+
+### 6u. White Day (`SERIFU/WHITE.BIN`)
+
+Found 2026-10-09 by static disassembly of SHOUGATU.EXN and forced White
+Days in DuckStation (`force_white.py`, testing.md "White Day and
+Valentine's Day"). Translated in `translation/white_day.json`.
+
+**Trigger.** Day-record type `0x30` (EXE record switch: jump table
+`0x800B1340` indexed by the type, case `0x80071FC8`) enters main state
+`0x55`, which loads SHOUGATU.EXN. Writing `30 00 00 00` over an ordinary
+record (`force_event.py --type 0x30`, or `force_white.py`) gives White Day
+the next school day, from any date.
+
+**File.** 18,432 bytes at LBA 44979 (9 sectors), base `0x80197000`,
+checksum trailer. SHOUGATU loads it at `0x8013B71C` (`0x80046318(9,
+0x80197000, 44979)`) and fills the tables at `0x8013B210`: 13 masters at
+`0x80145960`, 13 code lists at `0x80145994`, 13 third pointers at
+`0x801459C8`; the current section's three pointers go to `0x801459FC`–
+`0x80145A04`, the part to `0x80145A08`. 251 strings, all reached (the
+dumper's 3 rejected targets are third records). Sections
+(`tools/geko_sections.py --white`): 0 Yuko, 1 Shiori, 2 Yuina, 3 Ijuin,
+4 Ayako, 5 Mira, 6 Mio, 7 Yukari, 8 Nozomi, 9 Megumi, 10 Saki, 11 the
+player's thoughts, 12 Yumi.
+
+**Flow.** The hallway banner is SHOUGATU's 廊下 (`0x118A0`, already
+"Hall", §6p). Ijuin (section 3, label from the EXE's name table, girl id
+12) talks first: parts 0–3, or 4–7 when the year byte `0x800E62BE` is 97
+(`0x8013B900`). The player's answer is part 1 ("of course") when any girl
+has bit 0 of `0x800E6449 + 0x38·girl` set (she gave him chocolate on
+Valentine's Day; the flag is collected into `0x80145A10` at `0x8013B85C`),
+otherwise part 2 ("no") and Ijuin's jab; part 3 is the player's grumble.
+Then section 11 part 0 ("I splurged on one special gift; who gets it?")
+and a menu of the girls with the flag (flags copied to `0x800CA2B0`, names
+from the EXE's table). The chosen girl goes to `0x800E71DF` at
+`0x8013BD00` (delay slot of `0x8013BCFC`); part 1 of section 11 ("there's
+{G}") and the girl switch `0x8013BDE0` (jump table `0x801438B0`): girls
+0 Shiori → 1, 1 Mio → 6, 2 Yuina → 2, 3 Ayako → 4, 4 Saki → 10, 5 Yukari →
+7, 6 Nozomi → 8, 7 Mira → 5, 8 Yuko → 0, 9 Megumi → 9, 10 Yumi → 12. Her
+part comes from her mood (`0x80051A68`, returning at `0x8013BD44`): mood
+0–1 parts 1–2 (delighted), 2 → 3–4, 3 → 5–6, 4 → 7–8 (cold); part 0 is the
+player greeting her. Afterwards every flagged girl's bit is cleared and
+her `+0x1C2` field goes up by 1; the chosen one also gets `+0x1BE` +8,
+`+0x1C2` +8 and `+0x1C6` −10 (`0x8013BB24`).
+
+### 6v. Valentine's Day (`SERIFU/VALEN.BIN`, `EXEDIR/VALEN.EXN`)
+
+Found 2026-10-09 the same way (`force_valen.py`). Translated in
+`translation/valentine.json`.
+
+**Trigger.** Day-record type `0x31` (case `0x80071FB8`) enters main state
+`0x54`, which loads VALEN.EXN (LBA 39626, at `0x80132000`).
+
+**File.** 14,336 bytes at LBA 44972 (7 sectors), base `0x80197000`,
+checksum trailer. VALEN.EXN loads it at `0x8013253C` (`0x80046318(7,
+0x80197000, 44972)`) and fills its tables at `0x80132000`: masters
+`0x801343F0`, code lists `0x80134424`, third pointers `0x80134458`;
+current section `0x8013448C`–`0x80134494`, part `0x80134498`. 187
+strings plus an empty placeholder at `0x362C` (section 2 part 6, code 09).
+Sections (`geko_sections.py --valen`): 0 Yuko, 1 the player's count, 2
+Shiori, 3 Yuina, 4 Ijuin, 5 Ayako, 6 Mira, 7 Mio, 8 Yukari, 9 Nozomi, 10
+Megumi, 11 Saki, 12 Yumi. Speaker code **`0B`** is a second girl in the
+scene: Shiori's lines inside Megumi's section (shown with Shiori's label).
+Several girls' boxes are a `0C` "あっ、" plus a `0D` string starting
+with `{P}`.
+
+**Flow.**
+- **Ijuin** (section 4): part 4·year − 0x180 + base, from the year byte
+  read at `0x80132718`; in February that's 96–98, giving parts 0–3, 4–7
+  and 8–12 for the first, second and third Valentine's Day. Forced on
+  another date (April 1995) the part would be negative, so
+  `force_valen.py` always sets the year.
+- **Who gives chocolate** (`0x80132834`): a list of girl ids at
+  `0x80134524` (a byte every 2), count `0x8013453C`, index `0x80134520`,
+  built from met girls (bit 1 of `+0x1C8`) whose `0x80052648(girl)` is at
+  least 70, ranked by `+0x1BE` + `+0x1C2` (the top three kept in
+  `0x80134540`–`0x80134542`; not traced further). The per-girl step
+  `0x80132D0C` takes the next one into `0x800E71DF`; her part
+  (`0x80134498`, `0x80132D68`–`0x80132E0C`) is 1 (heartfelt) when
+  `0x80052648(girl)` ≥ 70, else 0 (courtesy); for Shiori the test is her
+  `0x800E643E` ≥ 70. The girl switch `0x80132E10` (jump table
+  `0x8013437C`) maps 0 Shiori → 2, 1 Mio → 7, 2 Yuina → 3, 3 Ayako → 5,
+  4 Saki → 11, 5 Yukari → 8, 6 Nozomi → 9, 7 Mira → 6, 8 Yuko → 0, 9 Megumi
+  → 10, 10 Yumi → 12.
+- **Megumi's introduction**: the flag `0x80134544` is set (at
+  `0x801328A4`) when Megumi is unmet and `0x800E6636` ≥ 20. Then Megumi's
+  part is 3 (Shiori calls the player behind the school and introduces her,
+  sections 10 parts 3–12, Shiori speaking with code `0B`) and Shiori's own
+  part is 3 (heartfelt, "sorry about earlier, my friend asked me") or 5
+  (courtesy, sorry).
+- **Banners** VALEN.EXN strcpy's into `0x800CA1DC` (`0x2320`–`0x23B8`):
+  廊下, 教室, 校舎裏, 屋上, 校門前, 自宅前 (one string per scene place).
+- **The count** (section 1): the closing thought by how many chocolates
+  the player got (5 parts, "so many" … "not a single one").
+- **Part 2 of each girl** (the player's afterthought: Yuko's "I'm really
+  happy", Mio's poem found in the box, Saki's "until morning", …) never
+  played in the forced runs, where the girl list is written directly and
+  the ranking `0x80134540`–`0x80134542` stays `0xFF`. They're probably the
+  later scene for the top-ranked giver (the 自宅前 "Home" banners are
+  copied at `0x80133A5C`/`0x80133A84`); not traced.
 
 ## 7. Graphics
 
