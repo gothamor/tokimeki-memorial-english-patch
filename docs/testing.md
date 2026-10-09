@@ -973,6 +973,41 @@ day ends normally and the week continues (Mio's library meeting followed
 in several runs). Candidate in `.emu/review_dates/`: WHITE's 9, VALEN's 7
 and VALEN.EXN's 2 sectors changed (18), checksums valid.
 
+### New Year's Day (SHOGATU.BIN, 2026-10-09)
+
+`xmas_run.ps1 -Tool tools/emu/force_newyear.py -Opts "..." -Hidden` from
+the Sunday state: the next weekday's state `0x40` becomes `0x53`
+(game-internals §6w). `--visit G --met G` makes G ring the doorbell
+(best-mood girl forced at `0x8013296C`); `--call G --met G` makes the
+phone menu's choice G (the menu shows Shiori and the met girls; any
+entry works). `--year 1`/`2` writes the year byte for the second and third
+New Year's lines. With the default `-Keys C` every choice takes its first
+option (accept, Grades); `-Keys "Down,wait:600,C"` takes the second
+(refuse, then go alone, Health).
+- English runs: `n1` calling Shiori (her kimono at the door, the fortune
+  "Lucky me! Best!!"), `n2` Yuko visits, `n3` calling Yuina (third year),
+  `n5` calling Mira ("Uh, Doom..."), `n6` Mio visits (second year), `n7`
+  calling Yukari (her kimono choice, "Oh, Fair."), `n8` Nozomi visits,
+  `n9` calling Megumi, `n10` Saki visits ("Uh, Poor...", the UFO trick),
+  `n11` calling Yumi (second year), `n12` Shiori visits (third year), and
+  the re-runs `m1`–`m5` (Ayako, Shiori's and Saki's third-year endings,
+  Mio, refusing Yuko and going alone).
+- Not reached: the third-year "we graduate" endings (year 97 alone still
+  plays the usual one), Nozomi's unused section 8, the phone answers for
+  other moods, refusing and then picking the same girl (part 8), a girl
+  with no known number (section 14).
+- After the shrine the week continues normally (Mio's library meeting
+  followed in several runs).
+
+**Harness stalls.** Five of the twelve runs (`n4`, `n6`, `n10`, `n11`,
+`n12`) ended early with `drive.ps1`'s "DuckStation did not produce a new
+screenshot": the hidden emulator stopped writing screenshot files, while
+the forcer's log shows the game had already been forced normally. The
+same happened once each in the party and Valentine runs. It's the
+harness, not the patch: re-running the same options worked. Check a
+run's shot count (`ls .emu/shots | grep -c ^PREFIX_`) before reading its
+sheets.
+
 ### Disassembly
 
 ```bash

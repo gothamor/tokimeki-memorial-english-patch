@@ -1901,6 +1901,69 @@ with `{P}`.
   later scene for the top-ranked giver (the 自宅前 "Home" banners are
   copied at `0x80133A5C`/`0x80133A84`); not traced.
 
+### 6w. New Year's Day (`SERIFU/SHOGATU.BIN`)
+
+Found 2026-10-09 by static disassembly of SHOUGATU.EXN and forced New
+Year's Days in DuckStation (`force_newyear.py`, testing.md "New Year's
+Day"). Translated in `translation/new_year.json`.
+
+**Trigger.** Main state `0x53` (entered by the calendar code at
+`0x80061100` / `0x801615FC`), one of the four SHOUGATU states (loader case
+`0x80078F40`: `0x52` party, `0x53` New Year, `0x55` White Day, `0x5B`
+meetings). Swapping a weekday's `set_state(0x40)` for `0x53` plays it on
+any date; the year byte `0x800E62BE` (95–97) picks the year's lines.
+
+**File.** 106,496 bytes at LBA 44872 (52 sectors), base `0x80197000`,
+checksum trailer; loaded at `0x801326BC` (`0x80046318(0x34, 0x80197000,
+44872)`). The fill `0x80132000` writes three 15-entry tables: masters
+`0x80143A40`, code lists `0x80143A7C`, third pointers `0x80143AB8`
+(current section `0x80143AF4`–`0x80143AFC`, part `0x80143B00`). 1,483
+strings (638 distinct); 8 more table slots are empty `09` placeholders
+(`0x1967C`–`0x19694`, `0x196D8`), and the dumper's 64 rejected targets are
+all non-text. Sections (`geko_sections.py --newyear`): 0 going alone, 1
+Yuko, 2 Shiori, 3 Yuina, 4 Ayako, 5 Mira, 6 Mio, 7 Yukari, 8 and 9 Nozomi
+(near-identical copies), 10 Megumi, 11 Saki, 12 "something else?", 13
+Yumi, 14 "I don't know her number". The girl switch `0x80132A34` (jump
+table `0x80143568`) maps girls 0 Shiori → 2, 1 Mio → 6, 2 Yuina → 3, 3
+Ayako → 4, 4 Saki → 11, 5 Yukari → 7, 6 Nozomi → **9**, 7 Mira → 5, 8 Yuko →
+1, 9 Megumi → 10, 10 Yumi → 13: **section 8 is never selected** (like
+G_BIRTH's spare Nozomi copy, §6s); it's translated with section 9's
+English.
+
+**Flow (each girl's section).** Part 0–5: she rings the doorbell, the
+invitation (`08` choice) and her answer, the regret thought. The visit
+happens when the met girl with the best mood (`0x80051A68` < 2, ties
+broken by `0x80052C88` + `0x80052648`; loop `0x801328D4`) exists:
+`0x8013296C`. Otherwise (or after refusing) part 6: "what now?", go with
+a girl or alone; part 7 the girl menu (choice at `0x80122CDC`, 0xB =
+Stop; the girl's phone number needs bit 3 of her flags `0x800E6448 +
+0x38·girl`, else section 14), part 8 "I just turned her down", part 9 the
+call, 10 nobody home, 11 she answers, 12–14 her three phone answers (by
+mood), 15 "she isn't here yet", 16 her arrival, 17 going in, 18–22 the
+wish (`03` choice; the wish names come from SHOUGATU `0x11D88`, 9-byte
+slots, and `{W}` inserts the chosen one), 23–26 "what did you wish for?",
+27–30 the fortune and the player's reaction, 31–34 hers by result, 35–38
+going home (35/37 the usual endings, 36/38 the "we graduate this year"
+ones; forcing the year byte to 97 still gave 37, so the third-year choice
+reads something else, not traced), and
+for some girls extra parts (Shiori 39–46: the kimono at her door; Yukari
+the kimono compliment, `02` reply).
+
+**Fortune drawing** (`0x801350F8`): an in-place announcement in SHOUGATU
+(おみくじを引きます。 `0x11640`, うおりゃあああ〜・・・ `0x11658`, こ、これは！！
+`0x11670`) then one of three sprintf formats around the result name:
+`%sだ・・・` (`0x11680`, bad), `おっ、%sだ。` (`0x1168C`, middling),
+`ラッキー！%sだ！！` (`0x1169C`, good). The names are two 7-entry tables of
+5-byte slots (`0x11E5C`, `0x11E80`): 大吉, 中吉, 吉, 凶, 大凶, 小吉, 末吉;
+`{O}` inserts the drawn one. The formats are patched with `bytes` entries:
+pair-encoded English around the raw `%s` (`0x25 0x73`), which works
+because every English name is exactly 4 letters (Best, Good, Fair, Poor,
+Doom, Okay, Late), so the name's pairs line up with the text around it.
+
+**Banners**: 正月 (four copies, strcpy'd at `0x80132744`, `0x80132DC0`,
+`0x80133620`, `0x801336BC`), 初詣 (`0x11630`), and the narration
+それじゃ、神社に行くか。 (`0x11600`).
+
 ## 7. Graphics
 
 ### General

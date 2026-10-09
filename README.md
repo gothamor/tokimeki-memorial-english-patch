@@ -5,15 +5,15 @@ English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
 <!-- progress:start -->
-**Translated: 16%**
+**Translated: 20%**
 
 ```text
-Whole game             ███░░░░░░░░░░░░░░░░░    16%
-Dialogue               ███░░░░░░░░░░░░░░░░░    15%
+Whole game             ████░░░░░░░░░░░░░░░░    20%
+Dialogue               ████░░░░░░░░░░░░░░░░    19%
 Menus and other text   ██████░░░░░░░░░░░░░░    31%
 ```
 
-<sub>95,460 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>116,603 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage
@@ -75,6 +75,9 @@ existing output folder.
   player's special return gift a month later
   ([valentine.json](translation/valentine.json),
   [white_day.json](translation/white_day.json)).
+- **New Year's Day:** a girl at the door in her kimono or a phone call
+  inviting her, the wish at the shrine, the fortune drawing and every
+  girl's reaction, for all three years ([new_year.json](translation/new_year.json)).
 - **Walking home from school** with any of the girls: her invitation or
   yours, her answer, and the chat on the way about upcoming events
   ([walk_home.json](translation/walk_home.json)).
@@ -134,7 +137,7 @@ existing output folder.
 | `translation/*.json` | The translation: `strings`, `dialogue` and `images` entries |
 | `translation/graphics/` | Replacement graphics (indexed PNGs using the game's palettes) |
 | `translation/font/free_glyphs.txt` | Font glyphs the game never uses (research data; no longer used by the patcher) |
-| `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation (`make_title_menu.py`, `make_main_screen.py`), renderer check, translation progress (`progress.py`), code-string lister (`code_strings.py`), walk-home section lister (`geko_sections.py`) |
+| `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation (`make_title_menu.py`, `make_main_screen.py`), renderer check, translation progress (`progress.py`), code-string lister (`code_strings.py`), script section lister (`geko_sections.py`) |
 | `tests/` | Unit tests on synthetic data (`python -m unittest discover tests`) |
 | `tools/emu/` | Emulator test harness: isolated DuckStation, input driver with screen detection, GDB client, file-load tracer, read-watchpoint logger, girl-event watcher and event/date/Christmas forcers |
 

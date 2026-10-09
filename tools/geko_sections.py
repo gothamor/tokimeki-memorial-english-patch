@@ -1,8 +1,8 @@
 """List the GEKO.EXN script sections: parts, speaker codes, strings.
 
 Usage:
-  python tools/geko_sections.py [--invite | --appear | --nyubu | --xmas | --white | --valen]
-      [--strings] [--girl N]
+  python tools/geko_sections.py [--invite | --appear | --nyubu | --xmas | --white | --valen
+      | --newyear] [--strings] [--girl N]
 
 Default: SERIFU/GEKO.BIN, walking home (game-internals 6n). --invite:
 SERIFU/G_INVITE.BIN, a girl asking the player out (6o), from GEKO.EXN's
@@ -13,7 +13,8 @@ KANGEI.EXN's 8-entry tables at 0x80139950. --xmas: SERIFU/XMAS.BIN, the
 Christmas party (6t), from SHOUGATU.EXN's 13-entry tables at 0x80145AD0.
 --white: SERIFU/WHITE.BIN, White Day (6u), SHOUGATU.EXN's tables at
 0x80145960. --valen: SERIFU/VALEN.BIN, Valentine's Day (6v), from
-VALEN.EXN's tables at 0x801343F0.
+VALEN.EXN's tables at 0x801343F0. --newyear: SERIFU/SHOGATU.BIN, New Year's
+Day (6w), SHOUGATU.EXN's 15-entry tables at 0x80143A40.
 
 GEKO.EXN holds three parallel 12-entry tables at 0x80144BA0 (masters),
 0x80144BD0 (code-byte lists) and 0x80144C00 (third pointers), one entry per
@@ -70,9 +71,14 @@ WHITE_NAMES = ["Yuko", "Shiori", "Yuina", "Ijuin", "Ayako", "Mira", "Mio", "Yuka
 VALEN_TABLE = 0x801343F0
 VALEN_NAMES = ["Yuko", "count", "Shiori", "Yuina", "Ijuin", "Ayako", "Mira", "Mio",
                "Yukari", "Nozomi", "Megumi", "Saki", "Yumi"]
+# SHOUGATU.EXN's switch 0x80132A34 (jump table 0x80143568); section 8 is an
+# unused copy of Nozomi's 9 (6w).
+NEWYEAR_TABLE = 0x80143A40
+NEWYEAR_NAMES = ["alone", "Yuko", "Shiori", "Yuina", "Ayako", "Mira", "Mio", "Yukari",
+                 "(Nozomi)", "Nozomi", "Megumi", "Saki", "again?", "Yumi", "no number"]
 CODES = {0: "player", 1: "girl", 2: "reply", 3: "choice", 4: "note", 6: "thought",
          7: "sound", 8: "action", 9: "sfx", 0x0A: "Yoshio", 0x0C: "girl+", 0x0D: "girl+2",
-         0x0B: "Shiori", 0x0E: "prompt"}
+         0x0B: "Shiori", 0x0E: "prompt", 0x10: "ring"}
 
 
 def sections(geko: bytes, exn: bytes, table: int = TABLE, count: int = 12):
@@ -110,18 +116,20 @@ def main():
     ap.add_argument("--xmas", action="store_true", help="XMAS.BIN (tables in SHOUGATU.EXN)")
     ap.add_argument("--white", action="store_true", help="WHITE.BIN (tables in SHOUGATU.EXN)")
     ap.add_argument("--valen", action="store_true", help="VALEN.BIN (tables in VALEN.EXN)")
+    ap.add_argument("--newyear", action="store_true", help="SHOGATU.BIN (tables in SHOUGATU.EXN)")
     ap.add_argument("--exn", default=str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"))
     ap.add_argument("--strings", action="store_true", help="print each string's Japanese")
     ap.add_argument("--girl", type=int)
     args = ap.parse_args()
     name = ("G_INVITE.BIN" if args.invite else "G_APPEAR.BIN" if args.appear else
             "NYUBU.BIN" if args.nyubu else "XMAS.BIN" if args.xmas else
-            "WHITE.BIN" if args.white else "VALEN.BIN" if args.valen else "GEKO.BIN")
+            "WHITE.BIN" if args.white else "VALEN.BIN" if args.valen else
+            "SHOGATU.BIN" if args.newyear else "GEKO.BIN")
     if args.nyubu and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
         args.exn = str(ROOT / "extracted/CDROM/EXEDIR/KANGEI.EXN")
     if args.valen and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
         args.exn = str(ROOT / "extracted/CDROM/EXEDIR/VALEN.EXN")
-    if (args.appear or args.xmas or args.white) and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
+    if (args.appear or args.xmas or args.white or args.newyear) and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
         args.exn = str(ROOT / "extracted/CDROM/EXEDIR/SHOUGATU.EXN")
     geko = Path(args.file or ROOT / "extracted/CDROM/SERIFU" / name).read_bytes()
     exn = Path(args.exn).read_bytes()
@@ -130,7 +138,8 @@ def main():
                            (NYUBU_TABLE, 8, NYUBU_NAMES) if args.nyubu else
                            (XMAS_TABLE, 13, XMAS_NAMES) if args.xmas else
                            (WHITE_TABLE, 13, WHITE_NAMES) if args.white else
-                           (VALEN_TABLE, 13, VALEN_NAMES) if args.valen else (TABLE, 12, GIRLS))
+                           (VALEN_TABLE, 13, VALEN_NAMES) if args.valen else
+                           (NEWYEAR_TABLE, 15, NEWYEAR_NAMES) if args.newyear else (TABLE, 12, GIRLS))
     total = 0
     for g, master, parts in sections(geko, exn, table, count):
         n = sum(len(s) for _, s in parts)

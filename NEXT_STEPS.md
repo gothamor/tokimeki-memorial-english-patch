@@ -18,7 +18,8 @@ seen is in the AGENTS.md status table, how in docs/testing.md):
   the girls' birthdays and gift names `girl_birthdays.json` (§6s);
 - the Christmas party `christmas.json` (§6t, 2026-10-09);
 - White Day `white_day.json` (§6u) and Valentine's Day `valentine.json`
-  (§6v), 2026-10-09.
+  (§6v), 2026-10-09;
+- New Year's Day `new_year.json` (§6w), 2026-10-09.
 
 ## Why this file (2026-10-08, static survey)
 
@@ -83,7 +84,7 @@ translated in SHOUGATU, §6s), odd-length names before punctuation.
 | On-screen tests | Done 2026-10-09 (testing.md "The Christmas party") |
 | Promote | Done 2026-10-09: `translation/christmas.json`, normal build byte-identical |
 
-**The party, White Day and Valentine's Day are finished.** Pick the next file from "Later candidates" and
+**The party, White Day, Valentine's Day and New Year's Day are finished.** Pick the next file from "Later candidates" and
 rewrite this plan for it.
 
 ## Later candidates
@@ -91,8 +92,9 @@ rewrite this plan for it.
 - **Valentine's part 2 scenes**: each girl's later scene (Mio's poem in
   the box, …) is translated but wasn't reached by forcing; trace the
   ranking `0x80134540` (§6v) if it needs an on-screen check.
-- **The big yearly events:** New Year (`SHOGATU.BIN`, ~21,000), school
-  trip (`SHUGAKU.BIN`, ~18,700), training camp (`GASSHUKU.BIN` ~28,000 +
+- **New Year's graduation endings** (§6w): translated, not reached on
+  screen; find what picks parts 36/38 if they need a check.
+- **The big yearly events:** school trip (`SHUGAKU.BIN`, ~18,700), training camp (`GASSHUKU.BIN` ~28,000 +
   `GASSH_FU.BIN` ~21,800, KANGEI.EXN, record type `0x42`).
 - **The culture festival (`CDROM/BUNKA/`, 46 files, ~217,000 chars: over a
   third of the game's text)**, per girl and club; very repetitive. Needs its
