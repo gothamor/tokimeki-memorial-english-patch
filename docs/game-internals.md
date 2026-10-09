@@ -1964,6 +1964,65 @@ Doom, Okay, Late), so the name's pairs line up with the text around it.
 `0x80133620`, `0x801336BC`), 初詣 (`0x11630`), and the narration
 それじゃ、神社に行くか。 (`0x11600`).
 
+### 6x. The summer training camp (`SERIFU/GASSHUKU.BIN`, `GASSH_FU.BIN`)
+
+Found 2026-10-09 by static disassembly of KANGEI.EXN and forced camps in
+DuckStation (`force_camp.py`, testing.md "The training camp"). Translated
+in `translation/training_camp.json`.
+
+**Trigger.** Day-record type `0x42` enters main state `0x5F`, KANGEI.EXN's
+camp entry `0x80132FF8` (§6q). The camp runs one stage per camp day
+(stage `0x800E7389`, 33 stages, jump table `0x801396F0`; the trace of a
+forced camp: arrival, then day after day 4/25–4/30 with the date advancing,
+then the last day). It goes on only while **the week's first record**
+(`0x800E691C`) is a camp day too: the EXE's day-advance step
+(`0x800752DC`) calls `next_stage` when that byte is `0x42`, else
+`set_stage(1)`, which replays the arrival forever (the first forcing
+attempts sat on 合宿所に着いたぞ). `force_camp.py` writes both records.
+
+**Files.** GASSHUKU.BIN: 120,832 bytes at LBA 44640, base `0x80197000`,
+loaded at `0x80133CB0`; 8 sections, tables filled at `0x80132E74`
+(masters `0x80139A5C`, code lists `0x80139A7C`, third pointers
+`0x80139A9C`). GASSH_FU.BIN: 92,160 bytes at LBA 44699, base
+**`0x801B4400`**, loaded at `0x80133CEC`; one section (Shiori, 195
+parts), tables at `0x80132E40` (`0x80139A50`/`54`/`58`). Current section
+`0x80139AD0`–`D8`, part `0x80139ADC`. 1,587 + 1,207 strings, all reached
+(GASSHUKU has 3 more empty placeholders, `0x1D2C8`–`0x1D2D8`); the dumper's
+rejected targets are all non-text.
+
+**Sections** (switch `0x801349EC` on `0x800E71DF`, jump table
+`0x8013984C`): girl 0 Shiori → GASSH_FU, 1 Mio → 2, 2 Yuina → 0, 3 Ayako →
+1, 4 Saki → 5, 5 Yukari → 3, 6 Nozomi → 4, others → 7 (Yumi). Section 6
+is shared: the arrival line, the last day's bath (peek or not; the three
+windows: a girl's scream, the boys' bath, Ijuin's tacky statue) and the
+technique box. Each girl's section covers both of her clubs (Yuina:
+Science/Computer, Ayako: Art/Band, Mio: Literature/Drama, Saki:
+Baseball/Soccer), Shiori's every club.
+
+**The camp's girl** is the first girl (by id) whose club nibble
+(`0x800E644A + 0x38·girl`, high 4 bits) equals the player's club
+(`0x800E6374 >> 12`), chosen at `0x80133DC8` into `0x800E71DF` (and
+`0x800E69DD`); for Basketball from 1996 it can be Yumi. Stage 9
+(`0x80134120`) plays her scene: a chat when she's met, else her first
+meeting (`0x80134DB0`: food poisoning, the test of courage with lot No.
+15, fainting at practice; not for Yumi or in 1997). The chat's part
+(`0x80134724`–`0x801349B0`) comes from her mood (`0x80051A68`) and the
+club stat `0x800E68EC + 4·club` (< 100, < 200, < 356, more), so it
+follows the player's progress through the years.
+
+**Technique box** (section 6 parts 13): `{A}奥義` / `{M}` / `をマスターした。`
+— `{A}` and `{M}` are filled from two fixed-record tables KANGEI copies
+to the stack at `0x8013769C`: club names, 11 × 20 bytes at file `0x7FAC`
+(→ `0x800CA25C`), and technique names, 11 × 21 bytes at `0x8088` (→
+`0x800CA280`), indexed by club. Both are translated with `"slot"` 20/21.
+
+**Banners** strcpy'd by the camp: 合宿所 (`0x7780`), the club rooms
+(`0x7790`–`0x77F0`), ロビー (`0x77F8`, `0x78B0`), グランド (`0x7800`),
+肝試し (`0x780C`), のぞき (`0x78E0`). The club-name strings at
+`0x7600`–`0x765C` are copied by code near the club welcome
+(`0x80132834`…) and were left alone (8-byte slots: "Baseball" doesn't
+fit; not seen on screen).
+
 ## 7. Graphics
 
 ### General

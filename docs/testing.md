@@ -1006,7 +1006,36 @@ the forcer's log shows the game had already been forced normally. The
 same happened once each in the party and Valentine runs. It's the
 harness, not the patch: re-running the same options worked. Check a
 run's shot count (`ls .emu/shots | grep -c ^PREFIX_`) before reading its
-sheets.
+sheets. Since the camp work (2026-10-09) `drive.ps1` re-presses F10 up to
+four times before giving up and `gdbstub.Gdb.detach()` waits for the
+stub's reply; the 9 camp runs and the re-check after it all completed.
+
+### The training camp (GASSHUKU.BIN, GASSH_FU.BIN, 2026-10-09)
+
+`xmas_run.ps1 -Tool tools/emu/force_camp.py -Opts "--club C --girl G
+[--met G] [--year N]" -Presses 45 -Hidden` from the Sunday state
+(game-internals §6x). The forcer sets the player's club and puts G in it,
+then writes a camp day record and makes the week's first record a camp
+day too; the camp then runs by itself (arrival, G's scene in stage 9, the
+other days without text, the last day's bath with its choices) and the
+week continues (Mio's library meeting followed in every run). Without
+`--met` G plays her first meeting, with it her chat.
+- English runs: `k1` Yuina chat (Science) and the girls'-bath window,
+  `k2` Ayako's test of courage (Art), `k3` Mio chat (Literature), `k4`
+  Yukari fainting at practice (Tennis; `k4b` re-checked a shortened line),
+  `k5` Nozomi's first meeting (Swimming), `k6` Saki chat (Baseball) and the
+  boys'-bath window, `k7` Yumi chat (Basketball, 1996), `k8`/`k9` Shiori
+  (GASSH_FU: Drama, Soccer) and Ijuin's statue window.
+- Not reached: the technique box (`{A}` secret / `{M}` / mastered, probably
+  at a high club level), later years' chat levels, the rumors, Saki's
+  missed-Koshien lines.
+
+Two harness traps found here:
+- A forcer that waits on a breakpoint holds the GDB connection: a second
+  script can't attach until it exits.
+- The camp replays its arrival forever if only the forced day is a camp
+  day (game-internals §6x), which first looked like a hang on the
+  unpatched disc too.
 
 ### Disassembly
 

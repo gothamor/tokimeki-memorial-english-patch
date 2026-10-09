@@ -69,14 +69,18 @@ function Press($name, $hold) {
 function Shoot($dest) {
   $dir = "$Emu\screenshots"
   $before = @(Get-ChildItem $dir -Filter *.png -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName)
-  Press 'F10' 120
+  # An F10 press is sometimes lost (more often with the window hidden), so
+  # retry it a few times before giving up (testing.md "Harness stalls").
   $latest = $null
-  for ($i = 0; $i -lt 30; $i++) {
-    $latest = Get-ChildItem $dir -Filter *.png -ErrorAction SilentlyContinue |
-      Where-Object { $before -notcontains $_.FullName } |
-      Sort-Object LastWriteTime | Select-Object -Last 1
-    if ($latest) { break }
-    Start-Sleep -Milliseconds 200
+  for ($try = 0; $try -lt 4 -and -not $latest; $try++) {
+    Press 'F10' 120
+    for ($i = 0; $i -lt 20; $i++) {
+      $latest = Get-ChildItem $dir -Filter *.png -ErrorAction SilentlyContinue |
+        Where-Object { $before -notcontains $_.FullName } |
+        Sort-Object LastWriteTime | Select-Object -Last 1
+      if ($latest) { break }
+      Start-Sleep -Milliseconds 200
+    }
   }
   if (-not $latest) { throw 'DuckStation did not produce a new screenshot' }
   Start-Sleep -Milliseconds 1200   # let DuckStation finish writing the file

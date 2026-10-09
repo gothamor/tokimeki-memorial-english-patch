@@ -2,7 +2,7 @@
 
 Usage:
   python tools/geko_sections.py [--invite | --appear | --nyubu | --xmas | --white | --valen
-      | --newyear] [--strings] [--girl N]
+      | --newyear | --camp | --camp-fu] [--strings] [--girl N]
 
 Default: SERIFU/GEKO.BIN, walking home (game-internals 6n). --invite:
 SERIFU/G_INVITE.BIN, a girl asking the player out (6o), from GEKO.EXN's
@@ -14,7 +14,10 @@ Christmas party (6t), from SHOUGATU.EXN's 13-entry tables at 0x80145AD0.
 --white: SERIFU/WHITE.BIN, White Day (6u), SHOUGATU.EXN's tables at
 0x80145960. --valen: SERIFU/VALEN.BIN, Valentine's Day (6v), from
 VALEN.EXN's tables at 0x801343F0. --newyear: SERIFU/SHOGATU.BIN, New Year's
-Day (6w), SHOUGATU.EXN's 15-entry tables at 0x80143A40.
+Day (6w), SHOUGATU.EXN's 15-entry tables at 0x80143A40. --camp:
+SERIFU/GASSHUKU.BIN, the training camp (6x), KANGEI.EXN's 8-entry tables at
+0x80139A5C; --camp-fu: SERIFU/GASSH_FU.BIN (base 0x801B4400), Shiori's camp,
+one entry at 0x80139A50.
 
 GEKO.EXN holds three parallel 12-entry tables at 0x80144BA0 (masters),
 0x80144BD0 (code-byte lists) and 0x80144C00 (third pointers), one entry per
@@ -76,13 +79,17 @@ VALEN_NAMES = ["Yuko", "count", "Shiori", "Yuina", "Ijuin", "Ayako", "Mira", "Mi
 NEWYEAR_TABLE = 0x80143A40
 NEWYEAR_NAMES = ["alone", "Yuko", "Shiori", "Yuina", "Ayako", "Mira", "Mio", "Yukari",
                  "(Nozomi)", "Nozomi", "Megumi", "Saki", "again?", "Yumi", "no number"]
+CAMP_TABLE = 0x80139A5C
+CAMP_NAMES = ["Yuina", "Ayako", "Mio", "Yukari", "Nozomi", "Saki", "shared", "Yumi"]
+CAMP_FU_TABLE = 0x80139A50
 CODES = {0: "player", 1: "girl", 2: "reply", 3: "choice", 4: "note", 6: "thought",
          7: "sound", 8: "action", 9: "sfx", 0x0A: "Yoshio", 0x0C: "girl+", 0x0D: "girl+2",
          0x0B: "Shiori", 0x0E: "prompt", 0x10: "ring"}
 
 
-def sections(geko: bytes, exn: bytes, table: int = TABLE, count: int = 12):
+def sections(geko: bytes, exn: bytes, table: int = TABLE, count: int = 12, base: int = None):
     """[(section, master, [(part, [(offset, code)])])]"""
+    BASE = globals()["BASE"] if base is None else base
     tab = struct.unpack_from(f"<{3 * count}I", exn, table - EXN_BASE)
     inside = lambda w: BASE <= w < BASE + len(geko)
     word = lambda o: struct.unpack_from("<I", geko, o)[0]
@@ -117,6 +124,8 @@ def main():
     ap.add_argument("--white", action="store_true", help="WHITE.BIN (tables in SHOUGATU.EXN)")
     ap.add_argument("--valen", action="store_true", help="VALEN.BIN (tables in VALEN.EXN)")
     ap.add_argument("--newyear", action="store_true", help="SHOGATU.BIN (tables in SHOUGATU.EXN)")
+    ap.add_argument("--camp", action="store_true", help="GASSHUKU.BIN (tables in KANGEI.EXN)")
+    ap.add_argument("--camp-fu", action="store_true", help="GASSH_FU.BIN (tables in KANGEI.EXN)")
     ap.add_argument("--exn", default=str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"))
     ap.add_argument("--strings", action="store_true", help="print each string's Japanese")
     ap.add_argument("--girl", type=int)
@@ -124,8 +133,9 @@ def main():
     name = ("G_INVITE.BIN" if args.invite else "G_APPEAR.BIN" if args.appear else
             "NYUBU.BIN" if args.nyubu else "XMAS.BIN" if args.xmas else
             "WHITE.BIN" if args.white else "VALEN.BIN" if args.valen else
-            "SHOGATU.BIN" if args.newyear else "GEKO.BIN")
-    if args.nyubu and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
+            "SHOGATU.BIN" if args.newyear else "GASSHUKU.BIN" if args.camp else
+            "GASSH_FU.BIN" if args.camp_fu else "GEKO.BIN")
+    if (args.nyubu or args.camp or args.camp_fu) and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
         args.exn = str(ROOT / "extracted/CDROM/EXEDIR/KANGEI.EXN")
     if args.valen and args.exn == str(ROOT / "extracted/CDROM/EXEDIR/GEKO.EXN"):
         args.exn = str(ROOT / "extracted/CDROM/EXEDIR/VALEN.EXN")
@@ -139,9 +149,12 @@ def main():
                            (XMAS_TABLE, 13, XMAS_NAMES) if args.xmas else
                            (WHITE_TABLE, 13, WHITE_NAMES) if args.white else
                            (VALEN_TABLE, 13, VALEN_NAMES) if args.valen else
-                           (NEWYEAR_TABLE, 15, NEWYEAR_NAMES) if args.newyear else (TABLE, 12, GIRLS))
+                           (NEWYEAR_TABLE, 15, NEWYEAR_NAMES) if args.newyear else
+                           (CAMP_TABLE, 8, CAMP_NAMES) if args.camp else
+                           (CAMP_FU_TABLE, 1, ["Shiori"]) if args.camp_fu else (TABLE, 12, GIRLS))
+    base = 0x801B4400 if args.camp_fu else BASE
     total = 0
-    for g, master, parts in sections(geko, exn, table, count):
+    for g, master, parts in sections(geko, exn, table, count, base):
         n = sum(len(s) for _, s in parts)
         total += n
         if args.girl is not None and g != args.girl:

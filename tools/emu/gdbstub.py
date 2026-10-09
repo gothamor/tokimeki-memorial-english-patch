@@ -88,5 +88,13 @@ class Gdb:
         return self._recv()
 
     def detach(self) -> None:
+        # Wait for the stub's reply before closing, so the detach is
+        # processed before the socket goes away.
         self._send("D")
-        self.sock.close()
+        try:
+            self.sock.settimeout(2)
+            self._recv()
+        except (OSError, EOFError):
+            pass
+        finally:
+            self.sock.close()

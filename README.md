@@ -5,15 +5,15 @@ English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
 <!-- progress:start -->
-**Translated: 20%**
+**Translated: 28%**
 
 ```text
-Whole game             ████░░░░░░░░░░░░░░░░    20%
-Dialogue               ████░░░░░░░░░░░░░░░░    19%
+Whole game             ██████░░░░░░░░░░░░░░    28%
+Dialogue               ██████░░░░░░░░░░░░░░    28%
 Menus and other text   ██████░░░░░░░░░░░░░░    31%
 ```
 
-<sub>116,603 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>166,701 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage
@@ -78,6 +78,10 @@ existing output folder.
 - **New Year's Day:** a girl at the door in her kimono or a phone call
   inviting her, the wish at the shrine, the fortune drawing and every
   girl's reaction, for all three years ([new_year.json](translation/new_year.json)).
+- **The summer training camp:** meeting the girl in your club (food
+  poisoning, the test of courage, fainting at practice), her advice
+  through the years, and the last night's bath
+  ([training_camp.json](translation/training_camp.json)).
 - **Walking home from school** with any of the girls: her invitation or
   yours, her answer, and the chat on the way about upcoming events
   ([walk_home.json](translation/walk_home.json)).
