@@ -1,6 +1,7 @@
 """Force one girl special event in the isolated emulator (test cards only).
 
-Usage:  python tools/emu/force_event.py GIRL SCENE [--type T] [--first] [--clear-flag ADDR] [--timeout S]
+Usage:  python tools/emu/force_event.py GIRL SCENE [--type T] [--first] [--clear-flag ADDR]
+            [--club C] [--timeout S]
 
 Breaks where the main loop is about to read the next day record from its
 event queue (0x80071DD0, game-internals §6j) and, at the first ordinary
@@ -11,7 +12,11 @@ by SHOUGATU.EXN, which with girl 0 returns the game to the title screen).
 --first also makes the week's first record (0x800E691C) that type: multi-day
 events (the camp, the trip, game-internals 6x/6y) check it to go on.
 --clear-flag zeroes a one-shot "seen" byte first (Shiori's scene 2 uses
-0x800E67ED). Then it detaches and the game continues on its own.
+0x800E67ED). --club sets the player's club first (top 4 bits of the u16
+at 0x800E6374, as force_festival.py: 0 Literature ... 5 Band, 6-10 sports,
+11 none); MASTER.EXN's contest day (--type 0x25) loads the club's contest
+file from it (game-internals 6ad). Then it detaches and the game continues
+on its own.
 
 Start it on the Sunday-night planning screen, then pick a weekly command.
 This changes game state: use it only on the harness's test cards and do the
@@ -32,6 +37,7 @@ READ_RECORD = 0x80071DD0   # index already advanced; next insn reads the record
 QUEUE = 0x800E691C         # records: type, girl, scene, flags
 QUEUE_INDEX = 0x800E699C
 DATE = 0x800E62BE
+CLUB = 0x800E6374
 
 
 def main() -> None:
@@ -42,7 +48,8 @@ def main() -> None:
     flag = None
     timeout = 300.0
     rtype = 0x45
-    for opt in ("--clear-flag", "--timeout", "--type"):
+    club = None
+    for opt in ("--clear-flag", "--timeout", "--type", "--club"):
         if opt in args:
             i = args.index(opt)
             value = args[i + 1]
@@ -51,6 +58,8 @@ def main() -> None:
                 flag = int(value, 0)
             elif opt == "--type":
                 rtype = int(value, 0)
+            elif opt == "--club":
+                club = int(value, 0)
             else:
                 timeout = float(value)
     if len(args) != 2:
@@ -61,6 +70,9 @@ def main() -> None:
     if flag is not None:
         print(f"flag {flag:#x} was {g.mem(flag, 1).hex()}, clearing", flush=True)
         g.cmd(f"M{flag:x},1:00")
+    if club is not None:
+        v = (int.from_bytes(g.mem(CLUB, 2), "little") & 0x0FFF) | (club << 12)
+        g.cmd(f"M{CLUB:x},2:{v.to_bytes(2, 'little').hex()}")
     g.break_at(READ_RECORD)
     t0 = time.time()
     try:

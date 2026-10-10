@@ -215,7 +215,7 @@ Each with `exn_words.py` (room per string) and the overlay's forcer:
 | A1–A10 dates | Done 2026-10-10: nine `*_dates.json` + `date_banners.json` promoted (testing.md "The other girls' dates") |
 | B0 festival forcer, B1–B13 | Done 2026-10-11 (game-internals §6ab, `festival_*.json`, `stage_shows.json`) |
 | C ending | Done 2026-10-11 (game-internals §6ac, `ending.json`, `epilogue.json`, `ending_words.json`) |
-| D1–D5 | |
+| D1–D5 | D1–D3 done 2026-10-11 (record 0x47 = HAGEMASI, state 0x62 = OMIMAI); D4 KARADATA and D5 ZAKOSEN drafted, trigger not found |
 | E contests | |
 | F overlays and small files | |
 

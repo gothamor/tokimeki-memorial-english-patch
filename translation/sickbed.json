@@ -1,0 +1,402 @@
+{
+  "description": "A girl visits the sick player: all of SERIFU/OMIMAI.BIN (78 strings; OMIMAI.EXN state 0x62, table 0x80134A60). Verified in DuckStation (hidden emulator; docs/testing.md 'Sickbed, encouragement, group date'): state 0x62 forced (force_state.py 0x62): Shiori's visit from the narration to her goodbye. Checked only statically: the other girls' visits.",
+  "dialogue": [
+    {
+      "file": "CDROM/SERIFU/OMIMAI.BIN",
+      "base": "0x80197000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "気分はどう？",
+          "text": "How're you feeling?"
+        },
+        {
+          "offset": "0x10",
+          "original": "{G}だったのか。\nもう、かなり良くなったよ。\nまだ少し熱っぽいけど…。",
+          "text": "Oh, it's you, {G}\nI'm a lot better now.\nStill a little feverish..."
+        },
+        {
+          "offset": "0x54",
+          "original": "でも、元気そうね。\nちょろっと安心。",
+          "text": "But you look okay.\nA teeny bit relieved."
+        },
+        {
+          "offset": "0x78",
+          "original": "わざわざありがとう。\nお見舞いに来てくれて。",
+          "text": "Thanks for coming\nall this way to visit."
+        },
+        {
+          "offset": "0xa4",
+          "original": "早く元気になって、\nまた、どっか\n遊びに行こうね。",
+          "text": "Get well soon,\nand let's go out\nsomewhere again, 'kay?"
+        },
+        {
+          "offset": "0x18c",
+          "original": "どう、気分は？",
+          "text": "How are you feeling?"
+        },
+        {
+          "offset": "0x19c",
+          "original": "もう、かなり良くなったよ。\nまだ少し熱っぽいけど…。",
+          "text": "I'm a lot better now.\nStill a little feverish..."
+        },
+        {
+          "offset": "0x1d0",
+          "original": "でも、良かった。\n元気そうで。\nその分なら大丈夫ね。",
+          "text": "I'm glad, though.\nYou look well.\nYou'll be fine like this."
+        },
+        {
+          "offset": "0x204",
+          "original": "わざわざありがとう。\nお見舞いに来てくれて。",
+          "text": "Thanks for coming\nall this way to visit."
+        },
+        {
+          "offset": "0x230",
+          "original": "ううん、いいの。\n家も隣だし…。\nそれじゃまた学校で…。",
+          "text": "Oh, it's nothing.\nI live next door...\nSee you at school..."
+        },
+        {
+          "offset": "0x31c",
+          "original": "どう、気分は？",
+          "text": "How are you feeling?"
+        },
+        {
+          "offset": "0x32c",
+          "original": "もう、かなり良くなったよ。\nまだ少し熱っぽいけど…。",
+          "text": "I'm a lot better now.\nStill a little feverish..."
+        },
+        {
+          "offset": "0x360",
+          "original": "何、もう良くなったの。\nせっかく、\n薬を調合してきたのに。",
+          "text": "What, better already?\nAnd after I\nmixed you medicine."
+        },
+        {
+          "offset": "0x39c",
+          "original": "わ、わざわざありがとう。\n見舞いに来てくれて。\nでも、薬はいいから…。",
+          "text": "Th-thanks for coming\nall this way to visit.\nBut no medicine, please..."
+        },
+        {
+          "offset": "0x3e4",
+          "original": "この次は、\nもっと悪いうちに来るわ。\nそれじゃ、さよなら。",
+          "text": "Next time, I'll\ncome when you're worse.\nGoodbye."
+        },
+        {
+          "offset": "0x4d4",
+          "original": "気分はどう？",
+          "text": "How're you feeling?"
+        },
+        {
+          "offset": "0x4e4",
+          "original": "{G}だったのか。\nもう、かなり良くなったよ。\nまだ少し熱っぽいけど…。",
+          "text": "Oh, it's you, {G}\nI'm a lot better now.\nStill a little feverish..."
+        },
+        {
+          "offset": "0x528",
+          "original": "もうかなり元気そうね。\nもっとひどいと\n思ってたのに。",
+          "text": "You look pretty well.\nI thought you'd\nbe worse."
+        },
+        {
+          "offset": "0x560",
+          "original": "わざわざありがとう。\nお見舞いに来てくれて。",
+          "text": "Thanks for coming\nall this way to visit."
+        },
+        {
+          "offset": "0x58c",
+          "original": "別にいいのよ。\nちょっとからかいに\n来ただけだから。",
+          "text": "No problem.\nI just came by\nto tease you."
+        },
+        {
+          "offset": "0x5c0",
+          "original": "そんな事で、\n来なくてもいいよ。",
+          "text": "You didn't have to\ncome just for that."
+        },
+        {
+          "offset": "0x5e0",
+          "original": "でも本当に良かった。\nそれじゃまた学校で。\nグッバイ、さよなら。",
+          "text": "But I'm really glad.\nSee you at school.\nGoodbye, bye."
+        },
+        {
+          "offset": "0x714",
+          "original": "気分はどうかしら？",
+          "text": "How are you feeling?"
+        },
+        {
+          "offset": "0x728",
+          "original": "{G}だったのか。\nもう、かなり良くなったよ。\nまだ少し熱っぽいけど…。",
+          "text": "Oh, it's you, {G}\nI'm a lot better now.\nStill a little feverish..."
+        },
+        {
+          "offset": "0x76c",
+          "original": "とりあえず元気そうね。\nあ、勘違いしないでよ、\n心配だったわけじゃ\nないんだからね。",
+          "text": "You seem well enough.\nDon't get the wrong idea,\nit's not as if\nI was worried."
+        },
+        {
+          "offset": "0x7c0",
+          "original": "はいはい。\nわざわざありがとう。\nお見舞いに来てくれて。",
+          "text": "Yes, yes.\nThanks for coming\nall this way to visit."
+        },
+        {
+          "offset": "0x7f8",
+          "original": "私の美貌を見たから、\nすぐに良くなるわ。\nまた、お会いましょう。",
+          "text": "Having seen my beauty,\nyou'll soon be well.\nUntil we meet again."
+        },
+        {
+          "offset": "0x8ec",
+          "original": "気分はどうですか？",
+          "text": "How are you feeling?"
+        },
+        {
+          "offset": "0x900",
+          "original": "{G}だったのか。\nもう、かなり良くなったよ。\nまだ少し熱っぽいけど…。",
+          "text": "Oh, it's you, {G}\nI'm a lot better now.\nStill a little feverish..."
+        },
+        {
+          "offset": "0x944",
+          "original": "でも、元気そうなので\n安心しました。",
+          "text": "But you look well,\nso I'm relieved."
+        },
+        {
+          "offset": "0x968",
+          "original": "わざわざありがとう。\nお見舞いに来てくれて。",
+          "text": "Thanks for coming\nall this way to visit."
+        },
+        {
+          "offset": "0x994",
+          "original": "いいえ、帰り道にちょっと\n寄っただけですから…。\nそれでは、また学校で…。",
+          "text": "No, I just stopped by\non my way home...\nSee you at school..."
+        },
+        {
+          "offset": "0xa94",
+          "original": "ご気分は、いかがですか？",
+          "text": "How are you feeling?"
+        },
+        {
+          "offset": "0xab0",
+          "original": "{G}だったのか。\nもう、かなり良くなったよ。\nまだ少し熱っぽいけど…。",
+          "text": "Oh, it's you, {G}\nI'm a lot better now.\nStill a little feverish..."
+        },
+        {
+          "offset": "0xaf4",
+          "original": "そうですか。\nそんなに心配するほどでは、\n無かったのですね。",
+          "text": "I see.\nSo it wasn't anything\nto worry about."
+        },
+        {
+          "offset": "0xb30",
+          "original": "わざわざありがとう。\nお見舞いに来てくれて。",
+          "text": "Thanks for coming\nall this way to visit."
+        },
+        {
+          "offset": "0xb5c",
+          "original": "いいえ。\n困っているときは、\nお互い様ですから。",
+          "text": "Not at all.\nWe must help each\nother in hard times."
+        },
+        {
+          "offset": "0xb8c",
+          "original": "それでは、失礼いたします。",
+          "text": "Well then, I'll be going."
+        },
+        {
+          "offset": "0xc9c",
+          "original": "気分はどう？",
+          "text": "How're you feeling?"
+        },
+        {
+          "offset": "0xcac",
+          "original": "{G}だったのか。\nもう、かなり良くなったよ。\nまだ少し熱っぽいけど…。",
+          "text": "Oh, it's you, {G}\nI'm a lot better now.\nStill a little feverish..."
+        },
+        {
+          "offset": "0xcf0",
+          "original": "良かった、元気そうで。\nもっと運動して、\n体力をつけないとね。",
+          "text": "Good, you look okay.\nYou gotta work out more\nand build stamina."
+        },
+        {
+          "offset": "0xd30",
+          "original": "わざわざありがとう。\nお見舞いに来てくれて。",
+          "text": "Thanks for coming\nall this way to visit."
+        },
+        {
+          "offset": "0xd5c",
+          "original": "がらじゃないかもしれないど、\nちょっと心配だったから…。",
+          "text": "Not really my style, but\nI was kinda worried..."
+        },
+        {
+          "offset": "0xe48",
+          "original": "あ、あの…。\n気分はどうでしょうか…？",
+          "text": "U-um...\nHow are you feeling...?"
+        },
+        {
+          "offset": "0xe70",
+          "original": "{G}だったのか。\nもう、かなり良くなったよ。\nまだ少し熱っぽいけど…。",
+          "text": "Oh, it's you, {G}\nI'm a lot better now.\nStill a little feverish..."
+        },
+        {
+          "offset": "0xeb4",
+          "original": "そ、そうですか…。\nそれなら…。",
+          "text": "I-I see...\nThen..."
+        },
+        {
+          "offset": "0xed4",
+          "original": "わざわざありがとう。\nお見舞いに来てくれて。",
+          "text": "Thanks for coming\nall this way to visit."
+        },
+        {
+          "offset": "0xf00",
+          "original": "い、いいえ。\nあの…。\nし、失礼します…。",
+          "text": "N-not at all.\nUm...\nE-excuse me..."
+        },
+        {
+          "offset": "0xfe0",
+          "original": "詩織ちゃんがお見舞いに\n来てくれたわよ。\n起きてきなさい。",
+          "text": "Shiori's come\nto visit you.\nCome on, get up."
+        },
+        {
+          "offset": "0x101c",
+          "original": "えっ、詩織が\nお見舞いに…。",
+          "text": "Huh, Shiori\ncame to visit..."
+        },
+        {
+          "offset": "0x1044",
+          "original": "女の子がお見舞いに\n来てくれたわよ。\n起きてきなさい。",
+          "text": "A girl's come\nto visit you.\nCome on, get up."
+        },
+        {
+          "offset": "0x107c",
+          "original": "えっ、女の子？\n誰だろう？",
+          "text": "Huh, a girl?\nWho could it be?"
+        },
+        {
+          "offset": "0x10a4",
+          "original": "あれ、{G}。\nまだ何か？",
+          "text": "Oh, {G}\nIs there something else?"
+        },
+        {
+          "offset": "0x11b4",
+          "original": "気分は、どう？",
+          "text": "How are you feeling?"
+        },
+        {
+          "offset": "0x11c4",
+          "original": "{G}だったのか。\nもう、かなり良くなったよ。\nまだ少し熱っぽいけど…。",
+          "text": "Oh, it's you, {G}\nI'm a lot better now.\nStill a little feverish..."
+        },
+        {
+          "offset": "0x1208",
+          "original": "食事とかは、\nちゃんと取った？",
+          "text": "Have you been\neating properly?"
+        },
+        {
+          "offset": "0x1228",
+          "original": "うん。\n母親がいるからね。",
+          "text": "Yeah.\nMy mom's around."
+        },
+        {
+          "offset": "0x1244",
+          "original": "そ、そうよね。\nでも元気そうで\n安心したわ。",
+          "text": "Oh, of course.\nBut you look well,\nso I'm relieved."
+        },
+        {
+          "offset": "0x1270",
+          "original": "わざわざありがとう。\nお見舞いに来てくれて。",
+          "text": "Thanks for coming\nall this way to visit."
+        },
+        {
+          "offset": "0x129c",
+          "original": "学校の帰りに\n寄っただけだから…。\nそれじゃ、病気なんて\n根性で吹き飛ばしてね。",
+          "text": "I just stopped by\non my way home...\nNow blow that cold\naway with guts!"
+        },
+        {
+          "offset": "0x1308",
+          "original": "気分は、どう？",
+          "text": "How are you feeling?"
+        },
+        {
+          "offset": "0x1318",
+          "original": "{G}だったのか。\nもう、かなり良くなったよ。\nまだ少し熱っぽいけど…。",
+          "text": "Oh, it's you, {G}\nI'm a lot better now.\nStill a little feverish..."
+        },
+        {
+          "offset": "0x135c",
+          "original": "食事とかは、\nちゃんと取った？",
+          "text": "Have you been\neating properly?"
+        },
+        {
+          "offset": "0x137c",
+          "original": "うん。\n母親がいるからね。",
+          "text": "Yeah.\nMy mom's around."
+        },
+        {
+          "offset": "0x1398",
+          "original": "そ、そうよね。\nでも元気そうで\n安心したわ。",
+          "text": "Oh, of course.\nBut you look well,\nso I'm relieved."
+        },
+        {
+          "offset": "0x13c4",
+          "original": "わざわざありがとう。\nお見舞いに来てくれて。",
+          "text": "Thanks for coming\nall this way to visit."
+        },
+        {
+          "offset": "0x13f0",
+          "original": "マネージャーとして\n当たり前の事だから…。\nそれじゃ、また学校でね。",
+          "text": "As a manager,\nit's only natural...\nSee you at school."
+        },
+        {
+          "offset": "0x1600",
+          "original": "あーん。\n生きてて良かった。",
+          "text": "Waaah!\nYou're alive!"
+        },
+        {
+          "offset": "0x161c",
+          "original": "{G}だったのか。\nそんな、\n死ぬわけないじゃないか。",
+          "text": "Oh, it's you, {G}\nCome on,\nof course I'm not dead."
+        },
+        {
+          "offset": "0x164c",
+          "original": "だって…、だって、\nお兄ちゃんに聞いたら、\nあいつは死んだって。",
+          "text": "But... but\nmy brother said\nyou were dead."
+        },
+        {
+          "offset": "0x168c",
+          "original": "‥‥‥‥。\n（好雄の奴、殺す。）",
+          "text": "......\n(I'll kill Yoshio.)"
+        },
+        {
+          "offset": "0x16ac",
+          "original": "でも、\n本当に良かったです。\n元気そうで。",
+          "text": "But\nI'm really glad.\nYou look well."
+        },
+        {
+          "offset": "0x16d8",
+          "original": "まだ熱っぽいけど、\nもう大丈夫だ。\n心配かけちゃったね。",
+          "text": "Still a bit feverish,\nbut I'm okay now.\nSorry I worried you."
+        },
+        {
+          "offset": "0x1710",
+          "original": "もっと、ひどくなったら、\n優美がずっと\n看病してあげる。",
+          "text": "If it gets worse,\nYumi will nurse\nyou the whole time."
+        },
+        {
+          "offset": "0x1748",
+          "original": "あ、ありがとう。\nその気持ちだけで、\n嬉しいよ。",
+          "text": "Th-thanks.\nJust the thought\nmakes me happy."
+        },
+        {
+          "offset": "0x1778",
+          "original": "それじゃ、早く治して、\n学校に来て下さいね。",
+          "text": "Then get well soon\nand come to school!"
+        },
+        {
+          "offset": "0x18e4",
+          "original": "ほら{m}。",
+          "text": "Up you get, {m}"
+        },
+        {
+          "offset": "0x18ec",
+          "original": "ほら{m}。",
+          "text": "Up you get, {m}"
+        }
+      ]
+    }
+  ]
+}

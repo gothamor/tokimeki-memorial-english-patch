@@ -1,0 +1,867 @@
+{
+  "description": "A girl encourages the player (exam/work days): all of SERIFU/HAGEMASI.BIN (171 strings; OMIMAI.EXN, table 0x80134C30; day record type 0x47 with the girl). Verified in DuckStation (hidden emulator; docs/testing.md 'Sickbed, encouragement, group date'): force_event.py G 0 --type 0x47 for Shiori, Mio, Yukari, Yuko and Yumi: each one's line and the player's reply. Checked only statically: the other girls and moods.",
+  "dialogue": [
+    {
+      "file": "CDROM/SERIFU/HAGEMASI.BIN",
+      "base": "0x80197000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "最近\n面白い事あった？",
+          "text": "Anything fun\nhappen lately?"
+        },
+        {
+          "offset": "0x18",
+          "original": "ぼちぼちかな…。",
+          "text": "Sort of..."
+        },
+        {
+          "offset": "0x2c",
+          "original": "何か情報あったら、\n教えてね。",
+          "text": "If you hear any news,\ntell me, 'kay?"
+        },
+        {
+          "offset": "0x58",
+          "original": "今度\nどこか連れてってよ。",
+          "text": "Next time,\ntake me somewhere."
+        },
+        {
+          "offset": "0x74",
+          "original": "そうだね。\nそのうち連絡するよ。",
+          "text": "Sure.\nI'll call you sometime."
+        },
+        {
+          "offset": "0x148",
+          "original": "勉強頑張ってね。",
+          "text": "Good luck studying."
+        },
+        {
+          "offset": "0x15c",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x174",
+          "original": "最近、知性が顔に\nにじみ出てきてるね。",
+          "text": "Lately you've started\nto look so smart."
+        },
+        {
+          "offset": "0x19c",
+          "original": "そ、そう？\nありがとう。",
+          "text": "R-really?\nThanks."
+        },
+        {
+          "offset": "0x1bc",
+          "original": "素敵な絵ね。\nでき上がったら\n見せてね。",
+          "text": "What a lovely picture.\nShow me when\nit's finished."
+        },
+        {
+          "offset": "0x1e4",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x1fc",
+          "original": "あら？\n絵を描いてるのね。\n頑張ってね。",
+          "text": "Oh?\nYou're painting.\nGood luck."
+        },
+        {
+          "offset": "0x224",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x23c",
+          "original": "頑張ってるね。\nでも、あまり無理は\nしないでね。",
+          "text": "You're working hard.\nBut don't push\nyourself too much."
+        },
+        {
+          "offset": "0x26c",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x284",
+          "original": "最近、\nたくましくなってきたね。",
+          "text": "Lately you've\ngotten so strong."
+        },
+        {
+          "offset": "0x2a4",
+          "original": "そ、そう？\nありがとう。",
+          "text": "R-really?\nThanks."
+        },
+        {
+          "offset": "0x2c4",
+          "original": "今日見せてもらった詩、\n素敵だったよ。",
+          "text": "The poem you showed me\ntoday was lovely."
+        },
+        {
+          "offset": "0x2ec",
+          "original": "ありがとう。\n嬉しいよ。",
+          "text": "Thank you.\nI'm happy."
+        },
+        {
+          "offset": "0x30c",
+          "original": "本を読んでる姿が、\n素敵よ。",
+          "text": "You look nice\nwhen you read."
+        },
+        {
+          "offset": "0x328",
+          "original": "あ、ありがとう。",
+          "text": "Th-thanks."
+        },
+        {
+          "offset": "0x344",
+          "original": "今日の演技、\nすごく良かったよ。",
+          "text": "Your acting today\nwas really good."
+        },
+        {
+          "offset": "0x364",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x37c",
+          "original": "今日も練習頑張ろうね。",
+          "text": "Let's practice hard today."
+        },
+        {
+          "offset": "0x394",
+          "original": "うん、頑張ろう。",
+          "text": "Yeah, let's do it."
+        },
+        {
+          "offset": "0x3b0",
+          "original": "今日も、実験頑張ろうね。",
+          "text": "Let's do our best today."
+        },
+        {
+          "offset": "0x3cc",
+          "original": "うん、頑張ろう。",
+          "text": "Yeah, let's do it."
+        },
+        {
+          "offset": "0x3e8",
+          "original": "あの実験うまくいったの？\nすごいね。\n次も頑張ってね。",
+          "text": "That experiment worked?\nAmazing.\nGood luck next time."
+        },
+        {
+          "offset": "0x420",
+          "original": "ありがとう。\n次も頑張るよ。",
+          "text": "Thanks.\nI'll keep it up."
+        },
+        {
+          "offset": "0x444",
+          "original": "新しいプログラム\n組んでるの？\n完成したら、見せてね。",
+          "text": "Writing a\nnew program?\nShow me when it's done."
+        },
+        {
+          "offset": "0x47c",
+          "original": "うん、いいよ。",
+          "text": "Sure, okay."
+        },
+        {
+          "offset": "0x494",
+          "original": "プログラム、\n頑張ってね。",
+          "text": "Good luck with\nyour program."
+        },
+        {
+          "offset": "0x4b0",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x4c8",
+          "original": "素敵な絵ね。\n次も、描いたら\nまた見せてね。",
+          "text": "What a lovely picture.\nWhen you paint another,\nshow me again."
+        },
+        {
+          "offset": "0x4f4",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x50c",
+          "original": "今日も、頑張って\n絵を描きましょう。",
+          "text": "Let's paint\nhard again today."
+        },
+        {
+          "offset": "0x530",
+          "original": "うん、頑張ろう。",
+          "text": "Yeah, let's do it."
+        },
+        {
+          "offset": "0x54c",
+          "original": "今日の演奏、\nすごく良かったよ。",
+          "text": "Your playing today\nwas really good."
+        },
+        {
+          "offset": "0x56c",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x584",
+          "original": "今日も練習、頑張ろうね。",
+          "text": "Let's practice hard today."
+        },
+        {
+          "offset": "0x5a0",
+          "original": "うん、頑張ろう。",
+          "text": "Yeah, let's do it."
+        },
+        {
+          "offset": "0x5bc",
+          "original": "練習頑張ってね。",
+          "text": "Good luck at practice."
+        },
+        {
+          "offset": "0x5d0",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x5e8",
+          "original": "甲子園目指して\n頑張ってね。",
+          "text": "Aim for Koshien\nand do your best."
+        },
+        {
+          "offset": "0x604",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x61c",
+          "original": "練習頑張ってね。",
+          "text": "Good luck at practice."
+        },
+        {
+          "offset": "0x630",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x648",
+          "original": "国立競技場目指して、\n頑張ってね。",
+          "text": "Aim for the National\nStadium. Good luck."
+        },
+        {
+          "offset": "0x66c",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x684",
+          "original": "すごい\nプレイだったね。",
+          "text": "That was\nan amazing play."
+        },
+        {
+          "offset": "0x69c",
+          "original": "ありがとう。\n嬉しいよ。",
+          "text": "Thank you.\nI'm happy."
+        },
+        {
+          "offset": "0x6bc",
+          "original": "今日も練習頑張ろうね。",
+          "text": "Let's practice hard today."
+        },
+        {
+          "offset": "0x6d4",
+          "original": "うん、頑張ろう。",
+          "text": "Yeah, let's do it."
+        },
+        {
+          "offset": "0x6f0",
+          "original": "すごい\n泳ぎだったね。",
+          "text": "That was\namazing swimming."
+        },
+        {
+          "offset": "0x708",
+          "original": "ありがとう。\n嬉しいよ。",
+          "text": "Thank you.\nI'm happy."
+        },
+        {
+          "offset": "0x728",
+          "original": "今日も練習頑張ろうね。",
+          "text": "Let's practice hard today."
+        },
+        {
+          "offset": "0x740",
+          "original": "うん、頑張ろう。",
+          "text": "Yeah, let's do it."
+        },
+        {
+          "offset": "0x75c",
+          "original": "最近かっこ良く\nなってきたね。",
+          "text": "Lately you've\ngotten so cool."
+        },
+        {
+          "offset": "0x77c",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x794",
+          "original": "最近、センス\n良くなってきたね。",
+          "text": "Lately your style\nhas gotten better."
+        },
+        {
+          "offset": "0x7b4",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0xfac",
+          "original": "なかなか、\n頑張ってるじゃない。",
+          "text": "You're working\nrather hard."
+        },
+        {
+          "offset": "0xfcc",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0xfe4",
+          "original": "最近、馬鹿面じゃ\n無くなってきたわね。",
+          "text": "You've stopped looking\nlike an idiot lately."
+        },
+        {
+          "offset": "0x100c",
+          "original": "そ、そう？\nありがとう。",
+          "text": "R-really?\nThanks."
+        },
+        {
+          "offset": "0x102c",
+          "original": "くだらない実験ね。\nま、頑張りなさい。",
+          "text": "A foolish experiment.\nWell, do your best."
+        },
+        {
+          "offset": "0x1054",
+          "original": "あ、ありがとう。\n頑張るよ。",
+          "text": "Th-thanks.\nI'll do my best."
+        },
+        {
+          "offset": "0x1078",
+          "original": "とりあえず。\nできてるじゃない。\n当然だけど。",
+          "text": "Well.\nIt works.\nNaturally."
+        },
+        {
+          "offset": "0x10a8",
+          "original": "あ、ありがとう。",
+          "text": "Th-thanks."
+        },
+        {
+          "offset": "0x10c4",
+          "original": "つまらないプログラム\n組んでるわね。\nま、頑張りなさい。",
+          "text": "What a dull program\nyou're writing.\nWell, do your best."
+        },
+        {
+          "offset": "0x10fc",
+          "original": "あ、ありがとう。\n頑張るよ。",
+          "text": "Th-thanks.\nI'll do my best."
+        },
+        {
+          "offset": "0x1120",
+          "original": "今回は、こんなものね。\n次も、頑張りなさいよ。",
+          "text": "That's about it this time.\nDo your best next time."
+        },
+        {
+          "offset": "0x1150",
+          "original": "あ、ありがとう。",
+          "text": "Th-thanks."
+        },
+        {
+          "offset": "0x131c",
+          "original": "君がそんな事をしても\nまったくの無意味だ。\n無駄な努力はやめたまえ。",
+          "text": "Your doing that is\ncompletely pointless.\nGive up the vain effort."
+        },
+        {
+          "offset": "0x1364",
+          "original": "そんな事をしても、\n女の子の気をひくことなど、\nできるはずもない。",
+          "text": "Doing that will never\ncatch a girl's eye,\nI assure you."
+        },
+        {
+          "offset": "0x13ac",
+          "original": "庶民は無駄な努力を\nしたがるものだな。",
+          "text": "Commoners do love\ntheir futile efforts."
+        },
+        {
+          "offset": "0x13d8",
+          "original": "無駄なことを…。\nせいぜい頑張りたまえ。",
+          "text": "How futile...\nDo try your best."
+        },
+        {
+          "offset": "0x1404",
+          "original": "頑張ってるつもりだろうが、\nまったく無駄だ。\nこれだから庶民は…。",
+          "text": "You think you're trying,\nbut it's all in vain.\nSuch is the commoner..."
+        },
+        {
+          "offset": "0x144c",
+          "original": "報われぬ努力を…。",
+          "text": "Such futile effort..."
+        },
+        {
+          "offset": "0x1464",
+          "original": "庶民とは悲しいものよ。\nそんな努力をしなければ\nならないとはね。",
+          "text": "How sad to be a commoner.\nTo have to make\nsuch an effort."
+        },
+        {
+          "offset": "0x14a8",
+          "original": "いくら努力しても、\n一生僕にかなうことは\nないのさ。",
+          "text": "However hard you try,\nyou'll never in your\nlife match me."
+        },
+        {
+          "offset": "0x1640",
+          "original": "ビューティフル。\n素敵な絵ね。\n完成したら見せてね。",
+          "text": "Beautiful.\nLovely picture.\nShow me when it's done."
+        },
+        {
+          "offset": "0x1674",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x168c",
+          "original": "あら？\nなかなかいい絵ね。",
+          "text": "Oh?\nRather a good picture."
+        },
+        {
+          "offset": "0x16a8",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x16c0",
+          "original": "ビューティフル。\n素敵な絵ね。",
+          "text": "Beautiful.\nLovely picture."
+        },
+        {
+          "offset": "0x16e0",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x16f8",
+          "original": "今日も頑張って、\nワンダフルな\n絵を描きましょう。",
+          "text": "Let's work hard\ntoday and paint\nsomething wonderful."
+        },
+        {
+          "offset": "0x172c",
+          "original": "うん、頑張ろう。",
+          "text": "Yeah, let's do it."
+        },
+        {
+          "offset": "0x1748",
+          "original": "今日の演奏、\nグッドだったわよ。",
+          "text": "Your playing today\nwas good, very good."
+        },
+        {
+          "offset": "0x1768",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x1780",
+          "original": "今日も練習\n頑張りましょう。",
+          "text": "Let's practice\nhard today."
+        },
+        {
+          "offset": "0x179c",
+          "original": "うん、頑張ろう。",
+          "text": "Yeah, let's do it."
+        },
+        {
+          "offset": "0x1968",
+          "original": "最近、\nわりと見られるように\nなってきたわね。",
+          "text": "Lately you've become\nrather presentable,\nI must say."
+        },
+        {
+          "offset": "0x1998",
+          "original": "あ、ありがとう。",
+          "text": "Th-thanks."
+        },
+        {
+          "offset": "0x19fc",
+          "original": "勉強頑張ってくださいね。",
+          "text": "Please study hard."
+        },
+        {
+          "offset": "0x1a18",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x1a30",
+          "original": "あまり無理は\nしないでくださいね。",
+          "text": "Please don't push\nyourself too hard."
+        },
+        {
+          "offset": "0x1a54",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x1a6c",
+          "original": "今日見せてもらった詩、\n素敵でしたね。",
+          "text": "The poem you showed me\ntoday was lovely."
+        },
+        {
+          "offset": "0x1a94",
+          "original": "ありがとう。\n嬉しいよ。",
+          "text": "Thank you.\nI'm happy."
+        },
+        {
+          "offset": "0x1ab4",
+          "original": "本を読んでる姿が、\nさまになってて、\n素敵ですね。",
+          "text": "You look so\nnatural reading.\nIt's lovely."
+        },
+        {
+          "offset": "0x1ae8",
+          "original": "あ、ありがとう。",
+          "text": "Th-thanks."
+        },
+        {
+          "offset": "0x1b04",
+          "original": "今日の演技、\nとてもよかったと\n思います。",
+          "text": "I thought your\nacting today was\nvery good."
+        },
+        {
+          "offset": "0x1b30",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x1b48",
+          "original": "今日の練習も\n頑張りましょう。",
+          "text": "Let's practice\nhard today, too."
+        },
+        {
+          "offset": "0x1b68",
+          "original": "うん、頑張ろう。",
+          "text": "Yeah, let's do it."
+        },
+        {
+          "offset": "0x1d34",
+          "original": "こんにちは。\n怪我をしないように、\n頑張ってくださいね。",
+          "text": "Good afternoon.\nPlease do your best,\nand don't get hurt."
+        },
+        {
+          "offset": "0x1d6c",
+          "original": "ありがとう。\n頑張るよ。",
+          "text": "Thanks.\nI'll do my best."
+        },
+        {
+          "offset": "0x1d8c",
+          "original": "すごい汗ですね。\nあまり無理は、\nしないでくださいね。",
+          "text": "You're sweating so.\nPlease don't push\nyourself too hard."
+        },
+        {
+          "offset": "0x1dc4",
+          "original": "うん。ありがとう。",
+          "text": "Yeah. Thank you."
+        },
+        {
+          "offset": "0x1de0",
+          "original": "本日は素晴らしい\n御活躍でしたね。",
+          "text": "You were splendid\ntoday."
+        },
+        {
+          "offset": "0x1e04",
+          "original": "ありがとう。\n嬉しいよ。",
+          "text": "Thank you.\nI'm happy."
+        },
+        {
+          "offset": "0x1e24",
+          "original": "こんにちは。\n今日も、\n練習、頑張りましょうね。",
+          "text": "Good afternoon.\nToday, too,\nlet's practice hard."
+        },
+        {
+          "offset": "0x1e54",
+          "original": "あ、ありがとう。",
+          "text": "Th-thanks."
+        },
+        {
+          "offset": "0x1f90",
+          "original": "おはよう。\n頑張ってるね。",
+          "text": "Morning.\nWorking hard, huh."
+        },
+        {
+          "offset": "0x1fac",
+          "original": "{G}ほどじゃ\nないけどね。",
+          "text": "{G} more than me,\nthough."
+        },
+        {
+          "offset": "0x1fcc",
+          "original": "最近、\n男らしい体つきに\nなってきたな。",
+          "text": "Lately you've\ngot a pretty manly\nbuild going."
+        },
+        {
+          "offset": "0x1ff4",
+          "original": "そ、そう？\nありがとう。",
+          "text": "R-really?\nThanks."
+        },
+        {
+          "offset": "0x2014",
+          "original": "お、おはよう。\n頑張ってるね。",
+          "text": "M-morning.\nWorking hard, huh."
+        },
+        {
+          "offset": "0x2034",
+          "original": "{G}ほどじゃ\nないけどね。",
+          "text": "{G} more than me,\nthough."
+        },
+        {
+          "offset": "0x2054",
+          "original": "最近、\nたくましくなってきたね。",
+          "text": "Lately you've\ngotten so strong."
+        },
+        {
+          "offset": "0x2074",
+          "original": "そ、そう？\nありがとう。",
+          "text": "R-really?\nThanks."
+        },
+        {
+          "offset": "0x2094",
+          "original": "いい泳ぎだったぜ。",
+          "text": "Nice swimming, man."
+        },
+        {
+          "offset": "0x20a8",
+          "original": "ありがとう。\n嬉しいよ。",
+          "text": "Thank you.\nI'm happy."
+        },
+        {
+          "offset": "0x20c8",
+          "original": "今日も練習頑張ろうぜ。",
+          "text": "Let's crush practice today."
+        },
+        {
+          "offset": "0x20e0",
+          "original": "よし、頑張ろう。",
+          "text": "Okay, let's do it."
+        },
+        {
+          "offset": "0x20fc",
+          "original": "いい泳ぎだったね。",
+          "text": "Nice swimming."
+        },
+        {
+          "offset": "0x2110",
+          "original": "ありがとう。\n嬉しいよ。",
+          "text": "Thank you.\nI'm happy."
+        },
+        {
+          "offset": "0x2130",
+          "original": "今日も、\n練習頑張ろうね。",
+          "text": "Let's practice\nhard today, too."
+        },
+        {
+          "offset": "0x214c",
+          "original": "うん、頑張ろう。",
+          "text": "Yeah, let's do it."
+        },
+        {
+          "offset": "0x23a8",
+          "original": "あの…。\n頑張ってください。",
+          "text": "Um...\nPlease do your best."
+        },
+        {
+          "offset": "0x23c4",
+          "original": "ありがとう。\n頑張るよ。",
+          "text": "Thanks.\nI'll do my best."
+        },
+        {
+          "offset": "0x23e4",
+          "original": "あの…。\nいえ、いいです…。",
+          "text": "Um...\nNo, never mind..."
+        },
+        {
+          "offset": "0x2404",
+          "original": "{G}、\n何の用だったんだ？",
+          "text": "{G}\nwhat was that about?"
+        },
+        {
+          "offset": "0x24c0",
+          "original": "辛くても、\n根性で頑張ってね。",
+          "text": "Even when it's hard,\nkeep going with guts!"
+        },
+        {
+          "offset": "0x24e0",
+          "original": "うん。\n頑張るよ。",
+          "text": "Yeah.\nI'll do my best."
+        },
+        {
+          "offset": "0x24fc",
+          "original": "お疲れ様。\n最近、\nよく頑張ってるね。",
+          "text": "Good work.\nLately you've\nbeen trying so hard."
+        },
+        {
+          "offset": "0x2524",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x253c",
+          "original": "甲子園目指して、\n頑張ってね。",
+          "text": "Aim for Koshien!\nGood luck."
+        },
+        {
+          "offset": "0x255c",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x2574",
+          "original": "国立競技場目指して、\n頑張ってね。",
+          "text": "Aim for the National\nStadium. Good luck."
+        },
+        {
+          "offset": "0x2598",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x25b0",
+          "original": "はい、これ差し入れ。",
+          "text": "Here, a treat for you."
+        },
+        {
+          "offset": "0x25c8",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x25d8",
+          "original": "でもみんなには\n内緒にしててね。",
+          "text": "But keep it\na secret, okay?"
+        },
+        {
+          "offset": "0x25f8",
+          "original": "どうして？",
+          "text": "Why?"
+        },
+        {
+          "offset": "0x2604",
+          "original": "あなたのだけ、特別なの…。\nそ、それじゃ、\n練習頑張ってね。",
+          "text": "Yours is extra special...\nW-well then,\ngood luck at practice."
+        },
+        {
+          "offset": "0x2654",
+          "original": "はい、これ皆さんに\n差し入れです。",
+          "text": "Here, treats for\neveryone."
+        },
+        {
+          "offset": "0x2678",
+          "original": "はい、どうぞ。",
+          "text": "Here you go."
+        },
+        {
+          "offset": "0x2688",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x2698",
+          "original": "それじゃ、\n練習頑張ってね。",
+          "text": "Well then,\ngood luck in practice."
+        },
+        {
+          "offset": "0x2908",
+          "original": "今週は、\nバッチリ、予定どおりだぜ。",
+          "text": "This week went\njust as I planned."
+        },
+        {
+          "offset": "0x2930",
+          "original": "よし、ますます\nやる気が出てきたぞ。",
+          "text": "All right, I'm\nmore fired up than ever."
+        },
+        {
+          "offset": "0x2958",
+          "original": "よし。\n何か、やる気が出てきたぞ。",
+          "text": "All right.\nI'm really fired up."
+        },
+        {
+          "offset": "0x2980",
+          "original": "鍛えてる甲斐があるぜ",
+          "text": "The training pays off."
+        },
+        {
+          "offset": "0x299c",
+          "original": "頑張ってる甲斐があるぜ。",
+          "text": "All that work is paying off."
+        },
+        {
+          "offset": "0x29bc",
+          "original": "この次こそ、紐緒さんを\nびっくりさせてやるぜ。",
+          "text": "Next time for sure,\nI'll amaze Miss Himoo."
+        },
+        {
+          "offset": "0x29f0",
+          "original": "みんな、これで\n元気出るんだよなぁ…。",
+          "text": "This perks everyone\nup, huh..."
+        },
+        {
+          "offset": "0x2a1c",
+          "original": "俺だけ、特別かぁ。\n嬉しいな。",
+          "text": "Special, just for me.\nThat's so great."
+        },
+        {
+          "offset": "0x2a40",
+          "original": "はぁ…。\n今日は、調子が悪いな…。",
+          "text": "Sigh...\nI'm off my game today..."
+        },
+        {
+          "offset": "0x2a74",
+          "original": "もう、やる気\n無くなっちゃうよ。",
+          "text": "That kills all\nmy motivation."
+        },
+        {
+          "offset": "0x2aa8",
+          "original": "そんなことを言うために\nわざわざ来るなよなぁ…。",
+          "text": "Don't come all this way\nto say that..."
+        },
+        {
+          "offset": "0x2cfc",
+          "original": "頑張ってくださいね。",
+          "text": "Please do your best."
+        },
+        {
+          "offset": "0x2d14",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x2d2c",
+          "original": "お兄ちゃんに\n見習わせたいな。",
+          "text": "My brother should\nlearn from you."
+        },
+        {
+          "offset": "0x2d4c",
+          "original": "はは…。\nそうだね。",
+          "text": "Haha...\nI guess."
+        },
+        {
+          "offset": "0x2d68",
+          "original": "練習、\n頑張ってくださいね。",
+          "text": "Good luck\nat practice!"
+        },
+        {
+          "offset": "0x2d84",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x2d9c",
+          "original": "今日のプレー\nかっこ良かったですよ。",
+          "text": "Your play today\nwas so cool!"
+        },
+        {
+          "offset": "0x2dc0",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        }
+      ]
+    }
+  ]
+}

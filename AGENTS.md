@@ -151,6 +151,8 @@ against the tested candidate when promotion should not change game bytes.
 
 | `translation/ending.json` + `epilogue.json` + `ending_words.json` (all of `SERIFU/ENDING.BIN` and `EPILOG.BIN`, 522 strings; ENDING.EXN's words; the song lyrics stay Japanese) | Verified in DuckStation with `force_ending.py` for every girl, the special case and nobody (hidden emulator): the classroom lines, the letter, the player's lines at the tree, every epilogue with its name and career, the bad ending and the song title. The girls' confession lines are voice only in the original (no text drawn), so they are **checked only statically**. The save prompt after the credits is ETC.EXN (not yet translated). |
 
+| `translation/sickbed.json`, `encouragement.json`, `group_dates.json` + `sickbed_words.json`, `group_date_words.json` (all of `SERIFU/OMIMAI`, `HAGEMASI`, `GROUP_D.BIN`; OMIMAI.EXN/DATE2.EXN words) | Verified in DuckStation, hidden emulator: Shiori's sickbed visit (state 0x62), five girls' encouragement (record 0x47), Yoshio's group date with Shiori and Mio and three ride choices (record 0x49). **Checked only statically:** other girls' visits, other pairs. KARADATA (karaoke) and ZAKOSEN (thugs) are drafts in `translation/extra/`: their triggers aren't found yet. |
+
 Update this table when you verify something.
 
 ## Working in this environment (Windows dev box)

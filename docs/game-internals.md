@@ -2246,7 +2246,8 @@ Day), 0x31 → 0x54 (Valentine), 0x32 → 0x57, 0x33 → 0x56, 0x40 → 0x35
 (nothing visible on the test card), 0x41 → 0x51 (trip), 0x42 → 0x5F
 (camp), 0x43 → 0x36 (the third year's start and the career counselling:
 ETC.EXN's own text, a 先生 label), 0x45 → 0x5D (special events), 0x47 →
-0x61 (a girl visits the sick player: OMIMAI.BIN; girl in the record),
+0x61 (a girl's encouragement, HAGEMASI.BIN, girl in the record; state 0x62 is
+the sickbed visit, OMIMAI.BIN, 2026-10-11),
 0x48 meetings (§6p), 0x49 → 0x58 (Yoshio's group date at the theme park:
 GROUP_D.BIN, with ride choices between two girls), 0x4A → 0x37 (the
 university exam day: ETC.EXN's text and menus), 0x20 → 0x72 (sports day:

@@ -1,0 +1,65 @@
+{
+  "description": "DATE2.EXN's in-place words (group date banners and the ride option names). Verified in DuckStation (hidden emulator; docs/testing.md 'Sickbed, encouragement, group date'): 'Ride with ...' and 'In with ...' options.",
+  "strings": [
+    {
+      "file": "CDROM/EXEDIR/DATE2.EXN",
+      "offset": "0x8040",
+      "original": "遊園地",
+      "text": "Rides"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE2.EXN",
+      "offset": "0x8048",
+      "original": "園内",
+      "text": "Inside"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE2.EXN",
+      "offset": "0x8050",
+      "original": "観覧車",
+      "text": "Wheel"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE2.EXN",
+      "offset": "0x8058",
+      "original": "絶叫マシーンビビール",
+      "text": "Bibeer Screamer"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE2.EXN",
+      "offset": "0x8070",
+      "original": "ジェットコースター",
+      "text": "Roller Coaster"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE2.EXN",
+      "offset": "0x8084",
+      "original": "ゴーストハウス",
+      "text": "Ghost House"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE2.EXN",
+      "offset": "0x8310",
+      "original": "ＢＯＸ内",
+      "text": "In Booth"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE2.EXN",
+      "offset": "0x831C",
+      "original": "恋は…（歌付き）",
+      "text": "Love... (vocal)"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE2.EXN",
+      "offset": "0x8330",
+      "original": "女々しい…（歌付き）",
+      "text": "Unmanly... (vocal)"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE2.EXN",
+      "offset": "0x9634",
+      "original": "恋はほどほどに",
+      "text": "Easy on Love"
+    }
+  ]
+}

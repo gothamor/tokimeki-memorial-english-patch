@@ -1,0 +1,2152 @@
+{
+  "description": "Yoshio's group date at the theme park: all of SERIFU/GROUP_D.BIN (428 strings; DATE2.EXN state 0x58, table 0x8013A380; day record type 0x49). Verified in DuckStation (hidden emulator; docs/testing.md 'Sickbed, encouragement, group date'): force_event.py 0 0 --type 0x49: Yoshio's call, the meeting with Shiori and Mio, three ride choices and the girls' lines. Checked only statically: other girl pairs and choices.",
+  "dialogue": [
+    {
+      "file": "CDROM/SERIFU/GROUP_D.BIN",
+      "base": "0x80197000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "こんにちは。\n{P}。",
+          "text": "Hello,\n{P}"
+        },
+        {
+          "offset": "0x18",
+          "original": "ねむくなりそう。",
+          "text": "I'm getting sleepy."
+        },
+        {
+          "offset": "0x30",
+          "original": "眠かったね。",
+          "text": "That was a snooze."
+        },
+        {
+          "offset": "0x44",
+          "original": "さあ、乗ろう。",
+          "text": "C'mon, let's ride!"
+        },
+        {
+          "offset": "0x58",
+          "original": "楽しかったね。",
+          "text": "That was fun!"
+        },
+        {
+          "offset": "0x6c",
+          "original": "これ、乗りたかったんだ。",
+          "text": "I wanted to ride this!"
+        },
+        {
+          "offset": "0x8c",
+          "original": "もう最高に楽しかったね。",
+          "text": "That was the best fun ever!"
+        },
+        {
+          "offset": "0xac",
+          "original": "さあ、早く入ろう。",
+          "text": "C'mon, let's go in!"
+        },
+        {
+          "offset": "0xc4",
+          "original": "楽しかったね。",
+          "text": "That was fun!"
+        },
+        {
+          "offset": "0xd8",
+          "original": "今日は楽しかったね。\nまたどこかに誘ってね。",
+          "text": "That was fun today.\nTake me out again, 'kay?"
+        },
+        {
+          "offset": "0x108",
+          "original": "こんにちは。\n{P}。",
+          "text": "Hello,\n{P}"
+        },
+        {
+          "offset": "0x120",
+          "original": "ねむくなりそう。",
+          "text": "I'm getting sleepy."
+        },
+        {
+          "offset": "0x138",
+          "original": "眠かったね。",
+          "text": "That was a snooze."
+        },
+        {
+          "offset": "0x14c",
+          "original": "さあ、乗ろう。",
+          "text": "C'mon, let's ride!"
+        },
+        {
+          "offset": "0x160",
+          "original": "楽しかったね。",
+          "text": "That was fun!"
+        },
+        {
+          "offset": "0x174",
+          "original": "これ、乗りたかったんだ。",
+          "text": "I wanted to ride this!"
+        },
+        {
+          "offset": "0x194",
+          "original": "もう最高に楽しかったね。",
+          "text": "That was the best fun ever!"
+        },
+        {
+          "offset": "0x1b4",
+          "original": "さあ、早く入ろう。",
+          "text": "C'mon, let's go in!"
+        },
+        {
+          "offset": "0x1cc",
+          "original": "楽しかったね。",
+          "text": "That was fun!"
+        },
+        {
+          "offset": "0x1e0",
+          "original": "今日は楽しかったね。",
+          "text": "That was fun today."
+        },
+        {
+          "offset": "0x1fc",
+          "original": "こんにちは。",
+          "text": "Hello."
+        },
+        {
+          "offset": "0x210",
+          "original": "ねむくなりそう。",
+          "text": "I'm getting sleepy."
+        },
+        {
+          "offset": "0x228",
+          "original": "眠かったね。",
+          "text": "That was a snooze."
+        },
+        {
+          "offset": "0x23c",
+          "original": "さあ、乗ろう。",
+          "text": "C'mon, let's ride!"
+        },
+        {
+          "offset": "0x250",
+          "original": "楽しかったね。",
+          "text": "That was fun!"
+        },
+        {
+          "offset": "0x264",
+          "original": "これ、乗りたかったんだ。",
+          "text": "I wanted to ride this!"
+        },
+        {
+          "offset": "0x284",
+          "original": "もう最高に楽しかったね。",
+          "text": "That was the best fun ever!"
+        },
+        {
+          "offset": "0x2a4",
+          "original": "さあ、早く入ろう。",
+          "text": "C'mon, let's go in!"
+        },
+        {
+          "offset": "0x2bc",
+          "original": "楽しかったね。",
+          "text": "That was fun!"
+        },
+        {
+          "offset": "0x2d0",
+          "original": "今日は楽しかったね。",
+          "text": "That was fun today."
+        },
+        {
+          "offset": "0x2fc",
+          "original": "もうださださ。",
+          "text": "So totally lame."
+        },
+        {
+          "offset": "0x310",
+          "original": "一人の方がよかったな…。",
+          "text": "I'd rather be alone..."
+        },
+        {
+          "offset": "0x330",
+          "original": "好雄君との方が\nいいなぁ…。",
+          "text": "I'd rather be\nwith Yoshio..."
+        },
+        {
+          "offset": "0x350",
+          "original": "一人の方がよかったな…。",
+          "text": "I'd rather be alone..."
+        },
+        {
+          "offset": "0x370",
+          "original": "好雄君との方が\nいいなぁ…。",
+          "text": "I'd rather be\nwith Yoshio..."
+        },
+        {
+          "offset": "0x390",
+          "original": "一人の方がよかったな…。",
+          "text": "I'd rather be alone..."
+        },
+        {
+          "offset": "0x3b0",
+          "original": "好雄君との方が\nいいなぁ…。",
+          "text": "I'd rather be\nwith Yoshio..."
+        },
+        {
+          "offset": "0x3d0",
+          "original": "一人の方がよかったな…。",
+          "text": "I'd rather be alone..."
+        },
+        {
+          "offset": "0x3f0",
+          "original": "それじゃ。",
+          "text": "Bye."
+        },
+        {
+          "offset": "0x400",
+          "original": "それじゃ。",
+          "text": "Bye."
+        },
+        {
+          "offset": "0xb1c",
+          "original": "こ、こんにちは。\n{P}。",
+          "text": "H-hello,\n{P}"
+        },
+        {
+          "offset": "0xb38",
+          "original": "さあ、乗りましょう。",
+          "text": "Come on, let's ride."
+        },
+        {
+          "offset": "0xb54",
+          "original": "いい眺めだったね。",
+          "text": "What a nice view."
+        },
+        {
+          "offset": "0xb6c",
+          "original": "私大好きなの。\nさあ、乗りましょう。",
+          "text": "I love those.\nCome on, let's ride."
+        },
+        {
+          "offset": "0xb94",
+          "original": "すごく楽しかったね。",
+          "text": "That was so much fun."
+        },
+        {
+          "offset": "0xbb0",
+          "original": "ちょっと、怖そうだけど\n大丈夫かな。",
+          "text": "It looks a bit scary.\nWill I be okay?"
+        },
+        {
+          "offset": "0xbd8",
+          "original": "す、すごかったね。",
+          "text": "Th-that was something."
+        },
+        {
+          "offset": "0xbf0",
+          "original": "ちょっと怖いけど\n入りましょう。",
+          "text": "It's a bit scary,\nbut let's go in."
+        },
+        {
+          "offset": "0xc14",
+          "original": "ちょっと、怖かったね。",
+          "text": "That was a bit scary."
+        },
+        {
+          "offset": "0xc30",
+          "original": "{P}\n今日は楽しかったわ。\nそれじゃ、さようなら。",
+          "text": "{P}\nI had fun today.\nGoodbye, then."
+        },
+        {
+          "offset": "0xc64",
+          "original": "こんにちは。\n{P}。",
+          "text": "Hello,\n{P}"
+        },
+        {
+          "offset": "0xc7c",
+          "original": "さあ、乗りましょう。",
+          "text": "Come on, let's ride."
+        },
+        {
+          "offset": "0xc98",
+          "original": "いい眺めだったね。",
+          "text": "What a nice view."
+        },
+        {
+          "offset": "0xcb0",
+          "original": "私大好きなの。\nさあ、乗りましょう。",
+          "text": "I love those.\nCome on, let's ride."
+        },
+        {
+          "offset": "0xcd8",
+          "original": "すごく楽しかったね。",
+          "text": "That was so much fun."
+        },
+        {
+          "offset": "0xcf4",
+          "original": "ちょっと、怖そうだけど\n大丈夫かな。",
+          "text": "It looks a bit scary.\nWill I be okay?"
+        },
+        {
+          "offset": "0xd1c",
+          "original": "す、すごかったね。",
+          "text": "Th-that was something."
+        },
+        {
+          "offset": "0xd34",
+          "original": "ちょっと怖いけど\n入りましょう。",
+          "text": "It's a bit scary,\nbut let's go in."
+        },
+        {
+          "offset": "0xd58",
+          "original": "ちょっと、怖かったね。",
+          "text": "That was a bit scary."
+        },
+        {
+          "offset": "0xd74",
+          "original": "今日は、楽しかったわ。\nそれじゃ\n二人ともさよなら。",
+          "text": "I had fun today.\nGoodbye,\nboth of you."
+        },
+        {
+          "offset": "0xdac",
+          "original": "こんにちは。",
+          "text": "Hello."
+        },
+        {
+          "offset": "0xdc0",
+          "original": "さあ、乗りましょう。",
+          "text": "Come on, let's ride."
+        },
+        {
+          "offset": "0xddc",
+          "original": "いい眺めだったね。",
+          "text": "What a nice view."
+        },
+        {
+          "offset": "0xdf4",
+          "original": "私大好きなの。\nさあ、乗りましょう。",
+          "text": "I love those.\nCome on, let's ride."
+        },
+        {
+          "offset": "0xe1c",
+          "original": "すごく楽しかったね。",
+          "text": "That was so much fun."
+        },
+        {
+          "offset": "0xe38",
+          "original": "ちょっと、怖そうだけど\n大丈夫かな。",
+          "text": "It looks a bit scary.\nWill I be okay?"
+        },
+        {
+          "offset": "0xe60",
+          "original": "す、すごかったね。",
+          "text": "Th-that was something."
+        },
+        {
+          "offset": "0xe78",
+          "original": "ちょっと怖いけど\n入りましょう。",
+          "text": "It's a bit scary,\nbut let's go in."
+        },
+        {
+          "offset": "0xe9c",
+          "original": "ちょっと、怖かったね。",
+          "text": "That was a bit scary."
+        },
+        {
+          "offset": "0xeb8",
+          "original": "今日は、楽しかったわ。\nそれじゃ\n二人ともさよなら。",
+          "text": "I had fun today.\nGoodbye,\nboth of you."
+        },
+        {
+          "offset": "0xf00",
+          "original": "あなたとなの？\nしょうがないなぁ…。",
+          "text": "With you?\nOh, well..."
+        },
+        {
+          "offset": "0xf28",
+          "original": "一人の方が\n良かったな…。",
+          "text": "I'd rather have\nbeen alone..."
+        },
+        {
+          "offset": "0xf48",
+          "original": "あなたとなの？\nしょうがないなぁ…。",
+          "text": "With you?\nOh, well..."
+        },
+        {
+          "offset": "0xf70",
+          "original": "一人の方が\n良かったな…。",
+          "text": "I'd rather have\nbeen alone..."
+        },
+        {
+          "offset": "0xf90",
+          "original": "あなたとなの？\nしょうがないなぁ…。",
+          "text": "With you?\nOh, well..."
+        },
+        {
+          "offset": "0xfb8",
+          "original": "まだ、一人の方が\n良かったな…。",
+          "text": "Even alone would\nhave been better..."
+        },
+        {
+          "offset": "0xfdc",
+          "original": "あなたとなの？\nしょうがないなぁ…。",
+          "text": "With you?\nOh, well..."
+        },
+        {
+          "offset": "0x1004",
+          "original": "まだ、一人の方が\n良かったな…。",
+          "text": "Even alone would\nhave been better..."
+        },
+        {
+          "offset": "0x1028",
+          "original": "今日は楽しかったわ。\n好雄君さよなら。",
+          "text": "I had fun today.\nGoodbye, Yoshio."
+        },
+        {
+          "offset": "0x1054",
+          "original": "それじゃ、さよなら。",
+          "text": "Goodbye, then."
+        },
+        {
+          "offset": "0x177c",
+          "original": "来たの？\n{P}。",
+          "text": "So you came,\n{P}"
+        },
+        {
+          "offset": "0x1790",
+          "original": "一番くだらないわね。",
+          "text": "The most foolish of all."
+        },
+        {
+          "offset": "0x17ac",
+          "original": "全然、つまらないわ。",
+          "text": "Utterly dull."
+        },
+        {
+          "offset": "0x17c8",
+          "original": "私の作ったものの方が\nきっと怖いわよ。",
+          "text": "Anything I built\nwould be scarier."
+        },
+        {
+          "offset": "0x17f4",
+          "original": "全然、つまらないわ。",
+          "text": "Utterly dull."
+        },
+        {
+          "offset": "0x1810",
+          "original": "つまらない、\n乗り物ね。",
+          "text": "What a dull\nride."
+        },
+        {
+          "offset": "0x182c",
+          "original": "全然、つまらないわ。",
+          "text": "Utterly dull."
+        },
+        {
+          "offset": "0x1848",
+          "original": "せっかくの科学を\nこんな非科学的なものに\n使うなんて。",
+          "text": "Wasting science\non something so\nunscientific."
+        },
+        {
+          "offset": "0x1884",
+          "original": "全然、つまらないわ。",
+          "text": "Utterly dull."
+        },
+        {
+          "offset": "0x18a0",
+          "original": "{P}\nいい暇潰しができたわ。\nそれじゃ、失礼するわ。",
+          "text": "{P}\nThat passed the time.\nNow, excuse me."
+        },
+        {
+          "offset": "0x18d4",
+          "original": "あなたも暇ね。\n{P}。",
+          "text": "You have nothing\nbetter to do, {P}"
+        },
+        {
+          "offset": "0x18ec",
+          "original": "一番くだらないわね。",
+          "text": "The most foolish of all."
+        },
+        {
+          "offset": "0x1908",
+          "original": "全然、つまらないわ。",
+          "text": "Utterly dull."
+        },
+        {
+          "offset": "0x1924",
+          "original": "私の作ったものの方が\nきっと怖いわよ。",
+          "text": "Anything I built\nwould be scarier."
+        },
+        {
+          "offset": "0x1950",
+          "original": "全然、つまらないわ。",
+          "text": "Utterly dull."
+        },
+        {
+          "offset": "0x196c",
+          "original": "つまらない、\n乗り物ね。",
+          "text": "What a dull\nride."
+        },
+        {
+          "offset": "0x1988",
+          "original": "全然、つまらないわ。",
+          "text": "Utterly dull."
+        },
+        {
+          "offset": "0x19a4",
+          "original": "せっかくの科学を\nこんな非科学的なものに\n使うなんて。",
+          "text": "Wasting science\non something so\nunscientific."
+        },
+        {
+          "offset": "0x19e0",
+          "original": "全然、つまらないわ。",
+          "text": "Utterly dull."
+        },
+        {
+          "offset": "0x19fc",
+          "original": "いい暇潰しができたわ。\nそれじゃ、失礼。",
+          "text": "That passed the time.\nNow, excuse me."
+        },
+        {
+          "offset": "0x1a28",
+          "original": "あなたも暇ね。",
+          "text": "You must have time to kill."
+        },
+        {
+          "offset": "0x1a3c",
+          "original": "一番くだらないわね。",
+          "text": "The most foolish of all."
+        },
+        {
+          "offset": "0x1a58",
+          "original": "全然、つまらないわ。",
+          "text": "Utterly dull."
+        },
+        {
+          "offset": "0x1a74",
+          "original": "私の作ったものの方が\nきっと怖いわよ。",
+          "text": "Anything I built\nwould be scarier."
+        },
+        {
+          "offset": "0x1aa0",
+          "original": "全然、つまらないわ。",
+          "text": "Utterly dull."
+        },
+        {
+          "offset": "0x1abc",
+          "original": "つまらない、\n乗り物ね。",
+          "text": "What a dull\nride."
+        },
+        {
+          "offset": "0x1ad8",
+          "original": "全然、つまらないわ。",
+          "text": "Utterly dull."
+        },
+        {
+          "offset": "0x1af4",
+          "original": "せっかくの科学を\nこんな非科学的なものに\n使うなんて。",
+          "text": "Wasting science\non something so\nunscientific."
+        },
+        {
+          "offset": "0x1b30",
+          "original": "全然、つまらないわ。",
+          "text": "Utterly dull."
+        },
+        {
+          "offset": "0x1b4c",
+          "original": "いい暇潰しができたわ。\nそれじゃ、失礼。",
+          "text": "That passed the time.\nNow, excuse me."
+        },
+        {
+          "offset": "0x1b88",
+          "original": "くだらない上に…。\n来なければよかったわ。",
+          "text": "Foolish, and on top...\nI shouldn't have come."
+        },
+        {
+          "offset": "0x1bc8",
+          "original": "つまらない上に、\n更に追い討ちを\nかけるのね。",
+          "text": "It's dull, and now\nyou make it\neven worse."
+        },
+        {
+          "offset": "0x1c0c",
+          "original": "しかたないわね…。",
+          "text": "Very well..."
+        },
+        {
+          "offset": "0x1c34",
+          "original": "しかたないわね…。",
+          "text": "Very well..."
+        },
+        {
+          "offset": "0x1c5c",
+          "original": "いい暇潰しができたわ。\n好雄君、失礼するわ。",
+          "text": "That passed the time.\nExcuse me, Yoshio."
+        },
+        {
+          "offset": "0x1c8c",
+          "original": "いい暇潰しができたわ。\n好雄君、失礼するわ。",
+          "text": "That passed the time.\nExcuse me, Yoshio."
+        },
+        {
+          "offset": "0x23c8",
+          "original": "こ、こんにちは。\n{P}。",
+          "text": "H-hello,\n{P}"
+        },
+        {
+          "offset": "0x23e4",
+          "original": "さあ、乗りましょうよ。",
+          "text": "Come on, let's ride!"
+        },
+        {
+          "offset": "0x2400",
+          "original": "素晴らしい、\n眺めだったわね。",
+          "text": "What a\nwonderful view."
+        },
+        {
+          "offset": "0x2424",
+          "original": "カモンレッツゴー。\nさあ、乗りましょう。",
+          "text": "Come on, let's go!\nLet's ride!"
+        },
+        {
+          "offset": "0x2450",
+          "original": "あー、\nすっごい楽しかったわね。",
+          "text": "Ahh,\nthat was super fun!"
+        },
+        {
+          "offset": "0x2474",
+          "original": "カモンレッツゴー。\nさあ、乗りましょう。",
+          "text": "Come on, let's go!\nLet's ride!"
+        },
+        {
+          "offset": "0x24a0",
+          "original": "ンー、す、すごかったわね。",
+          "text": "Mm, th-that was wild."
+        },
+        {
+          "offset": "0x24c0",
+          "original": "カモンレッツゴー。\nさあ、入りましょう。",
+          "text": "Come on, let's go!\nLet's go in!"
+        },
+        {
+          "offset": "0x24ec",
+          "original": "ちょっと、怖かったわね。",
+          "text": "That was a little scary."
+        },
+        {
+          "offset": "0x250c",
+          "original": "{P}\n今日は\nとっても楽しかったわ。\nグッバイ、さよなら。",
+          "text": "{P}\ntoday was\nso much fun.\nGoodbye, bye."
+        },
+        {
+          "offset": "0x2548",
+          "original": "ハーイ。\nこんにちは。\n{P}。",
+          "text": "Hi!\nHello,\n{P}"
+        },
+        {
+          "offset": "0x2568",
+          "original": "さあ、乗りましょうよ。",
+          "text": "Come on, let's ride!"
+        },
+        {
+          "offset": "0x2584",
+          "original": "素晴らしい、\n眺めだったわね。",
+          "text": "What a\nwonderful view."
+        },
+        {
+          "offset": "0x25a8",
+          "original": "カモンレッツゴー。\nさあ、乗りましょう。",
+          "text": "Come on, let's go!\nLet's ride!"
+        },
+        {
+          "offset": "0x25d4",
+          "original": "あー、\nすっごい楽しかったわね。",
+          "text": "Ahh,\nthat was super fun!"
+        },
+        {
+          "offset": "0x25f8",
+          "original": "カモンレッツゴー。\nさあ、乗りましょう。",
+          "text": "Come on, let's go!\nLet's ride!"
+        },
+        {
+          "offset": "0x2624",
+          "original": "ンー、す、すごかったわね。",
+          "text": "Mm, th-that was wild."
+        },
+        {
+          "offset": "0x2644",
+          "original": "カモンレッツゴー。\nさあ、入りましょう。",
+          "text": "Come on, let's go!\nLet's go in!"
+        },
+        {
+          "offset": "0x2670",
+          "original": "ちょっと、怖かったわね。",
+          "text": "That was a little scary."
+        },
+        {
+          "offset": "0x2690",
+          "original": "今日は、楽しかったわ。\nグッバイエブリバディ、\nさよなら。",
+          "text": "Today was fun.\nGoodbye, everybody,\nbye."
+        },
+        {
+          "offset": "0x26d0",
+          "original": "こんにちは。",
+          "text": "Hello."
+        },
+        {
+          "offset": "0x26e4",
+          "original": "さあ、乗りましょうよ。",
+          "text": "Come on, let's ride!"
+        },
+        {
+          "offset": "0x2700",
+          "original": "素晴らしい、\n眺めだったわね。",
+          "text": "What a\nwonderful view."
+        },
+        {
+          "offset": "0x2724",
+          "original": "カモンレッツゴー。\nさあ、乗りましょう。",
+          "text": "Come on, let's go!\nLet's ride!"
+        },
+        {
+          "offset": "0x2750",
+          "original": "あー、\nすっごい楽しかったわね。",
+          "text": "Ahh,\nthat was super fun!"
+        },
+        {
+          "offset": "0x2774",
+          "original": "カモンレッツゴー。\nさあ、乗りましょう。",
+          "text": "Come on, let's go!\nLet's ride!"
+        },
+        {
+          "offset": "0x27a0",
+          "original": "ンー、す、すごかったわね。",
+          "text": "Mm, th-that was wild."
+        },
+        {
+          "offset": "0x27c0",
+          "original": "カモンレッツゴー。\nさあ、入りましょう。",
+          "text": "Come on, let's go!\nLet's go in!"
+        },
+        {
+          "offset": "0x27ec",
+          "original": "ちょっと、怖かったわね。",
+          "text": "That was a little scary."
+        },
+        {
+          "offset": "0x280c",
+          "original": "今日は、楽しかったわ。\nグッバイエブリバディ、\nさよなら。",
+          "text": "Today was fun.\nGoodbye, everybody,\nbye."
+        },
+        {
+          "offset": "0x285c",
+          "original": "あなたとなの？\nしょうがないわねぇ…。",
+          "text": "With you?\nOh, well..."
+        },
+        {
+          "offset": "0x2888",
+          "original": "まだ一人の方が\n良かったわ…。",
+          "text": "Even alone would\nhave been better..."
+        },
+        {
+          "offset": "0x28ac",
+          "original": "あなたとなの？\nしょうがないわねぇ…。",
+          "text": "With you?\nOh, well..."
+        },
+        {
+          "offset": "0x28d8",
+          "original": "一人の方が\nずっと良かったわ…。",
+          "text": "Alone would have\nbeen much better..."
+        },
+        {
+          "offset": "0x28fc",
+          "original": "あなたとなの？\nしょうがないわねぇ…。",
+          "text": "With you?\nOh, well..."
+        },
+        {
+          "offset": "0x2928",
+          "original": "まだ一人の方が\n良かったわ…。",
+          "text": "Even alone would\nhave been better..."
+        },
+        {
+          "offset": "0x294c",
+          "original": "あなたとなの？\nしょうがないわねぇ…。",
+          "text": "With you?\nOh, well..."
+        },
+        {
+          "offset": "0x2978",
+          "original": "まだ一人の方が\n良かったわ…。",
+          "text": "Even alone would\nhave been better..."
+        },
+        {
+          "offset": "0x299c",
+          "original": "今日は楽しかったわ。\nグッバイ、好雄君。",
+          "text": "Today was fun.\nGoodbye, Yoshio."
+        },
+        {
+          "offset": "0x29c8",
+          "original": "グッバイ、さよなら。",
+          "text": "Goodbye, see you."
+        },
+        {
+          "offset": "0x30f0",
+          "original": "あら、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x30fc",
+          "original": "こんにちは。",
+          "text": "Hello."
+        },
+        {
+          "offset": "0x3114",
+          "original": "好きではないけど、\n乗ってあげるわ。",
+          "text": "I don't care for it,\nbut I'll ride."
+        },
+        {
+          "offset": "0x313c",
+          "original": "思ったより、\n楽しかったわ。",
+          "text": "More fun than\nI expected."
+        },
+        {
+          "offset": "0x315c",
+          "original": "つきあってあげるわ。",
+          "text": "I'll keep you company."
+        },
+        {
+          "offset": "0x3178",
+          "original": "こ、こんなの\n子供だましよ。",
+          "text": "Th-this is\nkid stuff."
+        },
+        {
+          "offset": "0x3198",
+          "original": "つきあってあげるわ。",
+          "text": "I'll keep you company."
+        },
+        {
+          "offset": "0x31b4",
+          "original": "まあまあ、\n面白かったわ。",
+          "text": "That was\nfairly amusing."
+        },
+        {
+          "offset": "0x31d4",
+          "original": "もうそんな歳でもないし…。\n悪いけど、一人で\n乗って下さるかしら。",
+          "text": "I'm too old for this...\nSorry, but would you\nride it alone?"
+        },
+        {
+          "offset": "0x321c",
+          "original": "楽しかったかしら？",
+          "text": "Did you have fun?"
+        },
+        {
+          "offset": "0x3234",
+          "original": "{P}。\n今日は、\nなかなか楽しかったわ。\nまた誘ってくれてもいいわよ。\nそれじゃあ。",
+          "text": "{P}\ntoday was\nrather fun.\nYou may invite me again.\nFarewell."
+        },
+        {
+          "offset": "0x3288",
+          "original": "あら、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x3294",
+          "original": "こんにちは。",
+          "text": "Hello."
+        },
+        {
+          "offset": "0x32ac",
+          "original": "好きではないけど、\n乗ってあげるわ。",
+          "text": "I don't care for it,\nbut I'll ride."
+        },
+        {
+          "offset": "0x32d4",
+          "original": "思ったより、\n楽しかったわ。",
+          "text": "More fun than\nI expected."
+        },
+        {
+          "offset": "0x32f4",
+          "original": "つきあってあげるわ。",
+          "text": "I'll keep you company."
+        },
+        {
+          "offset": "0x3310",
+          "original": "こ、こんなの\n子供だましよ。",
+          "text": "Th-this is\nkid stuff."
+        },
+        {
+          "offset": "0x3330",
+          "original": "つきあってあげるわ。",
+          "text": "I'll keep you company."
+        },
+        {
+          "offset": "0x334c",
+          "original": "まあまあ、\n面白かったわ。",
+          "text": "That was\nfairly amusing."
+        },
+        {
+          "offset": "0x336c",
+          "original": "もうそんな歳でもないし…。\n悪いけど、一人で\n乗って下さるかしら。",
+          "text": "I'm too old for this...\nSorry, but would you\nride it alone?"
+        },
+        {
+          "offset": "0x33b4",
+          "original": "楽しかったかしら？",
+          "text": "Did you have fun?"
+        },
+        {
+          "offset": "0x33cc",
+          "original": "今日は\nなかなか楽しかったわ。\nまたね。",
+          "text": "Today was\nrather fun.\nUntil next time."
+        },
+        {
+          "offset": "0x33f8",
+          "original": "こんにちは。\n{P}。",
+          "text": "Hello,\n{P}"
+        },
+        {
+          "offset": "0x3410",
+          "original": "好きではないけど、\n乗ってあげるわ。",
+          "text": "I don't care for it,\nbut I'll ride."
+        },
+        {
+          "offset": "0x3438",
+          "original": "思ったより、\n楽しかったわ。",
+          "text": "More fun than\nI expected."
+        },
+        {
+          "offset": "0x3458",
+          "original": "つきあってあげるわ。",
+          "text": "I'll keep you company."
+        },
+        {
+          "offset": "0x3474",
+          "original": "こ、こんなの\n子供だましよ。",
+          "text": "Th-this is\nkid stuff."
+        },
+        {
+          "offset": "0x3494",
+          "original": "つきあってあげるわ。",
+          "text": "I'll keep you company."
+        },
+        {
+          "offset": "0x34b0",
+          "original": "まあまあ、\n面白かったわ。",
+          "text": "That was\nfairly amusing."
+        },
+        {
+          "offset": "0x34d0",
+          "original": "もうそんな歳でもないし…。\n悪いけど、一人で\n乗って下さるかしら。",
+          "text": "I'm too old for this...\nSorry, but would you\nride it alone?"
+        },
+        {
+          "offset": "0x3518",
+          "original": "楽しかったかしら？",
+          "text": "Did you have fun?"
+        },
+        {
+          "offset": "0x3530",
+          "original": "今日は\nなかなか楽しかったわ。\nまたね。",
+          "text": "Today was\nrather fun.\nUntil next time."
+        },
+        {
+          "offset": "0x356c",
+          "original": "一人の方がましね。",
+          "text": "Alone would be better."
+        },
+        {
+          "offset": "0x3584",
+          "original": "‥‥‥‥。\nやっと終わったわ。",
+          "text": "......\nAt last, it's over."
+        },
+        {
+          "offset": "0x35a8",
+          "original": "‥‥‥‥。\nしかたないわね。",
+          "text": "......\nVery well."
+        },
+        {
+          "offset": "0x35c8",
+          "original": "セットが\n乱れちゃったじゃない。",
+          "text": "You've ruined\nmy hair."
+        },
+        {
+          "offset": "0x35ec",
+          "original": "‥‥‥‥。\nしかたないわね。",
+          "text": "......\nVery well."
+        },
+        {
+          "offset": "0x360c",
+          "original": "何か、疲れたわね。",
+          "text": "How tiring."
+        },
+        {
+          "offset": "0x3624",
+          "original": "‥‥‥。\n一人で乗って下さる。",
+          "text": "......\nRide it alone, please."
+        },
+        {
+          "offset": "0x3648",
+          "original": "‥‥‥‥。\n待ったわよ。",
+          "text": "......\nI've been waiting."
+        },
+        {
+          "offset": "0x3664",
+          "original": "今日は\nまあまあ面白かったわ。\nそれじゃ失礼するわ\n早乙女君。",
+          "text": "Today was\nfairly amusing.\nNow excuse me,\nSaotome."
+        },
+        {
+          "offset": "0x36a4",
+          "original": "それじゃ失礼するわね。",
+          "text": "Now, excuse me."
+        },
+        {
+          "offset": "0x3e04",
+          "original": "こ、こんにちは。\n{P}。",
+          "text": "H-hello,\n{P}"
+        },
+        {
+          "offset": "0x3e20",
+          "original": "私、大好きなんです。",
+          "text": "I love this one."
+        },
+        {
+          "offset": "0x3e3c",
+          "original": "すごく\nいい眺めでしたね。",
+          "text": "What a\nlovely view."
+        },
+        {
+          "offset": "0x3e5c",
+          "original": "私、ちょっと\n苦手なんです…。",
+          "text": "I'm not very\ngood with this..."
+        },
+        {
+          "offset": "0x3e80",
+          "original": "やっぱり怖かったです。",
+          "text": "It was scary, after all."
+        },
+        {
+          "offset": "0x3e9c",
+          "original": "これだけは乗れないので、\nすみませんけれども、\n一人で乗ってください。",
+          "text": "I can't ride this one.\nI'm sorry, but\nplease ride alone."
+        },
+        {
+          "offset": "0x3ee8",
+          "original": "もう少し、\n身体が強かったら\n良かったんですけど…。",
+          "text": "If only I\nwere a little\nstronger..."
+        },
+        {
+          "offset": "0x3f20",
+          "original": "ちょっと怖いですね。",
+          "text": "It's a little scary."
+        },
+        {
+          "offset": "0x3f3c",
+          "original": "やっぱり怖かったです。",
+          "text": "It was scary, after all."
+        },
+        {
+          "offset": "0x3f58",
+          "original": "{P}\n今日は、楽しかったですね。\nそれでは、失礼します。",
+          "text": "{P}\ntoday was fun.\nGoodbye for now."
+        },
+        {
+          "offset": "0x3f90",
+          "original": "こんにちは。\n{P}。",
+          "text": "Hello,\n{P}"
+        },
+        {
+          "offset": "0x3fa8",
+          "original": "私、大好きなんです。",
+          "text": "I love this one."
+        },
+        {
+          "offset": "0x3fc4",
+          "original": "すごく\nいい眺めでしたね。",
+          "text": "What a\nlovely view."
+        },
+        {
+          "offset": "0x3fe4",
+          "original": "私、ちょっと\n苦手なんです…。",
+          "text": "I'm not very\ngood with this..."
+        },
+        {
+          "offset": "0x4008",
+          "original": "やっぱり怖かったです。",
+          "text": "It was scary, after all."
+        },
+        {
+          "offset": "0x4024",
+          "original": "これだけは乗れないので、\nすみませんけれども、\n一人で乗ってください。",
+          "text": "I can't ride this one.\nI'm sorry, but\nplease ride alone."
+        },
+        {
+          "offset": "0x4070",
+          "original": "もう少し、\n身体が強かったら\n良かったんですけど…。",
+          "text": "If only I\nwere a little\nstronger..."
+        },
+        {
+          "offset": "0x40a8",
+          "original": "ちょっと怖いですね。",
+          "text": "It's a little scary."
+        },
+        {
+          "offset": "0x40c4",
+          "original": "やっぱり怖かったです。",
+          "text": "It was scary, after all."
+        },
+        {
+          "offset": "0x40e0",
+          "original": "今日は、楽しかったですね。\nそれでは、失礼します。",
+          "text": "Today was fun.\nGoodbye for now."
+        },
+        {
+          "offset": "0x4118",
+          "original": "こんにちは。",
+          "text": "Hello."
+        },
+        {
+          "offset": "0x412c",
+          "original": "私、大好きなんです。",
+          "text": "I love this one."
+        },
+        {
+          "offset": "0x4148",
+          "original": "すごく\nいい眺めでしたね。",
+          "text": "What a\nlovely view."
+        },
+        {
+          "offset": "0x4168",
+          "original": "私、ちょっと\n苦手なんです…。",
+          "text": "I'm not very\ngood with this..."
+        },
+        {
+          "offset": "0x418c",
+          "original": "やっぱり怖かったです。",
+          "text": "It was scary, after all."
+        },
+        {
+          "offset": "0x41a8",
+          "original": "これだけは乗れないので、\nすみませんけれども、\n一人で乗ってください。",
+          "text": "I can't ride this one.\nI'm sorry, but\nplease ride alone."
+        },
+        {
+          "offset": "0x41f4",
+          "original": "もう少し、\n身体が強かったら\n良かったんですけど…。",
+          "text": "If only I\nwere a little\nstronger..."
+        },
+        {
+          "offset": "0x422c",
+          "original": "ちょっと怖いですね。",
+          "text": "It's a little scary."
+        },
+        {
+          "offset": "0x4248",
+          "original": "やっぱり怖かったです。",
+          "text": "It was scary, after all."
+        },
+        {
+          "offset": "0x4264",
+          "original": "今日は、楽しかったですね。\nそれでは、失礼します。",
+          "text": "Today was fun.\nGoodbye for now."
+        },
+        {
+          "offset": "0x42ac",
+          "original": "別にいいですけど…。",
+          "text": "I don't mind, but..."
+        },
+        {
+          "offset": "0x42c8",
+          "original": "一人の方が\n良かったですね。",
+          "text": "Alone would have\nbeen better."
+        },
+        {
+          "offset": "0x42e8",
+          "original": "ただでさえ、\n苦手なのに…。",
+          "text": "And I don't like\nthis to begin with..."
+        },
+        {
+          "offset": "0x4308",
+          "original": "早乙女君との方が\n良かったな…。",
+          "text": "I'd rather have\nbeen with Saotome..."
+        },
+        {
+          "offset": "0x432c",
+          "original": "一人で乗ってください。",
+          "text": "Please ride alone."
+        },
+        {
+          "offset": "0x4348",
+          "original": "私、\n乗れなくてよかった…。",
+          "text": "I'm glad\nI couldn't ride..."
+        },
+        {
+          "offset": "0x4368",
+          "original": "一人では、\n入れないけど…。",
+          "text": "I can't go in\nalone, but..."
+        },
+        {
+          "offset": "0x4388",
+          "original": "早乙女君との方が\n良かったな…。",
+          "text": "I'd rather have\nbeen with Saotome..."
+        },
+        {
+          "offset": "0x43ac",
+          "original": "今日は楽しかったです。\nそれでは、好雄君、\n失礼します。",
+          "text": "Today was fun.\nGoodbye for now,\nYoshio."
+        },
+        {
+          "offset": "0x43e8",
+          "original": "それでは、失礼します。",
+          "text": "Well, please excuse me."
+        },
+        {
+          "offset": "0x4b10",
+          "original": "{P}、\nこんにちは。",
+          "text": "{P}\ngood afternoon."
+        },
+        {
+          "offset": "0x4b28",
+          "original": "のんびりしてて、\nいいですねぇ。",
+          "text": "It's so relaxing.\nHow nice."
+        },
+        {
+          "offset": "0x4b4c",
+          "original": "楽しかったですねぇ。",
+          "text": "That was such fun."
+        },
+        {
+          "offset": "0x4b68",
+          "original": "楽しそうですねぇ。",
+          "text": "This looks fun."
+        },
+        {
+          "offset": "0x4b80",
+          "original": "楽しかったですねぇ。",
+          "text": "That was such fun."
+        },
+        {
+          "offset": "0x4b9c",
+          "original": "これは、楽しそうですね。",
+          "text": "This looks like fun."
+        },
+        {
+          "offset": "0x4bbc",
+          "original": "楽しかったですねぇ。",
+          "text": "That was such fun."
+        },
+        {
+          "offset": "0x4bd8",
+          "original": "ちょっと怖いですね。",
+          "text": "It's a little scary."
+        },
+        {
+          "offset": "0x4bf4",
+          "original": "楽しかったですねぇ。",
+          "text": "That was such fun."
+        },
+        {
+          "offset": "0x4c10",
+          "original": "{P}\n本日はありがとう\nございました。\nでは、失礼いたします。",
+          "text": "{P}\nthank you for\ntoday.\nI'll take my leave."
+        },
+        {
+          "offset": "0x4c50",
+          "original": "{P}、\nこんにちは。",
+          "text": "{P}\ngood afternoon."
+        },
+        {
+          "offset": "0x4c68",
+          "original": "のんびりしてて、\nいいですねぇ。",
+          "text": "It's so relaxing.\nHow nice."
+        },
+        {
+          "offset": "0x4c8c",
+          "original": "楽しかったですねぇ。",
+          "text": "That was such fun."
+        },
+        {
+          "offset": "0x4ca8",
+          "original": "楽しそうですねぇ。",
+          "text": "This looks fun."
+        },
+        {
+          "offset": "0x4cc0",
+          "original": "楽しかったですねぇ。",
+          "text": "That was such fun."
+        },
+        {
+          "offset": "0x4cdc",
+          "original": "これは、楽しそうですね。",
+          "text": "This looks like fun."
+        },
+        {
+          "offset": "0x4cfc",
+          "original": "楽しかったですねぇ。",
+          "text": "That was such fun."
+        },
+        {
+          "offset": "0x4d18",
+          "original": "ちょっと怖いですね。",
+          "text": "It's a little scary."
+        },
+        {
+          "offset": "0x4d34",
+          "original": "楽しかったですねぇ。",
+          "text": "That was such fun."
+        },
+        {
+          "offset": "0x4d50",
+          "original": "本日は、楽しかったですね。\nでは、失礼いたします。",
+          "text": "Today was such fun.\nI'll take my leave."
+        },
+        {
+          "offset": "0x4d88",
+          "original": "こんにちは。",
+          "text": "Hello."
+        },
+        {
+          "offset": "0x4d9c",
+          "original": "のんびりしてて、\nいいですねぇ。",
+          "text": "It's so relaxing.\nHow nice."
+        },
+        {
+          "offset": "0x4dc0",
+          "original": "楽しかったですねぇ。",
+          "text": "That was such fun."
+        },
+        {
+          "offset": "0x4ddc",
+          "original": "楽しそうですねぇ。",
+          "text": "This looks fun."
+        },
+        {
+          "offset": "0x4df4",
+          "original": "楽しかったですねぇ。",
+          "text": "That was such fun."
+        },
+        {
+          "offset": "0x4e10",
+          "original": "これは、楽しそうですね。",
+          "text": "This looks like fun."
+        },
+        {
+          "offset": "0x4e30",
+          "original": "楽しかったですねぇ。",
+          "text": "That was such fun."
+        },
+        {
+          "offset": "0x4e4c",
+          "original": "ちょっと怖いですね。",
+          "text": "It's a little scary."
+        },
+        {
+          "offset": "0x4e68",
+          "original": "楽しかったですねぇ。",
+          "text": "That was such fun."
+        },
+        {
+          "offset": "0x4e84",
+          "original": "本日は、楽しかったですね。\nでは、失礼いたします。",
+          "text": "Today was such fun.\nI'll take my leave."
+        },
+        {
+          "offset": "0x4ecc",
+          "original": "これに乗るのですね…。",
+          "text": "So we ride this..."
+        },
+        {
+          "offset": "0x4ee8",
+          "original": "楽しく思いました…。",
+          "text": "I found it fun..."
+        },
+        {
+          "offset": "0x4f04",
+          "original": "これに乗るのですか…？",
+          "text": "We ride this...?"
+        },
+        {
+          "offset": "0x4f20",
+          "original": "楽しく思いました…。",
+          "text": "I found it fun..."
+        },
+        {
+          "offset": "0x4f3c",
+          "original": "これに乗るのですか…？",
+          "text": "We ride this...?"
+        },
+        {
+          "offset": "0x4f58",
+          "original": "楽しく思いました…。",
+          "text": "I found it fun..."
+        },
+        {
+          "offset": "0x4f74",
+          "original": "ここに入るのですか…？",
+          "text": "We go in here...?"
+        },
+        {
+          "offset": "0x4f90",
+          "original": "楽しく思いました…。",
+          "text": "I found it fun..."
+        },
+        {
+          "offset": "0x4fac",
+          "original": "それでは、好雄さん。\n失礼いたします。",
+          "text": "Well then, Yoshio.\nI'll take my leave."
+        },
+        {
+          "offset": "0x4fd8",
+          "original": "それでは、\n失礼いたします。",
+          "text": "Well then,\nI'll take my leave."
+        },
+        {
+          "offset": "0x5704",
+          "original": "こんにちは、\n{P}。",
+          "text": "Hello,\n{P}!"
+        },
+        {
+          "offset": "0x571c",
+          "original": "さあ、乗ろうぜ。",
+          "text": "C'mon, let's ride!"
+        },
+        {
+          "offset": "0x5734",
+          "original": "いい眺めだったな。",
+          "text": "Nice view, huh."
+        },
+        {
+          "offset": "0x574c",
+          "original": "ちょっと苦手なんだ。",
+          "text": "Not really my thing."
+        },
+        {
+          "offset": "0x5768",
+          "original": "ちょっと怖かったよ。",
+          "text": "That was kinda scary."
+        },
+        {
+          "offset": "0x5784",
+          "original": "こういうの\n苦手なんだよな。",
+          "text": "I'm not great\nwith this stuff."
+        },
+        {
+          "offset": "0x57a4",
+          "original": "すっごい怖かった。",
+          "text": "That was super scary."
+        },
+        {
+          "offset": "0x57bc",
+          "original": "さあ、入ろうぜ。",
+          "text": "C'mon, let's go in!"
+        },
+        {
+          "offset": "0x57d4",
+          "original": "結構、面白かったね。",
+          "text": "That was pretty fun."
+        },
+        {
+          "offset": "0x57f0",
+          "original": "じゃあね。",
+          "text": "See ya."
+        },
+        {
+          "offset": "0x5800",
+          "original": "よお、\n{P}。",
+          "text": "Yo,\n{P}"
+        },
+        {
+          "offset": "0x5810",
+          "original": "さあ、乗ろうぜ。",
+          "text": "C'mon, let's ride!"
+        },
+        {
+          "offset": "0x5828",
+          "original": "いい眺めだったな。",
+          "text": "Nice view, huh."
+        },
+        {
+          "offset": "0x5840",
+          "original": "ちょっと苦手なんだ。",
+          "text": "Not really my thing."
+        },
+        {
+          "offset": "0x585c",
+          "original": "ちょっと怖かったよ。",
+          "text": "That was kinda scary."
+        },
+        {
+          "offset": "0x5878",
+          "original": "こういうの\n苦手なんだよな。",
+          "text": "I'm not great\nwith this stuff."
+        },
+        {
+          "offset": "0x5898",
+          "original": "すっごい怖かった。",
+          "text": "That was super scary."
+        },
+        {
+          "offset": "0x58b0",
+          "original": "さあ、入ろうぜ。",
+          "text": "C'mon, let's go in!"
+        },
+        {
+          "offset": "0x58c8",
+          "original": "結構、面白かったね。",
+          "text": "That was pretty fun."
+        },
+        {
+          "offset": "0x58e4",
+          "original": "じゃあね。",
+          "text": "See ya."
+        },
+        {
+          "offset": "0x58f8",
+          "original": "さあ、乗ろうぜ。",
+          "text": "C'mon, let's ride!"
+        },
+        {
+          "offset": "0x5910",
+          "original": "いい眺めだったな。",
+          "text": "Nice view, huh."
+        },
+        {
+          "offset": "0x5928",
+          "original": "ちょっと苦手なんだ。",
+          "text": "Not really my thing."
+        },
+        {
+          "offset": "0x5944",
+          "original": "ちょっと怖かったよ。",
+          "text": "That was kinda scary."
+        },
+        {
+          "offset": "0x5960",
+          "original": "こういうの\n苦手なんだよな。",
+          "text": "I'm not great\nwith this stuff."
+        },
+        {
+          "offset": "0x5980",
+          "original": "すっごい怖かった。",
+          "text": "That was super scary."
+        },
+        {
+          "offset": "0x5998",
+          "original": "さあ、入ろうぜ。",
+          "text": "C'mon, let's go in!"
+        },
+        {
+          "offset": "0x59b0",
+          "original": "結構、面白かったね。",
+          "text": "That was pretty fun."
+        },
+        {
+          "offset": "0x59cc",
+          "original": "じゃあね。",
+          "text": "See ya."
+        },
+        {
+          "offset": "0x59ec",
+          "original": "あーぁ、つまんねぇなぁ…。",
+          "text": "Ugh, this is so boring..."
+        },
+        {
+          "offset": "0x5a0c",
+          "original": "一人だったら\n良かったのに。",
+          "text": "I'd rather have\nbeen alone."
+        },
+        {
+          "offset": "0x5a2c",
+          "original": "ただでさえ苦手なのに…。",
+          "text": "And I hate these anyway..."
+        },
+        {
+          "offset": "0x5a5c",
+          "original": "ただでさえ苦手なのに…。",
+          "text": "And I hate these anyway..."
+        },
+        {
+          "offset": "0x5a8c",
+          "original": "あーぁ、つまんねぇなぁ…。",
+          "text": "Ugh, this is so boring..."
+        },
+        {
+          "offset": "0x5aac",
+          "original": "一人だったら\n良かったのに。",
+          "text": "I'd rather have\nbeen alone."
+        },
+        {
+          "offset": "0x5acc",
+          "original": "じゃあな。",
+          "text": "Later."
+        },
+        {
+          "offset": "0x61bc",
+          "original": "あの…。\nこ、こんにちは。\n{P}。",
+          "text": "Um...\nH-hello,\n{P}"
+        },
+        {
+          "offset": "0x61e0",
+          "original": "私、大好きなんです。",
+          "text": "I love this one."
+        },
+        {
+          "offset": "0x61fc",
+          "original": "二人きりで、ちょっと…。",
+          "text": "Just us two, um..."
+        },
+        {
+          "offset": "0x621c",
+          "original": "あの…。\n私、ちょっと…。",
+          "text": "Um...\nI'm not really..."
+        },
+        {
+          "offset": "0x623c",
+          "original": "やっぱり、怖かったです。",
+          "text": "It was scary, after all."
+        },
+        {
+          "offset": "0x625c",
+          "original": "こ、怖そうですね…。",
+          "text": "I-it looks scary..."
+        },
+        {
+          "offset": "0x6278",
+          "original": "すごく怖かったです…。",
+          "text": "That was so scary..."
+        },
+        {
+          "offset": "0x6294",
+          "original": "ちょっと、楽しみです…。",
+          "text": "I'm kind of excited..."
+        },
+        {
+          "offset": "0x62b4",
+          "original": "楽しかったですね。",
+          "text": "That was fun."
+        },
+        {
+          "offset": "0x62cc",
+          "original": "今日は楽しかったです…。\nそれじゃ…。",
+          "text": "Today was fun...\nUm, bye..."
+        },
+        {
+          "offset": "0x62fc",
+          "original": "こんにちは。\n{P}。",
+          "text": "Hello,\n{P}"
+        },
+        {
+          "offset": "0x6314",
+          "original": "私、大好きなんです。",
+          "text": "I love this one."
+        },
+        {
+          "offset": "0x6330",
+          "original": "二人きりで、ちょっと…。",
+          "text": "Just us two, um..."
+        },
+        {
+          "offset": "0x6350",
+          "original": "あの…。\n私、ちょっと…。",
+          "text": "Um...\nI'm not really..."
+        },
+        {
+          "offset": "0x6370",
+          "original": "やっぱり、怖かったです。",
+          "text": "It was scary, after all."
+        },
+        {
+          "offset": "0x6390",
+          "original": "こ、怖そうですね…。",
+          "text": "I-it looks scary..."
+        },
+        {
+          "offset": "0x63ac",
+          "original": "すごく怖かったです…。",
+          "text": "That was so scary..."
+        },
+        {
+          "offset": "0x63c8",
+          "original": "ちょっと、楽しみです…。",
+          "text": "I'm kind of excited..."
+        },
+        {
+          "offset": "0x63e8",
+          "original": "楽しかったですね。",
+          "text": "That was fun."
+        },
+        {
+          "offset": "0x6400",
+          "original": "あの…。\n今日は、楽しかったです。\nそれじゃ…。",
+          "text": "Um...\nToday was fun.\nBye..."
+        },
+        {
+          "offset": "0x6434",
+          "original": "こ、こんにちは。",
+          "text": "H-hello."
+        },
+        {
+          "offset": "0x644c",
+          "original": "私、大好きなんです。",
+          "text": "I love this one."
+        },
+        {
+          "offset": "0x6468",
+          "original": "二人きりで、ちょっと…。",
+          "text": "Just us two, um..."
+        },
+        {
+          "offset": "0x6488",
+          "original": "あの…。\n私、ちょっと…。",
+          "text": "Um...\nI'm not really..."
+        },
+        {
+          "offset": "0x64a8",
+          "original": "やっぱり、怖かったです。",
+          "text": "It was scary, after all."
+        },
+        {
+          "offset": "0x64c8",
+          "original": "こ、怖そうですね…。",
+          "text": "I-it looks scary..."
+        },
+        {
+          "offset": "0x64e4",
+          "original": "すごく怖かったです…。",
+          "text": "That was so scary..."
+        },
+        {
+          "offset": "0x6500",
+          "original": "ちょっと、楽しみです…。",
+          "text": "I'm kind of excited..."
+        },
+        {
+          "offset": "0x6520",
+          "original": "楽しかったですね。",
+          "text": "That was fun."
+        },
+        {
+          "offset": "0x6538",
+          "original": "あの…。\n今日は、楽しかったです。\nそれじゃ…。",
+          "text": "Um...\nToday was fun.\nBye..."
+        },
+        {
+          "offset": "0x658c",
+          "original": "ちょっと、苦痛でした…。",
+          "text": "That was a little painful..."
+        },
+        {
+          "offset": "0x65bc",
+          "original": "ちょっと、苦痛でした…。",
+          "text": "That was a little painful..."
+        },
+        {
+          "offset": "0x65ec",
+          "original": "ちょっと、苦痛でした…。",
+          "text": "That was a little painful..."
+        },
+        {
+          "offset": "0x661c",
+          "original": "ちょっと、苦痛でした…。",
+          "text": "That was a little painful..."
+        },
+        {
+          "offset": "0x663c",
+          "original": "あの…好雄さん。\n楽しかったです…。\nそれじゃ…。",
+          "text": "Um... Yoshio.\nIt was fun...\nBye..."
+        },
+        {
+          "offset": "0x6674",
+          "original": "それじゃ…。",
+          "text": "Bye..."
+        },
+        {
+          "offset": "0x6db0",
+          "original": "こ、こんにちは。\n{P}。",
+          "text": "H-hello,\n{P}"
+        },
+        {
+          "offset": "0x6dcc",
+          "original": "さあ、乗りましょう。",
+          "text": "Come on, let's ride."
+        },
+        {
+          "offset": "0x6de8",
+          "original": "すごく\nいい眺めだったね。",
+          "text": "What a\ngreat view."
+        },
+        {
+          "offset": "0x6e08",
+          "original": "さあ、乗りましょう。",
+          "text": "Come on, let's ride."
+        },
+        {
+          "offset": "0x6e24",
+          "original": "気持ち良かったね。",
+          "text": "That felt great."
+        },
+        {
+          "offset": "0x6e3c",
+          "original": "これは、\n好きじゃないの…。",
+          "text": "I don't\nlike this one..."
+        },
+        {
+          "offset": "0x6e5c",
+          "original": "ごめんね。\nこれだけは駄目なの…。",
+          "text": "Sorry.\nI can't do this one..."
+        },
+        {
+          "offset": "0x6e84",
+          "original": "さあ、入りましょう。",
+          "text": "Come on, let's go in."
+        },
+        {
+          "offset": "0x6ea0",
+          "original": "ちょっと怖かったね。",
+          "text": "That was a bit scary."
+        },
+        {
+          "offset": "0x6ebc",
+          "original": "{P}。\n今日は楽しかったわ。\nそれじゃ、またね。",
+          "text": "{P}\nI had fun today.\nSee you."
+        },
+        {
+          "offset": "0x6eec",
+          "original": "こんにちは。\n{P}。",
+          "text": "Hello,\n{P}"
+        },
+        {
+          "offset": "0x6f04",
+          "original": "さあ、乗りましょう。",
+          "text": "Come on, let's ride."
+        },
+        {
+          "offset": "0x6f20",
+          "original": "すごく\nいい眺めだったね。",
+          "text": "What a\ngreat view."
+        },
+        {
+          "offset": "0x6f40",
+          "original": "さあ、乗りましょう。",
+          "text": "Come on, let's ride."
+        },
+        {
+          "offset": "0x6f5c",
+          "original": "気持ち良かったね。",
+          "text": "That felt great."
+        },
+        {
+          "offset": "0x6f74",
+          "original": "これは、\n好きじゃないの…。",
+          "text": "I don't\nlike this one..."
+        },
+        {
+          "offset": "0x6f94",
+          "original": "ごめんね。\nこれだけは駄目なの…。",
+          "text": "Sorry.\nI can't do this one..."
+        },
+        {
+          "offset": "0x6fbc",
+          "original": "さあ、入りましょう。",
+          "text": "Come on, let's go in."
+        },
+        {
+          "offset": "0x6fd8",
+          "original": "ちょっと怖かったね。",
+          "text": "That was a bit scary."
+        },
+        {
+          "offset": "0x6ff4",
+          "original": "今日は、楽しかったわ。\n二人ともありがとう。",
+          "text": "I had fun today.\nThanks, both of you."
+        },
+        {
+          "offset": "0x7024",
+          "original": "こんにちは。",
+          "text": "Hello."
+        },
+        {
+          "offset": "0x7038",
+          "original": "さあ、乗りましょう。",
+          "text": "Come on, let's ride."
+        },
+        {
+          "offset": "0x7054",
+          "original": "すごく\nいい眺めだったね。",
+          "text": "What a\ngreat view."
+        },
+        {
+          "offset": "0x7074",
+          "original": "さあ、乗りましょう。",
+          "text": "Come on, let's ride."
+        },
+        {
+          "offset": "0x7090",
+          "original": "気持ち良かったね。",
+          "text": "That felt great."
+        },
+        {
+          "offset": "0x70a8",
+          "original": "これは、\n好きじゃないの…。",
+          "text": "I don't\nlike this one..."
+        },
+        {
+          "offset": "0x70c8",
+          "original": "ごめんね。\nこれだけは駄目なの…。",
+          "text": "Sorry.\nI can't do this one..."
+        },
+        {
+          "offset": "0x70f0",
+          "original": "さあ、入りましょう。",
+          "text": "Come on, let's go in."
+        },
+        {
+          "offset": "0x710c",
+          "original": "ちょっと怖かったね。",
+          "text": "That was a bit scary."
+        },
+        {
+          "offset": "0x7128",
+          "original": "今日は、楽しかったわ。\n二人ともありがとう。",
+          "text": "I had fun today.\nThanks, both of you."
+        },
+        {
+          "offset": "0x7168",
+          "original": "あんまり、\n気が進まないな…。",
+          "text": "I'm not\nreally into this..."
+        },
+        {
+          "offset": "0x718c",
+          "original": "面白かったですね…。",
+          "text": "That was fun..."
+        },
+        {
+          "offset": "0x71a8",
+          "original": "さあ、乗りましょう…。",
+          "text": "Well, let's ride..."
+        },
+        {
+          "offset": "0x71c4",
+          "original": "面白かったですね…。",
+          "text": "That was fun..."
+        },
+        {
+          "offset": "0x71e0",
+          "original": "一人で乗って\nくれませんか？",
+          "text": "Could you ride\nit alone?"
+        },
+        {
+          "offset": "0x7200",
+          "original": "私、乗れなくて\nよかった…。",
+          "text": "I'm glad I\ncouldn't ride..."
+        },
+        {
+          "offset": "0x7220",
+          "original": "さあ、入りましょう…。",
+          "text": "Well, let's go in..."
+        },
+        {
+          "offset": "0x723c",
+          "original": "面白かったですね…。",
+          "text": "That was fun..."
+        },
+        {
+          "offset": "0x7258",
+          "original": "今日は楽しかったわ。\nそれじゃ好雄君。\nさよなら。",
+          "text": "I had fun today.\nWell then, Yoshio.\nGoodbye."
+        },
+        {
+          "offset": "0x7290",
+          "original": "それじゃさうよなら。",
+          "text": "Well, goodbye."
+        },
+        {
+          "offset": "0x79b8",
+          "original": "ぷるるるるる",
+          "text": "Brrring brrring"
+        },
+        {
+          "offset": "0x79c8",
+          "original": "ぷるるるるる",
+          "text": "Brrring brrring"
+        },
+        {
+          "offset": "0x79e0",
+          "original": "あっ、電話だ。\n珍しいな…。",
+          "text": "Oh, the phone.\nThat's rare..."
+        },
+        {
+          "offset": "0x7a04",
+          "original": "はい、{p}です。",
+          "text": "Hello, it's {p}"
+        },
+        {
+          "offset": "0x7a14",
+          "original": "あっ、好雄だけど。\n今暇か？",
+          "text": "Hey, it's Yoshio.\nYou free?"
+        },
+        {
+          "offset": "0x7a30",
+          "original": "何だ、好雄か…。\nあぁ、暇だよ。",
+          "text": "Oh, Yoshio...\nYeah, I'm free."
+        },
+        {
+          "offset": "0x7a50",
+          "original": "それじゃあさ、\n今から遊園地に\n来てくれよ。",
+          "text": "Then come\nto the theme park\nright now."
+        },
+        {
+          "offset": "0x7a7c",
+          "original": "何で俺がお前なんかと\n遊園地に行かなきゃ\nならないんだ？",
+          "text": "Why would I go\nto a theme park\nwith you?"
+        },
+        {
+          "offset": "0x7ab4",
+          "original": "まあ、いいじゃないか。\n待ってるからな。",
+          "text": "Come on, just come.\nI'll be waiting."
+        },
+        {
+          "offset": "0x7af8",
+          "original": "何て、強引な奴だ。\nしょうがない、\n行ってやるか。",
+          "text": "What a pushy guy.\nOh well,\nI'll go."
+        },
+        {
+          "offset": "0x7b30",
+          "original": "はぁ…。\nやっと着いたよ。\nさあ、中に入るか。",
+          "text": "Phew...\nFinally here.\nLet's head inside."
+        },
+        {
+          "offset": "0x7b64",
+          "original": "お、やっと来たな。",
+          "text": "Hey, you finally made it."
+        },
+        {
+          "offset": "0x7b78",
+          "original": "好雄、お前なぁ、\nこんな所まで呼んで…。\nあれ？\n詩織に{G}。",
+          "text": "Yoshio, dragging\nme all the way here...\nHuh?\nShiori, and {G}"
+        },
+        {
+          "offset": "0x7bbc",
+          "original": "来て、良かっただろう？\n感謝しろよ。",
+          "text": "Glad you came, right?\nYou owe me."
+        },
+        {
+          "offset": "0x7be4",
+          "original": "それじゃ、大観覧車に\n乗ろうぜ。",
+          "text": "Let's ride the\nbig Ferris wheel."
+        },
+        {
+          "offset": "0x7c08",
+          "original": "お前、どっちの娘と乗る？",
+          "text": "Who are you riding with?"
+        },
+        {
+          "offset": "0x7c24",
+          "original": "詩織と乗るぜ。{q}{G}と乗るぜ。",
+          "text": "Ride with Shiori{q}Ride with {G}"
+        },
+        {
+          "offset": "0x7c48",
+          "original": "次は、\nジェットコースターに\n乗ろうぜ。",
+          "text": "Next,\nlet's ride the\nroller coaster."
+        },
+        {
+          "offset": "0x7c74",
+          "original": "お前、どっちの娘と乗る？",
+          "text": "Who are you riding with?"
+        },
+        {
+          "offset": "0x7c90",
+          "original": "詩織と乗るぜ。{q}{G}と乗るぜ。",
+          "text": "Ride with Shiori{q}Ride with {G}"
+        },
+        {
+          "offset": "0x7cb4",
+          "original": "次は、\n絶叫マシンビビールに\n乗ろうぜ。",
+          "text": "Next,\nlet's ride the\nBibeer Screamer."
+        },
+        {
+          "offset": "0x7ce0",
+          "original": "お前、どっちの娘と乗る？",
+          "text": "Who are you riding with?"
+        },
+        {
+          "offset": "0x7cfc",
+          "original": "詩織と乗るぜ。{q}{G}と乗るぜ。",
+          "text": "Ride with Shiori{q}Ride with {G}"
+        },
+        {
+          "offset": "0x7d20",
+          "original": "次は、\nゴーストハウスに\n入ろうぜ。",
+          "text": "Next,\nlet's hit the\nGhost House."
+        },
+        {
+          "offset": "0x7d48",
+          "original": "お前、どっちの娘と入る？",
+          "text": "Who are you going in with?"
+        },
+        {
+          "offset": "0x7d64",
+          "original": "詩織と入るぜ。{q}{G}と入るぜ。",
+          "text": "In with Shiori{q}In with {G}"
+        },
+        {
+          "offset": "0x7d88",
+          "original": "もう、終わりか…？\nさて、帰るか。",
+          "text": "That's it...?\nWell, let's go home."
+        },
+        {
+          "offset": "0x7db0",
+          "original": "結構傷ついてたぜ。",
+          "text": "She was pretty hurt."
+        },
+        {
+          "offset": "0x7dc8",
+          "original": "お前に気が\nあるかもしれないぜ。",
+          "text": "She might be\ninto you, man."
+        },
+        {
+          "offset": "0x7dec",
+          "original": "お前嫌われてるぜ。",
+          "text": "She hates you, man."
+        },
+        {
+          "offset": "0x7e04",
+          "original": "えっ！？\n{G}のことかな？",
+          "text": "Huh!?\nCould it be {G}"
+        },
+        {
+          "offset": "0x7e1c",
+          "original": "そ、そうかなぁ。\nそろそろ、俺達も帰ろうぜ。",
+          "text": "Y-you think?\nLet's head home too."
+        },
+        {
+          "offset": "0x7e50",
+          "original": "そろそろ、俺達も帰ろうぜ。",
+          "text": "Let's head home too."
+        },
+        {
+          "offset": "0x7e70",
+          "original": "それじゃ、帰るか。",
+          "text": "Well, let's go home."
+        },
+        {
+          "offset": "0x83fc",
+          "original": "よお。",
+          "text": "Yo."
+        },
+        {
+          "offset": "0x8404",
+          "original": "あの…{P}",
+          "text": "Um... {P}"
+        },
+        {
+          "offset": "0x840c",
+          "original": "ガチャ",
+          "text": "Click."
+        },
+        {
+          "offset": "0x8414",
+          "original": "ガチャ",
+          "text": "Click."
+        }
+      ]
+    }
+  ]
+}

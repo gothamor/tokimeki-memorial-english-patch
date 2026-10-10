@@ -1196,6 +1196,25 @@ the dialogue box, so these runs are reviewed with full screenshots
 `eu00`/`eut` were the unpatched Shiori run and an `add_text` trace
 (`--trace`): the girls' lines at the tree are never drawn.
 
+### Sickbed, encouragement, group date (OMIMAI, HAGEMASI, GROUP_D, 2026-10-11)
+
+`.emu/d_runs.sh` (local), Sunday state, hidden:
+- `om00`, `om01`, `om05`, `om08`, `om10`: `force_event.py G 0 --type
+  0x47`. Despite the NEXT_STEPS guess, record 0x47 plays **HAGEMASI**
+  (a girl's short encouragement, "Please don't push yourself too hard")
+  on the next weekday, not the sickbed visit.
+- `hg0`: `force_state.py 0x62` plays **OMIMAI**, the sickbed visit
+  (Shiori's here: "Shiori's come to visit you. Come on, get up.").
+- `gd0`–`gd2`: `force_event.py 0 S --type 0x49` (scene 0–2 make no
+  difference): Yoshio's call, the theme park with Shiori and Mio, the
+  Ferris wheel, roller coaster and haunted-house choices. "Ride with Mio
+  』" shows the accepted odd-name space.
+- `kd0`: `force_state.py 0x5c` jumps straight to a karaoke song (its
+  on-screen lyrics are song data, left Japanese) and then back to the
+  title screen; KARADATA's chatter needs the real karaoke date. Not found
+  yet, like ZAKOSEN's thugs (DATE.EXN `0x8013CADC`): both drafts stay in
+  `translation/extra/`.
+
 ### Tools for the whole-game loop (2026-10-10)
 
 The per-file loop in NEXT_STEPS.md uses these (details in each docstring):

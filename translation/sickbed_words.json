@@ -1,0 +1,101 @@
+{
+  "description": "OMIMAI.EXN's in-place words (banners and labels of the sickbed visit and the encouragement). Verified in DuckStation (hidden emulator; docs/testing.md 'Sickbed, encouragement, group date'): the visit's narration and labels.",
+  "strings": [
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x28B0",
+      "original": "玄関",
+      "text": "Entry"
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x28B8",
+      "original": "母親",
+      "text": "Mom"
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x2920",
+      "original": "図書室",
+      "text": "Lib."
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x2928",
+      "original": "教室",
+      "text": "Class"
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x2930",
+      "original": "中庭",
+      "text": "Quad"
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x2938",
+      "original": "自宅前",
+      "text": "Home"
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x2940",
+      "original": "図書室",
+      "text": "Lib."
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x2948",
+      "original": "演劇部",
+      "text": "Drama"
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x2950",
+      "original": "実験室",
+      "text": "Lab"
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x2958",
+      "original": "電脳部室",
+      "text": "Comp. Club"
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x2964",
+      "original": "美術室",
+      "text": "Art Rm"
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x296C",
+      "original": "音楽室",
+      "text": "Music"
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x2974",
+      "original": "グランド",
+      "text": "Field"
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x2980",
+      "original": "プール",
+      "text": "Pool"
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x2988",
+      "original": "体育館",
+      "text": "Gym"
+    },
+    {
+      "file": "CDROM/EXEDIR/OMIMAI.EXN",
+      "offset": "0x2990",
+      "original": "廊下",
+      "text": "Hall"
+    }
+  ]
+}
