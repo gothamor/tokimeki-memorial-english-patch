@@ -2564,6 +2564,33 @@ command's month pages, which are already in English (MON TUE …).
 - Colours are 15-bit BGR (`r = c & 31`, `g = c>>5 & 31`, `b = c>>10 & 31`; bit 15 = STP).
   Index 0 / colour 0x0000 is transparent.
 
+### `BATTLE/*.BIN` (school-trip RPG battles, `RPG_BAT.EXN`)
+- RPG_BAT loads one file per battle at 0x80180000 (e.g. `VS_HABU.BIN`, LBA
+  14934, file name list at `0x8013A074`–`0x8013DCD0`). The file carries its own
+  sprite frame table (VS_HABU: `0x801B576C` = file 0x3576C; frames as in
+  the EXE: `s16 parts,x,y,0` + 14-byte parts `x,y,cell,attr,0,w,h`) and its
+  pixel chunks. Sprite objects are the usual 0x44-byte ones from 0x80120650.
+- **Frame cells count 8×8 tiles of 128×128 8bpp chunks**: cells 0–255 are
+  the UI chunk, 256+ the background (frame 0, 320×168) and the rest.
+- **The UI chunk isn't 0x4000-aligned.** VS_HABU's starts at **0x20A10**
+  (128-byte rows from there): checked against the window gradient (cell 48),
+  the highlight bar (cell 144) and the digits (cells 224–233). Every battle
+  file with a command menu has a copy: PARK, UTYU, VS_PARK, VS_UTYU at 0x80;
+  VS_KUMA 0x188F0, VS_SIKA 0x188D8, VS_ROBO 0x2B258, VS_UFO 0x2D35C. They
+  differ by 0–177 pixels outside the labels. The other `VS_*.BIN` (sports
+  and club versus screens) have no such chunk.
+- **Command menu** (frames 4–7): 32×16 cells. The bright versions are cell 60
+  攻撃 (96,24), cell 92 防御 (96,40) and cell 12 奥義 (96,0), in ink 0x18 with
+  a 0x1A shade. They sit on a 40×16 bar (cell 144) that the CLUT turns red
+  when highlighted. The dim versions are cells 151 (32×32, 攻撃+防御 at
+  (56,72)) and 234 (奥義 at (80,112)), in 0x10/0x12. ミス (miss) is cell 149
+  (40,72), 16×8 in 0x10/0x12, and cell 165 (40,80) in 0xEE/0xEF (frames 64/65).
+  All of these are redrawn as Fight/Guard/Skill/Miss in `battle_menu.json`
+  (`tools/redraw_labels.py`). "Attack" is 32 px and leaves no room for the
+  shadow inside a 32 px cell; Miss is a hand-drawn 6-row bitmap.
+- The menu words aren't text, so a search of RAM for 攻撃 finds nothing.
+  The battle's names and lines are RPG_BAT's own text (`trip_battles.json`).
+
 ## 8. Open questions / next research targets
 
 1. **Dialogue beyond the prologue** (§6e): confirm the SERIFU load addresses

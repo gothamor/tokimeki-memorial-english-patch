@@ -161,6 +161,40 @@ SHEETS = {
     },
 }
 
+# School-trip RPG battles (RPG_BAT.EXN): each BATTLE/*.BIN with a command menu
+# carries its own copy of the 128x128 8bpp UI chunk (cells 0-255 of its frame
+# table; game-internals 7, BATTLE), at the offset given here. Commands 攻撃/防御/奥義
+# are 32x16 cells: bright (ink 0x18, shade 0x1A) at (96,24), (96,40), (96,0)
+# and dim (0x10/0x12) at (56,72), (56,88), (80,112). "Attack" is 32 px and
+# the cell has no room for its shadow, hence Fight.
+_BATTLE_BRIGHT = {"ink": 0x18, "erase": [0x1A], "shadow": (0x1A, 1, 1), "center": True}
+_BATTLE_DIM = {"ink": 0x10, "erase": [0x12], "shadow": (0x12, 1, 1), "center": True}
+_MISS = ["#...#.#........",
+         "##.##....##..##",
+         "#.#.#.#.#...#..",
+         "#...#.#..#...#.",
+         "#...#.#...#...#",
+         "#...#.#.##..##."]
+for _name, _off in (("PARK", 0x80), ("UTYU", 0x80), ("VS_PARK", 0x80), ("VS_UTYU", 0x80),
+                    ("VS_HABU", 0x20A10), ("VS_ROBO", 0x2B258), ("VS_UFO", 0x2D35C),
+                    ("VS_KUMA", 0x188F0), ("VS_SIKA", 0x188D8)):
+    SHEETS[f"battle_{_name.lower()}"] = {
+        "file": f"CDROM/BATTLE/{_name}.BIN", "json": "battle_menu.json", "bpp": 8,
+        "width": 128, "height": 128, "grid": [[_off]],
+        "labels": [
+            (96, 24, 127, 39, "Fight", {**_BATTLE_BRIGHT, "top": 27}),
+            (96, 40, 127, 55, "Guard", {**_BATTLE_BRIGHT, "top": 43}),
+            (96, 0, 127, 12, "Skill", {**_BATTLE_BRIGHT, "top": 1}),
+            (56, 72, 87, 87, "Fight", {**_BATTLE_DIM, "top": 75}),
+            (56, 88, 87, 103, "Guard", {**_BATTLE_DIM, "top": 91}),
+            (80, 112, 111, 124, "Skill", {**_BATTLE_DIM, "top": 113}),
+            # ミス, a 16x8 cell in two colours: a 6-row hand-drawn "Miss"
+            (40, 72, 55, 78, "Miss", {**_BATTLE_DIM, "center": False, "x": 40, "top": 73, "bitmap": _MISS}),
+            (40, 80, 55, 86, "Miss", {"ink": 0xEE, "erase": [0xEF], "shadow": (0xEF, 1, 1),
+                                      "x": 40, "top": 81, "bitmap": _MISS}),
+        ],
+    }
+
 
 NARROW_DROP2 = set("ouhaegyndbpqcr")   # letters that still read with their middle column removed
 
@@ -345,8 +379,12 @@ def redraw(sheet: Sheet, label):
             sheet.put(x, y, bgs[y])
     if not text:
         return
-    w, glyph = word(text, opt.get("tight", False), opt.get("narrow", False))
-    w0 = word(text, opt.get("tight", False), opt.get("narrow", False))[0]
+    if "bitmap" in opt:     # hand-drawn letters for cells too small for the pair font
+        glyph = [[c == "#" for c in row] for row in opt["bitmap"]]
+        w = w0 = len(glyph[0])
+    else:
+        w, glyph = word(text, opt.get("tight", False), opt.get("narrow", False))
+        w0 = w
     left = opt.get("x", (x0 + x1 + 1 - w0) // 2 if opt.get("center") else x0)
     room = opt.get("width")
     if room is None:
@@ -364,11 +402,11 @@ def redraw(sheet: Sheet, label):
     shadow = opt.get("shadow")          # (value, dx, dy): a drop shadow, as on the System tab
     if shadow:
         sv, sdx, sdy = shadow
-        for gy in range(12):
+        for gy in range(len(glyph)):
             for gx in range(w):
                 if glyph[gy][gx]:
                     sheet.put(left + gx + sdx, top + gy + sdy, sv)
-    for gy in range(12):
+    for gy in range(len(glyph)):
         for gx in range(w):
             if glyph[gy][gx]:
                 sheet.put(left + gx, top + gy, ink)
@@ -428,6 +466,9 @@ def _rects(pts):
 
 
 DESCRIPTIONS = {
+    "battle_menu.json": ("School-trip RPG battle command menu (RPG_BAT.EXN): 攻撃/防御/奥義 -> Fight/Guard/Skill, bright "
+                         "and dim copies, redrawn in the UI chunk every BATTLE/*.BIN with a menu carries "
+                         "(game-internals 7, BATTLE) by tools/redraw_labels.py."),
     "town_news_banners.json": ("Town News headline banners (the eight 中央公園紹介 … プラネタリウム特集 strips in "
                                "MAINROM.NBN chunks 2 and 7, drawn by EXE frames 126-133; game-internals 7), redrawn "
                                "big and bold in each headline's own colours by tools/redraw_labels.py; the tails the "
