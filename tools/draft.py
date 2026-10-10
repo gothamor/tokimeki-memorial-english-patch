@@ -76,7 +76,7 @@ def translation_memory(exclude: str = None):
     return {k: next(iter(v)) for k, v in seen.items() if len(v) == 1}
 
 
-def check_line(jp: str, en: str, code=None, name=None, pairs=None):
+def check_line(jp: str, en: str, code=None, name=None, pairs=None, certain=True):
     pairs = pairs or font.PairEncoder()
     msg = []
     if script.structure(en) != script.structure(jp):
@@ -104,11 +104,12 @@ def check_line(jp: str, en: str, code=None, name=None, pairs=None):
         # The game's closing bracket follows the name's pair padding
         # ("Crying? Mio )"); unavoidable when the name must end the box.
         msg.append(f"warn: thought ends on odd-length {name}: a space shows before ')'")
+    soft = "" if certain else "warn: "     # code guessed from code-built tables
     if code in (4, 6):
         last = re.split(r"\{[A-Za-z]\}|\n", en)[-1]
-        if len(last) % 2 and not jp.endswith("）"):
-            msg.append(f"odd thought end {last!r}")
-    if jp.endswith("）") != en.rstrip("\n ").endswith(")"):
+        if len(last) % 2 and not jp.rstrip("\n").endswith("）"):
+            msg.append(f"{soft}odd thought end {last!r}")
+    if jp.rstrip("\n").endswith("）") != en.rstrip("\n ").endswith(")"):
         msg.append("closing paren mismatch")
     # Menu options (03 choice, 08 action; or {q} where the code is unknown).
     # 02 replies also use {q}, but those alternatives are ordinary lines.
@@ -117,7 +118,7 @@ def check_line(jp: str, en: str, code=None, name=None, pairs=None):
         for opt in opts:
             tail = re.split(r"\{[A-Za-z]\}", opt)[-1]
             if len(tail) % 2:
-                msg.append(("warn: " if code is None else "") + f"odd option end {opt!r}"
+                msg.append(("warn: " if code is None else soft) + f"odd option end {opt!r}"
                            + (" (if this is a menu)" if code is None else ""))
     return msg
 
@@ -144,21 +145,23 @@ def budget(doc_path: Path):
     return out
 
 
-def check_doc(path: Path, name=None, codes=None):
+def check_doc(path: Path, name=None, codes=None, certain=None):
     doc = json.loads(path.read_text(encoding="utf-8"))
     pairs = font.PairEncoder()
     problems = 0
     for item in doc.get("dialogue", []):
         if codes is None:
             try:
-                codes = script_survey.survey(item["file"], int(item["base"], 0))["codes"]
+                r = script_survey.survey(item["file"], int(item["base"], 0))
+                codes, certain = r["codes"], r["certain"]
             except Exception:  # noqa: BLE001
-                codes = {}
+                codes, certain = {}, set()
         for x in item["lines"]:
             if not x["text"]:
                 continue
             o = int(x["offset"], 16)
-            for m in check_line(x["original"], x["text"], codes.get(o), name, pairs):
+            for m in check_line(x["original"], x["text"], codes.get(o), name, pairs,
+                                certain=certain is None or o in certain):
                 problems += not m.startswith("warn:")
                 print(f"  {o:#07x} c{codes.get(o) if codes.get(o) is not None else -1:02x}: {m}  {x['text']!r}")
     for ok, m in budget(path):
@@ -189,9 +192,24 @@ def main():
 
     disc = a.file.upper().lstrip("/")
     r = script_survey.survey(disc, a.base)
-    base, codes = r["base"], r["codes"]
+    base, codes, certain = r["base"], r["codes"], r["certain"]
     x = (ROOT / "extracted" / disc).read_bytes()
-    lines = sorted(dump_dialogue.targets(x, base).items())
+    lines = dict(dump_dialogue.targets(x, base))
+    # Strings the section tables reach but the dumper's scan misses
+    # (game-internals 6k: some date files have 4-9).
+    extra = []
+    for o in sorted(r["reached"] - set(lines)):
+        try:
+            t = script.decode(script.read_string(x, o))
+        except Exception:  # noqa: BLE001
+            continue
+        if t and any(ord(ch) > 0x7F for ch in t):
+            lines[o] = t
+            extra.append(o)
+    if extra:
+        print(f"{len(extra)} string(s) reached by tables but missed by the dumper, included: "
+              + " ".join(hex(o) for o in extra))
+    lines = sorted(lines.items())
 
     table, per_off = {}, {}
     for t in a.table:
@@ -239,7 +257,7 @@ def main():
                     f"{' '.join(hex(o) for o in offs[:4])}\n")
     print(f"{disc}: {len(out)} lines ({dict(src)}), {len(todo)} distinct to translate -> {todo_path}")
     print(f"tables cover {r['covered']}/{r['strings']} strings")
-    n = check_doc(outp, a.name, codes)
+    n = check_doc(outp, a.name, codes, certain)
     print(f"{outp}: {n} problem(s)")
 
 

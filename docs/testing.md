@@ -1133,6 +1133,10 @@ game-internals §6aa. `d17b` re-checked Mio's cinema menu after its options
 were made even ("Yep. You're pretty anyway." / "Nah, not at all.");
 "Crying? Mio )" in the same scene is the odd name before the game's
 bracket and can't be avoided (the name must end the box).
+`draft.py --check` over every committed file then found one real bug the
+earlier checks missed: the trip's destination menu showed "『Okinawa 』"
+(an odd option). Now "Kyoto/Nara / Naha/Okinawa / Sapporo/Hokkaido",
+re-checked on screen (`tr2`).
 
 ### Disassembly
 

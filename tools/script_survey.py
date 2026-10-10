@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import struct
 import sys
 from pathlib import Path
@@ -143,9 +144,12 @@ def survey(disc_path: str, base=None, verbose=False, show_strings=False):
     for name, sbase, data in sources:
         kind[0] = "static"
         # Static tables: a run of words into the file, masters then code lists.
-        for off, words in pointer_runs(data, base, hi):
+        # Tables shared by several files (the 79-entry event table, 6j/6z)
+        # hold pointers into the other files too: accept any pointer into
+        # the load region when finding the run.
+        for off, words in pointer_runs(data, base, base + max(len(x), 0x20000)):
             best = None
-            for cnt in range(1, min(len(words) // 2, 256) + 1):
+            for cnt in range(1, min(len(words) // 2, 300) + 1):
                 got = set()
                 for m, c in zip(words[:cnt], words[cnt:2 * cnt]):
                     got |= reach(m, c)
@@ -186,21 +190,41 @@ def survey(disc_path: str, base=None, verbose=False, show_strings=False):
     allr = set().union(*[t["reached"] for t in res["tables"]]) if res["tables"] else set()
     res["covered"] = len(allr & dumped)
     codes = {}
-    seen = {}
-    for want in ("static", "code"):       # static tables are the reliable ones
-        for (m, c), k in pairs_used.items():
-            if k != want:
-                continue
-            for st in walk(x, base, m, c, with_codes=True):
-                for o, b in st:
-                    seen.setdefault(want, {}).setdefault(o, set()).add(b)
-    for want in ("static", "code"):
-        for o, bs in seen.get(want, {}).items():
+    seen = {"static": {}, "code": {}}
+    for (m, c), k in pairs_used.items():
+        for st in walk(x, base, m, c, with_codes=True):
+            for o, b in st:
+                seen[k].setdefault(o, set()).add(b)
+    # Static tables are the reliable source; code-built pairs are guesses
+    # (consecutive constants) and only fill offsets no static table
+    # reaches. Conflicting codes mean a pair was read against the wrong
+    # file (the shared event table, game-internals 6z): unknown.
+    for k in ("static", "code"):
+        for o, bs in seen[k].items():
             if o not in codes:
-                # Conflicting codes mean some pair was read with the wrong
-                # file (shared tables, game-internals 6z): unknown.
                 codes[o] = next(iter(bs)) if len(bs) == 1 else None
+    # DATE_*.BIN: DATE.EXN builds each girl's 27-section table in code
+    # (game-internals 6k); tools/date_sections.py simulates it exactly.
+    m = re.search(r"SERIFU/DATE_(\w\w)\.BIN$", disc_path)
+    if m:
+        import date_sections
+        if m.group(1) in date_sections.GIRL_FILES:
+            exn = (EX / "CDROM/EXEDIR/DATE.EXN").read_bytes()
+            words = date_sections.girl_table(exn, date_sections.GIRL_FILES.index(m.group(1)))
+            exact = {}
+            for mst, cod in zip(words[:27], words[27:54]):
+                for st in walk(x, base, mst, cod, with_codes=True, strict=False):
+                    for o, b in st:
+                        exact.setdefault(o, b)
+            codes.update(exact)
+            res["exact_codes"] = len(exact)
+            res["covered"] = len((allr | set(exact)) & dumped)
+            res["tables"].append({"in": "EXEDIR/DATE.EXN", "at": date_sections.TABLE, "count": 27,
+                                  "kind": "date_sections", "covers": len(set(exact) & dumped),
+                                  "extra": len(set(exact) - dumped), "reached": set(exact)})
     res["codes"] = codes
+    res["reached"] = set().union(*[t["reached"] for t in res["tables"]]) if res["tables"] else set()
+    res["certain"] = set(seen["static"]) | set(res.get("exact_codes") and exact or ())
     res["tables"].sort(key=lambda t: -t["covers"])
     if show_strings:
         for l in lines:

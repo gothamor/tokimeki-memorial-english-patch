@@ -961,7 +961,7 @@
       {"offset": "0x12478", "original": "{G}さーん。\n俺も同じ部活だよー。\nおーい。", "text": "{G}!\nI'm in your club too!\nHelloooo!"},
       {"offset": "0x124a0", "original": "あーあ、行っちゃったよ。\nしょうがない、\n一人で行くか。", "text": "Aw, she's gone.\nOh well,\nI'll go alone."},
       {"offset": "0x13260", "original": "今日から修学旅行だ。\nあれ、そういえば…。\n行き先はどこだったっけ？", "text": "School trip starts today!\nHuh, wait a minute...\nWhere are we going again?"},
-      {"offset": "0x132a4", "original": "京都・奈良\n沖縄\n北海道", "text": "Kyoto/Nara\nOkinawa\nHokkaido"},
+      {"offset": "0x132a4", "original": "京都・奈良\n沖縄\n北海道", "text": "Kyoto/Nara\nNaha/Okinawa\nSapporo/Hokkaido"},
       {"offset": "0x132c4", "original": "そうだ、思い出したぞ。\n{S}だ。", "text": "Right, I remember now.\nBound for {S}"},
       {"offset": "0x132e4", "original": "ビシッと、決めてやるぜ。", "text": "Time to look sharp!"},
       {"offset": "0x13308", "original": "と、言う訳で、\nあっという間に、\n{S}だ。", "text": "And so,\nin the blink of an eye,\nwe got to {S}"},
