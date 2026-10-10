@@ -1,0 +1,41 @@
+{
+ "description": "Name entry side buttons in NAME_ENT/NAME_ENT.NBN (game-internals 6d): かな/カナ/記号/漢字/終了 -> Hira/Kata/Sym/Kanji/Done, redrawn in place by tools/redraw_labels.py. The 名前:/あだ名: captions aren't in this sheet (not found yet).",
+ "images": [
+  {
+   "file": "CDROM/NAME_ENT/NAME_ENT.NBN",
+   "png": "graphics/name_entry_00000.png",
+   "pixels": "0x0",
+   "stride": 64,
+   "x": 0,
+   "y": 0,
+   "rects": [
+    [
+     36,
+     26,
+     25,
+     6
+    ],
+    [
+     36,
+     32,
+     58,
+     16
+    ],
+    [
+     36,
+     48,
+     58,
+     16
+    ],
+    [
+     36,
+     64,
+     58,
+     7
+    ]
+   ],
+   "original_crc32": "0x6366d46f",
+   "bpp": 4
+  }
+ ]
+}

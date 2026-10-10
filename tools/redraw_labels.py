@@ -102,6 +102,19 @@ SHEETS = {
             (324, 45, 357, 57, "Clear", {"fill": 0xB1, "outline": 0xB2, "top": 47}),
         ],
     },
+    "name_entry": {
+        # Name entry side buttons (NAME_ENT.NBN, 4bpp, 64-byte rows; frames
+        # 16-25 of its table at 0x1AF58 draw them, highlighted by CLUT).
+        "file": "CDROM/NAME_ENT/NAME_ENT.NBN", "json": "name_entry_buttons.json", "bpp": 4,
+        "width": 128, "height": 128, "grid": [[0x0]],
+        "labels": [
+            (35, 25, 61, 38, "Done", {"ink": 9, "erase": [10], "shadow": (10, 1, 1), "center": True, "top": 28}),
+            (35, 41, 61, 54, "Hira", {"ink": 9, "erase": [10], "shadow": (10, 1, 1), "center": True, "top": 44}),
+            (67, 41, 95, 54, "Sym", {"ink": 9, "erase": [10], "shadow": (10, 1, 1), "center": True, "top": 43}),
+            (35, 57, 61, 70, "Kata", {"ink": 9, "erase": [10], "shadow": (10, 1, 1), "center": True, "top": 60}),
+            (67, 57, 95, 70, "Kanji", {"ink": 9, "erase": [10], "shadow": (10, 1, 1), "center": True, "top": 59, "narrow": True}),
+        ],
+    },
     "examine": {
         # The end-of-term exam results screen (ETC.EXN): a copy of MAINROM.NBN
         # chunks 4 and 9 (patched like main_screen.json, in exam_results.json)
@@ -226,18 +239,19 @@ def redraw(sheet: Sheet, label):
         ink = counts.most_common(1)[0][0]
     # Background per row: the most common non-ink value inside the box (box
     # rows can be striped), else in the wider window.
+    erase = {ink, *opt.get("erase", ())}
     bgs = {}
     for y, c in rows.items():
-        inside = collections.Counter(sheet.get(x, y) for x in range(x0, x1 + 1)) - collections.Counter({ink: 10 ** 6})
-        bgs[y] = inside.most_common(1)[0][0] if inside else next(v for v, _ in c.most_common() if v != ink)
-    erase = {ink, *opt.get("erase", ())}
+        inside = collections.Counter(v for v in (sheet.get(x, y) for x in range(x0, x1 + 1)) if v not in erase)
+        bgs[y] = inside.most_common(1)[0][0] if inside else next(v for v, _ in c.most_common() if v not in erase)
     for x, y in box:
         if sheet.get(x, y) in erase:
             sheet.put(x, y, bgs[y])
     if not text:
         return
     w, glyph = word(text, opt.get("tight", False), opt.get("narrow", False))
-    left = opt.get("x", x0)
+    w0 = word(text, opt.get("tight", False), opt.get("narrow", False))[0]
+    left = opt.get("x", (x0 + x1 + 1 - w0) // 2 if opt.get("center") else x0)
     room = opt.get("width")
     if room is None:
         # up to the edge of the box: the first column, right of the label,
@@ -246,19 +260,22 @@ def redraw(sheet: Sheet, label):
         while right < limit and all(sheet.get(right, y) == bgs[y] for y in range(y0, y1 + 1)):
             right += 1
         room = right - 1 - left
+    if opt.get("center"):
+        room = x1 + 1 - left
     if w > room:
         raise SystemExit(f"{text!r} is {w} px wide, the room is {room}")
+    top = opt.get("top", y0) - 1        # pixel row of the font's row 0 (capitals start one below)
     shadow = opt.get("shadow")          # (value, dx, dy): a drop shadow, as on the System tab
     if shadow:
         sv, sdx, sdy = shadow
         for gy in range(12):
             for gx in range(w):
                 if glyph[gy][gx]:
-                    sheet.put(left + gx + sdx, y0 - 1 + gy + sdy, sv)
+                    sheet.put(left + gx + sdx, top + gy + sdy, sv)
     for gy in range(12):
         for gx in range(w):
             if glyph[gy][gx]:
-                sheet.put(left + gx, y0 - 1 + gy, ink)
+                sheet.put(left + gx, top + gy, ink)
 
 
 def build(names):
@@ -315,6 +332,9 @@ def _rects(pts):
 
 
 DESCRIPTIONS = {
+    "name_entry_buttons.json": ("Name entry side buttons in NAME_ENT/NAME_ENT.NBN (game-internals 6d): かな/カナ/記号/漢字/終了 "
+                                "-> Hira/Kata/Sym/Kanji/Done, redrawn in place by tools/redraw_labels.py. The 名前:/あだ名: "
+                                "captions aren't in this sheet (not found yet)."),
     "exam_results.json": ("End-of-term exam results screen graphics in FUKUTEST/EXAMINE.NBN (loaded by ETC.EXN): "
                           "the stat labels and calendar characters are an exact copy of MAINROM.NBN chunks 9 and 4, "
                           "patched with main_screen.json's images; the board title 期末試験結果発表 is redrawn by "
