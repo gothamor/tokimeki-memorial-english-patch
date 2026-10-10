@@ -1,0 +1,71 @@
+{
+ "description": "End-of-term exam results screen graphics in FUKUTEST/EXAMINE.NBN (loaded by ETC.EXN): the stat labels and calendar characters are an exact copy of MAINROM.NBN chunks 9 and 4, patched with main_screen.json's images; the board title 期末試験結果発表 is redrawn by tools/redraw_labels.py. Not seen on screen: the exam day isn't reachable by forcing a state (docs/testing.md).",
+ "images": [
+  {
+   "file": "CDROM/FUKUTEST/EXAMINE.NBN",
+   "png": "graphics/main_stat_labels.png",
+   "bpp": 4,
+   "pixels": "0x2000",
+   "stride": 64,
+   "x": 96,
+   "y": 0,
+   "rects": [
+    [
+     0,
+     0,
+     32,
+     120
+    ]
+   ],
+   "original_crc32": "0xf334ee36"
+  },
+  {
+   "file": "CDROM/FUKUTEST/EXAMINE.NBN",
+   "png": "graphics/main_calendar.png",
+   "bpp": 4,
+   "pixels": "0x0",
+   "stride": 64,
+   "x": 0,
+   "y": 0,
+   "rects": [
+    [
+     112,
+     0,
+     16,
+     16
+    ],
+    [
+     0,
+     16,
+     112,
+     16
+    ]
+   ],
+   "original_crc32": "0xdf07fc2c"
+  },
+  {
+   "file": "CDROM/FUKUTEST/EXAMINE.NBN",
+   "png": "graphics/examine_00000.png",
+   "pixels": "0x0",
+   "stride": 64,
+   "x": 0,
+   "y": 0,
+   "rects": [
+    [
+     0,
+     314,
+     109,
+     6
+    ],
+    [
+     0,
+     320,
+     110,
+     6
+    ]
+   ],
+   "original_crc32": "0x58de339d",
+   "bpp": 4
+  }
+ ]
+}

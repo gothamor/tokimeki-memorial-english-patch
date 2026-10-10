@@ -2510,6 +2510,14 @@ halfword x, y): 0x00000 → (0x380,0x180), 0x04000 → (0x380,0x100),
   血液型), chunks 2 and 7 town-news banners, chunk 11 date-spot art. Not
   translated yet.
 
+`FUKUTEST/EXAMINE.NBN` (loaded by ETC.EXN for the end-of-term exam
+results) is 4bpp with 64-byte rows: file `0x0000`–`0x1FFF` and `0x2000`–
+`0x3FFF` are byte-identical copies of MAINROM chunks 4 and 9, so
+`exam_results.json` applies the same image patches there; rows 314–325
+hold the board title 期末試験結果発表 (ink 9, shadow 0xA down-right).
+`NAME_ENT/NAME_ENT.NBN` is the same 4bpp/64-byte layout (render it at
+128-byte rows and it looks like two half-height copies).
+
 `CALROM.NBN` (loaded at 0x801A0000 on the main screen) holds the Calendar
 command's month pages, which are already in English (MON TUE …).
 

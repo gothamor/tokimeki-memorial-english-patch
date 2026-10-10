@@ -102,6 +102,16 @@ SHEETS = {
             (324, 45, 357, 57, "Clear", {"fill": 0xB1, "outline": 0xB2, "top": 47}),
         ],
     },
+    "examine": {
+        # The end-of-term exam results screen (ETC.EXN): a copy of MAINROM.NBN
+        # chunks 4 and 9 (patched like main_screen.json, in exam_results.json)
+        # plus the board's title. 4bpp, 64 bytes per row.
+        "file": "CDROM/FUKUTEST/EXAMINE.NBN", "json": "exam_results.json", "bpp": 4,
+        "width": 128, "height": 416, "grid": [[0x0]],
+        "labels": [
+            (0, 314, 111, 325, "Exam results", {"ink": 9, "erase": [10], "shadow": (10, 1, 1), "x": 21}),
+        ],
+    },
 }
 
 
@@ -305,6 +315,11 @@ def _rects(pts):
 
 
 DESCRIPTIONS = {
+    "exam_results.json": ("End-of-term exam results screen graphics in FUKUTEST/EXAMINE.NBN (loaded by ETC.EXN): "
+                          "the stat labels and calendar characters are an exact copy of MAINROM.NBN chunks 9 and 4, "
+                          "patched with main_screen.json's images; the board title 期末試験結果発表 is redrawn by "
+                          "tools/redraw_labels.py. Not seen on screen: the exam day isn't reachable by forcing a state "
+                          "(docs/testing.md)."),
     "album_screen.json": ("Album (save file) screen graphics in FILESEL.NBN (game-internals 7): the info panel's "
                           "labels (Name, Nickname, Club, Clears, the date header), the parameter panel's stat names "
                           "and the girls' ratings page's names, redrawn in place by tools/redraw_labels.py."),

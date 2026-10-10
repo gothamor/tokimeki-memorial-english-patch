@@ -165,6 +165,8 @@ against the tested candidate when promotion should not change game bytes.
 
 | `translation/album_screen.json` + `graphics/filesel_*.png` (album/file screen graphics in FILESEL.NBN, `tools/redraw_labels.py`) + `album.json`'s 番 | Verified in DuckStation, hidden emulator: the info panel (date header, Name, Nickname, Club, Clears), the buttons Copy/New/Clear/Load, Sys. with the Y/N badges, the Stats page and the Girls' ratings and Clears page titles. **Checked only offline:** the highlighted button sprites and the 13 rating names (no girl met on the test album). |
 
+| `translation/exam_results.json` (end-of-term exam results screen, FUKUTEST/EXAMINE.NBN: a byte-identical copy of MAINROM.NBN's stat labels and calendar characters, patched with `main_screen.json`'s images, plus the board title redrawn as "Exam results") | Builds; the copied regions were compared byte for byte with MAINROM.NBN before reusing its patches; the title checked in an offline render. **Not seen on screen:** forcing ETC.EXN's states doesn't reach the exam day. |
+
 Update this table when you verify something.
 
 ## Working in this environment (Windows dev box)
