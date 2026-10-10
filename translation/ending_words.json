@@ -1,0 +1,149 @@
+{
+  "description": "ENDING.EXN's in-place words: the graduation-day banners and labels, the career words {M} inserts into the epilogue, the bad-ending song's title. The song's lyrics (ENDING.EXN 0xAC48+, TARA_OBJ/KARAKASI.BIN) stay Japanese (AGENTS.md rule 9). Verified in DuckStation with tools/emu/force_ending.py (every value of the waiting girl 0-10, 12, 13; hidden emulator; docs/testing.md 'The ending'): banners Hall/Class, 'a low company', 'a top college', the song title 『Ballad of Wimpy Men』.",
+  "strings": [
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0x9FA0",
+      "original": "廊下",
+      "text": "Hall"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0x9FA8",
+      "original": "教室",
+      "text": "Class"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0x9FB0",
+      "original": "外井",
+      "text": "Sotoi"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0x9FB8",
+      "original": "伊集院",
+      "text": "Ijuin"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0x9FC0",
+      "original": "外井",
+      "text": "Sotoi"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA0D0",
+      "original": "{M}残念ながら\n駄目だったが、",
+      "text": "{M} sadly\ndidn't work out,"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA0F4",
+      "original": "一流大学",
+      "text": "Top Univ."
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA100",
+      "original": "二流大学",
+      "text": "Mid Univ."
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA10C",
+      "original": "三流大学",
+      "text": "Low Univ."
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA118",
+      "original": "一流企業",
+      "text": "Top Firm"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA124",
+      "original": "二流企業",
+      "text": "Mid Firm"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA130",
+      "original": "三流企業",
+      "text": "Low Firm"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA13C",
+      "original": "小説家は",
+      "text": "Writing"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA148",
+      "original": "俳優は",
+      "text": "Acting"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA150",
+      "original": "製薬会社は",
+      "text": "Pharma"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA15C",
+      "original": "有名ゲーム会社は\n",
+      "text": "Game studios\n"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA170",
+      "original": "画家は",
+      "text": "Art"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA178",
+      "original": "音楽家は",
+      "text": "Music"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA184",
+      "original": "プロ野球選手は",
+      "text": "Pro baseball"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA194",
+      "original": "Ｊリーガーは",
+      "text": "J.League"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA1A4",
+      "original": "プロテニスプレイヤーは\n",
+      "text": "Pro tennis\n"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA1BC",
+      "original": "水泳の実業団は",
+      "text": "Pro swimming"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA1CC",
+      "original": "プロバスケプレイヤーは\n",
+      "text": "Pro basketball\n"
+    },
+    {
+      "file": "CDROM/EXEDIR/ENDING.EXN",
+      "offset": "0xA260",
+      "original": "『女々しい野郎どもの詩』",
+      "text": "『Ballad of Wimpy Men』"
+    }
+  ]
+}

@@ -5,15 +5,15 @@ English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
 <!-- progress:start -->
-**Translated: 89%**
+**Translated: 92%**
 
 ```text
-Whole game             ██████████████████░░    89%
-Dialogue               ███████████████████░    95%
+Whole game             ██████████████████░░    92%
+Dialogue               ████████████████████    98%
 Menus and other text   ██████░░░░░░░░░░░░░░    32%
 ```
 
-<sub>523,584 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>538,077 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage

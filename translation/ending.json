@@ -1,0 +1,2032 @@
+{
+  "description": "Graduation day and the confessions under the legendary tree: all of SERIFU/ENDING.BIN (404 strings, 17 sections; base 0x801F0000, ENDING.EXN table 0x8013C280). At the tree, only the player's lines are drawn (over the art, no box); the girls' confessions play as voice only, in the original as well, so their lines are checked statically (28 cells per line, like dialogue). Verified in DuckStation with tools/emu/force_ending.py (every value of the waiting girl 0-10, 12, 13; hidden emulator; docs/testing.md 'The ending'): the classroom lines with Yoshio, the letter, the run to the tree and the player's lines for every girl, Yoshio's 'nobody came' path. Checked only statically: the girls' own lines (voice only), Rei's and Miharu's special paths beyond their start.",
+  "dialogue": [
+    {
+      "file": "CDROM/SERIFU/ENDING.BIN",
+      "base": "0x801f0000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x4",
+          "original": "なんだ、好雄か。",
+          "text": "Oh, it's just Yoshio."
+        },
+        {
+          "offset": "0x18",
+          "original": "それじゃ、帰るか。",
+          "text": "Well, shall we go home?"
+        },
+        {
+          "offset": "0x2c",
+          "original": "そうだなぁ、帰るか。",
+          "text": "Yeah, let's go home."
+        },
+        {
+          "offset": "0x50",
+          "original": "あれ、好雄さえも\nいないのか。",
+          "text": "Huh, not even\nYoshio's here?"
+        },
+        {
+          "offset": "0x70",
+          "original": "好雄は、\n{G}と\n帰ったのか…。",
+          "text": "So Yoshio went\nhome with {G}\nhuh..."
+        },
+        {
+          "offset": "0x8c",
+          "original": "しょうがない、\n一人で帰るか。",
+          "text": "Oh well,\nI'll go home alone."
+        },
+        {
+          "offset": "0x1ac",
+          "original": "あ、{G}…。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x1b8",
+          "original": "こんなとこに呼び出すの\n何だなと思ったけど。",
+          "text": "Calling you out here\nfelt kinda weird, but..."
+        },
+        {
+          "offset": "0x1e4",
+          "original": "卒業する前に、どうしても\n言いたいことがあるっていうか、\n何て言うか…。",
+          "text": "Before we graduate,\nthere's something I just\ngotta say, like..."
+        },
+        {
+          "offset": "0x22c",
+          "original": "言いたいことって、何？",
+          "text": "Something to say?"
+        },
+        {
+          "offset": "0x244",
+          "original": "いままで、流行のいろんな所に行って、\n遊ぶのが一番の楽しみだったけど…。",
+          "text": "Hitting all the trendy spots\nwas my favorite thing..."
+        },
+        {
+          "offset": "0x28c",
+          "original": "何て言うか、\n最近、それも飽きちゃったみたいな感じ。",
+          "text": "But, like,\nlately I'm kinda over it."
+        },
+        {
+          "offset": "0x2c0",
+          "original": "やっぱ、好きな人と一緒なら、\nどこにも行かなくても楽しいって思う。\nこうしてる今もそう思う。",
+          "text": "With someone I love,\nit's fun even going nowhere.\nI feel that right now, too."
+        },
+        {
+          "offset": "0x31c",
+          "original": "ふーん、飽きちゃったの。",
+          "text": "Hmm, so you're over it."
+        },
+        {
+          "offset": "0x338",
+          "original": "もう、ウル馬鹿なんだから。\n私は、あなたといるのが\n楽しいって言ってるの。",
+          "text": "Jeez, you're ultra-dense.\nI'm saying being\nwith you is fun."
+        },
+        {
+          "offset": "0x384",
+          "original": "そ、それって…。",
+          "text": "Y-you mean..."
+        },
+        {
+          "offset": "0x398",
+          "original": "超恥ずかしいけど…、\n私、\nあなたのこと好きになっちゃったみたい。",
+          "text": "This is so embarrassing...\nbut I think\nI've fallen for you."
+        },
+        {
+          "offset": "0x3dc",
+          "original": "もう、あなただけいてくれたら、\n何もいらない。\n流行なんて、どうでもいい。",
+          "text": "If I just have you,\nI don't need anything.\nWho cares about trends."
+        },
+        {
+          "offset": "0x428",
+          "original": "だから、私と付き合って。",
+          "text": "So please, go out with me."
+        },
+        {
+          "offset": "0x444",
+          "original": "実は、俺も\n{G}の事が…。",
+          "text": "Truth is, I...\n{G} I love you too."
+        },
+        {
+          "offset": "0x45c",
+          "original": "超嬉しい。\nでも、やっぱり一緒にいるだけよりも、\nどこかに遊びに行ったほうが楽しいよね。",
+          "text": "Super happy!\nBut, like, going out\nbeats just hanging around."
+        },
+        {
+          "offset": "0x4b4",
+          "original": "そ、そうだね。",
+          "text": "Y-yeah."
+        },
+        {
+          "offset": "0x4c4",
+          "original": "卒業したら、どっか旅行に行こうよ。",
+          "text": "Let's go on a trip after!"
+        },
+        {
+          "offset": "0x4e8",
+          "original": "あぁ、いいよ。",
+          "text": "Yeah, sure."
+        },
+        {
+          "offset": "0x4f8",
+          "original": "それじゃ、\nこれから旅行代理店に行こうよ。\nほら、早く早く。",
+          "text": "Then let's hit\nthe travel agency now!\nC'mon, hurry, hurry!"
+        },
+        {
+          "offset": "0x534",
+          "original": "全然変わらないけど、\nま、いいか。",
+          "text": "She hasn't changed\na bit, but whatever."
+        },
+        {
+          "offset": "0x7fc",
+          "original": "し、詩織…。",
+          "text": "Sh-Shiori..."
+        },
+        {
+          "offset": "0x80c",
+          "original": "ごめんなさい。\nこんな所に呼び出したりして、\n今日、あなたにどうしても\n言いたいことがあって…。",
+          "text": "I'm sorry for\ncalling you out here.\nThere's something I\nhave to tell you today..."
+        },
+        {
+          "offset": "0x86c",
+          "original": "言いたいことって、何？",
+          "text": "Something to say?"
+        },
+        {
+          "offset": "0x884",
+          "original": "私ね、今まで男の子と\n付き合ったことがないの…。",
+          "text": "You know, I've never\ngone out with a boy..."
+        },
+        {
+          "offset": "0x8b4",
+          "original": "でも、興味がなかった訳じゃないのよ。",
+          "text": "But I wasn't uninterested."
+        },
+        {
+          "offset": "0x8dc",
+          "original": "私だって、\n男の子と付き合ってみたかったし、\nラブレターだって\n何通も貰ったこともあるわ。",
+          "text": "I wanted to\ngo out with a boy too,\nand I even got\nquite a few love letters."
+        },
+        {
+          "offset": "0x934",
+          "original": "でも、どうしても\n付き合う気になれなかったの。",
+          "text": "But I just\ncouldn't bring myself to."
+        },
+        {
+          "offset": "0x964",
+          "original": "ど、どうして？",
+          "text": "Wh-why?"
+        },
+        {
+          "offset": "0x974",
+          "original": "あなたが…、\nあなたがそばにいてくれたから…。",
+          "text": "Because you...\nbecause you were with me..."
+        },
+        {
+          "offset": "0x9a4",
+          "original": "今まで、あなたの事を、\nただの幼馴染みだと思ってた…。",
+          "text": "I always thought of you as\njust a childhood friend..."
+        },
+        {
+          "offset": "0x9dc",
+          "original": "ううん、きっとあなたに\n私の本心を悟られるのが怖くて、\nそう思い込んでいたのかもしれない。",
+          "text": "No... maybe I was\nafraid you'd see my heart,\nso I told myself that."
+        },
+        {
+          "offset": "0xa38",
+          "original": "でも、卒業する今…、\n離れ離れになるかもしれない\n今になってやっと、\nこの気持ちに気付いたの…。",
+          "text": "But now, at graduation...\nnow that we may be\ntorn apart, I finally\nsee how I feel..."
+        },
+        {
+          "offset": "0xa98",
+          "original": "恥ずかしくて、逃げたい気分だけど\nもう、ただの幼馴染みじゃ嫌…。",
+          "text": "I'm so shy I could run, but\nI won't be just a friend..."
+        },
+        {
+          "offset": "0xad8",
+          "original": "一人の女の子として、\n私だけを見つめてほしいから、\n勇気を出して言います。",
+          "text": "I want you to see me\nas a girl, only me,\nso I'll be brave and say it."
+        },
+        {
+          "offset": "0xb24",
+          "original": "好きです…。\n世界中の誰よりもあなたが、好きです…。",
+          "text": "I love you...\nMore than anyone alive..."
+        },
+        {
+          "offset": "0xb58",
+          "original": "実を言うと…。\n俺も詩織の事が…。",
+          "text": "To tell the truth...\nI love you too, Shiori..."
+        },
+        {
+          "offset": "0xb7c",
+          "original": "あ、あれ…？\n嬉しいはずなのに涙が出てきちゃった。",
+          "text": "Wh-what...?\nI'm happy, but I'm crying."
+        },
+        {
+          "offset": "0xbb0",
+          "original": "本当に本当に、信じていいのね。",
+          "text": "Can I really believe you?"
+        },
+        {
+          "offset": "0xbd0",
+          "original": "もちろんだよ。\n好きだよ、詩織。",
+          "text": "Of course.\nI love you, Shiori."
+        },
+        {
+          "offset": "0xbf0",
+          "original": "嬉しい…。\nいつまでも私の事を、離さないでね…。",
+          "text": "I'm so happy...\nPlease never let me go..."
+        },
+        {
+          "offset": "0xec4",
+          "original": "ふぅー、\n卒業式が終わったぜ。\n校長の話が、\n長過ぎるんだよなぁ。",
+          "text": "Phew,\ngraduation's over.\nThe principal's speech\nwent on forever."
+        },
+        {
+          "offset": "0xf08",
+          "original": "如月さんは、\n貧血で倒れなかったかな？",
+          "text": "Did Miss Kisaragi\nfaint from anemia?"
+        },
+        {
+          "offset": "0xf8c",
+          "original": "ひ、{G}…。",
+          "text": "Y-{G}"
+        },
+        {
+          "offset": "0xf98",
+          "original": "待ってた…。いえ…。\nご、ごめんなさい。\nこんな所に呼びだして…。",
+          "text": "I waited... No...\nI-I'm sorry.\nFor calling you here..."
+        },
+        {
+          "offset": "0xfdc",
+          "original": "ど、どうしたの？\n{G}らしくないよ。",
+          "text": "Wh-what's wrong?\nNot like you, {G}"
+        },
+        {
+          "offset": "0x1000",
+          "original": "い、いいのよ。\n今日から、変わることに決めたんだから…。",
+          "text": "I-it's fine.\nI've decided to change..."
+        },
+        {
+          "offset": "0x1038",
+          "original": "え？\n変わる？",
+          "text": "Huh?\nChange?"
+        },
+        {
+          "offset": "0x1048",
+          "original": "そう、変わるの。",
+          "text": "Yes, change."
+        },
+        {
+          "offset": "0x105c",
+          "original": "今までの私は、自分の才能に溺れて\n人を見下した態度を取って、",
+          "text": "I drowned in my own talent\nand looked down on others."
+        },
+        {
+          "offset": "0x1098",
+          "original": "誰が見ても、すごく嫌な女の子だった。",
+          "text": "I was a really nasty girl."
+        },
+        {
+          "offset": "0x10c0",
+          "original": "普通の女の子が愛だの恋だのと\n騒いでいるのを、馬鹿にしてたわ。",
+          "text": "I sneered at ordinary girls\nfussing over love."
+        },
+        {
+          "offset": "0x1100",
+          "original": "だけど、いつの頃からか、",
+          "text": "But at some point,"
+        },
+        {
+          "offset": "0x111c",
+          "original": "私の中に初めて込み上げる感情が…。\nすぐに、あなたに恋してると気付いたわ。",
+          "text": "a new feeling welled up...\nI knew I'd fallen for you."
+        },
+        {
+          "offset": "0x1168",
+          "original": "でも、私は科学という悪魔に\n魂を売り渡した女。",
+          "text": "But I'm a woman who sold\nher soul to science."
+        },
+        {
+          "offset": "0x1198",
+          "original": "そんな浮ついた感情を押さえるために、\n研究だけに没頭したの。",
+          "text": "To crush silly feelings,\nI buried myself in research."
+        },
+        {
+          "offset": "0x11d4",
+          "original": "だけど、卒業が近づいてくると、",
+          "text": "But as graduation neared,"
+        },
+        {
+          "offset": "0x11f4",
+          "original": "その想いが強くなってきて、\n自分でも押さえきれなくなって…。",
+          "text": "the feeling grew stronger,\nand I couldn't hold it in..."
+        },
+        {
+          "offset": "0x1230",
+          "original": "だから、\nその想いを完全に否定しようとして、\nあなたに戦いを挑んだの。",
+          "text": "So, to deny\nthe feeling completely,\nI challenged you."
+        },
+        {
+          "offset": "0x1278",
+          "original": "結果は、言わなくてもわかるけど…。",
+          "text": "You can guess the result..."
+        },
+        {
+          "offset": "0x129c",
+          "original": "全てにおいて、\n私はあなたに負けてしまったの。",
+          "text": "In every way,\nI lost to you."
+        },
+        {
+          "offset": "0x12cc",
+          "original": "もう、あなたに嫌われるなんて、\n考えたくない。",
+          "text": "I can't bear to think\nof you hating me."
+        },
+        {
+          "offset": "0x12fc",
+          "original": "世界征服の野望も捨てるわ。\nだってもう、私の野望は、",
+          "text": "I'll give up world conquest.\nBecause now my ambition"
+        },
+        {
+          "offset": "0x1330",
+          "original": "あなたに好かれることに変わったから…。",
+          "text": "is now to win your love..."
+        },
+        {
+          "offset": "0x1358",
+          "original": "実を言うと…。\n俺も紐緒さんの事が…。",
+          "text": "To tell the truth...\nI love you too, Himoo..."
+        },
+        {
+          "offset": "0x1380",
+          "original": "ほ、本当に…？\nじゃあ、野望は達成されたのね…。",
+          "text": "R-really...?\nThen my ambition is won..."
+        },
+        {
+          "offset": "0x13b0",
+          "original": "嬉しいわ…。",
+          "text": "I'm happy..."
+        },
+        {
+          "offset": "0x13c0",
+          "original": "きっと、世界征服したとしても、\nこんなに幸せになれなかったと思うわ…。",
+          "text": "Even conquering the world\nwouldn't make me this happy."
+        },
+        {
+          "offset": "0x1408",
+          "original": "俺も幸せだよ。",
+          "text": "I'm happy too."
+        },
+        {
+          "offset": "0x1418",
+          "original": "私、もっと、\nあなたに好かれる女の子になるために、\n努力するわ。",
+          "text": "I'll work harder\nto become a girl\nyou'll love even more."
+        },
+        {
+          "offset": "0x17e0",
+          "original": "えっ？\n君だれ？",
+          "text": "Huh?\nWho are you?"
+        },
+        {
+          "offset": "0x17fc",
+          "original": "どこかで見たような？",
+          "text": "Have we met somewhere?"
+        },
+        {
+          "offset": "0x1814",
+          "original": "わ、私…。\n{G}です。",
+          "text": "I-I'm...\n{G}"
+        },
+        {
+          "offset": "0x1828",
+          "original": "{G}に妹なんて\nいたっけ？",
+          "text": "Did {G}\nhave a sister?"
+        },
+        {
+          "offset": "0x1840",
+          "original": "いえ。\n伊集院レイ、本人です。",
+          "text": "No.\nI'm Rei Ijuin, herself."
+        },
+        {
+          "offset": "0x1860",
+          "original": "ごめんなさい。\n今まで私…。\n男のふりをして嘘をついてたの…。",
+          "text": "I'm sorry.\nAll this time, I...\nlied and played a boy..."
+        },
+        {
+          "offset": "0x18a0",
+          "original": "すごい嘘だ。",
+          "text": "Some lie."
+        },
+        {
+          "offset": "0x18b0",
+          "original": "伊集院家では、女の子は、\n高校を卒業するまで、\n家の外では、\n男の子として生活しなくてはいけないの。",
+          "text": "In the Ijuin family, girls\nmust live as boys\noutside the home\nuntil high school ends."
+        },
+        {
+          "offset": "0x1914",
+          "original": "漫画みたい…。",
+          "text": "Like a manga..."
+        },
+        {
+          "offset": "0x1924",
+          "original": "でも私…。\nあと一日だったけど、\nどうしても我慢ができなくて…。",
+          "text": "But I...\nI had just one day left,\nbut I couldn't hold out..."
+        },
+        {
+          "offset": "0x1964",
+          "original": "こんな所に呼び出したりして、\nごめんなさい。",
+          "text": "I'm sorry for\ncalling you out here."
+        },
+        {
+          "offset": "0x1990",
+          "original": "い、いいよ。\n別に…。",
+          "text": "I-it's fine.\nReally..."
+        },
+        {
+          "offset": "0x19a8",
+          "original": "いつも憎まれ口ばかりでごめんなさい。",
+          "text": "Sorry I was always so mean."
+        },
+        {
+          "offset": "0x19d0",
+          "original": "でも、今まで憎まれ口をたたいてたのは、\nあなたに嫌われようとしていたからなの。",
+          "text": "But I was spiteful because\nI wanted you to hate me."
+        },
+        {
+          "offset": "0x1a20",
+          "original": "嫌われてしまえば、あなたの事を、\n忘れられると思ったから…。",
+          "text": "I thought if you hated me,\nI could forget you..."
+        },
+        {
+          "offset": "0x1a5c",
+          "original": "でも、いつもあなたは、\n私に電話をしてきてくれて、",
+          "text": "But you always\nkept calling me,"
+        },
+        {
+          "offset": "0x1a90",
+          "original": "あんなにひどいことを言ったのに、\n何度も何度も…。",
+          "text": "even after I said such awful\nthings, again and again..."
+        },
+        {
+          "offset": "0x1ac4",
+          "original": "私、嬉しくて、いつも電話の向こう側で、\n泣いてたのよ…。",
+          "text": "I was so happy, I cried\non my end of the line..."
+        },
+        {
+          "offset": "0x1afc",
+          "original": "後、私が誘拐されたとき、\n廃工場まで来てくれたでしょう。",
+          "text": "And when I was kidnapped,\nyou came to that factory."
+        },
+        {
+          "offset": "0x1b34",
+          "original": "こんな私を心配してくれるなんて、\nすごく嬉しかった。",
+          "text": "You worried about someone\nlike me. I was so happy."
+        },
+        {
+          "offset": "0x1b68",
+          "original": "いつも気丈に生きてきたけど…\nでも、私だって普通の女の子よ。",
+          "text": "I always acted strong...\nbut I'm a normal girl, too."
+        },
+        {
+          "offset": "0x1ba4",
+          "original": "いつでもみんなと一緒にいて、\nおしゃべりしたり、\n遊びに行ったりしたかった。",
+          "text": "I wanted to be with others,\nto chat with them,\nand to go out and have fun."
+        },
+        {
+          "offset": "0x1bf0",
+          "original": "バレンタインのときだって、あなたに…。",
+          "text": "On Valentine's, I wanted..."
+        },
+        {
+          "offset": "0x1c18",
+          "original": "明日からはそうなれるけど、\n卒業する前に、\n本当の私を見て欲しかったから…。",
+          "text": "I can be, from tomorrow,\nbut before graduating,\nI wanted you to see me..."
+        },
+        {
+          "offset": "0x1c64",
+          "original": "もう伊集院家なんて、どうでもいいの。\nだから…\n好きです。",
+          "text": "I don't care about Ijuins.\nSo...\nI love you."
+        },
+        {
+          "offset": "0x1ca0",
+          "original": "今まで嘘をついていてごめんなさい。\nでも、私と付き合ってください。",
+          "text": "Sorry I lied all this time.\nBut please, go out with me."
+        },
+        {
+          "offset": "0x1ce4",
+          "original": "{G}…。\nいや、伊集院さん…。",
+          "text": "{G}\nI mean... Rei..."
+        },
+        {
+          "offset": "0x1d00",
+          "original": "迷惑だと思うけど…。\nあなたの気持ちを聞かせて。\nそれで諦めがつくなら…。",
+          "text": "I know it's a bother...\nBut tell me how you feel.\nIf it lets me give up..."
+        },
+        {
+          "offset": "0x1d4c",
+          "original": "そこまで想ってくれて、\n断れる訳無いじゃないか。",
+          "text": "How could I turn down\nfeelings like that?"
+        },
+        {
+          "offset": "0x1d7c",
+          "original": "そ、それじゃ…。",
+          "text": "Th-then..."
+        },
+        {
+          "offset": "0x1d90",
+          "original": "もちろん。\nＯＫだよ。",
+          "text": "Of course.\nThe answer is yes."
+        },
+        {
+          "offset": "0x1da8",
+          "original": "私…私…。\n何て言ったらいいのか…。",
+          "text": "I... I...\nI don't know what to say..."
+        },
+        {
+          "offset": "0x1dcc",
+          "original": "やっと、普通の女の子になれたのね…。",
+          "text": "At last, a normal girl..."
+        },
+        {
+          "offset": "0x1df4",
+          "original": "一つだけ聞いても\nいいかな？",
+          "text": "Can I ask you\none thing?"
+        },
+        {
+          "offset": "0x1e10",
+          "original": "えっ、何？",
+          "text": "Huh, what?"
+        },
+        {
+          "offset": "0x1e1c",
+          "original": "好雄が倒れたときの\n事だけど…。",
+          "text": "About the time\nYoshio collapsed..."
+        },
+        {
+          "offset": "0x1e3c",
+          "original": "ご、ごめんなさい…。",
+          "text": "S-sorry..."
+        },
+        {
+          "offset": "0x1e54",
+          "original": "好雄君に、私が女の子だという事が\nばれてしまったので、\n記憶を操作したんです。",
+          "text": "Yoshio found out\nI was a girl,\nso I altered his memory."
+        },
+        {
+          "offset": "0x1ea4",
+          "original": "やっぱり\nそうだったんだ…。",
+          "text": "So that's\nwhat happened..."
+        },
+        {
+          "offset": "0x1ec0",
+          "original": "け、軽蔑しますか…。",
+          "text": "D-do you despise me...?"
+        },
+        {
+          "offset": "0x1ed8",
+          "original": "いや…。\nその気持ちわかるから…。",
+          "text": "No...\nI understand why..."
+        },
+        {
+          "offset": "0x1efc",
+          "original": "ありがとう…。\n本当に優しいのね…。\nあなたを好きになって良かった…。",
+          "text": "Thank you...\nYou're truly kind...\nI'm glad I fell for you..."
+        },
+        {
+          "offset": "0x2500",
+          "original": "か、片桐さん…。",
+          "text": "K-Katagiri..."
+        },
+        {
+          "offset": "0x2514",
+          "original": "あ、ソ、ソーリー。待った？\nごめんなさい。\nこんな所に呼び出したりして。",
+          "text": "Oh, s-sorry. Did you wait?\nI'm sorry.\nFor calling you out here."
+        },
+        {
+          "offset": "0x255c",
+          "original": "別に、いいよ。\n何の用？",
+          "text": "It's fine.\nWhat's up?"
+        },
+        {
+          "offset": "0x2574",
+          "original": "一つ聞きたいんだけど…。\n大雑把な性格の女の子は、嫌い？",
+          "text": "Can I ask one thing...\nDo you hate easygoing girls?"
+        },
+        {
+          "offset": "0x25ac",
+          "original": "いや、好きだけど…。\nそれだけ？",
+          "text": "No, I like them...\nIs that all?"
+        },
+        {
+          "offset": "0x25cc",
+          "original": "ウェイト、ちょっと待って。\n本当の用は、これからなの。",
+          "text": "Wait, hold on.\nThe real thing comes now."
+        },
+        {
+          "offset": "0x2604",
+          "original": "どうしても、\nあなたに言いたいことがあって…。",
+          "text": "There's something\nI really must tell you..."
+        },
+        {
+          "offset": "0x2634",
+          "original": "私ってね、\n誰とでもすぐ仲良く話をするから、\nそうは見えなかったかも\nしれないんだけど…。",
+          "text": "You know, I chat\nwith anyone right away,\nso it may not\nhave looked like it..."
+        },
+        {
+          "offset": "0x268c",
+          "original": "あなたと話をしてるときが、\n一番リラックスしていられたの。",
+          "text": "but talking with you is when\nI felt most relaxed."
+        },
+        {
+          "offset": "0x26c8",
+          "original": "今になって、\nそれに、やっと気が付いて、",
+          "text": "Only now\ndid I finally notice,"
+        },
+        {
+          "offset": "0x26f0",
+          "original": "このまま卒業して、あなたに会えなく\nなるかもしれないと思ったら、",
+          "text": "and when I thought I might\ngraduate and never see you,"
+        },
+        {
+          "offset": "0x2730",
+          "original": "途端に悲しくなってきて、\n私、どうしたらいいのか、\nわからなくなって…。",
+          "text": "I suddenly got so sad,\nI didn't know\nwhat to do..."
+        },
+        {
+          "offset": "0x2778",
+          "original": "私ねいい加減な性格だけど、\nこの事だけは真剣に考えたの。\nそれで決心したの。",
+          "text": "I'm a carefree type, but\nI thought hard about this.\nAnd I made up my mind."
+        },
+        {
+          "offset": "0x27c4",
+          "original": "女の子から言うのは、\nすごく、恥ずかしいんだけど。",
+          "text": "It's really embarrassing\nfor a girl to say it first."
+        },
+        {
+          "offset": "0x27f8",
+          "original": "私の、本当の気持ちを、聞いて欲しい…。\n聞いてくれるだけでいいの。",
+          "text": "Please hear how I feel...\nJust listening is enough."
+        },
+        {
+          "offset": "0x2848",
+          "original": "アイミスユー。\nあなたがいないと、寂しくて…。",
+          "text": "I miss you.\nWithout you, I'm lonely..."
+        },
+        {
+          "offset": "0x2878",
+          "original": "だから…、だから私と…。",
+          "text": "So... so please, with me..."
+        },
+        {
+          "offset": "0x2894",
+          "original": "さっき、好きだって\n言ったでしょう。\nそれって実は、\n{G}の事なんだ。",
+          "text": "Earlier I said\nI like them, right?\nWell, actually...\nit's you, {G}"
+        },
+        {
+          "offset": "0x28d8",
+          "original": "‥‥‥‥。\n本当に…？",
+          "text": "......\nReally...?"
+        },
+        {
+          "offset": "0x28f0",
+          "original": "こんな時に\n冗談なんて言えないよ。",
+          "text": "I couldn't joke\nat a time like this."
+        },
+        {
+          "offset": "0x2914",
+          "original": "アンビリーバブル。信じられない…。",
+          "text": "Unbelievable. I can't..."
+        },
+        {
+          "offset": "0x2938",
+          "original": "生まれてから、今日が、一番幸せよ。\nアイネバーフォゲット。",
+          "text": "The happiest day of my life.\nI'll never forget."
+        },
+        {
+          "offset": "0x2974",
+          "original": "私、一生忘れない。",
+          "text": "I'll never forget it, ever."
+        },
+        {
+          "offset": "0x2cd0",
+          "original": "か、{G}…。",
+          "text": "M-{G}"
+        },
+        {
+          "offset": "0x2cdc",
+          "original": "こんな所に呼び出したりして、\nごめんなさい。",
+          "text": "I'm sorry for\ncalling you out here."
+        },
+        {
+          "offset": "0x2d08",
+          "original": "い、いきなり。\n{G}が謝った…。",
+          "text": "Wh-whoa.\nAn apology from {G}"
+        },
+        {
+          "offset": "0x2d28",
+          "original": "あ、そんなに驚かなくても…。\nでもいいの。私の話を聞いて。",
+          "text": "Don't look so shocked...\nNever mind. Just listen."
+        },
+        {
+          "offset": "0x2d70",
+          "original": "私、\n中学の頃、この街に引っ越してきたの。",
+          "text": "I moved\nto this town in junior high."
+        },
+        {
+          "offset": "0x2d9c",
+          "original": "この前の街で、私…\n男の子に何度も振られて…。",
+          "text": "In my old town, I...\nwas dumped again and again."
+        },
+        {
+          "offset": "0x2dcc",
+          "original": "だから、この街に来る時に、\n生まれ変わろう。",
+          "text": "So when I came here,\nI vowed to be reborn."
+        },
+        {
+          "offset": "0x2df8",
+          "original": "もっともてる女になって、\n男の子達を見返してやろうと思ったの。",
+          "text": "I'd become a girl men adore\nand show those boys."
+        },
+        {
+          "offset": "0x2e38",
+          "original": "苦労の甲斐があって、\n男の子の目をひく女になったわ。",
+          "text": "My efforts paid off.\nNow boys turn to stare."
+        },
+        {
+          "offset": "0x2e6c",
+          "original": "そして、わざと高慢な態度を取って、\n男の子達に復讐してきたの。",
+          "text": "Acting haughty on purpose,\nI took my revenge on them."
+        },
+        {
+          "offset": "0x2eac",
+          "original": "そ、そうだったんだ…。",
+          "text": "S-so that's how it was..."
+        },
+        {
+          "offset": "0x2ec4",
+          "original": "最初は楽しかった…。\n男の子にもてはやされることが、\n嬉しかった…。",
+          "text": "At first it was fun...\nBeing fawned over by boys\nmade me happy..."
+        },
+        {
+          "offset": "0x2f08",
+          "original": "でも、そんな事じゃ、\n私の心は満たされなかったわ。",
+          "text": "But that never\nfilled my heart."
+        },
+        {
+          "offset": "0x2f3c",
+          "original": "当たり前よね。\n自分に嘘をついて生きてきて、\n心が満たされるはずが無いもの。",
+          "text": "Of course not.\nLiving a lie to myself,\nhow could my heart be full?"
+        },
+        {
+          "offset": "0x2f88",
+          "original": "貴方に会わなければ、\nこんな事は考えなかったのかもしれない…。",
+          "text": "Had I not met you, I might\nnever have thought this..."
+        },
+        {
+          "offset": "0x2fc8",
+          "original": "貴方と知り合って、\nこの人となら、\n今の自分を捨てられると思ったわ。",
+          "text": "When I met you,\nI thought with you\nI could be someone new."
+        },
+        {
+          "offset": "0x300c",
+          "original": "だけど、私にはその時、\n自分を捨てる勇気が無かったの。",
+          "text": "But back then, I lacked\nthe courage to do it."
+        },
+        {
+          "offset": "0x3044",
+          "original": "また昔の自分に戻りたくなかったから…。",
+          "text": "I didn't want my old self."
+        },
+        {
+          "offset": "0x306c",
+          "original": "でも、今になってやっと勇気が出たわ。",
+          "text": "But now I've found courage."
+        },
+        {
+          "offset": "0x3094",
+          "original": "貴方に、こんな女だと思われたまま\n卒業するなんて耐えられない。",
+          "text": "I can't graduate with you\nthinking I'm that kind."
+        },
+        {
+          "offset": "0x30d4",
+          "original": "何十人の男性よりも、\nただ、貴方だけそばにいて欲しい。",
+          "text": "More than dozens of men,\nI want only you by my side."
+        },
+        {
+          "offset": "0x310c",
+          "original": "私の心の傷をいやしてくれるのは、\n貴方だけだから…。",
+          "text": "Only you can heal\nthe wounds in my heart..."
+        },
+        {
+          "offset": "0x3140",
+          "original": "好きよ。\nいつまでも私のそばにいて…。\nお願い…。",
+          "text": "I love you.\nStay by my side forever...\nPlease..."
+        },
+        {
+          "offset": "0x3174",
+          "original": "そうだったんだ…。",
+          "text": "So that's how it was..."
+        },
+        {
+          "offset": "0x3188",
+          "original": "やっぱり、私じゃだめよね。",
+          "text": "I suppose I won't do."
+        },
+        {
+          "offset": "0x31a4",
+          "original": "俺でよかったら…。",
+          "text": "If I'll do..."
+        },
+        {
+          "offset": "0x31b8",
+          "original": "本当に？\n嬉しい…。\nやっと本当の自分を取り戻せそう。",
+          "text": "Really?\nI'm so happy...\nI can be myself again."
+        },
+        {
+          "offset": "0x31f0",
+          "original": "でも、他の男子から、\n怨まれそうだね。",
+          "text": "But the other guys\nwill hate me for this."
+        },
+        {
+          "offset": "0x3218",
+          "original": "大丈夫。\n私が選んだ人だもの。\n誰も文句を言うはずがないわ。",
+          "text": "Don't worry.\nYou're the one I chose.\nNo one would dare complain."
+        },
+        {
+          "offset": "0x3254",
+          "original": "そうだといいんだけど。\nちょっと心配…。",
+          "text": "I hope so.\nI'm a little worried..."
+        },
+        {
+          "offset": "0x3688",
+          "original": "き、{G}…。",
+          "text": "M-{G}"
+        },
+        {
+          "offset": "0x3694",
+          "original": "すみません。\n失礼だとは思いましたけど…。",
+          "text": "I'm sorry.\nI know this is rude, but..."
+        },
+        {
+          "offset": "0x36c0",
+          "original": "どうしても、今日あなたに\n言わなければならないことがあって、\nこんな所に、呼びだしてしまいました。",
+          "text": "There's something I must\ntell you today, so I\ncalled you out here."
+        },
+        {
+          "offset": "0x3724",
+          "original": "別にいいよ。\n言いたいことって、何？",
+          "text": "It's fine.\nWhat did you want to say?"
+        },
+        {
+          "offset": "0x3748",
+          "original": "私は、身体が弱かったせいか、\n友達もあまりいなくて、",
+          "text": "Maybe because I'm frail,\nI never had many friends,"
+        },
+        {
+          "offset": "0x377c",
+          "original": "趣味は本を読むことぐらいしか\nありません。",
+          "text": "and reading books is about\nmy only hobby."
+        },
+        {
+          "offset": "0x37a8",
+          "original": "そして、本を読むたび、\nその中の恋愛に憧れ、",
+          "text": "Every time I read one,\nI longed for its romances,"
+        },
+        {
+          "offset": "0x37d4",
+          "original": "少し嫉妬してしまう自分が情けなくて、",
+          "text": "ashamed to be jealous,"
+        },
+        {
+          "offset": "0x37fc",
+          "original": "本当の気持ちを打ち明けられないでいる\n臆病な自分が、ずっと腹立たしくて…。",
+          "text": "and angry at myself, the\ncoward hiding her heart..."
+        },
+        {
+          "offset": "0x3848",
+          "original": "でも、今日という日を境に、\n今までの自分を変えようと思うんです。",
+          "text": "But from this day on,\nI want to change myself."
+        },
+        {
+          "offset": "0x3888",
+          "original": "ど、どうして？",
+          "text": "Wh-why?"
+        },
+        {
+          "offset": "0x3898",
+          "original": "今まで、たくさんの本と出会って、\n私の思い出の中に残してきました。",
+          "text": "I've met so many books\nand kept them as memories."
+        },
+        {
+          "offset": "0x38dc",
+          "original": "でも、あなたと知り合った、\n高校生活の全てを、\nただの思い出だけにしたくないから…、",
+          "text": "But my school days with you,\nall of them, I won't let\nbe just a memory..."
+        },
+        {
+          "offset": "0x3930",
+          "original": "小説のような、\n空想だけの事にしたくないから…、",
+          "text": "I won't let it be\nmere fancy, like a novel..."
+        },
+        {
+          "offset": "0x3960",
+          "original": "私の、一生分の勇気を出して言います。",
+          "text": "With all my courage..."
+        },
+        {
+          "offset": "0x3988",
+          "original": "好きです。",
+          "text": "I love you."
+        },
+        {
+          "offset": "0x3994",
+          "original": "恋人じゃなく、お友達でもいいんです。\n卒業してからも、\nずっとあなたに会えるなら…。",
+          "text": "Not lovers. Friends is fine.\nIf only, after graduation,\nI can keep seeing you..."
+        },
+        {
+          "offset": "0x39e8",
+          "original": "実を言うと…。\n俺も{G}の事が…。",
+          "text": "To tell the truth...\nI love you too, {G}"
+        },
+        {
+          "offset": "0x3a08",
+          "original": "ほ、本当ですか…。",
+          "text": "R-really...?"
+        },
+        {
+          "offset": "0x3a1c",
+          "original": "本当に、こんな私でいいんですか…？",
+          "text": "Am I really enough...?"
+        },
+        {
+          "offset": "0x3a40",
+          "original": "もちろんだよ。\n好きだよ、{G}。",
+          "text": "Of course.\nI love you, {G}"
+        },
+        {
+          "offset": "0x3a60",
+          "original": "嬉しいです…。",
+          "text": "I'm so happy..."
+        },
+        {
+          "offset": "0x3a70",
+          "original": "あっ、危ない。\n{G}。",
+          "text": "Look out!\n{G}"
+        },
+        {
+          "offset": "0x3a84",
+          "original": "うふふふふ…\n身体が弱いのも、いいものですね。",
+          "text": "Ufufufu...\nBeing frail has its perks."
+        },
+        {
+          "offset": "0x3ab4",
+          "original": "こうやって、あなたに抱き止めて\n貰えるんですから…。",
+          "text": "This way, you can catch me\nin your arms..."
+        },
+        {
+          "offset": "0x3ae8",
+          "original": "しばらく、そのままでいてください…。",
+          "text": "Please, stay like this..."
+        },
+        {
+          "offset": "0x3b7c",
+          "original": "き、{G}。\nあれ？眼鏡はどうしたの？",
+          "text": "M-{G}\nHuh? Your glasses?"
+        },
+        {
+          "offset": "0x3ba0",
+          "original": "こっちの方が、\n好みにあうと思って、\n思い切ってコンタクトにしてしまいました。",
+          "text": "I thought\nyou'd like this better,\nso I tried contacts."
+        },
+        {
+          "offset": "0x3bf0",
+          "original": "もしかして、俺のために…。",
+          "text": "Could it be... for me?"
+        },
+        {
+          "offset": "0x3c0c",
+          "original": "すみません。\n失礼だとは思いましたけど…。",
+          "text": "I'm sorry.\nI know this is rude, but..."
+        },
+        {
+          "offset": "0x3c38",
+          "original": "どうしても、今日あなたに\n言わなければならないことがあって、\nこんな所に、呼びだしてしまいました。",
+          "text": "There's something I must\ntell you today, so I\ncalled you out here."
+        },
+        {
+          "offset": "0x3c9c",
+          "original": "別にいいよ。\n言いたいことって、何？",
+          "text": "It's fine.\nWhat did you want to say?"
+        },
+        {
+          "offset": "0x3cc0",
+          "original": "私は、身体が弱かったせいか、\n友達もあまりいなくて、",
+          "text": "Maybe because I'm frail,\nI never had many friends,"
+        },
+        {
+          "offset": "0x3cf4",
+          "original": "趣味は本を読むことぐらいしか\nありません。",
+          "text": "and reading books is about\nmy only hobby."
+        },
+        {
+          "offset": "0x3d20",
+          "original": "そして、本を読むたびに、\nその中の恋愛に憧れ、",
+          "text": "Every time I read one,\nI longed for its romances,"
+        },
+        {
+          "offset": "0x3d50",
+          "original": "少し嫉妬してしまう自分が情けなくて、",
+          "text": "ashamed to be jealous,"
+        },
+        {
+          "offset": "0x3d78",
+          "original": "本当の気持ちを打ち明けられないでいる\n臆病な自分が、ずっと腹立たしくて…。",
+          "text": "and angry at myself, the\ncoward hiding her heart..."
+        },
+        {
+          "offset": "0x3dc4",
+          "original": "でも、今日という日を境に、\n今までの自分を変えようと思うんです。",
+          "text": "But from this day on,\nI want to change myself."
+        },
+        {
+          "offset": "0x3e04",
+          "original": "ど、どうして？",
+          "text": "Wh-why?"
+        },
+        {
+          "offset": "0x3e14",
+          "original": "今まで、たくさんの本と出会って、\n私の思い出の中に残してきました。",
+          "text": "I've met so many books\nand kept them as memories."
+        },
+        {
+          "offset": "0x3e58",
+          "original": "でも、あなたと知り合った、\n高校生活の全てを、\nただの思い出だけにしたくないから…、",
+          "text": "But my school days with you,\nall of them, I won't let\nbe just a memory..."
+        },
+        {
+          "offset": "0x3eac",
+          "original": "小説のような、\n空想だけの事にしたくないから…、",
+          "text": "I won't let it be\nmere fancy, like a novel..."
+        },
+        {
+          "offset": "0x3edc",
+          "original": "私の、一生分の勇気を出して言います。",
+          "text": "With all my courage..."
+        },
+        {
+          "offset": "0x3f04",
+          "original": "好きです。",
+          "text": "I love you."
+        },
+        {
+          "offset": "0x3f10",
+          "original": "恋人じゃなく、お友達でもいいんです。\n卒業してからも、\nずっとあなたに会えるなら…。",
+          "text": "Not lovers. Friends is fine.\nIf only, after graduation,\nI can keep seeing you..."
+        },
+        {
+          "offset": "0x3f64",
+          "original": "実を言うと…。\n俺も{G}の事が…。",
+          "text": "To tell the truth...\nI love you too, {G}"
+        },
+        {
+          "offset": "0x3f84",
+          "original": "ほ、本当ですか…。",
+          "text": "R-really...?"
+        },
+        {
+          "offset": "0x3f98",
+          "original": "本当に、こんな私でいいんですか…？",
+          "text": "Am I really enough...?"
+        },
+        {
+          "offset": "0x3fbc",
+          "original": "もちろんだよ。\n好きだよ、{G}。",
+          "text": "Of course.\nI love you, {G}"
+        },
+        {
+          "offset": "0x3fdc",
+          "original": "嬉しいです…。",
+          "text": "I'm so happy..."
+        },
+        {
+          "offset": "0x3fec",
+          "original": "あっ、危ない。\n{G}。",
+          "text": "Look out!\n{G}"
+        },
+        {
+          "offset": "0x4000",
+          "original": "うふふふふ…\n身体が弱いのも、いいものですね。",
+          "text": "Ufufufu...\nBeing frail has its perks."
+        },
+        {
+          "offset": "0x4030",
+          "original": "こうやって、あなたに抱き止めて\n貰えるんですから…。",
+          "text": "This way, you can catch me\nin your arms..."
+        },
+        {
+          "offset": "0x4064",
+          "original": "しばらく、そのままでいてください…。",
+          "text": "Please, stay like this..."
+        },
+        {
+          "offset": "0x4774",
+          "original": "こ、{G}…。",
+          "text": "Y-{G}"
+        },
+        {
+          "offset": "0x4780",
+          "original": "失礼な事と存じましたけれども、\nどうしても、\nお話したいことがございまして、\nお呼び出しいたしました。\n申し訳ございません。",
+          "text": "I know it's terribly rude,\nbut there is\nsomething I must say,\nso I called you here.\nMy humblest apologies."
+        },
+        {
+          "offset": "0x47fc",
+          "original": "そんなに\nあらたまらなくても…。",
+          "text": "No need to be\nso formal..."
+        },
+        {
+          "offset": "0x481c",
+          "original": "いいえ。\nそういう訳には参りません。\n私の一生をかけた大事な用ですから。",
+          "text": "No.\nI'm afraid I must be.\nMy whole life rests on this."
+        },
+        {
+          "offset": "0x4864",
+          "original": "大事な用って？",
+          "text": "Rests on what?"
+        },
+        {
+          "offset": "0x4874",
+          "original": "いつも、私は何も考えないでいるのが\n好きなのですけれども、\n最近では、その時間よりも\n色々と考えてしまう事の方が多いのです。",
+          "text": "I usually love thinking\nabout nothing at all,\nbut lately I spend more time\nthinking about many things."
+        },
+        {
+          "offset": "0x48f0",
+          "original": "考え事って？",
+          "text": "Thinking about what?"
+        },
+        {
+          "offset": "0x4900",
+          "original": "お恥ずかしいお話ですけれども、\nあなたの姿が、頭から離れなくて…。\n家にいても、あなたの事ばかり考えて、\n時間が経つのも忘れてしまいます。",
+          "text": "It's embarrassing to say,\nbut I can't stop seeing you.\nEven at home, I think of you\nand lose all track of time."
+        },
+        {
+          "offset": "0x4988",
+          "original": "いつもよりも、\nボーッとしていましたので、\nお母様に、理由を聞かれました。\nその事を正直に話しましたところ、\nそれならば、卒業式の日にこの木の下で\nあなたの本心を、\nその殿方に話しなさいと申されました。\nですから、私の本心を\n笑わないで聞いていただきたいのです。",
+          "text": "I was dazed more than usual,\nso Mother asked me why.\nWhen I told her honestly,\nshe said that I should,\nunder this tree today,\ntell that gentleman\nwhat is truly in my heart.\nSo please, hear my heart\nwithout laughing."
+        },
+        {
+          "offset": "0x4a88",
+          "original": "う、うん",
+          "text": "O-okay"
+        },
+        {
+          "offset": "0x4a94",
+          "original": "いつも、\nあなたの事だけを考えてしまいます。\n私が、落ち着いていられる場所は、\nあなたのそばだけです。\n私でよろしければ、これからずっと…、\n卒業してからも、\nお付き合いしていただきたいのです。",
+          "text": "I always end up\nthinking only of you.\nI only feel at peace\nby your side.\nIf you'll have me, from now,\neven after graduation,\nI'd like you to court me."
+        },
+        {
+          "offset": "0x4b54",
+          "original": "実は、俺も\n{G}の事が…。",
+          "text": "Truth is, I...\n{G} I love you too."
+        },
+        {
+          "offset": "0x4b6c",
+          "original": "本当ですか？\n良かった。お母様の言うとおりにして…。\nそれでは、\n明日お父様に会っていただけますか？",
+          "text": "Truly?\nI'm glad I heeded Mother.\nThen,\nwill you meet Father soon?"
+        },
+        {
+          "offset": "0x4bd0",
+          "original": "え、{G}の\nお父さんに？",
+          "text": "To meet {G}'s\nfather?"
+        },
+        {
+          "offset": "0x4be8",
+          "original": "はい。\nお父様に、私とお付き合いをする殿方は、\n家の方に連れてくるように\n言われておりますので。",
+          "text": "Yes.\nFather told me that any\ngentleman courting me must\nbe brought to our home."
+        },
+        {
+          "offset": "0x4c48",
+          "original": "そ、そう。\nじゃあ、行くよ。",
+          "text": "O-okay.\nThen I'll come."
+        },
+        {
+          "offset": "0x4c64",
+          "original": "そうですか。\nきっと、お父様にも\n気に入っていただけると思いますよ。",
+          "text": "Wonderful.\nI'm sure Father\nwill like you too."
+        },
+        {
+          "offset": "0x4ca8",
+          "original": "そ、そう。\n（いきなり、お父さんか…。）",
+          "text": "O-okay.\n(Her father, already...)"
+        },
+        {
+          "offset": "0x4f30",
+          "original": "き、{G}…。",
+          "text": "M-{G}"
+        },
+        {
+          "offset": "0x4f3c",
+          "original": "ごめんなさい。\nこんな所に、呼び出したりして。",
+          "text": "I'm sorry.\nFor calling you out here."
+        },
+        {
+          "offset": "0x4f6c",
+          "original": "別に、いいよ。\nどうしたの？",
+          "text": "It's fine.\nWhat's wrong?"
+        },
+        {
+          "offset": "0x4f88",
+          "original": "今日で卒業だから、\nあなたに、どうしても\n話しておきたいことがあって…。\n聞くだけでもいいから…。",
+          "text": "It's graduation today,\nand there's something\nI have to tell you...\nJust listen, okay..."
+        },
+        {
+          "offset": "0x4fe8",
+          "original": "うん…。\n聞くよ。",
+          "text": "Okay...\nI'm listening."
+        },
+        {
+          "offset": "0x4ffc",
+          "original": "いままで水泳ばかりで、\n愛だの恋だの言ってる暇もなかったし、",
+          "text": "It was all swimming, no time\nfor love and stuff,"
+        },
+        {
+          "offset": "0x5038",
+          "original": "貧弱な男の子ばっかりで、\n私の興味を引く男の子もいなかったから、\n今まで気にもしてなかったけど…。",
+          "text": "and the boys were all wimps,\nnone that caught my eye,\nso I never cared before..."
+        },
+        {
+          "offset": "0x509c",
+          "original": "いつごろからかな、\nもう覚えてないけど…。\nあなたの存在が、気になってきて、",
+          "text": "I don't remember\nwhen it started...\nbut I began to notice you,"
+        },
+        {
+          "offset": "0x50e8",
+          "original": "練習にも身が入らなくて…。\n最近では、夜も眠れないくらいに、\n胸がどきどきして…。",
+          "text": "I can't focus in practice...\nLately I can't even sleep,\nmy heart pounds so..."
+        },
+        {
+          "offset": "0x513c",
+          "original": "私、男っぽいって言われ続けてきても、\n気にもならなかったけど、",
+          "text": "People call me boyish,\nand I never minded,"
+        },
+        {
+          "offset": "0x517c",
+          "original": "あなたにだけは、そう思われたくない。",
+          "text": "but not you. Not you."
+        },
+        {
+          "offset": "0x51a4",
+          "original": "だから、あなたの前では、\n男言葉を話さないように\n注意してきたつもりだし、\n行動だって…。",
+          "text": "So around you,\nI tried not to\ntalk like a guy,\nor act like one..."
+        },
+        {
+          "offset": "0x51fc",
+          "original": "これでも駄目なら、水泳も捨てるわ。\n髪の毛だって、\nあなたが望むなら、いくらだって伸ばすわ。",
+          "text": "If that's not enough, I'll\nquit swimming. My hair, too,\nI'll grow as you like."
+        },
+        {
+          "offset": "0x5258",
+          "original": "ご、ごめんなさい…。\n勝手なこと言っちゃって…。\nでも、断られたっていいの。",
+          "text": "S-sorry...\nI'm being selfish...\nIt's okay if you say no."
+        },
+        {
+          "offset": "0x52a4",
+          "original": "ただ、こんな気持ちで、\n卒業したくないから\nわたしの気持ちだけ、聞いて。",
+          "text": "I just don't want\nto graduate like this,\nso hear how I feel."
+        },
+        {
+          "offset": "0x52ec",
+          "original": "う、うん…。",
+          "text": "Mm... mmh..."
+        },
+        {
+          "offset": "0x52fc",
+          "original": "好きよ…。\n夜も眠れないほど…。",
+          "text": "I love you...\nSo much I can't sleep..."
+        },
+        {
+          "offset": "0x5328",
+          "original": "そ、そうよね。\nやっぱり、私なんかじゃ駄目ね。",
+          "text": "R-right.\nSomeone like me won't do."
+        },
+        {
+          "offset": "0x5358",
+          "original": "でも、言ってせいせいしたわ。\nありがとう、聞いてくれて。",
+          "text": "I feel better for saying it.\nThanks for listening."
+        },
+        {
+          "offset": "0x5390",
+          "original": "き、{G}。\n待って。",
+          "text": "N-{G}\nWait."
+        },
+        {
+          "offset": "0x53a4",
+          "original": "引き止めないで。\n引き止められたら、\n期待しちゃうじゃない。\n慰めの言葉なんてかけられたら、\n惨めじゃない。",
+          "text": "Don't stop me.\nIf you stop me,\nI'll get my hopes up.\nIf you try to comfort me,\nI'll just feel worse."
+        },
+        {
+          "offset": "0x5410",
+          "original": "{G}。\n俺も好きだよ。",
+          "text": "{G}\nI love you too."
+        },
+        {
+          "offset": "0x5424",
+          "original": "えっ？\n今なんて…？",
+          "text": "Huh?\nWhat did you...?"
+        },
+        {
+          "offset": "0x5438",
+          "original": "俺も、{G}の事が\n好きだって言ったんだよ。",
+          "text": "I love you too, {G}\nThat's what I said."
+        },
+        {
+          "offset": "0x5460",
+          "original": "ホ、ホントに？\nこんな、水泳しかとりえの無い、私で…。",
+          "text": "R-really?\nMe, only good at swimming?"
+        },
+        {
+          "offset": "0x5498",
+          "original": "もちろんだよ。",
+          "text": "Of course."
+        },
+        {
+          "offset": "0x54a8",
+          "original": "だ、駄目。\nもう、涙が止まらない…。",
+          "text": "N-no good.\nI can't stop crying..."
+        },
+        {
+          "offset": "0x54cc",
+          "original": "お願い。\nあなたの胸の中で泣かせて。",
+          "text": "Please.\nLet me cry in your arms."
+        },
+        {
+          "offset": "0x54f0",
+          "original": "いいよ。",
+          "text": "Sure."
+        },
+        {
+          "offset": "0x54fc",
+          "original": "嬉しい。\n最高に幸せ…。",
+          "text": "I'm so happy.\nThe happiest ever..."
+        },
+        {
+          "offset": "0x5590",
+          "original": "き、{G}…。",
+          "text": "M-{G}"
+        },
+        {
+          "offset": "0x559c",
+          "original": "ごめんなさい。\nこんな所に、呼び出したりして。",
+          "text": "I'm sorry.\nFor calling you out here."
+        },
+        {
+          "offset": "0x55cc",
+          "original": "別に、いいよ。\nどうしたの？",
+          "text": "It's fine.\nWhat's wrong?"
+        },
+        {
+          "offset": "0x55e8",
+          "original": "今日で卒業だから、\nあなたに、\nどうしても話しておきたいことがあって…。\n聞くだけでもいいから…。",
+          "text": "It's graduation today,\nand there's something\nI have to tell you...\nJust listen, okay..."
+        },
+        {
+          "offset": "0x5648",
+          "original": "うん…。\n聞くよ。",
+          "text": "Okay...\nI'm listening."
+        },
+        {
+          "offset": "0x565c",
+          "original": "いままで水泳ばかりで、\n愛だの恋だの言ってる暇もなかったし、",
+          "text": "It was all swimming, no time\nfor love and stuff,"
+        },
+        {
+          "offset": "0x5698",
+          "original": "貧弱な男の子ばっかりで、\n私の興味を引く男の子もいなかったから、\n今まで気にもしてなかったけど…。",
+          "text": "and the boys were all wimps,\nnone that caught my eye,\nso I never cared before..."
+        },
+        {
+          "offset": "0x56fc",
+          "original": "いつごろからかな、もう覚えてないけど…。\nあなたの存在が、気になってきて、",
+          "text": "I can't say when it began,\nbut I began to notice you,"
+        },
+        {
+          "offset": "0x5748",
+          "original": "練習にも身が入らなくて…。\n最近では、夜も眠れないくらいに、\n胸がどきどきして…。",
+          "text": "I can't focus in practice...\nLately I can't even sleep,\nmy heart pounds so..."
+        },
+        {
+          "offset": "0x579c",
+          "original": "私、男っぽいって言われ続けてきても、\n気にもならなかったけど、\nあなたにだけは、そう思われたくない。",
+          "text": "People call me boyish,\nand I never minded,\nbut not you. Not you."
+        },
+        {
+          "offset": "0x5800",
+          "original": "だから、あなたの前では、\n男言葉を話さないように\n注意してきたつもりだし、\n行動だって…。",
+          "text": "So around you,\nI tried not to\ntalk like a guy,\nor act like one..."
+        },
+        {
+          "offset": "0x5858",
+          "original": "これでも駄目なら、水泳も捨てるわ。\nあなたの望む女に変身して見せる。",
+          "text": "If not, I'll quit swimming.\nI'll be the girl you want."
+        },
+        {
+          "offset": "0x589c",
+          "original": "ご、ごめんなさい…。\n勝手なこと言っちゃって…。\nでも、断られたっていいの。",
+          "text": "S-sorry...\nI'm being selfish...\nIt's okay if you say no."
+        },
+        {
+          "offset": "0x58e8",
+          "original": "ただ、こんな気持ちで、卒業したくないから\nわたしの気持ちだけ、聞いて。",
+          "text": "I won't graduate like this,\nso just hear how I feel."
+        },
+        {
+          "offset": "0x5930",
+          "original": "う、うん…。",
+          "text": "Mm... mmh..."
+        },
+        {
+          "offset": "0x5940",
+          "original": "好きよ…。\n夜も眠れないほど…。",
+          "text": "I love you...\nSo much I can't sleep..."
+        },
+        {
+          "offset": "0x596c",
+          "original": "そ、そうよね。\nやっぱり、私なんかじゃ駄目ね。",
+          "text": "R-right.\nSomeone like me won't do."
+        },
+        {
+          "offset": "0x599c",
+          "original": "でも、言ってせいせいしたわ。\nありがとう、聞いてくれて。",
+          "text": "I feel better for saying it.\nThanks for listening."
+        },
+        {
+          "offset": "0x59d4",
+          "original": "き、{G}。\n待って。",
+          "text": "N-{G}\nWait."
+        },
+        {
+          "offset": "0x59e8",
+          "original": "引き止めないで。\n引き止められたら、期待しちゃうじゃない。",
+          "text": "Don't stop me.\nOr I'll get my hopes up."
+        },
+        {
+          "offset": "0x5a24",
+          "original": "慰めの言葉なんてかけられたら、\n惨めじゃない。",
+          "text": "If you try to comfort me,\nI'll just feel worse."
+        },
+        {
+          "offset": "0x5a54",
+          "original": "{G}。\n俺も好きだよ。",
+          "text": "{G}\nI love you too."
+        },
+        {
+          "offset": "0x5a68",
+          "original": "えっ？\n今なんて…？",
+          "text": "Huh?\nWhat did you...?"
+        },
+        {
+          "offset": "0x5a7c",
+          "original": "俺も、{G}の事が\n好きだって言ったんだよ。",
+          "text": "I love you too, {G}\nThat's what I said."
+        },
+        {
+          "offset": "0x5aa4",
+          "original": "ホ、ホントに？\nこんな、水泳しかとりえの無い、私で…。",
+          "text": "R-really?\nMe, only good at swimming?"
+        },
+        {
+          "offset": "0x5adc",
+          "original": "もちろんだよ。",
+          "text": "Of course."
+        },
+        {
+          "offset": "0x5aec",
+          "original": "だ、駄目。\nもう、涙が止まらない…。",
+          "text": "N-no good.\nI can't stop crying..."
+        },
+        {
+          "offset": "0x5b10",
+          "original": "お願い。\nあなたの胸の中で泣かせて。",
+          "text": "Please.\nLet me cry in your arms."
+        },
+        {
+          "offset": "0x5b34",
+          "original": "いいよ。",
+          "text": "Sure."
+        },
+        {
+          "offset": "0x5b40",
+          "original": "嬉しい。\n最高に幸せ…。",
+          "text": "I'm so happy.\nThe happiest ever..."
+        },
+        {
+          "offset": "0x62f4",
+          "original": "み、{G}…。",
+          "text": "M-{G}"
+        },
+        {
+          "offset": "0x6300",
+          "original": "あの…。\nご、ごめんなさい。\nこんな所に、呼び出したりして…。",
+          "text": "Um...\nI-I'm sorry.\nFor calling you out here..."
+        },
+        {
+          "offset": "0x6340",
+          "original": "別に、いいよ。\nところで、何？",
+          "text": "It's fine.\nSo, what is it?"
+        },
+        {
+          "offset": "0x6360",
+          "original": "あの…。\n…………。",
+          "text": "Um...\n............"
+        },
+        {
+          "offset": "0x6374",
+          "original": "どうしたの？",
+          "text": "What's wrong?"
+        },
+        {
+          "offset": "0x6384",
+          "original": "だ、駄目…。\nやっぱり、恥ずかしくて…。",
+          "text": "I-I can't...\nIt's too embarrassing..."
+        },
+        {
+          "offset": "0x63ac",
+          "original": "そんなに、\n恥ずかしいことなの？\n",
+          "text": "Is it that\nembarrassing?\n"
+        },
+        {
+          "offset": "0x63d0",
+          "original": "は、はい…。\nで、でも、今日、勇気を出さないと、\n一生後悔するから…。",
+          "text": "Y-yes...\nB-but if I'm not brave now,\nI'll regret it forever..."
+        },
+        {
+          "offset": "0x6418",
+          "original": "い、言いたいことは、\nたくさんあるけど…。\n今言うと、一番大事なことが、\n言えない気がします…。",
+          "text": "Th-there's so much\nI want to say...\nBut if I say it now, I fear\nI won't say what matters..."
+        },
+        {
+          "offset": "0x6478",
+          "original": "だから…、\n一番大事なことだけ、言います…。",
+          "text": "So...\nI'll say what matters."
+        },
+        {
+          "offset": "0x64a4",
+          "original": "あ、あなたが…。\nあなたが、好きです…。\nは、恥ずかしい…。",
+          "text": "I-I...\nI love you...\nS-so embarrassing..."
+        },
+        {
+          "offset": "0x64e0",
+          "original": "あっ、待って。\n{G}。",
+          "text": "Ah, wait!\n{G}"
+        },
+        {
+          "offset": "0x64f4",
+          "original": "駄目。\nここにいられない。",
+          "text": "No.\nI can't stay here."
+        },
+        {
+          "offset": "0x6510",
+          "original": "俺も、{G}の事\n好きだよ。",
+          "text": "Me too, {G}\nI love you."
+        },
+        {
+          "offset": "0x6528",
+          "original": "えっ…。\n本当ですか…？\nこの樹の下で告白してよかった…。",
+          "text": "Huh...\nReally...?\nI'm glad I told you here..."
+        },
+        {
+          "offset": "0x6564",
+          "original": "{G}も、\n伝説知ってたんだ…。",
+          "text": "{G}\nyou knew the legend too..."
+        },
+        {
+          "offset": "0x6580",
+          "original": "は、はい…。\nでも。嘘でも良かったんです。",
+          "text": "Y-yes...\nIt was fine even if a lie."
+        },
+        {
+          "offset": "0x65ac",
+          "original": "この樹の伝説に頼れば、\nきっと、告白する勇気が出ると思って…。\n本当に良かった…。",
+          "text": "I thought the tree's legend\nwould give me the courage...\nI'm so glad..."
+        },
+        {
+          "offset": "0x6600",
+          "original": "俺も{G}に\n告白されて最高だよ。",
+          "text": "Hearing it from {G}\nis the best thing ever."
+        },
+        {
+          "offset": "0x6620",
+          "original": "これでもう、二人の愛は永遠ですね…。",
+          "text": "Now our love is forever."
+        },
+        {
+          "offset": "0x68ec",
+          "original": "に、虹野さん…。",
+          "text": "N-Nijino..."
+        },
+        {
+          "offset": "0x6900",
+          "original": "ご、ごめんなさい。\n忙しいのに、\nこんな所に呼び出したりして…。",
+          "text": "S-sorry.\nYou're busy, and\nI called you out here..."
+        },
+        {
+          "offset": "0x6940",
+          "original": "いや、いいよ。\n別に忙しくないから。",
+          "text": "No, it's fine.\nI'm not busy."
+        },
+        {
+          "offset": "0x6964",
+          "original": "あなたに、\nどうしても伝えたいことがあって、\nあんな手紙を出してしまったの。",
+          "text": "There was something\nI had to tell you,\nso I sent that letter."
+        },
+        {
+          "offset": "0x69b0",
+          "original": "手紙で、全てを伝えてもよかったけど、\nこの想いだけは、直接言いたかったから…。",
+          "text": "I could have written it all,\nbut I wanted to say this."
+        },
+        {
+          "offset": "0x6a00",
+          "original": "そ、そう…。",
+          "text": "I-I see..."
+        },
+        {
+          "offset": "0x6a10",
+          "original": "あなたは、知らないでしょうけど、\n私は、いつもあなたの事を見ていたわ。",
+          "text": "You probably didn't know,\nbut I always watched you."
+        },
+        {
+          "offset": "0x6a58",
+          "original": "そして、何事にも頑張って向かっていく\nその姿に、だんだん惹かれて…。",
+          "text": "And how you gave everything\nyour all slowly drew me in."
+        },
+        {
+          "offset": "0x6a9c",
+          "original": "私は、悩んだり、苦しいときには、\nいつもあなたの、\nひたむきな頑張りにはげまされて、",
+          "text": "When I was troubled or hurt,\nI was always cheered on\nby how hard you tried,"
+        },
+        {
+          "offset": "0x6af0",
+          "original": "どんなときでも、切り抜けてこれたわ。\nだから、今日も勇気を出せると思う。",
+          "text": "and I got through anything.\nSo I can be brave today."
+        },
+        {
+          "offset": "0x6b44",
+          "original": "私、料理ぐらいしかとりえはなくて、\n他には、何もできないし…。",
+          "text": "Cooking is all I'm good at,\nI can't do anything else..."
+        },
+        {
+          "offset": "0x6b84",
+          "original": "あなたにとって、迷惑かもしれないけど、\nもう、\nこれ以上自分の心に嘘はつけないから",
+          "text": "Maybe it's a bother to you,\nbut I just\ncan't lie to my heart,"
+        },
+        {
+          "offset": "0x6bd8",
+          "original": "この場で、はっきり言います。",
+          "text": "so I'll say it clearly."
+        },
+        {
+          "offset": "0x6bf8",
+          "original": "あなたが好きです。\nずっとあなただけを応援していきたい…。",
+          "text": "I love you.\nI'll cheer for only you..."
+        },
+        {
+          "offset": "0x6c34",
+          "original": "実はね、\n俺も、虹野さんが…。",
+          "text": "Actually,\nI love you too, Nijino..."
+        },
+        {
+          "offset": "0x6c54",
+          "original": "勇気を出してよかった…。\nやっぱり頑張れば、なんとかなるね。",
+          "text": "I'm glad I was brave...\nWith guts, things work out."
+        },
+        {
+          "offset": "0x6c90",
+          "original": "そ、そうだ。\n明日…、二人きりで、\n卒業記念のパーティーを開きたいな…。",
+          "text": "Oh, r-right.\nTomorrow... just us two,\nlet's have a party..."
+        },
+        {
+          "offset": "0x6cd8",
+          "original": "来てくれる？",
+          "text": "Will you come?"
+        },
+        {
+          "offset": "0x6ce8",
+          "original": "もちろん。\n喜んで。",
+          "text": "Of course.\nI'd love to."
+        },
+        {
+          "offset": "0x6cfc",
+          "original": "それじゃ、あなたの好きな料理教えてね。\n明日、たくさん作って待ってるから。",
+          "text": "Tell me your favorite foods.\nI'll make lots for you."
+        },
+        {
+          "offset": "0x700c",
+          "original": "あれっ、机の中に\n手紙が入ってるぞ。\n誰からだろう。",
+          "text": "Huh, there's a\nletter in my desk.\nWho's it from?"
+        },
+        {
+          "offset": "0x7040",
+          "original": "何々、\n「伝説の樹の下で、\n　待っています。」\n名前は、どこにも無いなぁ。",
+          "text": "Let's see...\n\"I'll be waiting\nunder the legendary tree.\"\nThere's no name anywhere."
+        },
+        {
+          "offset": "0x7088",
+          "original": "それじゃ、\n急いで行かなくちゃ。",
+          "text": "Then I'd\nbetter hurry."
+        },
+        {
+          "offset": "0x7118",
+          "original": "ゆ、{G}…。",
+          "text": "Y-{G}"
+        },
+        {
+          "offset": "0x7124",
+          "original": "ご、ごめんなさい。\nこんな所に呼び出しちゃったりして…。",
+          "text": "S-sorry.\nFor calling you out here..."
+        },
+        {
+          "offset": "0x715c",
+          "original": "いや、別にいいよ。",
+          "text": "No, it's fine."
+        },
+        {
+          "offset": "0x7170",
+          "original": "あのね。\n優美ね。\nずっと先輩と同じ学年に\nなりたかったんです。",
+          "text": "You know,\nYumi always\nwished she was in your\nyear, senpai."
+        },
+        {
+          "offset": "0x71b0",
+          "original": "同じ学年だったら、\n高校も３年間一緒にいられたし、\n修学旅行だって一緒に行けたのに…。",
+          "text": "In the same year, we'd have\nhad three years together,\nand the school trip, too..."
+        },
+        {
+          "offset": "0x7208",
+          "original": "どうして、お兄ちゃんの生まれるときに\n優美が生まれなかったのかなって…。\n何度も、泣いちゃった。",
+          "text": "Why wasn't Yumi born\nwhen my brother was...?\nI cried about it so often."
+        },
+        {
+          "offset": "0x7268",
+          "original": "優美ね。\n先輩の学年の女の人と比べたら、\n子供っぽくて、わがままだと思う。",
+          "text": "Yumi knows that next to\nthe girls in your year,\nshe's childish and selfish."
+        },
+        {
+          "offset": "0x72b4",
+          "original": "でも、子供っぽいのが嫌なら、\nもっと大人っぽくなるよう努力します。\nわがままも治します。",
+          "text": "But if you hate childish,\nI'll try to grow up more.\nAnd I'll stop being selfish."
+        },
+        {
+          "offset": "0x730c",
+          "original": "だから、\nお兄ちゃんの妹としてじゃなくて、\n一人の女の子として付き合って下さい。",
+          "text": "So please, not as\nmy brother's kid sister,\nbut as a girl, date me."
+        },
+        {
+          "offset": "0x735c",
+          "original": "だって、先輩が世界中の誰より大好きで、\n大好きでしかたがないから…。",
+          "text": "'Cause I love you, senpai,\nI just can't help it..."
+        },
+        {
+          "offset": "0x73a0",
+          "original": "実はね。\n俺も、{G}が…。",
+          "text": "Actually...\nI love you too, {G}"
+        },
+        {
+          "offset": "0x73b8",
+          "original": "ホントですか？\n年下でもいいんですか？",
+          "text": "Really?\nEven though I'm younger?"
+        },
+        {
+          "offset": "0x73e0",
+          "original": "当然だよ。\n好きだよ、{G}。",
+          "text": "Of course.\nI love you, {G}"
+        },
+        {
+          "offset": "0x73fc",
+          "original": "それじゃ、制服の第二ボタンを下さい。",
+          "text": "Then give me your button!"
+        },
+        {
+          "offset": "0x7424",
+          "original": "いいよ。\nはい。",
+          "text": "Sure.\nHere."
+        },
+        {
+          "offset": "0x7434",
+          "original": "ワーイ。\nこれをお守りにして、\nあと一年頑張ります。",
+          "text": "Yaaay!\nWith this as my charm,\nI'll make it one more year."
+        },
+        {
+          "offset": "0x7468",
+          "original": "卒業してからも、お兄ちゃんにでなく、\n優美に会うために\n家に遊びに来て下さいね。",
+          "text": "After you graduate, visit\nnot for my brother,\nbut to see Yumi, okay?"
+        },
+        {
+          "offset": "0x74b8",
+          "original": "そうじゃないと、優美寂しくて\n泣いちゃうから。",
+          "text": "Or else Yumi will get\nlonely and cry."
+        },
+        {
+          "offset": "0x74e8",
+          "original": "うん。\n必ず行くよ。",
+          "text": "Okay.\nI'll be there."
+        },
+        {
+          "offset": "0x74fc",
+          "original": "嬉しい。\n大好きです。\n先輩。",
+          "text": "Yay.\nI love you,\nsenpai."
+        },
+        {
+          "offset": "0x751c",
+          "original": "でも、結婚したら、\n好雄の弟になるのか…。",
+          "text": "But if we marry, I'll be\nYoshio's little brother..."
+        },
+        {
+          "offset": "0x780c",
+          "original": "{-？？？}すいません。",
+          "text": "{-???}Excuse me."
+        },
+        {
+          "offset": "0x7824",
+          "original": "あれ？\n伊集院家の、えっと…。",
+          "text": "Huh?\nFrom the Ijuin house, um..."
+        },
+        {
+          "offset": "0x7844",
+          "original": "外井雪之丞で、\nございます。",
+          "text": "Yukinojo Sotoi,\nat your service."
+        },
+        {
+          "offset": "0x7860",
+          "original": "伊集院なら、教室に…。",
+          "text": "Ijuin's in the classroom..."
+        },
+        {
+          "offset": "0x7878",
+          "original": "い、いえ…。\n実は貴方様に\n用がございまして…。",
+          "text": "N-no...\nIn fact, I have\nbusiness with you, sir..."
+        },
+        {
+          "offset": "0x78a8",
+          "original": "えっ？\n俺に？",
+          "text": "Huh?\nWith me?"
+        },
+        {
+          "offset": "0x78b8",
+          "original": "実は…。\n貴方様の事が…。",
+          "text": "In fact...\nI have feelings for..."
+        },
+        {
+          "offset": "0x78d4",
+          "original": "{-伊集院}やめるんだ、外井！",
+          "text": "{-Ijuin}Stop this, Sotoi!"
+        },
+        {
+          "offset": "0x78f0",
+          "original": "レ、レイ様…。",
+          "text": "M-Master Rei..."
+        },
+        {
+          "offset": "0x7920",
+          "original": "所詮それは、報われね恋だ…。\nお前の気持ちはわかるが、\n諦めろ…。",
+          "text": "That love can never be...\nI understand your feelings,\nbut give up..."
+        },
+        {
+          "offset": "0x7964",
+          "original": "{>外井}‥‥‥‥。",
+          "text": "{>Soto}......"
+        },
+        {
+          "offset": "0x7974",
+          "original": "うちの外井が失礼した。\n今日の事は忘れて\nくれたまえ。",
+          "text": "Pardon my man Sotoi.\nKindly forget\ntoday's events."
+        },
+        {
+          "offset": "0x79ac",
+          "original": "い、いいけど…。",
+          "text": "S-sure..."
+        },
+        {
+          "offset": "0x79c0",
+          "original": "さ、外井。\nもう帰るんだ。",
+          "text": "Come, Sotoi.\nWe're going home."
+        },
+        {
+          "offset": "0x79f0",
+          "original": "は、はい…。\nそ、それでは\n失礼いたします。",
+          "text": "Y-yes...\nW-well then,\nplease excuse me."
+        },
+        {
+          "offset": "0x7a20",
+          "original": "では、失礼するよ。",
+          "text": "Farewell, then."
+        },
+        {
+          "offset": "0x7a38",
+          "original": "びっくりしたー。\nしっかし、\n外井っていったい…。",
+          "text": "What a shock.\nSeriously,\nwhat's with Sotoi..."
+        },
+        {
+          "offset": "0x7cb8",
+          "original": "あっ、君は…。",
+          "text": "Oh, you're..."
+        },
+        {
+          "offset": "0x7cc8",
+          "original": "今まで、ごめんなさい。\n私、館林見晴っていいます。",
+          "text": "I'm sorry for everything.\nI'm Miharu Tatebayashi."
+        },
+        {
+          "offset": "0x7cfc",
+          "original": "こんな所に呼びだしたのは、\nあなたに、どうしても、\n言いたいことがあったから…。",
+          "text": "I called you here\nbecause there's something\nI really need to say..."
+        },
+        {
+          "offset": "0x7d4c",
+          "original": "言いたいことって、何？",
+          "text": "Something to say?"
+        },
+        {
+          "offset": "0x7d64",
+          "original": "私、今まであなたにぶつかっていたのは、\n偶然じゃないの。",
+          "text": "When I bumped into you,\nit wasn't by accident."
+        },
+        {
+          "offset": "0x7d9c",
+          "original": "そんなの、\n誰だってわかるよ。",
+          "text": "Anyone could\ntell that."
+        },
+        {
+          "offset": "0x7dbc",
+          "original": "そ、そう。",
+          "text": "O-oh."
+        },
+        {
+          "offset": "0x7dc8",
+          "original": "私、あなたに一目ぼれしちゃって、\nいつでも、あなたの事見てたの。",
+          "text": "It was love at first sight,\nand I always watched you."
+        },
+        {
+          "offset": "0x7e08",
+          "original": "それで、せめて顔だけでも\n覚えてもらいたくて、\nあんな事を…。\nごめんなさい。",
+          "text": "I wanted you to at least\nremember my face,\nso I did all that...\nI'm sorry."
+        },
+        {
+          "offset": "0x7e54",
+          "original": "そ、そう。\nそうだったのか…。",
+          "text": "O-oh.\nSo that's why..."
+        },
+        {
+          "offset": "0x7e74",
+          "original": "あの…。\nあんな事しておいて、何ですけど…。",
+          "text": "Um...\nAfter all that, but..."
+        },
+        {
+          "offset": "0x7ea0",
+          "original": "やっぱり、一目ぼれを信じます。\n私と付き合ってください。",
+          "text": "I believe in first sight.\nPlease go out with me."
+        },
+        {
+          "offset": "0x7ed8",
+          "original": "実は俺も{G}が、\n気になってたんだ。",
+          "text": "Actually, {G}\nI liked you too."
+        },
+        {
+          "offset": "0x7efc",
+          "original": "それじゃ、ＯＫなのね。\n嬉しいわ。",
+          "text": "Then it's a yes?\nI'm so happy."
+        },
+        {
+          "offset": "0x7f20",
+          "original": "お互いの事は、\nこれから知っていきましょう。",
+          "text": "Let's get to know\neach other from now on."
+        },
+        {
+          "offset": "0x7f4c",
+          "original": "そうだね。",
+          "text": "Yeah."
+        },
+        {
+          "offset": "0x8178",
+          "original": "よう。",
+          "text": "Yo."
+        },
+        {
+          "offset": "0x8180",
+          "original": "えっ？",
+          "text": "Huh?"
+        },
+        {
+          "offset": "0x8188",
+          "original": "あの…",
+          "text": "Um..."
+        },
+        {
+          "offset": "0x8190",
+          "original": "あっ。",
+          "text": "Oops."
+        },
+        {
+          "offset": "0x8198",
+          "original": "あっ。",
+          "text": "Oops."
+        }
+      ]
+    }
+  ]
+}

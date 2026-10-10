@@ -149,6 +149,8 @@ against the tested candidate when promotion should not change game bytes.
 
 | `translation/stage_shows.json` (BUNKA_SD.EXN, the festival's stage shows: 298 lines of speeches, plays and speaker labels as `bytes` patches from `tools/prefixed_lines.py`) | Verified in DuckStation on forced festival days (hidden emulator): Kintaro Samurai, Quiz Squadron Cultman, Romeo and Julietta, and Shiori's speech-contest speech, labels matching the unpatched play. **Checked only statically:** the other four speeches. |
 
+| `translation/ending.json` + `epilogue.json` + `ending_words.json` (all of `SERIFU/ENDING.BIN` and `EPILOG.BIN`, 522 strings; ENDING.EXN's words; the song lyrics stay Japanese) | Verified in DuckStation with `force_ending.py` for every girl, the special case and nobody (hidden emulator): the classroom lines, the letter, the player's lines at the tree, every epilogue with its name and career, the bad ending and the song title. The girls' confession lines are voice only in the original (no text drawn), so they are **checked only statically**. The save prompt after the credits is ETC.EXN (not yet translated). |
+
 Update this table when you verify something.
 
 ## Working in this environment (Windows dev box)

@@ -1184,6 +1184,18 @@ writes the festival day record. Batch scripts `.emu/fest_runs*.sh`
   right after the name ("Shiori「"): the label slots have no room for a
   space.
 
+### The ending (ENDING.BIN, EPILOG.BIN, 2026-10-11)
+
+`xmas_run.ps1 -Tool "tools/emu/force_ending.py G" -Presses 90 -Wait 1500
+-Keys Up -KeyList "C;C;C;C;C;C" -Hidden` (`.emu/end_runs3.sh`, runs
+`en00`–`en10`, `en12`, `en13`): six presses through the classroom, then
+`Up` (which advances nothing) with a shot every 1.5 s, because the tree
+scene and the epilogue advance by themselves. The review sheets crop to
+the dialogue box, so these runs are reviewed with full screenshots
+(scratchpad `endsheet.py`: drops near-identical frames, three per row).
+`eu00`/`eut` were the unpatched Shiori run and an `add_text` trace
+(`--trace`): the girls' lines at the tree are never drawn.
+
 ### Tools for the whole-game loop (2026-10-10)
 
 The per-file loop in NEXT_STEPS.md uses these (details in each docstring):

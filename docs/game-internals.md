@@ -2361,6 +2361,33 @@ original disc (sum `0x9467`, trailer `0x9584`), so `has_checksum` is
 false and the patcher leaves the trailer alone; the game loads the
 patched file fine (runs `fb0`–`fb5`).
 
+### 6ac. The ending (ENDING.EXN, ENDING.BIN, EPILOG.BIN)
+
+Found 2026-10-11 with `tools/emu/force_ending.py` (state 0x63 from the
+Sunday state).
+
+**Who waits.** ENDING.EXN sets the girl byte `0x800E71DF` to 13 (nobody),
+then 12 in a special case (a score at `sp+0x58` under 500, `0x800E66EB`
+≥ 70 and `0x800E683B` == 2), else the met girl (bit of `0x800E6448 +
+0x38·g + 0x1C8`) with the highest score above 499 (`0x801331B0`–). The
+result is read back at `0x80133224`; `force_ending.py` overwrites it
+there. 13 plays Yoshio's "shall we go home?" and the bad epilogue over the
+player's room, then the song (title in place at `0xA260`, lyrics from
+`0xAC48` and `TARA_OBJ/KARAKASI.BIN`, left in Japanese), the credits and
+ETC.EXN's save prompt.
+
+**What is drawn.** The classroom part uses the normal dialogue box. At
+the tree, text is drawn straight over the art and **only the player's
+lines appear**; the girls' confessions (codes `0C`/`0D`/`0F`, up to 20
+full-width characters a line) play as voice only, unpatched as well
+(voice mode `0x800E62BC` makes no difference: ENDING.EXN never reads it).
+Their English is kept within 28 cells anyway. ENDING.BIN is also loaded
+by OPTION.EXN (`0x8013878C`, the Extras "Ending" replay).
+
+**Epilogue** (EPILOG.BIN): a narrow column (about 22 cells) scrolling
+over the tree art, with the girl's name and ENDING.EXN's career words
+(`{M}`) inserted.
+
 ## 7. Graphics
 
 ### General
