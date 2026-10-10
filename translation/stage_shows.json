@@ -1,0 +1,2091 @@
+{
+ "description": "The culture festival's stage shows in BUNKA_SD.EXN (state 0x80): the five speech-contest speeches with their titles and speaker names, the Drama Club's plays Kintaro Samurai, Romeo and Julietta and Quiz Squadron Cultman, and their speaker labels (298 lines). Each line is a `bytes` patch made by tools/prefixed_lines.py from extracted/tables/BUNKA_SD.json: the prefix byte (' ' more lines, 'g' end of page, 'E' end of show) kept raw, the English pair-encoded in the line's own room, trailing full-width spaces kept as far as they fit (game-internals 6ab). The blank pause lines stay. Verified in DuckStation on forced festival days (force_festival.py --club 1 --year 0/1/2, --club 0 --year 2; hidden emulator; testing.md 'The culture festival'): all three plays and Shiori's speech. Checked only statically: the other four speeches.",
+ "bytes": [
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7910",
+   "original": "2093fc8a7782b582c482a982e7814100",
+   "replacement": "20d4e8f2e5e5a0f9e5e1f2f3a0000000",
+   "comment": "入学してから、 -> Three years"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7920",
+   "original": "20918182a282e082cc82c58252944e82cc8c8e93fa82aa00",
+   "replacement": "20e8e1f6e5a0e1ecf2e5e1e4f9a0e6eceff7eea0e2f9a000",
+   "comment": "早いもので３年の月日が -> have already flown by"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7938",
+   "original": "6797ac82ea82e682a482c682b582c482a282dc82b7814281408140814000",
+   "replacement": "67f3e9eee3e5a0c9a0f3f4e1f2f4e5e4a0e8e5f2e5aea081408140814000",
+   "comment": "流れようとしています。　　　 -> since I started here."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7958",
+   "original": "2095d78bad82c98358837c815b8363814181408140814000",
+   "replacement": "20d3f4f5e4e9e5f3aca0f3f0eff2f4f3ac81408140814000",
+   "comment": "勉強にスポーツ、　　　 -> Studies, sports,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7970",
+   "original": "20834e838983758a8893ae93998141814081408140814000",
+   "replacement": "20e3ecf5e2a0e1e3f4e9f6e9f4e9e5f3aeaeae8140814000",
+   "comment": "クラブ活動等、　　　　 -> club activities..."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7988",
+   "original": "2082c682c482e08f5b8ec082b582bd00",
+   "replacement": "20c9a0f3f0e5eef4a0f4f2f5ecf9a000",
+   "comment": "とても充実した -> I spent truly"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7998",
+   "original": "6793fa815882f0919782e882dc82b582bd814281408140814000",
+   "replacement": "67e6f5ece6e9ecece9eee7a0e4e1f9f3ae814081408140000000",
+   "comment": "日々を送りました。　　　 -> fulfilling days."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x79b4",
+   "original": "2082b582a982b5814188ea82c282be82af00",
+   "replacement": "20c2f5f4a0f4e8e5f2e5a7f3a0efeee5a000",
+   "comment": "しかし、一つだけ -> But there's one"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x79c8",
+   "original": "6790538e6382e882c882b182c682aa82a082e882dc82b7814281408140814000",
+   "replacement": "67f4e8e9eee7a0c9a0f2e5e7f2e5f4aea0814081408140000000000000000000",
+   "comment": "心残りなことがあります。　　　 -> thing I regret."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x79e8",
+   "original": "2082bb82ea82cd81419166934782c8926a90ab82c900",
+   "replacement": "20c9a0eee5f6e5f2a0e7eff4a0f4efa0ede5e5f4a000",
+   "comment": "それは、素敵な男性に -> I never got to meet"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7a00",
+   "original": "678f8482e88d8782a682c882a982c182bd8e9682c582b7814281408140814000",
+   "replacement": "67e1a0f7efeee4e5f2e6f5eca0e2eff9ae814081408140000000000000000000",
+   "comment": "巡り合えなかった事です。　　　 -> a wonderful boy."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7a20",
+   "original": "2091b28bc682dc82c582a082c682ed82b882a981418140814081408140814000",
+   "replacement": "20c7f2e1e4f5e1f4e9efeea0e9f3a0eee5e1f2aca08140814081408140814000",
+   "comment": "卒業まであとわずか、　　　　　 -> Graduation is near,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7a40",
+   "original": "2082ab82c182c69166934782c8906c82aa00",
+   "replacement": "20e2f5f4a0c9a0e2e5ece9e5f6e5a0e1a000",
+   "comment": "きっと素敵な人が -> but I believe a"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7a54",
+   "original": "678cbb82ea82e982c6904d82b682c482a282dc82b78142814081408140000000",
+   "replacement": "67f7efeee4e5f2e6f5eca0e2eff9a0f7e9ececa0e3efede5ae81408140814000",
+   "comment": "現れると信じています。　　　 -> wonderful boy will come."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7a74",
+   "original": "2082bb82b582c4814100",
+   "replacement": "20c1eee4a0f4e8e5ee00",
+   "comment": "そして、 -> And then"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7a80",
+   "original": "2082b182cc8a778d5a82c9936082ed82e9936090e082f0814100",
+   "replacement": "20c9a7ececa0e6f5ece6e9ececa0f4e8e5a0ece5e7e5eee4a000",
+   "comment": "この学校に伝わる伝説を、 -> I'll fulfill the legend"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7a9c",
+   "original": "4590ac82b5908b82b082e682a482c68e7682a282dc82b7814281408140814000",
+   "replacement": "45efe6a0f4e8e9f3a0f3e3e8efefecaea0814081408140000000000000000000",
+   "comment": "成し遂げようと思います。　　　 -> of this school."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7abc",
+   "original": "208e8482cd8fac82b382a28da082a982e7814100",
+   "replacement": "20d3e9eee3e5a0c9a0f7e1f3a0ece9f4f4ece500",
+   "comment": "私は小さい頃から、 -> Since I was little"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7ad0",
+   "original": "67906791cc82aa8ee382ad814181408140814000",
+   "replacement": "67c9a7f6e5a0e2e5e5eea0e6f2e1e9ecae814000",
+   "comment": "身体が弱く、　　　 -> I've been frail."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7ae4",
+   "original": "208c8382b582a2895e93ae82f082b582bd82e882b782e982c6814100",
+   "replacement": "20c9e6a0c9a0e5f8e5f2e3e9f3e5a0e8e1f2e4aca000000000000000",
+   "comment": "激しい運動をしたりすると、 -> If I exercise hard,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7b00",
+   "original": "2082b782ae82c98141000000",
+   "replacement": "20f2e9e7e8f4a0e1f7e1f900",
+   "comment": "すぐに、 -> right away"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7b0c",
+   "original": "67956e8c8c82c5937c82ea82c482b582dc82a482cc82c582b7814281408140814000",
+   "replacement": "67c9a0e6e1e9eef4a0e6f2efeda0e1eee5ede9e1ae81408140814000000000000000",
+   "comment": "貧血で倒れてしまうのです。　　　 -> I faint from anemia."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7b30",
+   "original": "2082c582b782a982e781419746924282e0814100",
+   "replacement": "20d3efa0c9a0e4efeea7f4a0e8e1f6e5a0000000",
+   "comment": "ですから、友達も、 -> So I don't have"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7b44",
+   "original": "6782a082dc82e891bd82ad82a082e882dc82b982f1814281408140814000",
+   "replacement": "67f6e5f2f9a0ede1eef9a0e6f2e9e5eee4f3ae8140814081400000000000",
+   "comment": "あまり多くありません。　　　 -> very many friends."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7b64",
+   "original": "2093c78f9182f082b782e982b182c682aa814100",
+   "replacement": "20d2e5e1e4e9eee7a0e8e1f3a0e2e5e5ee000000",
+   "comment": "読書をすることが、 -> Reading has been"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7b78",
+   "original": "208e8482c982c682c182c4814100",
+   "replacement": "20e6eff2a0ede500000000000000",
+   "comment": "私にとって、 -> for me"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7b88",
+   "original": "67974288ea82cc8eef96a182c582b582bd814281408140814000",
+   "replacement": "67edf9a0efeeecf9a0e8efe2e2f9ae8140814081400000000000",
+   "comment": "唯一の趣味でした。　　　 -> my only hobby."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7ba4",
+   "original": "2082b582a982b5814182b182ea82a982e782e0814100",
+   "replacement": "20c2f5f4a0e6f2efeda0eeeff7a0efeeac0000000000",
+   "comment": "しかし、これからも、 -> But from now on,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7bbc",
+   "original": "6782b182ea82c9958982af82e982b182c682c882ad814181408140814000",
+   "replacement": "67f7e9f4e8eff5f4a0eceff3e9eee7a0f4efa0e9f4aca081408140814000",
+   "comment": "これに負けることなく、　　　 -> without losing to it,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7bdc",
+   "original": "20956e8c8c82c68ba482c9814195e082f182c58d7382b182a482c600",
+   "replacement": "20c9a7ececa0f7e1eceba0efeea0f4efe7e5f4e8e5f2a00000000000",
+   "comment": "貧血と共に、歩んで行こうと -> I'll walk on together"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7bf8",
+   "original": "458e7682c182c482a282dc82b78142814081408140000000",
+   "replacement": "45f7e9f4e8a0edf9a0e1eee5ede9e1aea081408140814000",
+   "comment": "思っています。　　　 -> with my anemia."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7c10",
+   "original": "2093fc8a7782b582c482a982e781418140814000",
+   "replacement": "20d3e9eee3e5a0c9a0e5eef2efecece5e4aca000",
+   "comment": "入学してから、　　 -> Since I enrolled,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7c24",
+   "original": "2082a082c182c682a282a48ad482c98140814000",
+   "replacement": "20e9eea0e1a0e6ece1f3e8aca081408140000000",
+   "comment": "あっという間に　　 -> in a flash,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7c38",
+   "original": "208252944e82c682a282a48c8e93fa82aa814000",
+   "replacement": "20f4e8f2e5e5a0f9e5e1f2f3a0e8e1f6e5814000",
+   "comment": "３年という月日が　 -> three years have"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7c4c",
+   "original": "6797ac82ea82e682a482c682b582c482a282dc82b78142814081408140814081408140814000",
+   "replacement": "67eee5e1f2ecf9a0e7efeee5a0e2f9aea0814081408140814081408140814000000000000000",
+   "comment": "流れようとしています。　　　　　　　 -> nearly gone by."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7c74",
+   "original": "208f9782cc8e7182c9905582e88cfc82a282c4814000",
+   "replacement": "20d4efa0e7e5f4a0f4e8e5a0e7e9f2ecf38140000000",
+   "comment": "女の子に振り向いて　 -> To get the girls"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7c8c",
+   "original": "2082e082e782a482bd82df82c98140814081408140000000",
+   "replacement": "20f4efa0eeeff4e9e3e5a0ede5aca0814081408140814000",
+   "comment": "もらうために　　　　 -> to notice me,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7ca4",
+   "original": "2095d78bad82c98358837c815b8363814181408140814000",
+   "replacement": "20f3f4f5e4e9e5f3aca0f3f0eff2f4f3ac81408140814000",
+   "comment": "勉強にスポーツ、　　　 -> studies, sports,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7cbc",
+   "original": "2082a882b582e182ea81418fee95f18e8f836083468362834e00",
+   "replacement": "20e6e1f3e8e9efeeaca0ede1e7e1fae9eee5f3aeaeaea0000000",
+   "comment": "おしゃれ、情報誌チェック -> fashion, magazines..."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7cd8",
+   "original": "20937797cd82f082a882b582dd82c882ad81418140814000",
+   "replacement": "20f3f0e1f2e9eee7a0eeefa0e5e6e6eff2f4ac8140814000",
+   "comment": "努力をおしみなく、　　 -> sparing no effort,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7cf0",
+   "original": "679046815882c882b182c682f082e282e882dc82b582bd8142814081408140814081408140814000",
+   "replacement": "67c9a0f4f2e9e5e4a0e5f6e5f2f9f4e8e9eee7aea081408140814081408140814081400000000000",
+   "comment": "色々なことをやりました。　　　　　　　 -> I tried everything."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7d18",
+   "original": "2082b582a982b581418dc58ce382cc96da934982f000",
+   "replacement": "20c2f5f4a0f5eef4e9eca0c9a0f2e5e1e3e8a0000000",
+   "comment": "しかし、最後の目的を -> But until I reach"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7d30",
+   "original": "2090ac8f4182b782e982dc82c582cd81418140814000",
+   "replacement": "20edf9a0e6e9eee1eca0e7efe1ecac81408140000000",
+   "comment": "成就するまでは、　　 -> my final goal,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7d48",
+   "original": "67966c82cd8c8882b582c482a082ab82e782df82dc82b982f18142814081408140814081408140814000",
+   "replacement": "67c9a7ececa0eee5f6e5f2a0e7e9f6e5a0f5f0aea0814081408140814081408140814000000000000000",
+   "comment": "僕は決してあきらめません。　　　　　　　 -> I'll never give up."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7d74",
+   "original": "2089bd937882c582e0814189bd937882c582e08140814000",
+   "replacement": "20c1e7e1e9eea0e1eee4a0e1e7e1e9eea081408140000000",
+   "comment": "何度でも、何度でも　　 -> Again and again"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7d8c",
+   "original": "2083608383838c8393835782b782e982c282e082e882c582b7814200",
+   "replacement": "20c9a7ececa0ebe5e5f0a0efeea0f4f2f9e9eee7ae00000000000000",
+   "comment": "チャレンジするつもりです。 -> I'll keep on trying."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7da8",
+   "original": "2082bb82b582c48141954b82b8918d82c482cc8140814000",
+   "replacement": "20c1eee4a0c9a7ececa0f3f5f2e5ecf9a0f3e5e5a0814000",
+   "comment": "そして、必ず総ての　　 -> And I'll surely see"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7dc0",
+   "original": "2083478393836683428393834f82f000",
+   "replacement": "20e5f6e5f2f9a0e5eee4e9eee7000000",
+   "comment": "エンディングを -> every ending"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7dd0",
+   "original": "458ca982e982b182c682c582b582e582a48142814081408140814081408140814000",
+   "replacement": "45f4e8e5f2e5a0e9f3aea08140814081408140814081408140000000000000000000",
+   "comment": "見ることでしょう。　　　　　　　 -> there is."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7df4",
+   "original": "20966c82cd96bc914f82e082e082e782a682c882a2814100",
+   "replacement": "20c9a7eda0e1a0f3e1e4a0e7f5f9a0f7e8efa00000000000",
+   "comment": "僕は名前ももらえない、 -> I'm a sad guy who"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7e0c",
+   "original": "6794df82b582a2937a82c582b78142814081408140000000",
+   "replacement": "67eee5f6e5f2a0e7eff4a0e1a0eee1ede5aea08140814000",
+   "comment": "悲しい奴です。　　　 -> never got a name."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7e24",
+   "original": "2082b182f182c88f8a82c982b582a900",
+   "replacement": "20d4e8e9f3a0e9f3a0f4e8e5a0000000",
+   "comment": "こんな所にしか -> This is the"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7e34",
+   "original": "67936f8fea82c582ab82dc82b982f1814281408140814000",
+   "replacement": "67efeeecf9a0f0ece1e3e5a0c9a0e1f0f0e5e1f2ae814000",
+   "comment": "登場できません。　　　 -> only place I appear."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7e4c",
+   "original": "2082c582e08141966c82cd814182b182ea82a982e782e0814100",
+   "replacement": "20c2f5f4a0e6f2efeda0eeeff7a0efeeaca0f4efefaca0000000",
+   "comment": "でも、僕は、これからも、 -> But from now on, too,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7e68",
+   "original": "2096be82e982ad90b682ab82c482a282b182a482c600",
+   "replacement": "20c9a7ececa0e7efa0efeea0ece9f6e9eee7a0000000",
+   "comment": "明るく生きていこうと -> I'll go on living"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7e80",
+   "original": "458e7682a282dc82b78142814081408140000000",
+   "replacement": "45e3e8e5e5f2e6f5ececf9aea081408140814000",
+   "comment": "思います。　　　 -> cheerfully."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7e94",
+   "original": "208e8482cd814182a282c282e0894282ea82c400",
+   "replacement": "20c9a0e1ecf7e1f9f3a0f3e5e3f2e5f4ecf9a000",
+   "comment": "私は、いつも隠れて -> I always secretly"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7ea8",
+   "original": "67926a82cc8e7182f08ca982c482a282dc82b7814281408140814000",
+   "replacement": "67f7e1f4e3e8a0f4e8e5a0e2eff9f3aea08140814081400000000000",
+   "comment": "男の子を見ています。　　　 -> watch the boys."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7ec4",
+   "original": "2082ab82c182c682a282c282a9905582e88cfc82a282c400",
+   "replacement": "20c9a0e2e5ece9e5f6e5a0efeee5a0e4e1f9a00000000000",
+   "comment": "きっといつか振り向いて -> I believe one day"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7edc",
+   "original": "2082ad82ea82e982c6904d82b682c482a282dc82b7814200",
+   "replacement": "20f4e8e5f9a7ececa0eeeff4e9e3e5a0ede5ae0000000000",
+   "comment": "くれると信じています。 -> they'll notice me."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7ef4",
+   "original": "4589bd8f8882a982c982a282e98e8482f0925482b582c482cb814281408140814000",
+   "replacement": "45c3efede5a0e6e9eee4a0ede5a0f3efede5f7e8e5f2e5aea0814081408140000000",
+   "comment": "何処かにいる私を探してね。　　　 -> Come find me somewhere."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7f18",
+   "original": "91e896da000000",
+   "replacement": "d4eff0e9e3a000",
+   "comment": "題目 -> Topic"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7f20",
+   "original": "8175966c82cc8d828d5a90b68a888176000000",
+   "replacement": "8175cdf9a0d3e3e8efefeca0cce9e6e5817600",
+   "comment": "「僕の高校生活」 -> 「My School Life」"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7f34",
+   "original": "8175966c82cc91b68ddd817600",
+   "replacement": "8175c9a0c5f8e9f3f4a0817600",
+   "comment": "「僕の存在」 -> 「I Exist」"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7f44",
+   "original": "81758d828d5a90b68a8882f0905582e895d482c182c48176000000",
+   "replacement": "8175ccefefebe9eee7a0c2e1e3eba0efeea0d3e3e8efefec817600",
+   "comment": "「高校生活を振り返って」 -> 「Looking Back on School」"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7f60",
+   "original": "8175956e8c8c82c68e848176000000",
+   "replacement": "8175cdf9a0c1eee5ede9e1a0817600",
+   "comment": "「貧血と私」 -> 「My Anemia」"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7f70",
+   "original": "817593cd82af8e8482cc917a82a28176000000",
+   "replacement": "8175c8e5e1f2a0cdf9a0c8e5e1f2f4a0817600",
+   "comment": "「届け私の想い」 -> 「Hear My Heart」"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7f88",
+   "original": "95d98140985f8ed200",
+   "replacement": "cff2e1f4eff2000000",
+   "comment": "弁　論者 -> Orator"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7f94",
+   "original": "93a18de881408e8d904400",
+   "replacement": "d3aec6f5eae9f3e1ebe900",
+   "comment": "藤崎　詩織 -> S.Fujisaki"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7fa0",
+   "original": "94408c8e814096a28f8f00",
+   "replacement": "cdaecbe9f3e1f2e1e7e900",
+   "comment": "如月　未緒 -> M.Kisaragi"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7fac",
+   "original": "8f9790b6936b00",
+   "replacement": "c7e9f2ec000000",
+   "comment": "女生徒 -> Girl"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7fb4",
+   "original": "95d9985f8ed200",
+   "replacement": "cff2e1f4eff200",
+   "comment": "弁論者 -> Orator"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7fbc",
+   "original": "93a18de8000000",
+   "replacement": "d3e8e9eff2e900",
+   "comment": "藤崎 -> Shiori"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7fc4",
+   "original": "94408c8e00",
+   "replacement": "cde9efa000",
+   "comment": "如月 -> Mio"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x7fcc",
+   "original": "8f9790b6936b00",
+   "replacement": "c7e9f2ec000000",
+   "comment": "女生徒 -> Girl"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8090",
+   "original": "2082b182cc82bd82d182cd8141814081408140814081408140000000",
+   "replacement": "20cfeea0f4e8e9f3a0efe3e3e1f3e9efeeaca0814081408140814000",
+   "comment": "このたびは、　　　　　　 -> On this occasion,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x80ac",
+   "original": "2082a895f28d73976c82cc82a882cd82a982e782a2814100",
+   "replacement": "20e6eff2a0f9eff5f2a0ebe9eee4a0e6e1f6eff2ac000000",
+   "comment": "お奉行様のおはからい、 -> for your kind favor,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x80c4",
+   "original": "6790bd82c982a082e882aa82c682a482b282b482a282dc82b582bd814200",
+   "replacement": "67c9a0f4e8e1eeeba0f9eff5a0e4e5e5f0ecf9aea0000000000000000000",
+   "comment": "誠にありがとうございました。 -> I thank you deeply."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x80e4",
+   "original": "2082c882c982c882c98141814081408140000000",
+   "replacement": "20cfe8aca0e3efede5a0eeeff7aca08140814000",
+   "comment": "なになに、　　　 -> Oh, come now,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x80f8",
+   "original": "6782a082cc82e682a482c882b182c691a28dec82e082c882a28e96814200",
+   "replacement": "67f4e8e1f4a0f7e1f3a0eeefa0f4f2eff5e2ece5a0e1f4a0e1ececaea000",
+   "comment": "あのようなこと造作もない事。 -> that was no trouble at all."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8118",
+   "original": "2082bb82ea82e682e88141897a8ce389ae82b182bb814181408140814081408140000000",
+   "replacement": "20cdeff2e5a0f4efa0f4e8e5a0f0efe9eef4aca0c5e3e8e9e7eff9e1ac81408140814000",
+   "comment": "それより、越後屋こそ、　　　　　 -> More to the point, Echigoya,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x813c",
+   "original": "208ed7968282c888c990a889ae82aa82a282c882ad82c882e881418140814081408140814000",
+   "replacement": "20f7e9f4e8a0f4e8e1f4a0f0e5f3f4a0c9f3e5f9e1a0e7efeee5ac8140814081408140814000",
+   "comment": "邪魔な伊勢屋がいなくなり、　　　　　 -> with that pest Iseya gone,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8164",
+   "original": "208fe395fb82cc8dde96d88fa482a282f088ea8ee882c981408140814081408140000000",
+   "replacement": "20f9eff5a7ececa0e8e1f6e5a0f4e8e5a0f4e9ede2e5f2a0f4f2e1e4e581408140814000",
+   "comment": "上方の材木商いを一手に　　　　　 -> you'll have the timber trade"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8188",
+   "original": "2088f882ab8ef382af82e782ea82e9976c82c982c882e982c682cd81418140814081408140814000",
+   "replacement": "20efe6a0cbe1ede9e7e1f4e1a0e1ececa0f4efa0f9eff5f2f3e5ece6ae8140814081408140814000",
+   "comment": "引き受けられる様になるとは、　　　　　 -> of Kamigata all to yourself."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x81b0",
+   "original": "6782bb82bf82e082c882a982c882a982cc88ab82e682cc82a4814200",
+   "replacement": "67d9eff5a7f2e5a0f1f5e9f4e5a0f4e8e5a0f6e9ecece1e9eeaea000",
+   "comment": "そちもなかなかの悪よのう。 -> You're quite the villain."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x81cc",
+   "original": "2082a282a682a282a6814182bb82ea82e082b182ea82e000",
+   "replacement": "20ceefaca0eeefaca0e1ececa0efe6a0f4e8e9f3a0000000",
+   "comment": "いえいえ、それもこれも -> No, no, all of this"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x81e4",
+   "original": "2082b782d782c482a895f28d73976c82cc82a882b582b182dd82c500",
+   "replacement": "20e9f3a0e2f9a0f9eff5f2a0e7efefe4a0e7f2e1e3e5ac0000000000",
+   "comment": "すべてお奉行様のおしこみで -> is by your good grace,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8200",
+   "original": "6782b282b482a282dc82b7814200",
+   "replacement": "67edf9a0eceff2e4ae0000000000",
+   "comment": "ございます。 -> my lord."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8210",
+   "original": "2082c282ab82dc82b582c482cd814182a897e782cc9569814100",
+   "replacement": "20c1f3a0e1a0f4efebe5eea0efe6a0f4e8e1eeebf3aca0000000",
+   "comment": "つきましては、お礼の品、 -> As a token of thanks,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x822c",
+   "original": "2093ec94d8936e978882cc834a835883658343838982c500",
+   "replacement": "20e3e1f3f4e5ecece1a0e3e1ebe5a0e6f2efed0000000000",
+   "comment": "南蛮渡来のカステイラで -> castella cake from"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8244",
+   "original": "6782b282b482a282dc82b7814200",
+   "replacement": "67e1e2f2efe1e4aca0f3e9f2ae00",
+   "comment": "ございます。 -> abroad, sir."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8254",
+   "original": "2082d982a481498140814081408140814000",
+   "replacement": "20cfe8efa181408140814081408140000000",
+   "comment": "ほう！　　　　　 -> Oho!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8268",
+   "original": "2082ed82b582cd82b182cc89a98be0904682cc89d98e7182c982cd00",
+   "replacement": "20c9a0e3e1eea0eee5f6e5f2a0f2e5f3e9f3f4000000000000000000",
+   "comment": "わしはこの黄金色の菓子には -> I can never resist"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8284",
+   "original": "6796da82aa96b382ad82c482c8814900",
+   "replacement": "67e7efece4e5eea0f3f7e5e5f4f3a100",
+   "comment": "目が無くてな！ -> golden sweets!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8294",
+   "original": "2082cd82c182cd82c182cd82c182cd82c182cd814900",
+   "replacement": "20c8e1e8e1e8e1e8e1e8e1e8e1a1a000000000000000",
+   "comment": "はっはっはっはっは！ -> Hahahahahaha!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x82ac",
+   "original": "6782d982c182d982c182d982c182d982c182d9814900",
+   "replacement": "67c8efe8efe8efe8efe8efe8efa1a000000000000000",
+   "comment": "ほっほっほっほっほ！ -> Hohohohohoho!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x82c4",
+   "original": "2082bb82ea82c68141000000",
+   "replacement": "20c1eee4a0e1ecf3efaca000",
+   "comment": "それと、 -> And also,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x82d0",
+   "original": "2082e082a488ea82c297d782cc959489ae814181408140814081408140000000",
+   "replacement": "20e9eea0f4e8e5a0eee5f8f4a0f2efefeda0eff6e5f2ac814081408140814000",
+   "comment": "もう一つ隣の部屋、　　　　　 -> in the next room over,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x82f0",
+   "original": "2093fa967b906c8c6082aa977088d382b582c400",
+   "replacement": "20e1a0cae1f0e1eee5f3e5a0e4efececa0000000",
+   "comment": "日本人形が用意して -> a Japanese doll"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8304",
+   "original": "2082b282b482a282dc82b782e482a6814181408140814000",
+   "replacement": "20e1f7e1e9f4f3a0f9eff5aca08140814081400000000000",
+   "comment": "ございますゆえ、　　　 -> awaits you,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x831c",
+   "original": "678ce491b695aa82c982b28aac945c89ba82b382a282dc82b5814200",
+   "replacement": "67f3efa0e5eeeaeff9a0e8e5f2a0e6f5ececf9aea000000000000000",
+   "comment": "御存分にご堪能下さいまし。 -> so enjoy her fully."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8338",
+   "original": "20897a8ce389ae82c181498140814081408140814000",
+   "replacement": "20c5e3e8e9e7eff9e1a1a08140814081408140814000",
+   "comment": "越後屋っ！　　　　　 -> Echigoya!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8350",
+   "original": "2082b182ea82cd82c882a982c882a98140814000",
+   "replacement": "20d7e8e1f4a0e1a0eceff6e5ecf9a08140814000",
+   "comment": "これはなかなか　　 -> What a lovely"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8364",
+   "original": "6794fc8c6082c893fa967b906c8c6082b682e182c8814200",
+   "replacement": "67cae1f0e1eee5f3e5a0e4efececa0f4e8e9f3a0e9f3ae00",
+   "comment": "美形な日本人形じゃな。 -> Japanese doll this is."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x837c",
+   "original": "2082c7816082ea8141814081408140814081408140814000",
+   "replacement": "20d7e5e5e5ececaca0814081408140814081408140814000",
+   "comment": "ど～れ、　　　　　　　 -> Weeell,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8394",
+   "original": "2082d082c682c289c288a482aa82c182c482e282e982a982c8814200",
+   "replacement": "20ece5f4a0ede5a0f0e5f4a0e8e5f2a0e1a0e2e9f4aea00000000000",
+   "comment": "ひとつ可愛がってやるかな。 -> let me pet her a bit."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x83b0",
+   "original": "6782a482a282e282c2814182a482a282e282c28142000000",
+   "replacement": "67d9eff5a0e3f5f4e5a0ece9f4f4ece5a0f4e8e9eee7ae00",
+   "comment": "ういやつ、ういやつ。 -> You cute little thing."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x83c8",
+   "original": "2082bb816082ea81418e9e91e38c8096bc95a881418140814081408140000000",
+   "replacement": "20c1eee4a0eeeff7aca0f4e8e5a0f0e5f2e9efe4ade4f2e1ede1a08140814000",
+   "comment": "そ～れ、時代劇名物、　　　　 -> And now, the period-drama"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x83e8",
+   "original": "6790b696ba8352837d977882e882b682e181608149000000",
+   "replacement": "67e3ece1f3f3e9e3baa0f4e8e5a0efe2e9a0f3f0e9eea100",
+   "comment": "生娘コマ踊りじゃ～！ -> classic: the obi spin!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8400",
+   "original": "6782c882c1814182c882c9937a82b682e1814900",
+   "replacement": "67d7e8adf7e8efa0e7efe5f3a0f4e8e5f2e5a100",
+   "comment": "なっ、なに奴じゃ！ -> Wh-who goes there!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8414",
+   "original": "6782dc82b382a982e882a982c282a282c58be091be98598149000000",
+   "replacement": "67c1f8e5a0efeea0e8e9f3a0e2e1e3ebaca0cbe9eef4e1f2efa1a000",
+   "comment": "まさかりかついで金太郎！ -> Axe on his back, Kintaro!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8430",
+   "original": "208be091be98598160814881408140814081408140814081408140814000",
+   "replacement": "20cbe9eef4e1f2efbf814081408140814081408140814081408140000000",
+   "comment": "金太郎～？　　　　　　　　　 -> Kintaro?"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8450",
+   "original": "2082d382b482af82bd937a82b682e181418140814081408140814000",
+   "replacement": "20d7e8e1f4a0e1a0eaefebe5ae814081408140814081400000000000",
+   "comment": "ふざけた奴じゃ、　　　　　 -> What a joke."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x846c",
+   "original": "2082b182b182c982a882ed82b782a895fb82f000",
+   "replacement": "20c4efa0f9eff5a0ebeeeff7a0f7e8efa0000000",
+   "comment": "ここにおわすお方を -> Do you know who"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8480",
+   "original": "6782c782c882bd82c6905393be82c482a882e9814900",
+   "replacement": "67f3f4e1eee4f3a0e2e5e6eff2e5a0f9eff5bf000000",
+   "comment": "どなたと心得ておる！ -> stands before you?"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8498",
+   "original": "208aa892e895f28d73814191e58bb491e4915081498140814081408140814000",
+   "replacement": "20d4f2e5e1f3f5f2e5f2a0d4e1e9fae5eea0cfe8e1f3e8e9a181408140814000",
+   "comment": "勘定奉行、大橋台善！　　　　　 -> Treasurer Taizen Ohashi!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x84b8",
+   "original": "20975d82cc8ae781418140814081408140814000",
+   "replacement": "20d9eff5a0e3e1eea7f4a0f3e1f9a08140814000",
+   "comment": "余の顔、　　　　　 -> You can't say"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x84cc",
+   "original": "67965982ea82bd82c682cd895d82ed82b382ca82bc814900",
+   "replacement": "67f9eff5a0e6eff2e7eff4a0edf9a0e6e1e3e5a1a0000000",
+   "comment": "忘れたとは云わさぬぞ！ -> you forgot my face!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x84e4",
+   "original": "2082cd82c181458145814582a482c18145814581458140814081408140814000",
+   "replacement": "20c8e1aeaeaea0f5e8aeaeaea081408140814081408140000000000000000000",
+   "comment": "はっ・・・うっ・・・　　　　　 -> Ha... uh..."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8504",
+   "original": "208fe3976c815b82c1814982cd82cd829f8160814200",
+   "replacement": "20d4e8e5a0d3e8efe7f5eea1a0c8e1e1e1a1a0000000",
+   "comment": "上様ーっ！ははぁ～。 -> The Shogun! Haaa!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x851c",
+   "original": "6782a682c1814882cd814182cd82cd829f8160814200",
+   "replacement": "67c5e8bfa0d5e8aca0e8e1e1e1a1a000000000000000",
+   "comment": "えっ？は、ははぁ～。 -> Eh? Uh, haaa!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8534",
+   "original": "2091e58bb491e491508149814081408140814081408140814081408140000000",
+   "replacement": "20d4e1e9fae5eea0cfe8e1f3e8e9a18140814081408140814081408140814000",
+   "comment": "大橋台善！　　　　　　　　　 -> Taizen Ohashi!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8554",
+   "original": "2082bb82cc95fb8aa892e895f28d7382cc9776904582c900",
+   "replacement": "20d9eff5aca0f4e8e5a0d4f2e5e1f3f5f2e5f2aca0000000",
+   "comment": "その方勘定奉行の要職に -> You, the Treasurer,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x856c",
+   "original": "2082a082e882c882aa82e78141897a8ce389ae82c68c8b91f582b5814181408140814000",
+   "replacement": "20e3efeef3f0e9f2e5e4a0f7e9f4e8a0c5e3e8e9e7eff9e1ac8140814081400000000000",
+   "comment": "ありながら、越後屋と結託し、　　　 -> conspired with Echigoya,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8590",
+   "original": "678dde96d896e289ae88c990a889ae82f0965382ab8ed282c682b5814100",
+   "replacement": "67e4e9e4a0e1f7e1f9a0f7e9f4e8a0c9f3e5f9e1ac000000000000000000",
+   "comment": "材木問屋伊勢屋を亡き者とし、 -> did away with Iseya,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x85b0",
+   "original": "208ce497708dde96d882f093c690e882b581418e8495a082f0000000",
+   "replacement": "20f4efa0f3e5e9fae5a0f4e8e5a0f4e9ede2e5f2a0f4f2e1e4e5a000",
+   "comment": "御用材木を独占し、私腹を -> to seize the timber trade"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x85cc",
+   "original": "2094ec82e282b382f182c682b582bd8e968b9682b593ef82b5814281408140814081408140814081408140814000",
+   "replacement": "20e1eee4a0ece9eee5a0f9eff5f2a0f0efe3ebe5f4f3ae8140814081408140814081408140814081400000000000",
+   "comment": "肥やさんとした事許し難し。　　　　　　　　　 -> and line your pockets."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x85fc",
+   "original": "2082b182cc8b678f408141814081408140814000",
+   "replacement": "20c9aca0d9eff3e8e9edf5eee5aca08140814000",
+   "comment": "この吉宗、　　　　 -> I, Yoshimune,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8610",
+   "original": "678be091be98598e9882c682b582c490ac947382a282bd82b7814900",
+   "replacement": "67e1f3a0cbe9eef4e1f2efaca0f0f5eee9f3e8a0f9eff5a1a0000000",
+   "comment": "金太郎侍として成敗いたす！ -> as Kintaro, punish you!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x862c",
+   "original": "678c8982ad95a082f090d882e982aa82e682a2814900",
+   "replacement": "67c3efedede9f4a0f3e5f0f0f5ebf5a0eeeff7a1a000",
+   "comment": "潔く腹を切るがよい！ -> Commit seppuku now!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8644",
+   "original": "2082ca82ca82ca82ca82ca82c18145814581458149814081408140814081408140814081408140814000",
+   "replacement": "20ceeeeeeeeeeee7e8aeaeaea18140814081408140814081408140814081408140000000000000000000",
+   "comment": "ぬぬぬぬぬっ・・・！　　　　　　　　　　 -> Nnnnnngh...!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8670",
+   "original": "2082a282ad82e78fe3976c82c682c4814100",
+   "replacement": "20d3e8efe7f5eea0eff2a0eeeff4ac000000",
+   "comment": "いくら上様とて、 -> Shogun or not,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8684",
+   "original": "6782b182b182c58e8082cb82ce82bd82be82cc8be091be9859814900",
+   "replacement": "67e4e5e1e4aca0f9eff5a7f2e5a0eaf5f3f4a0cbe9eef4e1f2efa100",
+   "comment": "ここで死ねばただの金太郎！ -> dead, you're just Kintaro!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x86a0",
+   "original": "6790e690b6814982a88ae882a282a282bd82b582dc82b7814900",
+   "replacement": "67d3e5eef3e5e9a1a0c9a0e2e5e7a0f9eff5a100000000000000",
+   "comment": "先生！お願いいたします！ -> Sensei! I beg you!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x86bc",
+   "original": "2082c782ea81418140814081408140814081408140000000",
+   "replacement": "20d7e5ececa0eeeff7aca081408140814081408140814000",
+   "comment": "どれ、　　　　　　　 -> Well now,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x86d4",
+   "original": "2090d98ed282cc94f2898d9597978882cc8c9582cc00",
+   "replacement": "20edf9a0d3f7e1ececeff7a0c2ece1e4e50000000000",
+   "comment": "拙者の飛燕風来の剣の -> my Swallow Blade"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x86ec",
+   "original": "678354837282c982b582c482ad82ea82e982ed82c1814900",
+   "replacement": "67f7e9ececa0ede1ebe5a0f2f5f3f4a0efe6a0f9eff5a100",
+   "comment": "サビにしてくれるわっ！ -> will make rust of you!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8704",
+   "original": "208be091be985982c682e282e781418140814081408140814000",
+   "replacement": "20d3efaca0cbe9eef4e1f2efac81408140814081408140000000",
+   "comment": "金太郎とやら、　　　　　 -> So, Kintaro,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8720",
+   "original": "6782a282b4814190718fed82c98f9f9589814900",
+   "replacement": "67e6e9e7e8f4a0ede5a0e6e1e9f2ecf9a1000000",
+   "comment": "いざ、尋常に勝負！ -> fight me fairly!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8734",
+   "original": "2082d082c6815b82c282c181498140814081408140814081408140814000",
+   "replacement": "20cfeee5a181408140814081408140814081408140000000000000000000",
+   "comment": "ひとーつっ！　　　　　　　　 -> One!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8754",
+   "original": "678371835182e092e482e782b882c982de82b382a2937a814200",
+   "replacement": "67d5eef3e8e1f6e5eea0e1eee4a0f3e3f2f5e6e6f9aea0000000",
+   "comment": "ヒゲも剃らずにむさい奴。 -> Unshaven and scruffy."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8770",
+   "original": "67897a8ce389ae814189bd82c682a982b982a2814900",
+   "replacement": "67c5e3e8e9e7eff9e1aca0e8e5ecf0a0ede5a1000000",
+   "comment": "越後屋、何とかせい！ -> Echigoya, help me!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8788",
+   "original": "2082c882c1814182bb82c1814100",
+   "replacement": "20d7e8e1adaca0f7e8adac000000",
+   "comment": "なっ、そっ、 -> Wha-, wh-,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8798",
+   "original": "6782bb82f182c88ce496b391cc82c8814581458145814200",
+   "replacement": "67f4e8e1f4a7f3a0eeeff4a0e6e1e9f2aeaeae0000000000",
+   "comment": "そんな御無体な・・・。 -> that's not fair..."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x87b0",
+   "original": "2082d382bd815b82c282c181498140814081408140814081408140814000",
+   "replacement": "20d4f7efa181408140814081408140814081408140000000000000000000",
+   "comment": "ふたーつっ！　　　　　　　　 -> Two!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x87d0",
+   "original": "679597984382c993fc82e782ca8f4c82a2937a8142000000",
+   "replacement": "67cee5f6e5f2a0e2e1f4e8e5f3aca0f3f4e9eeebf3aea000",
+   "comment": "風呂に入らぬ臭い奴。 -> Never bathes, stinks."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x87e8",
+   "original": "2082dd82a1815b82c282c181498140814081408140814081408140814000",
+   "replacement": "20d4e8f2e5e5a18140814081408140814081408140814000000000000000",
+   "comment": "みぃーつっ！　　　　　　　　 -> Three!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8808",
+   "original": "67906782be82b582c882dd82e082c582ab82ca947982f08142814081408140814081408140814081408140814081408140000000",
+   "replacement": "67c3e1eea7f4a0e5f6e5eea0e7f2efefeda0e8e9edf3e5ece6aea081408140814081408140814081408140814081408140814000",
+   "comment": "身だしなみもできぬ輩を。　　　　　　　　　　　　 -> Can't even groom himself."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x883c",
+   "original": "6791de8ea182b582c482ad82ea82e682a481418be091be9859814200",
+   "replacement": "67cbe9eef4e1f2efa0f7e9ececa0f3ece1f9a0f9eff5a10000000000",
+   "comment": "退治してくれよう、金太郎。 -> Kintaro will slay you!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8858",
+   "original": "897a8ce389ae00",
+   "replacement": "d4f2e1e4e5f200",
+   "comment": "越後屋 -> Trader"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8860",
+   "original": "95f28d73000000",
+   "replacement": "caf5e4e7e5a000",
+   "comment": "奉行 -> Judge"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8868",
+   "original": "95f28d73000000",
+   "replacement": "caf5e4e7e5a000",
+   "comment": "奉行 -> Judge"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8870",
+   "original": "897a8ce389ae00",
+   "replacement": "d4f2e1e4e5f200",
+   "comment": "越後屋 -> Trader"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8878",
+   "original": "897a8ce389ae00",
+   "replacement": "d4f2e1e4e5f200",
+   "comment": "越後屋 -> Trader"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8880",
+   "original": "95f28d73000000",
+   "replacement": "caf5e4e7e5a000",
+   "comment": "奉行 -> Judge"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8888",
+   "original": "95f28d738195897a8ce389ae000000",
+   "replacement": "caf5e4e7e5a0a6a0d4f2e1e4e5f200",
+   "comment": "奉行＆越後屋 -> Judge & Trader"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8898",
+   "original": "897a8ce389ae00",
+   "replacement": "d4f2e1e4e5f200",
+   "comment": "越後屋 -> Trader"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x88a0",
+   "original": "95f28d73000000",
+   "replacement": "caf5e4e7e5a000",
+   "comment": "奉行 -> Judge"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x88a8",
+   "original": "95f28d73000000",
+   "replacement": "caf5e4e7e5a000",
+   "comment": "奉行 -> Judge"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x88b0",
+   "original": "95f28d73000000",
+   "replacement": "caf5e4e7e5a000",
+   "comment": "奉行 -> Judge"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x88b8",
+   "original": "95f28d73000000",
+   "replacement": "caf5e4e7e5a000",
+   "comment": "奉行 -> Judge"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x88c0",
+   "original": "8be091be98598e9800",
+   "replacement": "cbe9eef4e1f2efa000",
+   "comment": "金太郎侍 -> Kintaro"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x88cc",
+   "original": "897a8ce389ae00",
+   "replacement": "d4f2e1e4e5f200",
+   "comment": "越後屋 -> Trader"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x88d4",
+   "original": "8be091be98598e9800",
+   "replacement": "cbe9eef4e1f2efa000",
+   "comment": "金太郎侍 -> Kintaro"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x88e0",
+   "original": "95f28d738195897a8ce389ae000000",
+   "replacement": "caf5e4e7e5a0a6a0d4f2e1e4e5f200",
+   "comment": "奉行＆越後屋 -> Judge & Trader"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x88f0",
+   "original": "8be091be98598e9800",
+   "replacement": "cbe9eef4e1f2efa000",
+   "comment": "金太郎侍 -> Kintaro"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x88fc",
+   "original": "8be091be98598e9800",
+   "replacement": "cbe9eef4e1f2efa000",
+   "comment": "金太郎侍 -> Kintaro"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8908",
+   "original": "8be091be98598e9800",
+   "replacement": "cbe9eef4e1f2efa000",
+   "comment": "金太郎侍 -> Kintaro"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8914",
+   "original": "95f28d73000000",
+   "replacement": "caf5e4e7e5a000",
+   "comment": "奉行 -> Judge"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x891c",
+   "original": "897a8ce389ae00",
+   "replacement": "d4f2e1e4e5f200",
+   "comment": "越後屋 -> Trader"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8924",
+   "original": "90e690b6000000",
+   "replacement": "d3e5eef3e5e900",
+   "comment": "先生 -> Sensei"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x892c",
+   "original": "90e690b6000000",
+   "replacement": "d3e5eef3e5e900",
+   "comment": "先生 -> Sensei"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8934",
+   "original": "8be091be98598e9800",
+   "replacement": "cbe9eef4e1f2efa000",
+   "comment": "金太郎侍 -> Kintaro"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8940",
+   "original": "95f28d73000000",
+   "replacement": "caf5e4e7e5a000",
+   "comment": "奉行 -> Judge"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8948",
+   "original": "897a8ce389ae00",
+   "replacement": "d4f2e1e4e5f200",
+   "comment": "越後屋 -> Trader"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8950",
+   "original": "8be091be98598e9800",
+   "replacement": "cbe9eef4e1f2efa000",
+   "comment": "金太郎侍 -> Kintaro"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x895c",
+   "original": "8be091be98598e9800",
+   "replacement": "cbe9eef4e1f2efa000",
+   "comment": "金太郎侍 -> Kintaro"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8968",
+   "original": "8be091be98598e9800",
+   "replacement": "cbe9eef4e1f2efa000",
+   "comment": "金太郎侍 -> Kintaro"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8978",
+   "original": "95f28d73000000",
+   "replacement": "caf5e4e7e5a000",
+   "comment": "奉行 -> Judge"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8980",
+   "original": "817582a882cc82ea815b814581458145814200",
+   "replacement": "8175c3f5f2f3e5f3aeaeaea000000000000000",
+   "comment": "「おのれー・・・。 -> 「Curses..."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8ad0",
+   "original": "2082a882a88141814081408140814081408140814000",
+   "replacement": "20cfe8aca08140814081408140814081408140000000",
+   "comment": "おお、　　　　　　　 -> Oh,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8ae8",
+   "original": "2082a082cc918b82cc8cf581418140814081408140000000",
+   "replacement": "20f4e8e1f4a0f7e9eee4eff7a7f3a0ece9e7e8f4ac814000",
+   "comment": "あの窓の光、　　　　 -> that window's light,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8b00",
+   "original": "208e8482cc93aa8fe382c581418140814081408140000000",
+   "replacement": "20e8e9e7e8a0e1e2eff6e5a0ede5ac814081408140814000",
+   "comment": "私の頭上で、　　　　 -> high above me,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8b18",
+   "original": "2096e982f08fc682e782b582c482a282e981418140000000",
+   "replacement": "20ece9e7e8f4e9eee7a0f5f0a0f4e8e5a0eee9e7e8f4ac00",
+   "comment": "夜を照らしている、　 -> lighting up the night,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8b30",
+   "original": "6782a082c882bd82cd82dc82b382b582ad93568e67814200",
+   "replacement": "67f9eff5a0e1f2e5a0e1eea0e1eee7e5eca1a00000000000",
+   "comment": "あなたはまさしく天使。 -> you are an angel!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8b48",
+   "original": "2082a082cc935682cc8e6782a282cc8e7082c600",
+   "replacement": "20caf5f3f4a0ece9ebe5a0f4e8e5a00000000000",
+   "comment": "あの天の使いの姿と -> Just like the"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8b5c",
+   "original": "6782dc82c182bd82ad93af82b682be814200",
+   "replacement": "67e1eee7e5eca0efe6a0e8e5e1f6e5eeae00",
+   "comment": "まったく同じだ。 -> angel of heaven."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8b70",
+   "original": "2082a882a48141814081408140814081408140814000",
+   "replacement": "20cfe8aca08140814081408140814081408140000000",
+   "comment": "おう、　　　　　　　 -> Oh,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8b88",
+   "original": "20838d8381834982e6838d8381834981418140814000",
+   "replacement": "20d2efede5efaca0efe8a0d2efede5efac8140814000",
+   "comment": "ロメオよロメオ、　　 -> Romeo, oh Romeo,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8ba0",
+   "original": "6782c782a482b582c48b4d95fb82cd838d8381834982c882cc814800",
+   "replacement": "67f7e8e5f2e5e6eff2e5a0e1f2f4a0f4e8eff5a0d2efede5efbfa000",
+   "comment": "どうして貴方はロメオなの？ -> wherefore art thou Romeo?"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8bbc",
+   "original": "6782ab82e1829f829f81608160814900",
+   "replacement": "67c5e5e5e5e5eba1a000000000000000",
+   "comment": "きゃぁぁ～～！ -> Eeeeek!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8bcc",
+   "original": "2082a482c1814182a882c1814100",
+   "replacement": "20d5e7e8aca0efefe6aca0000000",
+   "comment": "うっ、おっ、 -> Ugh, oof,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8bdc",
+   "original": "678f6482a282e683578385838a83478362835e814200",
+   "replacement": "67e8e5e1f6f9aca0caf5ece9e5f4f4e1a10000000000",
+   "comment": "重いよジュリエッタ。 -> heavy, Julietta!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8bf4",
+   "original": "2089bc8e8082cc96f282c982e682e88141905182c482a282e900",
+   "replacement": "20ceeff4a0ebeeeff7e9eee7a0caf5ece9e5f4f4e10000000000",
+   "comment": "仮死の薬により、寝ている -> Not knowing Julietta"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8c10",
+   "original": "6783578385838a83478362835e82c682e0926d82e782b88141000000",
+   "replacement": "67efeeecf9a0f3ece5e5f0f3a0e6f2efeda0e1a0f0eff4e9efeeac00",
+   "comment": "ジュリエッタとも知らず、 -> only sleeps from a potion,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8c2c",
+   "original": "208da182dc82b382c9838d8381834982cd93c582f088f982dd814100",
+   "replacement": "20d2efede5efa0eeeff7a0e4f2e9eeebf3a0f0efe9f3efeea0000000",
+   "comment": "今まさにロメオは毒を飲み、 -> Romeo now drinks poison"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8c48",
+   "original": "2083578385838a83478362835e82cc82e082c682c9000000",
+   "replacement": "20e1eee4a0e9f3a0e1e2eff5f4a0f4efa0e6efececeff700",
+   "comment": "ジュリエッタのもとに -> and is about to follow"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8c60",
+   "original": "6797b797a782c682a482c682b582c482a282e9814200",
+   "replacement": "67caf5ece9e5f4f4e1a0e9eef4efa0e4e5e1f4e8ae00",
+   "comment": "旅立とうとしている。 -> Julietta into death."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8c78",
+   "original": "2082a882a8814182b182cc947482cc94fc8ef082c982e682e8814100",
+   "replacement": "20cfe8aca0e2f9a0f4e8e9f3a0e3f5f0a7f3a0f7e9eee5aca0000000",
+   "comment": "おお、この杯の美酒により、 -> Oh, by this cup's wine,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8c94",
+   "original": "208da182b182bb88a482b782e982e082cc82cc82e082c682d600",
+   "replacement": "20c9a0eeeff7a0e7efa0f4efa0f4e8e5a0efeee5a00000000000",
+   "comment": "今こそ愛するもののもとへ -> I now go to the one"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8cb0",
+   "original": "6797b797a782bd82f1814200",
+   "replacement": "67c9a0eceff6e5aea0000000",
+   "comment": "旅立たん。 -> I love."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8cd8",
+   "original": "6782798279827981458145814582798279827981458145814500",
+   "replacement": "67dadadaaeaeaea0dadadaaeaeaea00000000000000000000000",
+   "comment": "ＺＺＺ・・・ＺＺＺ・・・ -> ZZZ... ZZZ..."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8cf4",
+   "original": "678b4e82ab82c482ad82ea814183578385838a83478362835e814200",
+   "replacement": "67d7e1ebe5a0f5f0aca0caf5ece9e5f4f4e1ae000000000000000000",
+   "comment": "起きてくれ、ジュリエッタ。 -> Wake up, Julietta."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8d10",
+   "original": "838d8381834900",
+   "replacement": "d2efede5efa000",
+   "comment": "ロメオ -> Romeo"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8d18",
+   "original": "838d8381834900",
+   "replacement": "d2efede5efa000",
+   "comment": "ロメオ -> Romeo"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8d20",
+   "original": "83578385838a83478362835e00",
+   "replacement": "caf5ece9e5f4f4e10000000000",
+   "comment": "ジュリエッタ -> Julietta"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8d30",
+   "original": "83578385838a83478362835e00",
+   "replacement": "caf5ece9e5f4f4e10000000000",
+   "comment": "ジュリエッタ -> Julietta"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8d40",
+   "original": "838d8381834900",
+   "replacement": "d2efede5efa000",
+   "comment": "ロメオ -> Romeo"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8d48",
+   "original": "8369838c815b83568387839300",
+   "replacement": "cee1f2f2e1f4eff20000000000",
+   "comment": "ナレーション -> Narrator"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8d58",
+   "original": "8369838c815b83568387839300",
+   "replacement": "cee1f2f2e1f4eff20000000000",
+   "comment": "ナレーション -> Narrator"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8d68",
+   "original": "838d8381834900",
+   "replacement": "d2efede5efa000",
+   "comment": "ロメオ -> Romeo"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8d78",
+   "original": "83578385838a83478362835e00",
+   "replacement": "caf5ece9e5f4f4e10000000000",
+   "comment": "ジュリエッタ -> Julietta"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8d88",
+   "original": "838d8381834900",
+   "replacement": "d2efede5efa000",
+   "comment": "ロメオ -> Romeo"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8e70",
+   "original": "6790ed93ac88f58f948c4e814900",
+   "replacement": "67cde9eee9efeef3a10000000000",
+   "comment": "戦闘員諸君！ -> Minions!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8e80",
+   "original": "208da189f182cc8dec90ed82cd814181408140814000",
+   "replacement": "20d4efe4e1f9a7f3a0f0ece1eebaa081408140814000",
+   "comment": "今回の作戦は、　　　 -> Today's plan:"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8e98",
+   "original": "2097639274898082cc836f835882f08f5082a2814100",
+   "replacement": "20f2e1e9e4a0e1a0f0f2e5f3e3e8efefeca0e2f5f300",
+   "comment": "幼稚園のバスを襲い、 -> raid a preschool bus"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8eb0",
+   "original": "2089e482aa8cb6968292e98d918369835d8389815b82cc00",
+   "replacement": "20e1eee4a0ede1ebe5a0f4e8e5eda0ede9eee9efeef3a000",
+   "comment": "我が幻魔帝国ナゾラーの -> and make them minions"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8ec8",
+   "original": "6790ed93ac88f582c682b782e982cc82be814200",
+   "replacement": "67efe6a0cee1faefece1f2a1a000000000000000",
+   "comment": "戦闘員とするのだ。 -> of Nazolar!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8edc",
+   "original": "678369835d815b815b8362814900",
+   "replacement": "67cee1faefefefa1a00000000000",
+   "comment": "ナゾーーッ！ -> Nazooo!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8eec",
+   "original": "2089e482aa88cc91e582c882e98cb6968292e98d918ef197cc814100",
+   "replacement": "20c6eff2a0eff5f2a0e7f2e5e1f4a0ece5e1e4e5f2aca00000000000",
+   "comment": "我が偉大なる幻魔帝国首領、 -> For our great leader,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8f08",
+   "original": "6791e590b98cb692e98369835d815b838b976c82cc82bd82df82c9814200",
+   "replacement": "67cceff2e4a0cee1faeff2a0f4e8e5a0d0e8e1eef4efeda1a00000000000",
+   "comment": "大聖幻帝ナゾール様のために。 -> Lord Nazor the Phantom!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8f28",
+   "original": "678369835d815b815b8362814900",
+   "replacement": "67cee1faefefefa1a00000000000",
+   "comment": "ナゾーーッ！ -> Nazooo!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8f38",
+   "original": "6782bb82a482cd82b382b982f182bc81498369835d8389815b814900",
+   "replacement": "67ceeff4a0f3efa0e6e1f3f4aca0cee1faefece1f2a1a00000000000",
+   "comment": "そうはさせんぞ！ナゾラー！ -> Not so fast, Nazolar!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8f54",
+   "original": "678369835d83628369835d83628369835d83628369835d836200",
+   "replacement": "67cee1faefa1a0cee1faefa1a0cee1faefa1a0cee1faefa1a000",
+   "comment": "ナゾッナゾッナゾッナゾッ -> Nazo! Nazo! Nazo! Nazo!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8f70",
+   "original": "67834a838b8367838c83628368814900",
+   "replacement": "67c3f5ecf4a0d2e5e4a1a00000000000",
+   "comment": "カルトレッド！ -> Cult Red!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8f80",
+   "original": "67834a838b8367837583898362834e814900",
+   "replacement": "67c3f5ecf4a0c2ece1e3eba1a00000000000",
+   "comment": "カルトブラック！ -> Cult Black!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8f94",
+   "original": "67834a838b83678375838b815b814900",
+   "replacement": "67c3f5ecf4a0c2ecf5e5a10000000000",
+   "comment": "カルトブルー！ -> Cult Blue!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8fa4",
+   "original": "67834a838b836783438347838d815b814900",
+   "replacement": "67c3f5ecf4a0d9e5ececeff7a10000000000",
+   "comment": "カルトイエロー！ -> Cult Yellow!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8fb8",
+   "original": "67834a838b836783738393834e814900",
+   "replacement": "67c3f5ecf4a0d0e9eeeba10000000000",
+   "comment": "カルトピンク！ -> Cult Pink!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8fc8",
+   "original": "678be388c993a490ed91e0834a838b8367837d8393814900",
+   "replacement": "67d1f5e9faa0d3f1f5e1e4a0c3f5ecf4ede1eea1a0000000",
+   "comment": "九伊豆戦隊カルトマン！ -> Quiz Squad Cultman!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8fe0",
+   "original": "20906c97de82cc95f382c582a082e9814081408140000000",
+   "replacement": "20cbe9e4eee1f0f0e9eee7a0ebe9e4f3ac81408140814000",
+   "comment": "人類の宝である　　　 -> Kidnapping kids,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x8ff8",
+   "original": "209763927489808e9982cc975589fb82c882c7814100",
+   "replacement": "20e8f5ede1eee9f4f9a7f3a0f4f2e5e1f3f5f2e5a100",
+   "comment": "幼稚園児の誘拐など、 -> humanity's treasure!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9010",
+   "original": "208d9189ef82aa89f08e5582b582e682a482c682e0814100",
+   "replacement": "20c3efede5a0f7e8e1f4a0ede1f9ac000000000000000000",
+   "comment": "国会が解散しようとも、 -> Come what may,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9028",
+   "original": "6782b182cc834a838b8367837d839382aa8b9682b382f1814900",
+   "replacement": "67c3f5ecf4ede1eea0f7efeea7f4a0e1ececeff7a0e9f4a1a000",
+   "comment": "このカルトマンが許さん！ -> Cultman won't allow it!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9044",
+   "original": "2094f282f182c589ce82c982a282e9834a838b8367837d8393814281408140814000",
+   "replacement": "20cdeff4e8f3a0f4efa0e1a0e6ece1ede5aca0c3f5ecf4ede1eea181408140814000",
+   "comment": "飛んで火にいるカルトマン。　　　 -> Moths to a flame, Cultman!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9068",
+   "original": "208da193fa82b182bb8b4d976c924282cc8dc58ce382be8142814081408140814000",
+   "replacement": "20d4efe4e1f9a0f9eff5a7f2e5a0e6e9eee9f3e8e5e4a18140814081408140000000",
+   "comment": "今日こそ貴様達の最後だ。　　　　 -> Today you're finished!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x908c",
+   "original": "6790ed93ac88f582c782e082a982a982ea814900",
+   "replacement": "67cde9eee9efeef3aca0e1f4f4e1e3eba1000000",
+   "comment": "戦闘員どもかかれ！ -> Minions, attack!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x90a0",
+   "original": "678369835d815b8362814900",
+   "replacement": "67cee1faefefefa1a0000000",
+   "comment": "ナゾーッ！ -> Nazooo!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x90ac",
+   "original": "208f898b89834a838b8367834e83438359814200",
+   "replacement": "20c5e1f3f9a0c3f5ecf4a0d1f5e9fabaa0000000",
+   "comment": "初級カルトクイズ。 -> Easy Cult Quiz:"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x90c0",
+   "original": "208250824f824f968782cc90468e8682cc00",
+   "replacement": "20efe6a0b1b0b0a0f3e8e5e5f4f3ac000000",
+   "comment": "１００枚の色紙の -> of 100 sheets,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x90d4",
+   "original": "6782588258968796da82cc8e8682cc904682cd89bd814800",
+   "replacement": "67f7e8e1f4a0e3efeceff2a7f3a0f4e8e5a0b9b9f4e8bf00",
+   "comment": "９９枚目の紙の色は何？ -> what color's the 99th?"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x90ec",
+   "original": "678369835d836281488369835d836281488369835d8362814800",
+   "replacement": "67cee1faefbfa0cee1faefbfa0cee1faefbfa000000000000000",
+   "comment": "ナゾッ？ナゾッ？ナゾッ？ -> Nazo? Nazo? Nazo?"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9108",
+   "original": "678369835d815b8362814900",
+   "replacement": "67cee1faefefefa1a0000000",
+   "comment": "ナゾーッ！ -> Nazooo!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9114",
+   "original": "2082a882cc82ea814981408140814081408140814000",
+   "replacement": "20c3f5f2f3e5f3a1a081408140814081408140814000",
+   "comment": "おのれ！　　　　　　 -> Curses!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x912c",
+   "original": "208fee82af82c882a290ed93ac88f582c782e082df814200",
+   "replacement": "20d0e1f4e8e5f4e9e3a0ede9eee9efeef3aea00000000000",
+   "comment": "情けない戦闘員どもめ。 -> Pathetic minions."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9144",
+   "original": "2082b182cc915496e589f6906c838283938368815b976c82c982cd00",
+   "replacement": "20c1e7e1e9eef3f4a0ede5aca0cdefeef3f4e5f2a0cdefeee4efac00",
+   "comment": "この禅門怪人モンドー様には -> Against me, Monster Mondo,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9160",
+   "original": "6782bb82f182c8834e8343835982cd92ca977082b982f1814200",
+   "replacement": "67f3f5e3e8a0f1f5e9fafae5f3a0f7efeea7f4a0f7eff2ebae00",
+   "comment": "そんなクイズは通用せん。 -> such quizzes won't work."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x917c",
+   "original": "20939a82a682cd949282be81428140814081408140814000",
+   "replacement": "20d4e8e5a0e1eef3f7e5f2a0e9f3a0f7e8e9f4e5ae814000",
+   "comment": "答えは白だ。　　　　　 -> The answer is white."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9194",
+   "original": "6782c782a482be8141834a838b8367837d8393814200",
+   "replacement": "67c8eff7a7f3a0f4e8e1f4aca0c3f5ecf4ede1eebf00",
+   "comment": "どうだ、カルトマン。 -> How's that, Cultman?"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x91ac",
+   "original": "6782e682c182b582e1814190b389f082e2814200",
+   "replacement": "67d9e5f0aca0f4e8e1f4a7f3a0f2e9e7e8f4ae00",
+   "comment": "よっしゃ、正解や。 -> Yep, that's right."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x91c0",
+   "original": "6791e597a489a192668345838b83678389834c8383836d8393814900",
+   "replacement": "67c3efeef4e9eee5eef4e1eca0d5ecf4f2e1a0c3e1eeeeefeea1a000",
+   "comment": "大陸横断ウルトラキャノン！ -> Continental Ultra Cannon!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x91dc",
+   "original": "67837d815b834e826e826a814900",
+   "replacement": "67cde1f2eba0cfcba10000000000",
+   "comment": "マークＯＫ！ -> Mark OK!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x91ec",
+   "original": "6783568385815b8367814900",
+   "replacement": "67d3e8efeff4a10000000000",
+   "comment": "シュート！ -> Shoot!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x91f8",
+   "original": "67837183508384815b8362814900",
+   "replacement": "67d2e5f4f2e5e5e5e1f4a1000000",
+   "comment": "ヒケヤーッ！ -> Retreeeat!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9208",
+   "original": "6782e082a4904d82b682e782f182c8816082a2814900",
+   "replacement": "67c9a0e3e1eea7f4a0e2e5ece9e5f6e5a0e9f4a1a000",
+   "comment": "もう信じらんな～い！ -> I can't believe it!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9220",
+   "original": "20834a838b8367837d8393814981408140814081408140814000",
+   "replacement": "20c3f5ecf4ede1eea18140814081408140814081400000000000",
+   "comment": "カルトマン！　　　　　　 -> Cultman!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x923c",
+   "original": "2082a282c282a982b182cc96ca8d95835b837e8369815b82aa00",
+   "replacement": "20d3efede5e4e1f9a0cce1e4f9a0dae5ede9eee1f20000000000",
+   "comment": "いつかこの面黒ゼミナーが -> Someday Lady Zeminar"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9258",
+   "original": "2082a8914f924282f0937c82b582bf82e182a482a982e7814200",
+   "replacement": "20f7e9ececa0e4e5e6e5e1f4a0f9eff5a0e1ececae0000000000",
+   "comment": "お前達を倒しちゃうから。 -> will defeat you all."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9274",
+   "original": "678a6f82a682c482c882b382a2814900",
+   "replacement": "67d2e5ede5ede2e5f2a0f4e8e1f4a100",
+   "comment": "覚えてなさい！ -> Remember that!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9284",
+   "original": "208da189f182e0814081408140000000",
+   "replacement": "20cfeee3e5a0e1e7e1e9eeaca0814000",
+   "comment": "今回も　　　 -> Once again,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9294",
+   "original": "20834a838b8367837d8393924282cc8a8896f482c982e682e8814100",
+   "replacement": "20f4e8e1eeebf3a0f4efa0c3f5ecf4ede1eeac000000000000000000",
+   "comment": "カルトマン達の活躍により、 -> thanks to Cultman,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x92b0",
+   "original": "678369835d8389815b924282cc8941966482cd82c282a282a682bd814200",
+   "replacement": "67cee1faefece1f2a7f3a0f0eceff4a0e6e1e9ece5e4ae00000000000000",
+   "comment": "ナゾラー達の陰謀はついえた。 -> Nazolar's plot failed."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x92d0",
+   "original": "2082b582a982b581418cb6968292e98d9182e682e800",
+   "replacement": "20c2f5f4a0e6f2efeda0f4e8e5a0c5edf0e9f2e5ac00",
+   "comment": "しかし、幻魔帝国より -> But from the Empire,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x92e8",
+   "original": "2082dc82b782dc82b78bad97cd82c889f6906c82aa000000",
+   "replacement": "20e5f6e5f2a0f3f4f2efeee7e5f2a0edefeef3f4e5f2f300",
+   "comment": "ますます強力な怪人が -> ever stronger monsters"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9300",
+   "original": "678f5082c182c4978882e982be82eb82a4814200",
+   "replacement": "67f7e9ececa0f3f5f2e5ecf9a0e3efede5aea000",
+   "comment": "襲って来るだろう。 -> will surely come."
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9314",
+   "original": "2082aa82f182ce82ea814900",
+   "replacement": "20c7efaca0e7efaca0000000",
+   "comment": "がんばれ！ -> Go, go,"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9320",
+   "original": "6782da82ad82e782cc834a838b8367837d8393814900",
+   "replacement": "67eff5f2a0c3f5ecf4ede1eea1000000000000000000",
+   "comment": "ぼくらのカルトマン！ -> our Cultman!"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9338",
+   "original": "915496e589f6906c838283938368815b00",
+   "replacement": "cdefeef3f4e5f2a0cdefeee4efa0000000",
+   "comment": "禅門怪人モンドー -> Monster Mondo"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x934c",
+   "original": "915496e589f6906c838283938368815b00",
+   "replacement": "cdefeef3f4e5f2a0cdefeee4efa0000000",
+   "comment": "禅門怪人モンドー -> Monster Mondo"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9360",
+   "original": "90ed93ac88f500",
+   "replacement": "cde9eee9efee00",
+   "comment": "戦闘員 -> Minion"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9368",
+   "original": "8f978ab29594814596ca8d95835b837e8369815b00",
+   "replacement": "cce1e4f9a0dae5ede9eee1f2000000000000000000",
+   "comment": "女幹部・面黒ゼミナー -> Lady Zeminar"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9380",
+   "original": "90ed93ac88f500",
+   "replacement": "cde9eee9efee00",
+   "comment": "戦闘員 -> Minion"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9388",
+   "original": "834a838b8367838c8362836800",
+   "replacement": "c3f5ecf4a0d2e5e40000000000",
+   "comment": "カルトレッド -> Cult Red"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9398",
+   "original": "90ed93ac88f500",
+   "replacement": "cde9eee9efee00",
+   "comment": "戦闘員 -> Minion"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x93a0",
+   "original": "834a838b8367838c8362836800",
+   "replacement": "c3f5ecf4a0d2e5e40000000000",
+   "comment": "カルトレッド -> Cult Red"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x93b0",
+   "original": "834a838b8367837583898362834e00",
+   "replacement": "c3f5ecf4a0c2ece1e3eb0000000000",
+   "comment": "カルトブラック -> Cult Black"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x93c0",
+   "original": "834a838b83678375838b815b00",
+   "replacement": "c3f5ecf4a0c2ecf5e5a0000000",
+   "comment": "カルトブルー -> Cult Blue"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x93d0",
+   "original": "834a838b836783438347838d815b00",
+   "replacement": "c3f5ecf4a0d9e5ececeff7a0000000",
+   "comment": "カルトイエロー -> Cult Yellow"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x93e0",
+   "original": "834a838b836783738393834e00",
+   "replacement": "c3f5ecf4a0d0e9eeeba0000000",
+   "comment": "カルトピンク -> Cult Pink"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x93f0",
+   "original": "915388f500",
+   "replacement": "c1ececa000",
+   "comment": "全員 -> All"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x93f8",
+   "original": "834a838b8367838c8362836800",
+   "replacement": "c3f5ecf4a0d2e5e40000000000",
+   "comment": "カルトレッド -> Cult Red"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9408",
+   "original": "915496e589f6906c838283938368815b00",
+   "replacement": "cdefeef3f4e5f2a0cdefeee4efa0000000",
+   "comment": "禅門怪人モンドー -> Monster Mondo"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x941c",
+   "original": "90ed93ac88f500",
+   "replacement": "cde9eee9efee00",
+   "comment": "戦闘員 -> Minion"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9424",
+   "original": "834a838b836783738393834e00",
+   "replacement": "c3f5ecf4a0d0e9eeeba0000000",
+   "comment": "カルトピンク -> Cult Pink"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9434",
+   "original": "90ed93ac88f500",
+   "replacement": "cde9eee9efee00",
+   "comment": "戦闘員 -> Minion"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x943c",
+   "original": "90ed93ac88f500",
+   "replacement": "cde9eee9efee00",
+   "comment": "戦闘員 -> Minion"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9444",
+   "original": "915496e589f6906c838283938368815b00",
+   "replacement": "cdefeef3f4e5f2a0cdefeee4efa0000000",
+   "comment": "禅門怪人モンドー -> Monster Mondo"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9458",
+   "original": "915496e589f6906c838283938368815b00",
+   "replacement": "cdefeef3f4e5f2a0cdefeee4efa0000000",
+   "comment": "禅門怪人モンドー -> Monster Mondo"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x946c",
+   "original": "834a838b8367837583898362834e00",
+   "replacement": "c3f5ecf4a0c2ece1e3eb0000000000",
+   "comment": "カルトブラック -> Cult Black"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x947c",
+   "original": "834a838b8367838c8362836800",
+   "replacement": "c3f5ecf4a0d2e5e40000000000",
+   "comment": "カルトレッド -> Cult Red"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x948c",
+   "original": "834a838b836783438347838d815b00",
+   "replacement": "c3f5ecf4a0d9e5ececeff7a0000000",
+   "comment": "カルトイエロー -> Cult Yellow"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x949c",
+   "original": "834a838b8367838c8362836800",
+   "replacement": "c3f5ecf4a0d2e5e40000000000",
+   "comment": "カルトレッド -> Cult Red"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x94ac",
+   "original": "915496e589f6906c838283938368815b00",
+   "replacement": "cdefeef3f4e5f2a0cdefeee4efa0000000",
+   "comment": "禅門怪人モンドー -> Monster Mondo"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x94c0",
+   "original": "8f978ab29594814596ca8d95835b837e8369815b00",
+   "replacement": "cce1e4f9a0dae5ede9eee1f2000000000000000000",
+   "comment": "女幹部・面黒ゼミナー -> Lady Zeminar"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x94d8",
+   "original": "8f978ab29594814596ca8d95835b837e8369815b00",
+   "replacement": "cce1e4f9a0dae5ede9eee1f2000000000000000000",
+   "comment": "女幹部・面黒ゼミナー -> Lady Zeminar"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x94f0",
+   "original": "8369838c815b83568387839300",
+   "replacement": "cee1f2f2e1f4eff20000000000",
+   "comment": "ナレーション -> Narrator"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9500",
+   "original": "8369838c815b83568387839300",
+   "replacement": "cee1f2f2e1f4eff20000000000",
+   "comment": "ナレーション -> Narrator"
+  },
+  {
+   "file": "CDROM/EXEDIR/BUNKA_SD.EXN",
+   "offset": "0x9510",
+   "original": "8369838c815b83568387839300",
+   "replacement": "cee1f2f2e1f4eff20000000000",
+   "comment": "ナレーション -> Narrator"
+  }
+ ]
+}

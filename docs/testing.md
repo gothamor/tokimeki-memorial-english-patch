@@ -1176,8 +1176,13 @@ writes the festival day record. Batch scripts `.emu/fest_runs*.sh`
   school_trip.json), Mira's "You expect me to do it?", Yuko's "All that
   text..." and her missing "?", the gym announcements. `fb3b` re-checked
   the PC fortune.
-- The stage shows (Kintaro Samurai, the concert, the speech contest) are
-  BUNKA_SD.EXN and stay Japanese for now.
+- Stage shows (`stage_shows.json`, `.emu/fest_runs5.sh`): `sd10`, `sd11`,
+  `sd12` with `--club 1 --year 0/1/2` (Kintaro Samurai, Cultman, Romeo and
+  Julietta), `sd02` with `--club 0 --year 2` (the speech contest: Shiori's
+  speech); `sd01` (`--year 1`) is the essays exhibit, no show. Each run is
+  70 presses. Labels match the unpatched `fb1`. Short labels put the 「
+  right after the name ("Shiori「"): the label slots have no room for a
+  space.
 
 ### Tools for the whole-game loop (2026-10-10)
 

@@ -2335,6 +2335,23 @@ names, so the screen read "Shiori Shiori"; the second `jal 0x8004E788`
 the festival word files. The player's line takes the family name and the
 name the player typed.
 
+**Stage shows** (BUNKA_SD.EXN, state 0x80; translated in
+`stage_shows.json`): the text is file `0x7910`–`0x9670`, one string per
+displayed line, each starting with a prefix byte: `' '` (more lines
+follow), `'g'` (end of page: wait for a press) or `'E'` (end of the show),
+padded with full-width spaces that pace the scroll. Ten pointer tables at
+`0x9670`–`0xB140` reach the 286 lines and speaker labels (one label
+string per use, unprefixed); code-built addresses reach the speech
+titles, the 題目 "Topic" header, the speakers' names and the 「 drawn
+before each line. Jump tables sit inside the text run (`0x7FD8`,
+`0x8994`, `0x8A40`, `0x8D94`, `0x9524`, `0x95F0`), and two lines follow
+one with no NUL in between (`0x8090`, `0x8AD0`). The box is wider than
+a dialogue box (28+ letters per line fit) and scrolls line by line.
+Which show plays: the Drama Club's by year (95 Kintaro Samurai, 96
+Cultman, 97 Romeo and Julietta), the Literature Club's speech contest in
+97 (95 poems, 96 essays), the Band's concert (no text). `tools/
+prefixed_lines.py` writes one `bytes` patch per line, keeping the prefix.
+
 **Megumi's tour** returns to the title screen right after the club menu,
 in the unpatched game too (run `fu09b`, Japanese text): her `MI_S6W` is
 never reached from this forcing. Not investigated further.
