@@ -1,0 +1,4536 @@
+{
+  "description": "Mira at the culture festival: all of KG_S6.BIN, KG_S6S.BIN, KG_S6W.BIN (902 strings; base 0x801E8000). Verified in DuckStation on forced festival days (tools/emu/force_festival.py, hidden emulator; docs/testing.md 'The culture festival'): her acceptance (S6S) and the tour of the Literature exhibit (S6W). Not seen: S6. Layout and flow in game-internals 6ab. The stage shows (Drama play, Band concert, Literature speech contest) are BUNKA_SD.EXN, still Japanese. Natural triggers, other years and moods checked only statically.",
+  "dialogue": [
+    {
+      "file": "CDROM/BUNKA/KG_S6.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "こうして、\n文化祭は、終了した。",
+          "text": "And so, the\nfestival was over."
+        },
+        {
+          "offset": "0x24",
+          "original": "それじゃあ、\nそろそろ失礼するわね。",
+          "text": "Well then,\nI'll take my leave."
+        },
+        {
+          "offset": "0x48",
+          "original": "えぇ。\nもう行っちゃうの？",
+          "text": "Huh?\nLeaving already?"
+        },
+        {
+          "offset": "0x64",
+          "original": "私が行かないと、\n悲しむ人が\nたくさんいるのよ。",
+          "text": "If I don't go,\nmany people\nwill be sad."
+        },
+        {
+          "offset": "0xa0",
+          "original": "それじゃあ、\nそろそろ失礼するわね。",
+          "text": "Well then,\nI'll take my leave."
+        },
+        {
+          "offset": "0xc4",
+          "original": "えぇ。\nもう行っちゃうの？",
+          "text": "Huh?\nLeaving already?"
+        },
+        {
+          "offset": "0xe0",
+          "original": "当然よ。\n私はひとつの所に留まれる\n女じゃないのよ。",
+          "text": "Naturally.\nI'm not a woman who\nstays in one place."
+        },
+        {
+          "offset": "0x120",
+          "original": "それじゃあ、\nそろそろ失礼するわね。",
+          "text": "Well then,\nI'll take my leave."
+        },
+        {
+          "offset": "0x144",
+          "original": "えぇ。\nもう行っちゃうの？",
+          "text": "Huh?\nLeaving already?"
+        },
+        {
+          "offset": "0x160",
+          "original": "いつまでもここに引き\n止めておいたら、男の子達が\n黙っていないわよ。",
+          "text": "Keep me here forever,\nand the boys won't\nstand for it."
+        },
+        {
+          "offset": "0x1b0",
+          "original": "それじゃあ、\nそろそろ失礼するわね。",
+          "text": "Well then,\nI'll take my leave."
+        },
+        {
+          "offset": "0x1d4",
+          "original": "えぇ。\nもう行っちゃうの？",
+          "text": "Huh?\nLeaving already?"
+        },
+        {
+          "offset": "0x1f0",
+          "original": "たまたまよっただけよ。\n別に貴方に用が\nあった訳じゃないから。",
+          "text": "I just happened by.\nNot that I had\nbusiness with you."
+        },
+        {
+          "offset": "0x23c",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x254",
+          "original": "良かった。\nちょうど、暇だったんだ。",
+          "text": "Great.\nI was just bored."
+        },
+        {
+          "offset": "0x278",
+          "original": "あら、この詩…。\n私のために\n書いてくれたのかしら？",
+          "text": "Oh, this poem...\nDid you write it\nfor me?"
+        },
+        {
+          "offset": "0x2ac",
+          "original": "そうかもしれないね。",
+          "text": "Maybe so."
+        },
+        {
+          "offset": "0x2c4",
+          "original": "これ、\nあなたの詩じゃないの？",
+          "text": "Isn't this\nyour poem?"
+        },
+        {
+          "offset": "0x2e4",
+          "original": "違うよ。",
+          "text": "Wrong!"
+        },
+        {
+          "offset": "0x2f0",
+          "original": "何だ、そうなの。",
+          "text": "Oh, is that so."
+        },
+        {
+          "offset": "0x304",
+          "original": "これ、今回うちの部で\n作った、詩集なんだ。\n良かったら読んでみない？",
+          "text": "Our club made this\npoetry book.\nWant to read it?"
+        },
+        {
+          "offset": "0x348",
+          "original": "そうね、いただくわ。",
+          "text": "Yes, I'll take it."
+        },
+        {
+          "offset": "0x384",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x39c",
+          "original": "良かった。\nちょうど、暇だったんだ。",
+          "text": "Great.\nI was just bored."
+        },
+        {
+          "offset": "0x3c0",
+          "original": "私の美しさを称えた\n詩はあるかしら。",
+          "text": "Is there a poem\npraising my beauty?"
+        },
+        {
+          "offset": "0x3e4",
+          "original": "あるかなぁ。",
+          "text": "I wonder."
+        },
+        {
+          "offset": "0x3f4",
+          "original": "この学校の人なら、\nそういう詩を\n創りたくなるものよ。",
+          "text": "Anyone at this school\nwould want to write\nsuch a poem."
+        },
+        {
+          "offset": "0x42c",
+          "original": "これ、今回うちの部で\n作った、詩集なんだ。\n良かったら読んでみない？",
+          "text": "Our club made this\npoetry book.\nWant to read it?"
+        },
+        {
+          "offset": "0x470",
+          "original": "この中にあるのね。\nそれならいただくわ。",
+          "text": "So it's in here.\nThen I'll take it."
+        },
+        {
+          "offset": "0x498",
+          "original": "俺は、ないと思うけど…。",
+          "text": "I doubt it, though..."
+        },
+        {
+          "offset": "0x4d4",
+          "original": "あっ、{G}。\n来てくれたんだ。",
+          "text": "Oh, {G}\nYou came."
+        },
+        {
+          "offset": "0x4f0",
+          "original": "別に貴方のために\n来たわけじゃないわ。",
+          "text": "I didn't come\nfor your sake."
+        },
+        {
+          "offset": "0x518",
+          "original": "これ、今回うちの部で\n作った、詩集なんだ。\n良かったら読んでみない？",
+          "text": "Our club made this\npoetry book.\nWant to read it?"
+        },
+        {
+          "offset": "0x55c",
+          "original": "あまり嬉しいプレゼント\nじゃないけど、とりあえず\nいただいておくわ。",
+          "text": "Not much of a gift,\nbut I'll accept it\nfor now."
+        },
+        {
+          "offset": "0x5a0",
+          "original": "別に貢ぎ物のつもりじゃ\nないんだけど…。",
+          "text": "It wasn't meant\nas tribute..."
+        },
+        {
+          "offset": "0x5dc",
+          "original": "あらやだ。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0x5e8",
+          "original": "{G}。\n来てくれたんだ。",
+          "text": "{G}!\nYou came."
+        },
+        {
+          "offset": "0x600",
+          "original": "間違いよ、失礼するわ。",
+          "text": "Wrong place. Excuse me."
+        },
+        {
+          "offset": "0x618",
+          "original": "これ、今回うちの部で\n作った、詩集なんだ。\n良かったら読んでみない？",
+          "text": "Our club made this\npoetry book.\nWant to read it?"
+        },
+        {
+          "offset": "0x65c",
+          "original": "けっこうです。\nさっき\nいただいたから。",
+          "text": "No, thank you.\nI already\nhave one."
+        },
+        {
+          "offset": "0x684",
+          "original": "そう…。",
+          "text": "I see..."
+        },
+        {
+          "offset": "0x6a8",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x6c0",
+          "original": "良かった。\nちょうど、暇だったんだ。",
+          "text": "Great.\nI was just bored."
+        },
+        {
+          "offset": "0x6e4",
+          "original": "何なの、\nこのたくさんの文章は？",
+          "text": "What is all\nthis writing?"
+        },
+        {
+          "offset": "0x704",
+          "original": "部員全員で書いた\n作文だよ。",
+          "text": "Essays written by\nevery member."
+        },
+        {
+          "offset": "0x720",
+          "original": "作文…？\n何か懐かしい響きね…。",
+          "text": "Essays...?\nHow nostalgic..."
+        },
+        {
+          "offset": "0x740",
+          "original": "これ、今回うちの部で\n作った、文集なんだ。\n良かったら読んでみない？",
+          "text": "Our club made this\nessay collection.\nWant to read it?"
+        },
+        {
+          "offset": "0x784",
+          "original": "そうね、いただくわ。",
+          "text": "Yes, I'll take it."
+        },
+        {
+          "offset": "0x7b8",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x7d0",
+          "original": "良かった。\nちょうど、暇だったんだ。",
+          "text": "Great.\nI was just bored."
+        },
+        {
+          "offset": "0x7f4",
+          "original": "何なの、\nこのたくさんの文章は？",
+          "text": "What is all\nthis writing?"
+        },
+        {
+          "offset": "0x814",
+          "original": "部員全員で書いた\n作文だよ。",
+          "text": "Essays written by\nevery member."
+        },
+        {
+          "offset": "0x830",
+          "original": "作文…？\n何か、懐かしい響きね…。",
+          "text": "Essays...?\nHow nostalgic..."
+        },
+        {
+          "offset": "0x854",
+          "original": "これ、今回うちの部で\n作った、文集なんだ。\n良かったら読んでみない？",
+          "text": "Our club made this\nessay collection.\nWant to read it?"
+        },
+        {
+          "offset": "0x898",
+          "original": "あまり欲しくないけど…。\nとりあえずいただくわ。",
+          "text": "I don't much want it...\nbut I'll take it."
+        },
+        {
+          "offset": "0x8c8",
+          "original": "きっと、面白いと思うよ。",
+          "text": "I'm sure you'll like it."
+        },
+        {
+          "offset": "0x904",
+          "original": "あっ、{G}。\n来てくれたんだ。",
+          "text": "Oh, {G}\nYou came."
+        },
+        {
+          "offset": "0x920",
+          "original": "別に貴方のために、\n来たわけじゃないわ。",
+          "text": "I didn't come\nfor your sake."
+        },
+        {
+          "offset": "0x948",
+          "original": "これ、今回うちの部で\n作った、文集なんだ。\n良かったら読んでみない？",
+          "text": "Our club made this\nessay collection.\nWant to read it?"
+        },
+        {
+          "offset": "0x98c",
+          "original": "あまり嬉しいプレゼント\nじゃないけど、とりあえず\nいただいておくわ。",
+          "text": "Not much of a gift,\nbut I'll accept it\nfor now."
+        },
+        {
+          "offset": "0x9d0",
+          "original": "別に貢ぎ物のつもりじゃ\nないんだけど…。",
+          "text": "It wasn't meant\nas tribute..."
+        },
+        {
+          "offset": "0xa0c",
+          "original": "あらやだ。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0xa18",
+          "original": "{G}。\n来てくれたんだ。",
+          "text": "{G}!\nYou came."
+        },
+        {
+          "offset": "0xa30",
+          "original": "間違いよ、失礼するわ。",
+          "text": "Wrong place. Excuse me."
+        },
+        {
+          "offset": "0xa48",
+          "original": "これ、今回うちの部で\n作った、詩集なんだ。\n良かったら読んでみない？",
+          "text": "Our club made this\npoetry book.\nWant to read it?"
+        },
+        {
+          "offset": "0xa8c",
+          "original": "けっこうです。\nさっき、\nいただいたから。",
+          "text": "No, thank you.\nI already\nhave one."
+        },
+        {
+          "offset": "0xab8",
+          "original": "そう…。",
+          "text": "I see..."
+        },
+        {
+          "offset": "0xadc",
+          "original": "お疲れみたいね。",
+          "text": "You look tired."
+        },
+        {
+          "offset": "0xaf0",
+          "original": "あっ、{G}。\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0xb18",
+          "original": "よくわからなかったけど、\n良かったんじゃなくて。",
+          "text": "I didn't quite follow,\nbut it was fine, I'd say."
+        },
+        {
+          "offset": "0xb48",
+          "original": "よくわからないんじゃ、\n俺の弁論もまだまだだな。",
+          "text": "If you didn't follow,\nmy speech needs work."
+        },
+        {
+          "offset": "0xb88",
+          "original": "お疲れみたいね。",
+          "text": "You look tired."
+        },
+        {
+          "offset": "0xb9c",
+          "original": "あっ、{G}。\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0xbc4",
+          "original": "よく聴いてなかったけど、\n良かったんじゃなくて。",
+          "text": "I wasn't listening,\nbut it was fine, I'd say."
+        },
+        {
+          "offset": "0xbf4",
+          "original": "ちゃんと聴いててくれよ。\n一生懸命\n弁論したんだから。",
+          "text": "Please listen.\nI gave that speech\nmy all."
+        },
+        {
+          "offset": "0xc3c",
+          "original": "あっ、{G}\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0xc64",
+          "original": "あまり\n聴いてなかったから、\nよくわからないわ。",
+          "text": "I wasn't\nreally listening,\nso I couldn't say."
+        },
+        {
+          "offset": "0xc94",
+          "original": "一生懸命やったんだから、\n聴いててくれよ。",
+          "text": "I gave it my all,\nso please listen."
+        },
+        {
+          "offset": "0xcd0",
+          "original": "あらやだ。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0xcdc",
+          "original": "{G}。\n来てくれたんだ。",
+          "text": "{G}!\nYou came."
+        },
+        {
+          "offset": "0xcf4",
+          "original": "なぜこんな所に\n来たのかしら。",
+          "text": "Why did I\ncome here?"
+        },
+        {
+          "offset": "0xd20",
+          "original": "あっ、{G}待ってよ。",
+          "text": "Wait, {G} hold on."
+        },
+        {
+          "offset": "0xd38",
+          "original": "お疲れみたいね。",
+          "text": "You look tired."
+        },
+        {
+          "offset": "0xd4c",
+          "original": "あっ、{G}。\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0xd74",
+          "original": "私、時代劇なんて\n好きじゃないけど、\n良かったんじゃない。",
+          "text": "I don't like\nsamurai dramas, but\nit was fine."
+        },
+        {
+          "offset": "0xdb0",
+          "original": "ありがとう。\nでも、時代劇だって、\n面白いと思うけどなぁ。",
+          "text": "Thanks.\nBut samurai dramas\ncan be fun too."
+        },
+        {
+          "offset": "0xdfc",
+          "original": "お疲れみたいね。",
+          "text": "You look tired."
+        },
+        {
+          "offset": "0xe10",
+          "original": "あっ、{G}。\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0xe38",
+          "original": "私、時代劇なんて\n好きじゃないのよ。\n他のがよかったわ。",
+          "text": "I don't like\nsamurai dramas.\nAnything else, please."
+        },
+        {
+          "offset": "0xe70",
+          "original": "時代劇だって、\n面白いと思うけどなぁ。",
+          "text": "Samurai dramas\ncan be fun too."
+        },
+        {
+          "offset": "0xea8",
+          "original": "あっ、{G}\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0xed0",
+          "original": "時代劇は\nあまり好きじゃないから、\nほとんど見てなかったわ。",
+          "text": "I don't care for\nsamurai dramas, so\nI barely watched."
+        },
+        {
+          "offset": "0xf0c",
+          "original": "一生懸命やったんだから、\n見ててくれよ。",
+          "text": "I gave it my all,\nso please watch."
+        },
+        {
+          "offset": "0xf44",
+          "original": "お疲れみたいね。",
+          "text": "You look tired."
+        },
+        {
+          "offset": "0xf58",
+          "original": "あっ、{G}。\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0xf80",
+          "original": "ガキっぽかったけど、\n良かったんじゃない。",
+          "text": "It was childish,\nbut fine, I suppose."
+        },
+        {
+          "offset": "0xfac",
+          "original": "ありがとう。\nでも、ガキっぽくても、\n面白いものは面白いよ。",
+          "text": "Thanks.\nBut childish or not,\nfun is fun."
+        },
+        {
+          "offset": "0xff8",
+          "original": "お疲れみたいね。",
+          "text": "You look tired."
+        },
+        {
+          "offset": "0x100c",
+          "original": "あっ、{G}。\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0x1034",
+          "original": "変なのやるわね。\nこういうガキっぽいのって、\n面白いの？",
+          "text": "What an odd show.\nIs childish stuff\nlike that fun?"
+        },
+        {
+          "offset": "0x106c",
+          "original": "それは偏見だよ。\nそれなりに面白いと\n思うけど…。",
+          "text": "That's prejudice.\nI think it's fun\nin its own way..."
+        },
+        {
+          "offset": "0x10b0",
+          "original": "あっ、{G}\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0x10d8",
+          "original": "ガキっぽくて\nほとんど見てないわ。",
+          "text": "So childish,\nI barely watched."
+        },
+        {
+          "offset": "0x10fc",
+          "original": "一生懸命やったんだから、\n見ててくれよ。",
+          "text": "I gave it my all,\nso please watch."
+        },
+        {
+          "offset": "0x1134",
+          "original": "お疲れみたいね。",
+          "text": "You look tired."
+        },
+        {
+          "offset": "0x1148",
+          "original": "あっ、{G}。\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0x1170",
+          "original": "あんな愛は、\n妄想だと思うけど、\nちょっと感動したわ。",
+          "text": "Love like that\nis a fantasy, but\nit moved me a little."
+        },
+        {
+          "offset": "0x11a8",
+          "original": "ありがとう。\n名作というのは、\nそういうものだよ。",
+          "text": "Thanks.\nThat's what makes\na classic."
+        },
+        {
+          "offset": "0x11ec",
+          "original": "お疲れみたいね。",
+          "text": "You look tired."
+        },
+        {
+          "offset": "0x1200",
+          "original": "あっ、{G}。\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0x1228",
+          "original": "ああいう愛もいいけど、\n私に似合う男は、\nまだ現れないわね。",
+          "text": "That love is nice,\nbut the man worthy\nof me hasn't appeared."
+        },
+        {
+          "offset": "0x1264",
+          "original": "‥‥‥‥‥。\n早く現れるといいね。",
+          "text": "......\nHope he shows up soon."
+        },
+        {
+          "offset": "0x1298",
+          "original": "あっ、{G}\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0x12c0",
+          "original": "あんな愛は妄想よ。\n愛は、男から一方的に\n受けるものじゃなくって？",
+          "text": "That love is a fantasy.\nIsn't love something\nmen simply give me?"
+        },
+        {
+          "offset": "0x1304",
+          "original": "それって、\nなんか寂しくない？",
+          "text": "Isn't that\nkind of lonely?"
+        },
+        {
+          "offset": "0x1334",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x134c",
+          "original": "ちょうど良かった。\nこれから実験ショーなんだ。\n見ていってよ。",
+          "text": "Good timing.\nOur show's next.\nStay and watch."
+        },
+        {
+          "offset": "0x138c",
+          "original": "そうね…。\nいいわ、\n見ていってあげる。",
+          "text": "Let me see...\nVery well,\nI'll watch."
+        },
+        {
+          "offset": "0x13c0",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x13d8",
+          "original": "ちょうど良かった。\nこれから実験ショーなんだ。\n見ていってよ。",
+          "text": "Good timing.\nOur show's next.\nStay and watch."
+        },
+        {
+          "offset": "0x1418",
+          "original": "あまり時間がないけど…、\nいいわ、\n見ていってあげる。",
+          "text": "I'm short on time...\nbut very well,\nI'll watch."
+        },
+        {
+          "offset": "0x145c",
+          "original": "あっ、{G}。\n来てくれたんだ。",
+          "text": "Oh, {G}\nYou came."
+        },
+        {
+          "offset": "0x1478",
+          "original": "別に、貴方のために、\n来たわけじゃないわ。",
+          "text": "I didn't come\nfor your sake."
+        },
+        {
+          "offset": "0x14a4",
+          "original": "これから実験ショーなんだ。\n見ていってくれよ。",
+          "text": "The science show's next.\nPlease stay and watch."
+        },
+        {
+          "offset": "0x14d4",
+          "original": "あまり時間はないけど…、\nしょうがないわね、\n見ていってあげる。",
+          "text": "I'm short on time...\nbut oh well,\nI'll watch."
+        },
+        {
+          "offset": "0x1524",
+          "original": "あらやだ。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0x1530",
+          "original": "ちょうど良かった。\nこれから実験ショーなんだ。\n見ていってよ。",
+          "text": "Good timing.\nOur show's next.\nStay and watch."
+        },
+        {
+          "offset": "0x1570",
+          "original": "‥‥‥。\n見たくないけど、\nしょうがないわね。",
+          "text": "......\nI don't want to,\nbut oh well."
+        },
+        {
+          "offset": "0x15ac",
+          "original": "あ、破片が少し飛んできたわよ。\n顔に傷でもついたら、\nどうする気なの？",
+          "text": "Debris flew at me!\nWhat if my face\nhad been scratched?"
+        },
+        {
+          "offset": "0x15f4",
+          "original": "あっ、ごめん。\nあんなに爆発するとは、\n思わなかったんだ。",
+          "text": "Oh, sorry.\nI didn't think it'd\nblow up like that."
+        },
+        {
+          "offset": "0x1630",
+          "original": "いいわ、許してあげる。\nそれじゃあ、\nそろそろ失礼するわね。",
+          "text": "Fine, I forgive you.\nWell then,\nI'll take my leave."
+        },
+        {
+          "offset": "0x166c",
+          "original": "えぇ。\nもう行っちゃうの？",
+          "text": "Huh?\nLeaving already?"
+        },
+        {
+          "offset": "0x1688",
+          "original": "私が行かないと、\n悲しむ人が\nたくさんいるのよ。",
+          "text": "If I don't go,\nmany people\nwill be sad."
+        },
+        {
+          "offset": "0x16cc",
+          "original": "破片が少し飛んできたわよ。\n顔に傷でもついたら\nどうする気？",
+          "text": "Debris flew at me!\nWhat if my face\nwere scratched?"
+        },
+        {
+          "offset": "0x1708",
+          "original": "あっ、ごめん。\nあんなに爆発するとは、\n思わなかったんだ。",
+          "text": "Oh, sorry.\nI didn't think it'd\nblow up like that."
+        },
+        {
+          "offset": "0x1744",
+          "original": "何もなかったから\n許してあげるわ。\nそろそろ失礼するわね。",
+          "text": "No harm done,\nso I forgive you.\nI'll take my leave."
+        },
+        {
+          "offset": "0x1780",
+          "original": "えぇ。\nもう行っちゃうの？",
+          "text": "Huh?\nLeaving already?"
+        },
+        {
+          "offset": "0x179c",
+          "original": "当然よ。\n私は、ひとつの所に留まれる\n女じゃないのよ。",
+          "text": "Naturally.\nI'm not a woman who\nstays in one place."
+        },
+        {
+          "offset": "0x17e8",
+          "original": "破片が\n少し飛んできたわよ。",
+          "text": "Debris\nflew at me!"
+        },
+        {
+          "offset": "0x1804",
+          "original": "あっ、ごめん。\nあんなに爆発するとは、\n思わなかったんだ。",
+          "text": "Oh, sorry.\nI didn't think it'd\nblow up like that."
+        },
+        {
+          "offset": "0x1840",
+          "original": "顔に傷でもついたら、\n他の男の子達に\n殺されるわよ。",
+          "text": "If my face were scarred,\nthe other boys\nwould kill you."
+        },
+        {
+          "offset": "0x1890",
+          "original": "奇麗じゃない。\n私にはかなわないけど。",
+          "text": "Pretty.\nNot as pretty as me."
+        },
+        {
+          "offset": "0x18b8",
+          "original": "‥‥‥‥。\nそ、そう。\nそうだね。",
+          "text": "......\nR-right.\nOf course."
+        },
+        {
+          "offset": "0x18e4",
+          "original": "なかなか奇麗じゃない。\n私の美しさには、\n及びもつかないけど。",
+          "text": "Quite pretty.\nNowhere near\nmy beauty, though."
+        },
+        {
+          "offset": "0x1924",
+          "original": "‥‥‥‥。\nそ、そう。\nそうだね。",
+          "text": "......\nR-right.\nOf course."
+        },
+        {
+          "offset": "0x1950",
+          "original": "私がいなければ、\n奇麗にも見えたの\nでしょうけれど…。",
+          "text": "Without me here,\nit might have\nlooked pretty..."
+        },
+        {
+          "offset": "0x199c",
+          "original": "な、なに今の…。",
+          "text": "Wh-what was that...?"
+        },
+        {
+          "offset": "0x19b0",
+          "original": "驚いたでしょう？\nこれが、物質転送だよ。",
+          "text": "Surprised?\nThat's matter transfer."
+        },
+        {
+          "offset": "0x19d8",
+          "original": "これならデートのとき、\nもっとゆっくり準備が\nできるわけね。",
+          "text": "With this, I could\ntake my time getting\nready for dates."
+        },
+        {
+          "offset": "0x1a14",
+          "original": "‥‥‥‥。\n（他にもっと有効な使いみちが\nあるだろう？）",
+          "text": "......\n(Surely there's a\nbetter use for it?)"
+        },
+        {
+          "offset": "0x1a5c",
+          "original": "な、なに今の…。",
+          "text": "Wh-what was that...?"
+        },
+        {
+          "offset": "0x1a70",
+          "original": "驚いたでしょう？\nこれが、物質転送だよ。",
+          "text": "Surprised?\nThat's matter transfer."
+        },
+        {
+          "offset": "0x1a98",
+          "original": "これならデートのとき、\n２人ぐらいなら\n掛け持ちできそうね。",
+          "text": "With this, I could\njuggle two dates\nat once."
+        },
+        {
+          "offset": "0x1ad4",
+          "original": "‥‥‥‥。\n（他にもっと有効な使いみちが\nあるだろう？）",
+          "text": "......\n(Surely there's a\nbetter use for it?)"
+        },
+        {
+          "offset": "0x1b1c",
+          "original": "な、なに今の…。",
+          "text": "Wh-what was that...?"
+        },
+        {
+          "offset": "0x1b30",
+          "original": "驚いたでしょう？\nこれが、物質転送だよ。",
+          "text": "Surprised?\nThat's matter transfer."
+        },
+        {
+          "offset": "0x1b58",
+          "original": "これならデートのとき、\n電車とか使わなくても\nいいのね。",
+          "text": "With this, I'd never\nneed a train\nfor dates."
+        },
+        {
+          "offset": "0x1b90",
+          "original": "‥‥‥‥。\n（他にもっと有効な使いみちが\nあるだろう？）",
+          "text": "......\n(Surely there's a\nbetter use for it?)"
+        },
+        {
+          "offset": "0x1bd8",
+          "original": "な、なに今の…。",
+          "text": "Wh-what was that...?"
+        },
+        {
+          "offset": "0x1bec",
+          "original": "衛星からの、\nレーザー攻撃だよ。\n驚いたでしょう。",
+          "text": "A laser strike\nfrom a satellite.\nSurprised?"
+        },
+        {
+          "offset": "0x1c20",
+          "original": "これがあれば、\n私に似合わない男どもを\n引き離せるわね。",
+          "text": "With this, I could\nkeep away men\nunworthy of me."
+        },
+        {
+          "offset": "0x1c58",
+          "original": "‥‥‥‥。\n（そんなことしか\n思い付かないのか？）",
+          "text": "......\n(Is that all she\ncan think of?)"
+        },
+        {
+          "offset": "0x1c9c",
+          "original": "な、なに今の…。",
+          "text": "Wh-what was that...?"
+        },
+        {
+          "offset": "0x1cb0",
+          "original": "衛星からの、\nレーザー攻撃だよ。\n驚いたでしょう。",
+          "text": "A laser strike\nfrom a satellite.\nSurprised?"
+        },
+        {
+          "offset": "0x1ce4",
+          "original": "これがあれば、\n私に似合わない男どもを\n引き離せるわね。",
+          "text": "With this, I could\nkeep away men\nunworthy of me."
+        },
+        {
+          "offset": "0x1d1c",
+          "original": "‥‥‥‥。\n（そんなことしか\n思い付かないのか？）",
+          "text": "......\n(Is that all she\ncan think of?)"
+        },
+        {
+          "offset": "0x1d60",
+          "original": "な、なに今の…。",
+          "text": "Wh-what was that...?"
+        },
+        {
+          "offset": "0x1d74",
+          "original": "衛星からの、\nレーザー攻撃だよ。\n驚いたでしょう。",
+          "text": "A laser strike\nfrom a satellite.\nSurprised?"
+        },
+        {
+          "offset": "0x1da8",
+          "original": "これがあれば、\n私に似合わない男どもを\n引き離せるわね。",
+          "text": "With this, I could\nkeep away men\nunworthy of me."
+        },
+        {
+          "offset": "0x1de0",
+          "original": "‥‥‥‥。\n（そんなことしか\n思い付かないのか？）",
+          "text": "......\n(Is that all she\ncan think of?)"
+        },
+        {
+          "offset": "0x1e24",
+          "original": "あれ、{G}がいない。\nショーの最中は\nいたんだけどなぁ…。",
+          "text": "Huh, no sign of {G}\nShe was here\nduring the show..."
+        },
+        {
+          "offset": "0x1e60",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x1e78",
+          "original": "コンピュータ占い\nやってるんだけど、\nどう、やってみない？",
+          "text": "We're doing\ncomputer fortunes.\nWant to try?"
+        },
+        {
+          "offset": "0x1eb4",
+          "original": "そうね…。\nいいわ、\nやってみようかしら。",
+          "text": "Let me see...\nVery well,\nI'll try it."
+        },
+        {
+          "offset": "0x1eec",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x1f04",
+          "original": "コンピュータ占い\nやってるんだけど、\nどう、やってみない？",
+          "text": "We're doing\ncomputer fortunes.\nWant to try?"
+        },
+        {
+          "offset": "0x1f40",
+          "original": "あまり時間はないけど…\nいいわ、\nやってあげるわ。",
+          "text": "I'm short on time...\nbut very well,\nI'll do it."
+        },
+        {
+          "offset": "0x1f80",
+          "original": "あっ、{G}。\n来てくれたんだ。",
+          "text": "Oh, {G}\nYou came."
+        },
+        {
+          "offset": "0x1f9c",
+          "original": "別に、貴方のために、\n来たわけじゃないわ。",
+          "text": "I didn't come\nfor your sake."
+        },
+        {
+          "offset": "0x1fc8",
+          "original": "コンピュータ占い\nやってるんだけど、\nどう、やってみない？",
+          "text": "We're doing\ncomputer fortunes.\nWant to try?"
+        },
+        {
+          "offset": "0x2004",
+          "original": "あまり時間はないけど…。\nしょうがないわね、\nやってあげるわ。",
+          "text": "I'm short on time...\nbut oh well,\nI'll do it."
+        },
+        {
+          "offset": "0x2054",
+          "original": "あらやだ。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0x2060",
+          "original": "コンピュータ占い\nやってるんだけど、\nどう、やってみない？",
+          "text": "We're doing\ncomputer fortunes.\nWant to try?"
+        },
+        {
+          "offset": "0x209c",
+          "original": "けっこうよ。",
+          "text": "No, thank you."
+        },
+        {
+          "offset": "0x20b8",
+          "original": "俺達って、\n相性悪いのかな…。\nそうだ、占ってみよう。",
+          "text": "Are we a\nbad match...?\nI'll check."
+        },
+        {
+          "offset": "0x20f4",
+          "original": "良かったじゃない。\n嬉しいでしょう。",
+          "text": "Good for you.\nYou must be happy."
+        },
+        {
+          "offset": "0x2118",
+          "original": "ま、まあね。",
+          "text": "W-well, yeah."
+        },
+        {
+          "offset": "0x2130",
+          "original": "良かったじゃない。\n悪い結果じゃなくて。",
+          "text": "Good for you.\nNot a bad result."
+        },
+        {
+          "offset": "0x2158",
+          "original": "そうだね。",
+          "text": "Yeah."
+        },
+        {
+          "offset": "0x216c",
+          "original": "私達って相性悪いのね。\n残念だったでしょう？",
+          "text": "We're a poor match.\nDisappointed?"
+        },
+        {
+          "offset": "0x2198",
+          "original": "占いなんて、遊びだから。\nあまり気にしないよ。",
+          "text": "Fortunes are just fun.\nI don't mind."
+        },
+        {
+          "offset": "0x21d0",
+          "original": "良かったじゃない。\n嬉しいでしょう。",
+          "text": "Good for you.\nYou must be happy."
+        },
+        {
+          "offset": "0x21f4",
+          "original": "ま、まあね。",
+          "text": "W-well, yeah."
+        },
+        {
+          "offset": "0x220c",
+          "original": "良かったじゃない。\n悪い結果じゃなくて。",
+          "text": "Good for you.\nNot a bad result."
+        },
+        {
+          "offset": "0x2234",
+          "original": "そうだね。",
+          "text": "Yeah."
+        },
+        {
+          "offset": "0x2248",
+          "original": "残念だったわね。\nがっかりしたでしょう。",
+          "text": "Too bad.\nYou must be crushed."
+        },
+        {
+          "offset": "0x2270",
+          "original": "占いなんて、遊びだから。\nあまり気にしないよ。",
+          "text": "Fortunes are just fun.\nI don't mind."
+        },
+        {
+          "offset": "0x22a8",
+          "original": "良かったじゃない。\n嬉しいでしょう。",
+          "text": "Good for you.\nYou must be happy."
+        },
+        {
+          "offset": "0x22cc",
+          "original": "ま、まあね。",
+          "text": "W-well, yeah."
+        },
+        {
+          "offset": "0x22e4",
+          "original": "良かったじゃない。\n悪い結果じゃなくて。",
+          "text": "Good for you.\nNot a bad result."
+        },
+        {
+          "offset": "0x230c",
+          "original": "そうだね。",
+          "text": "Yeah."
+        },
+        {
+          "offset": "0x2320",
+          "original": "残念だったわね。\nがっかりして自殺なんて\nしないでよ。",
+          "text": "Too bad.\nDon't go doing anything\ndrastic, now."
+        },
+        {
+          "offset": "0x2358",
+          "original": "占いなんて、遊びだから。\nあまり気にしないよ。",
+          "text": "Fortunes are just fun.\nI don't mind."
+        },
+        {
+          "offset": "0x2390",
+          "original": "何だ、最高の相性じゃん。\n全然悪くないぞ。",
+          "text": "Hey, a perfect match.\nNot bad at all."
+        },
+        {
+          "offset": "0x23c0",
+          "original": "何だ、そんなに\n悪くないじゃんか。",
+          "text": "Hey, it's not\nthat bad."
+        },
+        {
+          "offset": "0x23e8",
+          "original": "やっぱり、\nそうなのかなぁ。",
+          "text": "So it's\ntrue, huh..."
+        },
+        {
+          "offset": "0x2408",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x2420",
+          "original": "コンピュータゲーム\n作ったんだけど、\nどう、やってみない？",
+          "text": "We made a\ncomputer game.\nWant to try it?"
+        },
+        {
+          "offset": "0x245c",
+          "original": "私はいいわ。\nやってみせて下さる？",
+          "text": "Not me.\nWould you show me?"
+        },
+        {
+          "offset": "0x248c",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x24a4",
+          "original": "あっ、{G}。\nコンピュータゲーム\n作ったんだけど、\nどう、やってみない？",
+          "text": "Oh, {G}\nI made a\ncomputer game.\nWant to try it?"
+        },
+        {
+          "offset": "0x24e8",
+          "original": "ゲームはあまりしないの。\n見るだけならいいわよ。",
+          "text": "I rarely play games.\nI'll just watch."
+        },
+        {
+          "offset": "0x2518",
+          "original": "じゃあ、見ててよ。",
+          "text": "Then watch me."
+        },
+        {
+          "offset": "0x253c",
+          "original": "あっ、{G}。\n来てくれたんだ。",
+          "text": "Oh, {G}\nYou came."
+        },
+        {
+          "offset": "0x2558",
+          "original": "別に、貴方のために、\n来たわけじゃないわ。",
+          "text": "I didn't come\nfor your sake."
+        },
+        {
+          "offset": "0x2584",
+          "original": "コンピュータゲーム\n作ったんだけど、\nどう、やってみない？",
+          "text": "We made a\ncomputer game.\nWant to try it?"
+        },
+        {
+          "offset": "0x25c0",
+          "original": "ゲームはあまりしないの。\n見るだけならいいわよ。",
+          "text": "I rarely play games.\nI'll just watch."
+        },
+        {
+          "offset": "0x25f0",
+          "original": "じゃあ、見ててよ。",
+          "text": "Then watch me."
+        },
+        {
+          "offset": "0x2618",
+          "original": "あらやだ。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0x2624",
+          "original": "コンピュータゲーム\n作ったんだけど、\nどう、やってみない？",
+          "text": "We made a\ncomputer game.\nWant to try it?"
+        },
+        {
+          "offset": "0x2660",
+          "original": "けっこうよ。",
+          "text": "No, thank you."
+        },
+        {
+          "offset": "0x267c",
+          "original": "行ってしまった…。\n悔しいから、\nゲームでもしよう。",
+          "text": "She's gone...\nOut of spite,\nI'll play a game."
+        },
+        {
+          "offset": "0x26b4",
+          "original": "あら、意外と上手なのね。",
+          "text": "Oh, you're rather good."
+        },
+        {
+          "offset": "0x26d0",
+          "original": "作った人だからね。",
+          "text": "I made it, after all."
+        },
+        {
+          "offset": "0x26ec",
+          "original": "はっきり言って、下手ね。",
+          "text": "Frankly, you're bad."
+        },
+        {
+          "offset": "0x2708",
+          "original": "作った人が、\nうまいとは限らないから。",
+          "text": "The maker isn't\nalways good at it."
+        },
+        {
+          "offset": "0x2738",
+          "original": "あら、意外と上手なのね。",
+          "text": "Oh, you're rather good."
+        },
+        {
+          "offset": "0x2754",
+          "original": "作った人だからね。",
+          "text": "I made it, after all."
+        },
+        {
+          "offset": "0x2770",
+          "original": "はっきり言って、下手ね。",
+          "text": "Frankly, you're bad."
+        },
+        {
+          "offset": "0x278c",
+          "original": "作った人が、\nうまいとは限らないから。",
+          "text": "The maker isn't\nalways good at it."
+        },
+        {
+          "offset": "0x27bc",
+          "original": "あら、意外と上手なのね。",
+          "text": "Oh, you're rather good."
+        },
+        {
+          "offset": "0x27d8",
+          "original": "作った人だからね。",
+          "text": "I made it, after all."
+        },
+        {
+          "offset": "0x27f4",
+          "original": "はっきり言って、下手ね。",
+          "text": "Frankly, you're bad."
+        },
+        {
+          "offset": "0x2810",
+          "original": "作った人が、\nうまいとは限らないから。",
+          "text": "The maker isn't\nalways good at it."
+        },
+        {
+          "offset": "0x2840",
+          "original": "ああ、面白かった。\n（むなしい…。）",
+          "text": "Ah, that was fun.\n(How empty...)"
+        },
+        {
+          "offset": "0x2868",
+          "original": "ああ、面白かった。\n（むなしい…。）",
+          "text": "Ah, that was fun.\n(How empty...)"
+        },
+        {
+          "offset": "0x2890",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x28a8",
+          "original": "良かったら、似顔絵どう？",
+          "text": "Want a portrait?"
+        },
+        {
+          "offset": "0x28c4",
+          "original": "そうね、いいわよ。\n私がモデルなんだから、\n美人に描いてよ。",
+          "text": "Very well.\nI'm the model, so\ndraw me beautiful."
+        },
+        {
+          "offset": "0x293c",
+          "original": "はい、できたよ。\nどう？",
+          "text": "Here, done.\nWell?"
+        },
+        {
+          "offset": "0x2968",
+          "original": "まあまあね。\nでも、私は\nもう少し美人よ。",
+          "text": "Passable.\nBut I'm a little\nmore beautiful."
+        },
+        {
+          "offset": "0x2994",
+          "original": "そ、そうだね。",
+          "text": "R-right."
+        },
+        {
+          "offset": "0x29ac",
+          "original": "そうね。\n似てないけど、\n許してあげるわ。",
+          "text": "Well.\nIt's not like me,\nbut I'll forgive it."
+        },
+        {
+          "offset": "0x29d8",
+          "original": "あ、ありがとう…。\n（似てないのに、許して\nくれるなんて、意外だ。）",
+          "text": "Th-thanks...\n(She forgave a bad\nlikeness? Surprising.)"
+        },
+        {
+          "offset": "0x2a24",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x2a3c",
+          "original": "あっ、{G}。\n良かったら、似顔絵どう？",
+          "text": "Oh, {G}\nWant a portrait?"
+        },
+        {
+          "offset": "0x2a60",
+          "original": "そうね、私の美を、\n絵として残しておくのも\n悪くないわね。",
+          "text": "Yes, preserving my\nbeauty in a picture\nisn't a bad idea."
+        },
+        {
+          "offset": "0x2ad8",
+          "original": "はい、できたよ。\nどう？",
+          "text": "Here, done.\nWell?"
+        },
+        {
+          "offset": "0x2b04",
+          "original": "似てるわ。\nやっぱり私って\n美人よね。",
+          "text": "It's me.\nI really am\nbeautiful."
+        },
+        {
+          "offset": "0x2b2c",
+          "original": "そ、そうだね。",
+          "text": "R-right."
+        },
+        {
+          "offset": "0x2b44",
+          "original": "これのどこが私なの、\n全然似てないじゃない。\nもっとよく見なさいよ。",
+          "text": "Where am I in this?\nIt's nothing like me.\nLook more closely."
+        },
+        {
+          "offset": "0x2b88",
+          "original": "ご、ごめんなさい。\n描き直します。",
+          "text": "S-sorry.\nI'll redraw it."
+        },
+        {
+          "offset": "0x2be8",
+          "original": "今度のは、どうでしょう？",
+          "text": "How about this one?"
+        },
+        {
+          "offset": "0x2c04",
+          "original": "似てないけど、\n許してあげるわ。",
+          "text": "It's not like me,\nbut I'll forgive it."
+        },
+        {
+          "offset": "0x2c24",
+          "original": "あ、ありがとう…。\n（た、助かった。）",
+          "text": "Th-thanks...\n(Ph-phew.)"
+        },
+        {
+          "offset": "0x2c64",
+          "original": "あっ、{G}。\n来てくれたんだ。",
+          "text": "Oh, {G}\nYou came."
+        },
+        {
+          "offset": "0x2c80",
+          "original": "別に、貴方のために、\n来たわけじゃないわ。",
+          "text": "I didn't come\nfor your sake."
+        },
+        {
+          "offset": "0x2cac",
+          "original": "良かったら、似顔絵どう？",
+          "text": "Want a portrait?"
+        },
+        {
+          "offset": "0x2cc8",
+          "original": "そうね、私の美を、\n絵として残しておくのも\n悪くないわね。",
+          "text": "Yes, preserving my\nbeauty in a picture\nisn't a bad idea."
+        },
+        {
+          "offset": "0x2d40",
+          "original": "はい、できたよ。\nどう？",
+          "text": "Here, done.\nWell?"
+        },
+        {
+          "offset": "0x2d70",
+          "original": "似てるわ。\nやっぱり私って\n美人よね。",
+          "text": "It's me.\nI really am\nbeautiful."
+        },
+        {
+          "offset": "0x2d98",
+          "original": "そ、そうだね。",
+          "text": "R-right."
+        },
+        {
+          "offset": "0x2db0",
+          "original": "これのどこが私なの、\n全然似てないじゃない。\nもっとよく見なさいよ。",
+          "text": "Where am I in this?\nIt's nothing like me.\nLook more closely."
+        },
+        {
+          "offset": "0x2df4",
+          "original": "ご、ごめんなさい。\n描き直します。",
+          "text": "S-sorry.\nI'll redraw it."
+        },
+        {
+          "offset": "0x2e54",
+          "original": "今度のは、どうでしょう？",
+          "text": "How about this one?"
+        },
+        {
+          "offset": "0x2e70",
+          "original": "似てないけど、\n許してあげるわ。",
+          "text": "It's not like me,\nbut I'll forgive it."
+        },
+        {
+          "offset": "0x2e90",
+          "original": "あ、ありがとう…。\n（た、助かった。）",
+          "text": "Th-thanks...\n(Ph-phew.)"
+        },
+        {
+          "offset": "0x2ed0",
+          "original": "あら、やだ。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0x2ee0",
+          "original": "良かったら、似顔絵どう？",
+          "text": "Want a portrait?"
+        },
+        {
+          "offset": "0x2efc",
+          "original": "いらないわ。",
+          "text": "No, thanks."
+        },
+        {
+          "offset": "0x2f0c",
+          "original": "そう…。",
+          "text": "I see..."
+        },
+        {
+          "offset": "0x2f28",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x2f40",
+          "original": "あっ、{G}。\nい、いらっしゃい。",
+          "text": "Oh, {G}\nW-welcome."
+        },
+        {
+          "offset": "0x2f60",
+          "original": "あら、\nこんなもの描いてるのね。",
+          "text": "Oh,\nso you draw this stuff."
+        },
+        {
+          "offset": "0x2f80",
+          "original": "か、勘違いしないでよ。\nこ、これは、\n芸術だから…。",
+          "text": "D-don't get me wrong.\nTh-this is\nart..."
+        },
+        {
+          "offset": "0x2fb4",
+          "original": "芸術？\nこういうのは\n芸術とは言わないわ。",
+          "text": "Art?\nThis is not\nwhat I call art."
+        },
+        {
+          "offset": "0x2fe0",
+          "original": "えっ。\n（うっ、鋭い指摘を…。）",
+          "text": "Huh?\n(Ouch, that stung...)"
+        },
+        {
+          "offset": "0x3000",
+          "original": "私のような完壁な美しさを\n持った人をモデルにして、\n初めて芸術と言えるのよ。",
+          "text": "Only with a model of\nflawless beauty like me\ndoes it become art."
+        },
+        {
+          "offset": "0x304c",
+          "original": "そ、それなら、\n今度モデルに\nなってくれない？",
+          "text": "Th-then,\nwill you model\nfor me sometime?"
+        },
+        {
+          "offset": "0x307c",
+          "original": "そうね…\n考えないこともないわよ。",
+          "text": "Well...\nI might consider it."
+        },
+        {
+          "offset": "0x30a0",
+          "original": "えっ、本当。",
+          "text": "Huh, really?"
+        },
+        {
+          "offset": "0x30b0",
+          "original": "冗談に決まってるでしょう。\nそれじゃあ、\nそろそろ失礼するわ。",
+          "text": "I'm joking, of course.\nWell then,\nI'll take my leave."
+        },
+        {
+          "offset": "0x311c",
+          "original": "あー、びっくりした、\n{G}が来るとは\n思わなかったよ。",
+          "text": "Whoa, you startled me.\nI didn't expect {G}\nto come by."
+        },
+        {
+          "offset": "0x3154",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x316c",
+          "original": "あっ、{G}。\nい、いらっしゃい。",
+          "text": "Oh, {G}\nW-welcome."
+        },
+        {
+          "offset": "0x318c",
+          "original": "ふーん。\nこんなもの描いてるのね。",
+          "text": "Hmm.\nSo you draw this stuff."
+        },
+        {
+          "offset": "0x31b0",
+          "original": "か、勘違いしないでよ。\nこ、これは、\n芸術だから…。",
+          "text": "D-don't get me wrong.\nTh-this is\nart..."
+        },
+        {
+          "offset": "0x31e4",
+          "original": "芸術？\nこういうのは、\n芸術とは言わないわ。",
+          "text": "Art?\nThis is not\nwhat I call art."
+        },
+        {
+          "offset": "0x3210",
+          "original": "えっ。\n（うっ、鋭い指摘を…。）",
+          "text": "Huh?\n(Ouch, that stung...)"
+        },
+        {
+          "offset": "0x3230",
+          "original": "私のような完壁な美しさを\n持った人をモデルにして、\n初めて芸術と言えるのよ。",
+          "text": "Only with a model of\nflawless beauty like me\ndoes it become art."
+        },
+        {
+          "offset": "0x327c",
+          "original": "そ、それなら、\n今度モデルに\nなってくれない？",
+          "text": "Th-then,\nwill you model\nfor me sometime?"
+        },
+        {
+          "offset": "0x32ac",
+          "original": "お断りよ。\nそれじゃあ失礼するわ。",
+          "text": "I refuse.\nNow, excuse me."
+        },
+        {
+          "offset": "0x32f4",
+          "original": "あー、びっくりした、\n{G}が来るとは\n思わなかったよ。",
+          "text": "Whoa, you startled me.\nI didn't expect {G}\nto come by."
+        },
+        {
+          "offset": "0x332c",
+          "original": "あっ、{G}。\nい、いらっしゃい。",
+          "text": "Oh, {G}\nW-welcome."
+        },
+        {
+          "offset": "0x334c",
+          "original": "ふーん。\nこんなもの描いてるのね。",
+          "text": "Hmm.\nSo you draw this stuff."
+        },
+        {
+          "offset": "0x3370",
+          "original": "か、勘違いしないでよ。\nこ、これは、\n芸術だから…。",
+          "text": "D-don't get me wrong.\nTh-this is\nart..."
+        },
+        {
+          "offset": "0x33a4",
+          "original": "芸術？\nこういうのは\n芸術とは言わないわ。",
+          "text": "Art?\nThis is not\nwhat I call art."
+        },
+        {
+          "offset": "0x33d0",
+          "original": "えっ。\n（うっ、鋭い指摘を…。）",
+          "text": "Huh?\n(Ouch, that stung...)"
+        },
+        {
+          "offset": "0x33f0",
+          "original": "本当の美を理解できるように\nなりなさい。",
+          "text": "Learn to understand\ntrue beauty."
+        },
+        {
+          "offset": "0x3430",
+          "original": "あー、びっくりした、\n{G}が来るとは\n思わなかったよ。",
+          "text": "Whoa, you startled me.\nI didn't expect {G}\nto come by."
+        },
+        {
+          "offset": "0x3468",
+          "original": "あらやだ。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0x3474",
+          "original": "{G}。\n来てくれたんだ。",
+          "text": "{G}!\nYou came."
+        },
+        {
+          "offset": "0x348c",
+          "original": "間違いよ、失礼するわ。",
+          "text": "Wrong place. Excuse me."
+        },
+        {
+          "offset": "0x34b0",
+          "original": "あっ、行っちゃったよ。\n何しに来たんだろう…？",
+          "text": "Ah, she left.\nWhat did she come for...?"
+        },
+        {
+          "offset": "0x34e4",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x34fc",
+          "original": "良かった。\nちょうど、暇だったんだ。",
+          "text": "Great.\nI was just bored."
+        },
+        {
+          "offset": "0x3520",
+          "original": "私に似合う絵は、\nあるかしら…？",
+          "text": "Is there a painting\nworthy of me...?"
+        },
+        {
+          "offset": "0x3540",
+          "original": "どうかなぁ。\nこれなんかどう？",
+          "text": "Let's see.\nHow about this one?"
+        },
+        {
+          "offset": "0x3560",
+          "original": "いいじゃない。\nこれ、あなたが描いたの？",
+          "text": "Not bad.\nDid you paint this?"
+        },
+        {
+          "offset": "0x3588",
+          "original": "あぁ、そうだよ。",
+          "text": "Yeah, I did."
+        },
+        {
+          "offset": "0x359c",
+          "original": "今度、私の絵を\n描いてもらおうかしら。",
+          "text": "Perhaps I'll have\nyou paint me sometime."
+        },
+        {
+          "offset": "0x35c4",
+          "original": "そんなに\n気に入ってくれたんだ。\nありがとう、嬉しいよ。",
+          "text": "You like it\nthat much?\nThanks, I'm glad."
+        },
+        {
+          "offset": "0x361c",
+          "original": "遊びに来てあげたわよ。",
+          "text": "I've come to visit you."
+        },
+        {
+          "offset": "0x3634",
+          "original": "良かった。\nちょうど、暇だったんだ。",
+          "text": "Great.\nI was just bored."
+        },
+        {
+          "offset": "0x3658",
+          "original": "私に似合う絵は\nあるかしら…？",
+          "text": "Is there a painting\nworthy of me...?"
+        },
+        {
+          "offset": "0x3678",
+          "original": "どうかなぁ。\nこれなんかどう？",
+          "text": "Let's see.\nHow about this one?"
+        },
+        {
+          "offset": "0x3698",
+          "original": "へぇ、\nなかなかいいじゃない。\nこれあなたが描いたの？",
+          "text": "Oh,\nquite good.\nDid you paint this?"
+        },
+        {
+          "offset": "0x36d0",
+          "original": "あぁ、そうだよ。",
+          "text": "Yeah, I did."
+        },
+        {
+          "offset": "0x36e4",
+          "original": "あなたもやっと、\n美しいものを理解\nできる様になったのね。",
+          "text": "At last you've\nlearned to understand\nbeauty."
+        },
+        {
+          "offset": "0x3720",
+          "original": "はは…。\nありがとう。",
+          "text": "Haha...\nThanks."
+        },
+        {
+          "offset": "0x3758",
+          "original": "あっ、{G}。\n来てくれたんだ。",
+          "text": "Oh, {G}\nYou came."
+        },
+        {
+          "offset": "0x3774",
+          "original": "私に似合う絵は\nあるかしら…？",
+          "text": "Is there a painting\nworthy of me...?"
+        },
+        {
+          "offset": "0x3794",
+          "original": "どうかなぁ。\nこれなんかどう？",
+          "text": "Let's see.\nHow about this one?"
+        },
+        {
+          "offset": "0x37b4",
+          "original": "まあまあね。\nこれあなたが描いたの？",
+          "text": "Passable.\nDid you paint this?"
+        },
+        {
+          "offset": "0x37d8",
+          "original": "あぁ、そうだよ。",
+          "text": "Yeah, I did."
+        },
+        {
+          "offset": "0x37ec",
+          "original": "もう少し頑張った\nほうがいいわよ。",
+          "text": "You should try\na little harder."
+        },
+        {
+          "offset": "0x3810",
+          "original": "そ、そうだね…。",
+          "text": "Y-yeah..."
+        },
+        {
+          "offset": "0x3840",
+          "original": "あらやだ。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0x384c",
+          "original": "{G}。\n来てくれたんだ。",
+          "text": "{G}!\nYou came."
+        },
+        {
+          "offset": "0x3864",
+          "original": "なぜ、こんな所に\n来たのかしら。",
+          "text": "Why did I\ncome here?"
+        },
+        {
+          "offset": "0x3890",
+          "original": "あっ、{G}待ってよ。",
+          "text": "Wait, {G} hold on."
+        },
+        {
+          "offset": "0x38a8",
+          "original": "お疲れみたいね。",
+          "text": "You look tired."
+        },
+        {
+          "offset": "0x38bc",
+          "original": "あっ、{G}。\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0x38e4",
+          "original": "何の曲かわからないけど、\n良かったんじゃない。",
+          "text": "I don't know the song,\nbut it was fine."
+        },
+        {
+          "offset": "0x3914",
+          "original": "ありがとう。\n実は、ゲームの曲\nだったんだけどね…。",
+          "text": "Thanks.\nIt was actually\nfrom a game..."
+        },
+        {
+          "offset": "0x3948",
+          "original": "ゲーム？\nそうなの、\nわからないわけね。",
+          "text": "A game?\nI see, so\nthat's why."
+        },
+        {
+          "offset": "0x3970",
+          "original": "普通、女の子は、\n知らない人の方が\n多いよね。",
+          "text": "Most girls\nwouldn't know it,\nI guess."
+        },
+        {
+          "offset": "0x39b8",
+          "original": "お疲れみたいね。",
+          "text": "You look tired."
+        },
+        {
+          "offset": "0x39cc",
+          "original": "あっ、{G}。\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0x39f4",
+          "original": "何の曲かわからないから、\nあまり聴いてなかったわ。",
+          "text": "I didn't know the song,\nso I barely listened."
+        },
+        {
+          "offset": "0x3a28",
+          "original": "実は、ゲームの曲\nだったんだけどね…。",
+          "text": "It was actually\nfrom a game..."
+        },
+        {
+          "offset": "0x3a50",
+          "original": "ゲーム？\nもう少しわかる曲に\nしてもらいたかったわ。",
+          "text": "A game?\nI'd have liked a\nsong I knew."
+        },
+        {
+          "offset": "0x3a84",
+          "original": "そう？\nでも、聴いてて\n欲しかったな…。",
+          "text": "Oh?\nI wish you'd\nlistened..."
+        },
+        {
+          "offset": "0x3ac4",
+          "original": "あっ、{G}\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0x3aec",
+          "original": "何の曲かわからないから、\n全然聴いてなかったわ。",
+          "text": "I didn't know the song,\nso I didn't listen."
+        },
+        {
+          "offset": "0x3b1c",
+          "original": "一生懸命演奏したんだから、\n少しぐらい\n聴いててくれよ。",
+          "text": "I played my heart out,\nso at least\nlisten a little."
+        },
+        {
+          "offset": "0x3b64",
+          "original": "お疲れみたいね。",
+          "text": "You look tired."
+        },
+        {
+          "offset": "0x3b78",
+          "original": "あっ、{G}。\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0x3ba0",
+          "original": "私は、あんまり\n好きな曲じゃないけど、\n面白かったんじゃない？",
+          "text": "It's not a song\nI care for, but\nit was amusing."
+        },
+        {
+          "offset": "0x3be0",
+          "original": "ありがとう。\nでも、あんまり\n好きじゃないのか…。",
+          "text": "Thanks.\nBut you don't\nreally like it..."
+        },
+        {
+          "offset": "0x3c24",
+          "original": "お疲れみたいね。",
+          "text": "You look tired."
+        },
+        {
+          "offset": "0x3c38",
+          "original": "あっ、{G}。\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0x3c60",
+          "original": "私には、コミカルすぎて、\nちょっと似合わないわ。",
+          "text": "Too comical for me.\nIt doesn't suit me."
+        },
+        {
+          "offset": "0x3c90",
+          "original": "そうだね。\n似合わないね。",
+          "text": "True.\nIt doesn't suit you."
+        },
+        {
+          "offset": "0x3cbc",
+          "original": "あっ、{G}\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0x3ce4",
+          "original": "私には似合わない曲ね。\nあまり好きじゃないわ。",
+          "text": "A song unworthy of me.\nI don't care for it."
+        },
+        {
+          "offset": "0x3d14",
+          "original": "そう…。\n面白いと\n思ったんだけどなぁ。",
+          "text": "Oh...\nI thought it\nwas fun..."
+        },
+        {
+          "offset": "0x3d4c",
+          "original": "お疲れみたいね。",
+          "text": "You look tired."
+        },
+        {
+          "offset": "0x3d60",
+          "original": "あっ、{G}。\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0x3d88",
+          "original": "私のように気品があって、\n良かったと思うわよ。",
+          "text": "Elegant, like me.\nI thought it was good."
+        },
+        {
+          "offset": "0x3db8",
+          "original": "そ、そう？\nありがとう。",
+          "text": "R-really?\nThanks."
+        },
+        {
+          "offset": "0x3de0",
+          "original": "お疲れみたいね。",
+          "text": "You look tired."
+        },
+        {
+          "offset": "0x3df4",
+          "original": "あっ、{G}。\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0x3e1c",
+          "original": "なかなか気品があって…\n私向きので、良かったわ。",
+          "text": "Quite elegant...\nIt suited me. Good."
+        },
+        {
+          "offset": "0x3e4c",
+          "original": "そ、そうだね。\nありがとう。",
+          "text": "R-right.\nThanks."
+        },
+        {
+          "offset": "0x3e78",
+          "original": "あっ、{G}\n来てくれたんだ。\nどうだった？",
+          "text": "Oh, {G}\nYou came.\nHow was it?"
+        },
+        {
+          "offset": "0x3ea0",
+          "original": "なかなか良かったけど、\n私のような気品は\nなかったわね。",
+          "text": "Rather good, but\nit lacked elegance\nlike mine."
+        },
+        {
+          "offset": "0x3ed8",
+          "original": "そう？\nいまいちだったかな。",
+          "text": "Oh?\nNot quite there?"
+        },
+        {
+          "offset": "0x3f04",
+          "original": "あらやだ。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0x3f10",
+          "original": "{G}。\n来てくれたんだ。",
+          "text": "{G}!\nYou came."
+        },
+        {
+          "offset": "0x3f28",
+          "original": "なぜ、こんな所に\n来たのかしら。",
+          "text": "Why did I\ncome here?"
+        },
+        {
+          "offset": "0x3f54",
+          "original": "あっ、{G}待ってよ。",
+          "text": "Wait, {G} hold on."
+        },
+        {
+          "offset": "0x7158",
+          "original": "あら。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0x7160",
+          "original": "あら。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0x7168",
+          "original": "あら。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0x7170",
+          "original": "あら。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0x7178",
+          "original": "あら。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0x7180",
+          "original": "あら。",
+          "text": "Oh my."
+        },
+        {
+          "offset": "0x7188",
+          "original": "あら。",
+          "text": "Oh my."
+        }
+      ]
+    },
+    {
+      "file": "CDROM/BUNKA/KG_S6S.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "あら、{P}。",
+          "text": "Oh, {P}."
+        },
+        {
+          "offset": "0xc",
+          "original": "あっ、\n{G}、おはよう。",
+          "text": "Oh,\ngood morning, {G}"
+        },
+        {
+          "offset": "0x24",
+          "original": "まだお一人？",
+          "text": "Still alone?"
+        },
+        {
+          "offset": "0x34",
+          "original": "うん、そう。",
+          "text": "Yeah, not yet."
+        },
+        {
+          "offset": "0x44",
+          "original": "私が御一緒して\nあげてもよくてよ。\nホーホホホホ。",
+          "text": "I could grace you\nwith my company.\nOh-ho-ho-ho-ho!"
+        },
+        {
+          "offset": "0x78",
+          "original": "うん、御願いするよ。{q}いや、いいよ。",
+          "text": "Yes, I'd be honored.{q}No, that's okay."
+        },
+        {
+          "offset": "0xb4",
+          "original": "ま、私の誘いを断る男なんて\n考えられないけど…。\nさあ、どこに行くの？{q}何よ！\nこの私が、せっかく\n誘ってあげてるのに。\n失礼するわね。",
+          "text": "Well, no man could\nrefuse my invitation...\nNow, where to?{q}What!\nI, of all people,\ninvite you, and...\nExcuse me."
+        },
+        {
+          "offset": "0x13c",
+          "original": "ありゃ、\n怒らせちゃったよ。",
+          "text": "Whoops,\nI made her mad."
+        },
+        {
+          "offset": "0x15c",
+          "original": "あら、おはよう。\n{P}。",
+          "text": "Oh, good morning,\n{P}."
+        },
+        {
+          "offset": "0x174",
+          "original": "一緒に、見学しない？",
+          "text": "Look around with me?"
+        },
+        {
+          "offset": "0x18c",
+          "original": "そうねぇ…。\n別に、いいわよ。\n一緒に行ってあげる。",
+          "text": "Let me see...\nVery well.\nI'll go with you."
+        },
+        {
+          "offset": "0x1c0",
+          "original": "それじゃあ、\nどこに行こうか？",
+          "text": "So then,\nwhere should we go?"
+        },
+        {
+          "offset": "0x1f0",
+          "original": "あら、{P}。",
+          "text": "Oh, {P}."
+        },
+        {
+          "offset": "0x1fc",
+          "original": "何かしら？",
+          "text": "What is it?"
+        },
+        {
+          "offset": "0x208",
+          "original": "一緒に、見学しない？",
+          "text": "Look around with me?"
+        },
+        {
+          "offset": "0x220",
+          "original": "そうねぇ、一緒に行って\nあげてもよくてよ。\nホーホホホホ。",
+          "text": "Well, I might\ngo with you.\nOhohohoho."
+        },
+        {
+          "offset": "0x25c",
+          "original": "‥‥‥‥‥。\nじ、じゃあさ、\nどこに行こうか？",
+          "text": "......\nTh-then,\nwhere should we go?"
+        },
+        {
+          "offset": "0x2a0",
+          "original": "あら、何の用かしら？",
+          "text": "Oh, what might you want?"
+        },
+        {
+          "offset": "0x2b8",
+          "original": "一緒に、見学しない？",
+          "text": "Look around with me?"
+        },
+        {
+          "offset": "0x2d0",
+          "original": "そうねぇ、\n考えてあげてもよくてよ。\nホーホホホホ。",
+          "text": "Well,\nI might consider it.\nOhohohoho."
+        },
+        {
+          "offset": "0x304",
+          "original": "じゃあさ、\n一緒に見学しようよ。",
+          "text": "Then,\nlet's tour it together."
+        },
+        {
+          "offset": "0x324",
+          "original": "してくださいよねぇ。\n私と一緒に歩けるのよ。",
+          "text": "Say \"please.\"\nYou get to walk with me."
+        },
+        {
+          "offset": "0x350",
+          "original": "‥‥‥‥。\n一緒に、\n見学してください…。",
+          "text": "......\nPlease look around\nwith me..."
+        },
+        {
+          "offset": "0x37c",
+          "original": "ま、いいでしょう。\nそれじゃあ、早く行き先を\n決めて下さる？",
+          "text": "Well, all right.\nThen would you decide\nwhere to go, quickly?"
+        },
+        {
+          "offset": "0x3d4",
+          "original": "‥‥。\n何の御用？",
+          "text": "....\nWhat do you want?"
+        },
+        {
+          "offset": "0x3e8",
+          "original": "一緒に、見学しない？",
+          "text": "Look around with me?"
+        },
+        {
+          "offset": "0x400",
+          "original": "私、あなたに\n誘ってもらうほど、\nおちぶれておりませんの。",
+          "text": "I haven't sunk so low\nas to be invited\nby you."
+        },
+        {
+          "offset": "0x448",
+          "original": "ひ、ひどい…。\nひどすぎる…。",
+          "text": "Th-that's harsh...\nWay too harsh..."
+        },
+        {
+          "offset": "0x468",
+          "original": "しょうがない、\n一人で行くとするか。",
+          "text": "Oh well,\nI guess I'll go alone."
+        }
+      ]
+    },
+    {
+      "file": "CDROM/BUNKA/KG_S6W.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "こうして、\n文化祭は終了した。",
+          "text": "And so, the\nfestival was over."
+        },
+        {
+          "offset": "0x24",
+          "original": "俺は、{G}と一緒に、\n展示物を見て回った。",
+          "text": "Together with {G}\nI toured the exhibits."
+        },
+        {
+          "offset": "0x50",
+          "original": "俺は、一人で\n展示物を探し回った。",
+          "text": "I wandered alone\nlooking at exhibits."
+        },
+        {
+          "offset": "0x78",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x9c",
+          "original": "文芸部では詩の展示を\nしているみたいだね。",
+          "text": "Looks like Literature\nis showing poems."
+        },
+        {
+          "offset": "0xc8",
+          "original": "私、こういう\n文学的なものって\nあまり興味ないのよね。",
+          "text": "I'm not very\ninterested in\nliterary things."
+        },
+        {
+          "offset": "0x100",
+          "original": "まあ、そう言わず。\n見ていこうよ。",
+          "text": "Don't say that.\nLet's take a look."
+        },
+        {
+          "offset": "0x124",
+          "original": "しかたがないわね。\nそれじゃ、行きましょう。",
+          "text": "Very well.\nLet's go, then."
+        },
+        {
+          "offset": "0x164",
+          "original": "どうだった？",
+          "text": "How was it?"
+        },
+        {
+          "offset": "0x174",
+          "original": "たまには\n詩もいいんじゃない。",
+          "text": "Poems are nice\nonce in a while."
+        },
+        {
+          "offset": "0x194",
+          "original": "そ、そう。",
+          "text": "O-oh."
+        },
+        {
+          "offset": "0x1a0",
+          "original": "もう帰りましょう。",
+          "text": "Let's go home now."
+        },
+        {
+          "offset": "0x1b4",
+          "original": "そうだね。\n帰ろう。",
+          "text": "Right.\nLet's go."
+        },
+        {
+          "offset": "0x1dc",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x200",
+          "original": "文芸部では詩の展示を\nしているみたいだね。",
+          "text": "Looks like Literature\nis showing poems."
+        },
+        {
+          "offset": "0x22c",
+          "original": "詩の展示？\n私の美しさを称えた\n詩はあるかしら。",
+          "text": "Poems?\nIs there one praising\nmy beauty?"
+        },
+        {
+          "offset": "0x25c",
+          "original": "それは、\n無いんじゃないかなぁ…。",
+          "text": "I don't think\nthere is..."
+        },
+        {
+          "offset": "0x280",
+          "original": "つべこべ言わずに\n探してみなさいよ。",
+          "text": "Stop grumbling\nand look for one."
+        },
+        {
+          "offset": "0x2a4",
+          "original": "えっ、俺が？",
+          "text": "Huh, me?"
+        },
+        {
+          "offset": "0x2b4",
+          "original": "あたりまえじゃない。\n私にやらせる気？",
+          "text": "Of course.\nYou expect me to do it?"
+        },
+        {
+          "offset": "0x2dc",
+          "original": "ちぇ、わかったよ。",
+          "text": "Tch, fine."
+        },
+        {
+          "offset": "0x310",
+          "original": "見つかった？",
+          "text": "Found one?"
+        },
+        {
+          "offset": "0x320",
+          "original": "ここに貼ってあるの\nなんかどう？",
+          "text": "How about this one\nposted here?"
+        },
+        {
+          "offset": "0x340",
+          "original": "読んでみて。",
+          "text": "Read it to me."
+        },
+        {
+          "offset": "0x350",
+          "original": "おぉ、君の瞳は星の輝き\n君の髪はまるで、\n清水の流れの如く…。",
+          "text": "Oh, thine eyes shine\nlike stars, thy hair\nflows like a stream..."
+        },
+        {
+          "offset": "0x390",
+          "original": "なんか古臭いわね。",
+          "text": "How old-fashioned."
+        },
+        {
+          "offset": "0x3a4",
+          "original": "これでも、\n一生懸命探したんだよ。\nこれ以上は無いよ。",
+          "text": "Even so,\nI looked hard.\nThere's nothing better."
+        },
+        {
+          "offset": "0x3dc",
+          "original": "しかたがないわね。\nま、これでいいことに\nしましょう。",
+          "text": "Very well.\nI suppose this\nwill do."
+        },
+        {
+          "offset": "0x414",
+          "original": "良かった。",
+          "text": "Phew."
+        },
+        {
+          "offset": "0x420",
+          "original": "それじゃ、\n私は次の予定があるから、\n帰るわね。",
+          "text": "Well then,\nI have other plans,\nso I'll be going."
+        },
+        {
+          "offset": "0x474",
+          "original": "あっ、{G}。\n待ってくれよ。",
+          "text": "Wait, {G}\nHold on."
+        },
+        {
+          "offset": "0x494",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x4b8",
+          "original": "文芸部では詩の展示を\nしているみたいだね。",
+          "text": "Looks like Literature\nis showing poems."
+        },
+        {
+          "offset": "0x4e4",
+          "original": "詩の展示？\nわざわざ私を誘って、\nそれだけ？",
+          "text": "Poems?\nYou invited me\nfor just that?"
+        },
+        {
+          "offset": "0x510",
+          "original": "なんか嫌そうだね。",
+          "text": "You don't look happy."
+        },
+        {
+          "offset": "0x524",
+          "original": "どうして私が、こんなもの\n読まなくては\nいけないのかしら。",
+          "text": "Why should I\nhave to read\nsuch things?"
+        },
+        {
+          "offset": "0x560",
+          "original": "ど、どうしてって、\n詩は心を\n豊かにするんだよ。",
+          "text": "W-why? Well,\npoems enrich\nthe soul."
+        },
+        {
+          "offset": "0x590",
+          "original": "付き合ってられないわ。\n私、次の予定があるの。\nそれじゃ失礼するわ。",
+          "text": "I can't be bothered.\nI have other plans.\nExcuse me."
+        },
+        {
+          "offset": "0x5f0",
+          "original": "あっ、{G}。\n待ってくれよ。",
+          "text": "Wait, {G}\nHold on."
+        },
+        {
+          "offset": "0x610",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x634",
+          "original": "文芸部では作文の展示を\nしているみたいだね。",
+          "text": "Looks like Literature\nis showing essays."
+        },
+        {
+          "offset": "0x660",
+          "original": "私、こういう\n地味なものって、\nあまり興味ないのよね。",
+          "text": "I'm not very\ninterested in\nplain things."
+        },
+        {
+          "offset": "0x698",
+          "original": "まあ、そう言わず。\n見ていこうよ。",
+          "text": "Don't say that.\nLet's take a look."
+        },
+        {
+          "offset": "0x6bc",
+          "original": "しかたがないわね。\nそれじゃ、行きましょう。",
+          "text": "Very well.\nLet's go, then."
+        },
+        {
+          "offset": "0x6fc",
+          "original": "私もう駄目。\nこれ以上読むなら、\n一人で読んでくれない。",
+          "text": "I've had enough.\nIf you'll read more,\ndo it alone."
+        },
+        {
+          "offset": "0x734",
+          "original": "じゃあ、俺もいいや。\nもう帰ろう。",
+          "text": "Then me too.\nLet's go home."
+        },
+        {
+          "offset": "0x758",
+          "original": "話がわかるわね。\nさあ、帰りましょう。",
+          "text": "You understand.\nNow, let's go home."
+        },
+        {
+          "offset": "0x78c",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x7b0",
+          "original": "文芸部では作文の展示を\nしているみたいだね。",
+          "text": "Looks like Literature\nis showing essays."
+        },
+        {
+          "offset": "0x7dc",
+          "original": "作文の展示？\nそんなもの見るの？",
+          "text": "Essays?\nYou'll look at those?"
+        },
+        {
+          "offset": "0x7fc",
+          "original": "せっかく来たんだし…。",
+          "text": "We came all this way..."
+        },
+        {
+          "offset": "0x814",
+          "original": "そんなもの見るなら、\n私、失礼するわ。",
+          "text": "If you'll look at that,\nI'll take my leave."
+        },
+        {
+          "offset": "0x83c",
+          "original": "そんな、{G}\nちょっと待ってよ。",
+          "text": "Oh, wait, {G}\nHold on."
+        },
+        {
+          "offset": "0x85c",
+          "original": "何？\nまだ何か用があるの？",
+          "text": "What?\nAnything else?"
+        },
+        {
+          "offset": "0x878",
+          "original": "俺も、帰るよ。",
+          "text": "I'll go home too."
+        },
+        {
+          "offset": "0x888",
+          "original": "ほーほほほほほほ…。\n別に私の後ろについて\n来なくてもいいのよ。",
+          "text": "Ohohohohohoho...\nYou needn't trail\nalong behind me."
+        },
+        {
+          "offset": "0x8fc",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x920",
+          "original": "文芸部では作文の展示を\nしているみたいだね。",
+          "text": "Looks like Literature\nis showing essays."
+        },
+        {
+          "offset": "0x94c",
+          "original": "作文の展示？\nわざわざ私を誘って\nそんなもの見せるわけ？",
+          "text": "Essays?\nYou invited me\nto show me that?"
+        },
+        {
+          "offset": "0x984",
+          "original": "なんか嫌そうだね。",
+          "text": "You don't look happy."
+        },
+        {
+          "offset": "0x998",
+          "original": "どうして私がこんなもの\n読まなくては\nいけないのかしら。",
+          "text": "Why should I\nhave to read\nsuch things?"
+        },
+        {
+          "offset": "0x9d0",
+          "original": "ど、どうしてって、\n作文なんて、\n懐かしいじゃないか。",
+          "text": "W-why? Well,\nessays bring back\nmemories, right?"
+        },
+        {
+          "offset": "0xa08",
+          "original": "そんなに読みたければ、\n暗く一人でご覧なさい。\nお似合いだわ。",
+          "text": "If you want to read it,\nmope over it alone.\nIt suits you."
+        },
+        {
+          "offset": "0xa48",
+          "original": "そんな、ひどい。",
+          "text": "That's harsh."
+        },
+        {
+          "offset": "0xa5c",
+          "original": "私、次の予定があるの。\nそれじゃ、失礼するわね。\nほーほほほほほ。",
+          "text": "I have other plans.\nNow, excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0xac4",
+          "original": "あっ、{G}。\n待ってくれよ。",
+          "text": "Wait, {G}\nHold on."
+        },
+        {
+          "offset": "0xae4",
+          "original": "あら、\n何か始まるみたいね。",
+          "text": "Oh,\nsomething's starting."
+        },
+        {
+          "offset": "0xb00",
+          "original": "今から弁論が\n始まるみたいだね。",
+          "text": "Looks like the\nspeeches are starting."
+        },
+        {
+          "offset": "0xb28",
+          "original": "あら、\n何か始まるみたいね。",
+          "text": "Oh,\nsomething's starting."
+        },
+        {
+          "offset": "0xb44",
+          "original": "今から弁論が\n始まるみたいだね。",
+          "text": "Looks like the\nspeeches are starting."
+        },
+        {
+          "offset": "0xb64",
+          "original": "弁論なんて\nつまらないんじゃない？",
+          "text": "Aren't speeches\nboring?"
+        },
+        {
+          "offset": "0xb88",
+          "original": "せっかく来たんだから。\n聞いていこうよ。",
+          "text": "We came all this way.\nLet's listen."
+        },
+        {
+          "offset": "0xbc0",
+          "original": "あら、\n何か始まるみたいね。",
+          "text": "Oh,\nsomething's starting."
+        },
+        {
+          "offset": "0xbdc",
+          "original": "今から弁論が\n始まるみたいだね。",
+          "text": "Looks like the\nspeeches are starting."
+        },
+        {
+          "offset": "0xbfc",
+          "original": "弁論なんて\nつまらないんじゃない？",
+          "text": "Aren't speeches\nboring?"
+        },
+        {
+          "offset": "0xc20",
+          "original": "せっかく来たんだから。\n聞いていこうよ。",
+          "text": "We came all this way.\nLet's listen."
+        },
+        {
+          "offset": "0xc58",
+          "original": "ねぇ、今の人、\n何が言いたかったんだと\n思う？",
+          "text": "Hey, what do\nyou think he was\ntrying to say?"
+        },
+        {
+          "offset": "0xc88",
+          "original": "さあ、何かしらね。\n他人の事には、\nあまり興味ないから。",
+          "text": "Who knows.\nI'm not very interested\nin other people."
+        },
+        {
+          "offset": "0xcc0",
+          "original": "そ、そう。\nそれじゃあ、\nそろそろ帰ろうか？",
+          "text": "I-I see.\nWell then,\nshall we head home?"
+        },
+        {
+          "offset": "0xcec",
+          "original": "そうね。\n私は別にかまわないわよ。\n帰りましょう。",
+          "text": "Yes.\nI don't mind.\nLet's go home."
+        },
+        {
+          "offset": "0xd30",
+          "original": "やっぱり\nつまらなかったじゃない。",
+          "text": "I knew it\nwould be boring."
+        },
+        {
+          "offset": "0xd54",
+          "original": "何を言ってるかは、\nわからなかったけどね。",
+          "text": "I couldn't tell what\nhe was saying, either."
+        },
+        {
+          "offset": "0xd80",
+          "original": "この私を連れ出して\nこんな物見せるなんて、\n笑わせるわね。",
+          "text": "Bringing me out\nto see this?\nDon't make me laugh."
+        },
+        {
+          "offset": "0xdbc",
+          "original": "そ、そんなこと\n言ったって…。",
+          "text": "B-but even\nso..."
+        },
+        {
+          "offset": "0xddc",
+          "original": "私、次の予定があるの。\nそれじゃ、失礼するわ。\nほーほほほほほ。",
+          "text": "I have other plans.\nNow, excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0xe30",
+          "original": "せっかく一緒に\n来てあげたのに、\nつまらなかったわ。",
+          "text": "I came along\nwith you, and\nit was boring."
+        },
+        {
+          "offset": "0xe64",
+          "original": "えっ、面白くなかった…？",
+          "text": "Huh, you didn't like it...?"
+        },
+        {
+          "offset": "0xe80",
+          "original": "私も低く見られたものね。\nこんなもので、この私が\n喜ぶとでも思ったの？",
+          "text": "You think little of me.\nYou thought this would\nplease someone like me?"
+        },
+        {
+          "offset": "0xec8",
+          "original": "そんなこと\n言われたって…。",
+          "text": "Even if\nyou say so..."
+        },
+        {
+          "offset": "0xee4",
+          "original": "私、次の予定があるの。\nそれじゃ、失礼するわ。\nほーほほほほほ。",
+          "text": "I have other plans.\nNow, excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0xf38",
+          "original": "あっ、{G}。\n待ってくれよ。",
+          "text": "Wait, {G}\nHold on."
+        },
+        {
+          "offset": "0xf58",
+          "original": "あら、\n何か始まるみたいね。",
+          "text": "Oh,\nsomething's starting."
+        },
+        {
+          "offset": "0xf74",
+          "original": "今から演劇が\n始まるみたいだね。",
+          "text": "Looks like the\nplay is starting."
+        },
+        {
+          "offset": "0xf9c",
+          "original": "あら、\n何か始まるみたいね。",
+          "text": "Oh,\nsomething's starting."
+        },
+        {
+          "offset": "0xfb8",
+          "original": "今から演劇が\n始まるみたいだね。",
+          "text": "Looks like the\nplay is starting."
+        },
+        {
+          "offset": "0xfe0",
+          "original": "あら、\n何か始まるみたいね。",
+          "text": "Oh,\nsomething's starting."
+        },
+        {
+          "offset": "0xffc",
+          "original": "今から演劇が\n始まるみたいだね。",
+          "text": "Looks like the\nplay is starting."
+        },
+        {
+          "offset": "0x1024",
+          "original": "面白かった？",
+          "text": "Was it fun?"
+        },
+        {
+          "offset": "0x1034",
+          "original": "私、時代劇って\n興味ないのよね。",
+          "text": "I have no interest\nin samurai dramas."
+        },
+        {
+          "offset": "0x1054",
+          "original": "えっ、そう？\nごめんね、\n付き合わせたみたいで…。",
+          "text": "Huh, really?\nSorry for\ndragging you along..."
+        },
+        {
+          "offset": "0x1088",
+          "original": "別にいいわ。\n今後、気を付けてくれれば。",
+          "text": "That's fine.\nJust be careful from now."
+        },
+        {
+          "offset": "0x10b0",
+          "original": "ありがとう、\n{G}優しいね。",
+          "text": "Thanks,\n{G} you're kind."
+        },
+        {
+          "offset": "0x10cc",
+          "original": "な、何言ってるのよ…。\nそろそろ帰りましょう。",
+          "text": "Wh-what are you saying...\nLet's go home now."
+        },
+        {
+          "offset": "0x10fc",
+          "original": "そうだね。\n帰ろう。",
+          "text": "Right.\nLet's go."
+        },
+        {
+          "offset": "0x112c",
+          "original": "何？\n今の劇は？",
+          "text": "What?\nWhat was that play?"
+        },
+        {
+          "offset": "0x113c",
+          "original": "えっ、何って？\n時代劇だけど…。",
+          "text": "Huh, what?\nA samurai drama..."
+        },
+        {
+          "offset": "0x115c",
+          "original": "この私を連れ出して、\nあんな物見せるなんて、\nお笑いだわ。",
+          "text": "Bringing me out\nto see that?\nIt's laughable."
+        },
+        {
+          "offset": "0x1198",
+          "original": "そ、そんなこと\n言ったって…。",
+          "text": "B-but even\nso..."
+        },
+        {
+          "offset": "0x11b8",
+          "original": "私、次の予定があるの。\nそれじゃ、失礼するわ。\nほーほほほほほ。",
+          "text": "I have other plans.\nNow, excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x120c",
+          "original": "わざわざ私を誘って\nあんなものを見せるなんて、\n信じられないわ。",
+          "text": "You invited me\njust to show me that?\nUnbelievable."
+        },
+        {
+          "offset": "0x124c",
+          "original": "お、お気に召しません\nでしたか？",
+          "text": "D-did it not\nplease you?"
+        },
+        {
+          "offset": "0x126c",
+          "original": "当たり前でしょう。\nあんなもので私が\n喜ぶとでも思ったわけ？",
+          "text": "Of course not.\nDid you think that\nwould please me?"
+        },
+        {
+          "offset": "0x12a8",
+          "original": "そ、それは…。",
+          "text": "W-well..."
+        },
+        {
+          "offset": "0x12b8",
+          "original": "私、次の予定があるの。\nそれじゃ、失礼するわ。\nほーほほほほほ。",
+          "text": "I have other plans.\nNow, excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x130c",
+          "original": "面白かった？",
+          "text": "Was it fun?"
+        },
+        {
+          "offset": "0x131c",
+          "original": "私、ああいうのに\n興味が無いから、\nほとんど見てなかったわ。",
+          "text": "I have no interest\nin that sort of thing,\nso I barely watched."
+        },
+        {
+          "offset": "0x1358",
+          "original": "そ、そう。\nごめんね、無理矢理\n付き合わせたみたいで…。",
+          "text": "I-I see.\nSorry for\ndragging you along..."
+        },
+        {
+          "offset": "0x1390",
+          "original": "そうね。\n今後、気を付けて\nちょうだい。",
+          "text": "Yes.\nBe careful from\nnow on."
+        },
+        {
+          "offset": "0x13b8",
+          "original": "それじゃあ、\nそろそろ帰ろうか？",
+          "text": "Well,\nshall we head home?"
+        },
+        {
+          "offset": "0x13d8",
+          "original": "そうね。\n私は別にかまわないわよ。\n帰りましょう。",
+          "text": "Yes.\nI don't mind.\nLet's go home."
+        },
+        {
+          "offset": "0x1424",
+          "original": "何、今の劇は？\nこの私に対して、\n失礼だと思わないの？",
+          "text": "What was that play?\nDon't you think it's\nrude to me?"
+        },
+        {
+          "offset": "0x145c",
+          "original": "お、面白くなかった？",
+          "text": "Y-you didn't like it?"
+        },
+        {
+          "offset": "0x1474",
+          "original": "面白い訳無いでしょう。\nこの私を連れ出して、\nあんな物見せるなんて…。",
+          "text": "Of course not.\nBringing me out\nto see that..."
+        },
+        {
+          "offset": "0x14bc",
+          "original": "そ、そんなこと\n言ったって…。",
+          "text": "B-but even\nso..."
+        },
+        {
+          "offset": "0x14dc",
+          "original": "私、次の予定があるの。\nそれじゃ、失礼するわ。\nほーほほほほほ。",
+          "text": "I have other plans.\nNow, excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x1530",
+          "original": "何、今の劇は？\nあれが、わざわざこの私を\n誘って見るもの？",
+          "text": "What was that play?\nIs that worth inviting\nsomeone like me to?"
+        },
+        {
+          "offset": "0x156c",
+          "original": "お、お気に召しません\nでしたか？",
+          "text": "D-did it not\nplease you?"
+        },
+        {
+          "offset": "0x158c",
+          "original": "気に入る訳無いでしょう。\n人を馬鹿にするのも\nいい加減にして欲しいわ。",
+          "text": "As if I'd like it.\nStop making a\nfool of me."
+        },
+        {
+          "offset": "0x15d4",
+          "original": "そ、そんな、\n馬鹿になんか…。",
+          "text": "B-but I'm not\nmaking a fool..."
+        },
+        {
+          "offset": "0x15f4",
+          "original": "この私に気に入られたければ\nどうすればいいか、\nその足りない頭で\nよく考えてみることね。\n失礼するわ。",
+          "text": "If you want my favor,\nthink hard about\nwhat to do with\nthat feeble head.\nExcuse me."
+        },
+        {
+          "offset": "0x166c",
+          "original": "なかなか面白かったわね。\nでも、今の劇のような、\n一途な愛なんてできないわ。",
+          "text": "That was rather fun.\nBut I can't have a\ndevoted love like that."
+        },
+        {
+          "offset": "0x16b8",
+          "original": "ど、どうして？",
+          "text": "Wh-why?"
+        },
+        {
+          "offset": "0x16c8",
+          "original": "この私の美貌が\n一途な愛を妨げているのよ。\nあぁ、神様を呪うわ。",
+          "text": "My beauty stands in\nthe way of devoted love.\nAh, I curse the gods."
+        },
+        {
+          "offset": "0x1708",
+          "original": "そ、そう…。\nそれじゃあ、\nそろそろ帰ろうか？",
+          "text": "I-I see...\nWell then,\nshall we head home?"
+        },
+        {
+          "offset": "0x1738",
+          "original": "そうね。\n私は別にかまわないわよ。\n帰りましょう。",
+          "text": "Yes.\nI don't mind.\nLet's go home."
+        },
+        {
+          "offset": "0x1780",
+          "original": "まぁ、それなりに\n面白かったわ。",
+          "text": "Well, it was\nfun enough."
+        },
+        {
+          "offset": "0x17a0",
+          "original": "あぁ、良かった。",
+          "text": "Ah, good."
+        },
+        {
+          "offset": "0x17b4",
+          "original": "でも私は今のところ、\nあんな一途な愛には\n興味はないの。",
+          "text": "But for now, I have\nno interest in\ndevoted love."
+        },
+        {
+          "offset": "0x17ec",
+          "original": "そ、そうなの…。",
+          "text": "I-is that so..."
+        },
+        {
+          "offset": "0x1800",
+          "original": "私、次の予定があるの。\nそれじゃ、失礼するわ。\nほーほほほほほ。",
+          "text": "I have other plans.\nNow, excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x1854",
+          "original": "ま、それなりに\n面白かったわ。",
+          "text": "Well, it was\nfun enough."
+        },
+        {
+          "offset": "0x1874",
+          "original": "あぁ、良かった。",
+          "text": "Ah, good."
+        },
+        {
+          "offset": "0x1888",
+          "original": "この私を誘ったら、\nこのぐらいのものは\n当然よね。",
+          "text": "If you invite me,\nthis much is only\nnatural."
+        },
+        {
+          "offset": "0x18bc",
+          "original": "そ、そうですか。",
+          "text": "I-is that so."
+        },
+        {
+          "offset": "0x18d0",
+          "original": "私、次の予定があるの。\nそれじゃ、失礼するわ。\nほーほほほほほ。",
+          "text": "I have other plans.\nNow, excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x1924",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x1948",
+          "original": "科学部はこれから\n実験ショーが\n始まるみたいだね。",
+          "text": "Looks like the\nScience Club show\nis starting."
+        },
+        {
+          "offset": "0x1984",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x19a8",
+          "original": "科学部はこれから\n実験ショーが\n始まるみたいだね。",
+          "text": "Looks like the\nScience Club show\nis starting."
+        },
+        {
+          "offset": "0x19e4",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x1a08",
+          "original": "科学部はこれから\n実験ショーが\n始まるみたいだね。",
+          "text": "Looks like the\nScience Club show\nis starting."
+        },
+        {
+          "offset": "0x1a44",
+          "original": "今の実験何よ。\n危なかったじゃない。\nちょっと失礼。",
+          "text": "What was that?\nIt was dangerous!\nExcuse me a moment."
+        },
+        {
+          "offset": "0x1a7c",
+          "original": "こんな危険なショーに\n連れて来て、\n一体どういうつもり？",
+          "text": "Bringing me to\nsuch a dangerous show,\nwhat were you thinking?"
+        },
+        {
+          "offset": "0x1ab4",
+          "original": "こんな危ない実験だとは\n思わなかったんだよ。",
+          "text": "I didn't think it'd\nbe that dangerous."
+        },
+        {
+          "offset": "0x1ae0",
+          "original": "運良く顔に破片が\n飛んでこなかったから\n良かったけど。",
+          "text": "Luckily no debris\nhit my face,\nbut still."
+        },
+        {
+          "offset": "0x1b18",
+          "original": "不幸中の幸いだね。",
+          "text": "A blessing in disguise."
+        },
+        {
+          "offset": "0x1b2c",
+          "original": "こんな危ない所に\nいられないわ。\nそれじゃ、失礼するわ。",
+          "text": "I can't stay in\nsuch a dangerous place.\nNow, excuse me."
+        },
+        {
+          "offset": "0x1b78",
+          "original": "こんな危険なショーに\n連れて来て、\n一体どういうつもり？",
+          "text": "Bringing me to\nsuch a dangerous show,\nwhat were you thinking?"
+        },
+        {
+          "offset": "0x1bb0",
+          "original": "こんな危ない実験だとは\n思わなかったんだよ。",
+          "text": "I didn't think it'd\nbe that dangerous."
+        },
+        {
+          "offset": "0x1bdc",
+          "original": "思わなかったで\n私の顔に傷でもつけられたら\nたまらないわよ。",
+          "text": "\"Didn't think\" won't do\nif my face gets\nscarred."
+        },
+        {
+          "offset": "0x1c18",
+          "original": "ご、ごめんなさい。",
+          "text": "S-sorry."
+        },
+        {
+          "offset": "0x1c2c",
+          "original": "こんな危ない所に\nいられないわ。\nそれじゃ、失礼するわ。",
+          "text": "I can't stay in\nsuch a dangerous place.\nNow, excuse me."
+        },
+        {
+          "offset": "0x1c78",
+          "original": "なかなか、奇麗じゃない。",
+          "text": "Quite pretty."
+        },
+        {
+          "offset": "0x1c94",
+          "original": "気に入ってくれた\nみたいだね。",
+          "text": "Looks like\nyou liked it."
+        },
+        {
+          "offset": "0x1cb4",
+          "original": "ただ、私の前では、ただの\n光の線に成り下がって\nしまうのが、残念ね。",
+          "text": "Pity that before me,\nit's reduced to mere\nlines of light."
+        },
+        {
+          "offset": "0x1cf8",
+          "original": "そ、そうですか…。",
+          "text": "I-is that so..."
+        },
+        {
+          "offset": "0x1d0c",
+          "original": "この私に、こんな美貌を\n与えてくれた神様を呪うわ。",
+          "text": "I curse the gods for\ngiving me such beauty."
+        },
+        {
+          "offset": "0x1d40",
+          "original": "‥‥‥‥。\nそ、それじゃあ、\nそろそろ帰ろうか？",
+          "text": "......\nW-well then,\nshall we head home?"
+        },
+        {
+          "offset": "0x1d70",
+          "original": "そうね。\n私は別にかまわないわよ。\n帰りましょう。",
+          "text": "Yes.\nI don't mind.\nLet's go home."
+        },
+        {
+          "offset": "0x1dc0",
+          "original": "私の美しさには\n到底及ばないけど、\n奇麗だったんじゃない。",
+          "text": "Nowhere near\nmy beauty, but\nit was pretty."
+        },
+        {
+          "offset": "0x1dfc",
+          "original": "そ、そうだね。\n{G}には\nかなわないけどね…。",
+          "text": "Y-yeah.\nNot like you, {G}\nof course..."
+        },
+        {
+          "offset": "0x1e28",
+          "original": "当然すぎて、今更口に出す\n事でもなかったわね。\nほーほほほほほ。",
+          "text": "That goes without\nsaying, of course.\nOhohohohoho."
+        },
+        {
+          "offset": "0x1e68",
+          "original": "それじゃあ、\n一緒に帰ろうか？",
+          "text": "Well then,\nshall we go home?"
+        },
+        {
+          "offset": "0x1e88",
+          "original": "残念だけど、\n私、次の予定があるから、\n失礼するわね。",
+          "text": "Sorry, but\nI have other plans,\nso excuse me."
+        },
+        {
+          "offset": "0x1ed4",
+          "original": "どう面白かった？",
+          "text": "So, was it fun?"
+        },
+        {
+          "offset": "0x1ee8",
+          "original": "貴方はどう思ったの？",
+          "text": "What did you think?"
+        },
+        {
+          "offset": "0x1f00",
+          "original": "奇麗だったなと\n思ったけど…。",
+          "text": "I thought it\nwas pretty..."
+        },
+        {
+          "offset": "0x1f20",
+          "original": "この私より？",
+          "text": "Prettier than me?"
+        },
+        {
+          "offset": "0x1f30",
+          "original": "そ、それは…。",
+          "text": "W-well..."
+        },
+        {
+          "offset": "0x1f40",
+          "original": "そんなはずないわよね。\n私の美しさの前では、\n総てが霞んでしまうもの。",
+          "text": "Surely not.\nBefore my beauty,\nall else fades."
+        },
+        {
+          "offset": "0x1f88",
+          "original": "そ、そうですね。\nおっしゃる通りです。",
+          "text": "Y-yes.\nJust as you say."
+        },
+        {
+          "offset": "0x1fb0",
+          "original": "わかってるのならいいのよ。\n私、次の予定があるから、\n失礼するわ。",
+          "text": "As long as you know.\nI have other plans,\nso excuse me."
+        },
+        {
+          "offset": "0x2014",
+          "original": "な、なんだったの今の…。",
+          "text": "Wh-what was that...?"
+        },
+        {
+          "offset": "0x2030",
+          "original": "今のが、物質転送って奴？\nすごかったね。",
+          "text": "So that's matter transfer?\nThat was amazing."
+        },
+        {
+          "offset": "0x2058",
+          "original": "そ、そう？\nあ、あの程度で\n私は驚かないわよ。",
+          "text": "W-was it?\nI-it takes more than\nthat to surprise me."
+        },
+        {
+          "offset": "0x2088",
+          "original": "俺はすごく\n驚いたけどなぁ。",
+          "text": "I was really\nsurprised, though."
+        },
+        {
+          "offset": "0x20a4",
+          "original": "私ぐらいの美貌になると、\nあの程度の事では\n驚かないのよ。",
+          "text": "With beauty like mine,\nthat sort of thing\ndoesn't surprise you."
+        },
+        {
+          "offset": "0x20e0",
+          "original": "よくわかんないけど、\nそういう事なの？",
+          "text": "I don't get it,\nbut is that how it is?"
+        },
+        {
+          "offset": "0x2108",
+          "original": "そうよ。\nわかるようになりなさい。",
+          "text": "Yes.\nLearn to understand."
+        },
+        {
+          "offset": "0x212c",
+          "original": "わかるようにねぇ…。\nそれじゃあ、\nそろそろ帰ろうか？",
+          "text": "Understand, huh...\nWell then,\nshall we head home?"
+        },
+        {
+          "offset": "0x2164",
+          "original": "そうね。\n私は別にかまわないわよ。\n帰りましょう。",
+          "text": "Yes.\nI don't mind.\nLet's go home."
+        },
+        {
+          "offset": "0x21bc",
+          "original": "な、なんだったの今の…。",
+          "text": "Wh-what was that...?"
+        },
+        {
+          "offset": "0x21d8",
+          "original": "今のが、物質転送って奴？\nすごかったね。",
+          "text": "So that's matter transfer?\nThat was amazing."
+        },
+        {
+          "offset": "0x2200",
+          "original": "へぇ、便利ねぇ。\nこれさえあれば、贈り物が、\n会わなくても貰えるのね。",
+          "text": "How handy.\nWith this, I could get\ngifts without meeting."
+        },
+        {
+          "offset": "0x2248",
+          "original": "そ、そういう\n問題じゃないと\n思うけど…。",
+          "text": "Th-that's not\nreally the\npoint..."
+        },
+        {
+          "offset": "0x2274",
+          "original": "何？\n私の考えに何か\n言いたそうじゃない？",
+          "text": "What?\nDo you have\nsomething to say?"
+        },
+        {
+          "offset": "0x22a0",
+          "original": "い、いえ。\n何でもないです。",
+          "text": "N-no.\nNothing at all."
+        },
+        {
+          "offset": "0x22bc",
+          "original": "そう、それじゃ、次の予定が\nあるから、失礼するわ。\nほーほほほほほ。",
+          "text": "Well then, I have\nother plans. Excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x231c",
+          "original": "な、なんだったの今の…。",
+          "text": "Wh-what was that...?"
+        },
+        {
+          "offset": "0x2338",
+          "original": "今のが、物質転送って奴？\nすごかったね。",
+          "text": "So that's matter transfer?\nThat was amazing."
+        },
+        {
+          "offset": "0x2360",
+          "original": "へぇ、便利ねぇ。\nこれさえあれば、一日に\n何人もデートできそうね。",
+          "text": "How handy.\nWith this, I could date\nmany men in one day."
+        },
+        {
+          "offset": "0x23a4",
+          "original": "そ、そういうものじゃ\nないと思うんだけど…。",
+          "text": "Th-that's not\nwhat it's for..."
+        },
+        {
+          "offset": "0x23d0",
+          "original": "何？\n私の考えに何か\n文句があるのかしら？",
+          "text": "What?\nDo you object\nto my idea?"
+        },
+        {
+          "offset": "0x23fc",
+          "original": "い、いえ。\n何でもないです。",
+          "text": "N-no.\nNothing at all."
+        },
+        {
+          "offset": "0x2418",
+          "original": "そう、それじゃ、次の予定が\nあるから失礼するわ。\nほーほほほほほ。",
+          "text": "Well then, I have\nother plans. Excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x2478",
+          "original": "どこに行ったんだろう。\n{G}。",
+          "text": "Where did she go?\n{G}"
+        },
+        {
+          "offset": "0x2498",
+          "original": "お待たせしたわね。\nさあ、帰りましょう。",
+          "text": "Sorry to keep you.\nNow, let's go home."
+        },
+        {
+          "offset": "0x24c0",
+          "original": "何してたの？",
+          "text": "What were you doing?"
+        },
+        {
+          "offset": "0x24d0",
+          "original": "今の実験者に、\n謝らせてきたのよ。",
+          "text": "I made the experimenter\napologize."
+        },
+        {
+          "offset": "0x24f4",
+          "original": "そ、そう。\nそれじゃあ、\n帰ろう。",
+          "text": "I-I see.\nWell then,\nlet's go."
+        },
+        {
+          "offset": "0x2528",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x254c",
+          "original": "電脳部はコンピューター\n占いをやってるみたいだね。\nねぇ、占ってもらおうよ。",
+          "text": "Computers is doing\ncomputer fortunes.\nHey, let's get ours."
+        },
+        {
+          "offset": "0x2598",
+          "original": "しょうがないわね。\nいいわよ。\nやってあげても。",
+          "text": "Oh, very well.\nFine.\nI'll do it."
+        },
+        {
+          "offset": "0x25d4",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x25f8",
+          "original": "電脳部はコンピューター\n占いをやってるみたいだね。\nねぇ、占ってもらおうよ。",
+          "text": "Computers is doing\ncomputer fortunes.\nHey, let's get ours."
+        },
+        {
+          "offset": "0x2644",
+          "original": "しょうがないわね。\nいいわよ、\nやってあげても。",
+          "text": "Oh, very well.\nFine,\nI'll do it."
+        },
+        {
+          "offset": "0x2680",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x26a4",
+          "original": "電脳部はコンピューター\n占いをやってるみたいだね。\nねぇ、占ってもらおうよ。",
+          "text": "Computers is doing\ncomputer fortunes.\nHey, let's get ours."
+        },
+        {
+          "offset": "0x26f0",
+          "original": "しょうがないわね。\nいいわよ、\nやってあげても。",
+          "text": "Oh, very well.\nFine,\nI'll do it."
+        },
+        {
+          "offset": "0x272c",
+          "original": "良かったじゃない。\n嬉しいでしょう。",
+          "text": "Good for you.\nYou must be happy."
+        },
+        {
+          "offset": "0x2750",
+          "original": "この占い当たるね。",
+          "text": "It's accurate."
+        },
+        {
+          "offset": "0x276c",
+          "original": "良かったじゃない。\n悪い結果じゃなくて。",
+          "text": "Good for you.\nNot a bad result."
+        },
+        {
+          "offset": "0x2794",
+          "original": "そうだね。",
+          "text": "Yeah."
+        },
+        {
+          "offset": "0x27a8",
+          "original": "残念だったわね。\nがっかりしたでしょう。",
+          "text": "Too bad.\nYou must be crushed."
+        },
+        {
+          "offset": "0x27d0",
+          "original": "この占いきっと、\n当たらないんだよ。",
+          "text": "This fortune is\nprobably wrong."
+        },
+        {
+          "offset": "0x27fc",
+          "original": "良かったじゃない。\n嬉しいでしょう。",
+          "text": "Good for you.\nYou must be happy."
+        },
+        {
+          "offset": "0x2820",
+          "original": "この占い当たるね。",
+          "text": "It's accurate."
+        },
+        {
+          "offset": "0x283c",
+          "original": "良かったじゃない。\n悪い結果じゃなくて。",
+          "text": "Good for you.\nNot a bad result."
+        },
+        {
+          "offset": "0x2864",
+          "original": "そうだね。",
+          "text": "Yeah."
+        },
+        {
+          "offset": "0x2878",
+          "original": "残念だったわね。\nがっかりして自殺なんて\nしないでよ。",
+          "text": "Too bad.\nDon't go doing anything\ndrastic, now."
+        },
+        {
+          "offset": "0x28b0",
+          "original": "この占いきっと、\n当たらないんだよ。",
+          "text": "This fortune is\nprobably wrong."
+        },
+        {
+          "offset": "0x28dc",
+          "original": "良かったじゃない。\n嬉しいでしょう。",
+          "text": "Good for you.\nYou must be happy."
+        },
+        {
+          "offset": "0x2900",
+          "original": "この占い当たるね。",
+          "text": "It's accurate."
+        },
+        {
+          "offset": "0x291c",
+          "original": "良かったじゃない。\n悪い結果じゃなくて。",
+          "text": "Good for you.\nNot a bad result."
+        },
+        {
+          "offset": "0x2944",
+          "original": "そうだね。",
+          "text": "Yeah."
+        },
+        {
+          "offset": "0x2958",
+          "original": "残念だったわね。\nがっかりして自殺なんて\nしないでよ。",
+          "text": "Too bad.\nDon't go doing anything\ndrastic, now."
+        },
+        {
+          "offset": "0x2990",
+          "original": "この占いきっと、\n当たらないんだよ。",
+          "text": "This fortune is\nprobably wrong."
+        },
+        {
+          "offset": "0x29bc",
+          "original": "私にとっては、\n占いの結果なんて\n別にどうでもいいのよ。",
+          "text": "To me, the\nresult hardly\nmatters."
+        },
+        {
+          "offset": "0x29f4",
+          "original": "どうして？",
+          "text": "Why?"
+        },
+        {
+          "offset": "0x2a00",
+          "original": "私の事を、想ってくれて\nさえいれば、相性なんて\n問題じゃないから。",
+          "text": "As long as you\nthink of me, the match\nis not a problem."
+        },
+        {
+          "offset": "0x2a44",
+          "original": "そうだね。\nでも、想いって\nなかなか伝わらないよね。",
+          "text": "True.\nBut feelings are\nhard to convey."
+        },
+        {
+          "offset": "0x2a78",
+          "original": "あら、私の事を本当に\n想ってくれてれば、\n態度でわかるわよ。",
+          "text": "Oh, if you truly\nthink of me, it\nshows in your actions."
+        },
+        {
+          "offset": "0x2ab4",
+          "original": "た、例えば…？",
+          "text": "L-like what...?"
+        },
+        {
+          "offset": "0x2ac4",
+          "original": "そうね、プレゼントとか、\n荷物を持ってくれるとか、",
+          "text": "Well, gifts, or\ncarrying my bags,"
+        },
+        {
+          "offset": "0x2af8",
+          "original": "宿題をやってくれるとか、\n他にも色々あるわね。",
+          "text": "doing my homework,\nand many other things."
+        },
+        {
+          "offset": "0x2b28",
+          "original": "‥‥‥‥。\nそ、そう。\nそろそろ帰ろうか？",
+          "text": "......\nI-I see.\nShall we head home?"
+        },
+        {
+          "offset": "0x2b54",
+          "original": "そうね。\n私は別にかまわないわよ。\n帰りましょう。",
+          "text": "Yes.\nI don't mind.\nLet's go home."
+        },
+        {
+          "offset": "0x2bb0",
+          "original": "占いなんて、\nこの私の前では、\n何の意味も持たないけど。",
+          "text": "Before me,\nfortunes mean\nnothing at all."
+        },
+        {
+          "offset": "0x2be8",
+          "original": "ど、どうして？",
+          "text": "Wh-why?"
+        },
+        {
+          "offset": "0x2bf8",
+          "original": "私との相性は、どれぐらい\n私に尽くしてくれたかよ。\nそれ以外、何物もないわ。",
+          "text": "A match with me is how\nmuch you devote to me.\nNothing else."
+        },
+        {
+          "offset": "0x2c44",
+          "original": "‥‥‥‥。\nそ、そう。",
+          "text": "......\nI-I see."
+        },
+        {
+          "offset": "0x2c5c",
+          "original": "私、次の予定があるから、\n失礼するわ。\nほーほほほほほ。",
+          "text": "I have other plans,\nso excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x2ca8",
+          "original": "占いの結果なんて、\n全然気にする\n必要ないわ。",
+          "text": "No need to worry\nabout fortunes\nat all."
+        },
+        {
+          "offset": "0x2cd8",
+          "original": "ど、どうして？",
+          "text": "Wh-why?"
+        },
+        {
+          "offset": "0x2ce8",
+          "original": "だって、私との相性は、\n私が決めることですもの。\nほーほほほほほ。",
+          "text": "After all, I decide\nwho matches with me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x2d2c",
+          "original": "‥‥‥‥。\nそ、そうだね。",
+          "text": "......\nR-right."
+        },
+        {
+          "offset": "0x2d48",
+          "original": "私、次の予定があるから\n失礼するわ。\nほーほほほほほ。",
+          "text": "I have other plans,\nso excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x2d94",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x2db8",
+          "original": "電脳部はコンピューター\nゲームの展示みたいだね。\n{G}やってみない？",
+          "text": "Computers has\na game exhibit.\n{G} want to try?"
+        },
+        {
+          "offset": "0x2df8",
+          "original": "私は遠慮するわ。\n私には不似合いですもの。",
+          "text": "I'll pass.\nIt doesn't suit me."
+        },
+        {
+          "offset": "0x2e24",
+          "original": "じゃあ、俺が\nやってもいいかな？",
+          "text": "Then can I\ngive it a try?"
+        },
+        {
+          "offset": "0x2e44",
+          "original": "しょうがないわね。\n勝手にどうぞ。",
+          "text": "Oh, very well.\nGo ahead."
+        },
+        {
+          "offset": "0x2e7c",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x2ea0",
+          "original": "電脳部はコンピューター\nゲームの展示みたいだね。\n{G}やってみない？",
+          "text": "Computers has\na game exhibit.\n{G} want to try?"
+        },
+        {
+          "offset": "0x2ee0",
+          "original": "どうして私がするの？\n私はこんなものには\n全く興味がないわ。",
+          "text": "Why should I?\nI have no interest\nin such things."
+        },
+        {
+          "offset": "0x2f1c",
+          "original": "でも、せっかく\n来たんだし…。",
+          "text": "But we came\nall this way..."
+        },
+        {
+          "offset": "0x2f3c",
+          "original": "しつこいわね。\n私が来たくて来た訳じゃ\nないでしょう。",
+          "text": "How persistent.\nI didn't come here\nbecause I wanted to."
+        },
+        {
+          "offset": "0x2f74",
+          "original": "そ、それじゃあ、\n見ててよ。\n俺がやるから。",
+          "text": "Th-then,\nwatch me.\nI'll play."
+        },
+        {
+          "offset": "0x2fa0",
+          "original": "勝手にすれば。",
+          "text": "Suit yourself."
+        },
+        {
+          "offset": "0x2fcc",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x2ff0",
+          "original": "電脳部はコンピューター\nゲームの展示みたいだね。\n{G}やってみない？",
+          "text": "Computers has\na game exhibit.\n{G} want to try?"
+        },
+        {
+          "offset": "0x3030",
+          "original": "私はしないわよ。\nこんなものするなんて、\n馬鹿みたい。",
+          "text": "I won't play.\nPlaying this is\nsimply stupid."
+        },
+        {
+          "offset": "0x3068",
+          "original": "で、でも、せっかく\n来たんだし…。",
+          "text": "B-but we came\nall this way..."
+        },
+        {
+          "offset": "0x308c",
+          "original": "この私を、どういうつもりで\nこんな所に連れて\n来たのかしらね？",
+          "text": "Why ever did you\nbring someone like me\nto such a place?"
+        },
+        {
+          "offset": "0x30cc",
+          "original": "どういうつもりって…。",
+          "text": "Why? Well..."
+        },
+        {
+          "offset": "0x30e4",
+          "original": "私がこんな所に来て、\n楽しいわけないじゃない。\nもっと頭使いなさいよ。",
+          "text": "Of course I can't enjoy\na place like this.\nUse your head."
+        },
+        {
+          "offset": "0x312c",
+          "original": "そ、それじゃあ、\n俺のプレイを見ててよ。",
+          "text": "Th-then,\nwatch me play."
+        },
+        {
+          "offset": "0x3154",
+          "original": "勝手にすれば。",
+          "text": "Suit yourself."
+        },
+        {
+          "offset": "0x3188",
+          "original": "あら、意外と\n上手じゃない。",
+          "text": "Oh, you're better\nthan I thought."
+        },
+        {
+          "offset": "0x31a4",
+          "original": "結構簡単だね。",
+          "text": "It's pretty easy."
+        },
+        {
+          "offset": "0x31bc",
+          "original": "はっきり言って、下手ね。",
+          "text": "Frankly, you're bad."
+        },
+        {
+          "offset": "0x31d8",
+          "original": "これ、結構難しいよ。",
+          "text": "This is pretty hard."
+        },
+        {
+          "offset": "0x31f8",
+          "original": "それじゃ\n帰りましょう。",
+          "text": "Well then,\nlet's go home."
+        },
+        {
+          "offset": "0x3210",
+          "original": "えっ、もう帰るの？",
+          "text": "Huh, going home already?"
+        },
+        {
+          "offset": "0x3224",
+          "original": "だって、\nこんな所にいても\n楽しくないもの。",
+          "text": "After all,\nthis place\nis no fun."
+        },
+        {
+          "offset": "0x3250",
+          "original": "そ、そう。\nじゃあ、帰ろう。",
+          "text": "I-I see.\nThen let's go."
+        },
+        {
+          "offset": "0x327c",
+          "original": "私、こんな所にいても\nつまらないから、\n失礼するわ。",
+          "text": "This place\nbores me, so\nexcuse me."
+        },
+        {
+          "offset": "0x32b4",
+          "original": "私、こんな所にいても\nつまらないから、\n失礼するわ。",
+          "text": "This place\nbores me, so\nexcuse me."
+        },
+        {
+          "offset": "0x32ec",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x3310",
+          "original": "電脳部はこれから\n実験ショーが\n始まるみたいだね。",
+          "text": "Looks like the\nComputers demo\nis starting."
+        },
+        {
+          "offset": "0x334c",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x3370",
+          "original": "電脳部はこれから\n実験ショーが\n始まるみたいだね。",
+          "text": "Looks like the\nComputers demo\nis starting."
+        },
+        {
+          "offset": "0x33ac",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x33d0",
+          "original": "電脳部はこれから\n実験ショーが\n始まるみたいだね。",
+          "text": "Looks like the\nComputers demo\nis starting."
+        },
+        {
+          "offset": "0x340c",
+          "original": "な、なんだったの今の…。",
+          "text": "Wh-what was that...?"
+        },
+        {
+          "offset": "0x3428",
+          "original": "ハッキングって言ってたから\n何かのコンピューターを\n乗っ取ったんだろうけど。",
+          "text": "They said hacking,\nso they probably took\nover some computer."
+        },
+        {
+          "offset": "0x3474",
+          "original": "そうよね。\nハッキングですものね。",
+          "text": "Of course.\nIt's hacking, after all."
+        },
+        {
+          "offset": "0x3498",
+          "original": "{G}、知ってるの？",
+          "text": "{G} you know?"
+        },
+        {
+          "offset": "0x34a8",
+          "original": "馬鹿にしないで下さる。\nそのぐらい知ってるわよ。\n当たり前でしょう。",
+          "text": "Don't patronize me.\nI know that much.\nNaturally."
+        },
+        {
+          "offset": "0x34ec",
+          "original": "そ、それじゃあ、\n何のコンピューターを\n乗っ取ったかわかる？",
+          "text": "Th-then,\nwhich computer\ndid they take over?"
+        },
+        {
+          "offset": "0x3528",
+          "original": "私は知ってるけど、\n教えてあげないわ。\n自分で考えなさい。",
+          "text": "I know, but\nI won't tell you.\nThink for yourself."
+        },
+        {
+          "offset": "0x3564",
+          "original": "そんなぁ、\n教えてくれても。\n（やっぱり知らないんだ。）",
+          "text": "Aw, come on,\njust tell me.\n(So she doesn't know.)"
+        },
+        {
+          "offset": "0x359c",
+          "original": "そんな事どうでも\nいいじゃない。\nさあ、もう帰るわよ。",
+          "text": "What does it\nmatter?\nNow, we're going home."
+        },
+        {
+          "offset": "0x35d4",
+          "original": "はい、はい。\n帰りましょう。",
+          "text": "Yes, yes.\nLet's go home."
+        },
+        {
+          "offset": "0x3618",
+          "original": "な、なんだったの今の…。",
+          "text": "Wh-what was that...?"
+        },
+        {
+          "offset": "0x3634",
+          "original": "ハッキングって言ってたから\n何かのコンピューターを\n乗っ取ったんだろうけど。",
+          "text": "They said hacking,\nso they probably took\nover some computer."
+        },
+        {
+          "offset": "0x3680",
+          "original": "な、何言ってるの？\n今何が起きたのか、\nちゃんと説明しなさい。",
+          "text": "Wh-what are you saying?\nExplain properly\nwhat just happened."
+        },
+        {
+          "offset": "0x36c0",
+          "original": "よくわからないんだけど。\n多分、今のは衛星からの\nレーザー攻撃だと思うよ。",
+          "text": "I'm not sure, but\nI think that was a\nsatellite laser strike."
+        },
+        {
+          "offset": "0x370c",
+          "original": "あらそう。\n衛星からの\nレーザー攻撃ね。",
+          "text": "Oh, I see.\nA satellite\nlaser strike."
+        },
+        {
+          "offset": "0x3734",
+          "original": "あらそうって、\n衛星からのレーザーだよ。\n驚かないの？",
+          "text": "\"Oh, I see\"?\nA satellite laser!\nAren't you surprised?"
+        },
+        {
+          "offset": "0x376c",
+          "original": "どうして驚かなければ\nいけないの？",
+          "text": "Why should I\nbe surprised?"
+        },
+        {
+          "offset": "0x3790",
+          "original": "どうしてって、\nレーザーなのに…。",
+          "text": "Why? Well,\nit's a laser..."
+        },
+        {
+          "offset": "0x37b4",
+          "original": "関係ないわ。\n当たらなかったんだから。",
+          "text": "Irrelevant.\nIt didn't hit me."
+        },
+        {
+          "offset": "0x37dc",
+          "original": "そ、そう。\nそれじゃあ、\n一緒に帰ろうか？",
+          "text": "I-I see.\nWell then,\nshall we go home?"
+        },
+        {
+          "offset": "0x3808",
+          "original": "残念だけど、\n私、次の予定があるから、\n失礼するわね。",
+          "text": "Sorry, but\nI have other plans,\nso excuse me."
+        },
+        {
+          "offset": "0x386c",
+          "original": "な、なんだったの今の…。",
+          "text": "Wh-what was that...?"
+        },
+        {
+          "offset": "0x3888",
+          "original": "ハッキングって言ってたから\n何かのコンピューターを\n乗っ取ったんだろうけど。",
+          "text": "They said hacking,\nso they probably took\nover some computer."
+        },
+        {
+          "offset": "0x38d4",
+          "original": "何言ってるのよ。\n今のは何か、\nちゃんと説明しなさい。",
+          "text": "What are you saying?\nExplain properly\nwhat that was."
+        },
+        {
+          "offset": "0x390c",
+          "original": "よくわからないんだけど。\n多分、今のは衛星からの\nレーザー攻撃だと思うよ。",
+          "text": "I'm not sure, but\nI think that was a\nsatellite laser strike."
+        },
+        {
+          "offset": "0x3958",
+          "original": "あらそう。\n衛星からの\nレーザー攻撃ね。",
+          "text": "Oh, I see.\nA satellite\nlaser strike."
+        },
+        {
+          "offset": "0x3980",
+          "original": "あらそうって、\n衛星からのレーザーだよ。\n驚かないの？",
+          "text": "\"Oh, I see\"?\nA satellite laser!\nAren't you surprised?"
+        },
+        {
+          "offset": "0x39b8",
+          "original": "別に。\n正体さえわかれば\n関係ないわ。",
+          "text": "Never mind.\nOnce I know what it is,\nit doesn't matter."
+        },
+        {
+          "offset": "0x39e0",
+          "original": "そ、そう。\nそれじゃあ、\n一緒に帰ろうか？",
+          "text": "I-I see.\nWell then,\nshall we go home?"
+        },
+        {
+          "offset": "0x3a0c",
+          "original": "残念だけど、\n私、次の予定があるから、\n失礼するわね。",
+          "text": "Sorry, but\nI have other plans,\nso excuse me."
+        },
+        {
+          "offset": "0x3a68",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x3a8c",
+          "original": "美術部は似顔絵を描いて\nくれるみたいだね。\n{G}描いてもらったら？",
+          "text": "Looks like the Art Club\ndraws portraits.\n{G} get one done?"
+        },
+        {
+          "offset": "0x3acc",
+          "original": "そうね。\nサービスで、モデルでも\nしてあげようかしら。",
+          "text": "Yes.\nPerhaps I'll model\nfor them as a favor."
+        },
+        {
+          "offset": "0x3b50",
+          "original": "似顔絵どうだった？",
+          "text": "How's the portrait?"
+        },
+        {
+          "offset": "0x3b64",
+          "original": "描いてもらえなかったわ。",
+          "text": "They couldn't draw me."
+        },
+        {
+          "offset": "0x3b80",
+          "original": "えっ、どうして？",
+          "text": "Huh? Why not?"
+        },
+        {
+          "offset": "0x3b94",
+          "original": "この私がモデルをして\nあげてるのに、あの程度の\n絵しか描けないなんて…。",
+          "text": "I modeled for them,\nand that's the best\nthey could draw..."
+        },
+        {
+          "offset": "0x3bdc",
+          "original": "それで、その絵は？",
+          "text": "So, where's the picture?"
+        },
+        {
+          "offset": "0x3bf0",
+          "original": "何度も書き直しさせたけど、\n私も鬼じゃないから、５０枚\n程度で許してあげたわ。",
+          "text": "I made them redo it,\nbut I'm not cruel; I\nstopped at about 50."
+        },
+        {
+          "offset": "0x3c40",
+          "original": "そ、そう…。\nそれは大変だったね。\n（美術部員が…。）",
+          "text": "I-I see...\nThat must've been hard.\n(For the artist...)"
+        },
+        {
+          "offset": "0x3c78",
+          "original": "私の美しさは、\n所詮、絵などには\n表現できないのね。",
+          "text": "My beauty simply\ncannot be captured\nin a mere picture."
+        },
+        {
+          "offset": "0x3cac",
+          "original": "そ、そうだね。\nそれじゃあ、\nそろそろ帰ろうか？",
+          "text": "R-right.\nWell then,\nshall we head home?"
+        },
+        {
+          "offset": "0x3cdc",
+          "original": "そうね。\n私は別にかまわないわよ。\n帰りましょう。",
+          "text": "Yes.\nI don't mind.\nLet's go home."
+        },
+        {
+          "offset": "0x3d38",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x3d5c",
+          "original": "美術部は似顔絵を描いて\nくれるみたいだね。\n{G}描いてもらったら？",
+          "text": "Looks like the Art Club\ndraws portraits.\n{G} get one done?"
+        },
+        {
+          "offset": "0x3d9c",
+          "original": "そうね。\nこの美しさを、絵として\n残すのもいいわね。",
+          "text": "Yes.\nPreserving this beauty\nin a picture is nice."
+        },
+        {
+          "offset": "0x3e1c",
+          "original": "似顔絵どうだった？",
+          "text": "How's the portrait?"
+        },
+        {
+          "offset": "0x3e30",
+          "original": "似顔絵？\nそんなものないわ。",
+          "text": "The portrait?\nThere is none."
+        },
+        {
+          "offset": "0x3e4c",
+          "original": "へっ、どういう事？",
+          "text": "Huh, what do you mean?"
+        },
+        {
+          "offset": "0x3e60",
+          "original": "この私を、あんな絵で\n表現するなんて、\n美を冒涜しているわ。",
+          "text": "Depicting me with\na picture like that\nprofanes beauty."
+        },
+        {
+          "offset": "0x3e9c",
+          "original": "そ、それで…。",
+          "text": "S-so..."
+        },
+        {
+          "offset": "0x3eac",
+          "original": "当然、\n破り捨ててきたわ。",
+          "text": "Naturally,\nI tore it up."
+        },
+        {
+          "offset": "0x3ec8",
+          "original": "そ、そう…。",
+          "text": "O-oh..."
+        },
+        {
+          "offset": "0x3ed8",
+          "original": "ま、この私の美しさを\n表現できるものなど、ある\nはずもないのだけれど。",
+          "text": "Well, nothing could\never express\nmy beauty anyway."
+        },
+        {
+          "offset": "0x3f20",
+          "original": "そ、そうだね。\nそれじゃあ、\nそろそろ帰ろうか？",
+          "text": "R-right.\nWell then,\nshall we head home?"
+        },
+        {
+          "offset": "0x3f50",
+          "original": "今から予定があるの。\nそれじゃ、失礼するわ。\nほーほほほほほ。",
+          "text": "I have plans now.\nSo, excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x3fb8",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x3fdc",
+          "original": "美術部は似顔絵を描いて\nくれるみたいだね。\n{G}描いてもらったら？",
+          "text": "Looks like the Art Club\ndraws portraits.\n{G} get one done?"
+        },
+        {
+          "offset": "0x401c",
+          "original": "そうね。\nこの美しさを絵として\n残すのもいいわね。",
+          "text": "Yes.\nPreserving this beauty\nin a picture is nice."
+        },
+        {
+          "offset": "0x409c",
+          "original": "似顔絵どうだった？",
+          "text": "How's the portrait?"
+        },
+        {
+          "offset": "0x40b0",
+          "original": "駄目ね。\n才能ないわ。",
+          "text": "Hopeless.\nNo talent."
+        },
+        {
+          "offset": "0x40c8",
+          "original": "へっ、どういう事？",
+          "text": "Huh, what do you mean?"
+        },
+        {
+          "offset": "0x40dc",
+          "original": "あまりにも似てない\nものだから、その場で\n破り捨ててきたわ。",
+          "text": "It looked so\nlittle like me, I\ntore it up on the spot."
+        },
+        {
+          "offset": "0x4118",
+          "original": "そ、そう。",
+          "text": "O-oh."
+        },
+        {
+          "offset": "0x4124",
+          "original": "ま、この私の美しさを\n表現できるものなど、ある\nはずもないのだけれど。",
+          "text": "Well, nothing could\never express\nmy beauty anyway."
+        },
+        {
+          "offset": "0x416c",
+          "original": "そ、そうだね。\nそれじゃあ、\nそろそろ帰ろうか？",
+          "text": "R-right.\nWell then,\nshall we head home?"
+        },
+        {
+          "offset": "0x419c",
+          "original": "今から予定があるの。\nそれじゃ、失礼するわ。\nほーほほほほほ。",
+          "text": "I have plans now.\nSo, excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x41fc",
+          "original": "ここは…。",
+          "text": "This is..."
+        },
+        {
+          "offset": "0x4208",
+          "original": "ど、どうしたの？\n{G}。",
+          "text": "Wh-what's wrong,\n{G}"
+        },
+        {
+          "offset": "0x4220",
+          "original": "まったく、\n何を見に来たのかしら…。",
+          "text": "Honestly,\nwhat did we come to see..."
+        },
+        {
+          "offset": "0x4244",
+          "original": "何をやってるの？\nよく見えないよ。",
+          "text": "What are they doing?\nI can't see."
+        },
+        {
+          "offset": "0x4268",
+          "original": "こんなもの私は興味ないの。\n一人で見て下さる。\nそれじゃ、失礼。",
+          "text": "This doesn't interest me.\nWatch it alone.\nExcuse me."
+        },
+        {
+          "offset": "0x42bc",
+          "original": "おおおおおおおお。\nこ、これはぁ？",
+          "text": "Ooooooooh!\nWh-what's this?"
+        },
+        {
+          "offset": "0x42e0",
+          "original": "{>部員}君、静かにしてくれ。\nデッサンの邪魔だよ。",
+          "text": "{>Club}Quiet, you.\nWe're sketching here."
+        },
+        {
+          "offset": "0x4310",
+          "original": "{G}、ちょっと待ってよ。\n俺も帰るよ。",
+          "text": "{G} wait up.\nI'm going too."
+        },
+        {
+          "offset": "0x4340",
+          "original": "ここは…。",
+          "text": "This is..."
+        },
+        {
+          "offset": "0x434c",
+          "original": "ど、どうしたの？\n{G}。",
+          "text": "Wh-what's wrong,\n{G}"
+        },
+        {
+          "offset": "0x4364",
+          "original": "わざわざこの私を連れて来て、\nこんなものを見せる\nつもりだったのかしら？",
+          "text": "You brought me all the\nway here to show\nme this?"
+        },
+        {
+          "offset": "0x43ac",
+          "original": "えっ、何をやってるの？\nよく見えないよ。",
+          "text": "Huh, what are they doing?\nI can't see."
+        },
+        {
+          "offset": "0x43d4",
+          "original": "ま、私と比較すると\n数百万倍は劣るけど、\n貴方には丁度いいかもね。",
+          "text": "Well, it's millions of\ntimes worse than me,\nbut fine for you."
+        },
+        {
+          "offset": "0x4418",
+          "original": "何を比較してるのか\n知らないけど、\n見えないんだってば。",
+          "text": "I don't know what\nyou're comparing,\nbut I can't see."
+        },
+        {
+          "offset": "0x4450",
+          "original": "あらそう？\n私は失礼するから、\n一人で存分に見れば？",
+          "text": "Oh, really?\nI'll take my leave.\nLook all you want."
+        },
+        {
+          "offset": "0x4484",
+          "original": "えっ？\nどうして帰っちゃうの？",
+          "text": "Huh?\nWhy are you leaving?"
+        },
+        {
+          "offset": "0x44a4",
+          "original": "こんなものを見ているほど\n暇じゃないの。\nそれじゃ、失礼。",
+          "text": "I'm not free enough\nto watch this.\nExcuse me."
+        },
+        {
+          "offset": "0x4504",
+          "original": "こんなものって…、\nおおおおおおおお。\nこ、これはぁ？",
+          "text": "This...?\nOoooooooh!\nWh-what's this?"
+        },
+        {
+          "offset": "0x453c",
+          "original": "{>部員}君、静かにしてくれ。\nデッサンの邪魔だよ。",
+          "text": "{>Club}Quiet, you.\nWe're sketching here."
+        },
+        {
+          "offset": "0x456c",
+          "original": "{G}、ちょっと待ってよ。\nこんなものやってること\n知らなかったんだよ。",
+          "text": "{G} wait.\nI didn't know they\nwere doing this."
+        },
+        {
+          "offset": "0x45bc",
+          "original": "ここは…。",
+          "text": "This is..."
+        },
+        {
+          "offset": "0x45c8",
+          "original": "ど、どうしたの？\n{G}。",
+          "text": "Wh-what's wrong,\n{G}"
+        },
+        {
+          "offset": "0x45e0",
+          "original": "ふざけないでよ。\nどういうつもりで\nこんな物見に来たのよ。",
+          "text": "Don't kid me.\nWhy did you come\nto see this?"
+        },
+        {
+          "offset": "0x461c",
+          "original": "えっ？\n{G}何怒ってるの？",
+          "text": "Huh?\n{G} why so angry?"
+        },
+        {
+          "offset": "0x4634",
+          "original": "こんなもの見せられて\n不愉快だわ。\nそれじゃ失礼。",
+          "text": "Being shown this\nis unpleasant.\nExcuse me."
+        },
+        {
+          "offset": "0x467c",
+          "original": "こんなものって…、\nおおおおおおおお。\nこ、これはぁ？",
+          "text": "This...?\nOoooooooh!\nWh-what's this?"
+        },
+        {
+          "offset": "0x46b4",
+          "original": "{>部員}君、静かにしてくれ。\nデッサンの邪魔だよ。",
+          "text": "{>Club}Quiet, you.\nWe're sketching here."
+        },
+        {
+          "offset": "0x46e4",
+          "original": "{G}、ちょっと待ってよ。\nこんなものやってること\n知らなかったんだよ。",
+          "text": "{G} wait.\nI didn't know they\nwere doing this."
+        },
+        {
+          "offset": "0x4734",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x4758",
+          "original": "美術部は油絵を\n展示してるみたいだね。",
+          "text": "Looks like the Art Club\nis showing oils."
+        },
+        {
+          "offset": "0x4780",
+          "original": "そう。\n私に見合う絵は\nあるかしら？",
+          "text": "I see.\nIs there a painting\nworthy of me?"
+        },
+        {
+          "offset": "0x47a4",
+          "original": "ゆっくり\n探してみようよ。",
+          "text": "Let's take our\ntime looking."
+        },
+        {
+          "offset": "0x47d0",
+          "original": "どうだった？",
+          "text": "How was it?"
+        },
+        {
+          "offset": "0x47e0",
+          "original": "まあまあね。\n私に見合うまでには\nいかないわ。",
+          "text": "Passable.\nNot quite\nworthy of me."
+        },
+        {
+          "offset": "0x4810",
+          "original": "美術部の絵だからね。\nそれに、{G}の美しさに\n見合う絵はそうは無いよ。",
+          "text": "It's only the Art Club.\nFew could match {G}\nin beauty, anyway."
+        },
+        {
+          "offset": "0x4854",
+          "original": "あら、本当のことを言うのが\nうまくなったじゃない。",
+          "text": "Oh, you've gotten good\nat telling the truth."
+        },
+        {
+          "offset": "0x4888",
+          "original": "そんなことないよ。\n（{G}のおかげで、\n鍛えられたから。）",
+          "text": "Not really.\n(It's thanks to {G}\nI've had practice.)"
+        },
+        {
+          "offset": "0x48c0",
+          "original": "私に見合う絵がない以上、\nここにいても無意味ね。\nもう、帰りましょう。",
+          "text": "With nothing worthy\nof me, why stay here?\nLet's go home."
+        },
+        {
+          "offset": "0x4908",
+          "original": "そうだね。\n帰ろうか。",
+          "text": "Right.\nShall we go?"
+        },
+        {
+          "offset": "0x493c",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x4960",
+          "original": "美術部は油絵を\n展示してるみたいだね。",
+          "text": "Looks like the Art Club\nis showing oils."
+        },
+        {
+          "offset": "0x4988",
+          "original": "そう。\n私に見合う絵は\nあるかしら？",
+          "text": "I see.\nIs there a painting\nworthy of me?"
+        },
+        {
+          "offset": "0x49ac",
+          "original": "ゆっくり\n探してみようよ。",
+          "text": "Let's take our\ntime looking."
+        },
+        {
+          "offset": "0x49c8",
+          "original": "私は探したくないわ。\n貴方、探して来てくれる？",
+          "text": "I don't want to look.\nWould you look for me?"
+        },
+        {
+          "offset": "0x49f8",
+          "original": "何で、俺が…？",
+          "text": "Why me...?"
+        },
+        {
+          "offset": "0x4a08",
+          "original": "探すの、探さないの。\nどっちなの？",
+          "text": "Will you look or not?\nWhich is it?"
+        },
+        {
+          "offset": "0x4a2c",
+          "original": "わかりました。\n探します。",
+          "text": "Understood.\nI'll look."
+        },
+        {
+          "offset": "0x4a68",
+          "original": "見つかったかしら？",
+          "text": "Did you find one?"
+        },
+        {
+          "offset": "0x4a7c",
+          "original": "ここに飾って\nあるのはどう？",
+          "text": "How about this\none on display?"
+        },
+        {
+          "offset": "0x4a98",
+          "original": "まあまあね。\nこれでは、\n私には見合わないわ。",
+          "text": "Passable.\nBut it's not\nworthy of me."
+        },
+        {
+          "offset": "0x4ac8",
+          "original": "そんなぁ、\n一生懸命探したのに…。",
+          "text": "Aw, man,\nI looked so hard..."
+        },
+        {
+          "offset": "0x4aec",
+          "original": "あら、もうこんな時間。\n次の予定があるから、\n失礼するわ。",
+          "text": "Oh, look at the time.\nI have other plans,\nso excuse me."
+        },
+        {
+          "offset": "0x4b28",
+          "original": "ち、ちょっと待ってよ…。",
+          "text": "H-hold on..."
+        },
+        {
+          "offset": "0x4b5c",
+          "original": "あら、ここは何を\nしているのかしら？",
+          "text": "Oh, what are they\ndoing here?"
+        },
+        {
+          "offset": "0x4b80",
+          "original": "美術部は油絵を\n展示してるみたいだね。",
+          "text": "Looks like the Art Club\nis showing oils."
+        },
+        {
+          "offset": "0x4ba8",
+          "original": "そう。\n私に見合う絵は\nあるかしら？",
+          "text": "I see.\nIs there a painting\nworthy of me?"
+        },
+        {
+          "offset": "0x4bcc",
+          "original": "ゆっくり\n探してみようよ。",
+          "text": "Let's take our\ntime looking."
+        },
+        {
+          "offset": "0x4be8",
+          "original": "あら、私は探さないわよ。\n貴方が探して来てくれる？",
+          "text": "Oh, I won't look.\nWould you look for me?"
+        },
+        {
+          "offset": "0x4c1c",
+          "original": "何で、俺が…？",
+          "text": "Why me...?"
+        },
+        {
+          "offset": "0x4c2c",
+          "original": "いいのよ。\n別に私は\nこのまま帰っても…。",
+          "text": "That's fine.\nI could just\ngo home now..."
+        },
+        {
+          "offset": "0x4c58",
+          "original": "わかりました。\n探します。",
+          "text": "Understood.\nI'll look."
+        },
+        {
+          "offset": "0x4c94",
+          "original": "見つかったかしら？",
+          "text": "Did you find one?"
+        },
+        {
+          "offset": "0x4ca8",
+          "original": "ここに飾って\nあるのはどう？",
+          "text": "How about this\none on display?"
+        },
+        {
+          "offset": "0x4cc4",
+          "original": "貴方…、\n美を見る目がないわね。",
+          "text": "You have...\nno eye for beauty."
+        },
+        {
+          "offset": "0x4ce4",
+          "original": "そんなぁ、\n一生懸命探したのに…。",
+          "text": "Aw, man,\nI looked so hard..."
+        },
+        {
+          "offset": "0x4d08",
+          "original": "あら、もうこんな時間。\n次の予定があるから、\n失礼するわ。",
+          "text": "Oh, look at the time.\nI have other plans,\nso excuse me."
+        },
+        {
+          "offset": "0x4d44",
+          "original": "ち、ちょっと待ってよ…。",
+          "text": "H-hold on..."
+        },
+        {
+          "offset": "0x4d78",
+          "original": "あら、\n何か始まるみたいね。",
+          "text": "Oh,\nsomething's starting."
+        },
+        {
+          "offset": "0x4d94",
+          "original": "今から演奏が\n始まるみたいだね。",
+          "text": "Looks like the\nconcert's starting."
+        },
+        {
+          "offset": "0x4dbc",
+          "original": "あら、\n何か始まるみたいね。",
+          "text": "Oh,\nsomething's starting."
+        },
+        {
+          "offset": "0x4dd8",
+          "original": "今から演奏が\n始まるみたいだね。",
+          "text": "Looks like the\nconcert's starting."
+        },
+        {
+          "offset": "0x4e00",
+          "original": "あら、\n何か始まるみたいね。",
+          "text": "Oh,\nsomething's starting."
+        },
+        {
+          "offset": "0x4e1c",
+          "original": "今から演奏が\n始まるみたいだね。",
+          "text": "Looks like the\nconcert's starting."
+        },
+        {
+          "offset": "0x4e44",
+          "original": "面白かった？",
+          "text": "Was it fun?"
+        },
+        {
+          "offset": "0x4e54",
+          "original": "何の曲かわからないから、\n聴いてなかったわ。",
+          "text": "I didn't know the song,\nso I didn't listen."
+        },
+        {
+          "offset": "0x4e80",
+          "original": "えっ、やっぱり。\n今のゲームの曲なんだ。\nごめんね、\n付き合わせたみたいで…。",
+          "text": "Huh, figures.\nIt was from a game.\nSorry for\ndragging you along..."
+        },
+        {
+          "offset": "0x4ecc",
+          "original": "そう、別にいいわ。\n今後、気を付けてくれれば。",
+          "text": "Well, that's fine.\nJust be careful from now."
+        },
+        {
+          "offset": "0x4efc",
+          "original": "ありがとう、\n{G}優しいね。",
+          "text": "Thanks,\n{G} you're kind."
+        },
+        {
+          "offset": "0x4f18",
+          "original": "な、何言ってるのよ…。\nそろそろ帰りましょう。",
+          "text": "Wh-what are you saying...\nLet's go home now."
+        },
+        {
+          "offset": "0x4f48",
+          "original": "そうだね。\n帰ろう。",
+          "text": "Right.\nLet's go."
+        },
+        {
+          "offset": "0x4f78",
+          "original": "何？\n今の曲は？",
+          "text": "What?\nWhat was that song?"
+        },
+        {
+          "offset": "0x4f88",
+          "original": "今のはね、\nゲームの音楽なんだ。",
+          "text": "That was\ngame music."
+        },
+        {
+          "offset": "0x4fa8",
+          "original": "ゲームの音楽ですって？\nそんな曲聴かせて、\n喜ぶとでも思ってるの？",
+          "text": "Game music, you say?\nYou think that\nwould please me?"
+        },
+        {
+          "offset": "0x4fec",
+          "original": "でも、いい曲でしょう…？",
+          "text": "But it's a good song...?"
+        },
+        {
+          "offset": "0x5008",
+          "original": "お黙り。\nこの私を連れ出して、\nゲーム音楽ですって？\nお笑いだわ。",
+          "text": "Silence.\nBringing me out\nfor game music?\nHow laughable."
+        },
+        {
+          "offset": "0x5048",
+          "original": "そ、そんなこと\n言ったって…。",
+          "text": "B-but even\nso..."
+        },
+        {
+          "offset": "0x5068",
+          "original": "私、次の予定があるの。\nそれじゃ、失礼するわ。\nほーほほほほほ。",
+          "text": "I have other plans.\nNow, excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x50c4",
+          "original": "何？\n今の曲は？",
+          "text": "What?\nWhat was that song?"
+        },
+        {
+          "offset": "0x50d4",
+          "original": "今のはね、\nゲームの音楽なんだ。",
+          "text": "That was\ngame music."
+        },
+        {
+          "offset": "0x50f4",
+          "original": "ゲームの音楽ですって？\nそんな曲聴かせて、\n喜ぶとでも思ってるの？",
+          "text": "Game music, you say?\nYou think that\nwould please me?"
+        },
+        {
+          "offset": "0x5138",
+          "original": "でも、いい曲でしょう…？",
+          "text": "But it's a good song...?"
+        },
+        {
+          "offset": "0x5154",
+          "original": "お黙り。\n私のように気品溢れる者に、\nそんな曲が似合って？",
+          "text": "Silence.\nDoes that song suit\nsomeone as elegant as I?"
+        },
+        {
+          "offset": "0x519c",
+          "original": "そりゃ、\n似合う訳ないわよね。\nほーほほほほほほ。",
+          "text": "Of course,\nit couldn't.\nOhohohohohoho."
+        },
+        {
+          "offset": "0x51d0",
+          "original": "そ、そんなこと\n言ったって…。",
+          "text": "B-but even\nso..."
+        },
+        {
+          "offset": "0x51f0",
+          "original": "私、次の予定があるの。\nそれじゃ、失礼するわ。\nほーほほほほほ。",
+          "text": "I have other plans.\nNow, excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x5254",
+          "original": "今の曲…。\nつまらなかったわね。",
+          "text": "That song...\nIt was boring."
+        },
+        {
+          "offset": "0x5274",
+          "original": "そ、そう？\n結構、面白かったと\n思うんだけど…。",
+          "text": "R-really?\nI thought it was\npretty fun..."
+        },
+        {
+          "offset": "0x52a4",
+          "original": "私はつまらなかったわ。",
+          "text": "I found it boring."
+        },
+        {
+          "offset": "0x52bc",
+          "original": "ごめんね。\n付き合わせたみたいで…。",
+          "text": "Sorry.\nFor dragging you along..."
+        },
+        {
+          "offset": "0x52e0",
+          "original": "そうね。\n今後気を付けてちょうだい。",
+          "text": "Yes.\nBe careful from now on."
+        },
+        {
+          "offset": "0x5304",
+          "original": "それじゃあ、\nそろそろ帰ろうか？",
+          "text": "Well,\nshall we head home?"
+        },
+        {
+          "offset": "0x5324",
+          "original": "そうね。\n私は別にかまわないわよ。\n帰りましょう。",
+          "text": "Yes.\nI don't mind.\nLet's go home."
+        },
+        {
+          "offset": "0x5374",
+          "original": "わざわざ私を誘ったのは、\nこれを見せる\nためだったの？",
+          "text": "Did you invite me\njust to show\nme this?"
+        },
+        {
+          "offset": "0x53ac",
+          "original": "お、面白くなかった？",
+          "text": "Y-you didn't like it?"
+        },
+        {
+          "offset": "0x53c4",
+          "original": "面白い訳無いでしょう。\n私には不似合いの曲だわ。",
+          "text": "Of course it wasn't fun.\nThat song is beneath me."
+        },
+        {
+          "offset": "0x53f4",
+          "original": "そ、そうだね。",
+          "text": "R-right."
+        },
+        {
+          "offset": "0x5404",
+          "original": "知ってるなら、\nもっとましな所に\n連れて行きなさい。",
+          "text": "If you know that,\ntake me somewhere\nbetter."
+        },
+        {
+          "offset": "0x5438",
+          "original": "そ、そんなこと\n言ったって…。",
+          "text": "B-but even\nso..."
+        },
+        {
+          "offset": "0x5458",
+          "original": "私、次の予定があるの。\nそれじゃ、失礼するわ。\nほーほほほほほ。",
+          "text": "I have other plans.\nNow, excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x54b4",
+          "original": "今の曲は、何だったのか、\n説明して下さる？",
+          "text": "Would you explain\nwhat that song was?"
+        },
+        {
+          "offset": "0x54e0",
+          "original": "今のは、チャルメラだよ。",
+          "text": "That was the noodle tune."
+        },
+        {
+          "offset": "0x54fc",
+          "original": "そんな事は知ってるわよ。\n今の曲のどこを聴けば、\n私が喜ぶのかしら？",
+          "text": "I know that much.\nWhat in that song\nis meant to please me?"
+        },
+        {
+          "offset": "0x5540",
+          "original": "そ、それは…。",
+          "text": "W-well..."
+        },
+        {
+          "offset": "0x5550",
+          "original": "私こういう曲\n品がなくて嫌いなの。\nそれじゃ失礼するわ。",
+          "text": "I hate songs\nwith no class.\nNow, excuse me."
+        },
+        {
+          "offset": "0x5588",
+          "original": "あっ、{G}。\nちょっと待ってよ。",
+          "text": "Oh, {G}\nwait a second."
+        },
+        {
+          "offset": "0x55c0",
+          "original": "面白かった？",
+          "text": "Was it fun?"
+        },
+        {
+          "offset": "0x55d0",
+          "original": "そうね、私の気品に\nぴったりで、良かったん\nじゃないかしら。",
+          "text": "Yes, it suited\nmy elegance. Rather\ngood, I'd say."
+        },
+        {
+          "offset": "0x560c",
+          "original": "良かった。\n気に入ってもらえて。",
+          "text": "Great.\nGlad you liked it."
+        },
+        {
+          "offset": "0x562c",
+          "original": "美しいものは、\n美しい曲を好むのよ。",
+          "text": "Beautiful people\nlove beautiful music."
+        },
+        {
+          "offset": "0x5650",
+          "original": "そ、それじゃあ\nそろそろ帰ろうか？",
+          "text": "W-well then,\nshall we head home?"
+        },
+        {
+          "offset": "0x5674",
+          "original": "そうね。\n私は別にかまわないわよ。\n帰りましょう。",
+          "text": "Yes.\nI don't mind.\nLet's go home."
+        },
+        {
+          "offset": "0x56c0",
+          "original": "面白かった？",
+          "text": "Was it fun?"
+        },
+        {
+          "offset": "0x56d0",
+          "original": "貴方にしては、\nなかなかの所に連れて\n来てくれたんじゃない。",
+          "text": "For you, that was\nquite a good place\nto bring me."
+        },
+        {
+          "offset": "0x570c",
+          "original": "良かった。\n気に入ってもらえて。",
+          "text": "Great.\nGlad you liked it."
+        },
+        {
+          "offset": "0x572c",
+          "original": "この私を誘うのだから、\nこのぐらい当然よね。\nほーほほほほほ。",
+          "text": "Inviting me, this much\nis only natural.\nOhohohohoho."
+        },
+        {
+          "offset": "0x576c",
+          "original": "そ、そうだね…。",
+          "text": "Y-yeah..."
+        },
+        {
+          "offset": "0x5780",
+          "original": "私、次の予定があるの。\nそれじゃ、失礼するわ。\nほーほほほほほ。",
+          "text": "I have other plans.\nNow, excuse me.\nOhohohohoho."
+        },
+        {
+          "offset": "0x57d8",
+          "original": "面白かった？",
+          "text": "Was it fun?"
+        },
+        {
+          "offset": "0x57e8",
+          "original": "ま、それなりに\n良かったんじゃなくて。",
+          "text": "Well, it was\ngood enough, I'd say."
+        },
+        {
+          "offset": "0x5810",
+          "original": "良かった。\n気に入ってもらえて。",
+          "text": "Great.\nGlad you liked it."
+        },
+        {
+          "offset": "0x5830",
+          "original": "このぐらいで\n喜んでもらっちゃ困るわね。\n当然のことなんだから。",
+          "text": "Don't expect me to\nbe pleased by this.\nIt's only natural."
+        },
+        {
+          "offset": "0x5870",
+          "original": "そ、そうだね…。",
+          "text": "Y-yeah..."
+        },
+        {
+          "offset": "0x5884",
+          "original": "それじゃ、次の予定が\nあるから、失礼するわ。\nほーほほほほほ。",
+          "text": "Well then, I have\nother plans. Excuse me.\nOhohohohoho."
+        }
+      ]
+    }
+  ]
+}

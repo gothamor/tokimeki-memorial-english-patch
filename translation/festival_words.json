@@ -1,0 +1,603 @@
+{
+  "description": "In-place words of BUNKASAI.EXN and BUNKAKEN.EXN (the festival overlays): the club menu, girl names, exhibit names, the PC fortune screen's labels; plus one nop per overlay so the PC fortune doesn't draw the girl's given name twice (game-internals 6ab). Verified in DuckStation on forced festival days (tools/emu/force_festival.py, hidden emulator; docs/testing.md 'The culture festival'): the club menu, the girl menu, the PC fortune screens with Shiori, Ayako and Yuina. Layout and flow in game-internals 6ab. The stage shows (Drama play, Band concert, Literature speech contest) are BUNKA_SD.EXN, still Japanese. Natural triggers, other years and moods checked only statically.",
+  "strings": [
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2B6E0",
+      "original": "文化祭",
+      "text": "Fest"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2B6E8",
+      "original": "詩集展示",
+      "text": "Poems"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2B6F4",
+      "original": "文集展示",
+      "text": "Essays"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2B700",
+      "original": "弁論大会",
+      "text": "Speeches"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2B70C",
+      "original": "演劇部公演",
+      "text": "The Play"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2B718",
+      "original": "実験ショー",
+      "text": "Lab Show"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2B724",
+      "original": "パソコン占い",
+      "text": "PC Fortunes"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2B734",
+      "original": "ゲーム",
+      "text": "Games"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2B73C",
+      "original": "実験ショー",
+      "text": "Live Demo"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2B748",
+      "original": "似顔絵",
+      "text": "Faces"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2B750",
+      "original": "公開デッサン",
+      "text": "Live Sketch"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2B760",
+      "original": "油絵展示",
+      "text": "Oils"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2B76C",
+      "original": "演奏会",
+      "text": "Music"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2B774",
+      "original": "舞台裏",
+      "text": "Wings"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2D140",
+      "original": "天の声",
+      "text": "Voice"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2D1C0",
+      "original": "『それじゃ、やってみせるかな。",
+      "text": "『Well, let me show you."
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E380",
+      "original": "詩織",
+      "text": "Shiori"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E388",
+      "original": "未緒",
+      "text": "Mio"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E390",
+      "original": "結奈",
+      "text": "Yuina"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E398",
+      "original": "彩子",
+      "text": "Ayako"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E3A0",
+      "original": "沙希",
+      "text": "Saki"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E3A8",
+      "original": "ゆかり",
+      "text": "Yukari"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E3B4",
+      "original": "魅羅",
+      "text": "Mira"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E3BC",
+      "original": "夕子",
+      "text": "Yuko"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E3C8",
+      "original": "優美",
+      "text": "Yumi"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E3D0",
+      "original": "詩織",
+      "text": "Shiori"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E3DC",
+      "original": "Ａ型",
+      "text": "A"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E3E4",
+      "original": "Ａ型",
+      "text": "A"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E3EC",
+      "original": "Ｂ型",
+      "text": "B"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E3F4",
+      "original": "Ａ型",
+      "text": "A"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E3FC",
+      "original": "Ｂ型",
+      "text": "B"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E404",
+      "original": "Ａ型",
+      "text": "A"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E40C",
+      "original": "Ｏ型",
+      "text": "O"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E414",
+      "original": "Ｂ型",
+      "text": "B"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E41C",
+      "original": "Ａ型",
+      "text": "A"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E424",
+      "original": "Ｏ型",
+      "text": "O"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E42C",
+      "original": "Ｏ型",
+      "text": "O"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E434",
+      "original": "Ａ型",
+      "text": "A"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E43C",
+      "original": "Ｂ型",
+      "text": "B"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E444",
+      "original": "ＡＢ型",
+      "text": "AB"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E44C",
+      "original": "＊パソコン　ＮＭＳ＿９０００＊",
+      "text": "PC NMS-9000"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E46C",
+      "original": "血液型",
+      "text": "Blood"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E474",
+      "original": "血液型",
+      "text": "Blood"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x2E6DC",
+      "original": "クラシックのＣＤ",
+      "text": "Classical CD"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22920",
+      "original": "文芸部へ行く",
+      "text": "Literature"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22930",
+      "original": "演劇部へ行く",
+      "text": "Drama"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22940",
+      "original": "科学部へ行く",
+      "text": "Science"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22950",
+      "original": "電脳部へ行く",
+      "text": "Computers"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22960",
+      "original": "美術部へ行く",
+      "text": "Art"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22970",
+      "original": "吹奏楽部へ行く",
+      "text": "Band"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22AF0",
+      "original": "文化祭",
+      "text": "Fest"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22AF8",
+      "original": "詩集展示",
+      "text": "Poems"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22B04",
+      "original": "文集展示",
+      "text": "Essays"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22B10",
+      "original": "弁論大会",
+      "text": "Speeches"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22B1C",
+      "original": "演劇部公演",
+      "text": "The Play"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22B28",
+      "original": "実験ショー",
+      "text": "Lab Show"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22B34",
+      "original": "パソコン占い",
+      "text": "PC Fortunes"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22B44",
+      "original": "ゲーム",
+      "text": "Games"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22B4C",
+      "original": "実験ショー",
+      "text": "Live Demo"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22B58",
+      "original": "似顔絵",
+      "text": "Faces"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22B60",
+      "original": "公開デッサン",
+      "text": "Live Sketch"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22B70",
+      "original": "油絵展示",
+      "text": "Oils"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22B7C",
+      "original": "演奏会",
+      "text": "Music"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22B84",
+      "original": "舞台裏",
+      "text": "Wings"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x22BF0",
+      "original": "天の声",
+      "text": "Voice"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23024",
+      "original": "近所の公園",
+      "text": "Local Park"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23030",
+      "original": "廊下",
+      "text": "Hall"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23038",
+      "original": "近所の公園",
+      "text": "Local Park"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23048",
+      "original": "近所の公園",
+      "text": "Local Park"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D20",
+      "original": "詩織",
+      "text": "Shiori"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D28",
+      "original": "未緒",
+      "text": "Mio"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D30",
+      "original": "結奈",
+      "text": "Yuina"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D38",
+      "original": "彩子",
+      "text": "Ayako"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D40",
+      "original": "沙希",
+      "text": "Saki"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D48",
+      "original": "ゆかり",
+      "text": "Yukari"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D54",
+      "original": "魅羅",
+      "text": "Mira"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D5C",
+      "original": "夕子",
+      "text": "Yuko"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D68",
+      "original": "優美",
+      "text": "Yumi"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D70",
+      "original": "詩織",
+      "text": "Shiori"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D7C",
+      "original": "Ａ型",
+      "text": "A"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D84",
+      "original": "Ａ型",
+      "text": "A"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D8C",
+      "original": "Ｂ型",
+      "text": "B"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D94",
+      "original": "Ａ型",
+      "text": "A"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23D9C",
+      "original": "Ｂ型",
+      "text": "B"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23DA4",
+      "original": "Ａ型",
+      "text": "A"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23DAC",
+      "original": "Ｏ型",
+      "text": "O"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23DB4",
+      "original": "Ｂ型",
+      "text": "B"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23DBC",
+      "original": "Ａ型",
+      "text": "A"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23DC4",
+      "original": "Ｏ型",
+      "text": "O"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23DCC",
+      "original": "Ｏ型",
+      "text": "O"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23DD4",
+      "original": "Ａ型",
+      "text": "A"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23DDC",
+      "original": "Ｂ型",
+      "text": "B"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23DE4",
+      "original": "ＡＢ型",
+      "text": "AB"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23DEC",
+      "original": "＊パソコン　ＮＭＳ＿９０００＊",
+      "text": "PC NMS-9000"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23E0C",
+      "original": "血液型",
+      "text": "Blood"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x23E14",
+      "original": "血液型",
+      "text": "Blood"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x2433C",
+      "original": "クラシックのＣＤ",
+      "text": "Classical CD"
+    }
+  ],
+  "bytes": [
+    {
+      "file": "CDROM/EXEDIR/BUNKASAI.EXN",
+      "offset": "0x29388",
+      "original": "e239010c",
+      "replacement": "00000000",
+      "comment": "PC fortune screen: skip drawing the girl's given name after her family name (jal 0x8004E788 at 0x8015B388); character_names.json maps the family-name table 0x800B35F4 to given names, so both calls showed 'Shiori Shiori'"
+    },
+    {
+      "file": "CDROM/EXEDIR/BUNKAKEN.EXN",
+      "offset": "0x20A98",
+      "original": "e239010c",
+      "replacement": "00000000",
+      "comment": "PC fortune screen: skip drawing the girl's given name after her family name (jal 0x8004E788 at 0x80152A98); character_names.json maps the family-name table 0x800B35F4 to given names, so both calls showed 'Shiori Shiori'"
+    }
+  ]
+}

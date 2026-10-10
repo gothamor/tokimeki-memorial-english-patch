@@ -213,7 +213,7 @@ Each with `exn_words.py` (room per string) and the overlay's forcer:
 | Tools for the loop (survey, draft + memory + checks, candidate, review sheets, state forcer, overlay words) | Done 2026-10-10 |
 | Remaining-files map, state/record maps (§6aa), probes pb1–pb12 | Done 2026-10-10 |
 | A1–A10 dates | Done 2026-10-10: nine `*_dates.json` + `date_banners.json` promoted (testing.md "The other girls' dates") |
-| B0 festival forcer, B1–B13 | |
+| B0 festival forcer, B1–B13 | B0–B12 done 2026-10-10 (game-internals §6ab, `festival_*.json`); B13 stage shows open |
 | C ending | |
 | D1–D5 | |
 | E contests | |

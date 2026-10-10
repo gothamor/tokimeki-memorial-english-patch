@@ -1,0 +1,968 @@
+{
+  "description": "The player at the culture festival: BUN_PC.BIN (the day's narration, menus, each club's exhibit announcement), BUN_FU.BIN (a birthday on the festival day), TWINBEE.BIN and URANAI.BIN (187 strings). Verified in DuckStation on forced festival days (tools/emu/force_festival.py, hidden emulator; docs/testing.md 'The culture festival'): BUN_PC's lines on every run, the six exhibit announcements. Not seen: BUN_FU, TWINBEE, and URANAI beyond the PC fortune screens. Layout and flow in game-internals 6ab. The stage shows (Drama play, Band concert, Literature speech contest) are BUNKA_SD.EXN, still Japanese. Natural triggers, other years and moods checked only statically.",
+  "dialogue": [
+    {
+      "file": "CDROM/BUNKA/BUN_PC.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "今日は、文化祭だ。",
+          "text": "Festival day!"
+        },
+        {
+          "offset": "0x18",
+          "original": "さてと、これから\nどうしようかな。",
+          "text": "Well now,\nwhat should I do?"
+        },
+        {
+          "offset": "0x3c",
+          "original": "女の子でも誘って行こうかな？{q}一人で行こうかな？",
+          "text": "Should I ask a girl?{q}Should I go alone?"
+        },
+        {
+          "offset": "0x74",
+          "original": "さて、誰を誘おうか？",
+          "text": "So, who should I ask?"
+        },
+        {
+          "offset": "0x90",
+          "original": "あっ、丁度いいところに、\n{G}が現れたぞ。",
+          "text": "Oh, perfect timing!\nAnd there's {G}"
+        },
+        {
+          "offset": "0xb8",
+          "original": "おーい、{G}。",
+          "text": "Yo, {G}"
+        },
+        {
+          "offset": "0xcc",
+          "original": "さすがに{G}を\n誘うことはできないな…。\n別の人にしよう。",
+          "text": "To invite {G}\nis too much...\nI'll ask someone else."
+        },
+        {
+          "offset": "0x108",
+          "original": "やっぱり、一人で行こう。",
+          "text": "I'll go by myself."
+        },
+        {
+          "offset": "0x128",
+          "original": "よお、{m}。",
+          "text": "Yo, {m}."
+        },
+        {
+          "offset": "0x134",
+          "original": "一人か？",
+          "text": "All alone?"
+        },
+        {
+          "offset": "0x140",
+          "original": "余計なお世話だ。\nどうしたんだ、好雄。",
+          "text": "None of your business.\nWhat's up, Yoshio?"
+        },
+        {
+          "offset": "0x174",
+          "original": "今年は、演劇部が\n面白いらしいぜ。\nじゃあな。",
+          "text": "I hear Drama's\ngood this year.\nSee ya."
+        },
+        {
+          "offset": "0x1a8",
+          "original": "今年は、美術部が\n面白いらしいぜ。\nじゃあな。",
+          "text": "I hear Art's\ngood this year.\nSee ya."
+        },
+        {
+          "offset": "0x1dc",
+          "original": "今年は、理系クラブが\n面白いらしいぜ。\nじゃあな。",
+          "text": "I hear science clubs\nare good this year.\nSee ya."
+        },
+        {
+          "offset": "0x214",
+          "original": "そうか…\nじゃあ、俺はどうしようかな。",
+          "text": "I see...\nThen what should I do?"
+        },
+        {
+          "offset": "0x240",
+          "original": "それじゃあ、\nどこに行こうかな…？",
+          "text": "Well then,\nwhere should I go...?"
+        },
+        {
+          "offset": "0x268",
+          "original": "よし、文芸部に\n行こう。",
+          "text": "Okay, to\nLiterature."
+        },
+        {
+          "offset": "0x284",
+          "original": "よし、演劇部に\n行こう。",
+          "text": "Okay, to\nDrama."
+        },
+        {
+          "offset": "0x2a0",
+          "original": "よし、科学部に\n行こう。",
+          "text": "Okay, to\nScience."
+        },
+        {
+          "offset": "0x2bc",
+          "original": "よし、電脳部に\n行こう。",
+          "text": "Okay, to\nComputers."
+        },
+        {
+          "offset": "0x2d8",
+          "original": "よし、美術部に\n行こう。",
+          "text": "Okay, to\nArt."
+        },
+        {
+          "offset": "0x2f4",
+          "original": "よし、吹奏楽部に\n行こう。",
+          "text": "Okay, to\nthe band."
+        },
+        {
+          "offset": "0x314",
+          "original": "文芸部は、詩集の展示だ。\n早く、準備しなきゃ。",
+          "text": "Literature: poetry.\nBetter get ready."
+        },
+        {
+          "offset": "0x348",
+          "original": "文芸部は、文集の展示だ。\n早く、準備しなきゃ。",
+          "text": "Literature: essays.\nBetter get ready."
+        },
+        {
+          "offset": "0x37c",
+          "original": "文芸部は、体育館で\n弁論大会だ。\n早く、準備しなきゃ。",
+          "text": "Literature: speech\ncontest in the gym.\nBetter get ready."
+        },
+        {
+          "offset": "0x3b8",
+          "original": "演劇部は、体育館で\n金太郎侍の上演だ。\n早く準備しなきゃ。",
+          "text": "Drama's doing\nKintaro Samurai.\nBetter get ready."
+        },
+        {
+          "offset": "0x3f8",
+          "original": "演劇部は、体育館で\n九伊豆戦隊カルトマンショーの\n上演だ。\n早く準備しなきゃ。",
+          "text": "Drama's doing\nQuiz Squadron Cultman\nin the gym.\nBetter get ready."
+        },
+        {
+          "offset": "0x448",
+          "original": "演劇部は、体育館で\nロメオとジュリエッタ\nの上演だ。\n早く準備しなきゃ。",
+          "text": "Drama's doing\nRomeo and Julietta\nin the gym.\nBetter get ready."
+        },
+        {
+          "offset": "0x494",
+          "original": "科学部は、展示室で\n公開薬品調合実験だ。\n早く、準備しなきゃ。",
+          "text": "Science mixes\nchemicals live.\nBetter get ready."
+        },
+        {
+          "offset": "0x4d8",
+          "original": "科学部は、展示室で\nレーザーアートショーだ。\n早く、準備しなきゃ。",
+          "text": "Science has\na laser art show.\nBetter get ready."
+        },
+        {
+          "offset": "0x520",
+          "original": "科学部は、展示室で\n公開物質転送実験だ。\n早く、準備しなきゃ。",
+          "text": "Science teleports\nmatter live.\nBetter get ready."
+        },
+        {
+          "offset": "0x564",
+          "original": "電脳部は、展示室で\nパソコン占いだ。\n早く、準備しなきゃ。",
+          "text": "Computers does\nPC fortunes.\nBetter get ready."
+        },
+        {
+          "offset": "0x5a4",
+          "original": "電脳部は、ゲームの展示だ。\n早く、準備しなきゃ。",
+          "text": "Computers: games.\nBetter get ready."
+        },
+        {
+          "offset": "0x5d8",
+          "original": "電脳部は、展示室で\nハッキング実演だ。\n早く、準備しなきゃ。",
+          "text": "Computers does\na hacking demo.\nBetter get ready."
+        },
+        {
+          "offset": "0x618",
+          "original": "美術部は、展示室で\n似顔絵描きだ。\n早く、準備しなきゃ。",
+          "text": "Art draws\nportraits.\nBetter get ready."
+        },
+        {
+          "offset": "0x654",
+          "original": "美術部は、展示室で\n公開デッサンだ。\n早く、準備しなきゃ。",
+          "text": "Art sketches\nlive.\nBetter get ready."
+        },
+        {
+          "offset": "0x694",
+          "original": "美術部は、油絵の展示だ。\n早く、準備しなきゃ。",
+          "text": "Art: oil paintings.\nBetter get ready."
+        },
+        {
+          "offset": "0x6c8",
+          "original": "吹奏楽部は、体育館で\nゲーム音楽の演奏だ。\n早く、準備しなきゃ。",
+          "text": "Band plays game\nmusic in the gym.\nBetter get ready."
+        },
+        {
+          "offset": "0x70c",
+          "original": "吹奏楽部は、体育館で\nチャルメラの演奏だ。\n早く、準備しなきゃ。",
+          "text": "The band plays\nramen-cart tunes.\nBetter get ready."
+        },
+        {
+          "offset": "0x750",
+          "original": "吹奏楽部は、体育館で\nクラシック音楽の演奏だ。\n早く、準備しなきゃ。",
+          "text": "Band plays classical\nin the gym.\nBetter get ready."
+        },
+        {
+          "offset": "0x798",
+          "original": "あー、暇だなぁ。\n誰か来ないかなぁ。",
+          "text": "Man, so bored.\nAnyone coming?"
+        },
+        {
+          "offset": "0x7c0",
+          "original": "あー、客は来ないし、\n暇だなぁ。",
+          "text": "No visitors,\nso bored."
+        },
+        {
+          "offset": "0x7e4",
+          "original": "うまく発表できるかな…。\nすっげー心配。",
+          "text": "Will my speech go okay?\nSo nervous."
+        },
+        {
+          "offset": "0x848",
+          "original": "ううっ、\nついに俺の番が来た。",
+          "text": "Ugh,\nit's finally my turn."
+        },
+        {
+          "offset": "0x874",
+          "original": "初めての舞台だ。\nあぁ、緊張するなぁ。\nセリフは大丈夫かな…。",
+          "text": "My first stage.\nMan, I'm nervous.\nDo I know my lines?"
+        },
+        {
+          "offset": "0x8f0",
+          "original": "ついに、俺達の出番だ。",
+          "text": "We're on, at last."
+        },
+        {
+          "offset": "0x914",
+          "original": "人前で演技するのは\nすごく緊張するなぁ。\nミスをしませんように…。",
+          "text": "Acting for people\nis nerve-racking.\nNo mistakes..."
+        },
+        {
+          "offset": "0x994",
+          "original": "き、来た。\nついに、俺達の出番だ。",
+          "text": "H-here it is.\nWe're on, at last."
+        },
+        {
+          "offset": "0x9c4",
+          "original": "そろそろ、次のショーの\n準備をしなきゃ。",
+          "text": "Time to get ready\nfor the next show."
+        },
+        {
+          "offset": "0x9f0",
+          "original": "結構、\nお客さんが来るなぁ。",
+          "text": "Quite a\ncrowd here."
+        },
+        {
+          "offset": "0xa10",
+          "original": "似顔絵って、\n結構大変だなぁ。",
+          "text": "Portraits are\nhard work."
+        },
+        {
+          "offset": "0xa34",
+          "original": "美術部員て、\nこういうとき得だよな。",
+          "text": "Art Club perks\nat a time like this."
+        },
+        {
+          "offset": "0xa5c",
+          "original": "あー、客は来ないし、\n暇だなぁ。",
+          "text": "No visitors,\nso bored."
+        },
+        {
+          "offset": "0xa80",
+          "original": "人前で、初めての演奏だ。\nあぁ、緊張するなぁ。\nミスをしませんように…。",
+          "text": "My first live show.\nMan, I'm nervous.\nPlease, no mistakes..."
+        },
+        {
+          "offset": "0xb04",
+          "original": "ついに、俺達の出番だ。",
+          "text": "We're on, at last."
+        },
+        {
+          "offset": "0xb28",
+          "original": "人前での演奏は\nすごく緊張するなぁ。\nミスをしませんように…。",
+          "text": "Playing for people\nis nerve-racking.\nNo mistakes..."
+        },
+        {
+          "offset": "0xba4",
+          "original": "き、来た。\nついに、俺達の出番だ。",
+          "text": "H-here it is.\nWe're on, at last."
+        },
+        {
+          "offset": "0xbd4",
+          "original": "知ってる人はいないなぁ。\nしょうがない、\n一人で詩でも見るか。",
+          "text": "Nobody I know here.\nOh well, I'll look\nat the poems alone."
+        },
+        {
+          "offset": "0xc18",
+          "original": "俺は、展示物を一通り\n見て回った。",
+          "text": "I looked\nat all the exhibits."
+        },
+        {
+          "offset": "0xc40",
+          "original": "何か、詩の心が\nわかった気がするよ。",
+          "text": "I think I get\npoetry now."
+        },
+        {
+          "offset": "0xc68",
+          "original": "知ってる人はいないなぁ。\nしょうがない、\n一人で作文でも見るか。",
+          "text": "Nobody I know here.\nOh well, I'll look\nat the essays alone."
+        },
+        {
+          "offset": "0xcac",
+          "original": "俺は、展示物を一通り\n見て回った。",
+          "text": "I looked\nat all the exhibits."
+        },
+        {
+          "offset": "0xcd4",
+          "original": "何か、作文の心が\nわかった気がするよ。",
+          "text": "I think I get\nessays now."
+        },
+        {
+          "offset": "0xd00",
+          "original": "おっ、ちょうど、\n弁論が始まるぞ。",
+          "text": "Oh, the speeches\nare just starting."
+        },
+        {
+          "offset": "0xd28",
+          "original": "なんの主張なんだろう…。",
+          "text": "What was that about...?"
+        },
+        {
+          "offset": "0xd48",
+          "original": "おっ、ちょうど、\n演劇が始まるぞ。",
+          "text": "Oh, the play\nis just starting."
+        },
+        {
+          "offset": "0xd70",
+          "original": "結構面白かったな。",
+          "text": "That was good."
+        },
+        {
+          "offset": "0xd88",
+          "original": "知ってる人はいないなぁ。\nショーでも見ていくかな。",
+          "text": "Nobody I know here.\nMaybe I'll watch the show."
+        },
+        {
+          "offset": "0xdc0",
+          "original": "爆発したけど、\nあの人大丈夫かなぁ。",
+          "text": "It blew up...\nIs that guy okay?"
+        },
+        {
+          "offset": "0xde8",
+          "original": "結構、奇麗だったな。",
+          "text": "That was pretty nice."
+        },
+        {
+          "offset": "0xe04",
+          "original": "すごい。\n夢でも見てたみたい。",
+          "text": "Amazing.\nLike I was dreaming."
+        },
+        {
+          "offset": "0xe28",
+          "original": "知ってる人はいないなぁ。\n占いでも、\nやってもらおう。",
+          "text": "Nobody I know here.\nMaybe I'll get\nmy fortune told."
+        },
+        {
+          "offset": "0xe64",
+          "original": "ん、良い結果だ。",
+          "text": "Hm, a good result."
+        },
+        {
+          "offset": "0xe7c",
+          "original": "こんなもんなのか。",
+          "text": "That's all, huh?"
+        },
+        {
+          "offset": "0xe94",
+          "original": "こりゃ、ひどい。",
+          "text": "Yikes, awful."
+        },
+        {
+          "offset": "0xeac",
+          "original": "知ってる人はいないなぁ。\nあっ、ゲームがあるぞ。\nやってみよう。",
+          "text": "Nobody I know here.\nOh, there's a game.\nLet's give it a try."
+        },
+        {
+          "offset": "0xef0",
+          "original": "あぁ、面白かった。",
+          "text": "Man, that was fun."
+        },
+        {
+          "offset": "0xf08",
+          "original": "知ってる人はいないなぁ。\nショーでも見ていくかな。",
+          "text": "Nobody I know here.\nMaybe I'll watch the show."
+        },
+        {
+          "offset": "0xf40",
+          "original": "あれって、\n犯罪なんじゃ…。",
+          "text": "Isn't that\na crime...?"
+        },
+        {
+          "offset": "0xf60",
+          "original": "知ってる人はいないなぁ。\n似顔絵でも\n描いてもらおうかな。",
+          "text": "Nobody I know here.\nMaybe I'll get my\nportrait drawn."
+        },
+        {
+          "offset": "0xfd8",
+          "original": "混んでるから、\nやめよう…。",
+          "text": "Too crowded.\nForget it..."
+        },
+        {
+          "offset": "0x1000",
+          "original": "おおおおおおっ。\nこ、これはーっ！",
+          "text": "Ohhhhhhh!\nTh-this is...!"
+        },
+        {
+          "offset": "0x1024",
+          "original": "やっぱり、来たな。",
+          "text": "Knew you'd come."
+        },
+        {
+          "offset": "0x1040",
+          "original": "やっぱりって、\n俺はこの事を\n知らなかったぜ。",
+          "text": "Knew? I didn't\neven know about\nthis."
+        },
+        {
+          "offset": "0x1070",
+          "original": "わかってる\nわかってるって。\n見ていくんだろう？",
+          "text": "Sure, sure,\nI get it.\nYou'll watch, right?"
+        },
+        {
+          "offset": "0x10a0",
+          "original": "当然、見るよ。{q}何、馬鹿なこと言ってんだよ。",
+          "text": "Sure I'll watch.{q}What are you on about?"
+        },
+        {
+          "offset": "0x10d8",
+          "original": "そうだろう、そうだろう。\nやっぱり俺達ゃ、\n友達だな。",
+          "text": "Right, right.\nWe really are\nbuddies."
+        },
+        {
+          "offset": "0x1110",
+          "original": "いいから、早く退けよ。",
+          "text": "Just move it already."
+        },
+        {
+          "offset": "0x1128",
+          "original": "俺が邪魔してたか。\n悪かったな。",
+          "text": "Was I in the way?\nMy bad."
+        },
+        {
+          "offset": "0x1154",
+          "original": "いい目の保養だぜ。",
+          "text": "Easy on the eyes."
+        },
+        {
+          "offset": "0x116c",
+          "original": "お前本当に男か？\n信じられねぇぜ。",
+          "text": "Are you a guy?\nUnbelievable."
+        },
+        {
+          "offset": "0x1190",
+          "original": "お前と一緒にするなよな。",
+          "text": "Don't lump me in with you."
+        },
+        {
+          "offset": "0x11ac",
+          "original": "じゃあな。\n後で後悔しても遅いぜ。",
+          "text": "See ya.\nDon't come crying later."
+        },
+        {
+          "offset": "0x11d0",
+          "original": "後悔なんかしねぇよ。",
+          "text": "I won't regret it."
+        },
+        {
+          "offset": "0x11f8",
+          "original": "知ってる人はいないなぁ。\nしょうがない、\n一人で絵でも見るか。",
+          "text": "Nobody I know here.\nOh well, I'll look\nat the art alone."
+        },
+        {
+          "offset": "0x123c",
+          "original": "俺は、展示物を一通り\n見て回った。",
+          "text": "I looked\nat all the exhibits."
+        },
+        {
+          "offset": "0x1264",
+          "original": "結構、\nいい絵だったな。",
+          "text": "Pretty\ngood art."
+        },
+        {
+          "offset": "0x1280",
+          "original": "おっ、ちょうど、\n演奏が始まるぞ。",
+          "text": "Oh, the concert\nis just starting."
+        },
+        {
+          "offset": "0x12a8",
+          "original": "いい曲だったな。",
+          "text": "Nice piece."
+        },
+        {
+          "offset": "0x12c0",
+          "original": "変な曲だったな。",
+          "text": "Weird piece."
+        },
+        {
+          "offset": "0x12d8",
+          "original": "こうして、\n文化祭は、終了した。",
+          "text": "And so, the\nfestival was over."
+        }
+      ]
+    },
+    {
+      "file": "CDROM/BUNKA/BUN_FU.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "あっ、今日は{G}の\n誕生日じゃないか。",
+          "text": "Oh! Today's for {G}\nher birthday!"
+        },
+        {
+          "offset": "0x24",
+          "original": "プレゼントとか、\nどうしようかな？",
+          "text": "What should I do\nabout a present?"
+        },
+        {
+          "offset": "0x48",
+          "original": "プレゼントをする。{q}プレゼントをしない。",
+          "text": "Give her a gift.{q}Skip the gift."
+        },
+        {
+          "offset": "0x7c",
+          "original": "プレゼントを\nすることはないな。",
+          "text": "No need to get\nher a present."
+        },
+        {
+          "offset": "0xa0",
+          "original": "何をプレゼントしようかな？",
+          "text": "What should I get her?"
+        },
+        {
+          "offset": "0xc0",
+          "original": "クラシックのＣＤ{q}ハンカチ{q}ピアス",
+          "text": "Classical CD{q}Handkerchief{q}Pierced earrings"
+        },
+        {
+          "offset": "0xe8",
+          "original": "ヘアーバンド{q}恋愛小説{q}サンダル",
+          "text": "Hairband{q}Romance book{q}Summer sandals"
+        },
+        {
+          "offset": "0x10c",
+          "original": "イヤリング{q}ポシェット{q}ホラー小説",
+          "text": "Earrings{q}Pochette{q}Horror novel"
+        },
+        {
+          "offset": "0x134",
+          "original": "よし、\n{A}を、\nプレゼントしよう。",
+          "text": "Okay, I'll go with\n{A}\nfor her present."
+        },
+        {
+          "offset": "0x158",
+          "original": "俺は、\n応援に来ていた{G}を\n競技場前に呼び出した。",
+          "text": "I called\n{G}\nto the stadium entrance."
+        },
+        {
+          "offset": "0x18c",
+          "original": "俺は、\n応援に来ていた{G}を\n球場前に呼び出した。",
+          "text": "I called\n{G}\nto the stadium entrance."
+        },
+        {
+          "offset": "0x1c0",
+          "original": "俺は、\n応援に来ていた{G}を\n控え室前に呼び出した。",
+          "text": "I called\n{G}\nto the waiting room."
+        },
+        {
+          "offset": "0x1f4",
+          "original": "俺は、\n後かたづけの暇を見て、\n{G}に話しかけた。",
+          "text": "In a break from\ncleanup, I went\nover to {G}"
+        },
+        {
+          "offset": "0x228",
+          "original": "俺は、\n後かたづけを抜け出して、\n{G}を探した。",
+          "text": "I slipped out\nof the cleanup\nto look for {G}"
+        },
+        {
+          "offset": "0x258",
+          "original": "あ、そうだ。",
+          "text": "Oh, right."
+        },
+        {
+          "offset": "0x268",
+          "original": "どうしたの？",
+          "text": "What is it?"
+        },
+        {
+          "offset": "0x280",
+          "original": "あっ、{G}！",
+          "text": "Oh, hi, {G}"
+        },
+        {
+          "offset": "0x294",
+          "original": "待ったぁ。\nごめんね、\n遅くなっちゃって。",
+          "text": "Did you wait?\nSorry\nfor being late."
+        },
+        {
+          "offset": "0x2c4",
+          "original": "お待たせ。\nそれで、用事って？",
+          "text": "Sorry to keep you.\nSo, what's up?"
+        },
+        {
+          "offset": "0x2e8",
+          "original": "…。\n用件は何？",
+          "text": "...\nWhat do you want?"
+        },
+        {
+          "offset": "0x2fc",
+          "original": "あっ…。\nど、どうしたの？",
+          "text": "Oh...\nWh-what is it?"
+        },
+        {
+          "offset": "0x31c",
+          "original": "{P}。\nどうしたの？",
+          "text": "{P}\nWhat is it?"
+        },
+        {
+          "offset": "0x334",
+          "original": "あら、{P}。",
+          "text": "Oh, {P}."
+        },
+        {
+          "offset": "0x340",
+          "original": "どうしたの？",
+          "text": "What is it?"
+        },
+        {
+          "offset": "0x358",
+          "original": "…。\n何か御用？",
+          "text": "...\nDid you need something?"
+        },
+        {
+          "offset": "0x36c",
+          "original": "忙しいのに、ごめん。",
+          "text": "Sorry, you're busy."
+        },
+        {
+          "offset": "0x388",
+          "original": "今日、誕生日だよね。\nはい、プレゼント。",
+          "text": "It's your birthday, right?\nHere, a present."
+        },
+        {
+          "offset": "0x3b0",
+          "original": "えっ…。\n嬉しい…。\n開けてもいい？",
+          "text": "Oh...\nI'm so happy...\nMay I open it?"
+        },
+        {
+          "offset": "0x3d4",
+          "original": "いいよ、開けても。\nどう？",
+          "text": "Sure, go ahead.\nWhat do you think?"
+        },
+        {
+          "offset": "0x3fc",
+          "original": "はい、誕生日のプレゼント。",
+          "text": "Here, a birthday present."
+        },
+        {
+          "offset": "0x418",
+          "original": "ありがとう。\nねぇ、開けてもいい？",
+          "text": "Thank you.\nSay, may I open it?"
+        },
+        {
+          "offset": "0x43c",
+          "original": "いいよ、開けても。\nどう？",
+          "text": "Sure, go ahead.\nWhat do you think?"
+        },
+        {
+          "offset": "0x464",
+          "original": "はい、誕生日のプレゼント。",
+          "text": "Here, a birthday present."
+        },
+        {
+          "offset": "0x480",
+          "original": "ありがとう。\n開けてもいいかな？",
+          "text": "Thank you.\nCan I open it?"
+        },
+        {
+          "offset": "0x4a0",
+          "original": "いいよ、開けても。\nどう？",
+          "text": "Sure, go ahead.\nWhat do you think?"
+        },
+        {
+          "offset": "0x4c8",
+          "original": "はい、誕生日のプレゼント。",
+          "text": "Here, a birthday present."
+        },
+        {
+          "offset": "0x4e4",
+          "original": "…。開けてもいいかな？",
+          "text": "...Can I open it?"
+        },
+        {
+          "offset": "0x4fc",
+          "original": "いいよ、開けても。\nどう？",
+          "text": "Sure, go ahead.\nWhat do you think?"
+        },
+        {
+          "offset": "0x524",
+          "original": "これ、前から欲しかったの。\nずっと、大切にするね。",
+          "text": "I've wanted this for ages.\nI'll treasure it always."
+        },
+        {
+          "offset": "0x55c",
+          "original": "あんなに喜んでくれるなんて、\nプレゼントして\n良かったな。",
+          "text": "She was so happy.\nI'm glad I gave\nher a present."
+        },
+        {
+          "offset": "0x59c",
+          "original": "うん、大切にするわ。",
+          "text": "Yes, I'll treasure it."
+        },
+        {
+          "offset": "0x5b8",
+          "original": "まあまあ、\n喜んでもらえたな。\nこんなもんかな…。",
+          "text": "She was\nsort of happy.\nGuess that's that..."
+        },
+        {
+          "offset": "0x5f0",
+          "original": "‥‥。\nと、とりあえず、\n貰っておくわね…。",
+          "text": "‥‥。\nW-well, for now,\nI'll take it..."
+        },
+        {
+          "offset": "0x620",
+          "original": "あんまり喜んで\nもらえなかった…。\n失敗だったかな…。",
+          "text": "She didn't seem\ntoo happy...\nDid I pick wrong...?"
+        },
+        {
+          "offset": "0x65c",
+          "original": "今日は{G}も誕生日だ。\nプレゼントを用意して\nおいたんだ。",
+          "text": "Today's for {G}\ntoo: her birthday.\nI got her a present."
+        },
+        {
+          "offset": "0x694",
+          "original": "イヤリング{q}ポシェット{q}ホラー小説",
+          "text": "Earrings{q}Pochette{q}Horror novel"
+        },
+        {
+          "offset": "0x6c0",
+          "original": "すいません、\nもう展示終りなんですけど。\n…なんだ、{G}じゃないか。\n忘れものか？",
+          "text": "Sorry,\nthe exhibit's closed.\n...Oh, it's {G}\nForget something?"
+        },
+        {
+          "offset": "0x710",
+          "original": "うん…。",
+          "text": "No..."
+        },
+        {
+          "offset": "0x71c",
+          "original": "しょうがないな、\n何を忘れたの？\n一緒に…",
+          "text": "Oh, okay,\nwhat'd you forget?\nI'll help..."
+        },
+        {
+          "offset": "0x748",
+          "original": "これ…プレゼントなの。",
+          "text": "This... is a present."
+        },
+        {
+          "offset": "0x760",
+          "original": "お誕生日おめでとう。",
+          "text": "Happy birthday."
+        },
+        {
+          "offset": "0x778",
+          "original": "あ、そうか。\nありがとう。\n嬉しいよ。",
+          "text": "Oh, right.\nThank you.\nI'm so happy."
+        },
+        {
+          "offset": "0x7a0",
+          "original": "よかった、\n受け取ってもらえて。",
+          "text": "I'm glad\nyou took it."
+        },
+        {
+          "offset": "0x7e0",
+          "original": "それじゃ…。",
+          "text": "Well..."
+        },
+        {
+          "offset": "0x7f0",
+          "original": "あっ、\nちょっと待ってよ、{G}。",
+          "text": "Oh,\nwait a sec, {G}"
+        },
+        {
+          "offset": "0x810",
+          "original": "{G}だって、\n今日誕生日でしょう？\nはい、プレゼント。",
+          "text": "{G}\nit's your birthday too.\nHere, a present."
+        },
+        {
+          "offset": "0x844",
+          "original": "えっ…。\n嬉しい…。\n開けてもいい？",
+          "text": "Oh...\nI'm so happy...\nMay I open it?"
+        },
+        {
+          "offset": "0x868",
+          "original": "いいよ、開けても。\nどう？",
+          "text": "Sure, go ahead.\nWhat do you think?"
+        },
+        {
+          "offset": "0x898",
+          "original": "今度こそ本当に、\n文化祭が終了した。",
+          "text": "And this time, the\nfestival really ended."
+        },
+        {
+          "offset": "0x8c0",
+          "original": "\n　　　　　　　そして…",
+          "text": "\n　　　　　　　And then..."
+        },
+        {
+          "offset": "0x8dc",
+          "original": "もちろん、\n俺も覚えてるぞ。",
+          "text": "Of course,\nI remembered it too."
+        },
+        {
+          "offset": "0x8fc",
+          "original": "こんなに喜んでくれるなんて、\nプレゼントして\n良かったな。",
+          "text": "She's so happy.\nI'm glad I gave\nher a present."
+        },
+        {
+          "offset": "0x93c",
+          "original": "今日は{G}の誕生日だ。\nプレゼントを用意して\nおいたんだ。",
+          "text": "Today's for {G}\nit's her birthday.\nI got her a present."
+        },
+        {
+          "offset": "0x978",
+          "original": "今日は{G}も誕生日だ。\nプレゼントを用意して\nおいたんだ。",
+          "text": "Today's for {G}\ntoo: her birthday.\nI got her a present."
+        },
+        {
+          "offset": "0x9b4",
+          "original": "何、どうしたの？",
+          "text": "What's up?"
+        },
+        {
+          "offset": "0x9d0",
+          "original": "あれ、{G}が\n戻ってきたぞ。\n忘れものかな？",
+          "text": "Oh, {G}\ncame back.\nForget something?"
+        },
+        {
+          "offset": "0x9f8",
+          "original": "{G}、どうしたの？",
+          "text": "Huh? It's {G}"
+        },
+        {
+          "offset": "0x1484",
+          "original": "{G}。",
+          "text": "{G}"
+        },
+        {
+          "offset": "0x1488",
+          "original": "えっ？",
+          "text": "Huh?"
+        },
+        {
+          "offset": "0x1490",
+          "original": "{P}。",
+          "text": "{P}"
+        }
+      ]
+    },
+    {
+      "file": "CDROM/BUNKA/TWINBEE.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "それでは、始める前に、\nゲームの説明をします。",
+          "text": "Before we start, I'll\nexplain the game."
+        },
+        {
+          "offset": "0x30",
+          "original": "『ツインビータイム\nアタック』は、\n４体のボスを倒すまでの\n時間を競うゲームです。",
+          "text": "In TwinBee\nTime Attack,\nyou race the clock\nto beat 4 bosses."
+        },
+        {
+          "offset": "0x80",
+          "original": "操作方法は、\n次の通りです。",
+          "text": "The controls\nare as follows."
+        },
+        {
+          "offset": "0x9c",
+          "original": "方向キー　自機の移動",
+          "text": "D-pad: move ship"
+        },
+        {
+          "offset": "0xb4",
+          "original": "□ボタン　ショット",
+          "text": "Square: shoot"
+        },
+        {
+          "offset": "0xc8",
+          "original": "×ボタン　ミサイル",
+          "text": "Cross: missile"
+        },
+        {
+          "offset": "0xdc",
+          "original": "画面の左下にあるゲージは、\n対地速度表示です。",
+          "text": "The gauge at bottom left\nshows ground speed."
+        },
+        {
+          "offset": "0x10c",
+          "original": "自機が、画面の上の方に\n行けば行くほど、\n対地速度は、アップします。",
+          "text": "The higher your ship\ngoes on the screen,\nthe faster you fly."
+        },
+        {
+          "offset": "0x150",
+          "original": "{>注意}このサブゲームは\nコントローラでのみ遊べます。\nマウスは使えません。",
+          "text": "{>Note}This minigame is\nfor the controller only.\nNo mouse support."
+        }
+      ]
+    },
+    {
+      "file": "CDROM/BUNKA/URANAI.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "誰とのことを\n占おうかな。",
+          "text": "Who should I get\na reading on?"
+        },
+        {
+          "offset": "0x20",
+          "original": "それじゃ、\n{G}との\n相性だな。",
+          "text": "Okay, me and\n{G}\ncompatibility."
+        },
+        {
+          "offset": "0x40",
+          "original": "＊パソコン　ＮＭＳ＿９０００＊\nタダイマ、ケイサンチュウ・・・",
+          "text": "+PC NMS-9000+\nNOW CALCULATING..."
+        },
+        {
+          "offset": "0x84",
+          "original": "＊パソコン　ＮＭＳ＿９０００＊\nオフタリノ、アイショウハ\nヨイホウデス。",
+          "text": "+PC NMS-9000+\nYOUR COMPATIBILITY\nIS GOOD."
+        },
+        {
+          "offset": "0xd0",
+          "original": "＊パソコン　ＮＭＳ＿９０００＊\nオフタリノ、アイショウハ\nフツウデス。",
+          "text": "+PC NMS-9000+\nYOUR COMPATIBILITY\nIS AVERAGE."
+        },
+        {
+          "offset": "0x11c",
+          "original": "＊パソコン　ＮＭＳ＿９０００＊\nオフタリノ、アイショウハ\nヨクナイデス。",
+          "text": "+PC NMS-9000+\nYOUR COMPATIBILITY\nIS POOR."
+        },
+        {
+          "offset": "0x168",
+          "original": "＊パソコン　ＮＭＳ＿９０００＊\nアナタハ、\nヒモオ　ユイナ　サマ　ノ\nケライ　ニ　ナルデショウ。",
+          "text": "+PC NMS-9000+\nYOU WILL\nBECOME A SERVANT\nOF LADY YUINA HIMOO."
+        }
+      ]
+    }
+  ]
+}

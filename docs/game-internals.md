@@ -2299,6 +2299,51 @@ RPG_BAT 319, OLH 290, ETC 200, BUNKA_SD 207, NAME_ENT 126, DATE 76 (the
 date place banners), BUNKAKEN 55, BUNKASAI 46, MASTER 36, the EXE 34,
 TAIIKU 28, ENDING 25, OPTION 20, OMIMAI 16, a few elsewhere.
 
+### 6ab. The culture festival (`BUNKA/*.BIN`, BUNKASAI.EXN, BUNKAKEN.EXN)
+
+Found 2026-10-10 by forcing the day with `tools/emu/force_festival.py`
+(day record `24 00 00 00`, main state 0x70) from the Sunday state.
+
+**Flow without an exhibiting club** (club 11): BUN_PC's opening ("Festival
+day!"), "ask a girl / go alone", the girl menu (only girls whose met bit,
+bit 1 of `0x800E6448 + 0x38·girl`, is set, then Stop), the meeting and
+"Look around with me?", then her answer from her invitation file.
+BUNKAKEN loads it through the LBA table at `0x80155F0C` (12 words) indexed
+by the girl byte `0x80122EBC` (readers `0x8013B5F0`, `0x801440D8`; the
+sector counts are bytes at `0x80155F00`): entries 0–3 are the club girls'
+`FU/KS/HI/KT_S6I` (Shiori, Mio, Yuina, Ayako: she's busy with her club
+and asks him to visit it), 4–10 the other girls' `XX_S6S` (she comes
+along), 11 Shiori's `FU_S6S`. The club menu follows (Literature, Drama,
+Science, Computers, Art, Band; the cursor moves **linearly**, any arrow
+key is +1). With a girl along, her tour file `XX_S6W` plays the chosen
+exhibit and the way home. Alone, Yoshio stops by, and at a club girl's
+exhibit her `XX_S6O` file plays (Mio after the Drama play, in the
+dressing room); at another exhibit, "Nobody I know here" and the show.
+
+**Flow with an exhibiting club** (clubs 0–5): BUN_PC names the club's
+exhibit, Shiori visits (`FU_S6`), the club's own scene (the Science
+explosion, the Art portrait, the Computer Club's PC fortune), then the
+festival ends and Shiori is met on the way home (GEKO). The Drama play,
+the Band concert and the Literature speech contest are BUNKA_SD.EXN's
+stage shows (state 0x80, phase B13), still Japanese.
+
+**PC fortune** (BUNKASAI `0x8015B308`, BUNKAKEN `0x80152A18`): draws
+the girl's family name from the EXE table `0x800B35F4` and then her given
+name from a stack table. `character_names.json` maps that table to given
+names, so the screen read "Shiori Shiori"; the second `jal 0x8004E788`
+(BUNKASAI file `0x29388`, BUNKAKEN `0x20A98`) is replaced by a `nop` in
+the festival word files. The player's line takes the family name and the
+name the player typed.
+
+**Megumi's tour** returns to the title screen right after the club menu,
+in the unpatched game too (run `fu09b`, Japanese text): her `MI_S6W` is
+never reached from this forcing. Not investigated further.
+
+`FU_S6.BIN`'s checksum trailer doesn't match its contents in the
+original disc (sum `0x9467`, trailer `0x9584`), so `has_checksum` is
+false and the patcher leaves the trailer alone; the game loads the
+patched file fine (runs `fb0`–`fb5`).
+
 ## 7. Graphics
 
 ### General

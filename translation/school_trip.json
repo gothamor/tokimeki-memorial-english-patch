@@ -900,7 +900,7 @@
       {"offset": "0x11aa0", "original": "それじゃ、行こうか。", "text": "Well, shall we go?"},
       {"offset": "0x11ac0", "original": "おはよう\n{P}。", "text": "Good morning,\n{P}."},
       {"offset": "0x11ad0", "original": "ねえ、今日の自由行動、\n一緒に行かない？", "text": "Hey, for today's free time,\nwant to go together?"},
-      {"offset": "0x11af8", "original": "うん、私でよければ。", "text": "Sure, if I'll do."},
+      {"offset": "0x11af8", "original": "うん、私でよければ。", "text": "Sure, if you'll have me."},
       {"offset": "0x11b10", "original": "じゃあ、早速行こう。", "text": "Then let's go right away."},
       {"offset": "0x11b40", "original": "{P}。\nおはよう。", "text": "{P}.\nMorning."},
       {"offset": "0x11b50", "original": "ねえ、今日の自由行動、\n一緒に行かない？", "text": "Hey, for today's free time,\nwant to go together?"},

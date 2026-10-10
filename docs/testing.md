@@ -1151,6 +1151,34 @@ edge there; the meeting runs (`bn_*`) show the settled box whole.
 - `tools/date_sections.py` now skips a section whose table entries point
   outside the file (the null ski sections) instead of reading garbage.
 
+### The culture festival (BUNKA/*.BIN, 2026-10-10)
+
+`xmas_run.ps1 -Tool "tools/emu/force_festival.py --only G --club C"
+-Presses 60 -Hidden` from the Sunday state: the forcer marks only girl G
+as met (so the first menu item is her) and sets the player's club, then
+writes the festival day record. Batch scripts `.emu/fest_runs*.sh`
+(local), game-internals §6ab for the flow.
+- `fa00`–`fa10`: each girl invited with no exhibiting club (11); the club
+  menu then defaults to Literature. Club girls (Shiori, Mio, Yuina, Ayako)
+  decline and the player tours alone; the others come along (S6S, S6W).
+- `fb0`–`fb5`: the player in each exhibiting club; Shiori visits.
+- `fc01b`, `fc02c`, `fc03c`: Mio, Yuina, Ayako's own exhibits, choosing
+  Drama / Computers / Band. `-KeyList` with **one key per press** after
+  16 empty entries ("Right+C" in one press lost the move); the club menu
+  moves linearly, so Computers is three Downs and Band five.
+- `fu09b`: Megumi's tour with the festival drafts left out, to compare
+  with `fa09`: both go back to the title after the club menu. Since the
+  save state reopens its own disc, the comparison build has to be
+  rebuilt into `review_dates` (`python tools/candidate.py` with no
+  drafts).
+- Fixed after the runs: the PC fortune's doubled name (a nop per overlay),
+  "if you'll have me" (Saki, Yukari, and Saki's line in
+  school_trip.json), Mira's "You expect me to do it?", Yuko's "All that
+  text..." and her missing "?", the gym announcements. `fb3b` re-checked
+  the PC fortune.
+- The stage shows (Kintaro Samurai, the concert, the speech contest) are
+  BUNKA_SD.EXN and stay Japanese for now.
+
 ### Tools for the whole-game loop (2026-10-10)
 
 The per-file loop in NEXT_STEPS.md uses these (details in each docstring):
