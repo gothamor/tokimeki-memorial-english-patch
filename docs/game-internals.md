@@ -2187,6 +2187,100 @@ counts `{G}` as 10 cells, not 18. Text after an odd-length name shows its
 pair padding ("Yuina ,"), so these files end lines on `{G}` for Yuina, Mio,
 Rei (Ijuin) and the other odd names.
 
+### 6aa. Map of the remaining script files, states and day records
+
+Surveyed 2026-10-10 with `tools/script_survey.py --all` (loaders, base,
+section tables of every untranslated script file) and
+`tools/exn_words.py --all` (in-place overlay words), for the whole-game plan
+in NEXT_STEPS.md. All of these follow the layouts of §6j/§6k: one
+`dialogue` block per file, sections in the EVENT_FU layout.
+
+**Main state → overlay** (overlay-load table `0x800B19E8`, indexed by
+state − 0x11; each case loads one EXN by LBA):
+
+| Overlay | States | What |
+|---|---|---|
+| BUNKASAI.EXN | 0x70 | culture festival day (girl's exhibit, own club) |
+| BUNKAKEN.EXN | 0x71 | festival tour with a girl, invitations |
+| BUNKA_SD.EXN | 0x80 | festival stage shows (BUNKASD/*.BIN) |
+| ENDING.EXN | 0x63 | graduation: confession (ENDING.BIN), epilogue (EPILOG.BIN) |
+| MASTER.EXN | 0x74, 0x75, 0x76 | club contests and tournaments (MASTER/*.BIN) |
+| OMIMAI.EXN | 0x61, 0x62 | sickbed visits (OMIMAI.BIN), encouragement (HAGEMASI.BIN) |
+| DATE2.EXN | 0x58, 0x5C | group dates (GROUP_D.BIN, KARADATA.BIN) |
+| RENSYU.EXN | 0x73 | practice matches (SHIAI/SIAI_TX.BIN) |
+| TAIIKU.EXN | 0x72 | sports day (TAIIKU/*.BIN) |
+| RPG_BAT.EXN | 0x81 | the trip's battles (BATTLE/*.BIN) |
+| ETC.EXN | 0x35–0x37, 0x91 | exams and other one-day screens |
+| OLH.EXN | 0x3A | (not identified yet) |
+| EN_NICHI.EXN | 0x82 | the shrine fair minigames |
+| DATE.EXN 0x50/0x5E, GEKO 0x56/57/59/5A/5D, KANGEI 0x5F/60, SHOUGATU 0x52/53/55/5B, SHUGAKU 0x51, TEL 0x43/45, VALEN 0x54, NAME_ENT 0x11/13–15, OPTION 0x20–22 | | translated areas |
+
+**Day-record type → state** (the main loop's switch `0x800B1340`, §6j;
+`tools/emu/force_event.py G S --type T [--first]` writes one): 0x10 →
+0x46, 0x20 → 0x72 (sports day), 0x24 → 0x70 (culture festival: forced on
+4/25 it played the whole day, BUN_PC.BIN's lines, the girl menu, the club
+menu, Shiori's exhibit, and the week went on), 0x25/0x26/0x27 → 0x74/0x75/
+0x76 (MASTER; 0x25 with the test card's club played the baseball
+tournament, MASTER/KOSIEN.BIN, and its technique box; 0x26 and 0x27 went
+back to the title screen on the 95/4 card, so they need more set-up),
+0x28 → 0x42, 0x2C → 0x41 (it played New Year's Day), 0x30 → 0x55 (White
+Day), 0x31 → 0x54 (Valentine), 0x32 → 0x57, 0x33 → 0x56, 0x40 → 0x35
+(nothing visible on the test card), 0x41 → 0x51 (trip), 0x42 → 0x5F
+(camp), 0x43 → 0x36 (the third year's start and the career counselling:
+ETC.EXN's own text, a 先生 label), 0x45 → 0x5D (special events), 0x47 →
+0x61 (a girl visits the sick player: OMIMAI.BIN; girl in the record),
+0x48 meetings (§6p), 0x49 → 0x58 (Yoshio's group date at the theme park:
+GROUP_D.BIN, with ride choices between two girls), 0x4A → 0x37 (the
+university exam day: ETC.EXN's text and menus), 0x20 → 0x72 (sports day:
+an event menu, then a spoon-race minigame that needs input), 0x10 → 0x46
+(nothing visible). Probes `pb1`–`pb12` (testing.md). `force_state.py
+0x63` from the Sunday state played the ending with nobody waiting
+(graduation-day lines with Yoshio, then the epilogue narration over the
+room and the bad-ending song's lyrics on a black screen): run `fs1`. Main states
+without a record (the ending 0x63, BUNKAKEN 0x71, ...) can be entered with
+`tools/emu/force_state.py STATE [--stage N]`.
+
+**Files** (load base; who loads them; tables `script_survey.py` found,
+covering every dumped string unless noted):
+- **Festival, `BUNKA/` (base 0x801E8000):** per girl `XX_S6` (at her
+  exhibit) and `XX_S6B`, `XX_S6O` (her exhibit, other versions), the club
+  variants `KT_S61–63` (Ayako), `KS_S61–62` (Mio), `XX_S6W` (touring the
+  festival with her), `XX_S6S`/`XX_S6I` (her invitation to the festival /
+  to her club); `BUN_PC` (the player), `BUN_FU` (a birthday on the
+  festival), `TWINBEE`, `URANAI`. XX: AS Yuko, FU Shiori, HI Yuina, KG Mira,
+  KO Yukari, KY Nozomi, MI Megumi, NI Saki, SA Yumi, KT Ayako
+  (Katagiri), KS Mio (Kisaragi). S6/S6B/S61–63 are loaded by BUNKASAI,
+  S6O/S6W and the invitations by BUNKAKEN (the invitations through an LBA
+  table at BUNKAKEN `0x80155F0C`); all section tables are built by code
+  (`lui`/`ori` pairs) in those overlays. 217,000 characters, very
+  repetitive: the translation memory (`tools/draft.py`) fills shared lines.
+- **Dates, `SERIFU/DATE_*` (0x80198000, DATE.EXN):** the code-built
+  tables reach 85–98% of each file; the rest are the strings §6k lists as
+  missed or out-of-file (check with `tools/date_sections.py`).
+- **Ending:** ENDING.BIN (0x801F0000; ENDING.EXN table `0x8013C280`, 17
+  sections, all 410 strings), EPILOG.BIN (0x80180000; table `0x8013CAC0`,
+  15 sections).
+- **SERIFU, other:** GROUP_D (DATE2 `0x8013A380`, 11), KARADATA
+  (0x801B0000, DATE2 `0x8013B540`, 11), OMIMAI (OMIMAI.EXN `0x80134A60`,
+  12), HAGEMASI (`0x80134C30`, 13), ZAKOSEN (0x801B0000, DATE.EXN
+  `0x8015B644`, 2).
+- **Club contests:** `MASTER/*.BIN` (0x801E8000, MASTER.EXN code-built
+  tables): TAI_MAS (309 strings), SUI_CON, EN_GP, G_CON, MOKUTEN, NOBEL,
+  UEKI, KOSIEN; `SHIAI/SIAI_TX.BIN` (RENSYU.EXN).
+- **Sports day:** `TAIIKU/` F_DANCE, KISA23, KIYOTAI, TAI_TX, KARI
+  (TAIIKU.EXN).
+- **Not text** (the scan's false positives in `progress.py`): `CLUB_SD/`,
+  `MAIN_SD/` (animation data), `BS/`, `XA_G/`, `VAB_SEQ/`, most of
+  `BATTLE/` and `TAIIKU/` (graphics), `FUKUTEST/NAME_KAN.NBN` (the
+  name-entry kanji grid). `TARA_OBJ/KARAKASI.BIN` is song lyrics (rule 9:
+  not reproduced, left alone). `FUKUTEST/JOHO.NBN` holds the girls' info
+  card values (sizes, birthdays).
+
+**Overlay words** (`exn_words.py --all`, untranslated in-place strings):
+RPG_BAT 319, OLH 290, ETC 200, BUNKA_SD 207, NAME_ENT 126, DATE 76 (the
+date place banners), BUNKAKEN 55, BUNKASAI 46, MASTER 36, the EXE 34,
+TAIIKU 28, ENDING 25, OPTION 20, OMIMAI 16, a few elsewhere.
+
 ## 7. Graphics
 
 ### General

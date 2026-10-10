@@ -99,6 +99,19 @@ that goes beyond that (using the padding), so check those on screen. For
 multi-line text (description boxes), keep every line within its original
 width.
 
+### Drafting a whole file
+
+`tools/draft.py` (NEXT_STEPS.md "The per-file loop") builds a file's
+draft: it lists every string, fills the ones any committed translation
+already has (the translation memory: same Japanese, same English), keeps
+punctuation-only pauses, and writes the rest to a todo list in
+`extracted/todo/`. Translations go in a table in `extracted/tables/`
+(Japanese keys, so not committed; `"@0x1c"` keys override one offset).
+`python tools/draft.py --check translation/<file>.json` runs the same
+checks on any file: structure, widths, odd runs before names, odd
+names followed by text, thought and menu-option endings, `)` kept, and
+the patcher's packing.
+
 ### Code and data patches (`bytes`)
 
 ```json

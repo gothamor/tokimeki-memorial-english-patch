@@ -1107,6 +1107,33 @@ All from the Sunday state, emulator hidden, batch script
 - Not reached: Saki's trip cold, Miharu's mix-up (DATE entry 76), Nozomi's
   soft/tomboy alternatives beyond one each, the battles' outcomes.
 
+### Tools for the whole-game loop (2026-10-10)
+
+The per-file loop in NEXT_STEPS.md uses these (details in each docstring):
+- `tools/script_survey.py FILE` / `--all`: loaders, base, section tables
+  and their coverage, each string's speaker code (game-internals §6aa).
+- `tools/draft.py FILE -o DRAFT [--table T] [--name GIRL]`: the draft with
+  the translation memory filled in, the todo list, and the checks;
+  `tools/draft.py --check JSON` checks any translation file. Its "code"
+  per line comes from the tables; where a string is reached with
+  conflicting codes it's unknown, and the option checks become `warn:`.
+- `tools/candidate.py [DRAFT ...]`: reference + candidate builds, changed
+  files with checksums; with no drafts it confirms a promotion is
+  byte-identical.
+- `tools/exn_words.py EXN`: an overlay's in-place strings with their room.
+- `tools/emu/force_state.py STATE [--stage N] [--girl G] [--scene S]`:
+  any overlay at any stage; `force_event.py ... --type T --first` for day
+  records (the map is in game-internals §6aa).
+- `tools/emu/review_sheets.py PREFIX...`: 30 boxes per review image.
+
+Probes `pb1`–`pb12` (2026-10-10, unpatched text in the normal build):
+day-record types 0x24, 0x25, 0x26, 0x27, 0x47, 0x49, 0x20, 0x40, 0x43,
+0x4A, 0x10, 0x2C forced from the Sunday state; what each showed is in
+game-internals §6aa. `d17b` re-checked Mio's cinema menu after its options
+were made even ("Yep. You're pretty anyway." / "Nah, not at all.");
+"Crying? Mio )" in the same scene is the odd name before the game's
+bracket and can't be avoided (the name must end the box).
+
 ### Disassembly
 
 ```bash
