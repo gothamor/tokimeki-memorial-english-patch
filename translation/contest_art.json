@@ -1,0 +1,397 @@
+{
+  "description": "The art club's contest day: all of MASTER/MOKUTEN.BIN (77 strings; MASTER.EXN, base 0x801E8000; game-internals 6ad). Verified in DuckStation on forced contest days (force_event.py 0 0 --type T --club C, hidden emulator; docs/testing.md 'Club contests'): 0x27, club 4 (Art): the Meten Grand Prize, the player's lines and the walk home. Checked only statically: the other results (each contest has win and loss texts) and the girls' congratulations.",
+  "dialogue": [
+    {
+      "file": "CDROM/MASTER/MOKUTEN.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "密かに出展した\n油絵『花と貴婦人』で、\n目展大賞を受賞した。",
+          "text": "My secret entry, the oil\n\"Flowers and a Lady,\"\nwon the Meten Grand Prize!"
+        },
+        {
+          "offset": "0x3c",
+          "original": "３年間、美術部で頑張った\n成果が出たぜ。",
+          "text": "Three years in Art\nreally paid off."
+        },
+        {
+          "offset": "0x64",
+          "original": "これで、画家への道が\n開けたぜ。",
+          "text": "Now the road to being\na painter is open."
+        },
+        {
+          "offset": "0x90",
+          "original": "頑張った甲斐があったぜ。",
+          "text": "It was worth the effort."
+        },
+        {
+          "offset": "0xb0",
+          "original": "おーい。\n（なんだろう、今の娘？）",
+          "text": "Hey!\n(Who was that girl?)"
+        },
+        {
+          "offset": "0xd8",
+          "original": "どこかで見たような\n娘だなぁ。",
+          "text": "I feel like I've seen\nher somewhere."
+        },
+        {
+          "offset": "0xfc",
+          "original": "待たないよ。",
+          "text": "I won't wait."
+        },
+        {
+          "offset": "0x110",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x120",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x12c",
+          "original": "目展大賞、おめでとう。\nすごくいい絵ね。",
+          "text": "Congrats on the Meten.\nWhat a great painting."
+        },
+        {
+          "offset": "0x154",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x164",
+          "original": "すごいね…。夢みたい。",
+          "text": "Amazing... Like a dream."
+        },
+        {
+          "offset": "0x17c",
+          "original": "今度、{G}にモデルを\n頼んでみようかな。",
+          "text": "I might ask {G}\nto model sometime."
+        },
+        {
+          "offset": "0x1b8",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x1c8",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x1d4",
+          "original": "目展大賞、\nおめでとうございます。\n素敵な絵ですね。",
+          "text": "Congratulations\non the Meten Prize.\nWhat a lovely painting."
+        },
+        {
+          "offset": "0x208",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x218",
+          "original": "すごいですね…\n感動しました。",
+          "text": "That's amazing...\nI was so moved."
+        },
+        {
+          "offset": "0x248",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x258",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x264",
+          "original": "目展で大賞をとった絵、\nどうせなら「未来の支配者」\nにするべきだったわ。",
+          "text": "Your winning painting\nshould have been \"The\nFuture Ruler,\" really."
+        },
+        {
+          "offset": "0x2ac",
+          "original": "し、支配者…？",
+          "text": "R-ruler...?"
+        },
+        {
+          "offset": "0x2bc",
+          "original": "まあいいわ、\n他人より優れているのは\nいいことよ。",
+          "text": "Well, fine.\nBeing better than\nothers is good."
+        },
+        {
+          "offset": "0x304",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x310",
+          "original": "グレイト！\n目展大賞、おめでとう。",
+          "text": "Great!\nCongrats on the Meten!"
+        },
+        {
+          "offset": "0x334",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x344",
+          "original": "ワンダフル、\nあなたってすごいのね。",
+          "text": "Wonderful,\nyou're amazing."
+        },
+        {
+          "offset": "0x378",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x388",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x394",
+          "original": "目展大賞、おめでとう。\nすごくきれいな絵ね。",
+          "text": "Congrats on the Meten.\nWhat a pretty painting."
+        },
+        {
+          "offset": "0x3c0",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x3d0",
+          "original": "きっと、\nすごく努力したのね。",
+          "text": "You must have\nworked so hard."
+        },
+        {
+          "offset": "0x400",
+          "original": "こんにちは、{P}。",
+          "text": "Good afternoon, {P}"
+        },
+        {
+          "offset": "0x414",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x420",
+          "original": "この度は、なにか大きな賞\nをいただいたそうで、\nおめでとうございます。",
+          "text": "I hear you received\nsome great award.\nCongratulations."
+        },
+        {
+          "offset": "0x468",
+          "original": "ははは、目展の大賞だよ。",
+          "text": "Hahaha, the Meten Prize."
+        },
+        {
+          "offset": "0x484",
+          "original": "まぁ、そうなんですか。\nどうりで、素晴らしい絵\nだと思いました。",
+          "text": "Oh, is that so.\nNo wonder it seemed\nsuch a fine painting."
+        },
+        {
+          "offset": "0x4d4",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x4e4",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x4f0",
+          "original": "目展大賞、おめでとう。\nすごく、いい絵ね。",
+          "text": "Congrats on the Meten.\nWhat a great painting."
+        },
+        {
+          "offset": "0x51c",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x52c",
+          "original": "私には\nちょっと真似できないよ。\nすごいね。",
+          "text": "I could\nnever do that.\nAmazing."
+        },
+        {
+          "offset": "0x558",
+          "original": "ははは、\n俺にも、{G}の真似は\nできないよ。",
+          "text": "Haha,\nI can't do what {G}\ncan do, either."
+        },
+        {
+          "offset": "0x594",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x5a4",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x5b0",
+          "original": "目展大賞、おめでとう。",
+          "text": "Congrats on the Meten."
+        },
+        {
+          "offset": "0x5c8",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x5d8",
+          "original": "どうせなら、\n私をモデルにすれば\n良かったのに。",
+          "text": "You should have\nused me as\nyour model."
+        },
+        {
+          "offset": "0x608",
+          "original": "今度、ぜひお願いするよ。",
+          "text": "Next time, I'll ask."
+        },
+        {
+          "offset": "0x638",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x648",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x654",
+          "original": "目展で大賞を\nもらっちゃったんだってね。",
+          "text": "I hear you won\nthe Meten Grand Prize."
+        },
+        {
+          "offset": "0x67c",
+          "original": "さすが{G}、\n情報が早いね。",
+          "text": "Leave it to {G}\nyou're quick with news."
+        },
+        {
+          "offset": "0x698",
+          "original": "もち！\nあなたのことだもんね。",
+          "text": "Duh!\nIt's about you, after all."
+        },
+        {
+          "offset": "0x6c8",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x6d8",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x6e4",
+          "original": "あの…目展大賞、\nおめでとうございます。\nすごく、きれいな絵ですね。",
+          "text": "Um... congratulations\non the Meten Prize.\nSuch a pretty painting."
+        },
+        {
+          "offset": "0x728",
+          "original": "ありがとう、{G}。\n見てくれたんだ。",
+          "text": "Thanks, {G}\nYou saw it."
+        },
+        {
+          "offset": "0x74c",
+          "original": "は、はい…。",
+          "text": "Y-yes..."
+        },
+        {
+          "offset": "0x76c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x77c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x788",
+          "original": "目展大賞、\nおめでとうございます。",
+          "text": "Congratulations on\nthe Meten Prize!"
+        },
+        {
+          "offset": "0x7ac",
+          "original": "ありがとう、{G}。",
+          "text": "Thanks, {G}"
+        },
+        {
+          "offset": "0x7bc",
+          "original": "優美、友達に\n自慢しちゃうんだー。",
+          "text": "Yumi's gonna brag\nto her friends!"
+        },
+        {
+          "offset": "0x7f0",
+          "original": "\n　　　　　　　　ドン",
+          "text": "\n                Bump"
+        },
+        {
+          "offset": "0x808",
+          "original": "いてっ。",
+          "text": "Ow!"
+        },
+        {
+          "offset": "0x81c",
+          "original": "{-謎の女}あっ、ごめんなさい。",
+          "text": "{-Girl}Oh, I'm sorry."
+        },
+        {
+          "offset": "0x838",
+          "original": "えっと…？",
+          "text": "Um...?"
+        },
+        {
+          "offset": "0x844",
+          "original": "{-謎の女}あっ、天才画家の…。",
+          "text": "{-Girl}Oh, the genius painter..."
+        },
+        {
+          "offset": "0x860",
+          "original": "えっ？\n（俺のこと？）",
+          "text": "Huh?\n(Me?)"
+        },
+        {
+          "offset": "0x878",
+          "original": "{-謎の女}本当に、ごめんなさい。\nそれじゃ…。",
+          "text": "{-Girl}I'm so sorry.\nBye..."
+        },
+        {
+          "offset": "0x8b8",
+          "original": "やあ、おはよう。",
+          "text": "Ah, good morning."
+        },
+        {
+          "offset": "0x8d0",
+          "original": "い、{G}。\nなんでこんなところに。",
+          "text": "I-{G}\nWhy are you here?"
+        },
+        {
+          "offset": "0x8f0",
+          "original": "いやなに、君が目展大賞を\nとったというので、\n本当かどうか確かめに…。",
+          "text": "Oh, I heard you won\nthe Meten Prize, so\nI came to check..."
+        },
+        {
+          "offset": "0x938",
+          "original": "………。\nおまえも暇だな。\nじゃあな、伊集院。",
+          "text": "......\nYou've got time to kill.\nSee you, Ijuin."
+        },
+        {
+          "offset": "0x968",
+          "original": "あっ、待ちたまえ！",
+          "text": "Ah, wait!"
+        },
+        {
+          "offset": "0x141c",
+          "original": "{P}！",
+          "text": "{P}!"
+        }
+      ]
+    }
+  ]
+}

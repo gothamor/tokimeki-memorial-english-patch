@@ -216,7 +216,7 @@ Each with `exn_words.py` (room per string) and the overlay's forcer:
 | B0 festival forcer, B1–B13 | Done 2026-10-11 (game-internals §6ab, `festival_*.json`, `stage_shows.json`) |
 | C ending | Done 2026-10-11 (game-internals §6ac, `ending.json`, `epilogue.json`, `ending_words.json`) |
 | D1–D5 | D1–D3 done 2026-10-11 (record 0x47 = HAGEMASI, state 0x62 = OMIMAI); D4 KARADATA and D5 ZAKOSEN drafted, trigger not found |
-| E contests | |
+| E contests | Done 2026-10-11 (game-internals §6ad); practice matches drafted, not reached |
 | F overlays and small files | |
 
 ## Working notes (Windows dev box)

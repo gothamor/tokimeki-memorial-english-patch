@@ -1,0 +1,417 @@
+{
+  "description": "The drama club's contest day: all of MASTER/EN_GP.BIN (81 strings; MASTER.EXN, base 0x801E8000; game-internals 6ad). Verified in DuckStation on forced contest days (force_event.py 0 0 --type T --club C, hidden emulator; docs/testing.md 'Club contests'): 0x27, club 1 (Drama): the Drama Grand Prix, the player's lines and the walk home. Checked only statically: the other results (each contest has win and loss texts) and the girls' congratulations.",
+  "dialogue": [
+    {
+      "file": "CDROM/MASTER/EN_GP.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "クラブの皆で頑張った演劇\n『オッズの魔法戦士』が、\nあの演劇グランプリで\n大賞を受賞した。",
+          "text": "Our club's play,\n\"The Wizard Warrior\nof Odds,\" took the\nDrama Grand Prix!"
+        },
+        {
+          "offset": "0x58",
+          "original": "３年間、演劇部で頑張った\n成果が出たぜ。",
+          "text": "Three years in Drama\nreally paid off."
+        },
+        {
+          "offset": "0x80",
+          "original": "これで、\n有名劇団への道が開けたぜ。",
+          "text": "Now the road to a\nfamous troupe is open."
+        },
+        {
+          "offset": "0xb0",
+          "original": "頑張った甲斐があったぜ。",
+          "text": "It was worth the effort."
+        },
+        {
+          "offset": "0xd0",
+          "original": "おーい。\n（今の娘、誰だろう？）",
+          "text": "Hey!\n(Who was that girl?)"
+        },
+        {
+          "offset": "0xf4",
+          "original": "あの娘、\nどこかで見たような？",
+          "text": "Haven't I seen\nher somewhere?"
+        },
+        {
+          "offset": "0x118",
+          "original": "あいつ、本当に暇だな。",
+          "text": "He really has free time."
+        },
+        {
+          "offset": "0x134",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x144",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x150",
+          "original": "良かったね、\n演劇グランプリが取れて。",
+          "text": "Congrats on winning\nthe Drama Grand Prix."
+        },
+        {
+          "offset": "0x178",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x188",
+          "original": "すごいね…。夢みたい。",
+          "text": "Amazing... Like a dream."
+        },
+        {
+          "offset": "0x1b0",
+          "original": "私達が演劇グランプリ\nなんて…\n今でも信じられない。",
+          "text": "Us, winning the\nGrand Prix...\nI still can't believe it."
+        },
+        {
+          "offset": "0x1e4",
+          "original": "俺も信じられない。",
+          "text": "Me neither."
+        },
+        {
+          "offset": "0x1f8",
+          "original": "すごいね…。夢みたい。",
+          "text": "Amazing... Like a dream."
+        },
+        {
+          "offset": "0x21c",
+          "original": "グ、グランプリ…\nわ、私、めまいが…",
+          "text": "Gr-Grand Prix...\nI-I feel dizzy..."
+        },
+        {
+          "offset": "0x240",
+          "original": "あっ、{G}！",
+          "text": "Oh, hi, {G}"
+        },
+        {
+          "offset": "0x24c",
+          "original": "本当でしょうか…\n信じられません。",
+          "text": "Is it true...?\nI can't believe it."
+        },
+        {
+          "offset": "0x27c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x28c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x298",
+          "original": "演劇グランプリ、\nおめでとうございます。\n素敵な演技でした。",
+          "text": "Congratulations\non the Grand Prix.\nYour acting was lovely."
+        },
+        {
+          "offset": "0x2d4",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x2e4",
+          "original": "すごいですね…\n感動しました。",
+          "text": "That's amazing...\nI was so moved."
+        },
+        {
+          "offset": "0x314",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x324",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x330",
+          "original": "演劇グランプリね。",
+          "text": "The Drama Grand Prix."
+        },
+        {
+          "offset": "0x344",
+          "original": "うん、そうだよ。",
+          "text": "Yeah, I am."
+        },
+        {
+          "offset": "0x358",
+          "original": "くだらないけど、\n他人より優れているのは\nいいことよ。",
+          "text": "It's foolish, but\nbeing better than\nothers is good."
+        },
+        {
+          "offset": "0x3a0",
+          "original": "ハーイ、{P}。",
+          "text": "Hi there, {P}."
+        },
+        {
+          "offset": "0x3b0",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x3bc",
+          "original": "演劇グランプリ、\nおめでとう。\n見てたわよ。",
+          "text": "Congrats on the\nGrand Prix.\nI was watching."
+        },
+        {
+          "offset": "0x3e8",
+          "original": "ありがとう。\nどうだった？",
+          "text": "Thanks.\nHow was it?"
+        },
+        {
+          "offset": "0x404",
+          "original": "ワンダフル、\n素晴らしかったわ。",
+          "text": "Wonderful,\nit was marvelous."
+        },
+        {
+          "offset": "0x434",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x444",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x450",
+          "original": "演劇グランプリ、おめでとう。\n見てたよ。",
+          "text": "Congrats on the Grand Prix.\nI was watching."
+        },
+        {
+          "offset": "0x478",
+          "original": "ありがとう。\nどうだった？",
+          "text": "Thanks.\nHow was it?"
+        },
+        {
+          "offset": "0x494",
+          "original": "すごく良かったよ。\n私でも感動したから。",
+          "text": "It was really good.\nEven I was moved."
+        },
+        {
+          "offset": "0x4cc",
+          "original": "こんにちは、{P}。",
+          "text": "Good afternoon, {P}"
+        },
+        {
+          "offset": "0x4e0",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x4ec",
+          "original": "この度は何か大きな賞を\nいただいたそうで、\nおめでとうございます。",
+          "text": "I hear you received\nsome great award.\nCongratulations."
+        },
+        {
+          "offset": "0x530",
+          "original": "ははは、\n演劇グランプリだよ。",
+          "text": "Hahaha,\nthe Drama Grand Prix."
+        },
+        {
+          "offset": "0x550",
+          "original": "はい、劇は見ましたけれど、\n賞の名前を\n忘れてしまいまして…",
+          "text": "Yes, I saw the play,\nbut the award's name\nslipped my mind..."
+        },
+        {
+          "offset": "0x58c",
+          "original": "そ、そう。",
+          "text": "I-I see."
+        },
+        {
+          "offset": "0x5ac",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x5bc",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x5c8",
+          "original": "演劇グランプリ、\nおめでとう。",
+          "text": "Congrats on the\nGrand Prix."
+        },
+        {
+          "offset": "0x5e8",
+          "original": "ありがとう。\nどうだった？",
+          "text": "Thanks.\nHow was it?"
+        },
+        {
+          "offset": "0x604",
+          "original": "うまく言えないけど…\nすごく素敵だった。",
+          "text": "I can't say it well...\nbut it was wonderful."
+        },
+        {
+          "offset": "0x63c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x64c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x658",
+          "original": "演劇グランプリ、\nおめでとう。",
+          "text": "Congrats on the\nGrand Prix."
+        },
+        {
+          "offset": "0x678",
+          "original": "ありがとう。\n見ててくれたの？",
+          "text": "Thanks.\nYou were watching?"
+        },
+        {
+          "offset": "0x698",
+          "original": "ああいうのも、\nたまには悪くないわね。",
+          "text": "That sort of thing\nisn't bad now and then."
+        },
+        {
+          "offset": "0x6d0",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x6e0",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x6ec",
+          "original": "演劇グランプリ、\nおめでとう。",
+          "text": "Congrats on the\nGrand Prix."
+        },
+        {
+          "offset": "0x70c",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x71c",
+          "original": "これで、\nあなたも有名人だね。",
+          "text": "Now you're\nfamous!"
+        },
+        {
+          "offset": "0x74c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x75c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x768",
+          "original": "あの…演劇グランプリ、\nおめでとうございます。\nすごく素敵でした。",
+          "text": "Um... congratulations\non the Grand Prix.\nIt was wonderful."
+        },
+        {
+          "offset": "0x7ac",
+          "original": "ありがとう、{G}。\n見に来てくれたんだ。",
+          "text": "Thanks, {G}\nYou came to watch."
+        },
+        {
+          "offset": "0x7d4",
+          "original": "は、はい…。",
+          "text": "Y-yes..."
+        },
+        {
+          "offset": "0x7f4",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x804",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x810",
+          "original": "演劇グランプリ、\nおめでとうございます。",
+          "text": "Congratulations on\nthe Grand Prix!"
+        },
+        {
+          "offset": "0x838",
+          "original": "ありがとう、{G}。",
+          "text": "Thanks, {G}"
+        },
+        {
+          "offset": "0x848",
+          "original": "優美、\n友達に自慢しちゃうんだー。",
+          "text": "Yumi's gonna brag\nto her friends!"
+        },
+        {
+          "offset": "0x87c",
+          "original": "\n　　　　　　　　ドン",
+          "text": "\n                Bump"
+        },
+        {
+          "offset": "0x894",
+          "original": "いてっ。",
+          "text": "Ow!"
+        },
+        {
+          "offset": "0x8a8",
+          "original": "{-謎の女}あっ、ごめんなさい。",
+          "text": "{-Girl}Oh, I'm sorry."
+        },
+        {
+          "offset": "0x8c4",
+          "original": "えっと…？",
+          "text": "Um...?"
+        },
+        {
+          "offset": "0x8d0",
+          "original": "{-謎の女}あっ、グランプリ俳優の…。",
+          "text": "{-Girl}Oh, the Grand Prix actor..."
+        },
+        {
+          "offset": "0x8f4",
+          "original": "えっ？\n（俺のこと？）",
+          "text": "Huh?\n(Me?)"
+        },
+        {
+          "offset": "0x90c",
+          "original": "{-謎の女}本当に、ごめんなさい。\nそれじゃ…。",
+          "text": "{-Girl}I'm so sorry.\nBye..."
+        },
+        {
+          "offset": "0x94c",
+          "original": "やあ、おはよう。",
+          "text": "Ah, good morning."
+        },
+        {
+          "offset": "0x964",
+          "original": "い、{G}。\nなんでこんなところに。",
+          "text": "I-{G}\nWhy are you here?"
+        },
+        {
+          "offset": "0x984",
+          "original": "いやなに、君が演劇グラン\nプリをとったというので、\n本当かどうか確かめに…。",
+          "text": "Oh, I heard you won\nthe Drama Grand Prix,\nso I came to check..."
+        },
+        {
+          "offset": "0x9d0",
+          "original": "………。\n本当だよ。\nじゃあな、伊集院。",
+          "text": "......\nIt's true.\nSee you, Ijuin."
+        },
+        {
+          "offset": "0x9f8",
+          "original": "あっ、待ちたまえ！",
+          "text": "Ah, wait!"
+        }
+      ]
+    }
+  ]
+}

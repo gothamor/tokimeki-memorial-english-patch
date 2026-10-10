@@ -1,0 +1,397 @@
+{
+  "description": "The science club's contest day: all of MASTER/NOBEL.BIN (77 strings; MASTER.EXN, base 0x801E8000; game-internals 6ad). Verified in DuckStation on forced contest days (force_event.py 0 0 --type T --club C, hidden emulator; docs/testing.md 'Club contests'): 0x27, club 2 (Science): the Nobel Prize, the player's lines and the walk home. Checked only statically: the other results (each contest has win and loss texts) and the girls' congratulations.",
+  "dialogue": [
+    {
+      "file": "CDROM/MASTER/NOBEL.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "俺の開発した風邪の\n特効薬『カゼナオール』が\n世界に認められて\nノーベル賞を受賞した。",
+          "text": "My miracle cold cure,\n\"Coldbegone,\" won\nthe world's praise\nand the Nobel Prize!"
+        },
+        {
+          "offset": "0x54",
+          "original": "３年間、科学部で頑張った\n成果が出たぜ。",
+          "text": "Three years in Science\nreally paid off."
+        },
+        {
+          "offset": "0x7c",
+          "original": "これで、\n俺の将来が\n約束されたぜ。",
+          "text": "Now\nmy future\nis set."
+        },
+        {
+          "offset": "0xac",
+          "original": "頑張った甲斐があったぜ。",
+          "text": "It was worth the effort."
+        },
+        {
+          "offset": "0xcc",
+          "original": "サインか…。\n今度練習しておかないとな。",
+          "text": "An autograph...\nI'd better practice one."
+        },
+        {
+          "offset": "0xf8",
+          "original": "おーい。\n（今の娘、誰だろう？）",
+          "text": "Hey!\n(Who was that girl?)"
+        },
+        {
+          "offset": "0x11c",
+          "original": "あれ、あの髪型は…。",
+          "text": "Huh, that hairdo..."
+        },
+        {
+          "offset": "0x138",
+          "original": "金持ちの考えることは\nわからん。",
+          "text": "Rich people's minds\nare a mystery."
+        },
+        {
+          "offset": "0x15c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x16c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x178",
+          "original": "ノーベル平和賞って、本当？",
+          "text": "Nobel Peace Prize, really?"
+        },
+        {
+          "offset": "0x194",
+          "original": "なんか、本当みたい。",
+          "text": "Seems like it's true."
+        },
+        {
+          "offset": "0x1ac",
+          "original": "すごいね…。夢みたい。",
+          "text": "Amazing... Like a dream."
+        },
+        {
+          "offset": "0x1d4",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x1e4",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x1f0",
+          "original": "ノーベル平和賞、\nおめでとうございます。",
+          "text": "Congratulations on\nthe Nobel Peace Prize."
+        },
+        {
+          "offset": "0x218",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x228",
+          "original": "すごいですね…\n信じられません。",
+          "text": "That's amazing...\nI can't believe it."
+        },
+        {
+          "offset": "0x25c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x268",
+          "original": "その頭脳を、なぜもっと\n違う方向に\n向けないのかしら。",
+          "text": "Why not turn that\nbrain in a different\ndirection?"
+        },
+        {
+          "offset": "0x2a0",
+          "original": "ち、違う方向って…。",
+          "text": "D-different direction..."
+        },
+        {
+          "offset": "0x2b8",
+          "original": "まぁ、いいわ。\n他人より優れているのは\nいいことよ。",
+          "text": "Well, fine.\nBeing better than\nothers is good."
+        },
+        {
+          "offset": "0x2fc",
+          "original": "ハーイ、{P}。",
+          "text": "Hi there, {P}."
+        },
+        {
+          "offset": "0x30c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x318",
+          "original": "おめでとう。\nノーベル賞なんて、\n信じられないわ。",
+          "text": "Congratulations.\nThe Nobel Prize?\nI can't believe it."
+        },
+        {
+          "offset": "0x34c",
+          "original": "俺も信じられないよ。",
+          "text": "Neither can I."
+        },
+        {
+          "offset": "0x364",
+          "original": "ワンダフル、\nあなたってすごいのね。",
+          "text": "Wonderful,\nyou're amazing."
+        },
+        {
+          "offset": "0x398",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x3a8",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x3b4",
+          "original": "ノーベル賞、おめでとう。\nすごいね。",
+          "text": "Congrats on the Nobel.\nAmazing."
+        },
+        {
+          "offset": "0x3d8",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x3e8",
+          "original": "きっと、\nすごく努力したのね。",
+          "text": "You must have\nworked so hard."
+        },
+        {
+          "offset": "0x418",
+          "original": "こんにちは、{P}。",
+          "text": "Good afternoon, {P}"
+        },
+        {
+          "offset": "0x42c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x438",
+          "original": "この度は、なにか大きな賞\nをいただいたそうで、\nおめでとうございます。",
+          "text": "I hear you received\nsome great award.\nCongratulations."
+        },
+        {
+          "offset": "0x480",
+          "original": "ははは、ノーベル賞だよ。",
+          "text": "Hahaha, the Nobel Prize."
+        },
+        {
+          "offset": "0x49c",
+          "original": "まぁ、そうなんですか。\nそれは、\n素晴らしいですねぇ。",
+          "text": "Oh, is that so.\nHow\nwonderful."
+        },
+        {
+          "offset": "0x4e4",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x4f4",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x500",
+          "original": "ノーベル賞受賞、\nおめでとう。",
+          "text": "Congrats on\nthe Nobel Prize."
+        },
+        {
+          "offset": "0x520",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x530",
+          "original": "私にはちょっと\n真似できないよ。\nすごいね。",
+          "text": "I could\nnever do that.\nAmazing."
+        },
+        {
+          "offset": "0x55c",
+          "original": "ははは、\n俺にも{G}の真似は\nできないよ。",
+          "text": "Haha,\nI can't do what {G}\ncan do, either."
+        },
+        {
+          "offset": "0x598",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x5a8",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x5b4",
+          "original": "ノーベル賞、おめでとう。",
+          "text": "Congrats on the Nobel."
+        },
+        {
+          "offset": "0x5d0",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x5e0",
+          "original": "あなたが受賞するのは、\n悪い気分じゃないわね。",
+          "text": "You winning a prize\ndoesn't feel bad."
+        },
+        {
+          "offset": "0x620",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x630",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x63c",
+          "original": "テレビ見たよ。\nノーベル賞なんて\nスッゴーイ！",
+          "text": "I saw it on TV!\nThe Nobel Prize?\nSuper awesome!"
+        },
+        {
+          "offset": "0x66c",
+          "original": "ははは、ありがとう。",
+          "text": "Haha, thanks."
+        },
+        {
+          "offset": "0x684",
+          "original": "これで、\nあなたも有名人だね。",
+          "text": "Now you're\nfamous!"
+        },
+        {
+          "offset": "0x6b4",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x6c4",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x6d0",
+          "original": "あの…\nおめでとうございます。\nあっ、あの、ノーベル賞…。",
+          "text": "Um...\ncongratulations.\nOh, um, the Nobel..."
+        },
+        {
+          "offset": "0x70c",
+          "original": "ありがとう、{G}。",
+          "text": "Thanks, {G}"
+        },
+        {
+          "offset": "0x71c",
+          "original": "は、はい…。",
+          "text": "Y-yes..."
+        },
+        {
+          "offset": "0x73c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x74c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x758",
+          "original": "ノーベル賞って本当ですか？",
+          "text": "Is the Nobel thing true?"
+        },
+        {
+          "offset": "0x774",
+          "original": "本当みたい。",
+          "text": "Seems so."
+        },
+        {
+          "offset": "0x784",
+          "original": "すっごーい。\n今度サインくださいね。",
+          "text": "Awesome!\nGive me an autograph!"
+        },
+        {
+          "offset": "0x7a8",
+          "original": "サ、サイン！？",
+          "text": "A-an autograph!?"
+        },
+        {
+          "offset": "0x7cc",
+          "original": "\n　　　　　　　　ドン",
+          "text": "\n                Bump"
+        },
+        {
+          "offset": "0x7e4",
+          "original": "いてっ。",
+          "text": "Ow!"
+        },
+        {
+          "offset": "0x7f8",
+          "original": "{-謎の女}あっ、ごめんなさい。",
+          "text": "{-Girl}Oh, I'm sorry."
+        },
+        {
+          "offset": "0x814",
+          "original": "えっと…？",
+          "text": "Um...?"
+        },
+        {
+          "offset": "0x820",
+          "original": "{-謎の女}あっ、ノーベル賞科学者の…。",
+          "text": "{-Girl}Oh, the Nobel scientist..."
+        },
+        {
+          "offset": "0x844",
+          "original": "えっ？\n（俺のこと？）",
+          "text": "Huh?\n(Me?)"
+        },
+        {
+          "offset": "0x85c",
+          "original": "{-謎の女}本当に、ごめんなさい。\nそれじゃ…。",
+          "text": "{-Girl}I'm so sorry.\nBye..."
+        },
+        {
+          "offset": "0x89c",
+          "original": "やあ、おはよう。",
+          "text": "Ah, good morning."
+        },
+        {
+          "offset": "0x8b4",
+          "original": "い、{G}。\nなんでこんなところに。",
+          "text": "I-{G}\nWhy are you here?"
+        },
+        {
+          "offset": "0x8d4",
+          "original": "いやなに、君がノーベル賞\nをとったというので、\n本当かどうか確かめに…。",
+          "text": "Oh, I heard you won\nthe Nobel Prize, so\nI came to check..."
+        },
+        {
+          "offset": "0x91c",
+          "original": "そ、それだけか？\n…。\nじゃあな、伊集院。",
+          "text": "Th-that's all?\n...\nSee you, Ijuin."
+        },
+        {
+          "offset": "0x948",
+          "original": "あっ、待ちたまえ！",
+          "text": "Ah, wait!"
+        },
+        {
+          "offset": "0x140c",
+          "original": "{P}。",
+          "text": "{P}"
+        }
+      ]
+    }
+  ]
+}

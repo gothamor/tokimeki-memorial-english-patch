@@ -1,0 +1,397 @@
+{
+  "description": "The game club's contest day: all of MASTER/G_CON.BIN (77 strings; MASTER.EXN, base 0x801E8000; game-internals 6ad). Verified in DuckStation on forced contest days (force_event.py 0 0 --type T --club C, hidden emulator; docs/testing.md 'Club contests'): 0x27, club 3 (Computers): the Game Contest and its minigame, the player's lines and the walk home. Checked only statically: the other results (each contest has win and loss texts) and the girls' congratulations.",
+  "dialogue": [
+    {
+      "file": "CDROM/MASTER/G_CON.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "俺の開発したゲーム\n『スターダスト\nシンフォニーＥＸ』が、\nゲームコンテストで\n大賞を取った。",
+          "text": "The game I made,\n\"Stardust\nSymphony EX,\" took\nthe grand prize at\nthe Game Contest!"
+        },
+        {
+          "offset": "0x5c",
+          "original": "３年間、電脳部で頑張った\n成果が出たぜ。",
+          "text": "Three years in Computers\nreally paid off."
+        },
+        {
+          "offset": "0x84",
+          "original": "これで、\nゲームプログラマーへの\n道が開けたぜ。",
+          "text": "Now the road\nto being a game\nprogrammer is open."
+        },
+        {
+          "offset": "0xb4",
+          "original": "賞金１００万円も貰ったし、\nすごい嬉しいから\n『スターダスト\nシンフォニーＥＸ』を\nプレイしよっかな。",
+          "text": "I got a million yen,\nand I'm so happy, I'll\njust go play\n\"Stardust\nSymphony EX.\""
+        },
+        {
+          "offset": "0x128",
+          "original": "頑張った甲斐があったぜ。",
+          "text": "It was worth the effort."
+        },
+        {
+          "offset": "0x148",
+          "original": "おーい。\n（今の娘、誰だろう？）",
+          "text": "Hey!\n(Who was that girl?)"
+        },
+        {
+          "offset": "0x16c",
+          "original": "あの娘、\n学校でもぶつかったよな…。",
+          "text": "That girl bumped\ninto me at school too..."
+        },
+        {
+          "offset": "0x194",
+          "original": "あいつ、なにしに来たんだ？",
+          "text": "What did he come here for?"
+        },
+        {
+          "offset": "0x1b4",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x1c4",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x1d0",
+          "original": "ゲームコンテスト大賞\nおめでとう。",
+          "text": "Congrats on the\nGame Contest prize."
+        },
+        {
+          "offset": "0x1f4",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x204",
+          "original": "すごいね…。夢みたい。",
+          "text": "Amazing... Like a dream."
+        },
+        {
+          "offset": "0x22c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x23c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x248",
+          "original": "ゲームコンテスト大賞、\nおめでとうございます。",
+          "text": "Congratulations on\nthe Game Contest prize."
+        },
+        {
+          "offset": "0x278",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x288",
+          "original": "すごいですね…\n信じられません。",
+          "text": "That's amazing...\nI can't believe it."
+        },
+        {
+          "offset": "0x2b8",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x2c8",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x2d4",
+          "original": "ゲームコンテスト大賞を\n受賞したのね。",
+          "text": "So you won the\nGame Contest prize."
+        },
+        {
+          "offset": "0x2fc",
+          "original": "{G}のおかげだよ。",
+          "text": "I owe it all to {G}"
+        },
+        {
+          "offset": "0x30c",
+          "original": "くだらないけど、\n他人より優れているのは\nいいことよ。",
+          "text": "It's foolish, but\nbeing better than\nothers is good."
+        },
+        {
+          "offset": "0x354",
+          "original": "ハーイ、{P}。",
+          "text": "Hi there, {P}."
+        },
+        {
+          "offset": "0x364",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x370",
+          "original": "ゲームコンテスト大賞、\nおめでとう。",
+          "text": "Congrats on the\nGame Contest prize."
+        },
+        {
+          "offset": "0x394",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x3a4",
+          "original": "ワンダフル、\nあなたってすごいのね。",
+          "text": "Wonderful,\nyou're amazing."
+        },
+        {
+          "offset": "0x3d8",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x3e8",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x3f4",
+          "original": "ゲームコンテスト大賞、\nおめでとう。\nすごいね。",
+          "text": "Congrats on the\nGame Contest prize.\nAmazing."
+        },
+        {
+          "offset": "0x424",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x434",
+          "original": "きっと、\nすごく努力したのね。",
+          "text": "You must have\nworked so hard."
+        },
+        {
+          "offset": "0x464",
+          "original": "こんにちは、{P}。",
+          "text": "Good afternoon, {P}"
+        },
+        {
+          "offset": "0x478",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x484",
+          "original": "この度は、なにか\n大きな賞を頂いたそうで、\nおめでとうございます。",
+          "text": "I hear you\nreceived some great award.\nCongratulations."
+        },
+        {
+          "offset": "0x4c8",
+          "original": "ははは、\nゲームコンテスト大賞だよ。",
+          "text": "Hahaha,\nthe Game Contest prize."
+        },
+        {
+          "offset": "0x4ec",
+          "original": "ゲーム…なんですか？",
+          "text": "A game... what is that?"
+        },
+        {
+          "offset": "0x514",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x524",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x530",
+          "original": "ゲームコンテスト大賞、\nおめでとう。",
+          "text": "Congrats on the\nGame Contest prize."
+        },
+        {
+          "offset": "0x554",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x564",
+          "original": "私にはちょっと真似できないよ。\nすごいね。",
+          "text": "I could never do that.\nAmazing."
+        },
+        {
+          "offset": "0x590",
+          "original": "ははは、\n俺にも{G}の真似は\nできないよ。",
+          "text": "Haha,\nI can't do what {G}\ncan do, either."
+        },
+        {
+          "offset": "0x5cc",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x5dc",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x5e8",
+          "original": "ゲームコンテスト大賞、\nおめでとう。",
+          "text": "Congrats on the\nGame Contest prize."
+        },
+        {
+          "offset": "0x60c",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x61c",
+          "original": "あなたが受賞するのは、\n悪い気分じゃないわね。",
+          "text": "You winning a prize\ndoesn't feel bad."
+        },
+        {
+          "offset": "0x65c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x66c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x678",
+          "original": "ゲームコンテスト大賞って\n本当？",
+          "text": "You really won the\nGame Contest?"
+        },
+        {
+          "offset": "0x698",
+          "original": "うん、本当だよ。",
+          "text": "Yeah, really."
+        },
+        {
+          "offset": "0x6ac",
+          "original": "じゃあさ、\n今度それやらしてよ。\nねっ？",
+          "text": "Then hey,\nlet me play it sometime.\n'Kay?"
+        },
+        {
+          "offset": "0x6e4",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x6f4",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x700",
+          "original": "あの…\nゲームコンテスト大賞、\nおめでとうございます。",
+          "text": "Um...\ncongratulations on\nthe Game Contest prize."
+        },
+        {
+          "offset": "0x738",
+          "original": "ありがとう、{G}。",
+          "text": "Thanks, {G}"
+        },
+        {
+          "offset": "0x748",
+          "original": "は、はい…。",
+          "text": "Y-yes..."
+        },
+        {
+          "offset": "0x768",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x778",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x784",
+          "original": "ゲームコンテスト大賞、\nおめでとうございます。",
+          "text": "Congratulations on\nthe Game Contest prize."
+        },
+        {
+          "offset": "0x7b4",
+          "original": "ありがとう、優美ちゃん。",
+          "text": "Thanks, Yumi."
+        },
+        {
+          "offset": "0x7d0",
+          "original": "今度、優美にも\nやらせてくださいね。",
+          "text": "Let Yumi play\nit sometime, okay?"
+        },
+        {
+          "offset": "0x7f4",
+          "original": "うん、いいよ。",
+          "text": "Sure, okay."
+        },
+        {
+          "offset": "0x818",
+          "original": "\n　　　　　　　　ドン",
+          "text": "\n                Bump"
+        },
+        {
+          "offset": "0x830",
+          "original": "いてっ。",
+          "text": "Ow!"
+        },
+        {
+          "offset": "0x844",
+          "original": "{-謎の女}あっ、ごめんなさい。",
+          "text": "{-Girl}Oh, I'm sorry."
+        },
+        {
+          "offset": "0x860",
+          "original": "えっと…？",
+          "text": "Um...?"
+        },
+        {
+          "offset": "0x86c",
+          "original": "{-謎の女}あっ、天才プログラマーの…。",
+          "text": "{-Girl}Oh, the genius programmer..."
+        },
+        {
+          "offset": "0x890",
+          "original": "えっ？\n（俺のこと？）",
+          "text": "Huh?\n(Me?)"
+        },
+        {
+          "offset": "0x8a8",
+          "original": "{-謎の女}本当に、ごめんなさい。\nそれじゃ…。",
+          "text": "{-Girl}I'm so sorry.\nBye..."
+        },
+        {
+          "offset": "0x8e8",
+          "original": "やあ、おはよう。",
+          "text": "Ah, good morning."
+        },
+        {
+          "offset": "0x900",
+          "original": "い、伊集院。\nなんでこんなところに。",
+          "text": "I-Ijuin.\nWhy are you here?"
+        },
+        {
+          "offset": "0x924",
+          "original": "いやなに、君が\nゲームコンテスト大賞を\nとったというので、\n本当かどうか確かめに…。",
+          "text": "Oh, I heard\nyou'd won the\nGame Contest, so I\ncame to see if it's true..."
+        },
+        {
+          "offset": "0x978",
+          "original": "………。\nおまえも暇だな。\nじゃあな、伊集院。",
+          "text": "......\nYou've got time to kill.\nSee you, Ijuin."
+        },
+        {
+          "offset": "0x9a8",
+          "original": "あっ、待ちたまえ！",
+          "text": "Ah, wait!"
+        }
+      ]
+    }
+  ]
+}

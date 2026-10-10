@@ -1,0 +1,157 @@
+{
+  "description": "The baseball club's contest day: all of MASTER/KOSIEN.BIN (29 strings; MASTER.EXN, base 0x801E8000; game-internals 6ad). Verified in DuckStation on forced contest days (force_event.py 0 0 --type T --club C, hidden emulator; docs/testing.md 'Club contests'): 0x25: the baseball tournament, the defeat and the secret-move box, the player's lines and the walk home. Checked only statically: the other results (each contest has win and loss texts) and the girls' congratulations.",
+  "dialogue": [
+    {
+      "file": "CDROM/MASTER/KOSIEN.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "よし、がんばるぞー！",
+          "text": "All right, let's do this!"
+        },
+        {
+          "offset": "0x1c",
+          "original": "一回戦の相手は、\n北海道の素鬼高校だ。\n負けないぞ！",
+          "text": "Round one is against\nHokkaido's Suki High.\nWe won't lose!"
+        },
+        {
+          "offset": "0x54",
+          "original": "解説者「５−３で、\n　　　　きらめき高校の勝ちです。\n」",
+          "text": "Caster: \"Five to three,\n Kirameki High wins.\n\""
+        },
+        {
+          "offset": "0x90",
+          "original": "一回戦突破だーっ！",
+          "text": "Through round one!"
+        },
+        {
+          "offset": "0xa8",
+          "original": "二回戦の相手は、\n四国の加不紺高校だ。",
+          "text": "Round two is against\nShikoku's Kafukon High."
+        },
+        {
+          "offset": "0xd4",
+          "original": "解説者「２−０で、\n　　　　きらめき高校の勝ちです。」",
+          "text": "Caster: \"Two to nothing,\n Kirameki High wins.\""
+        },
+        {
+          "offset": "0x110",
+          "original": "二回戦も勝ったぞ！",
+          "text": "We won round two!"
+        },
+        {
+          "offset": "0x128",
+          "original": "三回戦の相手は、\n東北の奈婿高校だ。\nやらせるかーっ！",
+          "text": "Round three is against\nTohoku's Namuko High.\nBring it on!"
+        },
+        {
+          "offset": "0x164",
+          "original": "解説者「６−３で、\n　　　　きらめき高校の勝ちです。」",
+          "text": "Caster: \"Six to three,\n Kirameki High wins.\""
+        },
+        {
+          "offset": "0x1a0",
+          "original": "三回戦も勝った！\nだが、\nこれからが本番だ。",
+          "text": "We won round three!\nBut now\nthe real fight begins."
+        },
+        {
+          "offset": "0x20c",
+          "original": "解説者「２−１で、\n　　　　きらめき高校の勝ちです。」",
+          "text": "Caster: \"Two to one,\n Kirameki High wins.\""
+        },
+        {
+          "offset": "0x248",
+          "original": "勝ったぞ！\nこれで準決勝に、進出だ！",
+          "text": "We won!\nOn to the semifinal!"
+        },
+        {
+          "offset": "0x270",
+          "original": "準決勝戦の相手は、\n関西の小波高校だ。\n当たってくだけろ！",
+          "text": "The semifinal is against\nKansai's Konami High.\nGo for broke!"
+        },
+        {
+          "offset": "0x2b0",
+          "original": "解説者「９−７で、\n　　　　きらめき高校の勝ちです。」",
+          "text": "Caster: \"Nine to seven,\n Kirameki High wins.\""
+        },
+        {
+          "offset": "0x2ec",
+          "original": "明日は、決勝戦だ！",
+          "text": "Tomorrow's the final!"
+        },
+        {
+          "offset": "0x304",
+          "original": "解説者「臨時ニュースです。」",
+          "text": "Caster: \"Breaking news.\""
+        },
+        {
+          "offset": "0x328",
+          "original": "{-解説者}なんと、素鬼高校の\n選手全員が食中毒のため棄権、\nきらめき高校の不戦勝です。",
+          "text": "{-Caster}Suki High's entire\nteam has food poisoning!\nKirameki wins by forfeit."
+        },
+        {
+          "offset": "0x380",
+          "original": "{-解説者}なんと、加不紺高校の\n選手全員が食中毒のため棄権、\nきらめき高校の不戦勝です。",
+          "text": "{-Caster}Kafukon High's entire\nteam has food poisoning!\nKirameki wins by forfeit."
+        },
+        {
+          "offset": "0x3d8",
+          "original": "{-解説者}なんと、奈婿高校の\n選手全員が食中毒のため棄権、\nきらめき高校の不戦勝です。",
+          "text": "{-Caster}Namuko High's entire\nteam has food poisoning!\nKirameki wins by forfeit."
+        },
+        {
+          "offset": "0x430",
+          "original": "{-解説者}なんと、順天塔高校の\n選手全員が食中毒のため棄権、\nきらめき高校の不戦勝です。",
+          "text": "{-Caster}Juntento High's entire\nteam has food poisoning!\nKirameki wins by forfeit."
+        },
+        {
+          "offset": "0x488",
+          "original": "{-解説者}なんと、小波高校の\n選手全員が食中毒のため棄権、\nきらめき高校の不戦勝です。",
+          "text": "{-Caster}Konami High's entire\nteam has food poisoning!\nKirameki wins by forfeit."
+        },
+        {
+          "offset": "0x4e0",
+          "original": "うぉおおおおおおーーっ\nラッキィイイイイーーッ！\n勝ちねーっ、勝ちーっ！",
+          "text": "Whoooooooaaa!\nLuuuuuuucky!\nA win! A win!"
+        },
+        {
+          "offset": "0x52c",
+          "original": "解説者「順天塔高校の勝ち！\n　　　　きらめき高校の負けです。」",
+          "text": "Caster: \"Juntento wins!\n Kirameki High loses.\""
+        },
+        {
+          "offset": "0x570",
+          "original": "俺達の夏は、\n終った・・・・・。",
+          "text": "Our summer\nis over......"
+        },
+        {
+          "offset": "0x594",
+          "original": "解説者「小波高校の勝ち！\n　　　　きらめき高校の負けです。」",
+          "text": "Caster: \"Konami wins!\n Kirameki High loses.\""
+        },
+        {
+          "offset": "0x5d4",
+          "original": "俺達の夏は、\n終った・・・・・。",
+          "text": "Our summer\nis over......"
+        },
+        {
+          "offset": "0x5f8",
+          "original": "今日は俺の誕生日だ。",
+          "text": "Today's my birthday."
+        },
+        {
+          "offset": "0x610",
+          "original": "しくしく\n誰からもプレゼントを\n貰うことができなかった。\n寂しいなあ。",
+          "text": "Sob sob...\nNobody gave me\na present.\nSo lonely."
+        },
+        {
+          "offset": "0xb68",
+          "original": "…が。",
+          "text": "...but."
+        }
+      ]
+    }
+  ]
+}

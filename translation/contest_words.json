@@ -1,0 +1,221 @@
+{
+  "description": "MASTER.EXN's in-place words: the Caster label, school names, technique names. Verified in DuckStation on forced contest days (force_event.py 0 0 --type T --club C, hidden emulator; docs/testing.md 'Club contests'): the Caster label and the rival schools in the three sports finals.",
+  "strings": [
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x99B0",
+      "original": "植木賞授賞式",
+      "text": "Ueki Prize"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x99C0",
+      "original": "演劇グランプリ",
+      "text": "Drama Prix"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x99D0",
+      "original": "ノーベル賞受賞",
+      "text": "Nobel Prize"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x99E0",
+      "original": "ゲーム大賞",
+      "text": "Game Prize"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x99EC",
+      "original": "目展大賞",
+      "text": "Meten"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x99F8",
+      "original": "コンクール優勝",
+      "text": "Band Contest"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9A08",
+      "original": "近所の公園",
+      "text": "Local Park"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9A14",
+      "original": "舞台裏",
+      "text": "Wings"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9A1C",
+      "original": "自宅前",
+      "text": "Home"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9B10",
+      "original": "甲子園",
+      "text": "Field"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9B18",
+      "original": "（大会に敗北したくやしさが",
+      "text": "(The sting of defeat"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9B34",
+      "original": "　俺の、眠れる力を",
+      "text": " awoke the power"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9B48",
+      "original": "　呼びおこした！！）",
+      "text": " sleeping in me!!)"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9B60",
+      "original": "（おおおおおおっっっ！！！！）",
+      "text": "(Oooooooooh!!!!)"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9B80",
+      "original": "　　野球部奥義",
+      "text": "  Secret move:"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9B90",
+      "original": "　　　「超球百裂弾」",
+      "text": "   \"Hyper 100 Ball\""
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9BA8",
+      "original": "　　　　　　をマスターした。",
+      "text": "      mastered!"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9BC8",
+      "original": "（大会に勝利した興奮が",
+      "text": "(The thrill of victory"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9BE0",
+      "original": "　俺の体に",
+      "text": " gave my"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9BEC",
+      "original": "　新たな力を与えた！！）",
+      "text": " body new power!!)"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9C08",
+      "original": "（大会に敗北したくやしさが",
+      "text": "(The sting of defeat"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9C24",
+      "original": "　俺の、眠れる力を",
+      "text": " awoke the power"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9C38",
+      "original": "　呼びおこした！！）",
+      "text": " sleeping in me!!)"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9C50",
+      "original": "（おおおおおおっっっ！！！！）",
+      "text": "(Oooooooooh!!!!)"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9C70",
+      "original": "　　野球部奥義",
+      "text": "  Secret move:"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9C80",
+      "original": "　　　「超球百裂弾」",
+      "text": "   \"Hyper 100 Ball\""
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9C98",
+      "original": "　　　　　　をマスターした。",
+      "text": "      mastered!"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9FB0",
+      "original": "イヤリング",
+      "text": "Earrings"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9FBC",
+      "original": "ポシェット",
+      "text": "Pochette"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0x9FC8",
+      "original": "ホラー小説",
+      "text": "Horror Bk"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0xA0C4",
+      "original": "国立競技場",
+      "text": "Stadium"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0xA0D0",
+      "original": "インターハイ",
+      "text": "Inter-High"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0xA100",
+      "original": "選手控え室",
+      "text": "Locker Rm"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0xA10C",
+      "original": "決勝戦",
+      "text": "Final"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0xA114",
+      "original": "国立競技場",
+      "text": "Stadium"
+    },
+    {
+      "file": "CDROM/EXEDIR/MASTER.EXN",
+      "offset": "0xA120",
+      "original": "選手控え室",
+      "text": "Locker Rm"
+    }
+  ]
+}

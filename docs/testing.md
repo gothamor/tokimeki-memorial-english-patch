@@ -1215,6 +1215,15 @@ the dialogue box, so these runs are reviewed with full screenshots
   yet, like ZAKOSEN's thugs (DATE.EXN `0x8013CADC`): both drafts stay in
   `translation/extra/`.
 
+### Club contests (MASTER/*.BIN, 2026-10-11)
+
+`.emu/e_runs.sh`, `.emu/e_runs2.sh` (local), Sunday state, hidden,
+`xmas_run.ps1 -Tool "tools/emu/force_event.py 0 0 --type T --club C"
+-Presses 40`: `mc0` (0x25, baseball), `m27c0`–`m27c5` (0x27, each
+culture club), `mt7`, `m26c9`, `m26c10` (0x26, soccer, swimming,
+basketball). `m26c0` and `mu8` (0x26 with a culture club, 0x27 with a
+sports club) and `rs7` (state 0x73) went back to the title screen.
+
 ### Tools for the whole-game loop (2026-10-10)
 
 The per-file loop in NEXT_STEPS.md uses these (details in each docstring):

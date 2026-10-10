@@ -1,0 +1,1542 @@
+{
+  "description": "The sports club's contest day: all of MASTER/TAI_MAS.BIN (306 strings; MASTER.EXN, base 0x801E8000; game-internals 6ad). Verified in DuckStation on forced contest days (force_event.py 0 0 --type T --club C, hidden emulator; docs/testing.md 'Club contests'): 0x26 with soccer, swimming and basketball (clubs 7, 9, 10): each final and the loss, the player's lines and the walk home. Checked only statically: the other results (each contest has win and loss texts) and the girls' congratulations.",
+  "dialogue": [
+    {
+      "file": "CDROM/MASTER/TAI_MAS.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "決勝戦の相手は、\n関東の超明釧高校だ。",
+          "text": "Our rival in the final\nis Kanto's Chomeisen High."
+        },
+        {
+          "offset": "0x2c",
+          "original": "今日はサッカー部の\n全国大会の決勝戦の日だ。",
+          "text": "Today's the soccer\nnationals final."
+        },
+        {
+          "offset": "0x5c",
+          "original": "今日はテニス部の\n全国大会の決勝戦の日だ。",
+          "text": "Today's the tennis\nnationals final."
+        },
+        {
+          "offset": "0x8c",
+          "original": "今日は水泳部の\n全国大会の決勝戦の日だ。",
+          "text": "Today's the swimming\nnationals final."
+        },
+        {
+          "offset": "0xb8",
+          "original": "今日はバスケット部の\n全国大会の決勝戦の日だ。",
+          "text": "Today's the basketball\nnationals final."
+        },
+        {
+          "offset": "0xec",
+          "original": "ついに、この日がきたか…。",
+          "text": "This day has come at last..."
+        },
+        {
+          "offset": "0x10c",
+          "original": "相手の高校は\n関西代表・小波高校だ。",
+          "text": "Our rival is Kansai's\nKonami High."
+        },
+        {
+          "offset": "0x134",
+          "original": "相手の高校は\n四国代表・加不紺高校だ。",
+          "text": "Our rival is Shikoku's\nKafukon High."
+        },
+        {
+          "offset": "0x160",
+          "original": "相手の高校は\n東北代表・奈婿高校だ。",
+          "text": "Our rival is Tohoku's\nNamuko High."
+        },
+        {
+          "offset": "0x188",
+          "original": "相手の高校は\n近畿代表・順天塔高校だ。",
+          "text": "Our rival is Kinki's\nJuntento High."
+        },
+        {
+          "offset": "0x1b4",
+          "original": "相手の高校は\n北海道代表・素鬼高校だ。",
+          "text": "Our rival is Hokkaido's\nSuki High."
+        },
+        {
+          "offset": "0x1e0",
+          "original": "相手の高校は\n九州代表・机亜高校だ。",
+          "text": "Our rival is Kyushu's\nTsukua High."
+        },
+        {
+          "offset": "0x208",
+          "original": "{-解説者}試合開始です。",
+          "text": "{-Caster}The match begins!"
+        },
+        {
+          "offset": "0x224",
+          "original": "{-解説者}きらめき高校の優勝です。",
+          "text": "{-Caster}Kirameki High wins it all!"
+        },
+        {
+          "offset": "0x248",
+          "original": "{-解説者}きらめき高校の優勝です。",
+          "text": "{-Caster}Kirameki High wins it all!"
+        },
+        {
+          "offset": "0x268",
+          "original": "{-解説者}”常勝”超明釧高校、\nついに、敗れましたー！",
+          "text": "{-Caster}Undefeated Chomeisen\nhas finally fallen!"
+        },
+        {
+          "offset": "0x2a4",
+          "original": "{-解説者}きらめき高校、惜しくも\n敗れました。優勝は”常勝”\n超明釧高校です。",
+          "text": "{-Caster}Kirameki High falls\nshort. The champion is\nundefeated Chomeisen."
+        },
+        {
+          "offset": "0x2f4",
+          "original": "{-解説者}きらめき高校、惜しくも\n敗れました。優勝は関西\n代表・小波高校です。",
+          "text": "{-Caster}Kirameki High falls\nshort. The champion is\nKansai's Konami High."
+        },
+        {
+          "offset": "0x344",
+          "original": "{-解説者}きらめき高校、惜しくも\n敗れました。優勝は四国\n代表・加不紺高校です。",
+          "text": "{-Caster}Kirameki High falls\nshort. The champion is\nShikoku's Kafukon High."
+        },
+        {
+          "offset": "0x394",
+          "original": "{-解説者}きらめき高校、惜しくも\n敗れました。優勝は東北\n代表・奈婿高校です。",
+          "text": "{-Caster}Kirameki High falls\nshort. The champion is\nTohoku's Namuko High."
+        },
+        {
+          "offset": "0x3e4",
+          "original": "{-解説者}きらめき高校、惜しくも\n敗れました。優勝は近畿\n代表・順天塔高校です。",
+          "text": "{-Caster}Kirameki High falls\nshort. The champion is\nKinki's Juntento High."
+        },
+        {
+          "offset": "0x434",
+          "original": "{-解説者}きらめき高校、惜しくも\n敗れました。優勝は北海道\n代表・素鬼高校です。",
+          "text": "{-Caster}Kirameki High falls\nshort. The champion is\nHokkaido's Suki High."
+        },
+        {
+          "offset": "0x484",
+          "original": "{-解説者}きらめき高校、惜しくも\n敗れました。優勝は九州\n代表・机亜高校です。",
+          "text": "{-Caster}Kirameki High falls\nshort. The champion is\nKyushu's Tsukua High."
+        },
+        {
+          "offset": "0x4d4",
+          "original": "ついに、\n優勝だーーーっ！！\nやったぜ！",
+          "text": "At last,\nwe're the champs!!\nYes!"
+        },
+        {
+          "offset": "0x500",
+          "original": "やったー！\n優勝だーーーーっ！！",
+          "text": "We did it!\nChampioooons!!"
+        },
+        {
+          "offset": "0x524",
+          "original": "コーーチーーーッ！\n俺は、やったぜっ！！",
+          "text": "Coooach!\nI did it!!"
+        },
+        {
+          "offset": "0x550",
+          "original": "よし、優勝だー！\nこれからは、俺のことを\n『水の貴公子』と呼んでくれ。",
+          "text": "Yes, champion!\nFrom now on, call me\n\"Prince of the Pool.\""
+        },
+        {
+          "offset": "0x59c",
+          "original": "優勝したぞっ！\n俺のダンクシュートを\n見たかっ！！",
+          "text": "We won!\nDid you see\nmy slam dunk!?"
+        },
+        {
+          "offset": "0x5d4",
+          "original": "俺達の夏は\n終った・・・・・。",
+          "text": "Our summer\nis over......"
+        },
+        {
+          "offset": "0x5f8",
+          "original": "全国の壁は\n厚かった・・・・・。",
+          "text": "The nationals were\njust too tough......"
+        },
+        {
+          "offset": "0x61c",
+          "original": "よし、頑張るぞ。",
+          "text": "All right, let's go."
+        },
+        {
+          "offset": "0x634",
+          "original": "おーい。\n（一体、誰なんだ？）",
+          "text": "Hey!\n(Who is she, anyway?)"
+        },
+        {
+          "offset": "0x658",
+          "original": "あの娘、\n学校でもぶつかったよな？\n…応援に\n来てくれたのかな？",
+          "text": "Didn't that girl\nbump into me at school?\n...Did she come\nto cheer me on?"
+        },
+        {
+          "offset": "0x69c",
+          "original": "言われなくても頑張るよ。",
+          "text": "I'll try my best regardless."
+        },
+        {
+          "offset": "0x6bc",
+          "original": "頑張った甲斐があったぜ。",
+          "text": "It was worth the effort."
+        },
+        {
+          "offset": "0x6dc",
+          "original": "さっきの娘、\n見ててくれたかな。",
+          "text": "Was that girl\nwatching me, I wonder."
+        },
+        {
+          "offset": "0x700",
+          "original": "はぁ…せっかく勝っても、\n祝ってくれるのが\nこいつじゃなぁ…",
+          "text": "Sigh... I finally win,\nand the one cheering me\nis this guy..."
+        },
+        {
+          "offset": "0x740",
+          "original": "我が部活に一片の悔いなし。",
+          "text": "My club? Not one regret."
+        },
+        {
+          "offset": "0x760",
+          "original": "さっきの娘、\n応援しに来てくれてたのに、\n悪いことしたなぁ。",
+          "text": "That girl came\nto cheer me on.\nI feel bad about that."
+        },
+        {
+          "offset": "0x7a0",
+          "original": "こいつに言われてもなぁ…",
+          "text": "Coming from him..."
+        },
+        {
+          "offset": "0x7c0",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x7d0",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x7dc",
+          "original": "とうとうここまで来たわね。",
+          "text": "So you've made it this far."
+        },
+        {
+          "offset": "0x7f8",
+          "original": "うん、いよいよだよ。",
+          "text": "Yeah, this is it."
+        },
+        {
+          "offset": "0x810",
+          "original": "こんなことしか\n言えないけど…。\n頑張ってね。",
+          "text": "This is all\nI can say...\nbut good luck."
+        },
+        {
+          "offset": "0x840",
+          "original": "ありがとう、\nその言葉がなによりだよ。",
+          "text": "Thanks,\nthat means everything."
+        },
+        {
+          "offset": "0x868",
+          "original": "私…信じてるから。",
+          "text": "I... believe in you."
+        },
+        {
+          "offset": "0x894",
+          "original": "おめでとう！",
+          "text": "Congratulations!"
+        },
+        {
+          "offset": "0x8a4",
+          "original": "{G}の応援のおかげだよ。\nありがとう。",
+          "text": "All thanks to {G}\nThank you."
+        },
+        {
+          "offset": "0x8c8",
+          "original": "すごいわ、日本一よ！",
+          "text": "Amazing, the best in Japan!"
+        },
+        {
+          "offset": "0x8e0",
+          "original": "まだ信じられないよ。",
+          "text": "I still can't believe it."
+        },
+        {
+          "offset": "0x908",
+          "original": "ほっぺつねって\nあげようか？",
+          "text": "Shall I pinch\nyour cheek?"
+        },
+        {
+          "offset": "0x924",
+          "original": "えいっ。",
+          "text": "There."
+        },
+        {
+          "offset": "0x930",
+          "original": "いてっ！夢じゃないや。",
+          "text": "Ow! It's not a dream."
+        },
+        {
+          "offset": "0x948",
+          "original": "うん。\n夢なんかじゃないわよ。",
+          "text": "Right.\nIt's no dream at all."
+        },
+        {
+          "offset": "0x978",
+          "original": "お、お疲れさま。",
+          "text": "G-good game."
+        },
+        {
+          "offset": "0x98c",
+          "original": "ごめんね、\nせっかく応援してくれたのに。",
+          "text": "Sorry,\nafter you cheered me on."
+        },
+        {
+          "offset": "0x9bc",
+          "original": "ううん。そんなこと…。",
+          "text": "No. Don't say that..."
+        },
+        {
+          "offset": "0x9d4",
+          "original": "な、泣くなよ。",
+          "text": "D-don't cry."
+        },
+        {
+          "offset": "0x9e4",
+          "original": "だって、だって…\nあんなに頑張ってたのに…。",
+          "text": "But... but...\nyou tried so hard..."
+        },
+        {
+          "offset": "0xa10",
+          "original": "いいんだよ。\n精いっぱいやったし、\n悔いはないよ。",
+          "text": "It's okay.\nI gave it my all.\nNo regrets."
+        },
+        {
+          "offset": "0xa44",
+          "original": "う、うん…。",
+          "text": "Mm... mmh..."
+        },
+        {
+          "offset": "0xa68",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0xa78",
+          "original": "あっ、{G}、\n来てくれたんだ。",
+          "text": "Oh, {G}\nYou came."
+        },
+        {
+          "offset": "0xa94",
+          "original": "はい。本当は、黙って\n見てようと\n思っていたんですけど…。",
+          "text": "Yes. I meant to\nwatch quietly,\nbut..."
+        },
+        {
+          "offset": "0xad0",
+          "original": "けど、何？",
+          "text": "But what?"
+        },
+        {
+          "offset": "0xadc",
+          "original": "一言だけ、言いたくて。",
+          "text": "I wanted to say one thing."
+        },
+        {
+          "offset": "0xaf4",
+          "original": "頑張って下さい。\n応援してます。",
+          "text": "Please do your best.\nI'm cheering for you."
+        },
+        {
+          "offset": "0xb14",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0xb40",
+          "original": "おめでとうございます。",
+          "text": "Congratulations."
+        },
+        {
+          "offset": "0xb58",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0xb68",
+          "original": "日本一なんて、\nすごいですね。\n私には、とても…",
+          "text": "The best in Japan.\nThat's amazing.\nI could never..."
+        },
+        {
+          "offset": "0xb98",
+          "original": "そんなことないよ、\n頑張れば、\n何だってできるよ。",
+          "text": "That's not true.\nIf you try,\nyou can do anything."
+        },
+        {
+          "offset": "0xbcc",
+          "original": "はい！\nあなたを見ていると、\nそんな気がします。",
+          "text": "Yes!\nWatching you,\nI believe it."
+        },
+        {
+          "offset": "0xc10",
+          "original": "残念でしたね。",
+          "text": "That's too bad."
+        },
+        {
+          "offset": "0xc20",
+          "original": "ごめんね、\nせっかく応援に\n来てくれたのに。",
+          "text": "Sorry,\nafter you came\nto cheer me on."
+        },
+        {
+          "offset": "0xc4c",
+          "original": "いえ、そんな…。",
+          "text": "No, not at all..."
+        },
+        {
+          "offset": "0xc6c",
+          "original": "あれ、\n{G}泣いてるのかな？",
+          "text": "Huh,\nare you crying, {G}"
+        },
+        {
+          "offset": "0xc88",
+          "original": "だめですね、私。",
+          "text": "I'm hopeless."
+        },
+        {
+          "offset": "0xc9c",
+          "original": "きっとあなたは、\n私なんかより、\n何倍もつらいのに…。",
+          "text": "It must hurt you\nso much more\nthan me..."
+        },
+        {
+          "offset": "0xce0",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0xcf0",
+          "original": "あっ、{G}。\n来てくれたんだ。",
+          "text": "Oh, {G}\nYou came."
+        },
+        {
+          "offset": "0xd0c",
+          "original": "そうよ。\nだから、勝ちなさいよ。",
+          "text": "Yes.\nSo you'd better win."
+        },
+        {
+          "offset": "0xd2c",
+          "original": "うん、頑張るよ。",
+          "text": "Yeah, I will."
+        },
+        {
+          "offset": "0xd40",
+          "original": "見てるわよ。それじゃ。",
+          "text": "I'll be watching. Bye."
+        },
+        {
+          "offset": "0xd68",
+          "original": "やるわね。\n日本一じゃないの。",
+          "text": "Not bad.\nThe best in Japan."
+        },
+        {
+          "offset": "0xd88",
+          "original": "ありがとう、{G}の\n応援のおかげだよ。",
+          "text": "Thanks, {G}\nYour cheering did it."
+        },
+        {
+          "offset": "0xdac",
+          "original": "やっぱり、\nとりあえずは日本からよね。",
+          "text": "Of course,\nJapan comes first."
+        },
+        {
+          "offset": "0xdd4",
+          "original": "何でもないわよ。\nとにかく、\n今日はいい刺激になったわ。",
+          "text": "Never mind.\nAnyway, today\nwas quite stimulating."
+        },
+        {
+          "offset": "0xe20",
+          "original": "しょうがないわね。",
+          "text": "It can't be helped."
+        },
+        {
+          "offset": "0xe34",
+          "original": "ごめんね、せっかく応援に\n来てくれたのに。",
+          "text": "Sorry, after you came\nto cheer me on."
+        },
+        {
+          "offset": "0xe60",
+          "original": "まぁ、あなたにしては、\n頑張ったほうでしょうけど。",
+          "text": "Well, for you,\nyou did rather well."
+        },
+        {
+          "offset": "0xe94",
+          "original": "あ、ありがとう。",
+          "text": "Th-thanks."
+        },
+        {
+          "offset": "0xea8",
+          "original": "世界は広いってことよね。\nいい教訓になったわ。",
+          "text": "The world is wide, it seems.\nA good lesson."
+        },
+        {
+          "offset": "0xeec",
+          "original": "ハーイ、{P}。",
+          "text": "Hi there, {P}."
+        },
+        {
+          "offset": "0xefc",
+          "original": "あっ、{G}。\n来てくれたんだ。",
+          "text": "Oh, {G}\nYou came."
+        },
+        {
+          "offset": "0xf18",
+          "original": "今日はまともに応援して\nあげるから、\n頑張りなさいよ。",
+          "text": "Today I'll cheer\nfor you properly,\nso do your best."
+        },
+        {
+          "offset": "0xf50",
+          "original": "ははは、頑張るよ。",
+          "text": "Haha, I'll do my best."
+        },
+        {
+          "offset": "0xf64",
+          "original": "テイクイットイージー、\n気楽にね。",
+          "text": "Take it easy,\nrelax."
+        },
+        {
+          "offset": "0xf98",
+          "original": "コングラッチュレイション、\nおめでとう！",
+          "text": "Congratulations,\nwell done!"
+        },
+        {
+          "offset": "0xfc0",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0xfd0",
+          "original": "本当に勝っちゃうなんて、\nすごいじゃない！",
+          "text": "You really won!\nThat's amazing!"
+        },
+        {
+          "offset": "0xffc",
+          "original": "{G}の応援の\nおかげだよ。",
+          "text": "I owe it to {G}\nand your cheering."
+        },
+        {
+          "offset": "0x1014",
+          "original": "ノーノー、\nユーの実力よ。",
+          "text": "No, no,\nit's all you."
+        },
+        {
+          "offset": "0x1044",
+          "original": "あっ…えーと…。",
+          "text": "Oh... um..."
+        },
+        {
+          "offset": "0x1058",
+          "original": "はは、負けちゃったよ。",
+          "text": "Haha, I lost."
+        },
+        {
+          "offset": "0x1070",
+          "original": "アンラッキー、\nそう、ついてなかったのよ。",
+          "text": "Unlucky,\nyou just had bad luck."
+        },
+        {
+          "offset": "0x109c",
+          "original": "ありがとう。\n気を遣ってくれて。",
+          "text": "Thanks.\nThat's kind of you."
+        },
+        {
+          "offset": "0x10bc",
+          "original": "ば、馬鹿ね、\n我慢しないで\n悔しがりなさいよ。",
+          "text": "S-silly,\ndon't hold it in.\nGo on, be upset."
+        },
+        {
+          "offset": "0x10ec",
+          "original": "ありがとう、{G}。",
+          "text": "Thanks, {G}"
+        },
+        {
+          "offset": "0x1114",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x1124",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x1130",
+          "original": "いよいよ、全国大会ね。",
+          "text": "The nationals at last."
+        },
+        {
+          "offset": "0x1148",
+          "original": "そうだね。",
+          "text": "Yeah."
+        },
+        {
+          "offset": "0x1154",
+          "original": "勝てば日本一よ。",
+          "text": "Win, and you're number one."
+        },
+        {
+          "offset": "0x1168",
+          "original": "勝てればね。",
+          "text": "If I win."
+        },
+        {
+          "offset": "0x1178",
+          "original": "弱気になっちゃダメよ！\n勝てるわ！\nうん、きっと勝てる！",
+          "text": "Don't lose heart!\nYou can win!\nYes, you'll win!"
+        },
+        {
+          "offset": "0x11b0",
+          "original": "うん、\n勝てそうな気がしてきたよ。",
+          "text": "Yeah,\nI feel like I can win."
+        },
+        {
+          "offset": "0x11f0",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x1200",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x120c",
+          "original": "いよいよ、甲子園ね。",
+          "text": "Koshien at last."
+        },
+        {
+          "offset": "0x1224",
+          "original": "そうだね。",
+          "text": "Yeah."
+        },
+        {
+          "offset": "0x1230",
+          "original": "勝てば日本一よ。",
+          "text": "Win, and you're number one."
+        },
+        {
+          "offset": "0x1244",
+          "original": "勝てればね。",
+          "text": "If I win."
+        },
+        {
+          "offset": "0x1254",
+          "original": "弱気になっちゃダメよ！\n勝てるわ！\nうん、きっと勝てる！",
+          "text": "Don't lose heart!\nYou can win!\nYes, you'll win!"
+        },
+        {
+          "offset": "0x128c",
+          "original": "うん、\n勝てそうな気がしてきたよ。",
+          "text": "Yeah,\nI feel like I can win."
+        },
+        {
+          "offset": "0x12cc",
+          "original": "やったわ！優勝よ！\n{P}、おめでとう。",
+          "text": "We did it! We won!\nCongrats, {P}"
+        },
+        {
+          "offset": "0x12f0",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x1300",
+          "original": "あなたがいてくれて、\n本当に良かった。\nあなたのおかげよ。",
+          "text": "I'm so glad\nyou were here.\nIt's thanks to you."
+        },
+        {
+          "offset": "0x133c",
+          "original": "いや、\nここまで頑張れたのは、\n{G}のおかげだよ。",
+          "text": "No,\nI got this far\nall thanks to {G}"
+        },
+        {
+          "offset": "0x136c",
+          "original": "そ、そんなことないよ。",
+          "text": "N-no, not at all."
+        },
+        {
+          "offset": "0x1398",
+          "original": "あ、あれ、変なの、\n涙が出てきちゃった…。",
+          "text": "Wh-what, that's odd,\nI'm crying..."
+        },
+        {
+          "offset": "0x13c4",
+          "original": "{G}も、優勝だよ。",
+          "text": "Your win too, {G}"
+        },
+        {
+          "offset": "0x13d4",
+          "original": "う、うん！\nありがとう！",
+          "text": "Y-yeah!\nThank you!"
+        },
+        {
+          "offset": "0x13f8",
+          "original": "{P}、\nおめでとう！",
+          "text": "{P}\ncongratulations!"
+        },
+        {
+          "offset": "0x140c",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x141c",
+          "original": "一生懸命練習してたもんね。",
+          "text": "You practiced so hard."
+        },
+        {
+          "offset": "0x1438",
+          "original": "はは、まぐれだよ。",
+          "text": "Haha, it was a fluke."
+        },
+        {
+          "offset": "0x144c",
+          "original": "ううん。\n努力したから、\n結果がついてきたんだよ。",
+          "text": "No.\nYou worked hard,\nand it paid off."
+        },
+        {
+          "offset": "0x1480",
+          "original": "本当に、おめでとう。",
+          "text": "Really, congratulations."
+        },
+        {
+          "offset": "0x14b0",
+          "original": "お疲れさま！\nここまで来れただけでも、\nすごいよ。",
+          "text": "Good game!\nJust getting this far\nis amazing."
+        },
+        {
+          "offset": "0x14e4",
+          "original": "ごめんね、せっかく\n応援してくれたのに…。",
+          "text": "Sorry, after you\ncheered me on..."
+        },
+        {
+          "offset": "0x1510",
+          "original": "そ、そんなこと言わないで、\nが、我慢してるのに…。",
+          "text": "D-don't say that,\nI'm t-trying not to cry..."
+        },
+        {
+          "offset": "0x1550",
+          "original": "へ、変だよね、\nあんなに頑張ったのにね。",
+          "text": "I-it's weird, isn't it.\nYou tried so hard."
+        },
+        {
+          "offset": "0x1578",
+          "original": "本当に、\n本当に頑張ってたのに…。",
+          "text": "You really,\nreally tried so hard..."
+        },
+        {
+          "offset": "0x15a8",
+          "original": "こんにちは、{P}。",
+          "text": "Good afternoon, {P}"
+        },
+        {
+          "offset": "0x15bc",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x15c8",
+          "original": "すごいですねぇ、\n日本一ですか。",
+          "text": "How amazing,\nthe best in Japan."
+        },
+        {
+          "offset": "0x15e8",
+          "original": "ははは、勝てればね。",
+          "text": "Hahaha, if I win."
+        },
+        {
+          "offset": "0x1600",
+          "original": "あら、そうなんですか？\nでも、きっと大丈夫ですね。",
+          "text": "Oh, is that so?\nBut I'm sure you'll win."
+        },
+        {
+          "offset": "0x1634",
+          "original": "うん、頑張るよ。",
+          "text": "Yeah, I will."
+        },
+        {
+          "offset": "0x1648",
+          "original": "それでは、また、後ほど。",
+          "text": "Well then, see you later."
+        },
+        {
+          "offset": "0x167c",
+          "original": "おめでとうございます。",
+          "text": "Congratulations."
+        },
+        {
+          "offset": "0x1694",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x16a4",
+          "original": "これで、\n日本一なのですか？",
+          "text": "So this makes\nyou the best in Japan?"
+        },
+        {
+          "offset": "0x16c0",
+          "original": "そうだよ。",
+          "text": "Yep."
+        },
+        {
+          "offset": "0x16cc",
+          "original": "私も、嬉しいです。",
+          "text": "I'm happy too."
+        },
+        {
+          "offset": "0x16e0",
+          "original": "はい、\nあなたが嬉しそうなので、\n私も嬉しいです。",
+          "text": "Yes,\nyou look happy,\nso I'm happy too."
+        },
+        {
+          "offset": "0x1730",
+          "original": "残念でしたね。",
+          "text": "That's too bad."
+        },
+        {
+          "offset": "0x1740",
+          "original": "ごめんね、せっかく\n応援してくれたのに…。",
+          "text": "Sorry, after you\ncheered me on..."
+        },
+        {
+          "offset": "0x176c",
+          "original": "いいえ、私は、ただ、\n応援していただけですから…",
+          "text": "No, I was only\ncheering you on..."
+        },
+        {
+          "offset": "0x179c",
+          "original": "そ、そう。",
+          "text": "I-I see."
+        },
+        {
+          "offset": "0x17b8",
+          "original": "それに、あなたの一生懸命な\nお姿は、ちゃんと、\n見せていただきましたよ。",
+          "text": "Besides, I saw how\nhard you tried,\nall of it."
+        },
+        {
+          "offset": "0x1804",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x1814",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x1820",
+          "original": "とうとう全国だね。",
+          "text": "The nationals at last."
+        },
+        {
+          "offset": "0x1834",
+          "original": "うん、緊張するよ。\nでも、{G}は\n慣れてるでしょう？",
+          "text": "Yeah, I'm nervous.\nBut {G}\nyou're used to it, right?"
+        },
+        {
+          "offset": "0x1864",
+          "original": "そんなことないよ、\n私だって緊張するよ。",
+          "text": "Not at all,\nI get nervous too."
+        },
+        {
+          "offset": "0x188c",
+          "original": "そうなんだ。",
+          "text": "I see."
+        },
+        {
+          "offset": "0x189c",
+          "original": "でもね、最近は、\nある人の顔を思い出すと、\n落ち着くの。",
+          "text": "But lately,\nwhen I picture someone,\nI calm down."
+        },
+        {
+          "offset": "0x18d4",
+          "original": "よし、じゃあ、俺は\n{G}の顔を思い出して\n頑張ろう。",
+          "text": "Okay, then I'll\npicture {G}\nand do my best."
+        },
+        {
+          "offset": "0x1904",
+          "original": "えっ…。",
+          "text": "Huh..."
+        },
+        {
+          "offset": "0x1930",
+          "original": "やったじゃない、\n優勝よ！\nおめでとう。",
+          "text": "You did it,\nyou won!\nCongratulations."
+        },
+        {
+          "offset": "0x1958",
+          "original": "ありがとう。\n{G}も、\n優勝おめでとう。",
+          "text": "Thanks.\nAnd {G}\ncongrats on your win too."
+        },
+        {
+          "offset": "0x197c",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x198c",
+          "original": "やっと、目標だった\n{G}に追いつけたよ。",
+          "text": "At last I've drawn\neven with {G}"
+        },
+        {
+          "offset": "0x19b4",
+          "original": "えっ…。うん、そうね。",
+          "text": "Huh... Yeah, I guess."
+        },
+        {
+          "offset": "0x19cc",
+          "original": "私、こんなに嬉しい優勝は\n初めて。",
+          "text": "I've never been this\nhappy about a win."
+        },
+        {
+          "offset": "0x1a08",
+          "original": "おめでとう、{P}。\nやったね。",
+          "text": "Congrats, {P}\nYou did it."
+        },
+        {
+          "offset": "0x1a24",
+          "original": "{G}のおかげだよ。",
+          "text": "I owe it to {G}"
+        },
+        {
+          "offset": "0x1a3c",
+          "original": "そ、そう？\nわ、私は別に…。",
+          "text": "R-really?\nI-I didn't..."
+        },
+        {
+          "offset": "0x1a58",
+          "original": "{G}が応援して\nくれたから勝てたんだよ。",
+          "text": "I won because {G}\ncheered me on."
+        },
+        {
+          "offset": "0x1a80",
+          "original": "…じゃ、じゃあ、私の…",
+          "text": "...Th-then, my..."
+        },
+        {
+          "offset": "0x1a98",
+          "original": "{G}の…何？",
+          "text": "Your... what, {G}"
+        },
+        {
+          "offset": "0x1aa4",
+          "original": "や、やっぱり、\nなんでもないの。",
+          "text": "N-never mind,\nit's nothing."
+        },
+        {
+          "offset": "0x1ad8",
+          "original": "惜しかったね。",
+          "text": "So close."
+        },
+        {
+          "offset": "0x1ae8",
+          "original": "ごめんね、せっかく応援\nしてくれたのに。",
+          "text": "Sorry, after you\ncheered me on."
+        },
+        {
+          "offset": "0x1b10",
+          "original": "そんなこと言わないでよ。",
+          "text": "Don't say that."
+        },
+        {
+          "offset": "0x1b2c",
+          "original": "あなたのほうが\n悔しいってことくらい、\nわかるんだから。",
+          "text": "I know it hurts\nyou more than me,\nso don't."
+        },
+        {
+          "offset": "0x1b74",
+          "original": "あ、あれ、{G}？",
+          "text": "Wh-what's up, {G}"
+        },
+        {
+          "offset": "0x1b84",
+          "original": "へ、変よね。なんか、\n自分が負けた時より…。",
+          "text": "I-it's weird. Somehow,\nmore than when I lose..."
+        },
+        {
+          "offset": "0x1bb8",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x1bc8",
+          "original": "あっ、{G}、\n来てくれたんだ。",
+          "text": "Oh, {G}\nYou came."
+        },
+        {
+          "offset": "0x1be4",
+          "original": "当然よ、あなたが…。\nな、何でもないわ。",
+          "text": "Of course, you're...\nN-never mind."
+        },
+        {
+          "offset": "0x1c0c",
+          "original": "俺が…何？",
+          "text": "I'm... what?"
+        },
+        {
+          "offset": "0x1c18",
+          "original": "いいでしょう。\n早く行きなさいよ。",
+          "text": "Never mind.\nJust go already."
+        },
+        {
+          "offset": "0x1c4c",
+          "original": "鏡さーん。",
+          "text": "Kagamiii!"
+        },
+        {
+          "offset": "0x1c58",
+          "original": "勝ったわね。\nおめでとう。",
+          "text": "You won.\nCongratulations."
+        },
+        {
+          "offset": "0x1c74",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x1c84",
+          "original": "負けるんじゃないかと\n思って、\n気が気じゃなかったわ。",
+          "text": "I thought\nyou'd lose.\nI was a nervous wreck."
+        },
+        {
+          "offset": "0x1cbc",
+          "original": "心配しててくれたんだ。",
+          "text": "You were worried about me."
+        },
+        {
+          "offset": "0x1ce8",
+          "original": "私は、別に…。",
+          "text": "Not that I..."
+        },
+        {
+          "offset": "0x1cf8",
+          "original": "大丈夫だよ、{G}が\n応援してくれてたから。",
+          "text": "I was fine, {G}\nsince you cheered me on."
+        },
+        {
+          "offset": "0x1d20",
+          "original": "えっ…？そ、そうよね。\n私が応援\nしてるんですものね。",
+          "text": "Huh...? R-right.\nI was cheering\nfor you, after all."
+        },
+        {
+          "offset": "0x1d58",
+          "original": "そうそう。",
+          "text": "Exactly."
+        },
+        {
+          "offset": "0x1d74",
+          "original": "残念だったわね。",
+          "text": "Too bad."
+        },
+        {
+          "offset": "0x1d88",
+          "original": "ごめんね、せっかく\n応援に来てくれたのに…。",
+          "text": "Sorry, after you\ncame to cheer me on..."
+        },
+        {
+          "offset": "0x1db4",
+          "original": "なかなか頑張ってたわよね。",
+          "text": "You did rather well."
+        },
+        {
+          "offset": "0x1dd0",
+          "original": "うん、頑張ったんだけど…。",
+          "text": "Yeah, I tried, but..."
+        },
+        {
+          "offset": "0x1dec",
+          "original": "しょうがないわよね。",
+          "text": "It can't be helped."
+        },
+        {
+          "offset": "0x1e04",
+          "original": "もしかして、\n慰めてくれてるのかな？",
+          "text": "Is she trying\nto comfort me?"
+        },
+        {
+          "offset": "0x1e28",
+          "original": "試合中のあなた、\n結構…見られたわよ。",
+          "text": "During the match, you\nlooked... rather fine."
+        },
+        {
+          "offset": "0x1e6c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x1e7c",
+          "original": "あっ、{G}、\n来てくれたんだ。",
+          "text": "Oh, {G}\nYou came."
+        },
+        {
+          "offset": "0x1e98",
+          "original": "もち！\n今日勝てば、\n日本一でしょう？",
+          "text": "Duh!\nWin today and\nyou're number one, right?"
+        },
+        {
+          "offset": "0x1ec0",
+          "original": "勝てれば、ね。",
+          "text": "If I win."
+        },
+        {
+          "offset": "0x1ed0",
+          "original": "なーに言ってんの！\n期待してるからね。",
+          "text": "What're you saying!\nI'm counting on you."
+        },
+        {
+          "offset": "0x1ef8",
+          "original": "頑張るよ。",
+          "text": "I'll do my best."
+        },
+        {
+          "offset": "0x1f04",
+          "original": "日本一だよ！\nちゃんと、\n応援してるからね！",
+          "text": "Number one in Japan!\nI'm totally\ncheering for you!"
+        },
+        {
+          "offset": "0x1f48",
+          "original": "すっごーい！\n日本一じゃない！",
+          "text": "Awesome!\nNumber one in Japan!"
+        },
+        {
+          "offset": "0x1f68",
+          "original": "ははは、勝っちゃったよ。",
+          "text": "Haha, I won."
+        },
+        {
+          "offset": "0x1f84",
+          "original": "実力、実力。",
+          "text": "That's skill, skill."
+        },
+        {
+          "offset": "0x1f94",
+          "original": "{G}の応援の\nおかげだよ。",
+          "text": "I owe it to {G}\nand your cheering."
+        },
+        {
+          "offset": "0x1fac",
+          "original": "またまた、うまいんだから。\nでもさ、真剣な顔してるとき、\nちょっとカッコ良かった\nかな。",
+          "text": "Oh, you smooth talker.\nBut, like, your game face\nwas kinda cool,\nI guess."
+        },
+        {
+          "offset": "0x2004",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x2014",
+          "original": "それよりさ、\nこれで練習ないんでしょう？\nどっか遊びに行こうよ。",
+          "text": "Anyway,\nno more practice, right?\nLet's go out somewhere!"
+        },
+        {
+          "offset": "0x2054",
+          "original": "ははは、そうだね。",
+          "text": "Haha, sure."
+        },
+        {
+          "offset": "0x2088",
+          "original": "なんかー、\n結構惜しかったって\nゆうかぁ…。",
+          "text": "Like,\nthat was really\nclose, kinda..."
+        },
+        {
+          "offset": "0x20b4",
+          "original": "ごめんね、せっかく\n応援してくれたのに。",
+          "text": "Sorry, after you\ncheered me on."
+        },
+        {
+          "offset": "0x20dc",
+          "original": "一生懸命部活するなんて、\nダサいとか思ってたけど…。",
+          "text": "I thought trying hard in\na club was lame, but..."
+        },
+        {
+          "offset": "0x2110",
+          "original": "今日は、ちょっと\n感動しちゃったかなって\n感じ。",
+          "text": "today I was kinda,\nlike, a little\nmoved."
+        },
+        {
+          "offset": "0x2154",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x2164",
+          "original": "あっ、{G}。\n来てくれたんだ。",
+          "text": "Oh, {G}\nYou came."
+        },
+        {
+          "offset": "0x2180",
+          "original": "あ、あの…頑張って下さい。",
+          "text": "U-um... please do your best."
+        },
+        {
+          "offset": "0x219c",
+          "original": "うん、頑張るよ。",
+          "text": "Yeah, I will."
+        },
+        {
+          "offset": "0x21b0",
+          "original": "あの…これ、お守りです。",
+          "text": "Um... this is a charm."
+        },
+        {
+          "offset": "0x21cc",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x21dc",
+          "original": "わ、私、応援してます。",
+          "text": "I-I'm cheering for you."
+        },
+        {
+          "offset": "0x2218",
+          "original": "あっ、{G}！",
+          "text": "Oh, hi, {G}"
+        },
+        {
+          "offset": "0x2230",
+          "original": "な、泣いてるぞ。",
+          "text": "Sh-she's crying."
+        },
+        {
+          "offset": "0x2244",
+          "original": "あ、あの…。",
+          "text": "U-um..."
+        },
+        {
+          "offset": "0x2254",
+          "original": "な、何？",
+          "text": "Wh-what?"
+        },
+        {
+          "offset": "0x2260",
+          "original": "お、おめでとうございます。\n私…。",
+          "text": "C-congratulations.\nI..."
+        },
+        {
+          "offset": "0x2284",
+          "original": "ありがとう。\n{G}のお守り、\n効いたね。",
+          "text": "Thanks.\nYour charm, {G}\nreally worked."
+        },
+        {
+          "offset": "0x22a8",
+          "original": "ありがとうございます…\n嬉しいです。",
+          "text": "Thank you...\nI'm so happy."
+        },
+        {
+          "offset": "0x22fc",
+          "original": "{G}、泣いてるぞ。",
+          "text": "{G}'s crying."
+        },
+        {
+          "offset": "0x230c",
+          "original": "ごめんなさい…。",
+          "text": "I'm sorry..."
+        },
+        {
+          "offset": "0x2320",
+          "original": "私が…私が\n応援になんか来たから…。",
+          "text": "It's because... because\nI came to cheer..."
+        },
+        {
+          "offset": "0x2344",
+          "original": "何言ってんの。\nそんなことないよ。",
+          "text": "What are you saying?\nThat's not it."
+        },
+        {
+          "offset": "0x2368",
+          "original": "でも…でも、私…。",
+          "text": "But... but I..."
+        },
+        {
+          "offset": "0x237c",
+          "original": "ごめんね、せっかく\n来てくれたのに…。",
+          "text": "Sorry, after\nyou came all this way..."
+        },
+        {
+          "offset": "0x23a4",
+          "original": "いえ…。お守り、\n効きませんでしたね。",
+          "text": "No... The charm\ndidn't work."
+        },
+        {
+          "offset": "0x23cc",
+          "original": "いや、おかげでほら、\n怪我もせずに済んだし。",
+          "text": "No, thanks to it,\nI didn't get hurt."
+        },
+        {
+          "offset": "0x23f8",
+          "original": "私、一生懸命\nお祈りしてたのに…。",
+          "text": "I prayed\nso hard..."
+        },
+        {
+          "offset": "0x2448",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x2458",
+          "original": "あっ、優美ちゃん。",
+          "text": "Oh, Yumi."
+        },
+        {
+          "offset": "0x246c",
+          "original": "頑張って下さいね。",
+          "text": "Do your best!"
+        },
+        {
+          "offset": "0x2480",
+          "original": "うん、頑張るよ。",
+          "text": "Yeah, I will."
+        },
+        {
+          "offset": "0x2494",
+          "original": "でもすごいなー、\n日本一ですよ。",
+          "text": "But wow,\nthe best in Japan!"
+        },
+        {
+          "offset": "0x24b4",
+          "original": "ははは、勝てればね。",
+          "text": "Hahaha, if I win."
+        },
+        {
+          "offset": "0x24cc",
+          "original": "勝って下さいね。",
+          "text": "Please win!"
+        },
+        {
+          "offset": "0x24e0",
+          "original": "優美と約束して下さい。\n勝つって。",
+          "text": "Promise Yumi\nyou'll win."
+        },
+        {
+          "offset": "0x2504",
+          "original": "よし、約束。",
+          "text": "Okay, I promise."
+        },
+        {
+          "offset": "0x2514",
+          "original": "じゃあね。日本一だよ。\n優美、応援してるからね。",
+          "text": "Bye! Number one!\nYumi's cheering for you!"
+        },
+        {
+          "offset": "0x256c",
+          "original": "おめでとうございます！",
+          "text": "Congratulations!"
+        },
+        {
+          "offset": "0x2584",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x2594",
+          "original": "優美との約束、\n守ってくれたんだね。",
+          "text": "You kept your\npromise to Yumi!"
+        },
+        {
+          "offset": "0x25b8",
+          "original": "うん。守ったよ。",
+          "text": "Yeah. I kept it."
+        },
+        {
+          "offset": "0x25cc",
+          "original": "わーい！",
+          "text": "Yaaay!"
+        },
+        {
+          "offset": "0x25ec",
+          "original": "負け、負けちゃった…。",
+          "text": "You l-lost..."
+        },
+        {
+          "offset": "0x2604",
+          "original": "ごめんね、優美ちゃん。\n約束、守れなかったよ。",
+          "text": "Sorry, Yumi.\nI broke my promise."
+        },
+        {
+          "offset": "0x2634",
+          "original": "優美、\n一生懸命応援したのに…。",
+          "text": "Yumi cheered\nso hard..."
+        },
+        {
+          "offset": "0x2654",
+          "original": "泣かないで、優美ちゃん。",
+          "text": "Don't cry, Yumi."
+        },
+        {
+          "offset": "0x2670",
+          "original": "だって、だってぇ…。",
+          "text": "But, but..."
+        },
+        {
+          "offset": "0x2688",
+          "original": "俺はもう平気だから。",
+          "text": "I'm fine now."
+        },
+        {
+          "offset": "0x26a0",
+          "original": "せっかくここまで来たのに…。",
+          "text": "After coming all this way..."
+        },
+        {
+          "offset": "0x26dc",
+          "original": "\n　　　　　　　　ドン",
+          "text": "\n                Bump"
+        },
+        {
+          "offset": "0x26f4",
+          "original": "いてっ。",
+          "text": "Ow!"
+        },
+        {
+          "offset": "0x2708",
+          "original": "{-謎の女}あっ、ごめんなさい。",
+          "text": "{-Girl}Oh, I'm sorry."
+        },
+        {
+          "offset": "0x2724",
+          "original": "えっと…？",
+          "text": "Um...?"
+        },
+        {
+          "offset": "0x2730",
+          "original": "{-謎の女}すごいね、決勝だよ。",
+          "text": "{-Girl}Wow, the final!"
+        },
+        {
+          "offset": "0x274c",
+          "original": "{-謎の女}頑張ってね。",
+          "text": "{-Girl}Good luck."
+        },
+        {
+          "offset": "0x2774",
+          "original": "やあ、おはよう。",
+          "text": "Ah, good morning."
+        },
+        {
+          "offset": "0x278c",
+          "original": "げ、{G}。\n何しに来たんだ？",
+          "text": "Ugh. It's {G}\nWhat are you doing here?"
+        },
+        {
+          "offset": "0x27a8",
+          "original": "我がきらめき高校が、\n日本一になるかどうかの\n瞬間だからね。",
+          "text": "Our Kirameki High\nmay become number one\nin all of Japan."
+        },
+        {
+          "offset": "0x27e4",
+          "original": "見に来てあげたんだよ。",
+          "text": "So I graced it with a visit."
+        },
+        {
+          "offset": "0x27fc",
+          "original": "はいはい。\nそこでおとなしく見てろよ。",
+          "text": "Yeah, yeah.\nJust sit there and watch."
+        },
+        {
+          "offset": "0x2824",
+          "original": "頑張ってくれたまえ。\nきらめき高校の名誉が\nかかってるんだ。",
+          "text": "Do try your best.\nKirameki High's honor\nis at stake."
+        },
+        {
+          "offset": "0x2874",
+          "original": "はっはっはっ！君も\nなかなかやるじゃないか。\nまさか、日本一とはね。",
+          "text": "Hahaha! You're not\nbad at all, are you?\nNumber one in Japan!"
+        },
+        {
+          "offset": "0x28b8",
+          "original": "お誉めに与り、光栄の至り。\nじゃあな、{G}。",
+          "text": "I'm honored by your praise.\nSee ya, {G}"
+        },
+        {
+          "offset": "0x28e4",
+          "original": "あっ、待ちたまえ！",
+          "text": "Ah, wait!"
+        },
+        {
+          "offset": "0x2904",
+          "original": "まぁ、健闘したほうだろう。",
+          "text": "Well, you put up a fight."
+        },
+        {
+          "offset": "0x2920",
+          "original": "うるせぇぞ、{G}。",
+          "text": "Can it, {G}"
+        },
+        {
+          "offset": "0x2930",
+          "original": "そう怒ることはないじゃな\nいか。準優勝でもたいした\nものだよ。",
+          "text": "No need to get angry.\nSecond place is still\nquite something."
+        },
+        {
+          "offset": "0x297c",
+          "original": "あと一蹴り。\nあと一蹴りだったのに。\n残念だ‥‥。",
+          "text": "One more kick.\nJust one more kick.\nSo close...."
+        },
+        {
+          "offset": "0x29b4",
+          "original": "白球にかけた、俺の青春は\n終った・・・・・。",
+          "text": "My youth, given to\nthe white ball, is over..."
+        },
+        {
+          "offset": "0x29e4",
+          "original": "タッチの差で、\n負けてしまったか‥‥。",
+          "text": "Lost by\na fingertip...."
+        },
+        {
+          "offset": "0x2a10",
+          "original": "あと１０Ｃｍ、せめて\n５Ｃｍでいい、身長が\n高かったらなぁ‥‥。",
+          "text": "If only I were 10 cm,\neven just 5 cm,\ntaller...."
+        },
+        {
+          "offset": "0x536c",
+          "original": "なに？",
+          "text": "What?"
+        },
+        {
+          "offset": "0x5374",
+          "original": "は？",
+          "text": "Huh?"
+        },
+        {
+          "offset": "0x537c",
+          "original": "に、{G}？",
+          "text": "N-{G}"
+        },
+        {
+          "offset": "0x5384",
+          "original": "そう？",
+          "text": "Oh?"
+        },
+        {
+          "offset": "0x538c",
+          "original": "うん？",
+          "text": "Hm?"
+        },
+        {
+          "offset": "0x5394",
+          "original": "え？",
+          "text": "Huh?"
+        },
+        {
+          "offset": "0x539c",
+          "original": "えっ？",
+          "text": "Huh?"
+        },
+        {
+          "offset": "0x53a4",
+          "original": "えっ？",
+          "text": "Huh?"
+        }
+      ]
+    }
+  ]
+}

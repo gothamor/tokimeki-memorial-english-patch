@@ -1,0 +1,437 @@
+{
+  "description": "The band club's contest day: all of MASTER/SUI_CON.BIN (85 strings; MASTER.EXN, base 0x801E8000; game-internals 6ad). Verified in DuckStation on forced contest days (force_event.py 0 0 --type T --club C, hidden emulator; docs/testing.md 'Club contests'): 0x27, club 5 (Band): the international band contest, the player's lines and the walk home. Checked only statically: the other results (each contest has win and loss texts) and the girls' congratulations.",
+  "dialogue": [
+    {
+      "file": "CDROM/MASTER/SUI_CON.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "クラブの皆で頑張った吹奏\n楽が、国際吹奏楽コンクー\nルで見事優勝した。",
+          "text": "Our club's hard work\npaid off: we won the\nIntl. Band Contest!"
+        },
+        {
+          "offset": "0x48",
+          "original": "吹奏楽部で３年間頑張った\n成果が出たぜ。",
+          "text": "Three years in the Band\nreally paid off."
+        },
+        {
+          "offset": "0x70",
+          "original": "これで、\n音楽家への道が開けたぜ。",
+          "text": "Now the road to\nbeing a musician is open."
+        },
+        {
+          "offset": "0xa0",
+          "original": "頑張った甲斐があったぜ。",
+          "text": "It was worth the effort."
+        },
+        {
+          "offset": "0xc0",
+          "original": "…。\n変な髪型。",
+          "text": "...\nWeird hairdo."
+        },
+        {
+          "offset": "0xd4",
+          "original": "あの娘、\n学校でもぶつかるよな。",
+          "text": "That girl's always\nbumping into me at school."
+        },
+        {
+          "offset": "0xf8",
+          "original": "待たないよ。",
+          "text": "I won't wait."
+        },
+        {
+          "offset": "0x10c",
+          "original": "{G}、どうかしたの？",
+          "text": "What's wrong, {G}"
+        },
+        {
+          "offset": "0x120",
+          "original": "私達…\n優勝しちゃったのよね。",
+          "text": "We...\nreally won, didn't we."
+        },
+        {
+          "offset": "0x140",
+          "original": "うん、優勝しちゃった。",
+          "text": "Yeah, we won."
+        },
+        {
+          "offset": "0x158",
+          "original": "すごいね…。夢みたい。",
+          "text": "Amazing... Like a dream."
+        },
+        {
+          "offset": "0x184",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x194",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x1a0",
+          "original": "国際吹奏楽コンクール優勝、\nおめでとう。\nいい演奏だったわ。",
+          "text": "Congrats on winning\nthe Band Contest.\nYou played well."
+        },
+        {
+          "offset": "0x1dc",
+          "original": "そう？ありがとう。",
+          "text": "Yeah? Thanks."
+        },
+        {
+          "offset": "0x1f0",
+          "original": "すごいね…。夢みたい。",
+          "text": "Amazing... Like a dream."
+        },
+        {
+          "offset": "0x218",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x228",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x234",
+          "original": "国際吹奏楽コンクール優勝、\nおめでとうございます。\n素晴らしい演奏でした。",
+          "text": "Congratulations on\nwinning the Band Contest.\nIt was a splendid show."
+        },
+        {
+          "offset": "0x280",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x290",
+          "original": "すごいですね…\n感動しました。",
+          "text": "That's amazing...\nI was so moved."
+        },
+        {
+          "offset": "0x2c0",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x2d0",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x2dc",
+          "original": "国際吹奏楽コンクールで\n優勝したわね。",
+          "text": "So you won the\nBand Contest."
+        },
+        {
+          "offset": "0x304",
+          "original": "聞いてくれたの？\nどうだった？",
+          "text": "You listened?\nHow was it?"
+        },
+        {
+          "offset": "0x324",
+          "original": "くだらないけど、\n他人より優れているのは\nいいことよ。",
+          "text": "It's foolish, but\nbeing better than\nothers is good."
+        },
+        {
+          "offset": "0x36c",
+          "original": "私達が優勝したなんて…\nなんだか夢みたいね。",
+          "text": "Us, winning...\nIt's like a dream."
+        },
+        {
+          "offset": "0x398",
+          "original": "ははは、そうだね。",
+          "text": "Haha, it sure is."
+        },
+        {
+          "offset": "0x3ac",
+          "original": "優勝したのよねぇ…。",
+          "text": "We won, didn't we..."
+        },
+        {
+          "offset": "0x3c4",
+          "original": "しちゃったんだよね。",
+          "text": "We sure did."
+        },
+        {
+          "offset": "0x3f4",
+          "original": "ハーイ、{P}。",
+          "text": "Hi there, {P}."
+        },
+        {
+          "offset": "0x404",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x410",
+          "original": "国際吹奏楽コンクール優勝、\nおめでとう。\n聞いてたわよ。",
+          "text": "Congrats on winning\nthe Band Contest.\nI was listening."
+        },
+        {
+          "offset": "0x448",
+          "original": "ありがとう。どうだった？",
+          "text": "Thanks. How was it?"
+        },
+        {
+          "offset": "0x464",
+          "original": "ワンダフル、\n素晴らしかったわ。",
+          "text": "Wonderful,\nit was marvelous."
+        },
+        {
+          "offset": "0x494",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x4a4",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x4b0",
+          "original": "国際吹奏楽コンクール優勝、\nおめでとう。\n聞いてたよ。",
+          "text": "Congrats on winning\nthe Band Contest.\nI was listening."
+        },
+        {
+          "offset": "0x4e8",
+          "original": "ありがとう。\nどうだった？",
+          "text": "Thanks.\nHow was it?"
+        },
+        {
+          "offset": "0x504",
+          "original": "すごく良かったよ。\n私でも感動したから。",
+          "text": "It was really good.\nEven I was moved."
+        },
+        {
+          "offset": "0x53c",
+          "original": "こんにちは\n{P}。",
+          "text": "Good afternoon,\n{P}"
+        },
+        {
+          "offset": "0x550",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x55c",
+          "original": "この度は、なにか大きな賞\nをいただいたそうで、\nおめでとうございます。",
+          "text": "I hear you received\nsome great award.\nCongratulations."
+        },
+        {
+          "offset": "0x5a4",
+          "original": "ははは、\n国際吹奏楽コンクールで\n優勝したんだよ。",
+          "text": "Hahaha,\nwe won the International\nBand Contest."
+        },
+        {
+          "offset": "0x5d8",
+          "original": "国際…長いですねぇ",
+          "text": "International... so long."
+        },
+        {
+          "offset": "0x5ec",
+          "original": "そ、そう？",
+          "text": "R-really?"
+        },
+        {
+          "offset": "0x60c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x61c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x628",
+          "original": "国際吹奏楽コンクール優勝、\nおめでとう。\n聞いてたよ。",
+          "text": "Congrats on winning\nthe Band Contest.\nI was listening."
+        },
+        {
+          "offset": "0x660",
+          "original": "ありがとう。\nどうだった？",
+          "text": "Thanks.\nHow was it?"
+        },
+        {
+          "offset": "0x67c",
+          "original": "うまく言えないけど…\nすごく素敵だった。",
+          "text": "I can't say it well...\nbut it was wonderful."
+        },
+        {
+          "offset": "0x6b4",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x6c4",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x6d0",
+          "original": "国際吹奏楽コンクール、\n優勝おめでとう。",
+          "text": "Congrats on winning\nthe Band Contest."
+        },
+        {
+          "offset": "0x6f8",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x708",
+          "original": "あなたが受賞するのは、\n悪い気分じゃないわね。",
+          "text": "You winning a prize\ndoesn't feel bad."
+        },
+        {
+          "offset": "0x74c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x75c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x768",
+          "original": "国際吹奏楽コンクール優勝、\nおめでとう。",
+          "text": "Congrats on winning\nthe Band Contest."
+        },
+        {
+          "offset": "0x790",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x7a0",
+          "original": "これであなたも有名人だね。",
+          "text": "Now you're famous!"
+        },
+        {
+          "offset": "0x7cc",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x7dc",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x7e8",
+          "original": "あの…\n国際吹奏楽コンクール、\n優勝おめでとうございます。\nすごく素敵でした。",
+          "text": "Um...\ncongratulations on\nwinning the Band Contest.\nIt was wonderful."
+        },
+        {
+          "offset": "0x834",
+          "original": "ありがとう、{G}。\n聞いててくれたんだ。",
+          "text": "Thanks, {G}\nYou were listening."
+        },
+        {
+          "offset": "0x85c",
+          "original": "は、はい…。",
+          "text": "Y-yes..."
+        },
+        {
+          "offset": "0x87c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x88c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x898",
+          "original": "国際吹奏楽コンクール優勝、\nおめでとうございます。",
+          "text": "Congratulations on\nwinning the Band Contest!"
+        },
+        {
+          "offset": "0x8cc",
+          "original": "ありがとう、{G}。",
+          "text": "Thanks, {G}"
+        },
+        {
+          "offset": "0x8dc",
+          "original": "優美、\n友達に自慢しちゃうんだー。",
+          "text": "Yumi's gonna brag\nto her friends!"
+        },
+        {
+          "offset": "0x910",
+          "original": "\n　　　　　　　　ドン",
+          "text": "\n                Bump"
+        },
+        {
+          "offset": "0x928",
+          "original": "いてっ。",
+          "text": "Ow!"
+        },
+        {
+          "offset": "0x93c",
+          "original": "{-謎の女}あっ、ごめんなさい。",
+          "text": "{-Girl}Oh, I'm sorry."
+        },
+        {
+          "offset": "0x958",
+          "original": "えっと…？",
+          "text": "Um...?"
+        },
+        {
+          "offset": "0x964",
+          "original": "{-謎の女}あっ、天才音楽家の…。",
+          "text": "{-Girl}Oh, the genius musician..."
+        },
+        {
+          "offset": "0x984",
+          "original": "えっ？\n（俺のこと？）",
+          "text": "Huh?\n(Me?)"
+        },
+        {
+          "offset": "0x99c",
+          "original": "{-謎の女}本当に、ごめんなさい。\nそれじゃ…。",
+          "text": "{-Girl}I'm so sorry.\nBye..."
+        },
+        {
+          "offset": "0x9dc",
+          "original": "やあ、おはよう。",
+          "text": "Ah, good morning."
+        },
+        {
+          "offset": "0x9f4",
+          "original": "い、{G}。\nなんでこんなところに。",
+          "text": "I-{G}\nWhy are you here?"
+        },
+        {
+          "offset": "0xa14",
+          "original": "いやなに、君が\n国際吹奏楽コンクールで\n優勝したというので、\n本当かどうか確かめに…。",
+          "text": "Oh, I heard\nyou'd won the\nBand Contest, so I\ncame to see if it's true..."
+        },
+        {
+          "offset": "0xa68",
+          "original": "………。\nおまえも暇だな。\nじゃあな、伊集院。",
+          "text": "......\nYou've got time to kill.\nSee you, Ijuin."
+        },
+        {
+          "offset": "0xa98",
+          "original": "あっ、待ちたまえ！",
+          "text": "Ah, wait!"
+        },
+        {
+          "offset": "0x169c",
+          "original": "{G}？",
+          "text": "{G}"
+        },
+        {
+          "offset": "0x16a0",
+          "original": "そう？",
+          "text": "Oh?"
+        }
+      ]
+    }
+  ]
+}

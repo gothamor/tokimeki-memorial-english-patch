@@ -1,0 +1,397 @@
+{
+  "description": "The literature club's contest day: all of MASTER/UEKI.BIN (77 strings; MASTER.EXN, base 0x801E8000; game-internals 6ad). Verified in DuckStation on forced contest days (force_event.py 0 0 --type T --club C, hidden emulator; docs/testing.md 'Club contests'): 0x27, club 0 (Literature): the Ueki Prize, the player's lines and the walk home. Checked only statically: the other results (each contest has win and loss texts) and the girls' congratulations.",
+  "dialogue": [
+    {
+      "file": "CDROM/MASTER/UEKI.BIN",
+      "base": "0x801e8000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "密かに応募していた小説\n『人間合格』で植木賞を\n受賞してしまうとは、\n俺って、なんて天才なんだ。",
+          "text": "My secret entry, the\nnovel \"Fully Human,\"\nwon the Ueki Prize.\nWhat a genius I am."
+        },
+        {
+          "offset": "0x60",
+          "original": "３年間、文芸部で頑張った\n成果が出たぜ。",
+          "text": "Three years in Literature\nreally paid off."
+        },
+        {
+          "offset": "0x88",
+          "original": "これで、\n作家への道が開けたぜ。",
+          "text": "Now the road to\nbeing a writer is open."
+        },
+        {
+          "offset": "0xb4",
+          "original": "頑張った甲斐があったぜ。",
+          "text": "It was worth the effort."
+        },
+        {
+          "offset": "0xd4",
+          "original": "サインか…。\n今度、練習しておかなきゃ。",
+          "text": "An autograph...\nI'll have to practice one."
+        },
+        {
+          "offset": "0x100",
+          "original": "…。\nなんだろう、あの娘？",
+          "text": "...\nWho was that girl?"
+        },
+        {
+          "offset": "0x120",
+          "original": "あの娘、\nどこかで会ったような？",
+          "text": "Haven't I met\nher somewhere?"
+        },
+        {
+          "offset": "0x144",
+          "original": "あいつ、暇なんだな。",
+          "text": "He's got time to kill."
+        },
+        {
+          "offset": "0x160",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x170",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x17c",
+          "original": "植木賞受賞、おめでとう。\nよかったね。",
+          "text": "Congrats on the Ueki Prize.\nGood for you."
+        },
+        {
+          "offset": "0x1a4",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x1b4",
+          "original": "すごいね…。夢みたい。",
+          "text": "Amazing... Like a dream."
+        },
+        {
+          "offset": "0x1dc",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x1ec",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x1f8",
+          "original": "植木賞受賞、\nおめでとうございます。",
+          "text": "Congratulations on\nthe Ueki Prize."
+        },
+        {
+          "offset": "0x21c",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x22c",
+          "original": "すごいですね…\n感動しました。",
+          "text": "That's amazing...\nI was so moved."
+        },
+        {
+          "offset": "0x25c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x26c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x278",
+          "original": "植木賞、とったわね。\n読んだわよ。",
+          "text": "So you won the Ueki.\nI read it."
+        },
+        {
+          "offset": "0x29c",
+          "original": "ありがとう。",
+          "text": "Thanks."
+        },
+        {
+          "offset": "0x2ac",
+          "original": "くだらないけど、\n他人より優れているのは\nいいことよ。",
+          "text": "It's foolish, but\nbeing better than\nothers is good."
+        },
+        {
+          "offset": "0x2f4",
+          "original": "ハーイ、{P}。",
+          "text": "Hi there, {P}."
+        },
+        {
+          "offset": "0x304",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x310",
+          "original": "植木賞、おめでとう。\n読んだわよ。",
+          "text": "Congrats on the Ueki.\nI read it."
+        },
+        {
+          "offset": "0x334",
+          "original": "ありがとう。どうだった？",
+          "text": "Thanks. How was it?"
+        },
+        {
+          "offset": "0x350",
+          "original": "ワンダフル、\n素晴らしかったわ。",
+          "text": "Wonderful,\nit was marvelous."
+        },
+        {
+          "offset": "0x380",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x390",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x39c",
+          "original": "植木賞、おめでとう。\n読んだよ。",
+          "text": "Congrats on the Ueki.\nI read it."
+        },
+        {
+          "offset": "0x3bc",
+          "original": "ありがとう。どうだった？",
+          "text": "Thanks. How was it?"
+        },
+        {
+          "offset": "0x3d8",
+          "original": "すごく良かったよ。\n私でも感動したから。",
+          "text": "It was really good.\nEven I was moved."
+        },
+        {
+          "offset": "0x410",
+          "original": "こんにちは、{P}。",
+          "text": "Good afternoon, {P}"
+        },
+        {
+          "offset": "0x424",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x430",
+          "original": "この度は、なにか大きな賞\nをいただいたそうで、\nおめでとうございます。",
+          "text": "I hear you received\nsome great award.\nCongratulations."
+        },
+        {
+          "offset": "0x478",
+          "original": "ははは、植木賞だよ。\n小説の。",
+          "text": "Hahaha, the Ueki Prize.\nFor novels."
+        },
+        {
+          "offset": "0x498",
+          "original": "はい、読みましたけれど、\n賞の名前を\n忘れてしまいまして…",
+          "text": "Yes, I read it,\nbut the award's name\nslipped my mind..."
+        },
+        {
+          "offset": "0x4d4",
+          "original": "そ、そう。",
+          "text": "I-I see."
+        },
+        {
+          "offset": "0x4f4",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x504",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x510",
+          "original": "植木賞をとるなんて、\nすごいじゃない。",
+          "text": "Winning the Ueki Prize?\nAmazing!"
+        },
+        {
+          "offset": "0x538",
+          "original": "ありがとう。\n読んでくれた？",
+          "text": "Thanks.\nDid you read it?"
+        },
+        {
+          "offset": "0x554",
+          "original": "うまく言えないけど…\nすごく素敵だった。",
+          "text": "I can't say it well...\nbut it was wonderful."
+        },
+        {
+          "offset": "0x58c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x59c",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x5a8",
+          "original": "植木賞、おめでとう。",
+          "text": "Congrats on the Ueki."
+        },
+        {
+          "offset": "0x5c0",
+          "original": "ありがとう。\n読んでくれたの？",
+          "text": "Thanks.\nYou read it?"
+        },
+        {
+          "offset": "0x5e0",
+          "original": "ああいうのも、\nたまには悪くないわね。",
+          "text": "That sort of thing\nisn't bad now and then."
+        },
+        {
+          "offset": "0x618",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x628",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x634",
+          "original": "植木賞とったんだってね。",
+          "text": "I hear you won the Ueki."
+        },
+        {
+          "offset": "0x650",
+          "original": "さすが{G}、\n情報が早いね。",
+          "text": "Leave it to {G}\nyou're quick with news."
+        },
+        {
+          "offset": "0x66c",
+          "original": "もち！\nあなたのことだもんね。",
+          "text": "Duh!\nIt's about you, after all."
+        },
+        {
+          "offset": "0x69c",
+          "original": "あっ、{P}。",
+          "text": "Oh, {P}"
+        },
+        {
+          "offset": "0x6ac",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x6b8",
+          "original": "あの…\nおめでとうございます。\nあっ、あの、植木賞…。",
+          "text": "Um...\ncongratulations.\nOh, um, the Ueki..."
+        },
+        {
+          "offset": "0x6f0",
+          "original": "ありがとう、{G}。",
+          "text": "Thanks, {G}"
+        },
+        {
+          "offset": "0x700",
+          "original": "は、はい…。",
+          "text": "Y-yes..."
+        },
+        {
+          "offset": "0x720",
+          "original": "あっ、{P}。\n",
+          "text": "Oh, {P}\n"
+        },
+        {
+          "offset": "0x730",
+          "original": "あっ、{G}。",
+          "text": "Oh, {G}"
+        },
+        {
+          "offset": "0x73c",
+          "original": "植木賞受賞、\nおめでとうございます。",
+          "text": "Congratulations on\nthe Ueki Prize."
+        },
+        {
+          "offset": "0x760",
+          "original": "ありがとう、{G}。",
+          "text": "Thanks, {G}"
+        },
+        {
+          "offset": "0x770",
+          "original": "今度、サインくださいね。",
+          "text": "Give me an autograph!"
+        },
+        {
+          "offset": "0x78c",
+          "original": "サ、サイン！？",
+          "text": "A-an autograph!?"
+        },
+        {
+          "offset": "0x7b0",
+          "original": "\n　　　　　　　ドン",
+          "text": "\n               Bump"
+        },
+        {
+          "offset": "0x7c4",
+          "original": "いてっ。",
+          "text": "Ow!"
+        },
+        {
+          "offset": "0x7d8",
+          "original": "{-謎の女}あっ、ごめんなさい。",
+          "text": "{-Girl}Oh, I'm sorry."
+        },
+        {
+          "offset": "0x7f4",
+          "original": "えっと…？",
+          "text": "Um...?"
+        },
+        {
+          "offset": "0x800",
+          "original": "{-謎の女}あっ、植木賞作家の…。",
+          "text": "{-Girl}Oh, the Ueki author..."
+        },
+        {
+          "offset": "0x820",
+          "original": "えっ？\n（俺のこと？）",
+          "text": "Huh?\n(Me?)"
+        },
+        {
+          "offset": "0x838",
+          "original": "{-謎の女}本当に、ごめんなさい。\nそれじゃ…。",
+          "text": "{-Girl}I'm so sorry.\nBye..."
+        },
+        {
+          "offset": "0x878",
+          "original": "やあ、おはよう。",
+          "text": "Ah, good morning."
+        },
+        {
+          "offset": "0x890",
+          "original": "い、伊集院。\nなんでこんなところに。",
+          "text": "I-Ijuin.\nWhy are you here?"
+        },
+        {
+          "offset": "0x8b4",
+          "original": "いやなに、君が植木賞を\nとったというので、\n本当かどうか確かめに…。",
+          "text": "Oh, I heard you won\nthe Ueki Prize, so\nI came to check..."
+        },
+        {
+          "offset": "0x8f8",
+          "original": "そのために、わざわざ？\n………。\nじゃあな、伊集院。",
+          "text": "All that way for this?\n......\nSee you, Ijuin."
+        },
+        {
+          "offset": "0x92c",
+          "original": "あっ、待ちたまえ！",
+          "text": "Ah, wait!"
+        }
+      ]
+    }
+  ]
+}

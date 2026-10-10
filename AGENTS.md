@@ -153,6 +153,8 @@ against the tested candidate when promotion should not change game bytes.
 
 | `translation/sickbed.json`, `encouragement.json`, `group_dates.json` + `sickbed_words.json`, `group_date_words.json` (all of `SERIFU/OMIMAI`, `HAGEMASI`, `GROUP_D.BIN`; OMIMAI.EXN/DATE2.EXN words) | Verified in DuckStation, hidden emulator: Shiori's sickbed visit (state 0x62), five girls' encouragement (record 0x47), Yoshio's group date with Shiori and Mio and three ride choices (record 0x49). **Checked only statically:** other girls' visits, other pairs. KARADATA (karaoke) and ZAKOSEN (thugs) are drafts in `translation/extra/`: their triggers aren't found yet. |
 
+| `translation/contest_{literature,drama,science,game,art,band,sports,baseball}.json` + `contest_words.json` (all of `MASTER/*.BIN`, MASTER.EXN words) | Verified in DuckStation on forced contest days (hidden emulator): every culture club's contest (record 0x27 by club), three sports finals (0x26) and the baseball tournament (0x25). **Checked only statically:** the other results of each contest and the girls' congratulations. Practice matches (`SIAI_TX`, RENSYU.EXN) stay a draft in `translation/extra/`: not reached yet. |
+
 Update this table when you verify something.
 
 ## Working in this environment (Windows dev box)

@@ -2389,6 +2389,25 @@ by OPTION.EXN (`0x8013878C`, the Extras "Ending" replay).
 over the tree art, with the girl's name and ENDING.EXN's career words
 (`{M}`) inserted.
 
+### 6ad. Club contests (MASTER.EXN, MASTER/*.BIN)
+
+Found 2026-10-11 by forcing the day records (`force_event.py 0 0 --type T
+--club C`, club in the top 4 bits of the u16 `0x800E6374`):
+- **0x25** → state 0x74: the baseball tournament, KOSIEN.BIN (whatever
+  the club), with its secret-move box.
+- **0x26** → 0x75: a sports club's nationals final, TAI_MAS.BIN (soccer,
+  swimming, basketball seen; the "Caster" label); with a culture club it
+  returns to the title screen.
+- **0x27** → 0x76: a culture club's contest; MASTER.EXN switches on the
+  club (`0x80132478`, jump table `0x8013BA68`): 0 Literature UEKI, 1
+  Drama EN_GP, 2 Science NOBEL, 3 Computers G_CON (then its shoot-'em-up
+  minigame), 4 Art MOKUTEN (目展, the game's Nitten parody: "Meten"), 5
+  Band SUI_CON. With a sports club it returns to the title screen.
+
+Practice matches (RENSYU.EXN, state 0x73, `SHIAI/SIAI_TX.BIN`): forcing
+the state alone returns to the title; their record isn't found yet, so
+`practice_matches.json` stays a draft.
+
 ## 7. Graphics
 
 ### General
