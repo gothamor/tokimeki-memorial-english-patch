@@ -1074,6 +1074,39 @@ girl; the menu lists only met girls, so `--met G --girl G` swaps the pick.
   most girls' invitations and refusals, the softer Nozomi section 7, other
   battle outcomes.
 
+### The other girls' special events (EVENT_*.BIN, 2026-10-10)
+
+All from the Sunday state, emulator hidden, batch script
+`.emu/ev_runs.sh` (local). Four ways in (game-internals §6z):
+- **GEKO scenes:** `xmas_run.ps1 -Tool "tools/emu/force_event.py GIRL
+  SCENE" -Presses 30` (runs `g01`–`g22`): Yuina 1, 7; Ayako 1; Nozomi 1,
+  8; Mio 1; Yukari 1, 2; Megumi 1, 2; Saki 1; Mira 1; Yumi 1, 2, 7;
+  Ijuin 1–3; Miharu 1, 2, 4; Yoshio's.
+- **Christmas walks:** `force_christmas.py --girl 7` / `--girl 9` (`s01`
+  Mira, `s02` Megumi; new stages in the forcer).
+- **Date events:** `date_run.ps1 -Girl G -Place P -Extra "--event N"
+  -Presses 32` (new `force_date.py --event`, `d01`–`d37`): every DATE
+  entry of all nine girls. The scene plays after the meeting whatever the
+  place, then the date ends; the end-of-date lines and the
+  answering-machine messages that follow are other files (still Japanese
+  where they belong to other girls' DATE_* files).
+- **School-trip events:** `force_trip.py --event-mood` (`t21`/`t25`
+  Yuina, Hokkaido, through the crop circle into the alien battle; `t22`
+  Ayako, Okinawa, the expat; `t24` Yukari's bath). Saki's cold (`t23`)
+  didn't start: it needs a birthday-dependent flag (§6z).
+- Seen in English: every scene above, labels Tchr/Boss/Minion/Tyke/Mu/
+  Expat/Girl/???, the event banners. Fixed before the runs: Yuina's file
+  needed 78 bytes more than the original had; 18 long lines shortened.
+  The trip's Ayako lines (school_trip.json) got the same odd-name fix as
+  Yuina's and Mio's (§6y).
+- Odd but not caused by this patch: forced date events end with the date
+  girl's Japanese goodbye lines (her DATE_* file, not translated yet), and
+  the standing-up message then plays because the forced jump skips the
+  date's normal end; "Mio  and I had" in that message (phone_calls.json)
+  shows the double space of an odd name before " and".
+- Not reached: Saki's trip cold, Miharu's mix-up (DATE entry 76), Nozomi's
+  soft/tomboy alternatives beyond one each, the battles' outcomes.
+
 ### Disassembly
 
 ```bash

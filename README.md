@@ -5,15 +5,15 @@ English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
 <!-- progress:start -->
-**Translated: 32%**
+**Translated: 35%**
 
 ```text
-Whole game             ██████░░░░░░░░░░░░░░    32%
-Dialogue               ██████░░░░░░░░░░░░░░    32%
-Menus and other text   ██████░░░░░░░░░░░░░░    31%
+Whole game             ███████░░░░░░░░░░░░░    35%
+Dialogue               ███████░░░░░░░░░░░░░    36%
+Menus and other text   ██████░░░░░░░░░░░░░░    32%
 ```
 
-<sub>185,527 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>206,711 of 587,342 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage
@@ -86,6 +86,11 @@ existing output folder.
   with a girl (or with Yoshio), her answer, the sights, and the deer, habu
   or bear that interrupts the second free day
   ([school_trip.json](translation/school_trip.json)).
+- **Every girl's special events** (Yuina, Ayako, Mira, Mio, Yukari,
+  Nozomi, Megumi, Saki, Yumi) and Ijuin's, Miharu's and Yoshio's: school
+  scenes, date events, walks after the Christmas party, school-trip
+  scenes ([yuina_events.json](translation/yuina_events.json) and the other
+  `*_events.json`).
 - **Walking home from school** with any of the girls: her invitation or
   yours, her answer, and the chat on the way about upcoming events
   ([walk_home.json](translation/walk_home.json)).

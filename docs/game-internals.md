@@ -279,7 +279,7 @@ these as `\n` and `{X}` in translation files (`tokipatch/script.py`).
 | `0x20` | end of display line |
 | `q` (0x71) | end of a choice option (also ends the line) |
 | `P` | player's full name, family + given with no space (on screen: "My name's みみ.") |
-| `G` | the girl's name (RAM 0x800CA190) |
+| `G` | the girl's name (RAM 0x800CA190). Written only by `0x80051438(buf, girl)` (girl 0: the fixed 詩織 `0x800AFB7C`; 10: 優美 + ちゃん; 12: 伊集院; others: the short-name table `0x800B35F4` + さん), called from set_girl `0x80084838` and SHUGAKU `0x801397F8`, and by literal strcpy's in GEKO (`0x80141488`: 館林さん, Miharu) and SHOUGATU (`0x8013DFA8`: 伊集院). So at most 10 cells, Japanese or English (longest English: "Yukinojo", 8; the suffixes are empty in English): `TOKEN_CELLS["G"]` = 10 (was a guessed 18; changed 2026-10-10) |
 | `p`, `m` | RAM 0x800CA16C / 0x800CA174 (likely family / given name; unverified) |
 | `F` | `sprintf("%s%s", p-buffer, 0x800CA174)` (unverified) |
 | `Y` | the fixed string 好雄 (Yoshio) at 0x800B2240; a parallel expansion path uses 0x800B2250 |
@@ -2101,6 +2101,91 @@ patches, each checking the original instruction. The old 札幌/沖縄/北海道
 at `0x8F30`/`0x8FB8`/`0x8FC0` are then unused and left as they were.
 `{S}` counts 18 cells in the width check; an odd-length place name ends in
 its padding space, so the dialogue ends a line on `{S}`.
+
+### 6z. The other girls' special events (`SERIFU/EVENT_*.BIN`)
+
+Found 2026-10-10 by walking the shared event table (§6j) against each
+file and tracing its readers in GEKO, DATE, SHOUGATU and SHUGAKU; forced
+in DuckStation (testing.md "The other girls' special events"). Translated
+in `translation/<girl>_events.json` (Yuina, Ayako, Mira, Mio, Yukari,
+Nozomi, Megumi, Saki, Yumi, `other_events.json`) and the overlays'
+in-place words in `event_words.json`.
+
+**Files and entries.** All load at `0x80198000` (§6j "Loading": GEKO's
+loader `0x80138F7C` maps girl ids 0–13 to FU, KI, HI, KA, NI, KO, KY, KG,
+AS, MI, SA, then OT for 11–13; DATE, SHOUGATU and SHUGAKU have the same
+loader). Each file's strings are reached exactly by one block of the
+79-entry table, and every string of every file is reached:
+
+| File | Girl id | Entries | Strings | Readers |
+|---|---|---|---:|---|
+| EVENT_HI (Yuina) | 2 | 14–20 | 98 | GEKO 14, 20; DATE 15–18; SHUGAKU 19 (Hokkaido, trip stage 8) |
+| EVENT_KA (Ayako) | 3 | 24–29 | 108 | GEKO 24; DATE 25–28; SHUGAKU 29 (Okinawa, stage 9) |
+| EVENT_KG (Mira) | 7 | 30–36 | 116 | GEKO 30, 36; DATE 31–35; SHOUGATU 36 (walk after the Christmas party, stage 7) |
+| EVENT_KI (Mio) | 1 | 37–41 | 75 | GEKO 37; DATE 38–41 |
+| EVENT_KO (Yukari) | 5 | 42–48 | 118 | GEKO 42, 43; DATE 44–47; SHUGAKU 48 (trip stage 11) |
+| EVENT_KY (Nozomi) | 6 | 49–53 | 147 | GEKO 49; DATE 50–53 |
+| EVENT_MI (Megumi) | 9 | 54–60 | 140 | GEKO 54, 55; DATE 56–59; SHOUGATU 60 (walk after the party, stage 8) |
+| EVENT_NI (Saki) | 4 | 61–66 | 169 | GEKO 61; DATE 62–65; SHUGAKU 66 (trip stage 10) |
+| EVENT_SA (Yumi) | 10 | 67–73 | 160 | GEKO 67, 68, 73; DATE 69–72 |
+| EVENT_OT | 11 Miharu, 12 Ijuin, 13 Yoshio | 21–23, 74–78 | 190 | GEKO 21–23 (Ijuin), 74, 75, 77 (Miharu), 78 (Yoshio); DATE 76 (Miharu's mix-up) |
+
+A few other entries' pointers also land inside these files when read with
+the wrong file (12, 18, 20, 1, 39, 23 overlap strings by chance); they
+belong to the files in the table.
+Nozomi's entries carry two versions of most scenes (soft and tomboyish
+parts in the same entry, picked by her mood).
+
+**Where each kind plays.**
+- **GEKO (school days):** a day record `45 GIRL SCENE 00`
+  (`force_event.py GIRL SCENE`). Handler table `0x80144910` (girl id →
+  scene switch): Yuina scenes 1, 7; Ayako 1; Nozomi 1, 8; Mio 1; Yukari
+  1, 2; Megumi 1, 2; Saki 1; Mira 1; Yumi 1, 2, 7; Miharu (11) 1, 2, 4;
+  Ijuin (12) 1–3; Yoshio (13) one scene. Miharu's scenes set the `{G}`
+  buffer to 館林さん and the label to 館林 (GEKO `0x12B1C`/`0x12B24`).
+- **DATE (dates):** the date-event chooser (`0x8013272C`, §6k) calls
+  `0x801326B0(scene, flag?, flag index)`, which stores the scene in
+  `0x80122CD0` and enters main state `0x5E`; DATE then reads the date
+  girl's entry for that scene (scene 2 = her first DATE entry, …) at
+  `0x8014D0A4` ff., whatever the place. `force_date.py --event N` jumps
+  there with a0 = N. The place's banner still shows the date's place.
+  Miharu's mix-up (entry 76) belongs to girl 11 inside a date with another
+  girl (`--event 3 --event-girl 11`, not run).
+- **SHOUGATU (Christmas party):** stages 7 and 8 of the party flow
+  (`0x80142500` Mira, `0x801430A0` Megumi) are the walks home, like
+  Shiori's stage 6; `force_christmas.py --girl 7|9`.
+- **SHUGAKU (school trip):** stages 8–11 (§6y). The checks after the free
+  days pick them: stage 8 Yuina when the destination is Hokkaido, 9 Ayako
+  for Okinawa (both at `0x80138828` ff. with the girl in `0x800E71DF`),
+  11 Yukari and 10 Saki when their mood (`0x80051A68`) is below 2; Saki's
+  also needs `0x800E69DD` = 4, set in `0x801388D8` only when a birthday
+  check (`0x800E62BF`/`0x800E62C0` against her record) passes, so the
+  forcer didn't reach it. `force_trip.py --event-mood` sets the moods.
+  Yuina's crop-circle scene ends in an RPG battle (`RPG_BAT.EXN`, an
+  "alien" 宇宙人, still Japanese).
+
+**Speaker labels.** In-string labels as in §6p: `{>先生}` → `{>Tchr}`,
+`{>幹部}` → `{>Boss}`, `{>迷子}` → `{>Tyke}`, `{-戦闘員}` → `{-Minion}`,
+`{-女生徒}` → `{-Girl}`, `{-謎の女}` → `{-???}`, and the 2-byte `{+犬}`
+(Megumi's dog) → `{+Mu}` (Muku; two letters is all a `+` label holds).
+The overlays' own labels: 外国人 (SHUGAKU `0x8D70` → "Expat"), 男子１/２,
+先生, 謎の女 (GEKO, DATE).
+
+**Words in the overlays** (`event_words.json`): GEKO's banners and labels
+`0x12984`–`0x12B60` (only those the event code uses; Shiori's room is
+"Her Room"); DATE's event words at `0x29440`–`0x29510`. Three DATE words
+are 4–6 bytes with 8–10 bytes of NUL after them up to the next string or
+pointer (観覧車 `0x29470`, 遊園地 `0x294F0`, 池 `0x29500`); only the one
+`addiu` that reads each points into that stretch, so `bytes` patches use
+the padding for "Ferris Wheel", "Theme Park", "Pond". DATE's place banners
+for regular dates (`0x28B20`–`0x28E84`) are still Japanese (out of scope;
+they show on every date).
+
+**`{G}` width.** Every writer of the `{G}` buffer `0x800CA190` is known
+(§6e table): its longest English value is 8 letters, so the width check now
+counts `{G}` as 10 cells, not 18. Text after an odd-length name shows its
+pair padding ("Yuina ,"), so these files end lines on `{G}` for Yuina, Mio,
+Rei (Ijuin) and the other odd names.
 
 ## 7. Graphics
 

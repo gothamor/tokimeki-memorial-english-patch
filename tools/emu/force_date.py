@@ -3,6 +3,7 @@
 Usage:
   python tools/emu/force_date.py GIRL PLACE MONTH DAY
   python tools/emu/force_date.py GIRL PLACE MONTH DAY --scene N [--any-step] [--timeout S]
+  python tools/emu/force_date.py GIRL PLACE MONTH DAY --event N [--timeout S]
   python tools/emu/force_date.py GIRL PLACE MONTH DAY --set-at PC ADDR VALUE [--timeout S]
   python tools/emu/force_date.py 0 PLACE MONTH DAY --version N [--timeout S]
   python tools/emu/force_date.py 0 PLACE MONTH DAY [--version N] -- BREAK_SET_RULES
@@ -17,6 +18,16 @@ chooser (0x8013272C, just after its prologue) and, at the date step the
 scene normally needs, clears the scene's one-shot flag and jumps to the call
 that picks it. That skips the season and affection checks, which can't be
 met early in the game. --any-step jumps at the first chooser call instead.
+
+--event N (any girl) starts date event N at the chooser's first call: it
+sets a0 = N, a1 = 0 (no one-shot flag) and jumps to the `jal 0x801326B0`
+in Yuko's block (0x8013368C; its delay slot sets a2 = 0x37), which stores
+the scene in 0x80122CD0 and enters main state 0x5E. DATE.EXN then runs
+the girl's event-table entry for that scene (girl 0x800E71DF; entry =
+the girl's first entry + N - 1, game-internals 6z) whatever the place.
+--event-girl G also sets 0x800E71DF = G then, for an event that belongs to
+another character than the date's girl (Miharu, 11, scene 3: EVENT_OT
+entry 76); the rest of the date then runs with that id.
 
 --set-at PC ADDR VALUE breaks once at PC while DATE.EXN is loaded and writes
 the byte VALUE to ADDR, e.g. the museum date's exhibition: --set-at
@@ -52,6 +63,7 @@ STEP = 0x800E7389            # u8 sub-step, then u8 step at 0x800E738A
 LOADED_LBA = 0x800B6D40      # LBA of the overlay in memory
 DATE_EXN_LBA = 37418
 CHOOSER = 0x8013273C         # DATE.EXN 0x8013272C after its prologue (ra saved)
+EVENT_CALL = 0x8013368C      # jal 0x801326B0 (scene a0, flag a1, flag index a2 in the delay slot)
 
 # Date events by (girl, scene): the call site that loads the helper's
 # arguments, the one-shot flag, and the (sub-step, step) the chooser checks
@@ -96,6 +108,15 @@ def main() -> None:
     if "--any-step" in args:
         any_step = True
         args.remove("--any-step")
+    event, event_girl = None, None
+    if "--event-girl" in args:
+        i = args.index("--event-girl")
+        event_girl = int(args[i + 1], 0)
+        del args[i:i + 2]
+    if "--event" in args:
+        i = args.index("--event")
+        event = int(args[i + 1], 0)
+        del args[i:i + 2]
     for opt in ("--scene", "--timeout"):
         if opt in args:
             i = args.index(opt)
@@ -123,11 +144,15 @@ def main() -> None:
                           "times": 1, "hits": 0})
         break_set.run(g, rules, DATE_EXN_LBA, timeout)
         return
-    if scene is None:
+    if scene is None and event is None:
         g.detach()
         return
 
-    site, flag, (sub, step) = SCENES[(girl, scene)]
+    if event is not None:
+        site, flag, (sub, step) = EVENT_CALL, None, (None, None)
+        any_step = True
+    else:
+        site, flag, (sub, step) = SCENES[(girl, scene)]
     g.break_at(CHOOSER)
     t0 = time.time()
     try:
@@ -145,6 +170,14 @@ def main() -> None:
             print(f"chooser at step {s1}/{s2}", flush=True)
             if not any_step and (s2 != step or (sub is not None and s1 != sub)):
                 continue
+            if event is not None:
+                g.cmd(f"P{REG_NAMES.index('a0'):x}=" + struct.pack("<I", event).hex())
+                g.cmd(f"P{REG_NAMES.index('a1'):x}=" + struct.pack("<I", 0).hex())
+                if event_girl is not None:
+                    g.cmd(f"M{GIRL_ID:x},1:{event_girl:02x}")
+                g.cmd(f"P{REG_NAMES.index('pc'):x}=" + struct.pack("<I", site).hex())
+                print(f"forced event {event}: pc -> {site:#x}", flush=True)
+                return
             g.cmd(f"M{flag:x},1:00")
             g.cmd(f"P{REG_NAMES.index('pc'):x}=" + struct.pack("<I", site).hex())
             print(f"forced scene {scene}: pc -> {site:#x}, flag {flag:#x} cleared", flush=True)

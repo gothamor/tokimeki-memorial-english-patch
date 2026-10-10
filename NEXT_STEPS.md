@@ -21,7 +21,8 @@ seen is in the AGENTS.md status table, how in docs/testing.md):
   (§6v), 2026-10-09;
 - New Year's Day `new_year.json` (§6w), 2026-10-09;
 - the training camp `training_camp.json` (§6x), 2026-10-09;
-- the school trip `school_trip.json` (§6y), 2026-10-09.
+- the school trip `school_trip.json` (§6y), 2026-10-09;
+- every other girl's special events, `*_events.json` + `event_words.json` (§6z), 2026-10-10.
 
 ## Why this file (2026-10-08, static survey)
 
@@ -86,7 +87,7 @@ translated in SHOUGATU, §6s), odd-length names before punctuation.
 | On-screen tests | Done 2026-10-09 (testing.md "The Christmas party") |
 | Promote | Done 2026-10-09: `translation/christmas.json`, normal build byte-identical |
 
-**The party, White Day, Valentine's Day, New Year's Day, the training camp and the school trip are finished.** Pick the next file from "Later candidates" and
+**The party, White Day, Valentine's Day, New Year's Day, the training camp, the school trip and all special events are finished.** Pick the next file from "Later candidates" and
 rewrite this plan for it.
 
 ## Later candidates
@@ -96,9 +97,11 @@ rewrite this plan for it.
   ranking `0x80134540` (§6v) if it needs an on-screen check.
 - **New Year's graduation endings** (§6w): translated, not reached on
   screen; find what picks parts 36/38 if they need a check.
+- **DATE's place banners** (DATE.EXN `0x28B20`–`0x28E84`, §6z): shown on
+  every date, still Japanese.
 - **The school trip's leftovers** (§6y): the RPG battles it starts
-  (`EXEDIR/RPG_BAT.EXN`: monster names, 攻撃/防御, battle messages) and the
-  girls' special events it plays (in their `EVENT_*.BIN`).
+  (`EXEDIR/RPG_BAT.EXN`: monster names, 攻撃/防御, battle messages; also
+  Yuina's alien battle, §6z).
 - **The camp's technique box** (§6x): translated, not reached on screen.
 - **The culture festival (`CDROM/BUNKA/`, 46 files, ~217,000 chars: over a
   third of the game's text)**, per girl and club; very repetitive. Needs its
@@ -107,14 +110,9 @@ rewrite this plan for it.
 - **Birthdays are done** (`birthday.json`, `girl_birthdays.json`;
   §6r/§6s). Left: the different gift tables in BUNKAKEN, BUNKASAI and GYOZI
   (same 33-byte layout), when those events are translated.
-- **Other girls' `EVENT_*.BIN`**: follow Yuko's plan (git `7f899d5`); their entries are the
-  other blocks of the 79-entry table (find them by which entries reach the
-  file's strings, as for Yuko).
 - **Megumi's meeting**: she isn't in `G_APPEAR.BIN` (girl 9 has no
   handler in SHOUGATU's meeting switch); find where she's introduced
   (probably through Shiori) before calling the meetings complete.
-- **Other SERIFU files with label prefixes**: `EVENT_OT.BIN` starts a
-  line with `-女生徒`; re-dump such files with the current dumper.
 - **The other nine girls' date files**, in rough size order: Megumi
   (DATE_MI), Nozomi (KY), Yuina (HI), Saki (NI), Yumi (SA), Yukari (KO),
   Ayako (KA), Mio (KI), Mira (KG).

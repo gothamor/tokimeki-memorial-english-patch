@@ -53,8 +53,11 @@ MAX_CELLS = 28
 # How wide each inserted word can get, in 7 px cells (2 cells = one
 # full-width character). Used for line-width checks only, so these are
 # deliberately generous estimates where the real maximum isn't known yet.
+# {G} is filled only by 0x80051438 (short-name table + suffix, or the fixed
+# Shiori/Yumi/Ijuin names) and three overlay strcpy's (館林さん, 伊集院):
+# 10 cells at most, Japanese or English (game-internals 6e).
 TOKEN_CELLS: Dict[str, int] = {
-    "P": 12, "p": 6, "m": 6, "F": 12, "G": 18, "Y": 6, "S": 18,
+    "P": 12, "p": 6, "m": 6, "F": 12, "G": 10, "Y": 6, "S": 18,
     "O": 18, "W": 18, "A": 18, "M": 18, "n": 0,
 }
 

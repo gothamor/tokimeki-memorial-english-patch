@@ -1,6 +1,6 @@
 """Force the Christmas party in the isolated emulator (test cards only).
 
-Usage:  python tools/emu/force_christmas.py [--girl 0] [--timeout S]
+Usage:  python tools/emu/force_christmas.py [--girl 0|7|9] [--timeout S]
         python tools/emu/force_christmas.py --party [--visits N] [--looks V]
             [--physique V] [--sotoi N] [--visit] [--girls A,B] [--met G,...]
             [--mood M] [--intro] [--present P] [--timeout S]
@@ -12,8 +12,8 @@ before it reads the stage byte) first runs, the tool sets the stage.
 
 Without --party it writes what the party's girl selector (0x80140030)
 would: stage 6 with girl 0 / scene id 7, Shiori's walk home after the
-party (EVENT_FU, game-internals 6j). Stages 7 and 8 belong to two other
-girls and aren't mapped here, so only --girl 0 is accepted.
+party (EVENT_FU, game-internals 6j); --girl 7 gives stage 7, Mira's walk
+(EVENT_KG), --girl 9 stage 8, Megumi's (EVENT_MI; game-internals 6z).
 
 --party starts at stage 0 instead: the whole party (SERIFU/XMAS.BIN,
 game-internals 6t). Stage 0 is the arrival at Ijuin's house, stage 1
@@ -64,7 +64,10 @@ from gdbstub import REG_NAMES, Gdb  # noqa: E402
 SET_STATE = 0x80042878       # set_state(a0)
 DISPATCH = 0x8013D190        # SHOUGATU stage dispatcher, before it reads 0x800E7389
 DISPATCH_CODE = bytes.fromhex("0e800e3c8973ce91")
-STAGES = {0: (6, 7)}         # girl -> (stage, scene id written to 0x80122CD0)
+# girl -> (stage, scene id written to 0x80122CD0): the walks home after the
+# party read event-table entries 12 (Shiori, stage 6 0x801419D0), 36 (Mira,
+# stage 7 0x80142500) and 60 (Megumi, stage 8 0x801430A0); game-internals 6z.
+STAGES = {0: (6, 7), 7: (7, 7), 9: (8, 7)}
 PICK = (0x8013E8A0, 0x8013EC7C)            # 0x800E71DF read after each random pick
 MOOD = (0x8013E5C8, 0x8013E8B8, 0x8013EC94)  # just after each 0x80051A68 call
 INTRO = 0x8013E5B8           # Shiori's step stores 0x800E71DF; 0x80146050 decided

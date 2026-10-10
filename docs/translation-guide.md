@@ -304,8 +304,9 @@ patcher allows 28, but keep those lines at 26 or less where it's easy.
 
 `TOKEN_CELLS` must cover the widest text a control code can insert after name
 tables are translated, not merely the width of the original Japanese value.
-The current conservative widths are 18 cells for `{G}`, `{S}`, `{O}`, `{W}`,
-`{A}` and `{M}`, 6 for `{Y}`, and 12 for `{P}`. If an inserted-name table is
+The current conservative widths are 18 cells for `{S}`, `{O}`, `{W}`,
+`{A}` and `{M}`, 10 for `{G}` (its writers are all known, game-internals
+§6e), 6 for `{Y}`, and 12 for `{P}`. If an inserted-name table is
 changed, update these limits and revalidate every translated line containing
 the affected code; otherwise the static width check can accept a line that
 overruns the dialogue box.

@@ -1,7 +1,7 @@
 """Force the school trip (SERIFU/SHUGAKU.BIN) in the isolated emulator.
 
 Usage:  python tools/emu/force_trip.py [--met G,...] [--year N] [--week N]
-            [--girl G] [--mood M] [--invite G] [--sick] [--timeout S]
+            [--girl G] [--mood M] [--invite G] [--sick] [--event-mood] [--timeout S]
 
 Start it on the Sunday-night planning screen, then pick a weekly command.
 It marks the --met girls as met (bit 1 of 0x800E6448 + 0x38*girl),
@@ -32,6 +32,11 @@ she turns him down (part 24).
 with the best mood below 4 (loop 0x80139164, ties by two stat calls) asks
 him herself when her mood is below 2 (parts 7-9). Makes it G with mood 0.
 
+--event-mood makes the mood calls of the trip's special-event checks
+return 0, so the girls' trip events (EVENT_* entries 19, 29, 48, 66)
+can start: Yuina's (stage 8) needs Hokkaido, Ayako's (9) Okinawa, Saki's
+(10) and Yukari's (11) a mood below 2 (game-internals 6z).
+
 This changes game state (RAM only): use it on the harness's test cards.
 """
 
@@ -55,6 +60,10 @@ PICK = 0x801399C8                        # a0 = the girl picked from the menu
 ANSWER = 0x80139628                      # v0 = her mood when the player asks
 INVITE = 0x80139200                      # jal mood(s7 = the girl who may invite him)
 INVITE_MOOD = 0x80139208                 # v0 = her mood (< 2: she invites him)
+# After the mood calls of the special-event checks (0x80133358, 0x80138750,
+# 0x801388E8): mood < 2 lets Yukari's (stage 11) and Saki's (stage 10)
+# trip events start (game-internals 6z).
+EVENT_MOODS = (0x80133360, 0x80138758, 0x801388F0)
 GIRL = 0x800E71DF
 
 
@@ -69,6 +78,9 @@ def main() -> None:
     sick = "--sick" in args
     if sick:
         args.remove("--sick")
+    event_mood = "--event-mood" in args
+    if event_mood:
+        args.remove("--event-mood")
     if args:
         sys.exit(__doc__)
     timeout = float(opts.get("--timeout", "300"))
@@ -112,6 +124,9 @@ def main() -> None:
     if "--invite" in opts:
         rules[INVITE] = [("s7", int(opts["--invite"], 0))]
         rules[INVITE_MOOD] = [("v0", 0)]
+    if event_mood:
+        for pc in EVENT_MOODS:
+            rules[pc] = [("v0", 0)]
     if not rules:
         return
 
