@@ -1,0 +1,131 @@
+{
+ "description": "Town News headline banners (the eight 中央公園紹介 … プラネタリウム特集 strips in MAINROM.NBN chunks 2 and 7, drawn by EXE frames 126-133; game-internals 7), redrawn big and bold in each headline's own colours by tools/redraw_labels.py; the tails the frames take from elsewhere are cleared.",
+ "images": [
+  {
+   "file": "CDROM/FUKUTEST/MAINROM.NBN",
+   "png": "graphics/news_chunk2_04000.png",
+   "pixels": "0x4000",
+   "stride": 64,
+   "x": 0,
+   "y": 0,
+   "rects": [
+    [
+     0,
+     2,
+     128,
+     14
+    ],
+    [
+     1,
+     16,
+     126,
+     16
+    ],
+    [
+     0,
+     32,
+     125,
+     16
+    ],
+    [
+     0,
+     50,
+     126,
+     14
+    ],
+    [
+     0,
+     64,
+     128,
+     16
+    ],
+    [
+     0,
+     80,
+     128,
+     14
+    ],
+    [
+     0,
+     98,
+     126,
+     14
+    ],
+    [
+     2,
+     112,
+     124,
+     9
+    ]
+   ],
+   "original_crc32": "0x09e12ca6",
+   "bpp": 4
+  },
+  {
+   "file": "CDROM/FUKUTEST/MAINROM.NBN",
+   "png": "graphics/news_chunk7_0e000.png",
+   "pixels": "0xE000",
+   "stride": 64,
+   "x": 0,
+   "y": 0,
+   "rects": [
+    [
+     0,
+     1,
+     128,
+     15
+    ],
+    [
+     0,
+     16,
+     128,
+     16
+    ],
+    [
+     0,
+     32,
+     128,
+     16
+    ],
+    [
+     0,
+     50,
+     128,
+     14
+    ],
+    [
+     1,
+     64,
+     127,
+     6
+    ]
+   ],
+   "original_crc32": "0x736ce383",
+   "bpp": 4
+  },
+  {
+   "file": "CDROM/FUKUTEST/MAINROM.NBN",
+   "png": "graphics/news_tails_16000.png",
+   "pixels": "0x16000",
+   "stride": 64,
+   "x": 0,
+   "y": 0,
+   "rects": [
+    [
+     3,
+     106,
+     35,
+     6
+    ],
+    [
+     1,
+     112,
+     39,
+     14
+    ]
+   ],
+   "original_crc32": "0x8576e450",
+   "bpp": 4
+  }
+ ]
+}

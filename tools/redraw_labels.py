@@ -115,6 +115,40 @@ SHEETS = {
             (67, 57, 95, 70, "Kanji", {"ink": 9, "erase": [10], "shadow": (10, 1, 1), "center": True, "top": 59, "narrow": True}),
         ],
     },
+    # Town News headlines (EXE frames 126-133 over MAINROM.NBN chunks 2, 7 and
+    # 11; game-internals 7): each a 24-row strip, part 1 up to 128 px plus a
+    # tail part stored elsewhere. The English fits part 1; the tails are cleared.
+    "news_chunk2": {
+        "file": "CDROM/FUKUTEST/MAINROM.NBN", "json": "town_news_banners.json", "bpp": 4,
+        "width": 128, "height": 128, "grid": [[0x4000]],
+        "labels": [
+            (0, 0, 127, 23, "Central Park", {"big": True, "ink": 2, "shadow": 4}),
+            (0, 24, 119, 47, "Museum opens", {"big": True, "ink": 7, "shadow": 9,
+                                              "also_clear": [(120, 24, 127, 47)]}),   # tail of headline 1
+            (0, 48, 111, 71, "Aquarium", {"big": True, "ink": 12, "shadow": 14}),
+            (0, 72, 127, 95, "New stadium", {"big": True, "ink": 2, "shadow": 4,
+                                             "also_clear": [(112, 48, 127, 71)]}),    # its own tail
+            (0, 96, 111, 119, "Garden guide", {"big": True, "ink": 7, "shadow": 9,
+                                              "also_clear": [(112, 96, 127, 119)]}),   # tail of headline 6
+        ],
+    },
+    "news_chunk7": {
+        "file": "CDROM/FUKUTEST/MAINROM.NBN", "json": "town_news_banners.json", "bpp": 4,
+        "width": 128, "height": 128, "grid": [[0xE000]],
+        "labels": [
+            (0, 0, 127, 23, "Bowling", {"big": True, "ink": 12, "shadow": 14}),
+            (0, 24, 127, 47, "Karaoke opens", {"big": True, "ink": 2, "shadow": 4}),
+            (0, 48, 127, 71, "Planetarium", {"big": True, "ink": 7, "shadow": 9}),
+        ],
+    },
+    "news_tails": {
+        # tails of headlines 6 (chunk 2, right of headline 5), 7 and 8 (chunk 11)
+        "file": "CDROM/FUKUTEST/MAINROM.NBN", "json": "town_news_banners.json", "bpp": 4,
+        "width": 128, "height": 128, "grid": [[0x16000]],
+        "labels": [
+            (0, 104, 47, 127, "", {"big": True, "ink": 0, "shadow": 0}),
+        ],
+    },
     "examine": {
         # The end-of-term exam results screen (ETC.EXN): a copy of MAINROM.NBN
         # chunks 4 and 9 (patched like main_screen.json, in exam_results.json)
@@ -222,11 +256,73 @@ def redraw_outlined(sheet: Sheet, label):
         sheet.put(x, y, fill)
 
 
+def big_word(text: str):
+    """(width, rows) of `text` as headline letters: the pair font doubled in
+    height and emboldened (each column drawn twice): 6 px wide letters, 2 px
+    apart (a space 5 px), 22 rows from the font's row 1."""
+    cols = []
+    for ch in text:
+        rows = pairfont.letter_rows(ch)
+        used = [c for c in range(5) if any(r >> (4 - c) & 1 for r in rows)]
+        if not used:
+            cols += [[False] * 12] * 5
+            continue
+        letter = [[bool(r >> (4 - c) & 1) for r in rows] for c in range(min(used), max(used) + 1)]
+        if ch in "mwMWN":
+            # 1 px gaps between their strokes: emboldening would close them
+            bold = [list(c) for c in letter] + [[False] * 12]
+        else:
+            bold = [list(c) for c in letter] + [[False] * 12]
+            for i, c in enumerate(letter):
+                bold[i + 1] = [a or b for a, b in zip(bold[i + 1], c)]
+        cols += bold + [[False] * 12]
+    if cols:
+        cols.pop()
+    w = len(cols)
+    grid = [[False] * w for _ in range(22)]
+    for x, c in enumerate(cols):
+        for r in range(1, 12):
+            if c[r]:
+                grid[2 * (r - 1)][x] = grid[2 * (r - 1) + 1][x] = True
+    return w, grid
+
+
+def redraw_big(sheet: Sheet, label):
+    """Headlines: clear the box to transparent (0), then draw the English big
+    and bold in `ink` with a 1 px `shadow` down-right (the original's two
+    main colours), from row y0 + 2."""
+    x0, y0, x1, y1, text, opt = label
+    for y in range(y0, y1 + 1):
+        for x in range(x0, x1 + 1):
+            sheet.put(x, y, 0)
+    for bx0, by0, bx1, by1 in opt.get("also_clear", ()):
+        for y in range(by0, by1 + 1):
+            for x in range(bx0, bx1 + 1):
+                sheet.put(x, y, 0)
+    if not text:
+        return
+    w, grid = big_word(text)
+    if w > x1 - x0:
+        raise SystemExit(f"{text!r} is {w} px wide, the headline has {x1 - x0}")
+    left = x0 + (x1 - x0 - w) // 2 if opt.get("center", True) else x0
+    top = y0 + 2
+    for gy in range(22):
+        for gx in range(w):
+            if grid[gy][gx]:
+                sheet.put(left + gx + 1, top + gy + 1, opt["shadow"])
+    for gy in range(22):
+        for gx in range(w):
+            if grid[gy][gx]:
+                sheet.put(left + gx, top + gy, opt["ink"])
+
+
 def redraw(sheet: Sheet, label):
     x0, y0, x1, y1, text = label[:5]
     opt = label[5] if len(label) > 5 else {}
     if "outline" in opt:
         return redraw_outlined(sheet, label)
+    if opt.get("big"):
+        return redraw_big(sheet, label)
     box = [(x, y) for y in range(y0, y1 + 1) for x in range(x0, x1 + 1)]
     # Row backgrounds from a slightly wider window, so a full-width stroke
     # (the bottom of 日) still has a background to restore.
@@ -332,6 +428,10 @@ def _rects(pts):
 
 
 DESCRIPTIONS = {
+    "town_news_banners.json": ("Town News headline banners (the eight 中央公園紹介 … プラネタリウム特集 strips in "
+                               "MAINROM.NBN chunks 2 and 7, drawn by EXE frames 126-133; game-internals 7), redrawn "
+                               "big and bold in each headline's own colours by tools/redraw_labels.py; the tails the "
+                               "frames take from elsewhere are cleared."),
     "name_entry_buttons.json": ("Name entry side buttons in NAME_ENT/NAME_ENT.NBN (game-internals 6d): かな/カナ/記号/漢字/終了 "
                                 "-> Hira/Kata/Sym/Kanji/Done, redrawn in place by tools/redraw_labels.py. The 名前:/あだ名: "
                                 "captions aren't in this sheet (not found yet)."),

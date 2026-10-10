@@ -2507,8 +2507,18 @@ halfword x, y): 0x00000 → (0x380,0x180), 0x04000 → (0x380,0x100),
   a label every 14 rows. The dash sprite starts ~27 px into the label, so
   that's the usable width. x < 96: panel frame art.
 - Chunk 0 is the command icons, chunk 1 girl-info labels (星座, B.W.H, 電話,
-  血液型), chunks 2 and 7 town-news banners, chunk 11 date-spot art. Not
-  translated yet.
+  血液型), chunk 11 the date-spot magazine art (メモリアルスポット masthead and
+  issue labels; left as they are, like the title logo).
+- **Town News headlines** (found 2026-10-11): EXE frames 126–133 (table
+  `0x800C975C`) draw the eight banners 中央公園紹介 … プラネタリウム特集, each a
+  24-row strip: part 1 up to 128 px plus a tail part. Their cells use one
+  texture page: cells 2048–2303 = chunk 2, 2304–2559 = chunk 7, 1792–2047 =
+  chunk 11 (confirmed by rendering the frames). Headlines 1–5 are chunk 2
+  rows 0/24/48/72/96 (widths 128/120/112/128/112), 6–8 chunk 7 rows 0/24/48;
+  the tails sit at chunk 2 x 120–127 y 24–47 and x 112–127 y 48–71 and
+  96–119, and chunk 11 x 0–47 y 104–127. Each banner has its own colours
+  (ink 2/7/12 with shadow 4/9/14). Translated in `town_news_banners.json`
+  (`tools/redraw_labels.py`, big bold letters, tails cleared).
 
 `FUKUTEST/EXAMINE.NBN` (loaded by ETC.EXN for the end-of-term exam
 results) is 4bpp with 64-byte rows: file `0x0000`–`0x1FFF` and `0x2000`–

@@ -169,6 +169,8 @@ against the tested candidate when promotion should not change game bytes.
 
 | `translation/name_entry_buttons.json` + `graphics/name_entry_00000.png` (name entry side buttons in NAME_ENT.NBN: Hira/Kata/Sym/Kanji/Done, `tools/redraw_labels.py`) | Verified in DuckStation, hidden emulator (state 0x14 forced from the Sunday state): all five buttons, Hira in its highlighted (selected page) colours. **Still Japanese:** the pink 名前:/あだ名: captions (source not found, game-internals 6d) and the kana grid (input, kept on purpose). |
 
+| `translation/town_news_banners.json` + `graphics/news_*.png` (the eight Town News headline banners in MAINROM.NBN chunks 2/7, tails in chunk 11) | Builds; frames 126–133 rendered offline from the patched file show the English headlines with the tails cleared. **Not seen on screen:** the news issues come on their own dates and weren't reached (a 4-week play run showed none). The magazine masthead and issue labels (chunk 11) stay Japanese, like the title logo. |
+
 Update this table when you verify something.
 
 ## Working in this environment (Windows dev box)
