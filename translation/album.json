@@ -528,6 +528,18 @@
       "offset": "0x1A130",
       "original": "　ボタンを押してください。",
       "text": "  to continue."
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19660",
+      "original": "番",
+      "text": ""
+    },
+    {
+      "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+      "offset": "0x19664",
+      "original": "番",
+      "text": ""
     }
   ]
 }

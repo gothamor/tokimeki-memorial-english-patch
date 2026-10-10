@@ -163,6 +163,8 @@ against the tested candidate when promotion should not change game bytes.
 
 | `translation/option_labels.json` + `graphics/option_labels_c000.png` (title Options sub-screens: pre-drawn choice words in OPTION.NBN, `tools/make_option_labels.py`) | Verified in DuckStation, hidden emulator, against the unpatched screens: Text Speed (Slow/Norm/Fast), Cursor Speed (V.Slow … V.Fast), Icon Mode (TYPE-A/B, Free), Voice Mode (ON/OFF/Skip X), each choice unselected and highlighted. **Checked only in an offline render:** Init/Edit (the Free layout sub-menu wasn't reached). The Mouse sub-screen and the graphic Extras entries stay Japanese (no room in the glyph strip). |
 
+| `translation/album_screen.json` + `graphics/filesel_*.png` (album/file screen graphics in FILESEL.NBN, `tools/redraw_labels.py`) + `album.json`'s 番 | Verified in DuckStation, hidden emulator: the info panel (date header, Name, Nickname, Club, Clears), the buttons Copy/New/Clear/Load, Sys. with the Y/N badges, the Stats page and the Girls' ratings and Clears page titles. **Checked only offline:** the highlighted button sprites and the 13 rating names (no girl met on the test album). |
+
 Update this table when you verify something.
 
 ## Working in this environment (Windows dev box)

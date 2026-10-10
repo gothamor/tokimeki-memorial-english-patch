@@ -1,0 +1,293 @@
+{
+ "description": "Album (save file) screen graphics in FILESEL.NBN (game-internals 7): the info panel's labels (Name, Nickname, Club, Clears, the date header), the parameter panel's stat names and the girls' ratings page's names, redrawn in place by tools/redraw_labels.py.",
+ "images": [
+  {
+   "file": "CDROM/FUKUTEST/FILESEL.NBN",
+   "png": "graphics/filesel_panel_24000.png",
+   "pixels": "0x24000",
+   "stride": 128,
+   "x": 0,
+   "y": 0,
+   "rects": [
+    [
+     20,
+     27,
+     69,
+     5
+    ],
+    [
+     20,
+     32,
+     108,
+     16
+    ],
+    [
+     20,
+     48,
+     108,
+     16
+    ],
+    [
+     121,
+     64,
+     7,
+     16
+    ],
+    [
+     17,
+     80,
+     111,
+     16
+    ],
+    [
+     18,
+     96,
+     110,
+     10
+    ]
+   ],
+   "original_crc32": "0xbb31d921"
+  },
+  {
+   "file": "CDROM/FUKUTEST/FILESEL.NBN",
+   "png": "graphics/filesel_panel_28000.png",
+   "pixels": "0x28000",
+   "stride": 128,
+   "x": 0,
+   "y": 0,
+   "rects": [
+    [
+     89,
+     28,
+     39,
+     4
+    ],
+    [
+     0,
+     32,
+     128,
+     16
+    ],
+    [
+     0,
+     48,
+     35,
+     16
+    ],
+    [
+     0,
+     64,
+     38,
+     16
+    ],
+    [
+     0,
+     80,
+     37,
+     16
+    ],
+    [
+     0,
+     96,
+     38,
+     10
+    ]
+   ],
+   "original_crc32": "0x168be5f9"
+  },
+  {
+   "file": "CDROM/FUKUTEST/FILESEL.NBN",
+   "png": "graphics/filesel_panel_2c000.png",
+   "pixels": "0x2C000",
+   "stride": 128,
+   "x": 0,
+   "y": 0,
+   "rects": [
+    [
+     0,
+     28,
+     32,
+     4
+    ],
+    [
+     0,
+     32,
+     32,
+     7
+    ],
+    [
+     10,
+     95,
+     1,
+     1
+    ],
+    [
+     5,
+     96,
+     11,
+     10
+    ]
+   ],
+   "original_crc32": "0x1ed5a4bc"
+  },
+  {
+   "file": "CDROM/FUKUTEST/FILESEL.NBN",
+   "png": "graphics/filesel_strip_1a000.png",
+   "pixels": "0x1A000",
+   "stride": 128,
+   "x": 0,
+   "y": 0,
+   "rects": [
+    [
+     4,
+     3,
+     85,
+     13
+    ],
+    [
+     20,
+     16,
+     12,
+     1
+    ],
+    [
+     13,
+     48,
+     79,
+     11
+    ],
+    [
+     13,
+     64,
+     78,
+     11
+    ],
+    [
+     13,
+     80,
+     79,
+     11
+    ],
+    [
+     13,
+     96,
+     79,
+     12
+    ],
+    [
+     8,
+     112,
+     80,
+     11
+    ]
+   ],
+   "original_crc32": "0x95d161f5"
+  },
+  {
+   "file": "CDROM/FUKUTEST/FILESEL.NBN",
+   "png": "graphics/filesel_strip_1e000.png",
+   "pixels": "0x1E000",
+   "stride": 128,
+   "x": 0,
+   "y": 0,
+   "rects": [
+    [
+     14,
+     7,
+     91,
+     9
+    ],
+    [
+     14,
+     16,
+     91,
+     16
+    ],
+    [
+     14,
+     32,
+     88,
+     16
+    ],
+    [
+     14,
+     48,
+     88,
+     16
+    ],
+    [
+     15,
+     64,
+     38,
+     16
+    ],
+    [
+     15,
+     80,
+     30,
+     3
+    ]
+   ],
+   "original_crc32": "0x0c23aae4"
+  },
+  {
+   "file": "CDROM/FUKUTEST/FILESEL.NBN",
+   "png": "graphics/filesel_strip_3c000.png",
+   "pixels": "0x3C000",
+   "stride": 128,
+   "x": 0,
+   "y": 0,
+   "rects": [
+    [
+     3,
+     3,
+     75,
+     11
+    ],
+    [
+     3,
+     17,
+     86,
+     12
+    ],
+    [
+     6,
+     39,
+     85,
+     9
+    ],
+    [
+     6,
+     48,
+     119,
+     16
+    ],
+    [
+     6,
+     64,
+     119,
+     16
+    ],
+    [
+     6,
+     80,
+     119,
+     16
+    ],
+    [
+     6,
+     96,
+     119,
+     16
+    ],
+    [
+     56,
+     112,
+     40,
+     3
+    ]
+   ],
+   "original_crc32": "0xf242b60e"
+  }
+ ]
+}

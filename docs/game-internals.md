@@ -246,10 +246,22 @@ After GAME START, about 15 s pass, then the **album (save slot) screen**:
 - **Yes/No.** The no-save prompt uses `NAME_ENT.EXN` 0x19A0C (○ at cell 5,
   × at cell 11). Other prompts use the shared lines in `SLPM_86.053` 0x73470 /
   0x73488 (`　はい……　　ボタン`; ○/× drawn at cell 6).
-- **Graphics (not translated):** the buttons コピー/ニュー/クリア/ロード,
-  システム 有/無, slot numbers 1–14, the info-panel labels (年 月 日, 名前,
-  あだ名, 所属部, クリア人数, 人). `SLPM_86.053` 0x70790–0x70853 holds similar
-  labels (名前…, あだ名…), but changing them does not affect this screen.
+- **Graphics: `FUKUTEST/FILESEL.NBN`** (loaded to 0x80180000, 8bpp,
+  uploaded in 128×128 px blocks; found 2026-10-11 by logging the upload
+  routine 0x8004435C): the panel is file `0x24000`/`0x28000`/`0x2C000` (VRAM
+  x 640/704/768, y 0) over `0x30000`/`0x34000`/`0x38000` (y 128): buttons
+  コピー/ニュー/クリア/ロード (fill 0xA6, outline 0x3A on a gradient), システム
+  (ink 0xDB, shadow 0x86), 年 月 日, 名前, あだ名, 所属部, クリア人数, 人 (ink 2
+  on row-striped backgrounds). The sprite strip is `0x1A000`/`0x3C000`/
+  `0x1E000`/`0x40550` (VRAM x 320–512): the highlighted buttons (fill 0xB1,
+  outline 0xB2), the parameter page's stat names, the girls' ratings page's
+  13 surnames, パラメータ/女の子の評価/クリア回数 titles (ink 0xDB) and the
+  有/無 system-file badges (ink 0xE3). The slot number's 番 is text
+  (`NAME_ENT.EXN` 0x19660/0x19664). Translated in `album_screen.json`
+  (`tools/redraw_labels.py`, which redraws a label in place: erase its ink to
+  the row background, draw the pair font in the same ink) and `album.json`.
+  `SLPM_86.053` 0x70790–0x70853 holds similar labels (名前…, あだ名…), but
+  changing them does not affect this screen.
 - **Navigation:** the default Mouse-like menu mode moves the hand freely with
   the D-pad. To pick album 1 from the "Which album" prompt, hold ←, ↑, then
   nudge ↓/→ (see testing.md for exact timings).
@@ -257,7 +269,13 @@ After GAME START, about 15 s pass, then the **album (save slot) screen**:
 Then **name entry**:
 - **Questions: text.** `NAME_ENT.EXN` 0x1ACE4 / 0x1AD04 / 0x1AD10, then
   birthday/blood type 0x194C0, 0x19510, 0x19534, 0x1955C.
-- **Graphics:** 名前:/あだ名: labels, side buttons かな/カナ/記号/漢字/終了.
+- **Graphics:** the side buttons かな/カナ/記号/漢字/終了 and the birthday
+  page's labels are 4bpp cells in `NAME_ENT/NAME_ENT.NBN` (256 px wide, two
+  copies side by side; frame table at file `0x1AF58`, frames 16–25 the
+  buttons, normal/highlighted by CLUT). The pink 名前:/あだ名: captions are
+  neither text (the text list holds only the empty name fields there) nor
+  those cells (a probe overwriting the sheet's 名 changed nothing); probably
+  the `NAME_SAK.BS` background (MDEC), not handled.
 - **Kana grid:** strings at 0x19150– (rows like あいうえお) plus conversion
   tables (0x192D8–). These are the characters the player can type on the
   かな/カナ pages.
