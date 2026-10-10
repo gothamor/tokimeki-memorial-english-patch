@@ -1116,6 +1116,12 @@
    "offset": "0x1F82C",
    "original": "とにかく、頑張らねば。",
    "text": "Anyway, I must try."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F844",
+   "original": "でも、 Gとは 仲良くやっていけそうかな。",
+   "text": "But I bet\n{G}\nand I'll get along."
   }
  ]
 }

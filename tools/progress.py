@@ -56,6 +56,10 @@ NOT_TEXT = (
     "CDROM/TARA_OBJ/HANABI.BIN",
     "CDROM/FUKUTEST/GIRLINFO.NBN",
     "CDROM/EXEDIR/TT.EXN", "CDROM/EXEDIR/TACO.EXN",
+    # Never loaded: not in the overlay switch, no code or table holds their
+    # LBA or name (game-internals 2, "Not in this switch"); old copies of
+    # gift, banner and help text.
+    "CDROM/EXEDIR/GYOZI.EXN", "CDROM/EXEDIR/EVENT.EXN", "CDROM/EXEDIR/O.BIN",
 )
 
 # Text that stays Japanese on purpose: file -> byte ranges (None = whole file).
@@ -73,6 +77,16 @@ KEEP_JAPANESE = {
     "CDROM/EXEDIR/ETC.EXN": [(0x1A37C, 0x1A420)],   # debug scene loader
     # Image bytes at the end of the info-card file, not its text.
     "CDROM/FUKUTEST/JOHO.NBN": [(0xBA00, 0xBD00)],
+    "SLPM_86.053": [
+        (0x6EB40, 0x6EB70),  # placeholder album/name fields of a new album, overwritten at name entry
+        (0x6F610, 0x6F620),  # debug label
+        (0x70940, 0x70950),  # "dummy"
+        (0x709AC, 0x709B8),  # "dummy"
+        (0x70D90, 0x70DA0),  # debug label
+        (0x72E3C, 0x72E40),  # さん after {P}, kept like 君 (game-internals 6p)
+        (0x79000, 0x85000),  # data that decodes as 2-character strings
+    ],
+    "CDROM/EXEDIR/SHOUGATU.EXN": [(0x11892, 0x11896)],  # さん, as above
 }
 
 
@@ -99,6 +113,9 @@ BAR_WIDTH = 20
 def game_strings(data: bytes):
     """(start, end, japanese chars) for every Japanese string in `data`."""
     for m in STRING.finditer(data):
+        start = m.start()
+        while data[start] == 0x20:  # a leading break byte isn't part of the string
+            start += 1
         chars = SJIS_CHAR.findall(m.group())
         if len(chars) < 2:
             continue
@@ -107,7 +124,7 @@ def game_strings(data: bytes):
         except UnicodeDecodeError:
             continue
         if KANA.search(text):
-            yield m.start(), m.end(), len(chars)
+            yield start, m.end(), len(chars)
 
 
 def translated_ranges(extracted: Path) -> dict[str, list[tuple[int, int]]]:
@@ -115,9 +132,11 @@ def translated_ranges(extracted: Path) -> dict[str, list[tuple[int, int]]]:
     ranges: dict[str, list[tuple[int, int]]] = collections.defaultdict(list)
     cache: dict[str, bytes] = {}
 
-    def add(file: str, entry: dict) -> None:
+    def add(file: str, entry: dict, blank_ok: bool = False) -> None:
+        # An empty "text" blanks an in-place string on purpose (the label
+        # suffixes), but leaves a dialogue line untouched (game-internals 6e).
         text = entry.get("text", "")
-        if not text or text == entry.get("original"):
+        if (not text and not blank_ok) or text == entry.get("original"):
             return
         if file not in cache:
             cache[file] = (extracted / file).read_bytes()
@@ -128,7 +147,7 @@ def translated_ranges(extracted: Path) -> dict[str, list[tuple[int, int]]]:
     for path in sorted((ROOT / "translation").glob("*.json")):
         doc = json.loads(path.read_text(encoding="utf-8"))
         for entry in doc.get("strings", []):
-            add(entry["file"], entry)
+            add(entry["file"], entry, blank_ok=True)
         for entry in doc.get("bytes", []):
             # Raw patches (prefixed stage lines, repacked word runs): the
             # strings inside the bytes they replace are translated.

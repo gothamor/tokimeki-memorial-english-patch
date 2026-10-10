@@ -97,7 +97,11 @@ Hard-coded overlay LBAs (instruction address → LBA → file):
 | | | | | 80078f74 | 39530 | TT.EXN |
 | | | | | 80078f84 | 39242 | TACO.EXN |
 
-Not in this switch: `EVENT.EXN`, `GYOZI.EXN`, `O.BIN` (loaded elsewhere; not yet traced).
+Not in this switch: `EVENT.EXN`, `GYOZI.EXN`, `O.BIN`. Checked 2026-10-11: no
+instruction in the EXE or any overlay builds their LBA (37898, 38090,
+38474), no data word holds it and no code names them, so they're **never
+loaded**: old copies (a gift table, date banners, the help menu header).
+They're left untranslated and `tools/progress.py` skips them.
 
 **Consequence:** files can't be moved or resized without patching these
 constants (and any other LBA tables for data files) as well as the ISO 9660

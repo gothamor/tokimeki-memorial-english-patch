@@ -10,10 +10,10 @@ Windows, Linux and macOS.
 ```text
 Whole game             ████████████████████   100%
 Dialogue               ████████████████████   100%
-Menus and other text   ███████████████████░    97%
+Menus and other text   ████████████████████   100%
 ```
 
-<sub>575,926 of 577,477 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
+<sub>576,338 of 576,432 Japanese characters of in-game text, measured by <code>tools/progress.py</code>. Pre-drawn graphics text isn't counted.</sub>
 <!-- progress:end -->
 
 ## Usage

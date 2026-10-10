@@ -159,6 +159,8 @@ against the tested candidate when promotion should not change game bytes.
 
 | `translation/{folk_dance,sports_day_mio,sports_day_nozomi,sports_day_words,karaoke,thugs,practice_matches,practice_words,info_card,opening_words,room_hints,geko_words}.json` (TAIIKU/F_DANCE, KISA23, KIYOTAI and TAIIKU.EXN words; SERIFU/KARADATA, ZAKOSEN; SHIAI/SIAI_TX and RENSYU.EXN words; FUKUTEST/JOHO.NBN; NAME_ENT.EXN opening; the EXE's room hints; GEKO.EXN's last words) | **Not verified on screen.** Promoted into the normal build on the user's request (2026-10-11). Static checks only: `draft.py --check`, packing, the full build (every touched file's checksum updated). Why each wasn't seen: the sports-day scenes come after an input minigame; karaoke (state 0x5C jumps to a song), thugs and practice matches (state 0x73 returns to the title) have no trigger found; the info-card run drifted; the opening needs a new game; the room hints and GEKO words weren't triggered. Check these first if anything looks wrong. |
 
+| Leftover strings (2026-10-11): festival gift names (`festival_words.json`), club banners and a sound (`event_words.json`), Inter-High (`contest_words.json`), karaoke song titles (`group_date_words.json`), a fortune sound (`new_year.json`), Yukari (`sports_day_words.json`), a thought with `{G}` (`etc_words.json`), the meeting-place option suffix (`main_events.json`), four practice-match lines | Build and unit tests pass; a forced New Year's Day plays normally on this build. **Checked only statically:** each string itself (they sit in screens the earlier runs didn't reach). `GYOZI.EXN`, `EVENT.EXN` and `O.BIN` are never loaded and stay untranslated. |
+
 Update this table when you verify something.
 
 ## Working in this environment (Windows dev box)

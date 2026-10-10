@@ -36,6 +36,12 @@
    "offset": "0x16DA0",
    "original": "中庭",
    "text": "Quad"
+  },
+  {
+   "file": "CDROM/EXEDIR/TAIIKU.EXN",
+   "offset": "0x16AF0",
+   "original": "ゆかり",
+   "text": "Yukari"
   }
  ]
 }
