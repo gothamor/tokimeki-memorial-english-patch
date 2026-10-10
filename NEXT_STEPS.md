@@ -215,9 +215,9 @@ Each with `exn_words.py` (room per string) and the overlay's forcer:
 | A1–A10 dates | Done 2026-10-10: nine `*_dates.json` + `date_banners.json` promoted (testing.md "The other girls' dates") |
 | B0 festival forcer, B1–B13 | Done 2026-10-11 (game-internals §6ab, `festival_*.json`, `stage_shows.json`) |
 | C ending | Done 2026-10-11 (game-internals §6ac, `ending.json`, `epilogue.json`, `ending_words.json`) |
-| D1–D5 | D1–D3 done 2026-10-11 (record 0x47 = HAGEMASI, state 0x62 = OMIMAI); D4 KARADATA and D5 ZAKOSEN drafted, trigger not found |
-| E contests | Done 2026-10-11 (game-internals §6ad); practice matches drafted, not reached |
-| F overlays and small files | Partly done 2026-10-11: RPG_BAT, ETC, OLH, TAI_TX promoted; drafts awaiting a way in: info card, opening, room hints, GEKO words, sports day after the minigame (F_DANCE, KISA23, KIYOTAI, TAIIKU words), and from D/E KARADATA, ZAKOSEN, SIAI_TX |
+| D1–D5 | D1–D3 done 2026-10-11 (record 0x47 = HAGEMASI, state 0x62 = OMIMAI); D4 KARADATA and D5 ZAKOSEN promoted unverified, trigger not found |
+| E contests | Done 2026-10-11 (game-internals §6ad); practice matches promoted unverified, not reached |
+| F overlays and small files | Partly done 2026-10-11: RPG_BAT, ETC, OLH, TAI_TX promoted; the rest (info card, opening, room hints, GEKO words, sports day after the minigame, KARADATA, ZAKOSEN, SIAI_TX) promoted unverified on the user's request; still to see on screen |
 
 ## Working notes (Windows dev box)
 

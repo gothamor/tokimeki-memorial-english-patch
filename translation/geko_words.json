@@ -1,0 +1,17 @@
+{
+ "description": "GEKO.EXN's last two words: the doorbell and a club-room banner. Promoted into the normal build on the user's request without an on-screen check (only the static checks: draft.py --check, packing, and a whole-set build). Not seen: the doorbell and the club-room banner were not reached.",
+ "strings": [
+  {
+   "file": "CDROM/EXEDIR/GEKO.EXN",
+   "offset": "0x12750",
+   "original": "ピンポーン",
+   "text": "Ding-dong"
+  },
+  {
+   "file": "CDROM/EXEDIR/GEKO.EXN",
+   "offset": "0x12D8C",
+   "original": "文芸部",
+   "text": "Lit."
+  }
+ ]
+}

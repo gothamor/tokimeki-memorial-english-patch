@@ -1,0 +1,101 @@
+{
+ "description": "NAME_ENT.EXN's opening narration (the legend of the tree), the prologue title and two labels. The kana grid, the opening song's lyrics (rule 9) and the name-entry easter eggs stay Japanese. Promoted into the normal build on the user's request without an on-screen check (only the static checks: draft.py --check, packing, and a whole-set build). Not seen: the opening narration needs a real new game.",
+ "strings": [
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A718",
+   "original": "始まりがあれば終わりがあるように、",
+   "text": "As all beginnings have an end,"
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A73C",
+   "original": "出会いがあればまた、別れもあるのです。",
+   "text": "every meeting also has a parting."
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A764",
+   "original": "永遠に続く二人の関係、",
+   "text": "A love that never ends"
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A77C",
+   "original": "それはどんなに幸せなことでしょう。",
+   "text": "how wonderful that would be."
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A7A0",
+   "original": "ここ、きらめき高校には、",
+   "text": "Here at Kirameki High,"
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A7BC",
+   "original": "一つの伝説があります。",
+   "text": "there is a legend."
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A7D4",
+   "original": "校庭のはずれにある一本の古木。",
+   "text": "An old tree by the schoolyard."
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A7F4",
+   "original": "そのたもとで卒業の日に、",
+   "text": "Beneath it, at graduation,"
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A810",
+   "original": "女の子からの告白で生まれた",
+   "text": "lovers born of a girl's"
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A82C",
+   "original": "恋人達は、永遠に幸せな関係に",
+   "text": "confession are happy forever"
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A84C",
+   "original": "なれるという伝説が…",
+   "text": "so the legend says..."
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A864",
+   "original": "あなたが…、",
+   "text": "I..."
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A874",
+   "original": "す・き・で・す",
+   "text": "l-o-v-e you"
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A910",
+   "original": "女子Ａ",
+   "text": "Girl A"
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A918",
+   "original": "女子Ｂ",
+   "text": "Girl B"
+  },
+  {
+   "file": "CDROM/EXEDIR/NAME_ENT.EXN",
+   "offset": "0x1A920",
+   "original": "プロローグ",
+   "text": "Prologue"
+  }
+ ]
+}

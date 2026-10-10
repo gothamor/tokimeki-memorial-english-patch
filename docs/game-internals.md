@@ -2406,7 +2406,7 @@ Found 2026-10-11 by forcing the day records (`force_event.py 0 0 --type T
 
 Practice matches (RENSYU.EXN, state 0x73, `SHIAI/SIAI_TX.BIN`): forcing
 the state alone returns to the title; their record isn't found yet, so
-`practice_matches.json` stays a draft.
+`practice_matches.json` was promoted unverified.
 
 ## 7. Graphics
 

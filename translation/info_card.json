@@ -1,0 +1,815 @@
+{
+ "description": "FUKUTEST/JOHO.NBN, the values on the girls' info card (Yoshio's phone menu): clubs, blood types, star signs (long ones shortened to fit), sizes and the notes. Promoted into the normal build on the user's request without an on-screen check (only the static checks: draft.py --check, packing, and a whole-set build). Not seen: the run to Yoshio's info card drifted (presses dropped while text types).",
+ "strings": [
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12200",
+   "original": "文芸部",
+   "text": "Lit."
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1220C",
+   "original": "演劇部",
+   "text": "Drama"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12218",
+   "original": "科学部",
+   "text": "Sci."
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12224",
+   "original": "電脳部",
+   "text": "Comp."
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12230",
+   "original": "美術部",
+   "text": "Art"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1223C",
+   "original": "吹奏楽部",
+   "text": "Band"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12248",
+   "original": "野球部",
+   "text": "B.ball"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12254",
+   "original": "サッカー部",
+   "text": "Soccer"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12260",
+   "original": "テニス部",
+   "text": "Tennis"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1226C",
+   "original": "水泳部",
+   "text": "Swim"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12278",
+   "original": "バスケ部",
+   "text": "Basketball"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12284",
+   "original": "無所属",
+   "text": "None"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12290",
+   "original": "私設部",
+   "text": "Own"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1229C",
+   "original": "Ｏ型",
+   "text": "O"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x122A4",
+   "original": "Ａ型",
+   "text": "A"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x122AC",
+   "original": "Ｂ型",
+   "text": "B"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x122B4",
+   "original": "ＡＢ型",
+   "text": "AB"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x122BC",
+   "original": "山羊座",
+   "text": "Capri."
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x122C6",
+   "original": "水瓶座",
+   "text": "Aquar."
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x122D0",
+   "original": "魚座",
+   "text": "Pisces"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x122DA",
+   "original": "牡羊座",
+   "text": "Aries"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x122E4",
+   "original": "牡牛座",
+   "text": "Taurus"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x122EE",
+   "original": "双子座",
+   "text": "Gemini"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x122F8",
+   "original": "蟹座",
+   "text": "Cancer"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12302",
+   "original": "獅子座",
+   "text": "Leo"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1230C",
+   "original": "乙女座",
+   "text": "Virgo"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12316",
+   "original": "天秤座",
+   "text": "Libra"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12320",
+   "original": "さそり座",
+   "text": "Scorpio"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1232A",
+   "original": "射手座",
+   "text": "Sagit."
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12334",
+   "original": "８３・５６・８４",
+   "text": "83-56-84"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12346",
+   "original": "８４・５６・８５",
+   "text": "84-56-85"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12358",
+   "original": "８５・５７・８６",
+   "text": "85-57-86"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1236A",
+   "original": "８０・５９・８２",
+   "text": "80-59-82"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1237C",
+   "original": "８０・５９・８３",
+   "text": "80-59-83"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1238E",
+   "original": "８１・５９・８３",
+   "text": "81-59-83"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x123A0",
+   "original": "８４・５８・８４",
+   "text": "84-58-84"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x123B2",
+   "original": "８４・５９・８４",
+   "text": "84-59-84"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x123C4",
+   "original": "８５・５９・８６",
+   "text": "85-59-86"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x123D6",
+   "original": "８６・６０・８６",
+   "text": "86-60-86"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x123E8",
+   "original": "８６・５９・８６",
+   "text": "86-59-86"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x123FA",
+   "original": "８６・６０・８７",
+   "text": "86-60-87"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1240C",
+   "original": "８１・５９・８２",
+   "text": "81-59-82"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1241E",
+   "original": "８２・５９・８３",
+   "text": "82-59-83"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12430",
+   "original": "８２・６０・８４",
+   "text": "82-60-84"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12442",
+   "original": "８０・５９・８４",
+   "text": "80-59-84"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12454",
+   "original": "８１・６０・８４",
+   "text": "81-60-84"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12466",
+   "original": "８２・６０・８４",
+   "text": "82-60-84"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12478",
+   "original": "８２・５８・８３",
+   "text": "82-58-83"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1248A",
+   "original": "８３・５８・８３",
+   "text": "83-58-83"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1249C",
+   "original": "８３・５９・８４",
+   "text": "83-59-84"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x124AE",
+   "original": "９０・６０・８８",
+   "text": "90-60-88"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x124C0",
+   "original": "９２・６１・８９",
+   "text": "92-61-89"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x124D2",
+   "original": "９３・６１・８９",
+   "text": "93-61-89"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x124E4",
+   "original": "８３・５９・８５",
+   "text": "83-59-85"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x124F6",
+   "original": "８３・６０・８６",
+   "text": "83-60-86"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12508",
+   "original": "８５・６０・８６",
+   "text": "85-60-86"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1251A",
+   "original": "７８・５７・７９",
+   "text": "78-57-79"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1252C",
+   "original": "７８・５８・７９",
+   "text": "78-58-79"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x1253E",
+   "original": "７９・５８・８０",
+   "text": "79-58-80"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12550",
+   "original": "７９・５９・８２",
+   "text": "79-59-82"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12562",
+   "original": "７９・５９・８２",
+   "text": "79-59-82"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12574",
+   "original": "８１・６０・８４",
+   "text": "81-60-84"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12586",
+   "original": "言迷・言迷・言迷",
+   "text": "??-??-??"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12598",
+   "original": "言迷・言迷・言迷",
+   "text": "??-??-??"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x125AA",
+   "original": "言迷・言迷・言迷",
+   "text": "??-??-??"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x125F4",
+   "original": "趣味は音楽鑑賞、特にクラシック",
+   "text": "Loves music, esp. classical"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12614",
+   "original": "成績優秀、スポーツ万能",
+   "text": "Top grades, sporty"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12634",
+   "original": "クラシックと恋愛物の映画が好み",
+   "text": "Likes classical, love movies"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12654",
+   "original": "ヘアバンドを集めてるらしい",
+   "text": "Collects hairbands"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12674",
+   "original": "アクセサリーを集めてるらしい",
+   "text": "Collects accessories"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12694",
+   "original": "公園に行くのが好きなようだ",
+   "text": "Seems to like parks"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x126B4",
+   "original": "身体が弱いことを、気にしている",
+   "text": "Worries about her frailty"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x126D4",
+   "original": "ゲーテの詩集がお気に入り",
+   "text": "Loves Goethe's poems"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x126F4",
+   "original": "激しいスポーツはしない",
+   "text": "No rough sports"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12714",
+   "original": "落ち着ける音楽が好み",
+   "text": "Likes calm music"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12734",
+   "original": "激しいスポーツはしない",
+   "text": "No rough sports"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12754",
+   "original": "趣味は読書で、文学作品を好む",
+   "text": "Reads, loves literature"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12774",
+   "original": "怪しげな研究をしてるらしい",
+   "text": "Does shady research"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12794",
+   "original": "その他、詳しいことは不明",
+   "text": "Nothing else known"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x127B4",
+   "original": "頭はきれるが、運動は駄目",
+   "text": "Sharp, but bad at sports"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x127D4",
+   "original": "破壊的なものが好きらしい",
+   "text": "Likes destructive stuff"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x127F4",
+   "original": "きらめき高校の※※※科学者",
+   "text": "Kirameki's ??? scientist"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12814",
+   "original": "頭脳のためにクラシックを聴く",
+   "text": "Hears classical for brains"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12834",
+   "original": "趣味は絵を描くこと",
+   "text": "Likes to paint"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12854",
+   "original": "明るく友達が多い、運動は駄目",
+   "text": "Cheery, many friends, unsporty"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12874",
+   "original": "グロテスクな絵、ポップスが好み",
+   "text": "Likes weird art and pop music"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12894",
+   "original": "静かなところは苦手",
+   "text": "Hates quiet"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x128B4",
+   "original": "水泳の授業の日は休みがち",
+   "text": "Skips swimming classes"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x128D4",
+   "original": "グロテスクな絵、ポップスが好み",
+   "text": "Likes weird art and pop music"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x128F4",
+   "original": "運動部のアイドルで、趣味は料理",
+   "text": "Sports clubs' idol; cooks"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12914",
+   "original": "運動はやるより、見るタイプ",
+   "text": "Likes watching sports"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12934",
+   "original": "アクション映画、ロックが好み",
+   "text": "Likes action films, rock"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12954",
+   "original": "趣味は料理、誰にでも優しい",
+   "text": "Cooks, kind to all"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12974",
+   "original": "何事にも頑張る人が好きらしい",
+   "text": "Likes people who try hard"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12994",
+   "original": "誰からも慕われている",
+   "text": "Loved by everyone"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x129B4",
+   "original": "ボーッとしてて、のんき",
+   "text": "Dreamy and carefree"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x129D4",
+   "original": "趣味は編み物",
+   "text": "Knitting"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x129F4",
+   "original": "テニス以外のスポーツは苦手",
+   "text": "Bad at sports but tennis"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12A14",
+   "original": "うるさいものは嫌いらしい",
+   "text": "Dislikes noisy things"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12A34",
+   "original": "ボーッとできるものが好き",
+   "text": "Likes to zone out"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12A54",
+   "original": "うるさいものは嫌いらしい",
+   "text": "Dislikes noisy things"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12A74",
+   "original": "スポーツ万能、水泳は国体レベル",
+   "text": "Sporty; national-level swimmer"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12A94",
+   "original": "優柔不断な男は嫌い",
+   "text": "Hates wishy-washy"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12AB4",
+   "original": "身体を動かすことが大好き",
+   "text": "Loves to keep moving"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12AD4",
+   "original": "ロックをよく聴く、軟弱者は嫌い",
+   "text": "Into rock, hates wimps"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12AF4",
+   "original": "男っぽいことを気にしてる",
+   "text": "Self-conscious: boyish"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12B14",
+   "original": "恋愛物の映画が好み",
+   "text": "Likes love movies"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12B34",
+   "original": "美人で俺好み",
+   "text": "Cute, my type"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12B54",
+   "original": "趣味はウィンドウショッピング",
+   "text": "Loves window shopping"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12B74",
+   "original": "高価なものを好む",
+   "text": "Likes pricey"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12B94",
+   "original": "美的ものにしか興味を持たない",
+   "text": "Only into beautiful things"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12BB4",
+   "original": "家庭の事を誰も知らない",
+   "text": "Family's a mystery"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12BD4",
+   "original": "美的で高価なものしか愛さない",
+   "text": "Loves only fine, pricey stuff"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12BF4",
+   "original": "流行に敏感で、遊び歩く",
+   "text": "Trendy, always out"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12C14",
+   "original": "勉強は苦手で、うるさい",
+   "text": "Bad at study, loud"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12C34",
+   "original": "流行に敏感で、うるさい",
+   "text": "Trendy and loud"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12C54",
+   "original": "アクション映画が好み",
+   "text": "Likes action films"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12C74",
+   "original": "ｐｒｆのファン",
+   "text": "prf fan"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12C94",
+   "original": "古臭いものは嫌いで、うるさい",
+   "text": "Hates old stuff, loud"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12CB4",
+   "original": "動物好きで、おとなしい",
+   "text": "Loves animals, quiet"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12CD4",
+   "original": "赤面症で、男子の友達は少ない",
+   "text": "Blushes; few guy friends"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12CF4",
+   "original": "動物のぬいぐるみを集めてる",
+   "text": "Collects plush animals"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12D14",
+   "original": "赤面症で、男子の友達は少ない",
+   "text": "Blushes; few guy friends"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12D34",
+   "original": "幽霊話とかの話が好きらしい",
+   "text": "Likes ghost stories"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12D54",
+   "original": "うるさい音楽は、嫌いらしい",
+   "text": "Dislikes loud music"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12D74",
+   "original": "俺の妹、スポーツは得意",
+   "text": "My sister; sporty"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12DB4",
+   "original": "アニメと、プロレスが好み",
+   "text": "Likes anime, pro wrestling"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12DF4",
+   "original": "ゲームとかガキっぽいものが好み",
+   "text": "Likes games and kid stuff"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12E14",
+   "original": "もっと女らしくなれよな",
+   "text": "Be more ladylike, sis"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12E34",
+   "original": "嫌い嫌い嫌い嫌い嫌い嫌い嫌い",
+   "text": "hate hate hate hate hate"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12E54",
+   "original": "嫌い嫌い嫌い嫌い嫌い嫌い嫌い",
+   "text": "hate hate hate hate hate"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12E74",
+   "original": "きざきざきざきざきざきざきざ",
+   "text": "smug smug smug smug smug"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12E94",
+   "original": "きざきざきざきざきざきざきざ",
+   "text": "smug smug smug smug smug"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12EB4",
+   "original": "きざで、嫌味で、冷徹で嫌な奴",
+   "text": "Smug, snide, cold, a jerk"
+  },
+  {
+   "file": "CDROM/FUKUTEST/JOHO.NBN",
+   "offset": "0x12ED4",
+   "original": "全男子生徒の敵、でも、金持ち",
+   "text": "Every guy's foe, but rich"
+  }
+ ]
+}

@@ -1,0 +1,95 @@
+{
+ "description": "the EXE's last untranslated words: the hint thoughts of the player's room (biorhythm chart, phone, stereo, mascot, manual, button tricks) and a park banner. Promoted into the normal build on the user's request without an on-screen check (only the static checks: draft.py --check, packing, and a whole-set build). Not seen: the room's hint thoughts were not triggered in any run.",
+ "strings": [
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x72B40",
+   "original": "近所の公園",
+   "text": "Local Park"
+  },
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x76214",
+   "original": "ページの中央・現在の位置\n赤・身体　青・感情\n緑・知性　のリズム）",
+   "text": "Page center: today.\nRed: body  Blue: mood\nGreen: mind rhythm)"
+  },
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x76258",
+   "original": "バイオリズム・２\n黒い線を横切るときは\n調子が悪い）",
+   "text": "Biorhythm 2\nCrossing the black\nline is a bad day)"
+  },
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x7628C",
+   "original": "バイオリズム・３\n黒い線から遠いとき調子が良い\n同じ距離なら上のほうが良い）",
+   "text": "Biorhythm 3\nFar from the line: good.\nSame distance: higher wins)"
+  },
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x762D8",
+   "original": "電話を使って女の子に直接、\n電話をかけることができる）",
+   "text": "You can phone\ngirls directly with this)"
+  },
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x76310",
+   "original": "このステレオ\nラジオ放送があんまりよく\n聞こえないんだよな）",
+   "text": "This stereo's\nradio reception\nisn't so great)"
+  },
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x7634C",
+   "original": "ゲームをクリアすると、\nその女の子のマスコット人形が\n手に入る）",
+   "text": "Clear the game and\nyou get that girl's\nmascot doll)"
+  },
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x7638C",
+   "original": "マスコットは\nＲ１押しながら…移動\nＲ２押しながら…紐を伸ばす）",
+   "text": "Mascot:\nhold R1 to move it,\nhold R2 to drop its string)"
+  },
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x763CC",
+   "original": "そういえば、このゲームの\n説明書を机に置いたような）",
+   "text": "Come to think of it, I left\nthe manual on my desk)"
+  },
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x76400",
+   "original": "２Ｐ（○×△□同時）\n　→１Ｐ○連打）",
+   "text": "2P (○×△□ at once)\n →1P mash ○)"
+  },
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x76428",
+   "original": "□ボタンで好みの\nカーソルが選べます）",
+   "text": "□ picks your\nfavorite cursor)"
+  },
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x76450",
+   "original": "セレクトボタンで\nメニューモードが変更できます）",
+   "text": "SELECT changes\nthe menu mode)"
+  },
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x76480",
+   "original": "２Ｐスタートボタン\nＳＤキャラのアニメスピード\n変更）",
+   "text": "2P START changes\nthe chibi animation\nspeed)"
+  },
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x764B8",
+   "original": "ゲームをクリアしても\nあわてないこと）",
+   "text": "Don't panic even\nafter you clear it)"
+  },
+  {
+   "file": "SLPM_86.053",
+   "offset": "0x764E0",
+   "original": "『袖竜』には『防御』）",
+   "text": "Sleeve Dragon? Guard)"
+  }
+ ]
+}

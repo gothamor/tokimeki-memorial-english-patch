@@ -1,0 +1,17 @@
+{
+ "description": "RENSYU.EXN's in-place words: the practice-match banners. Promoted into the normal build on the user's request without an on-screen check (only the static checks: draft.py --check, packing, and a whole-set build). Not reached: see practice_matches.json.",
+ "strings": [
+  {
+   "file": "CDROM/EXEDIR/RENSYU.EXN",
+   "offset": "0x2110",
+   "original": "練習試合",
+   "text": "Practice"
+  },
+  {
+   "file": "CDROM/EXEDIR/RENSYU.EXN",
+   "offset": "0x211C",
+   "original": "試合中",
+   "text": "Match"
+  }
+ ]
+}

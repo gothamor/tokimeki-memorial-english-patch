@@ -1212,8 +1212,8 @@ the dialogue box, so these runs are reviewed with full screenshots
 - `kd0`: `force_state.py 0x5c` jumps straight to a karaoke song (its
   on-screen lyrics are song data, left Japanese) and then back to the
   title screen; KARADATA's chatter needs the real karaoke date. Not found
-  yet, like ZAKOSEN's thugs (DATE.EXN `0x8013CADC`): both drafts stay in
-  `translation/extra/`.
+  yet, like ZAKOSEN's thugs (DATE.EXN `0x8013CADC`): both files were
+  later promoted unverified on the user's request (AGENTS.md).
 
 ### Club contests (MASTER/*.BIN, 2026-10-11)
 
@@ -1240,11 +1240,11 @@ sports club) and `rs7` (state 0x73) went back to the title screen.
   relay minigame (needs input; its caption bubble is graphics).
 - `fn13`/`fn14` (states 0x13/0x14): the album panel and the family-name
   entry; neither plays the opening narration, which needs a real new
-  game (`opening_words.json` stays a draft).
+  game (`opening_words.json` was promoted unverified).
 - `fic*`: Yoshio's info card from `phone_sat0429.sav` with `drive.ps1`.
   Presses sent while text is still typing get dropped, so the fixed
   sequences drifted (ratings path, date spots) and never opened the card;
-  `info_card.json` stays a draft. The phone book in that old state still
+  `info_card.json` was promoted unverified. The phone book in that old state still
   shows 藤崎詩織 (RAM from before the name patch; a fresh boot shows the
   English name).
 

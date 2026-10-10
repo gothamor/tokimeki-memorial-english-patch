@@ -1,0 +1,41 @@
+{
+ "description": "TAIIKU.EXN's in-place words: the sports day's banners and sound. The girls' names (room 6, surnames) stay Japanese. Promoted into the normal build on the user's request without an on-screen check (only the static checks: draft.py --check, packing, and a whole-set build). Not seen: the banners show after the sports-day minigame.",
+ "strings": [
+  {
+   "file": "CDROM/EXEDIR/TAIIKU.EXN",
+   "offset": "0x16940",
+   "original": "フォークダンス",
+   "text": "Folk Dance"
+  },
+  {
+   "file": "CDROM/EXEDIR/TAIIKU.EXN",
+   "offset": "0x16C80",
+   "original": "グラウンド",
+   "text": "Field"
+  },
+  {
+   "file": "CDROM/EXEDIR/TAIIKU.EXN",
+   "offset": "0x16C8C",
+   "original": "校舎裏",
+   "text": "Behind"
+  },
+  {
+   "file": "CDROM/EXEDIR/TAIIKU.EXN",
+   "offset": "0x16C94",
+   "original": "ドシン",
+   "text": "Thud"
+  },
+  {
+   "file": "CDROM/EXEDIR/TAIIKU.EXN",
+   "offset": "0x16D40",
+   "original": "体育祭",
+   "text": "Sports"
+  },
+  {
+   "file": "CDROM/EXEDIR/TAIIKU.EXN",
+   "offset": "0x16DA0",
+   "original": "中庭",
+   "text": "Quad"
+  }
+ ]
+}

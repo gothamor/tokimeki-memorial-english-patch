@@ -1,0 +1,47 @@
+{
+ "description": "The thugs who pick a fight on a date: all of SERIFU/ZAKOSEN.BIN (DATE.EXN 0x8013CADC). Promoted into the normal build on the user's request without an on-screen check (only the static checks: draft.py --check, packing, and a whole-set build). Not reached: the caller's trigger isn't found yet.",
+ "dialogue": [
+  {
+   "file": "CDROM/SERIFU/ZAKOSEN.BIN",
+   "base": "0x801b0000",
+   "share_identical": true,
+   "lines": [
+    {
+     "offset": "0x0",
+     "original": "俺様にぶつかっておきながら",
+     "text": "You bumped into me,"
+    },
+    {
+     "offset": "0x1c",
+     "original": "一言もナシとはなぁ。",
+     "text": "and not even a sorry?"
+    },
+    {
+     "offset": "0x34",
+     "original": "覚悟しやがれ！",
+     "text": "You're gonna get it!"
+    },
+    {
+     "offset": "0x54",
+     "original": "女連れとはいい\n身分じゃねぇか。",
+     "text": "Out with a girl,\nhuh? Lucky you."
+    },
+    {
+     "offset": "0x74",
+     "original": "ツラ貸しな！",
+     "text": "Step outside!"
+    },
+    {
+     "offset": "0x178",
+     "original": "おう、",
+     "text": "Hey,"
+    },
+    {
+     "offset": "0x180",
+     "original": "おう、",
+     "text": "Hey,"
+    }
+   ]
+  }
+ ]
+}
