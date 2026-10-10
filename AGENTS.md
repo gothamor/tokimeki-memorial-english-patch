@@ -155,6 +155,8 @@ against the tested candidate when promotion should not change game bytes.
 
 | `translation/contest_{literature,drama,science,game,art,band,sports,baseball}.json` + `contest_words.json` (all of `MASTER/*.BIN`, MASTER.EXN words) | Verified in DuckStation on forced contest days (hidden emulator): every culture club's contest (record 0x27 by club), three sports finals (0x26) and the baseball tournament (0x25). **Checked only statically:** the other results of each contest and the girls' congratulations. Practice matches (`SIAI_TX`, RENSYU.EXN) stay a draft in `translation/extra/`: not reached yet. |
 
+| `translation/trip_battles.json`, `etc_words.json`, `help_qa.json`, `sports_day.json` (RPG_BAT.EXN, ETC.EXN, OLH.EXN words; TAIIKU/TAI_TX.BIN) | Verified in DuckStation, hidden emulator: the habu battle (names, damage lines, the player's lines; their 「 restored after the run, checked statically), career counselling and the exam day, the help screen's menus and one answer, the sports day prompt and event menu. **Checked only statically:** the other battles, exams, help answers and sports events. Still drafts in `translation/extra/`: `info_card` (card not reached), `opening_words` (needs a new game), `room_hints`, `geko_words`, `sports_day_words`, `folk_dance`, `sports_day_mio`, `sports_day_nozomi` (sports day past the minigame), `karaoke`, `thugs`, `practice_*`. |
+
 Update this table when you verify something.
 
 ## Working in this environment (Windows dev box)

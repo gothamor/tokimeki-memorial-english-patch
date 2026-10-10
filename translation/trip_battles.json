@@ -1,0 +1,1919 @@
+{
+ "description": "RPG_BAT.EXN, the school trip's mock RPG battles: lines, centered move names, the damage fragments (joined by 0x8014D11C as name + ': ' + number + ' damage taken'), loot, titles and the pun list (English puns). Verified in DuckStation, hidden emulator (docs/testing.md 'Overlay words and small files'): the habu battle from Yuina's Okinawa trip (force_trip.py, 'leave this to me'): the boss and helper names, damage/heal composition, the player's lines (their opening 「 restored after the run), the loot line. The 攻撃/防御 command menu is graphics and stays Japanese. Checked only statically: the bear and alien battles' lines, other moves.",
+ "strings": [
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x289A0",
+   "original": "朝日奈「つまんな〜い！",
+   "text": "Yuko: Boooring!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x289E0",
+   "original": "　　　　　ナイアガラダンク　　　　　",
+   "text": "             Niagara Dunk             "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28A60",
+   "original": "マタギ「こったらとこ来たらだめだべ！",
+   "text": "Hunter: Ya can't come 'round here!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28A88",
+   "original": "早くけえれ！",
+   "text": "Git home!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28A98",
+   "original": "　　　　サーモンブーメラン　　　　",
+   "text": "         Salmon Boomerang         "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28ABC",
+   "original": "「だめだ！　喰われてしまう！",
+   "text": "「No good! It'll eat me!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28ADC",
+   "original": "くそったれめー！",
+   "text": "Damn it all!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28AF0",
+   "original": "正義のマタギ見参！",
+   "text": "Justice Hunter!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28B04",
+   "original": "名銃「次郎丸」ショット",
+   "text": "Jiromaru Rifle Shot"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28B1C",
+   "original": "「次郎丸」エネルギー充填",
+   "text": "「Jiromaru charging up"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28B38",
+   "original": "戦闘に勝った！！",
+   "text": "Battle won!!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28B4C",
+   "original": "ありがとう、マタギのおじさん",
+   "text": "Thanks, Mister Hunter"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28B6C",
+   "original": "経験値　：１０２４ＥＸＰ",
+   "text": "EXP  : 1024 EXP"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28B88",
+   "original": "お金　　：５３ゴールド",
+   "text": "Money: 53 Gold"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28C30",
+   "original": "好雄「いくぞっ！",
+   "text": "Yoshio: Here goes!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28C44",
+   "original": "スペシャル好雄パーンチ！",
+   "text": "Special Yoshio Punch!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28C60",
+   "original": "好雄「食らえ！",
+   "text": "Yoshio: Eat!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28C70",
+   "original": "グレート好雄キーック！",
+   "text": "Great Yoshio Kiiick!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28C88",
+   "original": "　　　　　　好雄の秘薬　　　　　　",
+   "text": "         Yoshio's Elixir          "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28D30",
+   "original": "藤崎「もう、",
+   "text": "Shiori: Jeez,"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28D40",
+   "original": "なにバカなこと言ってるのよ。",
+   "text": "what silly things you say."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28D90",
+   "original": "　　　　ハーメルンのホラ吹き　　　　",
+   "text": "          Pied Piper's Fibs           "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28E20",
+   "original": "美樹原「きゃっ！",
+   "text": "Megumi: Eek!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28E34",
+   "original": "美樹原「はっ！",
+   "text": "Megumi: Hah!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28EB0",
+   "original": "早乙女「えーん",
+   "text": "Yumi: Waaah"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28EC0",
+   "original": "えーん（うそなき）",
+   "text": "Waaah (fake cry)"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28ED4",
+   "original": "不良達「これはいかん！",
+   "text": "Thugs: This won't do!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28EEC",
+   "original": "女子供を泣かせては、男がすたる。",
+   "text": "Making a girl cry? A man's shame."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28F10",
+   "original": "番長「いっか〜ん！",
+   "text": "Boss: No good!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28F24",
+   "original": "女子供を泣かせては、番長の名折れ！",
+   "text": "Making a girl cry shames a boss!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x28FA0",
+   "original": "紐緒「馬鹿な事言ってるんじゃないわ",
+   "text": "Himoo: Don't talk nonsense."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29010",
+   "original": "　　　　　　メガトン辞書　　　　　　",
+   "text": "          Megaton Dictionary          "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29070",
+   "original": "虹野「がんばってっ！",
+   "text": "Saki: Go for it!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29160",
+   "original": "不良「そんな攻撃では、",
+   "text": "Thug: Hits like that"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29178",
+   "original": "俺達の拳とは語れねぇぜ！",
+   "text": "won't talk to our fists!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29194",
+   "original": "不良「口ほどにもないやつめ。",
+   "text": "Thug: All talk, no fight."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x291B4",
+   "original": "出直してきやがれ！",
+   "text": "Come back later!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x291C8",
+   "original": "不良「くっ！　なかなかやるなっ！",
+   "text": "Thug: Ugh! You're not bad!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x291EC",
+   "original": "しかたねぇ、番長様に御報告だ！",
+   "text": "Gotta report to the Boss!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2920C",
+   "original": "？？「ちょっと待てぇーい！",
+   "text": "??: Hold it right there!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29228",
+   "original": "番長「俺様は、この世界の番長だ！",
+   "text": "Boss: I'm this world's Boss!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2924C",
+   "original": "子分達が随分と世話になったようだな。",
+   "text": "You've been busy with my boys."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29274",
+   "original": "だが、茶番はここまでだ！",
+   "text": "But the farce ends here!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29290",
+   "original": "礼をさせてもらうぞ。",
+   "text": "Here's my thanks."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x292A8",
+   "original": "これでもくらえぇーい！",
+   "text": "Take thiiis!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x292C0",
+   "original": "超眼力！",
+   "text": "Glare!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x292CC",
+   "original": "番長「ふっ、思い知ったか。",
+   "text": "Boss: Heh, learned now?"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x292E8",
+   "original": "俺様に逆らう者の末路はこうなるのだ。",
+   "text": "This is how my enemies end up."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29310",
+   "original": "はっはっはっはっはっ・・・",
+   "text": "Hahahahaha..."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2932C",
+   "original": "天使の声「お願い、立ちあがって。",
+   "text": "Angel: Please, stand up."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29350",
+   "original": "あなたには、",
+   "text": "You still"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29360",
+   "original": "まだやるべきことがあるのよ！",
+   "text": "have things to do!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29380",
+   "original": "そうよ、あなたにならできるわ！",
+   "text": "Yes, you can do it!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x293A0",
+   "original": "新しい力をあげる。",
+   "text": "Take new power."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x293B4",
+   "original": "彼女を・・・守ってあげて！",
+   "text": "Protect... her!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x293D0",
+   "original": "番長「なにぃぃぃー！？",
+   "text": "Boss: Whaaat!?"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x293E8",
+   "original": "番長「こわっぱが、",
+   "text": "Boss: Brat,"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x293FC",
+   "original": "超眼力を見切った程度で図に乗りおって",
+   "text": "you think you're hot, dodging my Glare"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29424",
+   "original": "俺様の真の力を見せてくれる。",
+   "text": "I'll show you my true power."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29444",
+   "original": "ゆくぞーっ！",
+   "text": "Here I come!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29454",
+   "original": "不良Ａの攻撃",
+   "text": "Thug A hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29464",
+   "original": "不良Ｂの攻撃",
+   "text": "Thug B hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29474",
+   "original": "不良Ｃの攻撃",
+   "text": "Thug C hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29484",
+   "original": "不良パンチ",
+   "text": "Thug Punch"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29490",
+   "original": "不良Ａの攻撃",
+   "text": "Thug A hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x294A0",
+   "original": "不良Ｂの攻撃",
+   "text": "Thug B hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x294B0",
+   "original": "不良Ｃの攻撃",
+   "text": "Thug C hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x294C0",
+   "original": "不良パンチ",
+   "text": "Thug Punch"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x294CC",
+   "original": "不良Ａ",
+   "text": "Thug A"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x294D4",
+   "original": "は",
+   "text": ": "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x294D8",
+   "original": "のダメージを受けた",
+   "text": " damage taken"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x294EC",
+   "original": "不良Ｂ",
+   "text": "Thug B"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x294F4",
+   "original": "は",
+   "text": ": "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x294F8",
+   "original": "のダメージを受けた",
+   "text": " damage taken"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2950C",
+   "original": "不良Ｃ",
+   "text": "Thug C"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29514",
+   "original": "は",
+   "text": ": "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29518",
+   "original": "のダメージを受けた",
+   "text": " damage taken"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2952C",
+   "original": "不良Ａの攻撃",
+   "text": "Thug A hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2953C",
+   "original": "不良Ｂの攻撃",
+   "text": "Thug B hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2954C",
+   "original": "不良Ｃの攻撃",
+   "text": "Thug C hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2955C",
+   "original": "不良パンチ",
+   "text": "Thug Punch"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29568",
+   "original": "は",
+   "text": ": "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2956C",
+   "original": "のダメージを受けた",
+   "text": " damage taken"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29580",
+   "original": "不良Ａの攻撃",
+   "text": "Thug A hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29590",
+   "original": "不良Ｂの攻撃",
+   "text": "Thug B hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x295A0",
+   "original": "不良Ｃの攻撃",
+   "text": "Thug C hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x295B0",
+   "original": "不良パンチ",
+   "text": "Thug Punch"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x295BC",
+   "original": "は",
+   "text": ": "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x295C0",
+   "original": "のダメージを受けた",
+   "text": " damage taken"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x295D4",
+   "original": "不良Ａの攻撃",
+   "text": "Thug A hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x295E4",
+   "original": "不良Ｂの攻撃",
+   "text": "Thug B hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x295F4",
+   "original": "不良Ｃの攻撃",
+   "text": "Thug C hits"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29604",
+   "original": "不良パンチ",
+   "text": "Thug Punch"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29610",
+   "original": "は",
+   "text": ": "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29614",
+   "original": "をかばった",
+   "text": " covered"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29620",
+   "original": "は",
+   "text": ": "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29624",
+   "original": "のダメージを受けた",
+   "text": " damage taken"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29638",
+   "original": "戦闘に勝った！！",
+   "text": "Battle won!!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2964C",
+   "original": "経験値　：２３６０ＥＸＰ",
+   "text": "EXP  : 2360 EXP"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29668",
+   "original": "お金　　：３６００ゴールド",
+   "text": "Money: 3600 Gold"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29684",
+   "original": "「誰だっ！",
+   "text": "「Who?!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29690",
+   "original": "（どこからともなく声が聞こえてきた）",
+   "text": "(A voice came from nowhere.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x296B8",
+   "original": "「もう超眼力は見切ったぜ！",
+   "text": "「Glare won't work now!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x296D4",
+   "original": "番長！　負ける訳にはいかない！！",
+   "text": "Boss! I can't lose this!!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x296F8",
+   "original": "ミスリル学ラン",
+   "text": "Mithril Coat"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29708",
+   "original": "炎のＴシャツ",
+   "text": "Fire T-Shirt"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29718",
+   "original": "ダイヤの学帽",
+   "text": "Diamond Cap"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29728",
+   "original": "源氏のかたな",
+   "text": "Genji Sword"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29738",
+   "original": "おたから：",
+   "text": "Loot:"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29A40",
+   "original": "鏡「つまらないわ…よっ！",
+   "text": "Mira: How dull... hah!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29A80",
+   "original": "　　　　　サイバーファング　　　　　",
+   "text": "              Cyber Fang              "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29B10",
+   "original": "の体力が５％回復した",
+   "text": " healed 5% HP"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29B28",
+   "original": "の攻撃",
+   "text": "'s hit"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29B30",
+   "original": "は失敗した",
+   "text": " missed"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29B3C",
+   "original": "は",
+   "text": ": "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29B40",
+   "original": "のダメージを与えた",
+   "text": " damage dealt"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29BE0",
+   "original": "片桐「はっ、",
+   "text": "Ayako: Hah,"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29BF0",
+   "original": "いいかげんにしなさいっ！",
+   "text": "that's enough!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29D80",
+   "original": "如月「いいかげんにして下さい…。",
+   "text": "Mio: Please, that's enough..."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29EF0",
+   "original": "紐緒「真・世界征服ロボ！！",
+   "text": "Himoo: Conquest Robo!!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29F0C",
+   "original": "　　　　　服従ドリルパンチ　　　　　",
+   "text": "           Obey Drill Punch           "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29F34",
+   "original": "　　　　独裁ミサイルシャワー　　　　",
+   "text": "         Tyrant Missile Rain          "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29F5C",
+   "original": "　　　　世界征服メガビーム　　　　　",
+   "text": "          Conquest Mega Beam          "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29F84",
+   "original": "ロボ「ガギグ・・・ッ",
+   "text": "Robo: Gagigu..."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x29F9C",
+   "original": "「よせっ！　紐緒さん！",
+   "text": "「Stop it! Himoo!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A1E0",
+   "original": "清川「いいかげんに…してっ！",
+   "text": "Nozomi: Cut it... out!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A200",
+   "original": "清川「いいかげんに…しろっ！",
+   "text": "Nozomi: Knock it... off!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A260",
+   "original": "藤崎「やめてっ！",
+   "text": "Shiori: Stop it!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A2A0",
+   "original": "　　　　　　世界征服ロボ　　　　　　",
+   "text": "            Conquest Robo             "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A2C8",
+   "original": "ロボ「服従パーンチ！",
+   "text": "Robo: Obey Punch!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A2E0",
+   "original": "ロボ「独裁ミサイールッ！",
+   "text": "Robo: Tyrant Missile!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A2FC",
+   "original": "ロボ「世界征服ビィーム！",
+   "text": "Robo: Conquest Beam!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A420",
+   "original": "古式「まぁ、おもしろいですねぇ。",
+   "text": "Yukari: Oh, how amusing."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A520",
+   "original": "美樹原「いいかげんに…",
+   "text": "Megumi: Enough..."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A538",
+   "original": "い、いえ…やっぱりいいです…",
+   "text": "N-no... never mind..."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A558",
+   "original": "美樹原「いいかげんに…",
+   "text": "Megumi: Enough..."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A570",
+   "original": "い、いえ…やっぱりいいです…",
+   "text": "N-no... never mind..."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A5F0",
+   "original": "　　　　アストラルファング　　　　",
+   "text": "           Astral Fang            "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A614",
+   "original": "「だめだ！　やられてしまう！",
+   "text": "「No good! I'm done for!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A634",
+   "original": "？？？「ピキィー！",
+   "text": "???: Pikiii!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A648",
+   "original": "「なっ、なんだ！",
+   "text": "「Wh-what!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A65C",
+   "original": "正義のマングース参上！",
+   "text": "Justice Mongoose!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A674",
+   "original": "　　　　　マングース斬鉄剣　　　　　",
+   "text": "         Mongoose Steelcutter         "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A69C",
+   "original": "戦闘に勝った！！",
+   "text": "Battle won!!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A6B0",
+   "original": "ありがとう、正義のマングース",
+   "text": "Thanks, Justice Mongoose"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A6D0",
+   "original": "経験値　：８２０ＥＸＰ",
+   "text": "EXP  : 820 EXP"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A6E8",
+   "original": "お金　　：１７５ゴールド",
+   "text": "Money: 175 Gold"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A790",
+   "original": "？？？「拙僧にまかせなされ。",
+   "text": "???: Leave it to this monk."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A7B0",
+   "original": "虚無僧「迷える大鹿よ、",
+   "text": "Monk: Lost great deer,"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A7C8",
+   "original": "怒りを静め給え。",
+   "text": "calm your anger."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A7DC",
+   "original": "虚無僧「はしたないところを",
+   "text": "Monk: Forgive me for"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A7F8",
+   "original": "お見せしてしまった。",
+   "text": "that unseemly show."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A810",
+   "original": "では、拙僧はこれにて。",
+   "text": "Now, I take my leave."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A828",
+   "original": "　　　　　　スタンピート　　　　　　",
+   "text": "               Stampede               "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A850",
+   "original": "「だめだ！　体が動かない！",
+   "text": "「No good! I can't move!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A874",
+   "original": "正義の虚無僧推参！",
+   "text": "Justice Monk!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A888",
+   "original": "　　　　　現世忘却の呪文　　　　　",
+   "text": "        Spell of Oblivion         "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A8AC",
+   "original": "鹿・グレートは去っていった。",
+   "text": "Deer the Great left."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A8CC",
+   "original": "戦闘に勝った！！",
+   "text": "Battle won!!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A8E0",
+   "original": "ありがとう、正義の虚無僧",
+   "text": "Thanks, Justice Monk"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A8FC",
+   "original": "経験値　：８４１ＥＸＰ",
+   "text": "EXP  : 841 EXP"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2A914",
+   "original": "お金　　：２０４５ゴールド",
+   "text": "Money: 2045 Gold"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2AA80",
+   "original": "虹野「な、なんだかな…",
+   "text": "Saki: Wh-what now..."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2AAC0",
+   "original": "紐緒「これでもくらいなさい！",
+   "text": "Himoo: Take this!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2AB30",
+   "original": "　　　　　レッドカード乱舞　　　　　",
+   "text": "           Red Card Frenzy            "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2AC30",
+   "original": "早乙女「優美つまんなーい！",
+   "text": "Yumi: Yumi's bored!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2AC70",
+   "original": "　　　　　　　気分最高　　　　　　　",
+   "text": "            On Cloud Nine             "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2AD40",
+   "original": "　　　　　　　水竜破　　　　　　　",
+   "text": "           Water Dragon           "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2AF10",
+   "original": "鏡「また私のとりこが一人。",
+   "text": "Mira: Another one smitten."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2AF2C",
+   "original": "鏡「でなおしてらっしゃい！",
+   "text": "Mira: Come back later!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2AFB0",
+   "original": "紐緒「想定強度に問題があったみたいね",
+   "text": "Himoo: My stress tests were off."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2AFD8",
+   "original": "宇宙人は去っていった。",
+   "text": "The alien left."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2AFF0",
+   "original": "宇宙人「仝Щ△※〒ヰヱΞ＆",
+   "text": "Alien: 仝Щ△※〒ヰヱΞ＆"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B150",
+   "original": "紐緒「馬鹿な事言ってるんじゃないわ",
+   "text": "Himoo: Don't talk nonsense."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B174",
+   "original": "　　　　　　　脱力漫才　　　　　　　",
+   "text": "           Deflating Comedy           "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B19C",
+   "original": "ロボ「ガガッ・・理解不能\n",
+   "text": "Robo: Gaga.. Error\n"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B1B8",
+   "original": "猿が去る！",
+   "text": "Ape, away!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B1C4",
+   "original": "犬がいぬ！",
+   "text": "Dog? Agog!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B1D0",
+   "original": "猫が寝込んだ！",
+   "text": "Cat's a nap!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B1E0",
+   "original": "馬が埋まった！",
+   "text": "Nay, horse!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B1F0",
+   "original": "鹿に叱られた！",
+   "text": "Deer me!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B200",
+   "original": "知人が縮んだ！",
+   "text": "Pal's small!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B210",
+   "original": "寺を照らした！",
+   "text": "Lit a temple!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B220",
+   "original": "ハエは速えー！",
+   "text": "Fly's fly!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B230",
+   "original": "納屋で悩んだ！",
+   "text": "Barn: Darn!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B240",
+   "original": "鳩がはっとした！",
+   "text": "Dove got a rush!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B254",
+   "original": "コイが恋をした！",
+   "text": "Carp's in love!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B268",
+   "original": "仏像でぶつぞう！",
+   "text": "Buddha? Bud, ha!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B27C",
+   "original": "納豆食って納得！",
+   "text": "Natto? Got it!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B290",
+   "original": "カレーは辛ぇー！",
+   "text": "Curry's hurry!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B2A4",
+   "original": "ねぎを値切った！",
+   "text": "Leek deal sneak!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B2B8",
+   "original": "スキーが好きー！",
+   "text": "Ski? Love it, see!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B2CC",
+   "original": "イルカはいるか？",
+   "text": "Dolphin? Doll fin?"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B2E0",
+   "original": "洋なしは用無しだ！",
+   "text": "A pear? Spare!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B2F4",
+   "original": "バットを配っとる。",
+   "text": "Bats: Batter up!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B308",
+   "original": "ウナギがうなった！",
+   "text": "Eel's feeling ill!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B31C",
+   "original": "布団がふっとんだ！",
+   "text": "Futon flew, son!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B330",
+   "original": "卓球やって脱臼した。",
+   "text": "Ping-pong went wrong."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B348",
+   "original": "トイレに行っといれ。",
+   "text": "Loo? Go, you!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B360",
+   "original": "ホテルで穴掘ってる。",
+   "text": "Hotel hole dwell."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B378",
+   "original": "このスイカ安いか？",
+   "text": "Melon a steal?"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B38C",
+   "original": "このイクラいくら？",
+   "text": "Roe, how much?"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B3A0",
+   "original": "Ｈｅｙ！かっこいー！",
+   "text": "Hey! So cool-ey!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B3B8",
+   "original": "ドジョウに同情した。",
+   "text": "Loach, I approach."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B3D0",
+   "original": "ラクダに乗って楽だ！",
+   "text": "Camel? A comfy ride!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B3E8",
+   "original": "カッターがなかったー",
+   "text": "No cutter? Shudder!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B400",
+   "original": "図鑑が爆発！　ズカーン！",
+   "text": "Book boom! Ka-boook!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B41C",
+   "original": "土管が爆発！　ドカーン！",
+   "text": "Pipe boom! Ka-pipe!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B438",
+   "original": "母艦が爆発！　ボカーン！",
+   "text": "Ship boom! Ka-ship!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B454",
+   "original": "ズボンが爆発！　ズボーン！",
+   "text": "Pants boom! Ka-pants!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B470",
+   "original": "コマンド忘れると困んどー。",
+   "text": "No commands? Bad hands."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B48C",
+   "original": "あなたと相性があいしょうね。",
+   "text": "We match, a perfect catch."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B4AC",
+   "original": "パンダが好きなものはパンだ！",
+   "text": "Pandas love pan-cakes!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B4CC",
+   "original": "ワープロ使えるの？　わープロ！",
+   "text": "Word pro? Wow, a pro!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B4EC",
+   "original": "カルカッタの人達は明るかった。",
+   "text": "Calcutta folk? Cheery lot!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B50C",
+   "original": "金魚を飼うのはきんぎょ迷惑だ。",
+   "text": "Goldfish? Gold wish!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B52C",
+   "original": "エラーが出たらえらいこっちゃ！",
+   "text": "An error? A terror!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B650",
+   "original": "　　　　　ポコポコ乱れ撃ち　　　　　",
+   "text": "          Bonk Bonk Barrage           "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B750",
+   "original": "　　　　　テール・パンチ　　　　　",
+   "text": "            Tail Punch            "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B774",
+   "original": "　　　　　暴れん坊頭突き　　　　　",
+   "text": "          Rowdy Headbutt          "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B798",
+   "original": "　　　　クラッシュ・クロー　　　　",
+   "text": "            Crush Claw            "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B7BC",
+   "original": "は",
+   "text": ": "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B7C0",
+   "original": "のダメージを受けた",
+   "text": " damage taken"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B7D4",
+   "original": "蛇の抜け殻",
+   "text": "Snakeskin"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B7E0",
+   "original": "ヘビ皮鞄",
+   "text": "Snake Bag"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B7EC",
+   "original": "毒消し",
+   "text": "Antidt"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B7F4",
+   "original": "ハブ酒",
+   "text": "Habu"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B7FC",
+   "original": "鹿せんべい",
+   "text": "Deer Cake"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B808",
+   "original": "鹿の角",
+   "text": "Antler"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B810",
+   "original": "鹿まんじゅう",
+   "text": "Deer Bun"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B820",
+   "original": "鹿の糞",
+   "text": "Dung"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B828",
+   "original": "熊の片腕",
+   "text": "Bear Arm"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B834",
+   "original": "熊の毛皮",
+   "text": "Bear Fur"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B840",
+   "original": "熊の剥製",
+   "text": "Stuffed"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B84C",
+   "original": "熊の置物",
+   "text": "Bear Doll"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B858",
+   "original": "おたから：",
+   "text": "Loot:"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B890",
+   "original": "マングース",
+   "text": "Mongoose"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B89C",
+   "original": "ハブ・ロード",
+   "text": "Habu Lord"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B8AC",
+   "original": "虚無僧",
+   "text": "Monk"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B8B4",
+   "original": "鹿・グレート",
+   "text": "Deer Great"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B8C4",
+   "original": "マタギ",
+   "text": "Hunter"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B8CC",
+   "original": "キラーヒグマ",
+   "text": "Killer Bear"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B8DC",
+   "original": "番長",
+   "text": "Boss"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B8E4",
+   "original": "不良達",
+   "text": "Thugs"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B8EC",
+   "original": "宇宙人",
+   "text": "Alien"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B8F4",
+   "original": "紐緒",
+   "text": "Himoo"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B8FC",
+   "original": "真・世界征服",
+   "text": "Conquest"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B90C",
+   "original": "真・世界征服ロボ",
+   "text": "Conquest Robo"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B920",
+   "original": "ハブ・ロードが襲ってきた！",
+   "text": "Habu Lord attacks!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B93C",
+   "original": "鹿・グレートが襲ってきた！",
+   "text": "Deer the Great attacks!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B958",
+   "original": "キラーヒグマが襲ってきた！",
+   "text": "Killer Bear attacks!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B974",
+   "original": "不良達が襲ってきた！",
+   "text": "Thugs attack!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B98C",
+   "original": "宇宙人が襲ってきた！",
+   "text": "Alien attacks!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B9A4",
+   "original": "紐緒「私が準備するまで、",
+   "text": "Himoo: Until I'm ready,"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2B9C0",
+   "original": "持ちこたえなさい。",
+   "text": "hold them off."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BA80",
+   "original": "　　　　　　　色素分解　　　　　　　",
+   "text": "          Pigment Breakdown           "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BAE0",
+   "original": "如月「ああっ！　めまいが！",
+   "text": "Mio: Ah! I'm dizzy!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BB20",
+   "original": "　　　　　　火の鳥サーブ　　　　　　",
+   "text": "            Firebird Serve            "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BBA0",
+   "original": "朝日奈「ねえ、ねえっ。",
+   "text": "Yuko: Hey, hey."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BBB8",
+   "original": "聞いて、聞いてっ！",
+   "text": "Listen, listen!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BBCC",
+   "original": "不良達「なんだ、なんだ？",
+   "text": "Thugs: What, what?"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BBE8",
+   "original": "番長「なんだ、なんだ？",
+   "text": "Boss: What, what?"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BC50",
+   "original": "清川「フザケンナヨー！",
+   "text": "Nozomi: Quit fooling!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BC68",
+   "original": "あっ！いや、なんでもない・・・",
+   "text": "Ah! N-nothing..."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BC88",
+   "original": "清川「フザケンナヨー！",
+   "text": "Nozomi: Quit fooling!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BCA0",
+   "original": "馬鹿野郎ーっ！",
+   "text": "You idiot!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BD20",
+   "original": "宇宙人「Ж○ξ♂×♀？〆£∞Й！",
+   "text": "Alien: Ж○ξ♂×♀？〆£∞Й！"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BD44",
+   "original": "宇宙人「ЮΩ▽☆§◎",
+   "text": "Alien: ЮΩ▽☆§◎"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BD5C",
+   "original": "は",
+   "text": ": "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BD60",
+   "original": "のダメージを受けた",
+   "text": " damage taken"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BD74",
+   "original": "宇宙人「ЛΦΘζ□Э℃¢Λ",
+   "text": "Alien: ЛΦΘζ□Э℃¢Λ"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BD90",
+   "original": "は",
+   "text": ": "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BD94",
+   "original": "のダメージを受けた",
+   "text": " damage taken"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BDA8",
+   "original": "達は逃げ出した。",
+   "text": " all ran away."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BE50",
+   "original": "番長「袖竜！",
+   "text": "Boss: Sleeve!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BE60",
+   "original": "番長「男の意地にかけて、",
+   "text": "Boss: On my pride as man,"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BE7C",
+   "original": "負ける訳にはいかねぇ！",
+   "text": "I can't lose!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BE94",
+   "original": "番長「ふっ！　情けない。",
+   "text": "Boss: Hah! Pathetic."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BEB0",
+   "original": "俺様に楯突こうとは十年早いわ！",
+   "text": "You're ten years too early!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BED0",
+   "original": "番長「ふっ、恐れ入ったぜっ",
+   "text": "Boss: Heh, you got me."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BEEC",
+   "original": "俺様を倒せるやつが、",
+   "text": "To think someone"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BF04",
+   "original": "この世にいたとはな・・・。",
+   "text": "could beat me..."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BF20",
+   "original": "番長「いや、",
+   "text": "Boss: No,"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BF30",
+   "original": "その名はもう俺にはふさわしくない。",
+   "text": "that title's not mine anymore."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BF54",
+   "original": "これからは、お前が番長だ。",
+   "text": "From now on, you're Boss."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BF70",
+   "original": "元・番長「あばよ、彼女と仲良くなっ！",
+   "text": "Ex-Boss: Bye. Be good to her!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BF98",
+   "original": "番長「貴様の力はそんなもんか！",
+   "text": "Boss: Is that all you've got!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BFB8",
+   "original": "番長「片腹痛いわ！",
+   "text": "Boss: Laughable!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BFCC",
+   "original": "番長「なかなかやるな！",
+   "text": "Boss: Not bad!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2BFE4",
+   "original": "番長「少しはできそうだな。",
+   "text": "Boss: You've got skill."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C000",
+   "original": "番長「男の意地にかけて、",
+   "text": "Boss: On my pride as man,"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C01C",
+   "original": "負ける訳にはいかねぇ！",
+   "text": "I can't lose!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C034",
+   "original": "番長「俺様が・・・",
+   "text": "Boss: I..."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C048",
+   "original": "番長のこの俺様が・・・",
+   "text": "I, the Boss..."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C060",
+   "original": "こんな所で負ける訳にはいかん！",
+   "text": "can't lose in a dump like this"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C080",
+   "original": "番長「うぬぬぬぬ・・・",
+   "text": "Boss: Grrrrr..."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C098",
+   "original": "は",
+   "text": ": "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C09C",
+   "original": "のダメージを受けた",
+   "text": " damage taken"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C0B0",
+   "original": "は",
+   "text": ": "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C0B4",
+   "original": "のダメージを受けた",
+   "text": " damage taken"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C0C8",
+   "original": "「番長・・・。",
+   "text": "「Boss..."
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C0D8",
+   "original": "番長",
+   "text": "Boss"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C0E0",
+   "original": "元・番長",
+   "text": "Ex-Boss"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C0EC",
+   "original": "戦闘に勝った！！",
+   "text": "Battle won!!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C100",
+   "original": "経験値　：３２７６７ＥＸＰ",
+   "text": "EXP  : 32767 EXP"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C11C",
+   "original": "お金　　：６５５３５ゴールド",
+   "text": "Money: 65535 Gold"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C13C",
+   "original": "ドラゴン学ラン",
+   "text": "Dragon Coat"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C14C",
+   "original": "不思議な学帽",
+   "text": "Magic Cap"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C15C",
+   "original": "エクスカリバー",
+   "text": "Excalibur"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C16C",
+   "original": "番長の証し",
+   "text": "Boss Badge"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C178",
+   "original": "世界番長",
+   "text": "World Boss"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C184",
+   "original": "時空番長",
+   "text": "Time Boss"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C190",
+   "original": "銀河番長",
+   "text": "Star Boss"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C19C",
+   "original": "朝焼け番長",
+   "text": "Dawn Boss"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C1A8",
+   "original": "おたから：",
+   "text": "Loot:"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C1B4",
+   "original": "獲得称号：",
+   "text": "Title:"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C3E0",
+   "original": "古式「お父様ーーっ！！",
+   "text": "Yukari: Fatherrr!!"
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C3F8",
+   "original": "　　　　　　おやじの怒り　　　　　　",
+   "text": "            Father's Wrath            "
+  },
+  {
+   "file": "CDROM/EXEDIR/RPG_BAT.EXN",
+   "offset": "0x2C480",
+   "original": "　　　　　　超球百裂弾　　　　　　　",
+   "text": "            Hyper 100 Ball            "
+  }
+ ]
+}

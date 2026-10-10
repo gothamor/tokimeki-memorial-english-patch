@@ -1,0 +1,1493 @@
+{
+ "description": "OLH.EXN, the in-game help (Q&A corner): system setup, memory card, biorhythm, icons, sub-games, trivia and the file select screen. Each paragraph is word-wrapped into the original line slots. Verified in DuckStation, hidden emulator (docs/testing.md 'Overlay words and small files'): state 0x3A: the help menu, the System Setup list and the Icon Mode answer. Checked only statically: the other answers.",
+ "strings": [
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x4F60",
+   "original": "Ｑ＆Ａコーナー",
+   "text": "Q&A Corner"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x4F70",
+   "original": "スタートボタンでゲームに戻れます",
+   "text": "Press START to go back to the game"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x4F94",
+   "original": "項目を選んでください",
+   "text": "Please choose an item"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5190",
+   "original": "システム設定",
+   "text": "System Setup"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x51A0",
+   "original": "　アイコンの位置の初期設定には、",
+   "text": "  The icons start out in one of"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x51C4",
+   "original": "　　ＴＹＰＥ‐Ａ　と　ＴＹＰＥ‐Ｂ",
+   "text": "two layouts, TYPE-A or TYPE-B."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x51E8",
+   "original": "があります。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x51F8",
+   "original": "　また、アイコンの位置を自由に移動でき",
+   "text": "  There is also a Free mode where you"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5220",
+   "original": "るフリーモードもあります。",
+   "text": "can move the icons"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x523C",
+   "original": "お好みのアイコンの配置でお楽しみ下さい。",
+   "text": "anywhere. Enjoy any layout you like."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5268",
+   "original": "　マウスライク…カーソルが、方向キーの",
+   "text": "  Mouse-like: the cursor follows the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5290",
+   "original": "上下左右に反応して動きます。",
+   "text": "d-pad in all directions."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x52B0",
+   "original": "　メニューＡ…メニュー選択時に方向キー",
+   "text": "  Menu A: during a menu choice, the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x52D8",
+   "original": "を押すと、メニューアイテムの順番通りに",
+   "text": "d-pad moves the cursor through the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5300",
+   "original": "カーソルが移動します。",
+   "text": "items in order."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5318",
+   "original": "　例えば、コマンドアイコンの場合は、",
+   "text": "  For the command icons the order is:"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5340",
+   "original": "『文系』→『理系』→『芸術』→『運動』",
+   "text": "Arts, Science, Fine Arts, Sports,"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5368",
+   "original": "→『部活』→『遊び』→『おしゃれ』",
+   "text": "Club, Fun, Style, Rest, Phone,"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x538C",
+   "original": "→『休養』→『電話』→『デート』→",
+   "text": "Date, Info, System, Calendar,"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x53B0",
+   "original": "『情報』→『システム』→『カレンダー』",
+   "text": "Save/Load, Forced."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x53D8",
+   "original": "→『セーブ／ロード』→『強制』の順です。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5404",
+   "original": "　メニューＢ…メニュー選択時に方向キー",
+   "text": "  Menu B: during a menu choice, the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x542C",
+   "original": "を押すと、その方向のメニューアイテムに",
+   "text": "d-pad moves the cursor to the item in"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5454",
+   "original": "カーソルが移動します。",
+   "text": "that direction."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x546C",
+   "original": "　マウスライク＋メニューＡ…通常は、マ",
+   "text": "  Mouse-like + Menu A: works like"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5494",
+   "original": "ウスライクと同じ動作をします。",
+   "text": "Mouse-like, but while L1 is"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x54B4",
+   "original": "Ｌ１ボタンを押している間は、メニューＡ",
+   "text": "held it works like Menu A."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x54DC",
+   "original": "と同じ動作をします。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x54F4",
+   "original": "　選択肢がある場合に１Ｐコントローラの",
+   "text": "  When there's a choice, SELECT on"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x551C",
+   "original": "セレクトボタンを押すと、",
+   "text": "controller 1 switches the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5538",
+   "original": "メニューモードを",
+   "text": "menu mode: Menu A,"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x554C",
+   "original": "　『メニューＡ』→",
+   "text": "Mouse-like + Menu"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5560",
+   "original": "　『マウスライク＋メニューＡ』→",
+   "text": "A, Menu B, Mouse-like, in that"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5584",
+   "original": "　『メニューＢ』→",
+   "text": "order."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5598",
+   "original": "　『マウスライク』",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x55AC",
+   "original": "の順で変更できます。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x55C4",
+   "original": "　画面上にクリアしたことのある女の子の",
+   "text": "  You can show the mascots of the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x55EC",
+   "original": "マスコットを表示することができます。",
+   "text": "girls you've cleared on screen."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5614",
+   "original": "　Ｒ１ボタンを押しながら方向キー操作で",
+   "text": "  Hold R1 and use the d-pad to move"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x563C",
+   "original": "位置が変更できます。",
+   "text": "them."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5654",
+   "original": "　Ｒ２ボタンを押しながら方向キー操作で",
+   "text": "  Hold R2 and use the d-pad to change"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x567C",
+   "original": "紐の長さの変更ができます。",
+   "text": "the string length."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5880",
+   "original": "メモリーカード",
+   "text": "Memory Card"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5890",
+   "original": "　ときめきメモリアルでは、１ブロックに",
+   "text": "  Tokimeki Memorial makes one album"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x58B8",
+   "original": "一つのアルバムを作成します。",
+   "text": "per block."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x58D8",
+   "original": "　アルバムの最大数は、１４です。",
+   "text": "  You can have up to 14 albums."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x58FC",
+   "original": "　アルバムとは別に、システムファイルを",
+   "text": "  If you also make a system file, you"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5924",
+   "original": "作成すると、オプションでおまけが使用で",
+   "text": "can use the bonus extras in Options."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x594C",
+   "original": "きるようになります。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5964",
+   "original": "　システムファイルも、１ブロックを必要",
+   "text": "  The system file also needs one"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x598C",
+   "original": "とします。",
+   "text": "block."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5998",
+   "original": "　システムファイルがある場合、メモリー",
+   "text": "  With a system file, never remove or"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x59C0",
+   "original": "カードアイコンが、",
+   "text": "insert a memory"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x59D4",
+   "original": "　　『セーブ中』",
+   "text": "card while the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x59E8",
+   "original": "と表示されている間は、絶対にメモリーカ",
+   "text": "card icon shows \"Saving\"."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5A10",
+   "original": "ードの抜き差しをしないでください。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5A34",
+   "original": "『カードに空きがありません』",
+   "text": "If the message \"The card is"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5A54",
+   "original": "とのメッセージが表示された場合は、メモ",
+   "text": "full\" appears, erase other data on the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5A7C",
+   "original": "リーカードの他のデータを消去してから、",
+   "text": "card first, then save."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5AA4",
+   "original": "セーブして下さい。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5AB8",
+   "original": "　ゲーム中は、ときめきメモリアル以外の",
+   "text": "  In the game, you can only erase"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5AE0",
+   "original": "データの消去はできません。",
+   "text": "Tokimeki Memorial data."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5D40",
+   "original": "バイオリズム",
+   "text": "Biorhythm"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5D50",
+   "original": "　画面の中央が現在の位置です。",
+   "text": "  The middle of the screen is"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5D70",
+   "original": "左が過去一週間、右がこの先一週間のあな",
+   "text": "today. Left is your past week, right"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5D98",
+   "original": "たのバイオリズムです。",
+   "text": "is your next week."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5DB0",
+   "original": "　画面中央の黒い線と交差する日が、コマ",
+   "text": "  Commands fail more on days that"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5DD8",
+   "original": "ンドが特に失敗しやすい日になります。",
+   "text": "cross the black line in the middle."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5E00",
+   "original": "　黒い線からの距離が大きいとコマンドが",
+   "text": "  The farther from the black line, the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5E28",
+   "original": "成功しやすくなります。",
+   "text": "better commands go."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5E40",
+   "original": "　同じ距離ならば、黒い線の上側にある場",
+   "text": "  At the same distance, above the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5E68",
+   "original": "合のほうが、コマンドが成功しやすくなり",
+   "text": "black line is more likely to succeed."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5E90",
+   "original": "ます。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5E98",
+   "original": "　赤は主に、身体を使うコマンドに影響し",
+   "text": "  Red mostly affects body commands."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5EC0",
+   "original": "ます。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5EC8",
+   "original": "　青は、主に感性を必要とするコマンドに",
+   "text": "  Blue mostly affects commands needing"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5EF0",
+   "original": "影響します。",
+   "text": "feeling."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5F00",
+   "original": "　緑は、主に頭脳を必要とするコマンドに",
+   "text": "  Green mainly affects commands that"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5F28",
+   "original": "影響します。",
+   "text": "need brains."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5F38",
+   "original": "　ゲームをクリアするのに、特に必要はあ",
+   "text": "  It isn't really needed to clear the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5F60",
+   "original": "りません。",
+   "text": "game."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5F6C",
+   "original": "　究極のパラメータを狙う場合以外必要な",
+   "text": "  Only useful if you aim for top"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x5F94",
+   "original": "いかも…？",
+   "text": "stats...?"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6190",
+   "original": "アイコン",
+   "text": "Icons"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x619C",
+   "original": "　明るくアニメーションしているアイコン",
+   "text": "  The brightly animated icons are the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x61C4",
+   "original": "が、現在選択できるアイコンです。",
+   "text": "ones you can select now."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x61E8",
+   "original": "　テストや修学旅行など、強制スケジュー",
+   "text": "  Used when a forced schedule runs,"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6210",
+   "original": "ルを実行するときに使います。",
+   "text": "like exams or the school trip."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6230",
+   "original": "　アイコンモード・フリーのときは、通常",
+   "text": "  In Free icon mode, it's shown on"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6258",
+   "original": "時でも画面表示されます。",
+   "text": "screen at all times."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6274",
+   "original": "　システムを選択し、アイコンモードをフ",
+   "text": "  Choose System and set Icon Mode to"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x629C",
+   "original": "リーにして下さい。",
+   "text": "Free."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x62B0",
+   "original": "　Ｌ２ボタンを押してアイコンをつかみ、",
+   "text": "  Press L2 to grab an icon, then move"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x62D8",
+   "original": "好きな場所に移動することが出来ます。",
+   "text": "it wherever you like."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6300",
+   "original": "　アイコンの位置は、システムファイルを",
+   "text": "  Icon positions are saved only if you"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6328",
+   "original": "作成した場合のみセーブされます。",
+   "text": "made a system file."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x634C",
+   "original": "　システムを選択し、カーソルの移動速度",
+   "text": "  Choose System, set the cursor speed"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6374",
+   "original": "を遅くしてから、アイコンを移動してくだ",
+   "text": "to slow, then move the icons."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x639C",
+   "original": "さい。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x63A4",
+   "original": "　マウスでは、アイコンを動かせません。",
+   "text": "  Icons can't be moved with the mouse."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x63CC",
+   "original": "コントローラにつなぎ替えて、アイコンを",
+   "text": "Switch to a controller, move the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x63F4",
+   "original": "移動してから、御遊び下さい。",
+   "text": "icons, then play."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6414",
+   "original": "　システムを選択し、アイコンモードを",
+   "text": "  Choose System and set Icon Mode to"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x643C",
+   "original": "　　ＴＹＰＥ‐ＡまたはＴＹＰＥ‐Ｂ",
+   "text": "TYPE-A or TYPE-B."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6460",
+   "original": "にしてください。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6474",
+   "original": "　万一メモリーカードからのデータのロー",
+   "text": "  If all the icons pile up after"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x649C",
+   "original": "ド時に全てのアイコンが重なってしまった",
+   "text": "loading data from a memory card,"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x64C4",
+   "original": "場合、ゲームスタート画面のオプションで",
+   "text": "change Icon Mode in the Options of the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x64EC",
+   "original": "アイコンモードを変更してから、ゲームを",
+   "text": "start screen before starting."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6514",
+   "original": "始めてください。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6528",
+   "original": "（オプションでの設定が優先されます）",
+   "text": "(The Options setting takes priority.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6740",
+   "original": "サブゲーム",
+   "text": "Sub-games"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x674C",
+   "original": "　画面左下の対地速度表示をよく見てスク",
+   "text": "  Watch the ground speed at the lower"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6774",
+   "original": "ロールを早くすることが、タイム短縮の秘",
+   "text": "left and scroll faster to cut your"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x679C",
+   "original": "訣です。",
+   "text": "time."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x67A8",
+   "original": "　ローリングした瞬間の無敵を使いこなす",
+   "text": "  Master the invincible moment of a"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x67D0",
+   "original": "のが重要です。",
+   "text": "roll."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x67E0",
+   "original": "　アイテムは、全て点数が入るので、でき",
+   "text": "  Every item scores points, so collect"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6808",
+   "original": "るだけ回収しましょう。",
+   "text": "as many as you can."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6820",
+   "original": "　スコアはサブゲームを終了して、ときめ",
+   "text": "  Scores are saved in the system file"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6848",
+   "original": "きメモリアルに戻るときに、システムファ",
+   "text": "when you quit a sub-game and return to"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6870",
+   "original": "イルにセーブされます。",
+   "text": "the main game."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6888",
+   "original": "（システムファイルは０番です）",
+   "text": "(The system file is number 0.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x68A8",
+   "original": "　サブゲームのデータは、電源オン後最初",
+   "text": "  Sub-games use the data of the first"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x68D0",
+   "original": "に読み込みしたメモリーカードのものが、",
+   "text": "memory card read after power-on."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x68F8",
+   "original": "使用されます。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6908",
+   "original": "　途中でメモリーカードを差し替えると前",
+   "text": "  If you swap cards midway, the old"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6930",
+   "original": "のデータのハイスコアなどが、上書きされ",
+   "text": "card's high scores and such get"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6958",
+   "original": "るので注意してください。",
+   "text": "overwritten. Careful."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6BB0",
+   "original": "ミニ知識",
+   "text": "Trivia"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6BBC",
+   "original": "　Ｌ１＋Ｒ１＋セレクト＋スタートボタン",
+   "text": "  Hold L1 + R1 + SELECT + START for a"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6BE4",
+   "original": "を少しの間押し続けることにより、ソフト",
+   "text": "moment for a soft reset."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6C0C",
+   "original": "ウェアリセットがかけられます。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6C2C",
+   "original": "　２Ｐコントローラの",
+   "text": "  Press controller 2's"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6C58",
+   "original": "ボタンを同時に押すと、１Ｐコントローラ",
+   "text": "buttons together, and controller 1's O"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6C80",
+   "original": "の○ボタンが連射される状態になります。",
+   "text": "button auto-fires."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6CA8",
+   "original": "　連射の解除は、１Ｐコントローラの任意",
+   "text": "  Press any button on controller 1 to"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6CD0",
+   "original": "のボタンを押すことによってできます。",
+   "text": "turn auto-fire off."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6CF8",
+   "original": "　２Ｐコントローラのスタートボタンを押",
+   "text": "  START on controller 2 slightly"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6D20",
+   "original": "すと、通常コマンド実行のＳＤキャラの、",
+   "text": "speeds up the chibi animation of"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6D48",
+   "original": "アニメスピードが少し速くなります。",
+   "text": "normal commands."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6D6C",
+   "original": "　もう一度押すと、通常のスピードに戻り",
+   "text": "  Press it again to return to normal"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6D94",
+   "original": "ます。",
+   "text": "speed."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6D9C",
+   "original": "　デートなどで、場所を知りたいときは１",
+   "text": "  To see where you are on a date, call"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6DC4",
+   "original": "Ｐコントローラの△ボタンで、",
+   "text": "the place window with triangle"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6DE4",
+   "original": "場所ウィンドウを呼び出すことができます。",
+   "text": "on controller 1."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6E10",
+   "original": "　歌詞が出ないときは高解像モードです。",
+   "text": "  No lyrics? You're in hi-res mode."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6E38",
+   "original": "　普通の漢和辞典のように、部首別に漢字",
+   "text": "  The kanji are sorted by radical, as"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6E60",
+   "original": "がならんでいます。",
+   "text": "in a dictionary."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6E74",
+   "original": "　また、一部の漢字は訓読みでも登録され",
+   "text": "  Some kanji are also listed by kun"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6E9C",
+   "original": "ています。",
+   "text": "reading."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6EA8",
+   "original": "　極まれに、サウンドの転送に失敗するこ",
+   "text": "  Very rarely the sound fails to load."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6ED0",
+   "original": "とがありますが、一旦データをセーブし、",
+   "text": "Save your data and restart the game,"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6EF8",
+   "original": "ゲームを再立ち上げすれば、正常に復帰し",
+   "text": "and it will work again."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x6F20",
+   "original": "ます。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7110",
+   "original": "ファイルセレクト画面",
+   "text": "File Select Screen"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7128",
+   "original": "　システムと表示されている部分をクリッ",
+   "text": "  Click the part labeled System to"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7150",
+   "original": "クすると、システムの作成やシステムの作",
+   "text": "make or remake the system file."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7178",
+   "original": "り直しが出来ます。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x718C",
+   "original": "　データの表示がおかしい場合や、他のメ",
+   "text": "  If the data looks wrong, or after"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x71B4",
+   "original": "モリーカードからデータをコピーした場合",
+   "text": "copying data from another memory card,"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x71DC",
+   "original": "は、システムの作り直しを行なってくださ",
+   "text": "remake the system file."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7204",
+   "original": "い。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x720C",
+   "original": "　同じメモリーカード内で、データをコピ",
+   "text": "  You can copy data within one memory"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7234",
+   "original": "ーすることができます。",
+   "text": "card."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x724C",
+   "original": "　クリア人数そのままで、ゲームをプロロ",
+   "text": "  You can restart from the prologue,"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7274",
+   "original": "ーグからやり直すことが出来ます。",
+   "text": "keeping your cleared count."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7298",
+   "original": "　ときめきメモリアルのデータを消去する",
+   "text": "  You can erase Tokimeki Memorial"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x72C0",
+   "original": "ことが出来ます。",
+   "text": "data."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x72D4",
+   "original": "　システムファイルがある場合は、全ての",
+   "text": "  With a system file, the total"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x72FC",
+   "original": "アルバムのデータの合計クリア人数が表示",
+   "text": "cleared count of all albums is shown."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7324",
+   "original": "されます。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7330",
+   "original": "　システムファイルがない場合は、選んだ",
+   "text": "  Without a system file, the cleared"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7358",
+   "original": "アルバムのクリア人数が表示されます。",
+   "text": "count of the chosen album is shown."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7380",
+   "original": "白抜き数字で番号が表示されているのが、",
+   "text": "The album whose number is shown"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x73A8",
+   "original": "現在選択されているアルバムです。",
+   "text": "outlined is the one selected now."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x73CC",
+   "original": "白抜き数字で番号が表示されているアルバ",
+   "text": "Click the album with the outlined"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x73F4",
+   "original": "ムをもう一度クリックすると、そのアルバ",
+   "text": "number again to resume the game in"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x741C",
+   "original": "ムでゲームが再開されます。",
+   "text": "that album."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7438",
+   "original": "　△ボタンを押すと、そのアルバムのパラ",
+   "text": "  Press triangle to show that album's"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7460",
+   "original": "メータや、女の子の評価、クリア回数が表",
+   "text": "stats, the girls' ratings and the"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7488",
+   "original": "示されます。",
+   "text": "clear count."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7498",
+   "original": "　青くパラメータと表示されている部分を",
+   "text": "  Clicking the blue word Stats also"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x74C0",
+   "original": "クリックしても、表示を変えることができ",
+   "text": "changes the display."
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x74E8",
+   "original": "ます。",
+   "text": ""
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x76E0",
+   "original": "・システム設定",
+   "text": "-System Setup"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x77E0",
+   "original": "・メモリーカード",
+   "text": "-Memory Card"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x78E0",
+   "original": "・ファイルセレクト",
+   "text": "-File Select"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x79E0",
+   "original": "・バイオリズム",
+   "text": "-Biorhythm"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7AE0",
+   "original": "・アイコン",
+   "text": "-Icons"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7BE0",
+   "original": "・サブゲーム",
+   "text": "-Sub-games"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7CE0",
+   "original": "・ミニ知識",
+   "text": "-Trivia"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7DE0",
+   "original": "・ゲームに戻る",
+   "text": "-Back to Game"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x7F00",
+   "original": "『アイコンモード』",
+   "text": "『Icon Mode』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8000",
+   "original": "『メニューモード・その１』",
+   "text": "『Menu Mode 1』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8100",
+   "original": "『メニューモード・その２』",
+   "text": "『Menu Mode 2』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8200",
+   "original": "『メニューモード・その３』",
+   "text": "『Menu Mode 3』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8300",
+   "original": "『メニューモード・その４』",
+   "text": "『Menu Mode 4』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8400",
+   "original": "『メニューモード・その５』",
+   "text": "『Menu Mode 5』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8500",
+   "original": "『マスコット』",
+   "text": "『Mascots』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8600",
+   "original": "「一つ前に戻る」",
+   "text": "「Back」"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8720",
+   "original": "『メモリーカード・その１』",
+   "text": "『Memory Card 1』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8820",
+   "original": "『メモリーカード・その２』",
+   "text": "『Memory Card 2』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8920",
+   "original": "『メモリーカード・その３』",
+   "text": "『Memory Card 3』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8A20",
+   "original": "『メモリーカード・その４』",
+   "text": "『Memory Card 4』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8B20",
+   "original": "『メモリーカード・その５』",
+   "text": "『Memory Card 5』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8C20",
+   "original": "『メモリーカード・その６』",
+   "text": "『Memory Card 6』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8D20",
+   "original": "『メモリーカード・その７』",
+   "text": "『Memory Card 7』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8E20",
+   "original": "「一つ前に戻る」",
+   "text": "「Back」"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x8F40",
+   "original": "『バイオリズム・その１』",
+   "text": "『Biorhythm 1』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9040",
+   "original": "『バイオリズム・その２』",
+   "text": "『Biorhythm 2』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9140",
+   "original": "『バイオリズム・その３』",
+   "text": "『Biorhythm 3』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9240",
+   "original": "『バイオリズム・その４』",
+   "text": "『Biorhythm 4』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9340",
+   "original": "『バイオリズム・その５』",
+   "text": "『Biorhythm 5』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9440",
+   "original": "『バイオリズム・その６』",
+   "text": "『Biorhythm 6』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9540",
+   "original": "『バイオリズム・その７』",
+   "text": "『Biorhythm 7』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9640",
+   "original": "「一つ前に戻る」",
+   "text": "「Back」"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9760",
+   "original": "『今、使えるアイコンはどれ』",
+   "text": "『Which icons work?』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9860",
+   "original": "『矢印アイコンの意味は？』",
+   "text": "『What do arrows mean?』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9960",
+   "original": "『アイコンを動かすには』",
+   "text": "『Moving icons』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9A60",
+   "original": "『アイコンをすき間なく並べたい』",
+   "text": "『Packing icons tightly』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9B60",
+   "original": "『マウスでアイコンを動かせるの？』",
+   "text": "『Moving icons by mouse?』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9C60",
+   "original": "『アイコンが重なった・その１』",
+   "text": "『Icons overlap 1』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9D60",
+   "original": "『アイコンが重なった・その２』",
+   "text": "『Icons overlap 2』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9E60",
+   "original": "「一つ前に戻る」",
+   "text": "「Back」"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0x9F80",
+   "original": "『ツインビータイムアタック』",
+   "text": "『TwinBee Time Attack』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xA080",
+   "original": "『スターダストシンフォニーＥＸ』",
+   "text": "『Stardust Symphony EX』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xA180",
+   "original": "『スコアのセーブ・その１』",
+   "text": "『Saving scores 1』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xA280",
+   "original": "『スコアのセーブ・その２』",
+   "text": "『Saving scores 2』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xA380",
+   "original": "『サブゲーム・その５』",
+   "text": "『Sub-games 5』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xA480",
+   "original": "『サブゲーム・その６』",
+   "text": "『Sub-games 6』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xA580",
+   "original": "『サブゲーム・その７』",
+   "text": "『Sub-games 7』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xA680",
+   "original": "「一つ前に戻る」",
+   "text": "「Back」"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xA7A0",
+   "original": "『手元リセット』",
+   "text": "『Soft reset』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xA8A0",
+   "original": "『○ボタン連打』",
+   "text": "『O auto-fire』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xA9A0",
+   "original": "『ターボモード』",
+   "text": "『Turbo mode』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xAAA0",
+   "original": "『場所表示』",
+   "text": "『Location』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xABA0",
+   "original": "『名前の漢字の順番について』",
+   "text": "『Kanji name order』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xACA0",
+   "original": "『変な音が鳴っている場合』",
+   "text": "『Odd sounds』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xADA0",
+   "original": "「一つ前に戻る」",
+   "text": "「Back」"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xAEC0",
+   "original": "『システム』",
+   "text": "『System』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xAFC0",
+   "original": "『コピー』",
+   "text": "『Copy』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xB0C0",
+   "original": "『ニュー』",
+   "text": "『New』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xB1C0",
+   "original": "『クリア』",
+   "text": "『Clear』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xB2C0",
+   "original": "『クリア人数について』",
+   "text": "『Cleared count』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xB3C0",
+   "original": "『ファイル番号について』",
+   "text": "『File numbers』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xB4C0",
+   "original": "『パラメータ・評価・クリア回数』",
+   "text": "『Stats & ratings』"
+  },
+  {
+   "file": "CDROM/EXEDIR/OLH.EXN",
+   "offset": "0xB5C0",
+   "original": "「一つ前に戻る」",
+   "text": "「Back」"
+  }
+ ]
+}

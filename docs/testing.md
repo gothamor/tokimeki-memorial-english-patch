@@ -1224,6 +1224,30 @@ culture club), `mt7`, `m26c9`, `m26c10` (0x26, soccer, swimming,
 basketball). `m26c0` and `mu8` (0x26 with a culture club, 0x27 with a
 sports club) and `rs7` (state 0x73) went back to the title screen.
 
+### Overlay words and small files (2026-10-11)
+
+`.emu/f_runs.sh` (local), hidden:
+- `fb1`: Yuina's Okinawa trip with "leave this to me" (as `u1`): the habu
+  battle in English (Habu Lord, Mongoose, "220 damage dealt", "Loot:
+  Habu"). The run showed the player's "No good! I'm done for!" glued to
+  his name: the English had dropped the original's opening 「; restored on
+  seven lines (two shortened to fit) after the run, statically checked.
+- `fe43` (record 0x43): career counselling; `fe4a` (0x4A): the
+  university exam day. "I want college." became "College for me." (it is
+  both the option and the spoken line).
+- `fol` (state 0x3A): OLH.EXN is the in-game help (Q&A) screen.
+- `fta` (record 0x20): sports day prompt and event menu, then the spoon
+  relay minigame (needs input; its caption bubble is graphics).
+- `fn13`/`fn14` (states 0x13/0x14): the album panel and the family-name
+  entry; neither plays the opening narration, which needs a real new
+  game (`opening_words.json` stays a draft).
+- `fic*`: Yoshio's info card from `phone_sat0429.sav` with `drive.ps1`.
+  Presses sent while text is still typing get dropped, so the fixed
+  sequences drifted (ratings path, date spots) and never opened the card;
+  `info_card.json` stays a draft. The phone book in that old state still
+  shows 藤崎詩織 (RAM from before the name patch; a fresh boot shows the
+  English name).
+
 ### Tools for the whole-game loop (2026-10-10)
 
 The per-file loop in NEXT_STEPS.md uses these (details in each docstring):

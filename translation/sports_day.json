@@ -1,0 +1,47 @@
+{
+  "description": "The sports day's choices and prompts: TAIIKU/TAI_TX.BIN. Verified in DuckStation, hidden emulator (docs/testing.md 'Overlay words and small files'): record 0x20: 'Today's sports day. Which event to enter?' and the event menu. The spoon relay that follows is an input minigame; the caption bubble over it is graphics. Checked only statically: the other event menus.",
+  "dialogue": [
+    {
+      "file": "CDROM/TAIIKU/TAI_TX.BIN",
+      "base": "0x801f0000",
+      "share_identical": true,
+      "lines": [
+        {
+          "offset": "0x0",
+          "original": "今日は体育祭だ。\nどの競技に参加しようかな？",
+          "text": "Today's sports day.\nWhich event to enter?"
+        },
+        {
+          "offset": "0x30",
+          "original": "スプーンリレー{q}借りもの競争{q}別の競技に参加する",
+          "text": "Spoon relay.{q}Borrowing race{q}Other events"
+        },
+        {
+          "offset": "0x64",
+          "original": "二人三脚{q}玉転がし{q}別の競技に参加する",
+          "text": "3-leg race{q}Ball rolling{q}Other events"
+        },
+        {
+          "offset": "0x90",
+          "original": "このミニゲームは、\nマウスではプレイできないの。",
+          "text": "This minigame can't\nbe played with a mouse."
+        },
+        {
+          "offset": "0xc4",
+          "original": "コントローラを\nつないでください。",
+          "text": "Please plug in\na controller."
+        },
+        {
+          "offset": "0xec",
+          "original": "ありがとう。\n準備ができたら、\n何かボタンを押してね。",
+          "text": "Thanks.\nWhen you're ready,\npress any button."
+        },
+        {
+          "offset": "0x128",
+          "original": "今日は体育祭だ。\n病気なんかくそくらえだ。\n競技に参加するぞ。",
+          "text": "Sports day today.\nSick or not,\nI'm entering!"
+        }
+      ]
+    }
+  ]
+}

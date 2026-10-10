@@ -1,0 +1,1121 @@
+{
+ "description": "ETC.EXN's in-place words: the end-of-term exams, the third year's career counselling and other students' plans, the university/job exams, the Album Mode save prompts. Verified in DuckStation, hidden emulator (docs/testing.md 'Overlay words and small files'): career counselling (record 0x43: the options, now 'College for me.' / 'A job for me.', and the teacher's verdict) and the university exam day (0x4A: the college tiers, the result date). Checked only statically: the end-of-term exams and the other outcomes.",
+ "strings": [
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ABC0",
+   "original": "未初期化のメモリーカードです。",
+   "text": "This memory card is not"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ABE0",
+   "original": "初期化していいですか？",
+   "text": "formatted. Format it?"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ABF8",
+   "original": "別のメモリーカードを",
+   "text": "Or insert another"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AC10",
+   "original": "差し込み口１",
+   "text": "card, slot 1"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AC20",
+   "original": "　　　　　　にセットして、",
+   "text": "            then press"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AC3C",
+   "original": "　ボタンを押してください。",
+   "text": "  to continue."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AC58",
+   "original": "データセーブ",
+   "text": "Save Data"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AC68",
+   "original": "今回のアルバムモードのデータを",
+   "text": "Save this Album Mode data"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AC88",
+   "original": "　ときめきメモリアル・システムファイル",
+   "text": " to the Tokimeki Memorial"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ACB0",
+   "original": "にセーブしますか。",
+   "text": "system file?"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ACC4",
+   "original": "データセーブメッセージ",
+   "text": "Save message"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ACDC",
+   "original": "メモリーカードをチェックしています。",
+   "text": "Checking the memory card..."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AD40",
+   "original": "ただいま、セーブ中です。",
+   "text": "Saving now."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ADA8",
+   "original": "システムファイルがありません。",
+   "text": "There is no system file."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ADC8",
+   "original": "（システムファイルがないと",
+   "text": "(Without a system file,"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ADE4",
+   "original": "アルバムモードのセーブはできません）",
+   "text": "Album Mode can't be saved.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AE0C",
+   "original": "システムファイルを作成し、",
+   "text": "Make a system file and"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AE28",
+   "original": "アルバムモードをセーブしますか？",
+   "text": "save the Album Mode?"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AE4C",
+   "original": "システムファイルを作成しています。",
+   "text": "Making the system file."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AE70",
+   "original": "（アルバムモードのデータをセーブ後、",
+   "text": "(After saving the Album data,"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AE98",
+   "original": "ファイルセレクト画面にて、",
+   "text": "on the file select screen,"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AEB4",
+   "original": "システムファイルを作り直してください）",
+   "text": "please remake the system file.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AEDC",
+   "original": "メモリーカードを認識できません。",
+   "text": "No memory card found."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AF00",
+   "original": "差し込み口１のメモリーカードの",
+   "text": "Please check the memory"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AF20",
+   "original": "接続を確認してください。",
+   "text": "card in slot 1."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AF3C",
+   "original": "データのセーブを行ないますか？",
+   "text": "Save the data?"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AF5C",
+   "original": "メモリーカードに空きブロックがありません。",
+   "text": "The memory card has no free blocks."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AF88",
+   "original": "他の空きブロックのあるメモリーカードを",
+   "text": "Please prepare another memory"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AFB0",
+   "original": "用意してください。",
+   "text": "card with space."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AFC4",
+   "original": "データのセーブを行ないますか？",
+   "text": "Save the data?"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1AFE4",
+   "original": "システムファイルが壊れています。",
+   "text": "The system file is damaged."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B008",
+   "original": "システムファイルを作り直していいですか？",
+   "text": "May I remake the system file?"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B034",
+   "original": "システムファイルを作成しています。",
+   "text": "Making the system file."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B058",
+   "original": "（アルバムモードのデータをセーブ後、",
+   "text": "(After saving the Album data,"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B080",
+   "original": "ファイルセレクト画面のシステムを",
+   "text": "select System on the file"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B0A4",
+   "original": "クリックして、システムファイルを",
+   "text": "select screen and remake"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B0C8",
+   "original": "作り直してください）",
+   "text": "the system file.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B1F0",
+   "original": "今回のプレイをセーブしますか？",
+   "text": "Save this playthrough?"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B210",
+   "original": "メモリーカードをチェックしています",
+   "text": "Checking the memory card..."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B234",
+   "original": "セーブするアルバムを選んでください",
+   "text": "Choose an album to save to."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B258",
+   "original": "セーブするアルバムを選んでください",
+   "text": "Choose an album to save to."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B27C",
+   "original": "データセーブ",
+   "text": "Save Data"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B28C",
+   "original": "データセーブ中です",
+   "text": "Saving..."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B2A0",
+   "original": "しばらくお待ち下さい",
+   "text": "Please wait."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B2B8",
+   "original": "メモリーカードを認識できません",
+   "text": "No memory card found."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B2D8",
+   "original": "メモリーカードを差し込み口１に",
+   "text": "Insert a memory card in"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B2F8",
+   "original": "セットし、ボタンを押してください。",
+   "text": "slot 1 and press a button."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B31C",
+   "original": "メモリーカードに空きがありません",
+   "text": "The memory card is full."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B340",
+   "original": "別のメモリーカードに",
+   "text": "Save to another"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B358",
+   "original": "セーブしますか？",
+   "text": "memory card?"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B36C",
+   "original": "別のメモリーカードを",
+   "text": "Or insert another"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B384",
+   "original": "差し込み口１にセットして、",
+   "text": "card in slot 1, then"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B3A0",
+   "original": "ボタンを押してください。",
+   "text": "press a button."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B3BC",
+   "original": "未初期化のメモリーカードです。",
+   "text": "This memory card is not"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B3DC",
+   "original": "初期化していいですか？",
+   "text": "formatted. Format it?"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B3F4",
+   "original": "別のメモリーカードを",
+   "text": "Or insert another"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B40C",
+   "original": "差し込み口１",
+   "text": "card, slot 1"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B41C",
+   "original": "　　　　　　にセットして、",
+   "text": "            then press"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B438",
+   "original": "　ボタンを押してください。",
+   "text": "  to continue."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B4DC",
+   "original": "期末テスト",
+   "text": "Finals"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B524",
+   "original": "期末試験",
+   "text": "Finals"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B530",
+   "original": "第一日目の試験科目は\n語学だ。）",
+   "text": "Day one's exam is\nlanguage.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B550",
+   "original": "期末試験",
+   "text": "Finals"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B55C",
+   "original": "第二日目の試験科目は\n数学だ。）",
+   "text": "Day two's exam is\nmath.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B57C",
+   "original": "期末試験",
+   "text": "Finals"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B588",
+   "original": "第三日目の試験科目は\n理科だ。）",
+   "text": "Day three's exam is\nscience.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B5A8",
+   "original": "期末試験",
+   "text": "Finals"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B5B4",
+   "original": "第四日目の試験科目は\n社会だ。）",
+   "text": "Day four's exam:\nhistory.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B5D4",
+   "original": "期末試験",
+   "text": "Finals"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B5E0",
+   "original": "第五日目の試験科目は\n美術だ。）",
+   "text": "Day five's exam is\nart.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B600",
+   "original": "もうだめだー。）",
+   "text": "I'm doomed.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B614",
+   "original": "ちょっとだめだな。）",
+   "text": "Not so good.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B62C",
+   "original": "まあまあのできだな。）",
+   "text": "That went okay.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B644",
+   "original": "いいできだ。）",
+   "text": "Nice work.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B654",
+   "original": "バッチリだ。）",
+   "text": "Nailed it.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B664",
+   "original": "結果発表\n",
+   "text": "Results\n"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B670",
+   "original": "今日は、試験結果の\n発表の日だ。）",
+   "text": "Today the exam\nresults come out.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B698",
+   "original": "３科目以上赤点だった。\n明日から、一週間補習だぁ。\n勉強しかできないー！）",
+   "text": "Failed 3+ subjects.\nA week of make-up class.\nNothing but study now!)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B6E4",
+   "original": "やったー、一番だ！\nこれで試験の帝王だな。）",
+   "text": "Yes, top of the class!\nKing of Exams, me.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B710",
+   "original": "今回の試験は終了した。）",
+   "text": "The exams are over.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B72C",
+   "original": "今回の試験は終了した。）",
+   "text": "The exams are over.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B860",
+   "original": "就職・進学",
+   "text": "Career"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B970",
+   "original": "進路指導",
+   "text": "Guidance"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B994",
+   "original": "先生",
+   "text": "Tchr"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1B9A8",
+   "original": "先生",
+   "text": "Tchr"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E0F0",
+   "original": "　はい……　　ボタン",
+   "text": "  Yes.....    button"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E10C",
+   "original": "　いいえ…　　ボタン",
+   "text": "  No......    button"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E7A0",
+   "original": "小説家を目指す",
+   "text": "Be a novelist"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E7B0",
+   "original": "有名劇団を目指す",
+   "text": "Join a big troupe"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E7C4",
+   "original": "製薬会社研究員を目指す",
+   "text": "Pharma researcher"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E7DC",
+   "original": "有名ゲーム会社を目指す",
+   "text": "Join a game studio"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E7F4",
+   "original": "画家の道を目指す",
+   "text": "Be a painter"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E808",
+   "original": "音楽家の道を目指す",
+   "text": "Be a musician"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E81C",
+   "original": "プロ球団からの誘いを待つ",
+   "text": "Await a pro team's call"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E838",
+   "original": "Ｊリーグからの誘いを待つ",
+   "text": "Await a J.League call"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E854",
+   "original": "プロテニスプレイヤーになる",
+   "text": "Turn pro in tennis"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E870",
+   "original": "水泳で実業団を目指す",
+   "text": "Swim for a company"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E888",
+   "original": "バスケで海外留学を目指す",
+   "text": "Basketball abroad"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E8A4",
+   "original": "帰宅部マスターを目指す",
+   "text": "Master of going home"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E8EC",
+   "original": "明日は、\n大学の試験日だ",
+   "text": "Tomorrow:\ncollege exam"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E904",
+   "original": "大学に試験を受けに行く",
+   "text": "Take the college exam"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E91C",
+   "original": "やめて、就職試験を受けに行く",
+   "text": "No, take a job exam"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E93C",
+   "original": "どこを受験しようかな？",
+   "text": "Where should I apply?"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E954",
+   "original": "明日は、\n就職試験の日だ",
+   "text": "Tomorrow:\nmy job exam"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E96C",
+   "original": "就職試験を受けに行く",
+   "text": "Take the job exam"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E984",
+   "original": "やめて、大学入試に行く",
+   "text": "No, take college exam"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E99C",
+   "original": "一流大学を受験する",
+   "text": "Top-tier college"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E9B0",
+   "original": "二流大学を受験する",
+   "text": "Mid-tier college"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E9C4",
+   "original": "三流大学を受験する",
+   "text": "Low-tier college"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E9D8",
+   "original": "どこを受験しようかな？）",
+   "text": "Where should I apply?)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1E9F4",
+   "original": "一流企業の試験を受ける",
+   "text": "Top-tier company"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EA0C",
+   "original": "二流企業の試験を受ける",
+   "text": "Mid-tier company"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EA24",
+   "original": "三流企業の試験を受ける",
+   "text": "Low-tier company"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EA3C",
+   "original": "よし、一流大学の\n試験を受けよう",
+   "text": "Okay, I'll try\na top college"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EA5C",
+   "original": "よし、二流大学の\n試験を受けよう",
+   "text": "Okay, I'll try\na mid college"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EA7C",
+   "original": "よし、三流大学の\n試験を受けよう",
+   "text": "Okay, I'll try\na low college"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EAA8",
+   "original": "よし、一流企業の\n試験を受けよう",
+   "text": "Okay, I'll try\na top company"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EAC8",
+   "original": "よし、二流企業の\n試験を受けよう",
+   "text": "Okay, I'll try\na mid company"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EAE8",
+   "original": "よし、三流企業の\n試験を受けよう",
+   "text": "Okay, I'll try\na low company"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EB14",
+   "original": "俺は、小説家の道を\n目指そう",
+   "text": "I'll aim to be\na novelist"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EB30",
+   "original": "俺は、有名劇団を\n目指そう",
+   "text": "I'll aim for\na big troupe"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EB4C",
+   "original": "俺は、製薬会社の\n研究員を目指そう",
+   "text": "I'll be a pharma\nlab researcher"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EB70",
+   "original": "俺は、有名ゲーム会社の\nクリエイターを目指そう",
+   "text": "I'll aim to be a creator\nat a big game studio"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EBA0",
+   "original": "俺は、画家になる為、\n海外留学しよう",
+   "text": "I'll study abroad\nto be a painter"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EBC4",
+   "original": "俺は、音楽家になる為、\n海外留学しよう",
+   "text": "I'll study abroad\nto be a musician"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EBEC",
+   "original": "俺は、プロ球団からの\n誘いを待とう",
+   "text": "I'll wait for a\npro team to call"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EC10",
+   "original": "俺は、Ｊリーグからの\n誘いを待とう",
+   "text": "I'll wait for the\nJ.League to call"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EC34",
+   "original": "俺は、\nプロテニスプレイヤーを\n目指そう",
+   "text": "I'll aim to\nbe a pro\ntennis player"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EC5C",
+   "original": "俺は、水泳で\n実業団を目指そう",
+   "text": "I'll swim for\na company team"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EC7C",
+   "original": "俺は、本場アメリカに\nバスケで留学しよう",
+   "text": "I'll go to America\nto play basketball"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ECA4",
+   "original": "俺は、プータローの星に\nなることにしよう",
+   "text": "I'll become a\nstar of idleness"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ECFC",
+   "original": "忘れ物は無いし、\n試験会場に行こうか",
+   "text": "Got everything.\nOff to the exam"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ED20",
+   "original": "全力を出して頑張るぞー）",
+   "text": "Time to give it my all!)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ED3C",
+   "original": "パーフェクトだ！\n合格はもらったぜ！）",
+   "text": "Perfect!\nI've definitely passed!)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ED64",
+   "original": "バッチリできた！\nこれなら大丈夫だろう）",
+   "text": "Nailed it!\nI should be fine.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1ED8C",
+   "original": "合格ラインすれすれで、\n合格できるかわからないな。\nもう少し勉強していれば…。）",
+   "text": "Right on the line.\nI may not have passed.\nIf I'd studied more...)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EDDC",
+   "original": "ちょっとだめだったな。\nもっと勉強していれば…。）",
+   "text": "That went badly.\nIf I'd studied more...)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EE10",
+   "original": "全然だめだった。\nもっと勉強していれば…。）",
+   "text": "A total flop.\nIf I'd studied more...)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EE3C",
+   "original": "もうだめだー！\n家、帰って寝よ…。）",
+   "text": "I'm finished!\nHome to bed...)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EE78",
+   "original": "合格発表は、３月１日か）",
+   "text": "Results come March 1st.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EEE0",
+   "original": "今日から、俺も３年生だ。",
+   "text": "From today, I'm a senior."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EEFC",
+   "original": "あっ、そう言えば\n進路相談があるんだ。\n職員室へ行かなきゃ。",
+   "text": "Oh, that's right,\ncareer counseling.\nOff to the office."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EF38",
+   "original": "俺の進路は、\nどうしようかな？）",
+   "text": "What's my\nfuture plan?)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EF58",
+   "original": "俺は、進学したい。",
+   "text": "College for me."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EF6C",
+   "original": "俺は、就職したい。",
+   "text": "A job for me."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EF80",
+   "original": "他の人の進路を調べる。",
+   "text": "Check others' plans."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EF98",
+   "original": "それじゃあ、\n誰の進路を調べようかな。",
+   "text": "Well then,\nwhose plans should I check?"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1EFC0",
+   "original": "えーと、詩織は、\n一流大学に進学かぁ。\n詩織なら、合格するだろうな。",
+   "text": "Let's see, Shiori is\ngoing to a top college.\nShe'll surely pass."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F004",
+   "original": "えーと、如月さんは、\n一流大学に進学かぁ。\n如月さんなら、大丈夫だな。",
+   "text": "Let's see, Kisaragi is\ngoing to a top college.\nShe'll be fine."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F04C",
+   "original": "えーと、紐緒さんは、\n一流企業に就職かぁ。\n紐緒さんは就職するのか。",
+   "text": "Let's see, Himoo is\njoining a top company.\nSo she'll get a job."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F090",
+   "original": "えーと、片桐さんは、\n絵の勉強で、海外留学かぁ。\n片桐さんは留学するのか。",
+   "text": "Let's see, Katagiri is\nstudying art abroad.\nSo Katagiri's going abroad."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F0DC",
+   "original": "えーと、虹野さんは、\n料理の専門学校に\n進学かぁ。",
+   "text": "Let's see, Nijino is\ngoing to a cooking\nschool."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F110",
+   "original": "えーと、古式さんは、\n二流大学に進学かぁ。\n古式さんは進学するのか。",
+   "text": "Let's see, Koshiki is\ngoing to a mid college.\nSo she's going on."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F154",
+   "original": "えーと、清川さんは、\n水泳を続ける様だ。\n実業団に行くのかな？",
+   "text": "Let's see, Kiyokawa\nwill keep swimming.\nFor a company team?"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F194",
+   "original": "えーと、鏡さんは、\n二流企業に就職かぁ。\nでも、鏡さんは\nモデルの噂も\n流れているしなぁ。",
+   "text": "Let's see, Kagami is\njoining a mid company.\nBut there are\nrumors she'll\nmodel, too."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F1EC",
+   "original": "えーと、朝日奈さんは、\n三流大学に進学かぁ。\n合格できるのかな？",
+   "text": "Let's see, Asahina is\ngoing to a low college.\nCan she pass?"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F22C",
+   "original": "えーと、美樹原さんは、\n二流企業に就職かぁ。\n美樹原さん大学に\n行かないんだ。",
+   "text": "Let's see, Mikihara is\njoining a mid company.\nSo, no\ncollege for her."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F278",
+   "original": "えーと、優美ちゃんは、\nまだ２年生だったな。",
+   "text": "Let's see, Yumi is\nonly a junior."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F2A4",
+   "original": "えーと、館林見晴は、\nあれ、こんな娘知らないぞ。",
+   "text": "Let's see, Miharu T...\nhuh, I don't know her."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F2D4",
+   "original": "えーと、伊集院は、\n海外留学か。\nこれで、平和な日々が\n戻って来そうだぜ。",
+   "text": "Let's see, Ijuin is\nstudying abroad.\nPeaceful days\nare coming back."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F31C",
+   "original": "えーと、好雄は、\n三流大学か。\nふーん、\n好雄は進学するんだ。",
+   "text": "Let's see, Yoshio,\na low college.\nHuh,\nhe's going on."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F398",
+   "original": "俺は先生に、\n進路の希望を伝えた。）",
+   "text": "I told the teacher\nmy plans.)"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F3BC",
+   "original": "お前の今の学力だったら、\n一流大学に\n合格できるぞ！",
+   "text": "With your grades,\nyou can get into\na top college!"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F3F0",
+   "original": "お前の今の学力だったら、\n二流大学になら\n合格できるだろう。",
+   "text": "With your grades,\na mid college\nis within reach."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F42C",
+   "original": "お前の今の学力だったら、\n三流大学には\n合格できるだろう。",
+   "text": "With your grades,\na low college\nis within reach."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F468",
+   "original": "お前の今の学力だったら、\n頑張らないと、\n浪人してしまうぞ！",
+   "text": "With your grades,\nwork hard, or\nyou'll repeat a year!"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F4F4",
+   "original": "お前の今の学力だったら、\n一流企業に\n就職できるぞ！",
+   "text": "With your grades,\nyou can join a\ntop company!"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F528",
+   "original": "お前の今の学力だったら、\n二流企業になら\n就職できるだろう。",
+   "text": "With your grades,\na mid company\nis within reach."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F564",
+   "original": "お前の今の学力だったら、\n三流企業には\n就職できるだろう。",
+   "text": "With your grades,\na low company\nis within reach."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F5A0",
+   "original": "お前の今の学力だったら、\n頑張らないと、\nどこにも就職できないぞ！",
+   "text": "With your grades,\nwork hard, or\nno one will hire you!"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F634",
+   "original": "なるほど。",
+   "text": "I see."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F640",
+   "original": "ふむふむ。",
+   "text": "Uh-huh."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F64C",
+   "original": "ふーん。",
+   "text": "Hmm."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F658",
+   "original": "ガーン。",
+   "text": "Ouch."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F674",
+   "original": "卒業まで、あと一年か…。\nこの調子でいけば、\n詩織の理想に届くかな…？",
+   "text": "A year to graduation...\nAt this rate, will I\nmeet Shiori's ideal...?"
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F6BC",
+   "original": "卒業まで、あと一年か…。\n詩織の理想に届くには…。",
+   "text": "A year to graduation...\nTo meet Shiori's ideal..."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F6F0",
+   "original": "卒業まで、あと一年か…。\nこの調子だと、詩織の\n理想にはちょっとな…。",
+   "text": "A year to graduation...\nAt this rate, Shiori's\nideal is a stretch..."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F738",
+   "original": "勉強は\n不得意科目\nがなぁ…。",
+   "text": "My weak\nsubjects\nneed work."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F758",
+   "original": "勉強は\n得意科目以外\nがなぁ…。",
+   "text": "Only my\nbest subject\nis good."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F778",
+   "original": "勉強が\n全然足りない\nな。",
+   "text": "I'm not\nstudying\nenough."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F794",
+   "original": "もっと\n身も心\nも鍛えないとな。",
+   "text": "Must train\nbody, mind\nmore."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F7B4",
+   "original": "もっと\n身体\nを鍛えないとな。",
+   "text": "Must train\nmy body\nmore."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F7D4",
+   "original": "もっと\n精神\nを鍛えないとな。",
+   "text": "Must train\nmy mind\nmore."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F7F4",
+   "original": "色々な\n話題\nが少ないな。",
+   "text": "Not much\nto talk\nabout."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F810",
+   "original": "ちょっと\nかっこ悪い\nよな。",
+   "text": "I'm a bit\nuncool,\nhuh."
+  },
+  {
+   "file": "CDROM/EXEDIR/ETC.EXN",
+   "offset": "0x1F82C",
+   "original": "とにかく、頑張らねば。",
+   "text": "Anyway, I must try."
+  }
+ ]
+}

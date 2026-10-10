@@ -217,7 +217,7 @@ Each with `exn_words.py` (room per string) and the overlay's forcer:
 | C ending | Done 2026-10-11 (game-internals §6ac, `ending.json`, `epilogue.json`, `ending_words.json`) |
 | D1–D5 | D1–D3 done 2026-10-11 (record 0x47 = HAGEMASI, state 0x62 = OMIMAI); D4 KARADATA and D5 ZAKOSEN drafted, trigger not found |
 | E contests | Done 2026-10-11 (game-internals §6ad); practice matches drafted, not reached |
-| F overlays and small files | |
+| F overlays and small files | Partly done 2026-10-11: RPG_BAT, ETC, OLH, TAI_TX promoted; drafts awaiting a way in: info card, opening, room hints, GEKO words, sports day after the minigame (F_DANCE, KISA23, KIYOTAI, TAIIKU words), and from D/E KARADATA, ZAKOSEN, SIAI_TX |
 
 ## Working notes (Windows dev box)
 
