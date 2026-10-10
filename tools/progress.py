@@ -8,9 +8,17 @@ run of Shift-JIS characters (plus the dialogue control codes) that contains
 kana, in every extracted file except `SPEAKTST/` (voice-test copies of the
 `SERIFU/` lines; game-internals §6e). A run counts as translated when it lies
 inside the original of a translation entry whose English differs from the
-Japanese. The unit is Japanese characters, so a long dialogue line weighs more
-than a menu label. Graphics (pre-drawn text) and kanji-only labels aren't
-counted.
+Japanese, or inside the original bytes of a `bytes` patch (the stage shows,
+the repacked date banners). The unit is Japanese characters, so a long
+dialogue line weighs more than a menu label. Graphics (pre-drawn text) and
+kanji-only labels aren't counted.
+
+Not counted either (game-internals §6aa, "Not text", and NEXT_STEPS.md):
+- NOT_TEXT: graphics, animation and movie data in which random bytes happen
+  to decode as Shift-JIS with kana (about 8,300 "characters");
+- KEEP_JAPANESE: text that stays Japanese on purpose: song lyrics (AGENTS.md
+  rule 9), the name-entry kana grid and the cheat names typed names are
+  compared with, and the unreachable debug menus.
 
 --update-readme rewrites the block between the `progress:start` and
 `progress:end` markers in README.md.
@@ -35,6 +43,46 @@ SJIS_CHAR = re.compile(rb"[\x81-\x9f\xe0-\xea][\x40-\x7e\x80-\xfc]")
 KANA = re.compile("[ぁ-んァ-ン]")
 
 SKIP_DIRS = {"CDROM/SPEAKTST"}
+
+# Files that aren't text at all (path prefixes). Checked by hand: every
+# "string" in them is pixel, animation or audio data.
+NOT_TEXT = (
+    "CDROM/BATTLE/", "CDROM/BS/", "CDROM/BUNKASD/", "CDROM/CLUB_SD/",
+    "CDROM/MAIN_SD/", "CDROM/EN_GAME/", "CDROM/END_OBJ/", "CDROM/EVENT/EV_",
+    "CDROM/PROLODIR/", "CDROM/VAB_SEQ/", "CDROM/XA_G/",
+    "CDROM/TAIIKU/NINSETU.BIN", "CDROM/TAIIKU/NININ.BIN",
+    "CDROM/TAIIKU/KARI.BIN", "CDROM/TAIIKU/TAMA.BIN",
+    "CDROM/TARA_OBJ/OMIKUJI.BIN", "CDROM/TARA_OBJ/HANA.BIN",
+    "CDROM/TARA_OBJ/HANABI.BIN",
+    "CDROM/FUKUTEST/GIRLINFO.NBN",
+    "CDROM/EXEDIR/TT.EXN", "CDROM/EXEDIR/TACO.EXN",
+)
+
+# Text that stays Japanese on purpose: file -> byte ranges (None = whole file).
+KEEP_JAPANESE = {
+    "CDROM/TARA_OBJ/KARAKASI.BIN": None,            # karaoke lyrics
+    "CDROM/FUKUTEST/NAME_KAN.NBN": None,            # name-entry kanji grid
+    "CDROM/EXEDIR/ENDING.EXN": [(0xAC40, 0xAD80)],  # ending song lyrics
+    "CDROM/EXEDIR/NAME_ENT.EXN": [
+        (0x19150, 0x194C0),  # kana grid
+        (0x19590, 0x195B0),  # cheat names
+        (0x1A4F0, 0x1A700),  # opening song lyrics
+        (0x1AEC0, 0x1B010),  # cheat names
+    ],
+    "CDROM/EXEDIR/OPTION.EXN": [(0xAC10, 0xB000)],  # debug menu
+    "CDROM/EXEDIR/ETC.EXN": [(0x1A37C, 0x1A420)],   # debug scene loader
+    # Image bytes at the end of the info-card file, not its text.
+    "CDROM/FUKUTEST/JOHO.NBN": [(0xBA00, 0xBD00)],
+}
+
+
+def kept(rel: str, start: int, end: int) -> bool:
+    if rel.startswith(NOT_TEXT):
+        return True
+    if rel not in KEEP_JAPANESE:
+        return False
+    spans = KEEP_JAPANESE[rel]
+    return spans is None or any(s <= start and end <= e for s, e in spans)
 
 # README areas, by directory (the dialogue script folders, game-internals §6).
 # Everything else is OTHER_AREA.
@@ -81,6 +129,12 @@ def translated_ranges(extracted: Path) -> dict[str, list[tuple[int, int]]]:
         doc = json.loads(path.read_text(encoding="utf-8"))
         for entry in doc.get("strings", []):
             add(entry["file"], entry)
+        for entry in doc.get("bytes", []):
+            # Raw patches (prefixed stage lines, repacked word runs): the
+            # strings inside the bytes they replace are translated.
+            if entry["original"] != entry["replacement"]:
+                start = int(entry["offset"], 16)
+                ranges[entry["file"]].append((start, start + len(entry["original"]) // 2))
         for block in doc.get("dialogue", []):
             for line in block["lines"]:
                 add(block["file"], line)
@@ -105,6 +159,8 @@ def measure(extracted: Path):
         spans = done.get(rel, [])
         file_total = file_done = 0
         for start, end, n in game_strings(path.read_bytes()):
+            if kept(rel, start, end):
+                continue
             file_total += n
             if any(s <= start and end <= e for s, e in spans):
                 file_done += n
