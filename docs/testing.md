@@ -1107,6 +1107,50 @@ All from the Sunday state, emulator hidden, batch script
 - Not reached: Saki's trip cold, Miharu's mix-up (DATE entry 76), Nozomi's
   soft/tomboy alternatives beyond one each, the battles' outcomes.
 
+### The other girls' dates (DATE_*.BIN, 2026-10-10)
+
+Nine files, one forced date per place, all from the Sunday state with the
+emulator hidden: `date_run.ps1 -Girl G -Place P -Version -1 -Presses 30
+-Prefix X` (the game picks the version). Batch scripts `.emu/ky_runs.sh`
+and `.emu/dt_runs.sh` (local), logs `ky_runs.txt` / `dt_runs.txt`. To keep
+the runs down (one per variant family), each girl got a third of the
+places, rotating so every place was seen with three girls:
+- `k00`–`k20`: Nozomi, every place 0–20.
+- `mi00`…`mi18` Megumi and `ko00`…`ko18` Yukari: places 0, 3, 6 … 18
+  (neighborhood park, Aquarium, Planetarium, Arcade, Theme Park, Concert
+  Hall, Shrine).
+- `hi01`…`hi19` Yuina, `ni01`…`ni19` Saki, `kg01`…`kg19` Mira: places
+  1, 4 … 19 (Kirameki Park, Zoo, Art Museum, Bowling, Stadium, Pool,
+  Skating Rink).
+- `sa02`…`sa20` Yumi, `ka02`…`ka20` Ayako, `ki02`…`ki20` Mio: places
+  2, 5 … 20 (Shopping, Botanical Garden, Library, Karaoke, Cinema, Beach,
+  Ski Resort).
+
+Each run shows the meeting, the place's first choice with the pick the
+driver makes (the first option), her reply, the impression thought, her
+verdict, the player's answer and the way home, then the week resumes.
+Review with `review_sheets.py` or a side-by-side of two prefixes. The
+location banner is visible only in each run's second screenshot, still
+sliding in from the top left, so its first letter is cut off by the screen
+edge there; the meeting runs (`bn_*`) show the settled box whole.
+
+- **Null ski sections.** Mio, Yuina, Ayako and Megumi have no ski date
+  (section 16 is a null entry in their fill function, game-internals §6k).
+  Forcing place 20 for them (`ka20`, `ki20`) plays the meeting and then
+  returns to the title screen; reloading continues normally. That's the
+  forcer reaching a date the game never offers, not the patch.
+- **Odd-length names in options** (Mio, Yuina, Ayako): an option ending on
+  `{G}` shows a space before 』 ("You can get it, Yuina 』"), accepted as
+  for Mio's cinema line above.
+- Fixed after the runs (wording only, then re-checked with `draft.py
+  --check`): Mira's bowling "Your turn. Let's see you manage it, then.",
+  Ayako's "there are free seats", Megumi's horror-film note, Saki's and
+  Yuina's skating replies, Yuko's goldfish line ("wanna scoop some goldfish?"). The
+  promoted build differs from the tested candidate only in those strings
+  (and the repacked bytes after them).
+- `tools/date_sections.py` now skips a section whose table entries point
+  outside the file (the null ski sections) instead of reading garbage.
+
 ### Tools for the whole-game loop (2026-10-10)
 
 The per-file loop in NEXT_STEPS.md uses these (details in each docstring):

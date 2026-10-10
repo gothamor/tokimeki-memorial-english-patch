@@ -7,7 +7,10 @@ A translation file can contain:
       `encoding` is "pairs" (default: English letter pairs, 1 byte per letter,
       composed on the fly by the renderer hook; see font.py, renderer.py) or
       "fullwidth" (each letter as a full-width Shift-JIS character, 2 bytes
-      and 12 px per letter).
+      and 12 px per letter). As in dialogue, "\n" stands for the 0x20 line
+      break and "{G}"-style tokens for control bytes, in both "original" and
+      "text" (overlay strings the dialogue renderer draws contain them), and
+      a "pairs" text may contain full-width characters ("○", "『").
       `slot` (optional) is the size of a fixed-size record the string starts
       (e.g. 33 for the DATE.EXN place-name table, game-internals 6l). Only
       for tables whose record size is proven from the code that reads them.
@@ -205,10 +208,13 @@ def fix_checksum(data: bytearray) -> None:
 def apply_string(patch: StringPatch, edit: FileEdit, pairs: font.PairEncoder) -> None:
     where = f"{patch.source}: {patch.file} @ {patch.offset:#x}"
     data = edit.data
-    original = patch.original.encode("shift_jis")
+    # Written like dialogue: "\n" is the 0x20 line break and "{G}"-style
+    # tokens are control bytes (overlay strings drawn by the dialogue
+    # renderer use both); plain text encodes exactly as Shift-JIS.
+    original = script.encode_original(patch.original)
     end = patch.offset + len(original)
     if bytes(data[patch.offset:end]) != original or data[end:end + 1] != b"\0":
-        found = bytes(data[patch.offset:end]).decode("shift_jis", "replace")
+        found = script.decode(bytes(data[patch.offset:end]))
         raise ValueError(f"{where}: expected {patch.original!r}, found {found!r}")
 
     if patch.slot is not None:
@@ -229,7 +235,9 @@ def apply_string(patch: StringPatch, edit: FileEdit, pairs: font.PairEncoder) ->
             capacity += 1
 
     if patch.encoding == "pairs":
-        new = pairs.encode(patch.text)
+        # Same bytes as pairs.encode for plain ASCII; also takes "\n",
+        # control tokens and full-width characters, as dialogue does.
+        new = script.encode_english(patch.text, pairs)[0]
         max_letters = (capacity - 1) // 2 * 2
     else:
         new = text.encode(patch.text)

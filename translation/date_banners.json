@@ -1,0 +1,509 @@
+{
+  "description": "DATE.EXN location banners shown at the start of every date (0x28B20-0x28E90, 73 strings, 47 distinct), repacked with tools/repack_words.py: each pointer in the banner table is repointed to its English string. Seen on screen on every forced date of the nine girls' batch (testing.md 'The other girls' dates').",
+  "bytes": [
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X28B20",
+      "original": "8bdf8f8a82cc8cf68980000082ab82e782df82ab9286899b8cf689800000000095c096d893b900008df795c096d800009272000092720000908591b08ad900008343838b834a83568387815b000000008ad993e0000000008ad993e00000000093ae95a889800000898093e000000000898093e000000000898093e000000000898093e000000000904195a889800000898093e00000000083768389836c835e838a8345838000008ad993e0000000008ad993e00000000094fc8f708ad90000834b815b834d815b9357000092a4915993570000974c96bc89e689c6935700008ad993e0000000008ad993e000000000907d8f918ad90000907d8f918ad993e000000000907d8f918ad993e000000000907d8f918ad993e0000000008351815b8380835a8393835e815b00008372836683498351815b83808352815b8369815b000000008372836683498351815b83808352815b8369815b00000000837b815b838a8393834f8fea00000000837b815b838a8393834f8fea00000000837b815b838a8393834f8fea00000000834a838983498350000000008261826e827793e0000000008261826e827793e00000000097568980926e000083568387836283738393834f8a5800008358835e83578341838000008358835e83578341838093e000000000896689e68ad900008ad993e000000000835283938354815b836789ef8fea000089ef8fea93e000008376815b838b00008376815b838b93e0000000008a438add00000000956c95d300000000898f93fa0000000089d489ce91e589ef0000000083588350815b83678fea000083588350815b8367838a8393834e00008358834c815b8fea000000008351838c83938366000000008375836583428362834e00008374834083938356815b83568387836283760000835783838393834e89ae00008371815b838d815b83568387815b00008369834383678370838c815b8368000097568980926e000096b3906c9387000097568980926e000083578346836283678352815b8358835e815b000090e28ba9837d8356815b839383728372815b838b000000008353815b83588367836e834583580000836f815b83608383838b835683628376000000008acf97978ed400008381835f838b8351815b83808352815b8369815b000000008381835f838b8351815b83808352815b8369815b0000000097568980926e93e000000000",
+      "replacement": "ccefe3e1eca0d0e1f2eb0000cbe9f2e1ede5ebe9a0d0e1f2eba00000d4f2e5e5adece9eee5e4a0d0e1f4e8a00000c3e8e5f2f2f9a0d4f2e5e5f30000d0efeee40000c1f1f5e1f2e9f5ed0000c4efecf0e8e9eea0d3e8eff70000c9eef3e9e4e50000daefefa00000c2eff4e1eee9e3e1eca0c7e1f2e4e5ee0000d0ece1eee5f4e1f2e9f5eda00000c1f2f4a0cdf5f3e5f5ed0000c7e1f2e7f9a0c5f8e8e9e2e9f4a00000d3e3f5ecf0f4f5f2e5a0c5f8e8e9e2e9f4a00000cde1f3f4e5f2f3a0c5f8e8e9e2e9f4a00000cce9e2f2e1f2f9a00000c1f2e3e1e4e50000d6e9e4e5efa0c7e1ede5f3a00000c2eff7ece9eee7a0c1ecece5f9a00000cbe1f2e1efebe5a00000cbe1f2e1efebe5a0c2eff8a00000d4e8e5ede5a0d0e1f2eb0000d3e8eff0f0e9eee7a0d3f4f2e5e5f4a00000d3f4e1e4e9f5eda00000c3e9eee5ede10000c3efeee3e5f2f4a0c8e1ecec0000d0efefec0000c2e5e1e3e8a00000d3e8eff2e5a00000d3e8f2e9eee5a0c6e1e9f2a00000c6e9f2e5f7eff2ebf3a00000d3ebe1f4e9eee7a0d2e9eeeb0000cfeea0f4e8e5a0c9e3e50000d3ebe9a0d2e5f3eff2f40000d3eceff0e5f30000c2eff5f4e9f1f5e50000c6e1eee3f9a0c7efefe4f3a00000caf5eeeba0d3e8eff0a00000c8e5f2efa0d3e8eff7a00000cee9e7e8f4a0d0e1f2e1e4e50000c9f3ece1eee40000d2efecece5f2a0c3efe1f3f4e5f20000c6f2e9e7e8f4ede1f2e50000c7e8eff3f4a0c8eff5f3e5a00000d6e9f2f4f5e1eca0d3e8e9f00000c6e5f2f2e9f3a0d7e8e5e5ec0000cde5e4e1eca0c7e1ede5f3a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "comment": "73 strings repacked (47 distinct), 584 of 880 bytes; readers repointed below"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X1EFC",
+      "original": "40aba524",
+      "replacement": "3caba524",
+      "comment": "addiu -> 並木道 -> 'Tree-lined Path' at 0x28b3c"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X1FD0",
+      "original": "48aba524",
+      "replacement": "4eaba524",
+      "comment": "addiu -> 桜並木 -> 'Cherry Trees' at 0x28b4e"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2068",
+      "original": "50aba524",
+      "replacement": "5caba524",
+      "comment": "addiu -> 池 -> 'Pond' at 0x28b5c"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2110",
+      "original": "54aba524",
+      "replacement": "5caba524",
+      "comment": "addiu -> 池 -> 'Pond' at 0x28b5c"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X22A8",
+      "original": "58aba524",
+      "replacement": "62aba524",
+      "comment": "addiu -> 水族館 -> 'Aquarium' at 0x28b62"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2330",
+      "original": "60aba524",
+      "replacement": "6caba524",
+      "comment": "addiu -> イルカショー -> 'Dolphin Show' at 0x28b6c"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2370",
+      "original": "70aba524",
+      "replacement": "7aaba524",
+      "comment": "addiu -> 館内 -> 'Inside' at 0x28b7a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2398",
+      "original": "78aba524",
+      "replacement": "7aaba524",
+      "comment": "addiu -> 館内 -> 'Inside' at 0x28b7a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2504",
+      "original": "80aba524",
+      "replacement": "82aba524",
+      "comment": "addiu -> 動物園 -> 'Zoo' at 0x28b82"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X258C",
+      "original": "88aba524",
+      "replacement": "7aaba524",
+      "comment": "addiu -> 園内 -> 'Inside' at 0x28b7a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X25CC",
+      "original": "90aba524",
+      "replacement": "7aaba524",
+      "comment": "addiu -> 園内 -> 'Inside' at 0x28b7a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X25F4",
+      "original": "98aba524",
+      "replacement": "7aaba524",
+      "comment": "addiu -> 園内 -> 'Inside' at 0x28b7a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2630",
+      "original": "a0aba524",
+      "replacement": "7aaba524",
+      "comment": "addiu -> 園内 -> 'Inside' at 0x28b7a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X27F4",
+      "original": "a8aba524",
+      "replacement": "88aba524",
+      "comment": "addiu -> 植物園 -> 'Botanical Garden' at 0x28b88"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X280C",
+      "original": "b0aba524",
+      "replacement": "7aaba524",
+      "comment": "addiu -> 園内 -> 'Inside' at 0x28b7a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X29DC",
+      "original": "b8aba524",
+      "replacement": "9aaba524",
+      "comment": "addiu -> プラネタリウム -> 'Planetarium' at 0x28b9a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2A30",
+      "original": "c8aba524",
+      "replacement": "7aaba524",
+      "comment": "addiu -> 館内 -> 'Inside' at 0x28b7a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2A58",
+      "original": "d0aba524",
+      "replacement": "7aaba524",
+      "comment": "addiu -> 館内 -> 'Inside' at 0x28b7a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2CA0",
+      "original": "d8aba524",
+      "replacement": "a8aba524",
+      "comment": "addiu -> 美術館 -> 'Art Museum' at 0x28ba8"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2D20",
+      "original": "e0aba524",
+      "replacement": "b4aba524",
+      "comment": "addiu -> ガーギー展 -> 'Gargy Exhibit' at 0x28bb4"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2DCC",
+      "original": "ecaba524",
+      "replacement": "c4aba524",
+      "comment": "addiu -> 彫塑展 -> 'Sculpture Exhibit' at 0x28bc4"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2E70",
+      "original": "f4aba524",
+      "replacement": "d8aba524",
+      "comment": "addiu -> 有名画家展 -> 'Masters Exhibit' at 0x28bd8"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2F14",
+      "original": "00aca524",
+      "replacement": "7aaba524",
+      "comment": "addiu -> 館内 -> 'Inside' at 0x28b7a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X2F40",
+      "original": "08aca524",
+      "replacement": "7aaba524",
+      "comment": "addiu -> 館内 -> 'Inside' at 0x28b7a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X31C8",
+      "original": "10aca524",
+      "replacement": "eaaba524",
+      "comment": "addiu -> 図書館 -> 'Library' at 0x28bea"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X321C",
+      "original": "18aca524",
+      "replacement": "eaaba524",
+      "comment": "addiu -> 図書館内 -> 'Library' at 0x28bea"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X324C",
+      "original": "24aca524",
+      "replacement": "eaaba524",
+      "comment": "addiu -> 図書館内 -> 'Library' at 0x28bea"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X32CC",
+      "original": "30aca524",
+      "replacement": "eaaba524",
+      "comment": "addiu -> 図書館内 -> 'Library' at 0x28bea"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X3434",
+      "original": "3caca524",
+      "replacement": "f4aba524",
+      "comment": "addiu -> ゲームセンター -> 'Arcade' at 0x28bf4"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X3484",
+      "original": "4caca524",
+      "replacement": "fcaba524",
+      "comment": "addiu -> ビデオゲームコーナー -> 'Video Games' at 0x28bfc"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X34AC",
+      "original": "64aca524",
+      "replacement": "fcaba524",
+      "comment": "addiu -> ビデオゲームコーナー -> 'Video Games' at 0x28bfc"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X365C",
+      "original": "7caca524",
+      "replacement": "0aaca524",
+      "comment": "addiu -> ボーリング場 -> 'Bowling Alley' at 0x28c0a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X36B0",
+      "original": "8caca524",
+      "replacement": "0aaca524",
+      "comment": "addiu -> ボーリング場 -> 'Bowling Alley' at 0x28c0a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X36D8",
+      "original": "9caca524",
+      "replacement": "0aaca524",
+      "comment": "addiu -> ボーリング場 -> 'Bowling Alley' at 0x28c0a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X3840",
+      "original": "acaca524",
+      "replacement": "1aaca524",
+      "comment": "addiu -> カラオケ -> 'Karaoke' at 0x28c1a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X38B8",
+      "original": "b8aca524",
+      "replacement": "24aca524",
+      "comment": "addiu -> ＢＯＸ内 -> 'Karaoke Box' at 0x28c24"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X3894",
+      "original": "c4aca524",
+      "replacement": "24aca524",
+      "comment": "addiu -> ＢＯＸ内 -> 'Karaoke Box' at 0x28c24"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X3B14",
+      "original": "d0aca524",
+      "replacement": "32aca524",
+      "comment": "addiu -> 遊園地 -> 'Theme Park' at 0x28c32"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X3B94",
+      "original": "d8aca524",
+      "replacement": "3eaca524",
+      "comment": "addiu -> ショッピング街 -> 'Shopping Street' at 0x28c3e"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X3C50",
+      "original": "e8aca524",
+      "replacement": "50aca524",
+      "comment": "addiu -> スタジアム -> 'Stadium' at 0x28c50"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X3C68",
+      "original": "f4aca524",
+      "replacement": "50aca524",
+      "comment": "addiu -> スタジアム内 -> 'Stadium' at 0x28c50"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X4088",
+      "original": "04ada524",
+      "replacement": "5aaca524",
+      "comment": "addiu -> 映画館 -> 'Cinema' at 0x28c5a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X409C",
+      "original": "0cada524",
+      "replacement": "7aaba524",
+      "comment": "addiu -> 館内 -> 'Inside' at 0x28b7a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X456C",
+      "original": "14ada524",
+      "replacement": "62aca524",
+      "comment": "addiu -> コンサート会場 -> 'Concert Hall' at 0x28c62"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X4580",
+      "original": "24ada524",
+      "replacement": "7aaba524",
+      "comment": "addiu -> 会場内 -> 'Inside' at 0x28b7a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X46F0",
+      "original": "2cada524",
+      "replacement": "70aca524",
+      "comment": "addiu -> プール -> 'Pool' at 0x28c70"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X4704",
+      "original": "34ada524",
+      "replacement": "70aca524",
+      "comment": "addiu -> プール内 -> 'Pool' at 0x28c70"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X48D4",
+      "original": "40ada524",
+      "replacement": "76aca524",
+      "comment": "addiu -> 海岸 -> 'Beach' at 0x28c76"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X48E8",
+      "original": "48ada524",
+      "replacement": "7eaca524",
+      "comment": "addiu -> 浜辺 -> 'Shore' at 0x28c7e"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X4AC4",
+      "original": "50ada524",
+      "replacement": "86aca524",
+      "comment": "addiu -> 縁日 -> 'Shrine Fair' at 0x28c86"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X4ADC",
+      "original": "58ada524",
+      "replacement": "94aca524",
+      "comment": "addiu -> 花火大会 -> 'Fireworks' at 0x28c94"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X4BBC",
+      "original": "64ada524",
+      "replacement": "a0aca524",
+      "comment": "addiu -> スケート場 -> 'Skating Rink' at 0x28ca0"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X4BD0",
+      "original": "70ada524",
+      "replacement": "aeaca524",
+      "comment": "addiu -> スケートリンク -> 'On the Ice' at 0x28cae"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X4D88",
+      "original": "80ada524",
+      "replacement": "baaca524",
+      "comment": "addiu -> スキー場 -> 'Ski Resort' at 0x28cba"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X4D9C",
+      "original": "8cada524",
+      "replacement": "c6aca524",
+      "comment": "addiu -> ゲレンデ -> 'Slopes' at 0x28cc6"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X5178",
+      "original": "98ada524",
+      "replacement": "ceaca524",
+      "comment": "addiu -> ブティック -> 'Boutique' at 0x28cce"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X5368",
+      "original": "a4ada524",
+      "replacement": "d8aca524",
+      "comment": "addiu -> ファンシーショップ -> 'Fancy Goods' at 0x28cd8"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X55E4",
+      "original": "b8ada524",
+      "replacement": "e6aca524",
+      "comment": "addiu -> ジャンク屋 -> 'Junk Shop' at 0x28ce6"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X5D34",
+      "original": "c4ada524",
+      "replacement": "f2aca524",
+      "comment": "addiu -> ヒーローショー -> 'Hero Show' at 0x28cf2"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X5FBC",
+      "original": "d4ada524",
+      "replacement": "feaca524",
+      "comment": "addiu -> ナイトパレード -> 'Night Parade' at 0x28cfe"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X60C0",
+      "original": "e4ada524",
+      "replacement": "32aca524",
+      "comment": "addiu -> 遊園地 -> 'Theme Park' at 0x28c32"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X67C8",
+      "original": "ecada524",
+      "replacement": "0cada524",
+      "comment": "addiu -> 無人島 -> 'Island' at 0x28d0c"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X6944",
+      "original": "f4ada524",
+      "replacement": "32aca524",
+      "comment": "addiu -> 遊園地 -> 'Theme Park' at 0x28c32"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X6968",
+      "original": "fcada524",
+      "replacement": "14ada524",
+      "comment": "addiu -> ジェットコースター -> 'Roller Coaster' at 0x28d14"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X6AB8",
+      "original": "10aea524",
+      "replacement": "24ada524",
+      "comment": "addiu -> 絶叫マシーンビビール -> 'Frightmare' at 0x28d24"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X6C0C",
+      "original": "28aea524",
+      "replacement": "30ada524",
+      "comment": "addiu -> ゴーストハウス -> 'Ghost House' at 0x28d30"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X6D64",
+      "original": "38aea524",
+      "replacement": "3eada524",
+      "comment": "addiu -> バーチャルシップ -> 'Virtual Ship' at 0x28d3e"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X6EAC",
+      "original": "4caea524",
+      "replacement": "4cada524",
+      "comment": "addiu -> 観覧車 -> 'Ferris Wheel' at 0x28d4c"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X7434",
+      "original": "54aea524",
+      "replacement": "5aada524",
+      "comment": "addiu -> メダルゲームコーナー -> 'Medal Games' at 0x28d5a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X7454",
+      "original": "6caea524",
+      "replacement": "5aada524",
+      "comment": "addiu -> メダルゲームコーナー -> 'Medal Games' at 0x28d5a"
+    },
+    {
+      "file": "CDROM/EXEDIR/DATE.EXN",
+      "offset": "0X7DAC",
+      "original": "84aea524",
+      "replacement": "32aca524",
+      "comment": "addiu -> 遊園地内 -> 'Theme Park' at 0x28c32"
+    }
+  ]
+}

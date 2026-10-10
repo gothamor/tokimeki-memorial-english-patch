@@ -70,5 +70,32 @@ class SlotTest(unittest.TestCase):
             patcher.apply_string(patch(0, "山", "Hill", slot=33), Edit(data), font.PairEncoder())
 
 
+class ControlTokenTest(unittest.TestCase):
+    """Overlay strings drawn by the dialogue renderer keep its 0x20 line
+    break and name codes; they are written with "\\n" and "{M}"."""
+
+    def test_line_break_and_token(self):
+        raw = b"M" + "残念ながら".encode("shift_jis") + b" " + "駄目".encode("shift_jis")
+        edit = Edit(raw + b"\0" * 4)
+        patcher.apply_string(patch(0, "{M}残念ながら\n駄目", "{M} sadly\nno"), edit, font.PairEncoder())
+        pairs = font.PairEncoder()
+        expected = b"M" + pairs.encode(" sadly") + b" " + pairs.encode("no")
+        self.assertEqual(bytes(edit.data[:len(expected)]), expected)
+        self.assertEqual(edit.data[len(expected)], 0)
+
+    def test_plain_text_unchanged(self):
+        data = table("海")
+        a, b = Edit(data), Edit(data)
+        patcher.apply_string(patch(0, "海", "Sea", slot=33), a, font.PairEncoder())
+        b.data[:33] = font.PairEncoder().encode("Sea").ljust(33, b"\0")
+        self.assertEqual(a.data, b.data)
+
+    def test_full_width_passes_through(self):
+        data = "◯◯◯◯◯".encode("shift_jis") + b"\0" * 2
+        edit = Edit(data)
+        patcher.apply_string(patch(0, "◯◯◯◯◯", "○ OK"), edit, font.PairEncoder())
+        self.assertEqual(bytes(edit.data[:2]), "○".encode("shift_jis"))
+
+
 if __name__ == "__main__":
     unittest.main()

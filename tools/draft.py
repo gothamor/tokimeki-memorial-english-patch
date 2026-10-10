@@ -37,7 +37,9 @@ Checks (all printed with the offset and the English):
 - choices (codes 03/08 or {q}): each option's last run must be even
   (otherwise a space shows before 』);
 - "）" kept: the English ends with ")" exactly when the Japanese does;
-- budget: the block must pack into the file's string space.
+- budget: the block must pack into the file's string space; when it
+  doesn't, the lines longer than their own original slot are listed (the
+  pool can be split into small gaps, BUNKA/*.BIN: shorten those first).
 """
 
 from __future__ import annotations
@@ -98,8 +100,14 @@ def check_line(jp: str, en: str, code=None, name=None, pairs=None, certain=True)
     for m in re.finditer(r"([^{}\n]*)\{[GPMSOWAYFpm]\}", body):
         if len(m.group(1)) % 2:
             msg.append(f"odd run before name: {m.group(1)!r}")
-    if name and len(name) % 2 and re.search(r"\{G\}[^\n]", en):
+    if name and len(name) % 2 and re.search(r"\{G\}(?!\{q\}|\n|$|\)$)", en):
         msg.append(f"text after odd-length name {name}")
+    elif name and len(name) % 2 and re.search(r"\{G\}\)$", en):
+        msg.append(f"warn: closing ')' right after odd-length {name}: a space shows before it")
+    elif name and len(name) % 2 and re.search(r"\{G\}(\{q\}|$)", en) and code in (3, 8):
+        # An option ending on the name: its pair padding shows before the
+        # game's closing bracket ("Go with Yuina 』"), like the thoughts below.
+        msg.append(f"warn: option ends on odd-length {name}: a space shows before the bracket")
     if code in (4, 6) and name and len(name) % 2 and en.rstrip().endswith("{G}"):
         # The game's closing bracket follows the name's pair padding
         # ("Crying? Mio )"); unavoidable when the name must end the box.
@@ -142,6 +150,22 @@ def budget(doc_path: Path):
             out.append((True, f"{item['file']}: " + "; ".join(edit.log[-1:]) if edit.log else "packs"))
         except Exception as ex:  # noqa: BLE001
             out.append((False, f"{item['file']}: DOES NOT PACK: {ex}"))
+            # The pool is often split into small gaps (pointer lists between
+            # the strings, BUNKA/*.BIN): list the lines longer than their own
+            # original slot, the ones to shorten first.
+            for x in item["lines"]:
+                if not x["text"]:
+                    continue
+                o = int(x["offset"], 16)
+                cap = data.index(b"\0", o) - o + 1
+                while (o + cap) % 4 and data[o + cap] == 0:
+                    cap += 1
+                try:
+                    need = len(script.encode_english(x["text"], pairs)[0]) + 1
+                except Exception:  # noqa: BLE001
+                    continue
+                if need > cap:
+                    out.append((True, f"    {o:#07x} over its own slot by {need - cap}: {x['text']!r}"))
     return out
 
 

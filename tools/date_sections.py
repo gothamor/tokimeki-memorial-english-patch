@@ -152,6 +152,12 @@ def main() -> None:
     total = 0
     for s in range(SECTIONS):
         master, blists = table[s] - FILE_BASE, table[SECTIONS + s] - FILE_BASE
+        if not (in_file(table[s]) and in_file(table[SECTIONS + s])):
+            # Mio, Yuina, Ayako and Megumi: section 16 (the Ski Resort) is a
+            # null entry in their fill function; they have no ski date.
+            print(f"section {s:2}  master {table[s]:#010x}, code lists "
+                  f"{table[SECTIONS + s]:#010x}: outside the file, not read")
+            continue
         parts = []
         while in_file(fw(master + 4 * len(parts))) and fw(master + 4 * len(parts)) - FILE_BASE < master:
             p = len(parts)

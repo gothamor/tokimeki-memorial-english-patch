@@ -99,6 +99,17 @@ that goes beyond that (using the padding), so check those on screen. For
 multi-line text (description boxes), keep every line within its original
 width.
 
+**Line breaks and codes in in-place strings.** Overlay strings drawn by
+the dialogue renderer can contain its 0x20 line break and name codes
+(ETC.EXN's exam thoughts, ENDING.EXN's `{M}残念ながら`). Write them as in
+dialogue, `\n` and `{G}`/`{M}`, in both `original` (as `exn_words.py`
+prints them) and `text`; `text` may also hold full-width characters such
+as `○` or `『』`. Plain strings encode exactly as before (the normal build
+stayed byte-identical when this was added, 2026-10-10). The room is the
+encoded size: every odd run of letters is padded with a space, once per
+line, so a three-line string can need up to three bytes more than its
+letter count.
+
 ### Drafting a whole file
 
 `tools/draft.py` (NEXT_STEPS.md "The per-file loop") builds a file's
@@ -132,7 +143,14 @@ points into that stretch (search the overlay for data words and
 whole stretch with the English laid out freely, and one more per `addiu`
 points each reader at its new string (game-internals §6y: Okinawa,
 Hokkaido, Sapporo in SHUGAKU.EXN). Strings that keep their place still go
-in `strings` with their `original`.
+in `strings` with their `original`. `tools/repack_words.py FILE --region
+START END --texts TABLE -o OUT` does the whole job for a run: it checks
+that only `lui`/`addiu` pairs reach the run (each at a string start, no
+data words pointing in, every string read somewhere), lays the English out
+from START (identical English stored once), and writes the `bytes`
+patches: one for the run, one per `addiu` immediate. `--max-len` (default
+20) guards the strcpy destination. First used for DATE.EXN's 73 place
+banners (game-internals §6k).
 
 ### Patterns to watch for
 - **Icons and numbers drawn over text cells.** The game draws ○/× icons and

@@ -1255,10 +1255,28 @@ function and lists that girl's sections.
     per-girl loader but read none of entries 0–5 (they use 12/36/60 and
     19/29/48/66). Entry 0 has the in-string label `{>先生}` (§6p).
     Translated in `translation/yuko_events.json` (2026-10-08).
-- Mio, Yuina, Ayako, Megumi have one section whose master or code-list
-  pointer falls outside the file, and Mio, Yuina, Nozomi, Mira, Megumi and
-  Yumi have 4–9 strings their tables reach that `dump_dialogue.py` misses.
-  Look at those before translating those girls.
+- **The other nine girls** (checked while translating them, 2026-10-10).
+  Mio, Yuina, Ayako and Megumi have no Ski Resort date: section 16 is a
+  null entry (master and code lists 0) in their fill functions
+  (`date_sections.py` reports it as "outside the file, not read"). The 4–9
+  strings per girl that the tables reach but `dump_dialogue.py` misses (Mio,
+  Yuina, Nozomi, Mira, Megumi, Yumi) are empty placeholder strings: there is
+  nothing to translate in them. Their place banners are DATE.EXN's own
+  strings (below). Translated in `translation/{mio,yuina,ayako,saki,yukari,
+  nozomi,mira,megumi,yumi}_dates.json`; the few pure-punctuation pause
+  lines stay Japanese, as in Shiori's and Yuko's files.
+- **Location banners** during dates (the spot inside a place, e.g. 並木道
+  "Tree-lined Path"; not the 21 place names of §6l, which `date_shared.json`
+  patches in their slots): 73 strings, 47 distinct, in DATE.EXN
+  `0x28B20`–`0x28E90`, each built once by a `lui`/`addiu` pair and
+  `strcpy`'d into a buffer of about 20 bytes. They are too
+  short in place, so `tools/repack_words.py` lays the English out again in
+  the same region (pair-encoded, NUL-terminated, 2-byte aligned, identical
+  names shared) and rewrites each `addiu` immediate: one `bytes` patch for
+  the region plus one per reference (`translation/date_banners.json`). The
+  tool refuses a region that a data word points into, a string with no
+  reader, an address in the middle of a string, or a region crossing a
+  `lui` boundary.
 
 **Impression thoughts** after each choice (the player's thought, in levels
 from a great impression to a bad one) are not in `DATE_FU`: they are in the
