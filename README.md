@@ -1,5 +1,7 @@
 # Tokimeki Memorial: Forever with You — English patcher
 
+<img width="1950" height="738" alt="image-1791685033388" src="https://github.com/user-attachments/assets/149fcef0-dcd5-4e17-841a-39a48dde3a7f" />
+
 Patches the Japanese PS1 disc image (*PlayStation the Best*, SLPM-86053) with an
 English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
