@@ -1513,3 +1513,12 @@ python -m tokipatch '<original game.cue>' -o .emu/review_settings --force
 - A VRAM upload trace (`watch_exec.py ... 0x8004435c --max 4000`) counts
   1280 uploads (ra 0x8004D64C) per card. A lower count means a block was
   skipped (block number 0, game-internals 7).
+
+### The info card (2026-10-11)
+
+From `phone_sat0429.sav`, sending the presses one at a time with a
+screenshot after each worked where the fixed `fic*` sequences drifted:
+`Down` ×8 at 900 ms, `C` (phone book, Yoshio), `C` ×5 through the
+greeting, `Up` to "Ask girls' views", `C`, `C` ×2 (the ratings page),
+`C` (the thought), `C` on Shiori in the girl list, then `C` ×4 to the card.
+

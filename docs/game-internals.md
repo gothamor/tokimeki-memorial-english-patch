@@ -2507,7 +2507,11 @@ halfword x, y): 0x00000 → (0x380,0x180), 0x04000 → (0x380,0x100),
   a label every 14 rows. The dash sprite starts ~27 px into the label, so
   that's the usable width. x < 96: panel frame art.
 - Chunk 0 is the command icons, chunk 1 girl-info labels (星座, B.W.H, 電話,
-  血液型), chunk 11 the date-spot magazine art (メモリアルスポット masthead and
+  血液型). **The info card doesn't use them**: checked on screen 2026-10-11
+  (Yoshio, "Ask girls' views", Shiori). Its labels are add_text strings
+  (`phone_calls.json`) and its values come from JOHO.NBN (`info_card.json`).
+  No screen showing these cells has been found, so they're left as they
+  are. Chunk 11 the date-spot magazine art (メモリアルスポット masthead and
   issue labels; left as they are, like the title logo).
 - **Town News headlines** (found 2026-10-11): EXE frames 126–133 (table
   `0x800C975C`) draw the eight banners 中央公園紹介 … プラネタリウム特集, each a

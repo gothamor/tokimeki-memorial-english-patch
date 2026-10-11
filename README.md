@@ -36,14 +36,20 @@ existing output folder.
 - **Options page:** the item list (Text Speed, Icon Mode, Mouse, Menu Mode,
   Cursor Speed, Voice Mode, Extras, Exit Options) and the Menu Mode sub-screen
   (choices + descriptions) ([translation/options.json](translation/options.json)),
-  drawn with the letter-pair font described below. The choices on the Text
-  Speed, Icon Mode, Cursor Speed and Voice Mode sub-screens are pre-drawn
-  graphics and still Japanese.
+  drawn with the letter-pair font described below. The pre-drawn choices on
+  the Text Speed, Icon Mode, Cursor Speed and Voice Mode sub-screens are
+  redrawn in English ([option_labels.json](translation/option_labels.json)).
+  The Mouse sub-screen and the graphic Extras entries stay Japanese: the
+  sheet has no room left.
 - **New game:** the album (save slot) screen's message box, the shared
   Yes/No button prompts, and the name-entry questions
   ([album.json](translation/album.json), [common.json](translation/common.json),
-  [name_entry.json](translation/name_entry.json)). The buttons, panel labels
-  and the kana grid are still Japanese.
+  [name_entry.json](translation/name_entry.json)). The album screen's
+  graphics (panel labels, buttons, stat and rating names) and the name-entry
+  side buttons are redrawn ([album_screen.json](translation/album_screen.json),
+  [name_entry_buttons.json](translation/name_entry_buttons.json)). The kana
+  grid stays Japanese (it's the input method), and so do the 名前:/あだ名:
+  captions, which haven't been found.
 - **Prologue dialogue:** the 43-line entrance-ceremony scene after name entry
   ([prologue.json](translation/prologue.json)), the first dialogue in the
   translation. Character-name tables and speaker labels are translated by
@@ -110,7 +116,7 @@ existing output folder.
   the date and place picker), calling Yoshio for advice and girl info,
   Ijuin, the answering-machine messages after a missed date, and the other
   calls in `TEL.EXN` ([phone_calls.json](translation/phone_calls.json)).
-  The girl info card's values are still Japanese.
+  The girl info card is English too ([info_card.json](translation/info_card.json)).
 - **Main game loop:** the weekly command screen's stat panel (Health, Art,
   Looks, Lit., Sport, Guts, Sci., Trivia, Stress), the calendar
   (`95 / 4 / 23 (Su)`), the player's thought prompts, and the in-game
@@ -118,6 +124,12 @@ existing output folder.
   Club names, recurring notices, outing names and town-news text also have
   translations. Coverage and on-screen verification vary; see the status table
   in [AGENTS.md](AGENTS.md). The command icons themselves are pictures.
+- **Other pre-drawn graphics:** the Town News headline banners
+  ([town_news_banners.json](translation/town_news_banners.json)), the exam
+  results board ([exam_results.json](translation/exam_results.json)), the
+  school-trip battle menu, Fight / Guard / Skill
+  ([battle_menu.json](translation/battle_menu.json)), and the sports day's
+  instruction cards ([sports_day_cards.json](translation/sports_day_cards.json)).
 - **Renderer hook:** the game's text renderer draws English two letters per
   character cell, composed on the fly from a narrow font, so any amount of
   English text fits the font ([tokipatch/renderer.py](tokipatch/renderer.py)).
@@ -150,7 +162,7 @@ existing output folder.
 | `translation/*.json` | The translation: `strings`, `dialogue` and `images` entries |
 | `translation/graphics/` | Replacement graphics (indexed PNGs using the game's palettes) |
 | `translation/font/free_glyphs.txt` | Font glyphs the game never uses (research data; no longer used by the patcher) |
-| `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation (`make_title_menu.py`, `make_main_screen.py`), renderer check, translation progress (`progress.py`), code-string lister (`code_strings.py`), script section lister (`geko_sections.py`) |
+| `tools/` | Developer tools: disc extraction, text search, free-glyph finder, MIPS disassembly, graphics generation (`make_title_menu.py`, `make_main_screen.py`, `make_option_labels.py`, `redraw_labels.py`, `make_sports_cards.py`), renderer check, translation progress (`progress.py`), code-string lister (`code_strings.py`), script section lister (`geko_sections.py`) |
 | `tests/` | Unit tests on synthetic data (`python -m unittest discover tests`) |
 | `tools/emu/` | Emulator test harness: isolated DuckStation, input driver with screen detection, GDB client, file-load tracer, read-watchpoint logger, girl-event watcher and event/date/Christmas forcers |
 
@@ -188,5 +200,7 @@ existing output folder.
 3. Find the LBA tables for data files, then support relocating or growing files.
 4. Text renderer: variable-width English. The renderer hook (game-internals §6f)
    is the place for it; it needs more code space.
-5. Remaining graphics (logo, menus, MDEC stills).
+5. Remaining graphics: MDEC stills, the three-legged race's speech bubbles,
+   the Options Mouse/Extras words. The title logo and the staff roll stay
+   Japanese by choice.
 6. Distribution: PyInstaller builds per OS, or ship xdelta/PPF patches.
