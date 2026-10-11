@@ -94,7 +94,7 @@ usually runs into the next record and is refused.
 
 Screen width matters too: menus are sized for the Japanese. With `pairs`,
 English that uses **no more letters than the original had bytes** is never
-wider than the Japanese was. The patch log prints a `note:` for any string
+wider than the Japanese was. The patch log (`-v`) prints a `note:` for any string
 that goes beyond that (using the padding), so check those on screen. For
 multi-line text (description boxes), keep every line within its original
 width.

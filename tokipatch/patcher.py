@@ -50,7 +50,7 @@ import json
 import zlib
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Callable, Dict, List, Optional
 
 from . import font, png, renderer, script, text
 from .cd import Track
@@ -265,6 +265,7 @@ def apply_dialogue(block: DialogueBlock, edit: FileEdit, pairs: font.PairEncoder
     their own slot.
     """
     data, orig = edit.data, edit.original
+    index = script.WordIndex(orig)
     jobs, slots = [], {}
     for line in sorted((x for x in block.lines if x.text), key=lambda x: x.offset):
         where = f"{block.source}: {block.file} @ {line.offset:#x}"
@@ -293,7 +294,7 @@ def apply_dialogue(block: DialogueBlock, edit: FileEdit, pairs: font.PairEncoder
                                  f"(max {block.max_cells}; a letter is 1 cell, a name "
                                  f"code counts as its longest name): {line.text!r}")
         pointers = script.find_pointers(orig, block.base, line.offset)
-        movable = bool(pointers) and not script.code_references(orig, block.base, line.offset)
+        movable = bool(pointers) and not index.code_references(block.base, line.offset)
         jobs.append((line, new, pointers, movable, where))
         slots[line.offset] = line.offset + capacity
 
@@ -305,7 +306,7 @@ def apply_dialogue(block: DialogueBlock, edit: FileEdit, pairs: font.PairEncoder
         else:
             spans.append([start, stop])
     for start, stop in spans:
-        for pos, target in script.pointers_into(orig, block.base, start, stop):
+        for pos, target in index.pointers_into(block.base, start, stop):
             if target not in slots:
                 raise ValueError(f"{block.source}: {block.file}: word at {pos:#x} points into "
                                  f"translated text at {target:#x}, not at a string start")
@@ -437,12 +438,24 @@ def apply_bytes(patch: BytePatch, edit: FileEdit) -> None:
                     + (f"  ({patch.comment})" if patch.comment else ""))
 
 
+def _quiet(message: str) -> None:
+    pass
+
+
 def plan(track: Track, strings: List[StringPatch], images: List[ImagePatch],
          byte_patches: List[BytePatch] = (),
-         dialogue: List[DialogueBlock] = ()) -> List[FileEdit]:
-    """Validate and apply every patch in memory, against the unmodified disc."""
+         dialogue: List[DialogueBlock] = (),
+         log: Callable[[str], None] = _quiet,
+         progress: Callable[[str], None] = _quiet) -> List[FileEdit]:
+    """Validate and apply every patch in memory, against the unmodified disc.
+
+    `log` gets a line per stage; `progress` gets a short status for each
+    dialogue block (the slow part), meant to be shown in place.
+    """
+    log("  Reading the disc's file list")
     files = list_files(track)
     check_disc(files, track)
+    log("  Found Tokimeki Memorial: Forever with You (SLPM-86053)")
 
     edits: Dict[str, FileEdit] = {}
 
@@ -456,16 +469,27 @@ def plan(track: Track, strings: List[StringPatch], images: List[ImagePatch],
         return edits[path]
 
     pairs = font.PairEncoder()
+    if strings:
+        log(f"  Checking {len(strings)} menu and screen string(s)")
     for s in strings:
         apply_string(s, edit_for(s.file, s.source), pairs)
+    if images:
+        log(f"  Checking {len(images)} image(s)")
     for i in images:
         apply_image(i, edit_for(i.file, i.source))
+    if byte_patches:
+        log(f"  Checking {len(byte_patches)} code and data patch(es)")
     for b in byte_patches:
         apply_bytes(b, edit_for(b.file, b.source))
-    for d in dialogue:
+    if dialogue:
+        lines = sum(1 for d in dialogue for x in d.lines if x.text)
+        log(f"  Repacking {lines} dialogue line(s) in {len(dialogue)} block(s)")
+    for n, d in enumerate(dialogue, 1):
+        progress(f"[{n}/{len(dialogue)}] {d.file} ({d.source})")
         apply_dialogue(d, edit_for(d.file, d.source), pairs)
 
     if pairs.used:
+        log("  Installing the English text renderer")
         exe = edit_for(font.EXE, "renderer")
         exe.log.extend(renderer.install(exe.data))
 
@@ -475,12 +499,28 @@ def plan(track: Track, strings: List[StringPatch], images: List[ImagePatch],
                 raise ValueError(f"{path}: a patch overwrote the file's checksum trailer")
             fix_checksum(edit.data)
             edit.log.append("checksum updated")
+    log(f"  All checks passed: {len(edits)} file(s) to rewrite")
     return list(edits.values())
 
 
-def apply(track: Track, edits: List[FileEdit], log=print) -> None:
-    for edit in edits:
+def apply(track: Track, edits: List[FileEdit], log=print, verbose: bool = True) -> None:
+    """Write the planned edits. Without `verbose`, each file's per-string
+    lines (those starting with an offset) are summed up as a count."""
+    for n, edit in enumerate(edits, 1):
         sectors = track.write_file(edit.entry.lba, edit.original, bytes(edit.data))
-        log(f"  {edit.entry.path} ({sectors} sector(s))")
-        for line in edit.log:
-            log(f"    {line}")
+        if verbose:
+            log(f"  {edit.entry.path} ({sectors} sector(s))")
+            for line in edit.log:
+                log(f"    {line}")
+            continue
+        changes = sum(1 for line in edit.log if line.startswith("0x"))
+        details = [f"{changes} change(s)"] if changes else []
+        blocks = [line for line in edit.log if line.startswith("dialogue:")]
+        if len(blocks) > 1:
+            details.append(f"{len(blocks)} dialogue blocks repacked")
+        details.extend(blocks[:len(blocks) == 1])
+        if any(line.startswith("renderer hook") for line in edit.log):
+            details.append("English text renderer installed")
+        if "checksum updated" in edit.log:
+            details.append("checksum updated")
+        log(f"  [{n}/{len(edits)}] {edit.entry.path} ({sectors} sector(s)): " + "; ".join(details))

@@ -29,6 +29,7 @@ padded with spaces to the label's byte count (one byte per letter).
 
 from __future__ import annotations
 
+import bisect
 import re
 import struct
 from typing import Dict, List, Tuple
@@ -241,41 +242,60 @@ def find_pointers(data: bytes, base: int, offset: int) -> List[int]:
     return hits
 
 
+class WordIndex:
+    """A file's aligned 32-bit words, indexed once for the pointer searches.
+
+    A dialogue block asks about every one of its strings (thousands in the
+    big SERIFU files); scanning the whole file each time made a full build
+    take minutes.
+    """
+
+    def __init__(self, data: bytes):
+        self.words = struct.unpack_from(f"<{len(data) // 4}I", data, 0)
+        self.lui: Dict[int, List[int]] = {}       # lui immediate -> word indices
+        for i, w in enumerate(self.words):
+            if w >> 26 == 0x0F:
+                self.lui.setdefault(w & 0xFFFF, []).append(i)
+        order = sorted(range(len(self.words)), key=self.words.__getitem__)
+        self._by_value = [self.words[i] for i in order]
+        self._order = order
+
+    def pointers_into(self, base: int, start: int, end: int) -> List[Tuple[int, int]]:
+        """(word offset, target offset) of aligned words pointing into [start, end)."""
+        lo = bisect.bisect_left(self._by_value, base + start)
+        hi = bisect.bisect_left(self._by_value, base + end)
+        return [(i * 4, self.words[i] - base) for i in sorted(self._order[lo:hi])]
+
+    def code_references(self, base: int, target: int, window: int = 8) -> List[int]:
+        """File offsets of `lui` + `addiu/ori` pairs that build address base+target.
+
+        Strings referenced from code can't be relocated by rewriting pointer
+        tables, so the patcher refuses to move them.
+        """
+        addr = base + target
+        lo = addr & 0xFFFF
+        hi_addiu = ((addr + 0x8000) >> 16) & 0xFFFF   # addiu sign-extends its immediate
+        hi_ori = (addr >> 16) & 0xFFFF
+        hits = []
+        for i in sorted(set(self.lui.get(hi_addiu, ())) | set(self.lui.get(hi_ori, ()))):
+            w = self.words[i]
+            rt, imm = (w >> 16) & 31, w & 0xFFFF
+            for w2 in self.words[i + 1:i + 1 + window]:
+                op, rs = w2 >> 26, (w2 >> 21) & 31
+                # addiu, ori, or a load straight from the address (lb/lh/lw/lbu/lhu)
+                if rs == rt and (w2 & 0xFFFF) == lo and (
+                        (op in (0x09, 0x20, 0x21, 0x23, 0x24, 0x25) and imm == hi_addiu)
+                        or (op == 0x0D and imm == hi_ori)):
+                    hits.append(i * 4)
+                    break
+        return hits
+
+
 def pointers_into(data: bytes, base: int, start: int, end: int) -> List[Tuple[int, int]]:
     """(word offset, target offset) of aligned words pointing into [start, end)."""
-    lo, hi = base + start, base + end
-    found = []
-    for pos in range(0, len(data) - 3, 4):
-        value = struct.unpack_from("<I", data, pos)[0]
-        if lo <= value < hi:
-            found.append((pos, value - base))
-    return found
+    return WordIndex(data).pointers_into(base, start, end)
 
 
 def code_references(data: bytes, base: int, target: int, window: int = 8) -> List[int]:
-    """File offsets of `lui` + `addiu/ori` pairs that build address base+target.
-
-    Strings referenced from code can't be relocated by rewriting pointer
-    tables, so the patcher refuses to move them.
-    """
-    addr = base + target
-    lo = addr & 0xFFFF
-    hi_addiu = ((addr + 0x8000) >> 16) & 0xFFFF   # addiu sign-extends its immediate
-    hi_ori = (addr >> 16) & 0xFFFF
-    hits = []
-    words = [struct.unpack_from("<I", data, p)[0] for p in range(0, len(data) - 3, 4)]
-    for i, w in enumerate(words):
-        if w >> 26 != 0x0F:                       # lui
-            continue
-        rt, imm = (w >> 16) & 31, w & 0xFFFF
-        if imm not in (hi_addiu, hi_ori):
-            continue
-        for w2 in words[i + 1:i + 1 + window]:
-            op, rs = w2 >> 26, (w2 >> 21) & 31
-            # addiu, ori, or a load straight from the address (lb/lh/lw/lbu/lhu)
-            if rs == rt and (w2 & 0xFFFF) == lo and (
-                    (op in (0x09, 0x20, 0x21, 0x23, 0x24, 0x25) and imm == hi_addiu)
-                    or (op == 0x0D and imm == hi_ori)):
-                hits.append(i * 4)
-                break
-    return hits
+    """File offsets of `lui` + `addiu/ori` pairs that build address base+target."""
+    return WordIndex(data).code_references(base, target, window)
