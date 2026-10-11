@@ -1496,3 +1496,20 @@ Rebuild recipe after promotion (PowerShell; no `-t` flags are needed):
 $env:PYTHONIOENCODING = 'utf-8'
 python -m tokipatch '<original game.cue>' -o .emu/review_settings --force
 ```
+
+### Sports day cards (2026-10-11)
+
+- Force the sports day with `force_event.py 0 0 --type 0x20` while the first
+  weekly command runs (start it in the background, then press C). After
+  "Which event to enter?" the menu is Spoon relay / Borrowing race / Other
+  events. "Other events" switches to 3-leg race / Ball rolling / Other
+  events, **with the cursor staying on the third line**, so one Down picks
+  the 3-leg race and two pick Ball rolling. The card shows about 20 s after
+  the pick.
+- **The Sunday state reopens `.emu/review_dates` whatever `-Build` says**
+  (DuckStation takes the disc from the save state). To compare with an
+  unpatched card, build without the JSON into review_dates
+  (`candidate.py`), then rebuild.
+- A VRAM upload trace (`watch_exec.py ... 0x8004435c --max 4000`) counts
+  1280 uploads (ra 0x8004D64C) per card. A lower count means a block was
+  skipped (block number 0, game-internals 7).

@@ -2591,6 +2591,46 @@ command's month pages, which are already in English (MON TUE …).
 - The menu words aren't text, so a search of RAM for 攻撃 finds nothing.
   The battle's names and lines are RPG_BAT's own text (`trip_battles.json`).
 
+### Sports day instruction cards (`TAIIKU/*SETU.BIN`, `TAIIKU.EXN`)
+- Each event opens with a parchment card explaining the controls, drawn by
+  the font-less **tile picture** system of the EXE, not by text: SPSETU
+  (spoon relay), KASETU (borrowing race), TASETU (ball rolling), NINSETU
+  (three-legged race, two pictures: a casual and a polite version). The
+  file loads at 0x8018F000. The card is a full screen, 320×256 8bpp,
+  uploaded to VRAM (0x140, 0) in 1280 8×8 pieces.
+- **Format** (all little-endian):
+  - CLUT at file 0.
+  - Tile header `u32 pages, u8 8,8,4,4, u32 0x400, u32 blocks`. Its offset
+    varies: SPSETU 0xE000, KASETU 0xE008, TASETU 0x12008, NINSETU 0x1E008
+    and 0x1F020.
+  - Then `blocks` block maps of 4×4 u32 entries, row-major. Entry byte 0
+    holds the flips (bit 0 vertical, bit 1 horizontal), byte 2 the tile
+    index within its page (16 per row), byte 3 the page.
+  - Then a 20-byte screen header (`03 03 00 00 20 20 04 04 01 S 08 08 ...`),
+    followed by 8 rows of 10 u32 block numbers. The row stride is S×0x20
+    (0x800 or 0x40).
+  - Pages are 128×128 8bpp (16 KiB). The file doesn't say where they are;
+    they were found by decoding: 0x2000/0x6000, and for NINSETU 0xE000/0x12000
+    (casual) and 0x16000/0x1A000 (polite). The loader fills in a page
+    pointer table; SPSETU's file even contains one (0x129CC), saved from RAM.
+- **Code:** the layer descriptors are at 0x801217A0 (20 bytes each: tile
+  table pointer, map pointer, type, w, h, cell size).
+  - **0x8004D1C8–0x8004D2C0** walks the screen map. It **skips entries
+    whose low 16 bits are 0**: block 0 means "nothing here", and reusing it
+    leaves VRAM garbage on screen.
+  - **0x8004D3C8**(layer, block, …) draws one block.
+  - **0x8004D6B8** copies a tile with its flips, then **0x8004435C**
+    uploads it (`ra` 0x8004D64C).
+- `tools/make_sports_cards.py` decodes each card, draws the English and
+  re-encodes it with minimal changes (`sports_day_cards.json`). The changes:
+  the Japanese glyph tiles are reused, blocks no longer on screen are
+  renumbered (never block 0), and the decode is checked against the
+  intended picture. The cards' text area (x 50–270, y 36–172) is plain
+  colour 0x17. Ink is 0x11, red 0x2A, and the title uses hollow letters.
+- The girl standing by the card and the pointing hand are sprites that the
+  original also shows. The three-legged race's ひだり/みぎ (left/right)
+  speech bubbles are separate minigame sprites, still Japanese.
+
 ## 8. Open questions / next research targets
 
 1. **Dialogue beyond the prologue** (§6e): confirm the SERIFU load addresses
