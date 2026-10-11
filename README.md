@@ -1,4 +1,4 @@
-# Tokimeki Memorial: Forever with You — English patcher
+# Tokimeki Memorial: Forever with You — PS1 Version English patcher
 
 <img width="1950" height="738" alt="image-1791685033388" src="https://github.com/user-attachments/assets/149fcef0-dcd5-4e17-841a-39a48dde3a7f" />
 
