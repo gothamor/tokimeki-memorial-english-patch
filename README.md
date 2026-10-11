@@ -4,6 +4,8 @@ Patches the Japanese PS1 disc image (*PlayStation the Best*, SLPM-86053) with an
 English translation. Pure Python 3.8+ standard library, so it runs as-is on
 Windows, Linux and macOS.
 
+The patcher and translation was done entirely with Opus 5.5.
+
 ## Which disc image you need
 
 The patcher works with exactly one release:
