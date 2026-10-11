@@ -8,6 +8,18 @@ Windows, Linux and macOS.
 
 The patcher and translation was done entirely with Opus 5.5.
 
+## Disclaimer
+
+This is an unofficial fan project. It is not affiliated with, endorsed by
+or sponsored by Konami. *Tokimeki Memorial* and all related names,
+characters and artwork are trademarks and copyrights of Konami Digital
+Entertainment.
+
+This repository contains no game data: no disc images, BIOS files or
+executables. You need your own legally obtained copy of the game. The
+patcher only modifies a copy of the disc image you supply, never the
+original, and the patched image must not be distributed.
+
 ## Which disc image you need
 
 The patcher works with exactly one release:
