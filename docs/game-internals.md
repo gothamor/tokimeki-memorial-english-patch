@@ -269,13 +269,38 @@ After GAME START, about 15 s pass, then the **album (save slot) screen**:
 Then **name entry**:
 - **Questions: text.** `NAME_ENT.EXN` 0x1ACE4 / 0x1AD04 / 0x1AD10, then
   birthday/blood type 0x194C0, 0x19510, 0x19534, 0x1955C.
-- **Graphics:** the side buttons かな/カナ/記号/漢字/終了 and the birthday
-  page's labels are 4bpp cells in `NAME_ENT/NAME_ENT.NBN` (256 px wide, two
-  copies side by side; frame table at file `0x1AF58`, frames 16–25 the
-  buttons, normal/highlighted by CLUT). The pink 名前:/あだ名: captions are
-  neither text (the text list holds only the empty name fields there) nor
-  those cells (a probe overwriting the sheet's 名 changed nothing); probably
-  the `NAME_SAK.BS` background (MDEC), not handled.
+- **Graphics:** the side buttons かな/カナ/記号/漢字/終了 and every pink/white
+  label word are 4bpp cells in `NAME_ENT/NAME_ENT.NBN`. The label strip is
+  128 px wide (64-byte rows) from file **`0x200`** (the first 0x200 bytes
+  are not pixels; an earlier note that a probe on 名 "changed nothing" most
+  likely missed this offset). The file loads at `0x80190000`; the frame
+  table is at file `0x1AF58` (registered once, `0x80138F00`, nothing else in
+  the overlay touches it), same frame/part layout as OPTION.NBN (§6c), `cell`
+  = 8×8 tile of the strip, 16 per row. Frames (found 2026-10-25 by parsing
+  the table and comparing with screenshots):
+  - **1** name page: 名前 (part 15, cell 166) + ':' (cell 13), あだ名 (17,
+    cell 162) + ':'.
+  - **2** birthday page: header 誕生日: 月 日 血液型: 型 (parts 19–25, 月 日
+    型 in blue, attr 0x5090), row labels 誕生 + 月 / 誕生日 / 血液型 (26–29),
+    the month list 1月…12月 (30–56, digits cells 128–142, 160, 10–12 from
+    8 px cells 44/14/45) and A型 B型 AB型 O型 (57–64). The day list 1–31 and
+    all the selected values are drawn by code (values in the font).
+  - **3** the player's "Is this OK?" summary: 名前 あだ名 誕生日 血液型
+    (24–27), はい / い + いえ (28–30), 月 日 型 after the values (31–33).
+    The green box under the selected answer is drawn separately; the words
+    stay frame parts.
+  - **15** Shiori's summary: as 3 without the nickname row (20–28).
+  - Cells: 9 あ だ 名 前 月 AB O at 160–174, 誕 生 日 血 液 型 A B at 192–206,
+    は い え at 224–228 (16×16 each), ink 9 with a shadow 10 down-right.
+    Tiles 230–239/246–255 (an X pattern) and the keypad digits right of the
+    buttons (tile rows 4–7, cols 12–14) are used by no frame; left alone as
+    possibly code-drawn.
+  - **Translated** in `name_entry_labels.json` by `tools/make_name_labels.py`:
+    the glyph tiles only these labels use (28 tile columns) hold Name,
+    Nickname, Birthday, Blood type, Yes, No and "/"; parts are rewritten in
+    place, count and order kept, dropped parts drawing one transparent texel
+    (8×1 from tile 13's empty top row). No room for "Month"/"Day": the
+    birthday page's month row is labelled "Birthday" and the day row has none.
 - **Kana grid:** strings at 0x19150– (rows like あいうえお) plus conversion
   tables (0x192D8–). These are the characters the player can type on the
   かな/カナ pages.

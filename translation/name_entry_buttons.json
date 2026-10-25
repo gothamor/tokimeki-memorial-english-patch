@@ -1,5 +1,5 @@
 {
- "description": "Name entry side buttons in NAME_ENT/NAME_ENT.NBN (game-internals 6d): かな/カナ/記号/漢字/終了 -> Hira/Kata/Sym/Kanji/Done, redrawn in place by tools/redraw_labels.py. The 名前:/あだ名: captions aren't in this sheet (not found yet).",
+ "description": "Name entry side buttons in NAME_ENT/NAME_ENT.NBN (game-internals 6d): かな/カナ/記号/漢字/終了 -> Hira/Kata/Sym/Kanji/Done, redrawn in place by tools/redraw_labels.py. The 名前:/あだ名: captions are frame parts in the same file: name_entry_labels.json.",
  "images": [
   {
    "file": "CDROM/NAME_ENT/NAME_ENT.NBN",

@@ -475,7 +475,7 @@ DESCRIPTIONS = {
                                "frames take from elsewhere are cleared."),
     "name_entry_buttons.json": ("Name entry side buttons in NAME_ENT/NAME_ENT.NBN (game-internals 6d): かな/カナ/記号/漢字/終了 "
                                 "-> Hira/Kata/Sym/Kanji/Done, redrawn in place by tools/redraw_labels.py. The 名前:/あだ名: "
-                                "captions aren't in this sheet (not found yet)."),
+                                "captions are frame parts in the same file: name_entry_labels.json."),
     "exam_results.json": ("End-of-term exam results screen graphics in FUKUTEST/EXAMINE.NBN (loaded by ETC.EXN): "
                           "the stat labels and calendar characters are an exact copy of MAINROM.NBN chunks 9 and 4, "
                           "patched with main_screen.json's images; the board title 期末試験結果発表 is redrawn by "

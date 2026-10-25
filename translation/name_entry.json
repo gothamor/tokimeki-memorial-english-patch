@@ -1,5 +1,5 @@
 {
-  "description": "Character creation (CDROM/EXEDIR/NAME_ENT.EXN): name/nickname questions and the birthday/blood-type prompts. The '名前:'/'あだ名:' labels, side buttons and kana grid labels are graphics; the kana grid itself (0x19150-) is the set of characters the player types with and is left alone for now. Default names (藤崎/詩織) and the cheat-name list (0x19590-) are data and must not be translated blindly.",
+  "description": "Character creation (CDROM/EXEDIR/NAME_ENT.EXN): name/nickname questions and the birthday/blood-type prompts. The '名前:'/'あだ名:' labels, the birthday page's and summary's words and the side buttons are graphics (name_entry_labels.json, name_entry_buttons.json); the kana grid itself (0x19150-) is the set of characters the player types with and is left alone for now. Default names (藤崎/詩織) and the cheat-name list (0x19590-) are data and must not be translated blindly.",
   "strings": [
     {
       "file": "CDROM/EXEDIR/NAME_ENT.EXN",
